@@ -1,0 +1,133 @@
+{
+  "hashes": [
+    {
+      "source": "artifacts/ribbon/discovery-bubbles.js",
+      "runtime": "apps/ribbon-mvp/discovery-bubbles.js",
+      "url": "/ribbon/discovery-bubbles.js",
+      "sha256": "8b7063f16013f38a0e4c6c80dc159925d7027ead9e31703586fc7b2e06c59612",
+      "equal": true
+    },
+    {
+      "source": "artifacts/ribbon/discovery-model.js",
+      "runtime": "apps/ribbon-mvp/discovery-model.js",
+      "url": "/ribbon/discovery-model.js",
+      "sha256": "7aec0fbcec63593b4c5c0bd5af53a1f2e57339c04badc5b13e45bdc100f109ed",
+      "equal": true
+    },
+    {
+      "source": "artifacts/ribbon/discovery-arch.js",
+      "runtime": "apps/ribbon-mvp/discovery-arch.js",
+      "url": "/ribbon/discovery-arch.js",
+      "sha256": "e9c61b88077f87b1ea6d6b928df15fb0a4cae8a3edef97d6f0b0fe438dc43798",
+      "equal": true
+    },
+    {
+      "source": "artifacts/ribbon/discovery-arch-model.js",
+      "runtime": "apps/ribbon-mvp/discovery-arch-model.js",
+      "url": "/ribbon/discovery-arch-model.js",
+      "sha256": "6223cd2ba780c476ba3293d4ab9853208b063c0a95cac8c061340e2d6f56a08f",
+      "equal": true
+    },
+    {
+      "source": "artifacts/ribbon/tag-atlas.js",
+      "runtime": "apps/ribbon-mvp/tag-atlas.js",
+      "url": "/ribbon/tag-atlas.js",
+      "sha256": "309020c9d266a5b8b70b17231595f11ed5f206a054e4b33c7684919248422c19",
+      "equal": true
+    },
+    {
+      "source": "artifacts/ribbon/assets/brands/max/fonts/max-sans-medium.woff2",
+      "runtime": "apps/ribbon-mvp/assets/brands/max/fonts/max-sans-medium.woff2",
+      "url": "/ribbon/assets/brands/max/fonts/max-sans-medium.woff2",
+      "sha256": "37f8013affe617da87b108ba39990698cb362ec03bb6f058de4d6ec3a896e4b2",
+      "equal": true
+    },
+    {
+      "source": "artifacts/service/public/worker.js",
+      "runtime": "apps/stand-service/public/worker.js",
+      "url": "/service/worker.js",
+      "sha256": "aeece7973a99dea83154fc8d094b03c884e595979c0559e80f0a834b00d106db",
+      "equal": true
+    },
+    {
+      "source": "artifacts/service/public/discovery-tags-settings.js",
+      "runtime": "apps/stand-service/public/discovery-tags-settings.js",
+      "url": "/service/discovery-tags-settings.js",
+      "sha256": "09ea9a5fc8e815ec34324c2517592d8128214ac1378c5eca8360237ee08b9968",
+      "equal": true
+    },
+    {
+      "source": "artifacts/web/common-map-discovery-tags-editor.js",
+      "runtime": "apps/stand-viewer/common-map-discovery-tags-editor.js",
+      "url": "/viewer/common-map-discovery-tags-editor.js",
+      "sha256": "48da813e71e100df43465b4a84d793a7d8c1fc8ab222ffeb217fd62d754733e8",
+      "equal": true
+    }
+  ],
+  "settings": {
+    "config": {
+      "enabled": true,
+      "surfaces": [
+        "vk-arch"
+      ],
+      "count": 60,
+      "speed": 1,
+      "speedSpread": 0.35,
+      "scale": 1,
+      "depth": 1,
+      "glassShell": true,
+      "appearance": "max",
+      "emojiShare": 0.25
+    },
+    "revision": "e9a1a925e0ad65a10855e9cb306111dbd58d87e70aa8d25f32c20497d979caea",
+    "error": null
+  },
+  "execution": {
+    "profile": "demonstration",
+    "renderScale": 0.5,
+    "maxSide": 4096,
+    "targetBrowserFps": 15,
+    "spout": "required",
+    "browser3d": false,
+    "showQuality": "economy",
+    "nextShowQuality": "economy",
+    "ndi": false
+  },
+  "instances": [
+    {
+      "id": "ribbon-up",
+      "status": "running",
+      "generation": "f44c7b58-0536-4135-9045-0ed9d8c4fe3b",
+      "frame": 22516,
+      "error": null
+    },
+    {
+      "id": "video-wall-left",
+      "status": "running",
+      "generation": "43e3524a-9c39-40bc-9dc4-58342d8bc0f5",
+      "frame": 22650,
+      "error": null
+    },
+    {
+      "id": "vk-stella",
+      "status": "running",
+      "generation": "c597dc62-1ca7-4dbd-adb2-f34a0bdf1654",
+      "frame": 23069,
+      "error": null
+    },
+    {
+      "id": "vk-arch",
+      "status": "running",
+      "generation": "3a5e2f16-e7f4-4762-87a1-77aeea039d91",
+      "frame": 14834,
+      "error": null
+    },
+    {
+      "id": "max-wall-right",
+      "status": "running",
+      "generation": "deb556cc-1bf4-4b68-84e6-5ef9e2147c02",
+      "frame": 20256,
+      "error": null
+    }
+  ]
+}

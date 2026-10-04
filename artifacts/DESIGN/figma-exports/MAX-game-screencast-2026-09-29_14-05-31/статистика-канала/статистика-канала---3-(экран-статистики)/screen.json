@@ -1,0 +1,116 @@
+{
+  "id": "2299:91501",
+  "name": "статистика канала - 3 (экран статистики)",
+  "type": "FRAME",
+  "parent": "2299:91496",
+  "bounds": {
+    "x": 32593,
+    "y": 657,
+    "width": 940,
+    "height": 2089
+  },
+  "visible": true,
+  "fontSize": 0,
+  "hasImage": false,
+  "task": "blogger.statistics",
+  "confidence": "high",
+  "reviewed": false,
+  "include": true,
+  "group": "2299:91496",
+  "groupName": "статистика канала",
+  "containerPath": [
+    {
+      "id": "2299:91496",
+      "name": "статистика канала",
+      "type": "SECTION"
+    }
+  ],
+  "sectionPath": [
+    {
+      "id": "2299:91496",
+      "name": "статистика канала",
+      "type": "SECTION"
+    }
+  ],
+  "sequence": {
+    "series": "статистика канала",
+    "number": 3,
+    "description": "экран статистики"
+  },
+  "detection": "structure",
+  "evidence": [
+    {
+      "task": "blogger.statistics",
+      "source": "frame-name",
+      "id": "2299:91501",
+      "text": "статистика канала - 3 (экран статистики)",
+      "weight": 100
+    },
+    {
+      "task": "blogger.statistics",
+      "source": "ancestor",
+      "id": "2299:91496",
+      "text": "статистика канала",
+      "weight": 99
+    }
+  ],
+  "ancestors": [
+    {
+      "id": "2299:91496",
+      "name": "статистика канала",
+      "type": "SECTION"
+    }
+  ],
+  "nearbyHeadings": [],
+  "contextRegion": null,
+  "warnings": [],
+  "order": 98,
+  "fingerprint": "[\"статистика канала - 3 (экран статистики)\",{\"x\":32593,\"y\":657,\"width\":940,\"height\":2089},\"FRAME\",[[\"2299:91496\",\"статистика канала\",\"SECTION\"],[\"1:8\",\"Page 8\",\"PAGE\"]],\"content-v1\",3707722895,742426145,2]",
+  "manualTask": false,
+  "title": "статистика канала - 3 (экран статистики)",
+  "exportStatus": "ok",
+  "texts": [],
+  "layers": [
+    {
+      "id": "2299:91501",
+      "name": "статистика канала - 3 (экран статистики)",
+      "type": "FRAME",
+      "parent": "2299:91496",
+      "bounds": {
+        "x": 32593,
+        "y": 657,
+        "width": 940,
+        "height": 2089
+      }
+    },
+    {
+      "id": "2299:91502",
+      "name": "IMG_20260928_113332 2",
+      "type": "RECTANGLE",
+      "parent": "2299:91501",
+      "bounds": {
+        "x": 32593,
+        "y": 657,
+        "width": 940,
+        "height": 2089
+      }
+    }
+  ],
+  "imageHashes": [
+    "a5b00a1d1a2b74e27f32762824271b01ff820d84"
+  ],
+  "notes": [
+    "Нет текстовых слоёв: содержимое может быть растром/кривыми; потребуется визуальная проверка этой группы."
+  ],
+  "pngScale": 1,
+  "pngFile": "статистика-канала/статистика-канала---3-(экран-статистики)/screen.png",
+  "previewFile": "статистика-канала/статистика-канала---3-(экран-статистики)/preview.png",
+  "svgFile": "статистика-канала/статистика-канала---3-(экран-статистики)/screen.svg",
+  "documentFile": "статистика-канала/статистика-канала---3-(экран-статистики)/figma.json",
+  "images": [
+    {
+      "hash": "a5b00a1d1a2b74e27f32762824271b01ff820d84",
+      "file": "статистика-канала/статистика-канала---3-(экран-статистики)/images/8bd36c40da0bc12b5ad5b452ce291d907b6c63d95a5a6d59256a208f59c40e32.jpg"
+    }
+  ]
+}

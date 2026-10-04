@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "brandId": "max",
+  "displayName": "MAX",
+  "version": "0.1.0",
+  "status": "pilot-source-verified",
+  "scope": [
+    "communication-materials",
+    "web-assets"
+  ],
+  "sourceDirectory": "artifacts/DESIGN/figma-exports/MAX - 2026-09-26_17-35-42",
+  "sourcePathBase": "project-root",
+  "atlasSha256": "beecae4c687f158a3cd2afd8304c3bfa0e15618998dfd556d8ec3077022df7a7",
+  "sourceIndex": "source-index.json",
+  "rules": "rules.json",
+  "assets": "asset-index.json",
+  "tokens": "tokens/brand.tokens.json",
+  "css": "tokens/brand.css",
+  "knownGaps": [
+    "Selected export covers chapters 1–5; mascot and 3D chapter contents absent.",
+    "Blue giant HEX/RGB conflict unresolved; no blue CSS variable generated.",
+    "Monochrome clearspace unit conflicts with its diagram.",
+    "Angular/Glass native effects require separate fidelity work; not included as production web components.",
+    "Animation/After Effects payloads are external links, not exported files.",
+    "Brand-owner approval and general-purpose product UI design system are not supplied."
+  ],
+  "note": "Verified against supplied source; no claim of brand-owner approval or complete design system."
+}

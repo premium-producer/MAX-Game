@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-03",
+  "origin": "existing private VK_DigitalProducts project; not a third-party license grant",
+  "baseline": "artifacts/backend-probes/max-handoff/vendor-manifest.json",
+  "files": [
+    {
+      "path": "artifacts/max-game/src/application/mission-session.mjs",
+      "baselineSha256": "6309c4b85b8c3e2dcbe34c54aa4c9480b8568493ac8d277ca5aac72134b192b2",
+      "sha256": "7b0c6fd5d9ff088175b3e9fff3a453a6e6788a7371533374f8c6519a04b36106"
+    },
+    {
+      "path": "artifacts/max-game/src/content/channel-catalog.mjs",
+      "baselineSha256": "a1d15a212c2adacd4c5c2a0953f6924e64326dac6f56064c102860601e9a7395",
+      "sha256": "a1d15a212c2adacd4c5c2a0953f6924e64326dac6f56064c102860601e9a7395"
+    },
+    {
+      "path": "artifacts/max-game/src/content/mission-assets.mjs",
+      "baselineSha256": "12e6c7bc84f28dc79f94d557e558af761d3e2e9e4d494cd93620229166685b36",
+      "sha256": "12e6c7bc84f28dc79f94d557e558af761d3e2e9e4d494cd93620229166685b36"
+    },
+    {
+      "path": "artifacts/max-game/src/content/mission-catalog.mjs",
+      "baselineSha256": "c2449d339c2b556dc65f16d658b8cdb6be6a95c1464152fcf26b713b247f940c",
+      "sha256": "c2449d339c2b556dc65f16d658b8cdb6be6a95c1464152fcf26b713b247f940c"
+    },
+    {
+      "path": "artifacts/max-game/src/contracts/game-command.mjs",
+      "baselineSha256": "a19aacc9ab368d27656a672e9a86b425ab50cffa506c3fc94124abbc7d7111fc",
+      "sha256": "a19aacc9ab368d27656a672e9a86b425ab50cffa506c3fc94124abbc7d7111fc"
+    },
+    {
+      "path": "artifacts/max-game/src/contracts/mission-catalog.mjs",
+      "baselineSha256": "f907db1540a36099ce26a27b5f1bd48b666bcf4da515d0fa1c72cd0452c9f660",
+      "sha256": "f907db1540a36099ce26a27b5f1bd48b666bcf4da515d0fa1c72cd0452c9f660"
+    },
+    {
+      "path": "artifacts/max-game/src/contracts/mission-command.mjs",
+      "baselineSha256": "93c50413347e88b629107ae058e46e396c92265a0422d3a456a0d7ed0258ee1b",
+      "sha256": "93c50413347e88b629107ae058e46e396c92265a0422d3a456a0d7ed0258ee1b"
+    },
+    {
+      "path": "artifacts/max-game/src/contracts/task-catalog.mjs",
+      "baselineSha256": "76f68ab1429cb5f7590947f03db65c7876d907513efee43ef048067399af1f00",
+      "sha256": "76f68ab1429cb5f7590947f03db65c7876d907513efee43ef048067399af1f00"
+    },
+    {
+      "path": "artifacts/max-game/src/core/game-core.mjs",
+      "baselineSha256": "5812e6a6a2ea454c2e9c59eaff90fcf1c3369b92ab40ea6538d1a0c7c3a57c56",
+      "sha256": "5812e6a6a2ea454c2e9c59eaff90fcf1c3369b92ab40ea6538d1a0c7c3a57c56"
+    },
+    {
+      "path": "artifacts/max-game/src/core/mission-core.mjs",
+      "baselineSha256": "ed84ddb30e9876156b1067acd0810811b9796bc49c9de0e8cc8167c54fdc7af1",
+      "sha256": "ed84ddb30e9876156b1067acd0810811b9796bc49c9de0e8cc8167c54fdc7af1"
+    },
+    {
+      "path": "artifacts/service/max-game/http-api.mjs",
+      "baselineSha256": "5e3345bc2dcd999b2dfe39781b12e6cc4581a494db7f26e18a1b1ca9af6ee069",
+      "sha256": "310a1df0f52426cf1aa8c9587576c38a6b5c23cad2f6bb9410ed00d58b510d51"
+    },
+    {
+      "path": "artifacts/service/max-game/sqlite-persistence.mjs",
+      "baselineSha256": "b333a825646ac480700236a070e895d8a7651b8fa43be5338713aa359bbdd67d",
+      "sha256": "9295acc3a0d7ed506c238065c729f402037b01c80422253fffcf1d86e1febcd8"
+    },
+    {
+      "path": "artifacts/service/max-game/sqlite-worker.mjs",
+      "baselineSha256": "aac1c90437e39e523a7c356f252e35c72873ca5a91781264982abd6e31c62ce4",
+      "sha256": "903d086ad8c176ed86658c82a08e66b74ef96622492b52e12c6c90fbb5e60d90"
+    },
+    {
+      "path": "artifacts/max-game/src/contracts/mission-assignment.mjs",
+      "origin": "authored assignment-v1 adapter",
+      "sha256": "0972cf9828b5105e444092035ca90ea90a748c8667a4699edeb3e3699390af0d"
+    }
+  ]
+}

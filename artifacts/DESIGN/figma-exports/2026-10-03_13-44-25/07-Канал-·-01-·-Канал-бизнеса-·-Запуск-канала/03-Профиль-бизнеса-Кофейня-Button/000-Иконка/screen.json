@@ -1,0 +1,974 @@
+{
+  "id": "I296:17570;6864:97816",
+  "name": "Иконка 3",
+  "title": "000-Иконка",
+  "bounds": {
+    "x": 24948.42578125,
+    "y": 1175.802001953125,
+    "width": 184.8217010498047,
+    "height": 27.303207397460938
+  },
+  "task": "unassigned",
+  "include": true,
+  "reviewed": false,
+  "confidence": "structure",
+  "group": "296:17570",
+  "groupName": "Канал · 01 · Канал бизнеса · Запуск канала / Профиль бизнеса\nКофейня\nButton",
+  "containerPath": [
+    {
+      "id": "296:17349",
+      "name": "07-Канал · 01 · Канал бизнеса · Запуск канала"
+    },
+    {
+      "id": "296:17570",
+      "name": "03-Профиль бизнеса\nКофейня\nButton"
+    }
+  ],
+  "ancestors": [],
+  "nearbyHeadings": [],
+  "evidence": [
+    {
+      "source": "autolayout",
+      "text": "Порядок children; названия фреймов не используются"
+    }
+  ],
+  "warnings": [
+    "Слой «Before» (I296:17570;7180:33453;3168:31361): недоступно componentProperties. in get_componentProperties: Component set for node has existing errors",
+    "Слой «Before» (I296:17570;7148:46255;6850:72688;3168:31361): недоступно componentProperties. in get_componentProperties: Component set for node has existing errors",
+    "Слой «Before» (I296:17570;7180:33453;3168:31361): недоступно componentProperties. in get_componentProperties: Component set for node has existing errors",
+    "Слой «Before» (I296:17570;7148:46255;6850:72688;3168:31361): недоступно componentProperties. in get_componentProperties: Component set for node has existing errors"
+  ],
+  "detection": "structure",
+  "order": 107,
+  "content": {
+    "kind": "icon",
+    "missionOrder": 7,
+    "missionNodeId": "296:17349",
+    "iconOrder": 3,
+    "iconNodeId": "296:17570",
+    "iconText": "Профиль бизнеса\nКофейня\nButton",
+    "iconTexts": [
+      {
+        "id": "I296:17570;7148:46255;6850:72688;3370:24156",
+        "order": 1,
+        "text": "Профиль бизнеса",
+        "fontName": {
+          "family": "Roboto",
+          "style": "Regular",
+          "variationSettings": {
+            "wdth": 100,
+            "wght": 400
+          }
+        },
+        "fontSize": 7.350863456726074,
+        "segments": [
+          {
+            "characters": "Профиль бизнеса",
+            "start": 0,
+            "end": 15,
+            "fontSize": 7.350863456726074,
+            "fontName": {
+              "family": "Roboto",
+              "style": "Regular",
+              "variationSettings": {
+                "wdth": 100,
+                "wght": 400
+              }
+            },
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 0.3960784375667572,
+                  "g": 0.43921568989753723,
+                  "b": 0.4901960790157318
+                },
+                "boundVariables": {
+                  "color": {
+                    "type": "VARIABLE_ALIAS",
+                    "id": "VariableID:40111606192b8c3149bf8c29bf3bd6be41eeb6b2/3232:42"
+                  }
+                }
+              }
+            ],
+            "hyperlink": null
+          }
+        ],
+        "bounds": {
+          "x": 25016.79296875,
+          "y": 1176.9285888671875,
+          "width": 63,
+          "height": 11
+        }
+      },
+      {
+        "id": "I296:17570;7148:46255;6850:72688;3168:31365",
+        "order": 2,
+        "text": "Кофейня",
+        "fontName": {
+          "family": "Roboto",
+          "style": "Medium",
+          "variationSettings": {
+            "wdth": 100,
+            "wght": 500
+          }
+        },
+        "fontSize": 8.400986671447754,
+        "segments": [
+          {
+            "characters": "Кофейня",
+            "start": 0,
+            "end": 7,
+            "fontSize": 8.400986671447754,
+            "fontName": {
+              "family": "Roboto",
+              "style": "Medium",
+              "variationSettings": {
+                "wdth": 100,
+                "wght": 500
+              }
+            },
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 0,
+                  "g": 0,
+                  "b": 0
+                },
+                "boundVariables": {
+                  "color": {
+                    "type": "VARIABLE_ALIAS",
+                    "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/3235:51"
+                  }
+                }
+              }
+            ],
+            "hyperlink": null
+          }
+        ],
+        "bounds": {
+          "x": 25016.79296875,
+          "y": 1188.978759765625,
+          "width": 36,
+          "height": 13
+        }
+      },
+      {
+        "id": "I296:17570;7148:46255;6850:72688;3168:31372;3168:30820;3168:30812;2510:7013",
+        "order": 3,
+        "text": "Button",
+        "fontName": {
+          "family": "Roboto",
+          "style": "Medium",
+          "variationSettings": {
+            "wdth": 100,
+            "wght": 500
+          }
+        },
+        "fontSize": 7.350863456726074,
+        "segments": [
+          {
+            "characters": "Button",
+            "start": 0,
+            "end": 6,
+            "fontSize": 7.350863456726074,
+            "fontName": {
+              "family": "Roboto",
+              "style": "Medium",
+              "variationSettings": {
+                "wdth": 100,
+                "wght": 500
+              }
+            },
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+                },
+                "boundVariables": {
+                  "color": {
+                    "type": "VARIABLE_ALIAS",
+                    "id": "VariableID:945c7372d32f523c86aa40a4a949d2a0fbb47256/3235:60"
+                  }
+                }
+              }
+            ],
+            "hyperlink": null
+          }
+        ],
+        "bounds": {
+          "x": 25100.794921875,
+          "y": 1183.691162109375,
+          "width": 23,
+          "height": 11
+        }
+      }
+    ],
+    "screenOrder": null,
+    "screenNodeId": null,
+    "visualNodeId": "I296:17570;6864:97816",
+    "helpNodeId": null
+  },
+  "instruction": {
+    "blocks": [],
+    "text": ""
+  },
+  "watchNodeId": "296:17570",
+  "contextNodeIds": [
+    "296:17570",
+    "296:17350"
+  ],
+  "sequenceParents": [
+    "296:17351",
+    "296:17349"
+  ],
+  "fingerprint": "[\"[\\\"Header\\\",{\\\"x\\\":24551.478515625,\\\"y\\\":1159,\\\"width\\\":598.5703125,\\\"height\\\":60.90715408325195},\\\"INSTANCE\\\",[[\\\"296:17351\\\",\\\"Platform\\\",\\\"FRAME\\\"],[\\\"296:17349\\\",\\\"экран задания · ПК\\\",\\\"FRAME\\\"],[\\\"296:17348\\\",\\\"Канал · 01 · Канал бизнеса · Запуск канала\\\",\\\"FRAME\\\"],[\\\"296:17347\\\",\\\"задание миссии\\\",\\\"FRAME\\\"],[\\\"296:17342\\\",\\\"иконка_задание · Канал\\\",\\\"FRAME\\\"],[\\\"296:16454\\\",\\\"Миссия · возможности слева направо\\\",\\\"FRAME\\\"],[\\\"296:16452\\\",\\\"Продвижение бизнеса\\\",\\\"FRAME\\\"],[\\\"296:13218\\\",\\\"MAX аудит миссий\\\",\\\"FRAME\\\"],[\\\"296:13217\\\",\\\"DEV 2\\\",\\\"PAGE\\\"]],\\\"content-v1\\\",4247844410,3438486686,419]\",[\"[\\\"Header\\\",{\\\"x\\\":24551.478515625,\\\"y\\\":1159,\\\"width\\\":598.5703125,\\\"height\\\":60.90715408325195},\\\"INSTANCE\\\",[[\\\"296:17351\\\",\\\"Platform\\\",\\\"FRAME\\\"],[\\\"296:17349\\\",\\\"экран задания · ПК\\\",\\\"FRAME\\\"],[\\\"296:17348\\\",\\\"Канал · 01 · Канал бизнеса · Запуск канала\\\",\\\"FRAME\\\"],[\\\"296:17347\\\",\\\"задание миссии\\\",\\\"FRAME\\\"],[\\\"296:17342\\\",\\\"иконка_задание · Канал\\\",\\\"FRAME\\\"],[\\\"296:16454\\\",\\\"Миссия · возможности слева направо\\\",\\\"FRAME\\\"],[\\\"296:16452\\\",\\\"Продвижение бизнеса\\\",\\\"FRAME\\\"],[\\\"296:13218\\\",\\\"MAX аудит миссий\\\",\\\"FRAME\\\"],[\\\"296:13217\\\",\\\"DEV 2\\\",\\\"PAGE\\\"]],\\\"content-v1\\\",4247844410,3438486686,419]\",\"[\\\"Канал · 01 · Канал бизнеса · Запуск канала\\\",{\\\"x\\\":24272,\\\"y\\\":1106,\\\"width\\\":1000,\\\"height\\\":29},\\\"TEXT\\\",[[\\\"296:17349\\\",\\\"экран задания · ПК\\\",\\\"FRAME\\\"],[\\\"296:17348\\\",\\\"Канал · 01 · Канал бизнеса · Запуск канала\\\",\\\"FRAME\\\"],[\\\"296:17347\\\",\\\"задание миссии\\\",\\\"FRAME\\\"],[\\\"296:17342\\\",\\\"иконка_задание · Канал\\\",\\\"FRAME\\\"],[\\\"296:16454\\\",\\\"Миссия · возможности слева направо\\\",\\\"FRAME\\\"],[\\\"296:16452\\\",\\\"Продвижение бизнеса\\\",\\\"FRAME\\\"],[\\\"296:13218\\\",\\\"MAX аудит миссий\\\",\\\"FRAME\\\"],[\\\"296:13217\\\",\\\"DEV 2\\\",\\\"PAGE\\\"]],\\\"content-v1\\\",3919943008,4053588824,1]\"],[[\"296:17351\",[\"296:17352\",\"296:17562\",\"296:17570\",\"296:17572\"]],[\"296:17349\",[\"296:17350\",\"296:17351\"]]]]",
+  "readWarnings": [
+    {
+      "nodeId": "I296:17570;7180:33453;3168:31361",
+      "nodeName": "Before",
+      "property": "componentProperties",
+      "message": "in get_componentProperties: Component set for node has existing errors"
+    },
+    {
+      "nodeId": "I296:17570;7148:46255;6850:72688;3168:31361",
+      "nodeName": "Before",
+      "property": "componentProperties",
+      "message": "in get_componentProperties: Component set for node has existing errors"
+    },
+    {
+      "nodeId": "I296:17570;7180:33453;3168:31361",
+      "nodeName": "Before",
+      "property": "componentProperties",
+      "message": "in get_componentProperties: Component set for node has existing errors"
+    },
+    {
+      "nodeId": "I296:17570;7148:46255;6850:72688;3168:31361",
+      "nodeName": "Before",
+      "property": "componentProperties",
+      "message": "in get_componentProperties: Component set for node has existing errors"
+    }
+  ],
+  "exportStatus": "ok",
+  "texts": [
+    {
+      "id": "I296:17570;7148:46255;6850:72688;3370:24156",
+      "name": "Overtitle",
+      "type": "TEXT",
+      "parent": "I296:17570;7148:46255;6850:72688;3168:31362",
+      "bounds": {
+        "x": 25016.79296875,
+        "y": 1176.9285888671875,
+        "width": 63,
+        "height": 11
+      },
+      "text": "Профиль бизнеса",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 7.350863456726074,
+      "segments": [
+        {
+          "characters": "Профиль бизнеса",
+          "start": 0,
+          "end": 15,
+          "fontSize": 7.350863456726074,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.3960784375667572,
+                "g": 0.43921568989753723,
+                "b": 0.4901960790157318
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:40111606192b8c3149bf8c29bf3bd6be41eeb6b2/3232:42"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:17570;7148:46255;6850:72688;3168:31365",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:17570;7148:46255;6850:72688;3168:31363",
+      "bounds": {
+        "x": 25016.79296875,
+        "y": 1188.978759765625,
+        "width": 36,
+        "height": 13
+      },
+      "text": "Кофейня",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 8.400986671447754,
+      "segments": [
+        {
+          "characters": "Кофейня",
+          "start": 0,
+          "end": 7,
+          "fontSize": 8.400986671447754,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/3235:51"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:17570;7148:46255;6850:72688;3168:31372;3168:30820;3168:30812;2510:7013",
+      "name": "Label",
+      "type": "TEXT",
+      "parent": "I296:17570;7148:46255;6850:72688;3168:31372;3168:30820;3168:30812;2510:7012",
+      "bounds": {
+        "x": 25100.794921875,
+        "y": 1183.691162109375,
+        "width": 23,
+        "height": 11
+      },
+      "text": "Button",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 7.350863456726074,
+      "segments": [
+        {
+          "characters": "Button",
+          "start": 0,
+          "end": 6,
+          "fontSize": 7.350863456726074,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:945c7372d32f523c86aa40a4a949d2a0fbb47256/3235:60"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    }
+  ],
+  "layers": [
+    {
+      "id": "I296:17570;6864:97816",
+      "name": "Right controls",
+      "type": "FRAME",
+      "parent": "296:17570",
+      "bounds": {
+        "x": 24948.42578125,
+        "y": 1175.802001953125,
+        "width": 184.8217010498047,
+        "height": 27.303207397460938
+      }
+    },
+    {
+      "id": "I296:17570;7148:46255",
+      "name": "Profile/Desktop+Tablet",
+      "type": "INSTANCE",
+      "parent": "I296:17570;6864:97816",
+      "bounds": {
+        "x": 24987.390625,
+        "y": 1175.802001953125,
+        "width": 145.85702514648438,
+        "height": 27.303207397460938
+      }
+    },
+    {
+      "id": "I296:17570;7148:46255;6850:72688",
+      "name": "Cell",
+      "type": "INSTANCE",
+      "parent": "I296:17570;7148:46255",
+      "bounds": {
+        "x": 24987.390625,
+        "y": 1175.802001953125,
+        "width": 145.85702514648438,
+        "height": 27.303207397460938
+      }
+    },
+    {
+      "id": "I296:17570;7148:46255;6850:72688;3168:31358",
+      "name": "Content",
+      "type": "FRAME",
+      "parent": "I296:17570;7148:46255;6850:72688",
+      "bounds": {
+        "x": 24989.490234375,
+        "y": 1176.9285888671875,
+        "width": 137.45603942871094,
+        "height": 25.05012321472168
+      }
+    },
+    {
+      "id": "I296:17570;7148:46255;6850:72688;3168:31361",
+      "name": "Before",
+      "type": "INSTANCE",
+      "parent": "I296:17570;7148:46255;6850:72688;3168:31358",
+      "bounds": {
+        "x": 24989.490234375,
+        "y": 1178.952392578125,
+        "width": 21.002466201782227,
+        "height": 21.002466201782227
+      }
+    },
+    {
+      "id": "I296:17570;7148:46255;6850:72688;3168:31361;3168:30763",
+      "name": "Avatar",
+      "type": "INSTANCE",
+      "parent": "I296:17570;7148:46255;6850:72688;3168:31361",
+      "bounds": {
+        "x": 24989.490234375,
+        "y": 1178.952392578125,
+        "width": 21.002466201782227,
+        "height": 21.002466201782227
+      }
+    },
+    {
+      "id": "I296:17570;7148:46255;6850:72688;3168:31361;3168:30763;3537:26978",
+      "name": "Container for scale",
+      "type": "FRAME",
+      "parent": "I296:17570;7148:46255;6850:72688;3168:31361;3168:30763",
+      "bounds": {
+        "x": 24989.490234375,
+        "y": 1178.952392578125,
+        "width": 21.002466201782227,
+        "height": 21.002466201782227
+      }
+    },
+    {
+      "id": "I296:17570;7148:46255;6850:72688;3168:31361;3168:30763;2653:6866",
+      "name": "Container",
+      "type": "FRAME",
+      "parent": "I296:17570;7148:46255;6850:72688;3168:31361;3168:30763;3537:26978",
+      "bounds": {
+        "x": 24989.490234375,
+        "y": 1178.952392578125,
+        "width": 21.002466201782227,
+        "height": 21.002466201782227
+      }
+    },
+    {
+      "id": "I296:17570;7148:46255;6850:72688;3168:31361;3168:30763;2653:6872",
+      "name": "Mask",
+      "type": "GROUP",
+      "parent": "I296:17570;7148:46255;6850:72688;3168:31361;3168:30763;2653:6866",
+      "bounds": {
+        "x": 24989.490234375,
+        "y": 1178.952392578125,
+        "width": 21.002466201782227,
+        "height": 21.002466201782227
+      }
+    },
+    {
+      "id": "I296:17570;7148:46255;6850:72688;3168:31361;3168:30763;2653:6873",
+      "name": ".background form",
+      "type": "INSTANCE",
+      "parent": "I296:17570;7148:46255;6850:72688;3168:31361;3168:30763;2653:6872",
+      "bounds": {
+        "x": 24989.490234375,
+        "y": 1178.952392578125,
+        "width": 21.002466201782227,
+        "height": 21.002466201782227
+      }
+    },
+    {
+      "id": "I296:17570;7148:46255;6850:72688;3168:31361;3168:30763;2653:6873;2640:18600",
+      "name": "Ellipse",
+      "type": "ELLIPSE",
+      "parent": "I296:17570;7148:46255;6850:72688;3168:31361;3168:30763;2653:6873",
+      "bounds": {
+        "x": 24989.490234375,
+        "y": 1178.952392578125,
+        "width": 21.002466201782227,
+        "height": 21.002466201782227
+      }
+    },
+    {
+      "id": "I296:17570;7148:46255;6850:72688;3168:31361;3168:30763;2653:6874",
+      "name": "🖼️ Choose Image",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "I296:17570;7148:46255;6850:72688;3168:31361;3168:30763;2653:6866",
+      "bounds": {
+        "x": 24989.490234375,
+        "y": 1178.952392578125,
+        "width": 21.0029296875,
+        "height": 21.0029296875
+      }
+    },
+    {
+      "id": "I296:17570;7148:46255;6850:72688;3168:31361;3168:30763;2653:6876",
+      "name": "Avatar Form",
+      "type": "INSTANCE",
+      "parent": "I296:17570;7148:46255;6850:72688;3168:31361;3168:30763;2653:6874",
+      "bounds": {
+        "x": 24989.490234375,
+        "y": 1178.952392578125,
+        "width": 21.002466201782227,
+        "height": 21.002466201782227
+      }
+    },
+    {
+      "id": "I296:17570;7148:46255;6850:72688;3168:31361;3168:30763;2653:6876;2640:18600",
+      "name": "Ellipse",
+      "type": "ELLIPSE",
+      "parent": "I296:17570;7148:46255;6850:72688;3168:31361;3168:30763;2653:6876",
+      "bounds": {
+        "x": 24989.490234375,
+        "y": 1178.952392578125,
+        "width": 21.002466201782227,
+        "height": 21.002466201782227
+      }
+    },
+    {
+      "id": "I296:17570;7148:46255;6850:72688;3168:31362",
+      "name": "Middle",
+      "type": "FRAME",
+      "parent": "I296:17570;7148:46255;6850:72688;3168:31358",
+      "bounds": {
+        "x": 25016.79296875,
+        "y": 1176.9285888671875,
+        "width": 63,
+        "height": 25.05012321472168
+      }
+    },
+    {
+      "id": "I296:17570;7148:46255;6850:72688;3370:24156",
+      "name": "Overtitle",
+      "type": "TEXT",
+      "parent": "I296:17570;7148:46255;6850:72688;3168:31362",
+      "bounds": {
+        "x": 25016.79296875,
+        "y": 1176.9285888671875,
+        "width": 63,
+        "height": 11
+      }
+    },
+    {
+      "id": "I296:17570;7148:46255;6850:72688;3168:31363",
+      "name": "Title ",
+      "type": "FRAME",
+      "parent": "I296:17570;7148:46255;6850:72688;3168:31362",
+      "bounds": {
+        "x": 25016.79296875,
+        "y": 1188.978759765625,
+        "width": 36,
+        "height": 13
+      }
+    },
+    {
+      "id": "I296:17570;7148:46255;6850:72688;3168:31365",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:17570;7148:46255;6850:72688;3168:31363",
+      "bounds": {
+        "x": 25016.79296875,
+        "y": 1188.978759765625,
+        "width": 36,
+        "height": 13
+      }
+    },
+    {
+      "id": "I296:17570;7148:46255;6850:72688;3168:31372",
+      "name": "After",
+      "type": "INSTANCE",
+      "parent": "I296:17570;7148:46255;6850:72688;3168:31358",
+      "bounds": {
+        "x": 25086.09375,
+        "y": 1176.9285888671875,
+        "width": 40.85209655761719,
+        "height": 25.05012321472168
+      }
+    },
+    {
+      "id": "I296:17570;7148:46255;6850:72688;3168:31372;3168:30820",
+      "name": "Actions",
+      "type": "INSTANCE",
+      "parent": "I296:17570;7148:46255;6850:72688;3168:31372",
+      "bounds": {
+        "x": 25086.09375,
+        "y": 1176.9285888671875,
+        "width": 40.85209655761719,
+        "height": 25.05012321472168
+      }
+    },
+    {
+      "id": "I296:17570;7148:46255;6850:72688;3168:31372;3168:30820;3168:30812",
+      "name": "Button",
+      "type": "INSTANCE",
+      "parent": "I296:17570;7148:46255;6850:72688;3168:31372;3168:30820",
+      "bounds": {
+        "x": 25086.09375,
+        "y": 1182.102783203125,
+        "width": 40.85209655761719,
+        "height": 14.701726913452148
+      }
+    },
+    {
+      "id": "I296:17570;7148:46255;6850:72688;3168:31372;3168:30820;3168:30812;2510:7332",
+      "name": "Before",
+      "type": "INSTANCE",
+      "parent": "I296:17570;7148:46255;6850:72688;3168:31372;3168:30820;3168:30812",
+      "bounds": {
+        "x": 25089.244140625,
+        "y": 1185.253173828125,
+        "width": 8.400986671447754,
+        "height": 8.400986671447754
+      }
+    },
+    {
+      "id": "I296:17570;7148:46255;6850:72688;3168:31372;3168:30820;3168:30812;2510:7332;2102:1638",
+      "name": "Swap Icon",
+      "type": "INSTANCE",
+      "parent": "I296:17570;7148:46255;6850:72688;3168:31372;3168:30820;3168:30812;2510:7332",
+      "bounds": {
+        "x": 25089.244140625,
+        "y": 1185.253173828125,
+        "width": 8.400986671447754,
+        "height": 8.400986671447754
+      }
+    },
+    {
+      "id": "I296:17570;7148:46255;6850:72688;3168:31372;3168:30820;3168:30812;2510:7332;2102:1638;2013:71",
+      "name": "stub_outline_16",
+      "type": "INSTANCE",
+      "parent": "I296:17570;7148:46255;6850:72688;3168:31372;3168:30820;3168:30812;2510:7332;2102:1638",
+      "bounds": {
+        "x": 25089.244140625,
+        "y": 1185.253173828125,
+        "width": 8.400986671447754,
+        "height": 8.400986671447754
+      }
+    },
+    {
+      "id": "I296:17570;7148:46255;6850:72688;3168:31372;3168:30820;3168:30812;2510:7332;2102:1638;2013:71;47:1075",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:17570;7148:46255;6850:72688;3168:31372;3168:30820;3168:30812;2510:7332;2102:1638;2013:71",
+      "bounds": {
+        "x": 25089.83203125,
+        "y": 1185.84033203125,
+        "width": 6.825802326202393,
+        "height": 6.825802326202393
+      }
+    },
+    {
+      "id": "I296:17570;7148:46255;6850:72688;3168:31372;3168:30820;3168:30812;2510:7012",
+      "name": "Middle",
+      "type": "FRAME",
+      "parent": "I296:17570;7148:46255;6850:72688;3168:31372;3168:30820;3168:30812",
+      "bounds": {
+        "x": 25100.794921875,
+        "y": 1183.4285888671875,
+        "width": 23,
+        "height": 12.05012321472168
+      }
+    },
+    {
+      "id": "I296:17570;7148:46255;6850:72688;3168:31372;3168:30820;3168:30812;2510:7013",
+      "name": "Label",
+      "type": "TEXT",
+      "parent": "I296:17570;7148:46255;6850:72688;3168:31372;3168:30820;3168:30812;2510:7012",
+      "bounds": {
+        "x": 25100.794921875,
+        "y": 1183.691162109375,
+        "width": 23,
+        "height": 11
+      }
+    }
+  ],
+  "imageHashes": [
+    "9b72bb7dfbcc52e4f5bd4436db51fc7423d96a8e"
+  ],
+  "notes": [],
+  "visualTexts": [
+    {
+      "id": "I296:17570;7148:46255;6850:72688;3370:24156",
+      "name": "Overtitle",
+      "type": "TEXT",
+      "parent": "I296:17570;7148:46255;6850:72688;3168:31362",
+      "bounds": {
+        "x": 25016.79296875,
+        "y": 1176.9285888671875,
+        "width": 63,
+        "height": 11
+      },
+      "text": "Профиль бизнеса",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 7.350863456726074,
+      "segments": [
+        {
+          "characters": "Профиль бизнеса",
+          "start": 0,
+          "end": 15,
+          "fontSize": 7.350863456726074,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.3960784375667572,
+                "g": 0.43921568989753723,
+                "b": 0.4901960790157318
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:40111606192b8c3149bf8c29bf3bd6be41eeb6b2/3232:42"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:17570;7148:46255;6850:72688;3168:31365",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:17570;7148:46255;6850:72688;3168:31363",
+      "bounds": {
+        "x": 25016.79296875,
+        "y": 1188.978759765625,
+        "width": 36,
+        "height": 13
+      },
+      "text": "Кофейня",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 8.400986671447754,
+      "segments": [
+        {
+          "characters": "Кофейня",
+          "start": 0,
+          "end": 7,
+          "fontSize": 8.400986671447754,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/3235:51"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:17570;7148:46255;6850:72688;3168:31372;3168:30820;3168:30812;2510:7013",
+      "name": "Label",
+      "type": "TEXT",
+      "parent": "I296:17570;7148:46255;6850:72688;3168:31372;3168:30820;3168:30812;2510:7012",
+      "bounds": {
+        "x": 25100.794921875,
+        "y": 1183.691162109375,
+        "width": 23,
+        "height": 11
+      },
+      "text": "Button",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 7.350863456726074,
+      "segments": [
+        {
+          "characters": "Button",
+          "start": 0,
+          "end": 6,
+          "fontSize": 7.350863456726074,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:945c7372d32f523c86aa40a4a949d2a0fbb47256/3235:60"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    }
+  ],
+  "pngScale": 1,
+  "pngFile": "07-Канал-·-01-·-Канал-бизнеса-·-Запуск-канала/03-Профиль-бизнеса-Кофейня-Button/000-Иконка/screen.png",
+  "previewFile": "07-Канал-·-01-·-Канал-бизнеса-·-Запуск-канала/03-Профиль-бизнеса-Кофейня-Button/000-Иконка/preview.png",
+  "svgFile": "07-Канал-·-01-·-Канал-бизнеса-·-Запуск-канала/03-Профиль-бизнеса-Кофейня-Button/000-Иконка/screen.svg",
+  "documentFile": "07-Канал-·-01-·-Канал-бизнеса-·-Запуск-канала/03-Профиль-бизнеса-Кофейня-Button/000-Иконка/figma.json",
+  "images": [
+    {
+      "hash": "9b72bb7dfbcc52e4f5bd4436db51fc7423d96a8e",
+      "file": "07-Канал-·-01-·-Канал-бизнеса-·-Запуск-канала/03-Профиль-бизнеса-Кофейня-Button/000-Иконка/images/289b0308073512a9169d5c6b1b9b571e20da932990c6af9ca27b0c6952e1b9b6.jpg"
+    }
+  ]
+}

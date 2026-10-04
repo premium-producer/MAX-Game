@@ -1,0 +1,12 @@
+{
+  "case": "recreated hidden next-plus",
+  "before": 0,
+  "betweenCommitAndPrepare": 1,
+  "afterPrepare": 0,
+  "sameMotion": true,
+  "newSlot": {
+    "newPlusBeforePrepare": 1,
+    "newPlusAfterPrepare": 0
+  },
+  "interpretation": "Optical presence flashes 0 -> 1 -> 0 despite continuous hidden MotionRegistry state. CPU contract reproduction, not a captured GPU frame or measured flash duration."
+}

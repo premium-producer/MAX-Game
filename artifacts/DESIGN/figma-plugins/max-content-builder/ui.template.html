@@ -1,0 +1,26 @@
+<!doctype html><html lang="ru"><meta charset="utf-8">
+<style>
+body{margin:20px;font:13px Inter,Arial,sans-serif;color:#202024}h2{font-size:18px;margin:0 0 10px}p{color:#666;line-height:1.45}label{display:flex;gap:8px;align-items:center;margin:12px 0}button{border:0;border-radius:8px;padding:12px;cursor:pointer;width:100%;font:inherit;background:#eee;margin-top:8px}button.primary{background:#6e1aff;color:white}button:disabled{opacity:.5;cursor:default}#status{white-space:pre-wrap;margin-top:16px;line-height:1.5}#stop{display:none}small{color:#666}
+</style>
+<h2>MAX · Контент миссий · v2</h2><p>Прежний контент + правки клиента. Шесть миссий в ряд, задания в колонку. Сборка на текущей странице; прежняя карта остаётся рядом.</p>
+<p><span style="background:#b8f5c7;padding:3px 6px">Зелёный</span> — изменённый текст / добавленный этап<br><span style="background:#ffe66b;padding:3px 6px">Жёлтый</span> — убрать, оставлено для сверки<br><span style="background:#ff4040;padding:3px 6px">Красный</span> — нужен материал клиента</p>
+<div id="missions"></div>
+<button class="primary" id="build" disabled>Собрать / обновить v2</button><button id="stop">Остановить</button>
+<button id="export" disabled>Скачать правки JSON</button><div id="status" role="status">Подготовка…</div>
+<script>
+const media=/* EMBEDDED_MEDIA */;
+const $=id=>document.getElementById(id);
+const send=m=>parent.postMessage({pluginMessage:m},'*');
+let ready=false;
+function busy(on){$('build').disabled=on||!ready;$('export').disabled=on||!ready;$('stop').style.display=on?'block':'none';document.querySelectorAll('input').forEach(n=>n.disabled=on);}
+onmessage=event=>{const m=event.data.pluginMessage;if(!m)return;
+ if(m.type==='init'){ready=true;$('missions').replaceChildren();m.missions.forEach(x=>{const l=document.createElement('label'),i=document.createElement('input');i.type='checkbox';i.checked=true;i.value=x.missionId;l.append(i,document.createTextNode(x.title));$('missions').append(l);});$('status').textContent='Все ассеты встроены. Интернет и сервер не нужны.';busy(false);}
+ if(m.type==='asset'){const a=media[m.id];if(!a){send({type:'asset-result',request:m.request,error:'Нет ресурса '+m.id});return;}if(a.svg)send({type:'asset-result',request:m.request,svg:a.svg});else{const raw=atob(a.base64),bytes=new Uint8Array(raw.length);for(let i=0;i<raw.length;i++)bytes[i]=raw.charCodeAt(i);send({type:'asset-result',request:m.request,bytes});}}
+ if(m.type==='status'){$('status').textContent=m.text;if(m.done)busy(false);}
+ if(m.type==='export'){const url=URL.createObjectURL(new Blob([JSON.stringify(m.data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='max-content-edits.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);busy(false);}
+};
+$('build').onclick=()=>{const missionIds=[...document.querySelectorAll('input:checked')].map(n=>n.value);if(!missionIds.length){$('status').textContent='Выберите хотя бы одну миссию.';return;}busy(true);send({type:'build',missionIds});};
+$('stop').onclick=()=>send({type:'cancel'});
+$('export').onclick=()=>{busy(true);send({type:'export'});};
+send({type:'ready'});
+</script></html>

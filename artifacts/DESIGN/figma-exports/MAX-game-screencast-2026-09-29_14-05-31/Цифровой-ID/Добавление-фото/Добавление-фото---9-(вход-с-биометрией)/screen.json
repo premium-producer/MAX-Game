@@ -1,0 +1,584 @@
+{
+  "id": "2299:86361",
+  "name": "Добавление фото - 9 (вход с биометрией)",
+  "type": "FRAME",
+  "parent": "2299:86188",
+  "bounds": {
+    "x": 24446,
+    "y": 6107,
+    "width": 360,
+    "height": 800
+  },
+  "visible": true,
+  "fontSize": 0,
+  "hasImage": false,
+  "task": "digital-id.photo",
+  "confidence": "high",
+  "reviewed": false,
+  "include": true,
+  "group": "2299:86188",
+  "groupName": "Цифровой ID / Добавление фото",
+  "containerPath": [
+    {
+      "id": "2299:85912",
+      "name": "Цифровой ID",
+      "type": "SECTION"
+    },
+    {
+      "id": "2299:86188",
+      "name": "Добавление фото",
+      "type": "SECTION"
+    }
+  ],
+  "sectionPath": [
+    {
+      "id": "2299:85912",
+      "name": "Цифровой ID",
+      "type": "SECTION"
+    },
+    {
+      "id": "2299:86188",
+      "name": "Добавление фото",
+      "type": "SECTION"
+    }
+  ],
+  "sequence": {
+    "series": "Добавление фото",
+    "number": 9,
+    "description": "вход с биометрией"
+  },
+  "detection": "structure",
+  "evidence": [
+    {
+      "task": "digital-id.photo",
+      "source": "frame-name",
+      "id": "2299:86361",
+      "text": "Добавление фото - 9 (вход с биометрией)",
+      "weight": 100
+    },
+    {
+      "task": "digital-id.photo",
+      "source": "ancestor",
+      "id": "2299:86188",
+      "text": "Добавление фото",
+      "weight": 99
+    }
+  ],
+  "ancestors": [
+    {
+      "id": "2299:86188",
+      "name": "Добавление фото",
+      "type": "SECTION"
+    },
+    {
+      "id": "2299:85912",
+      "name": "Цифровой ID",
+      "type": "SECTION"
+    }
+  ],
+  "nearbyHeadings": [],
+  "contextRegion": null,
+  "warnings": [],
+  "order": 78,
+  "fingerprint": "[\"Добавление фото - 9 (вход с биометрией)\",{\"x\":24446,\"y\":6107,\"width\":360,\"height\":800},\"FRAME\",[[\"2299:86188\",\"Добавление фото\",\"SECTION\"],[\"2299:85912\",\"Цифровой ID\",\"SECTION\"],[\"1:8\",\"Page 8\",\"PAGE\"]],\"content-v1\",2058730793,3727060149,22]",
+  "manualTask": false,
+  "title": "Добавление фото - 9 (вход с биометрией)",
+  "exportStatus": "ok",
+  "texts": [
+    {
+      "id": "I2299:86362;22764:213202",
+      "name": "✏️ Edit Subtitle",
+      "type": "TEXT",
+      "parent": "I2299:86362;22764:213199",
+      "bounds": {
+        "x": 24462,
+        "y": 6551,
+        "width": 328,
+        "height": 19
+      },
+      "text": "MAX",
+      "fontName": null,
+      "fontSize": 16,
+      "segments": [
+        {
+          "characters": "MAX",
+          "start": 0,
+          "end": 3,
+          "fontSize": 16,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:ea43d2e78081c2b3380a48ce8d661530c5af1765,13:105",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:86362;22764:213204",
+      "name": "✏️ Edit Title",
+      "type": "TEXT",
+      "parent": "I2299:86362;22764:213203",
+      "bounds": {
+        "x": 24470,
+        "y": 6614,
+        "width": 312,
+        "height": 23
+      },
+      "text": "Цифровой ID",
+      "fontName": null,
+      "fontSize": 20,
+      "segments": [
+        {
+          "characters": "Цифровой ID",
+          "start": 0,
+          "end": 11,
+          "fontSize": 20,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:8e787f0bf27db37c39b74b9861661eb5332ca567,13:106",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:86362;22764:213208",
+      "name": "✏️ Edit Descriptor Text",
+      "type": "TEXT",
+      "parent": "I2299:86362;22764:213207",
+      "bounds": {
+        "x": 24498,
+        "y": 6765,
+        "width": 256,
+        "height": 14
+      },
+      "text": "Прикоснитесь к сканеру отпечатков пальцев",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 12,
+      "segments": [
+        {
+          "characters": "Прикоснитесь к сканеру отпечатков пальцев",
+          "start": 0,
+          "end": 41,
+          "fontSize": 12,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.4588235318660736,
+                "g": 0.4588235318660736,
+                "b": 0.4588235318660736
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:86362;22764:213212",
+      "name": "✏️ Button Text",
+      "type": "TEXT",
+      "parent": "I2299:86362;22764:213211",
+      "bounds": {
+        "x": 24462,
+        "y": 6847,
+        "width": 66,
+        "height": 16
+      },
+      "text": "Отменить",
+      "fontName": null,
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Отменить",
+          "start": 0,
+          "end": 8,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0.47843137383461,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:32627ce18f59bd737f6502af69826cccbfa6c919/2210:110"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:dd256c74fb82666f642910296b31426f6afd5364,13:103",
+          "hyperlink": null
+        }
+      ]
+    }
+  ],
+  "layers": [
+    {
+      "id": "2299:86361",
+      "name": "Добавление фото - 9 (вход с биометрией)",
+      "type": "FRAME",
+      "parent": "2299:86188",
+      "bounds": {
+        "x": 24446,
+        "y": 6107,
+        "width": 360,
+        "height": 800
+      }
+    },
+    {
+      "id": "2299:86362",
+      "name": ".Biometrics_Android",
+      "type": "INSTANCE",
+      "parent": "2299:86361",
+      "bounds": {
+        "x": 24446,
+        "y": 6107,
+        "width": 360,
+        "height": 800
+      }
+    },
+    {
+      "id": "I2299:86362;22764:213197",
+      "name": "scrim",
+      "type": "RECTANGLE",
+      "parent": "2299:86362",
+      "bounds": {
+        "x": 24446,
+        "y": 6107,
+        "width": 360,
+        "height": 800
+      }
+    },
+    {
+      "id": "I2299:86362;22764:213198",
+      "name": "BiometricPrompt/Fingerprint Authenitcation/Light/Tall",
+      "type": "FRAME",
+      "parent": "2299:86362",
+      "bounds": {
+        "x": 24446,
+        "y": 6471,
+        "width": 360,
+        "height": 436
+      }
+    },
+    {
+      "id": "I2299:86362;22764:213199",
+      "name": "Fingerprint Authentication",
+      "type": "FRAME",
+      "parent": "I2299:86362;22764:213198",
+      "bounds": {
+        "x": 24462,
+        "y": 6495,
+        "width": 328,
+        "height": 75
+      }
+    },
+    {
+      "id": "I2299:86362;22764:213200",
+      "name": "48x48",
+      "type": "FRAME",
+      "parent": "I2299:86362;22764:213199",
+      "bounds": {
+        "x": 24602,
+        "y": 6495,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "I2299:86362;22764:213201",
+      "name": "НГ_Иконка_кристалл_01 1",
+      "type": "RECTANGLE",
+      "parent": "I2299:86362;22764:213200",
+      "bounds": {
+        "x": 24602,
+        "y": 6495,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "I2299:86362;22764:213202",
+      "name": "✏️ Edit Subtitle",
+      "type": "TEXT",
+      "parent": "I2299:86362;22764:213199",
+      "bounds": {
+        "x": 24462,
+        "y": 6551,
+        "width": 328,
+        "height": 19
+      }
+    },
+    {
+      "id": "I2299:86362;22764:213203",
+      "name": "Content",
+      "type": "FRAME",
+      "parent": "I2299:86362;22764:213198",
+      "bounds": {
+        "x": 24462,
+        "y": 6594,
+        "width": 328,
+        "height": 63
+      }
+    },
+    {
+      "id": "I2299:86362;22764:213204",
+      "name": "✏️ Edit Title",
+      "type": "TEXT",
+      "parent": "I2299:86362;22764:213203",
+      "bounds": {
+        "x": 24470,
+        "y": 6614,
+        "width": 312,
+        "height": 23
+      }
+    },
+    {
+      "id": "I2299:86362;22764:213205",
+      "name": "Container",
+      "type": "FRAME",
+      "parent": "I2299:86362;22764:213198",
+      "bounds": {
+        "x": 24498,
+        "y": 6681,
+        "width": 256,
+        "height": 98
+      }
+    },
+    {
+      "id": "I2299:86362;22764:213206",
+      "name": "Fingerprint Icon",
+      "type": "INSTANCE",
+      "parent": "I2299:86362;22764:213205",
+      "bounds": {
+        "x": 24594,
+        "y": 6681,
+        "width": 64,
+        "height": 64
+      }
+    },
+    {
+      "id": "I2299:86362;22764:213206;39:309",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:86362;22764:213206",
+      "bounds": {
+        "x": 24601.9921875,
+        "y": 6686.33349609375,
+        "width": 47.99018096923828,
+        "height": 53.333335876464844
+      }
+    },
+    {
+      "id": "I2299:86362;22764:213207",
+      "name": "Descriptor",
+      "type": "FRAME",
+      "parent": "I2299:86362;22764:213205",
+      "bounds": {
+        "x": 24498,
+        "y": 6765,
+        "width": 256,
+        "height": 14
+      }
+    },
+    {
+      "id": "I2299:86362;22764:213208",
+      "name": "✏️ Edit Descriptor Text",
+      "type": "TEXT",
+      "parent": "I2299:86362;22764:213207",
+      "bounds": {
+        "x": 24498,
+        "y": 6765,
+        "width": 256,
+        "height": 14
+      }
+    },
+    {
+      "id": "I2299:86362;22764:213209",
+      "name": "Spacer",
+      "type": "RECTANGLE",
+      "parent": "I2299:86362;22764:213198",
+      "bounds": {
+        "x": 24611,
+        "y": 6803,
+        "width": 30,
+        "height": 8
+      }
+    },
+    {
+      "id": "I2299:86362;22764:213210",
+      "name": "Auto-added frame",
+      "type": "FRAME",
+      "parent": "I2299:86362;22764:213198",
+      "bounds": {
+        "x": 24462,
+        "y": 6835,
+        "width": 328,
+        "height": 40
+      }
+    },
+    {
+      "id": "I2299:86362;22764:213211",
+      "name": "Button",
+      "type": "FRAME",
+      "parent": "I2299:86362;22764:213210",
+      "bounds": {
+        "x": 24462,
+        "y": 6835,
+        "width": 66,
+        "height": 40
+      }
+    },
+    {
+      "id": "I2299:86362;22764:213212",
+      "name": "✏️ Button Text",
+      "type": "TEXT",
+      "parent": "I2299:86362;22764:213211",
+      "bounds": {
+        "x": 24462,
+        "y": 6847,
+        "width": 66,
+        "height": 16
+      }
+    },
+    {
+      "id": "I2299:86362;22764:215871",
+      "name": ".Home Indicator",
+      "type": "INSTANCE",
+      "parent": "I2299:86362;22764:213198",
+      "bounds": {
+        "x": 24446,
+        "y": 6883,
+        "width": 360,
+        "height": 24
+      }
+    },
+    {
+      "id": "I2299:86362;22764:215871;2081:3447",
+      "name": "Home Indicator",
+      "type": "FRAME",
+      "parent": "I2299:86362;22764:215871",
+      "bounds": {
+        "x": 24446,
+        "y": 6883,
+        "width": 360,
+        "height": 24
+      }
+    },
+    {
+      "id": "I2299:86362;22764:215871;2081:3448",
+      "name": "handle",
+      "type": "RECTANGLE",
+      "parent": "I2299:86362;22764:215871;2081:3447",
+      "bounds": {
+        "x": 24572,
+        "y": 6893,
+        "width": 108,
+        "height": 4
+      }
+    }
+  ],
+  "imageHashes": [
+    "b992213a096a8781164b68b23c893b0ac9fdf693"
+  ],
+  "notes": [],
+  "pngScale": 1,
+  "pngFile": "Цифровой-ID/Добавление-фото/Добавление-фото---9-(вход-с-биометрией)/screen.png",
+  "previewFile": "Цифровой-ID/Добавление-фото/Добавление-фото---9-(вход-с-биометрией)/preview.png",
+  "svgFile": "Цифровой-ID/Добавление-фото/Добавление-фото---9-(вход-с-биометрией)/screen.svg",
+  "documentFile": "Цифровой-ID/Добавление-фото/Добавление-фото---9-(вход-с-биометрией)/figma.json",
+  "images": [
+    {
+      "hash": "b992213a096a8781164b68b23c893b0ac9fdf693",
+      "file": "Цифровой-ID/Добавление-фото/Добавление-фото---9-(вход-с-биометрией)/images/62f85e5320241bb7ded4242c0e830657e3c5fd7357d30bc6bc1690d6c9959200.png"
+    }
+  ]
+}

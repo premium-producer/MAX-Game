@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-demo/
+*.tsbuildinfo
+
+# Test artifacts
+coverage/
+test-results/
+playwright-report/
+
+# Local tooling (never committed)
+.claude/
+
+# Editors and OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.log
+
+# Browser automation artifacts
+.playwright-mcp/
+
+# Local design mock used by examples/tune.html
+examples/tune/reference.png

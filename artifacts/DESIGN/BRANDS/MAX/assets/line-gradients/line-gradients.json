@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "kind": "user-attachment",
+    "file": "Group-2131331001.svg",
+    "sha256": "0948bf74ec1ef608edad25f865e37b31cb5d1648d4e9627508c4cf61261f2ce2",
+    "viewBox": [0, 0, 8929, 2000],
+    "status": "user-authorized-for-moving-lines"
+  },
+  "baseGradient": {
+    "kind": "user-attachment",
+    "file": "Angular.svg",
+    "sha256": "71c418c83dde488aa7a56b7422646c0d32c11014c3fe2c53106e34bf53f81c3f",
+    "viewBox": [0, 0, 11728, 14180],
+    "type": "GRADIENT_ANGULAR",
+    "gradientTransform": {"m01": 2798.1113, "m02": 4464.7568, "m10": 5262.4448, "m11": -229.3399, "m12": 4573.2598},
+    "assembly": "Three large blurred layers; the third uses 50%-opacity color-dodge. The seven masked strips in Group-2131331001.svg reuse these same four angular color stops."
+  },
+  "geometry": {
+    "independentStrips": 7,
+    "horizontalBands": 4,
+    "bandHeight": 500,
+    "assembly": "Each masked strip has three copies of the same angular gradient: two blurred layers and a third 50%-opacity color-dodge layer. Strip lengths and gradient transforms differ."
+  },
+  "angularStops": [
+    {"position": 0.247607, "color": "#471AFF"},
+    {"position": 0.495853, "color": "#9500FF"},
+    {"position": 0.746983, "color": "#6E1AFF"},
+    {"position": 0.998561, "color": "#00BFFF"}
+  ],
+  "strips": [
+    {"mask": "mask0_2010_9296", "x": 70, "y": 1500, "width": 2384, "gradientM01": 1669.0878, "gradientM02": -764.6481},
+    {"mask": "mask1_2010_9296", "x": 2454, "y": 1500, "width": 4001, "gradientM01": 2798.1113, "gradientM02": 1055.4501},
+    {"mask": "mask2_2010_9296", "x": 0, "y": 0, "width": 4530, "gradientM01": -3168.4788, "gradientM02": 6113.7368},
+    {"mask": "mask3_2010_9296", "x": 2452, "y": 500, "width": 4002, "gradientM01": 3196.3560, "gradientM02": 854.2103},
+    {"mask": "mask4_2010_9296", "x": 4358, "y": 1000, "width": 4571, "gradientM01": 3196.3560, "gradientM02": 2760.8501},
+    {"mask": "mask5_2010_9296", "x": 927, "y": 1000, "width": 3432, "gradientM01": 2401.8579, "gradientM02": -274.1342},
+    {"mask": "mask6_2010_9296", "x": 4529, "y": 0, "width": 2529, "gradientM01": 1769.6445, "gradientM02": 3644.8494}
+  ],
+  "runtimeUse": {
+    "surface": "shared rear wall, MAX color region",
+    "sourceSettings": "artifacts/web/common-map-fill.json > rowStreams.maxGradient",
+    "method": "One independently colored moving strip per accepted event. The four authored stops are exact; a per-strip angle rotates one common Angular gradient, and each strip samples only a narrow sector of that large field.",
+    "limitations": "The SVG's huge Gaussian blur and color-dodge stack is preserved in the source file but is not a pixel-identical WebGL reproduction."
+  }
+}

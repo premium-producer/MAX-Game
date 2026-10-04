@@ -1,0 +1,2868 @@
+{
+  "source": "Production_Matrix_VK_MAX_Motion.xlsx",
+  "sha256": "8986facea22e8c282637023737c245b5c91b4e39bfdd494c766c10dbb024bab2",
+  "sheets": [
+    {
+      "name": "Production Matrix",
+      "state": "visible",
+      "dimensions": "A1:N32",
+      "merges": [
+        "A1:N1"
+      ],
+      "hiddenRows": [],
+      "hiddenColumns": [],
+      "validation": [
+        {
+          "range": "M3:M200",
+          "type": "list",
+          "formula": "Lists!$A$2:$A$5"
+        },
+        {
+          "range": "L3:L200",
+          "type": "list",
+          "formula": "Lists!$B$2:$B$4"
+        },
+        {
+          "range": "M23:M32",
+          "type": "list",
+          "formula": "Lists!$A$2:$A$5"
+        },
+        {
+          "range": "L23:L32",
+          "type": "list",
+          "formula": "Lists!$B$2:$B$4"
+        }
+      ],
+      "cells": {
+        "A1": {
+          "value": "PRODUCTION MATRIX — MOTION / CONTENT STATES",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A2": {
+          "value": "ID",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B2": {
+          "value": "Блок / зона",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "C2": {
+          "value": "Состояние",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "D2": {
+          "value": "Что происходит",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "E2": {
+          "value": "Контент / объекты",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "F2": {
+          "value": "Поведение / анимация",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "G2": {
+          "value": "Триггер",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "H2": {
+          "value": "Следующее состояние",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "I2": {
+          "value": "Звук",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "J2": {
+          "value": "Референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "K2": {
+          "value": "Что нужно определить",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "L2": {
+          "value": "Ответственный",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "M2": {
+          "value": "Статус",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "N2": {
+          "value": "Комментарий",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A3": {
+          "value": 1,
+          "type": "n",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B3": {
+          "value": "AI-стелла",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "C3": {
+          "value": "Idle",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "D3": {
+          "value": "Стелла ждёт посетителя",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "E3": {
+          "value": "AI-субстанция / эквализация",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "F3": {
+          "value": "Спокойное фоновое движение, «дыхание»",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "G3": {
+          "value": "Нет взаимодействия",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "H3": {
+          "value": "Listening",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "I3": {
+          "value": "Ambient / тихий пульс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "K3": {
+          "value": "Характер idle-анимации, скорость, пластика",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "L3": {
+          "value": "Синица / Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "M3": {
+          "value": "Нужен референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A4": {
+          "value": 2,
+          "type": "n",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B4": {
+          "value": "AI-стелла",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "C4": {
+          "value": "Listening",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "D4": {
+          "value": "Человек говорит или взаимодействует с экраном",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "E4": {
+          "value": "AI-субстанция / эквализация",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "F4": {
+          "value": "Реагирует на голос и активность пользователя",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "G4": {
+          "value": "Голос / touch",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "H4": {
+          "value": "Processing",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "I4": {
+          "value": "Реакция на голос",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "K4": {
+          "value": "Как AI показывает, что слушает",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "L4": {
+          "value": "Синица / Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "M4": {
+          "value": "Нужен референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A5": {
+          "value": 3,
+          "type": "n",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B5": {
+          "value": "AI-стелла",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "C5": {
+          "value": "Processing",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "D5": {
+          "value": "AI обрабатывает ответ",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "E5": {
+          "value": "AI-субстанция / данные",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "F5": {
+          "value": "Собирается / уплотняется / меняет динамику",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "G5": {
+          "value": "Ответ завершён",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "H5": {
+          "value": "Data Transfer",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "I5": {
+          "value": "Processing cue",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "K5": {
+          "value": "Как выглядит обработка данных",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "L5": {
+          "value": "Синица / Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "M5": {
+          "value": "Нужен референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A6": {
+          "value": 4,
+          "type": "n",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B6": {
+          "value": "AI-стелла",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "C6": {
+          "value": "Data Transfer",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "D6": {
+          "value": "Ответы превращаются в данные и уходят к арке",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "E6": {
+          "value": "Поток метаданных",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "F6": {
+          "value": "Импульс покидает стеллу и передаётся дальше",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "G6": {
+          "value": "Сценарий вопросов завершён",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "H6": {
+          "value": "Арка — Data Capture",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "I6": {
+          "value": "Transfer cue",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "K6": {
+          "value": "Визуальный язык передачи между объектами",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "L6": {
+          "value": "Синица / Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "M6": {
+          "value": "Нужен референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A7": {
+          "value": 5,
+          "type": "n",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B7": {
+          "value": "Арка",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "C7": {
+          "value": "Idle",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "D7": {
+          "value": "Арка находится в фоновом состоянии",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "E7": {
+          "value": "Линии / частицы / свет",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "F7": {
+          "value": "Минимальная фоновая активность",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "G7": {
+          "value": "Нет пользователя / данных",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "H7": {
+          "value": "Data Capture",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "I7": {
+          "value": "Ambient",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "K7": {
+          "value": "Как арка живёт в ожидании",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "L7": {
+          "value": "Синица / Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "M7": {
+          "value": "Нужен референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A8": {
+          "value": 6,
+          "type": "n",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B8": {
+          "value": "Арка",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "C8": {
+          "value": "Data Capture",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "D8": {
+          "value": "Метаданные приходят от стеллы и появляются на арке",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "E8": {
+          "value": "Теги / частицы / линии данных",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "F8": {
+          "value": "Данные проявляются и начинают собираться",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "G8": {
+          "value": "Получен пакет данных",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "H8": {
+          "value": "Data Spiral",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "I8": {
+          "value": "Data arrival",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "K8": {
+          "value": "Вид метаданных и момент появления",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "L8": {
+          "value": "Синица / Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "M8": {
+          "value": "Нужен референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A9": {
+          "value": 7,
+          "type": "n",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B9": {
+          "value": "Арка",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "C9": {
+          "value": "Data Spiral",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "D9": {
+          "value": "Метаданные закручиваются по геометрии арки",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "E9": {
+          "value": "Поток данных",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "F9": {
+          "value": "Закручивание, ускорение, концентрация",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "G9": {
+          "value": "Data Capture завершён",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "H9": {
+          "value": "Transfer to Discovery",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "I9": {
+          "value": "Acceleration",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "K9": {
+          "value": "Траектория, скорость, плотность потока",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "L9": {
+          "value": "Синица / Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "M9": {
+          "value": "Нужен референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A10": {
+          "value": 8,
+          "type": "n",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B10": {
+          "value": "Арка",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "C10": {
+          "value": "Transfer to Discovery",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "D10": {
+          "value": "Собранные данные выбрасываются в Discovery",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "E10": {
+          "value": "Сгусток / поток данных",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "F10": {
+          "value": "Направленный выброс / импульс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "G10": {
+          "value": "Поток собран",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "H10": {
+          "value": "Discovery — Intake",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "I10": {
+          "value": "Transfer hit",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "K10": {
+          "value": "Как физически ощущается передача",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "L10": {
+          "value": "Синица / Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "M10": {
+          "value": "Нужен референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A11": {
+          "value": 9,
+          "type": "n",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B11": {
+          "value": "Discovery",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "C11": {
+          "value": "Idle",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "D11": {
+          "value": "Объект ждёт входящие данные",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "E11": {
+          "value": "Чёрная субстанция / поверхность",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "F11": {
+          "value": "Едва заметная внутренняя динамика",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "G11": {
+          "value": "Нет входящего потока",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "H11": {
+          "value": "Intake",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "I11": {
+          "value": "Low ambient",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "K11": {
+          "value": "Фоновое состояние объекта",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "L11": {
+          "value": "Синица / Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "M11": {
+          "value": "Нужен референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A12": {
+          "value": 10,
+          "type": "n",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B12": {
+          "value": "Discovery",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "C12": {
+          "value": "Intake",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "D12": {
+          "value": "Discovery принимает поток метаданных",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "E12": {
+          "value": "Данные + чёрный объект",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "F12": {
+          "value": "Поглощение / втягивание данных",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "G12": {
+          "value": "Данные пришли с арки",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "H12": {
+          "value": "Processing",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "I12": {
+          "value": "Impact / intake",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "K12": {
+          "value": "Как объект «съедает» информацию",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "L12": {
+          "value": "Синица / Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "M12": {
+          "value": "Нужен референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A13": {
+          "value": 11,
+          "type": "n",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B13": {
+          "value": "Discovery",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "C13": {
+          "value": "Processing",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "D13": {
+          "value": "Внутри происходит трансформация данных в контент",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "E13": {
+          "value": "Частицы / 0-1 / контентные фрагменты",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "F13": {
+          "value": "Расщепление, пересборка, изменение структуры",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "G13": {
+          "value": "Intake завершён",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "H13": {
+          "value": "Output",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "I13": {
+          "value": "Processing texture",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "K13": {
+          "value": "Визуальный образ трансформации",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "L13": {
+          "value": "Синица / Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "M13": {
+          "value": "Нужен референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A14": {
+          "value": 12,
+          "type": "n",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B14": {
+          "value": "Discovery",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "C14": {
+          "value": "Output",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "D14": {
+          "value": "Готовый контент отправляется на медиаленту",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "E14": {
+          "value": "Контентный поток",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "F14": {
+          "value": "Выброс / раскрытие / запуск потока",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "G14": {
+          "value": "Контент сформирован",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "H14": {
+          "value": "Медиалента — Travel",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "I14": {
+          "value": "Release cue",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "K14": {
+          "value": "Как отличается входной поток от выходного",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "L14": {
+          "value": "Синица / Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "M14": {
+          "value": "Нужен референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A15": {
+          "value": 13,
+          "type": "n",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B15": {
+          "value": "Медиалента",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "C15": {
+          "value": "Idle",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "D15": {
+          "value": "Лента живёт без активного сценария",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "E15": {
+          "value": "Фоновая графика",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "F15": {
+          "value": "Спокойное направленное движение",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "G15": {
+          "value": "Нет активного потока",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "H15": {
+          "value": "Travel",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "I15": {
+          "value": "Ambient",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "K15": {
+          "value": "Базовая динамика ленты",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "L15": {
+          "value": "Синица / Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "M15": {
+          "value": "Нужен референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A16": {
+          "value": 14,
+          "type": "n",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B16": {
+          "value": "Медиалента",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "C16": {
+          "value": "Travel",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "D16": {
+          "value": "Персональный контент движется к зоне VK Видео",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "E16": {
+          "value": "Карточки / частицы / контент",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "F16": {
+          "value": "Поток движется по ленте, сохраняя направление и ритм",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "G16": {
+          "value": "Output из Discovery",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "H16": {
+          "value": "VK Wall — Content Arrival",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "I16": {
+          "value": "Moving pulse",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "K16": {
+          "value": "Скорость, масштаб, характер движения",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "L16": {
+          "value": "Синица / Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "M16": {
+          "value": "Нужен референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A17": {
+          "value": 15,
+          "type": "n",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B17": {
+          "value": "VK Видео — стена",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "C17": {
+          "value": "Ambient Content",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "D17": {
+          "value": "На стене постоянно живёт набор контента",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "E17": {
+          "value": "Бабблы / тизеры / карточки",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "F17": {
+          "value": "Свободное фоновое движение элементов",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "G17": {
+          "value": "Нет человека рядом",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "H17": {
+          "value": "Person Detected",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "I17": {
+          "value": "Ambient wall",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "K17": {
+          "value": "Правила поведения контента без пользователя",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "L17": {
+          "value": "Синица / Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "M17": {
+          "value": "Нужен референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A18": {
+          "value": 16,
+          "type": "n",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B18": {
+          "value": "VK Видео — стена",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "C18": {
+          "value": "Content Arrival",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "D18": {
+          "value": "На стену прилетает персональный контент",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "E18": {
+          "value": "Новый персональный тизер / баббл",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "F18": {
+          "value": "Встраивается в существующую систему элементов",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "G18": {
+          "value": "Контент пришёл с ленты",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "H18": {
+          "value": "Ambient / Person Detected",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "I18": {
+          "value": "Arrival cue",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "K18": {
+          "value": "Как новый контент появляется на стене",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "L18": {
+          "value": "Синица / Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "M18": {
+          "value": "Нужен референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A19": {
+          "value": 17,
+          "type": "n",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B19": {
+          "value": "VK Видео — стена",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "C19": {
+          "value": "Person Detected",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "D19": {
+          "value": "Система видит человека перед стеной",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "E19": {
+          "value": "Силуэт + бабблы",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "F19": {
+          "value": "Появляется силуэт, элементы начинают реагировать",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "G19": {
+          "value": "Человек входит в tracking-зону",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "H19": {
+          "value": "Content Reaction",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "I19": {
+          "value": "Detection cue",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "K19": {
+          "value": "Как проявляется силуэт и начинается реакция",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "L19": {
+          "value": "Синица / Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "M19": {
+          "value": "Нужен референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A20": {
+          "value": 18,
+          "type": "n",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B20": {
+          "value": "VK Видео — стена",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "C20": {
+          "value": "Content Reaction",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "D20": {
+          "value": "Контент взаимодействует с силуэтом",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "E20": {
+          "value": "Силуэт + персональные бабблы",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "F20": {
+          "value": "Бабблы расходятся, собираются и двигаются вокруг человека",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "G20": {
+          "value": "Силуэт стабильно отслеживается",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "H20": {
+          "value": "Personal Orbit",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "I20": {
+          "value": "Reactive sound",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "K20": {
+          "value": "Физика движения и дистанция от силуэта",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "L20": {
+          "value": "Синица / Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "M20": {
+          "value": "Нужен референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A21": {
+          "value": 19,
+          "type": "n",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B21": {
+          "value": "VK Видео — стена",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "C21": {
+          "value": "Personal Orbit",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "D21": {
+          "value": "Персональный контент окружает пользователя",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "E21": {
+          "value": "Персональные тизеры / бабблы",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "F21": {
+          "value": "Орбитальное / пластичное движение вокруг силуэта",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "G21": {
+          "value": "Content Reaction завершён",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "H21": {
+          "value": "Exit",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "I21": {
+          "value": "Personal climax",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "K21": {
+          "value": "Главный wow-момент: характер и длительность",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "L21": {
+          "value": "Синица / Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "M21": {
+          "value": "Нужен референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A22": {
+          "value": 20,
+          "type": "n",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B22": {
+          "value": "VK Видео — стена",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "C22": {
+          "value": "Exit",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "D22": {
+          "value": "Человек уходит от стены",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "E22": {
+          "value": "Силуэт + бабблы",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "F22": {
+          "value": "Силуэт растворяется, контент возвращается в общий поток",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "G22": {
+          "value": "Потерян tracking",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "H22": {
+          "value": "Ambient Content",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "I22": {
+          "value": "Soft release",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "K22": {
+          "value": "Как система возвращается в idle",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "L22": {
+          "value": "Синица / Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "M22": {
+          "value": "Нужен референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A23": {
+          "value": 21,
+          "type": "n",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B23": {
+          "value": "MAX — стелла",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "C23": {
+          "value": "Dialogue",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "D23": {
+          "value": "Человек общается с AI-агентом и отвечает на вопросы",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "E23": {
+          "value": "AI-интерфейс / ответы пользователя",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "F23": {
+          "value": "Стелла реагирует на ответы и ведёт диалог",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "G23": {
+          "value": "Голос / touch",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "H23": {
+          "value": "Answer Complete",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "I23": {
+          "value": "Dialogue cue",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "K23": {
+          "value": "Как MAX-ветка отличается визуально от VK Видео",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "L23": {
+          "value": "Синица / Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "M23": {
+          "value": "Нужен референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A24": {
+          "value": 22,
+          "type": "n",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B24": {
+          "value": "MAX — стелла",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "C24": {
+          "value": "Answer Complete",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "D24": {
+          "value": "Система получает финальный ответ пользователя",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "E24": {
+          "value": "Стелла / AI-субстанция",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "F24": {
+          "value": "Вся стелла начинает заметно пульсировать",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "G24": {
+          "value": "Последний ответ получен",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "H24": {
+          "value": "Metadata Run",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "I24": {
+          "value": "Pulse / confirmation",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "K24": {
+          "value": "Характер и амплитуда общей пульсации стеллы",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "L24": {
+          "value": "Синица / Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "M24": {
+          "value": "Нужен референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A25": {
+          "value": 23,
+          "type": "n",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B25": {
+          "value": "MAX — стелла",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "C25": {
+          "value": "Metadata Run",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "D25": {
+          "value": "Ответ превращается в метаданные и уходит дальше",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "E25": {
+          "value": "Текст / теги / поток метаданных",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "F25": {
+          "value": "Метаданные бегут от стеллы по системе к экрану MAX",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "G25": {
+          "value": "Answer Complete",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "H25": {
+          "value": "Mission Loading",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "I25": {
+          "value": "Data transfer",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "K25": {
+          "value": "Как выглядят метаданные и их движение между объектами",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "L25": {
+          "value": "Синица / Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "M25": {
+          "value": "Нужен референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A26": {
+          "value": 24,
+          "type": "n",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B26": {
+          "value": "MAX — экран",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "C26": {
+          "value": "Mission Loading",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "D26": {
+          "value": "На экране формируется персональная миссия пользователя",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "E26": {
+          "value": "Метаданные / карточка миссии",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "F26": {
+          "value": "Данные собираются в понятную карточку / интерфейс миссии",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "G26": {
+          "value": "Получены метаданные",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "H26": {
+          "value": "Mission Ready",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "I26": {
+          "value": "Loading / build-up",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "K26": {
+          "value": "Как данные превращаются в миссию на экране",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "L26": {
+          "value": "Синица / Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "M26": {
+          "value": "Нужен референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A27": {
+          "value": 25,
+          "type": "n",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B27": {
+          "value": "MAX — экран",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "C27": {
+          "value": "Mission Ready",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "D27": {
+          "value": "На экране появляется готовая миссия",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "E27": {
+          "value": "Карточка миссии / CTA",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "F27": {
+          "value": "Миссия появляется и приглашает начать взаимодействие",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "G27": {
+          "value": "Mission Loading завершён",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "H27": {
+          "value": "Mission Start",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "I27": {
+          "value": "Confirmation",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "K27": {
+          "value": "Появление миссии, акцент на CTA, idle до тапа",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "L27": {
+          "value": "Синица / Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "M27": {
+          "value": "Нужен референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A28": {
+          "value": 26,
+          "type": "n",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B28": {
+          "value": "MAX — экран",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "C28": {
+          "value": "Mission Start",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "D28": {
+          "value": "Пользователь тапает миссию и запускает механику",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "E28": {
+          "value": "Интерфейс миссии",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "F28": {
+          "value": "Карточка раскрывается в игровую механику",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "G28": {
+          "value": "Tap по миссии",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "H28": {
+          "value": "Mission Gameplay",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "I28": {
+          "value": "Start cue",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "K28": {
+          "value": "Переход от карточки к игровому сценарию",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "L28": {
+          "value": "Синица / Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "M28": {
+          "value": "Нужен референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A29": {
+          "value": 27,
+          "type": "n",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B29": {
+          "value": "MAX — экран",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "C29": {
+          "value": "Mission Gameplay",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "D29": {
+          "value": "Пользователь проходит последовательность действий внутри миссии",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "E29": {
+          "value": "Шаги / иконки / элементы MAX",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "F29": {
+          "value": "Элементы выбираются, двигаются, раскрываются; система даёт feedback",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "G29": {
+          "value": "Действия пользователя",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "H29": {
+          "value": "Mission Complete",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "I29": {
+          "value": "Interaction feedback",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "K29": {
+          "value": "Общая динамика игрового интерфейса и реакций",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "L29": {
+          "value": "Синица / Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "M29": {
+          "value": "Нужен референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A30": {
+          "value": 28,
+          "type": "n",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B30": {
+          "value": "MAX — экран",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "C30": {
+          "value": "Mission Complete",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "D30": {
+          "value": "Пользователь успешно заканчивает миссию",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "E30": {
+          "value": "Результат / собранный сценарий",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "F30": {
+          "value": "Финальная сборка, подтверждение успеха",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "G30": {
+          "value": "Все шаги выполнены",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "H30": {
+          "value": "Real MAX CTA",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "I30": {
+          "value": "Success cue",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "K30": {
+          "value": "Как выглядит финал и ощущение завершения",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "L30": {
+          "value": "Синица / Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "M30": {
+          "value": "Нужен референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A31": {
+          "value": 29,
+          "type": "n",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B31": {
+          "value": "MAX — экран",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "C31": {
+          "value": "Real MAX CTA",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "D31": {
+          "value": "Предлагаем повторить действие уже в реальном MAX",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "E31": {
+          "value": "QR / CTA / интерфейс MAX",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "F31": {
+          "value": "Появляется предложение перейти в MAX и сделать это в реальности",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "G31": {
+          "value": "Mission Complete",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "H31": {
+          "value": "QR / Exit",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "I31": {
+          "value": "CTA cue",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "K31": {
+          "value": "Как связать игровой результат с реальным действием без резкого перехода",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "L31": {
+          "value": "Синица / Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "M31": {
+          "value": "Нужен референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A32": {
+          "value": 30,
+          "type": "n",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B32": {
+          "value": "MAX — экран",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "C32": {
+          "value": "QR / Exit",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "D32": {
+          "value": "Пользователь сканирует QR или завершает взаимодействие",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "E32": {
+          "value": "QR-код / финальный экран",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "F32": {
+          "value": "QR остаётся доступным, затем система возвращается в базовое состояние",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "G32": {
+          "value": "Скан QR / таймаут",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "H32": {
+          "value": "Idle",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "I32": {
+          "value": "Soft release",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "K32": {
+          "value": "Время показа QR и возврат в idle",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "L32": {
+          "value": "Синица / Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "M32": {
+          "value": "Нужен референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        }
+      }
+    },
+    {
+      "name": "Lists",
+      "state": "visible",
+      "dimensions": "A1:B5",
+      "merges": [],
+      "hiddenRows": [],
+      "hiddenColumns": [],
+      "validation": [],
+      "cells": {
+        "A1": {
+          "value": "Статус",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B1": {
+          "value": "Ответственный",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A2": {
+          "value": "Нужен референс",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B2": {
+          "value": "Синица",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A3": {
+          "value": "В работе",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B3": {
+          "value": "Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A4": {
+          "value": "На согласовании",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "B4": {
+          "value": "Синица / Tchisto",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        },
+        "A5": {
+          "value": "Готово",
+          "type": "s",
+          "comment": null,
+          "hyperlink": null
+        }
+      }
+    }
+  ],
+  "states": [
+    {
+      "ID": 1,
+      "Блок / зона": "AI-стелла",
+      "Состояние": "Idle",
+      "Что происходит": "Стелла ждёт посетителя",
+      "Контент / объекты": "AI-субстанция / эквализация",
+      "Поведение / анимация": "Спокойное фоновое движение, «дыхание»",
+      "Триггер": "Нет взаимодействия",
+      "Следующее состояние": "Listening",
+      "Звук": "Ambient / тихий пульс",
+      "Референс": null,
+      "Что нужно определить": "Характер idle-анимации, скорость, пластика",
+      "Ответственный": "Синица / Tchisto",
+      "Статус": "Нужен референс",
+      "Комментарий": null,
+      "excelRow": 3
+    },
+    {
+      "ID": 2,
+      "Блок / зона": "AI-стелла",
+      "Состояние": "Listening",
+      "Что происходит": "Человек говорит или взаимодействует с экраном",
+      "Контент / объекты": "AI-субстанция / эквализация",
+      "Поведение / анимация": "Реагирует на голос и активность пользователя",
+      "Триггер": "Голос / touch",
+      "Следующее состояние": "Processing",
+      "Звук": "Реакция на голос",
+      "Референс": null,
+      "Что нужно определить": "Как AI показывает, что слушает",
+      "Ответственный": "Синица / Tchisto",
+      "Статус": "Нужен референс",
+      "Комментарий": null,
+      "excelRow": 4
+    },
+    {
+      "ID": 3,
+      "Блок / зона": "AI-стелла",
+      "Состояние": "Processing",
+      "Что происходит": "AI обрабатывает ответ",
+      "Контент / объекты": "AI-субстанция / данные",
+      "Поведение / анимация": "Собирается / уплотняется / меняет динамику",
+      "Триггер": "Ответ завершён",
+      "Следующее состояние": "Data Transfer",
+      "Звук": "Processing cue",
+      "Референс": null,
+      "Что нужно определить": "Как выглядит обработка данных",
+      "Ответственный": "Синица / Tchisto",
+      "Статус": "Нужен референс",
+      "Комментарий": null,
+      "excelRow": 5
+    },
+    {
+      "ID": 4,
+      "Блок / зона": "AI-стелла",
+      "Состояние": "Data Transfer",
+      "Что происходит": "Ответы превращаются в данные и уходят к арке",
+      "Контент / объекты": "Поток метаданных",
+      "Поведение / анимация": "Импульс покидает стеллу и передаётся дальше",
+      "Триггер": "Сценарий вопросов завершён",
+      "Следующее состояние": "Арка — Data Capture",
+      "Звук": "Transfer cue",
+      "Референс": null,
+      "Что нужно определить": "Визуальный язык передачи между объектами",
+      "Ответственный": "Синица / Tchisto",
+      "Статус": "Нужен референс",
+      "Комментарий": null,
+      "excelRow": 6
+    },
+    {
+      "ID": 5,
+      "Блок / зона": "Арка",
+      "Состояние": "Idle",
+      "Что происходит": "Арка находится в фоновом состоянии",
+      "Контент / объекты": "Линии / частицы / свет",
+      "Поведение / анимация": "Минимальная фоновая активность",
+      "Триггер": "Нет пользователя / данных",
+      "Следующее состояние": "Data Capture",
+      "Звук": "Ambient",
+      "Референс": null,
+      "Что нужно определить": "Как арка живёт в ожидании",
+      "Ответственный": "Синица / Tchisto",
+      "Статус": "Нужен референс",
+      "Комментарий": null,
+      "excelRow": 7
+    },
+    {
+      "ID": 6,
+      "Блок / зона": "Арка",
+      "Состояние": "Data Capture",
+      "Что происходит": "Метаданные приходят от стеллы и появляются на арке",
+      "Контент / объекты": "Теги / частицы / линии данных",
+      "Поведение / анимация": "Данные проявляются и начинают собираться",
+      "Триггер": "Получен пакет данных",
+      "Следующее состояние": "Data Spiral",
+      "Звук": "Data arrival",
+      "Референс": null,
+      "Что нужно определить": "Вид метаданных и момент появления",
+      "Ответственный": "Синица / Tchisto",
+      "Статус": "Нужен референс",
+      "Комментарий": null,
+      "excelRow": 8
+    },
+    {
+      "ID": 7,
+      "Блок / зона": "Арка",
+      "Состояние": "Data Spiral",
+      "Что происходит": "Метаданные закручиваются по геометрии арки",
+      "Контент / объекты": "Поток данных",
+      "Поведение / анимация": "Закручивание, ускорение, концентрация",
+      "Триггер": "Data Capture завершён",
+      "Следующее состояние": "Transfer to Discovery",
+      "Звук": "Acceleration",
+      "Референс": null,
+      "Что нужно определить": "Траектория, скорость, плотность потока",
+      "Ответственный": "Синица / Tchisto",
+      "Статус": "Нужен референс",
+      "Комментарий": null,
+      "excelRow": 9
+    },
+    {
+      "ID": 8,
+      "Блок / зона": "Арка",
+      "Состояние": "Transfer to Discovery",
+      "Что происходит": "Собранные данные выбрасываются в Discovery",
+      "Контент / объекты": "Сгусток / поток данных",
+      "Поведение / анимация": "Направленный выброс / импульс",
+      "Триггер": "Поток собран",
+      "Следующее состояние": "Discovery — Intake",
+      "Звук": "Transfer hit",
+      "Референс": null,
+      "Что нужно определить": "Как физически ощущается передача",
+      "Ответственный": "Синица / Tchisto",
+      "Статус": "Нужен референс",
+      "Комментарий": null,
+      "excelRow": 10
+    },
+    {
+      "ID": 9,
+      "Блок / зона": "Discovery",
+      "Состояние": "Idle",
+      "Что происходит": "Объект ждёт входящие данные",
+      "Контент / объекты": "Чёрная субстанция / поверхность",
+      "Поведение / анимация": "Едва заметная внутренняя динамика",
+      "Триггер": "Нет входящего потока",
+      "Следующее состояние": "Intake",
+      "Звук": "Low ambient",
+      "Референс": null,
+      "Что нужно определить": "Фоновое состояние объекта",
+      "Ответственный": "Синица / Tchisto",
+      "Статус": "Нужен референс",
+      "Комментарий": null,
+      "excelRow": 11
+    },
+    {
+      "ID": 10,
+      "Блок / зона": "Discovery",
+      "Состояние": "Intake",
+      "Что происходит": "Discovery принимает поток метаданных",
+      "Контент / объекты": "Данные + чёрный объект",
+      "Поведение / анимация": "Поглощение / втягивание данных",
+      "Триггер": "Данные пришли с арки",
+      "Следующее состояние": "Processing",
+      "Звук": "Impact / intake",
+      "Референс": null,
+      "Что нужно определить": "Как объект «съедает» информацию",
+      "Ответственный": "Синица / Tchisto",
+      "Статус": "Нужен референс",
+      "Комментарий": null,
+      "excelRow": 12
+    },
+    {
+      "ID": 11,
+      "Блок / зона": "Discovery",
+      "Состояние": "Processing",
+      "Что происходит": "Внутри происходит трансформация данных в контент",
+      "Контент / объекты": "Частицы / 0-1 / контентные фрагменты",
+      "Поведение / анимация": "Расщепление, пересборка, изменение структуры",
+      "Триггер": "Intake завершён",
+      "Следующее состояние": "Output",
+      "Звук": "Processing texture",
+      "Референс": null,
+      "Что нужно определить": "Визуальный образ трансформации",
+      "Ответственный": "Синица / Tchisto",
+      "Статус": "Нужен референс",
+      "Комментарий": null,
+      "excelRow": 13
+    },
+    {
+      "ID": 12,
+      "Блок / зона": "Discovery",
+      "Состояние": "Output",
+      "Что происходит": "Готовый контент отправляется на медиаленту",
+      "Контент / объекты": "Контентный поток",
+      "Поведение / анимация": "Выброс / раскрытие / запуск потока",
+      "Триггер": "Контент сформирован",
+      "Следующее состояние": "Медиалента — Travel",
+      "Звук": "Release cue",
+      "Референс": null,
+      "Что нужно определить": "Как отличается входной поток от выходного",
+      "Ответственный": "Синица / Tchisto",
+      "Статус": "Нужен референс",
+      "Комментарий": null,
+      "excelRow": 14
+    },
+    {
+      "ID": 13,
+      "Блок / зона": "Медиалента",
+      "Состояние": "Idle",
+      "Что происходит": "Лента живёт без активного сценария",
+      "Контент / объекты": "Фоновая графика",
+      "Поведение / анимация": "Спокойное направленное движение",
+      "Триггер": "Нет активного потока",
+      "Следующее состояние": "Travel",
+      "Звук": "Ambient",
+      "Референс": null,
+      "Что нужно определить": "Базовая динамика ленты",
+      "Ответственный": "Синица / Tchisto",
+      "Статус": "Нужен референс",
+      "Комментарий": null,
+      "excelRow": 15
+    },
+    {
+      "ID": 14,
+      "Блок / зона": "Медиалента",
+      "Состояние": "Travel",
+      "Что происходит": "Персональный контент движется к зоне VK Видео",
+      "Контент / объекты": "Карточки / частицы / контент",
+      "Поведение / анимация": "Поток движется по ленте, сохраняя направление и ритм",
+      "Триггер": "Output из Discovery",
+      "Следующее состояние": "VK Wall — Content Arrival",
+      "Звук": "Moving pulse",
+      "Референс": null,
+      "Что нужно определить": "Скорость, масштаб, характер движения",
+      "Ответственный": "Синица / Tchisto",
+      "Статус": "Нужен референс",
+      "Комментарий": null,
+      "excelRow": 16
+    },
+    {
+      "ID": 15,
+      "Блок / зона": "VK Видео — стена",
+      "Состояние": "Ambient Content",
+      "Что происходит": "На стене постоянно живёт набор контента",
+      "Контент / объекты": "Бабблы / тизеры / карточки",
+      "Поведение / анимация": "Свободное фоновое движение элементов",
+      "Триггер": "Нет человека рядом",
+      "Следующее состояние": "Person Detected",
+      "Звук": "Ambient wall",
+      "Референс": null,
+      "Что нужно определить": "Правила поведения контента без пользователя",
+      "Ответственный": "Синица / Tchisto",
+      "Статус": "Нужен референс",
+      "Комментарий": null,
+      "excelRow": 17
+    },
+    {
+      "ID": 16,
+      "Блок / зона": "VK Видео — стена",
+      "Состояние": "Content Arrival",
+      "Что происходит": "На стену прилетает персональный контент",
+      "Контент / объекты": "Новый персональный тизер / баббл",
+      "Поведение / анимация": "Встраивается в существующую систему элементов",
+      "Триггер": "Контент пришёл с ленты",
+      "Следующее состояние": "Ambient / Person Detected",
+      "Звук": "Arrival cue",
+      "Референс": null,
+      "Что нужно определить": "Как новый контент появляется на стене",
+      "Ответственный": "Синица / Tchisto",
+      "Статус": "Нужен референс",
+      "Комментарий": null,
+      "excelRow": 18
+    },
+    {
+      "ID": 17,
+      "Блок / зона": "VK Видео — стена",
+      "Состояние": "Person Detected",
+      "Что происходит": "Система видит человека перед стеной",
+      "Контент / объекты": "Силуэт + бабблы",
+      "Поведение / анимация": "Появляется силуэт, элементы начинают реагировать",
+      "Триггер": "Человек входит в tracking-зону",
+      "Следующее состояние": "Content Reaction",
+      "Звук": "Detection cue",
+      "Референс": null,
+      "Что нужно определить": "Как проявляется силуэт и начинается реакция",
+      "Ответственный": "Синица / Tchisto",
+      "Статус": "Нужен референс",
+      "Комментарий": null,
+      "excelRow": 19
+    },
+    {
+      "ID": 18,
+      "Блок / зона": "VK Видео — стена",
+      "Состояние": "Content Reaction",
+      "Что происходит": "Контент взаимодействует с силуэтом",
+      "Контент / объекты": "Силуэт + персональные бабблы",
+      "Поведение / анимация": "Бабблы расходятся, собираются и двигаются вокруг человека",
+      "Триггер": "Силуэт стабильно отслеживается",
+      "Следующее состояние": "Personal Orbit",
+      "Звук": "Reactive sound",
+      "Референс": null,
+      "Что нужно определить": "Физика движения и дистанция от силуэта",
+      "Ответственный": "Синица / Tchisto",
+      "Статус": "Нужен референс",
+      "Комментарий": null,
+      "excelRow": 20
+    },
+    {
+      "ID": 19,
+      "Блок / зона": "VK Видео — стена",
+      "Состояние": "Personal Orbit",
+      "Что происходит": "Персональный контент окружает пользователя",
+      "Контент / объекты": "Персональные тизеры / бабблы",
+      "Поведение / анимация": "Орбитальное / пластичное движение вокруг силуэта",
+      "Триггер": "Content Reaction завершён",
+      "Следующее состояние": "Exit",
+      "Звук": "Personal climax",
+      "Референс": null,
+      "Что нужно определить": "Главный wow-момент: характер и длительность",
+      "Ответственный": "Синица / Tchisto",
+      "Статус": "Нужен референс",
+      "Комментарий": null,
+      "excelRow": 21
+    },
+    {
+      "ID": 20,
+      "Блок / зона": "VK Видео — стена",
+      "Состояние": "Exit",
+      "Что происходит": "Человек уходит от стены",
+      "Контент / объекты": "Силуэт + бабблы",
+      "Поведение / анимация": "Силуэт растворяется, контент возвращается в общий поток",
+      "Триггер": "Потерян tracking",
+      "Следующее состояние": "Ambient Content",
+      "Звук": "Soft release",
+      "Референс": null,
+      "Что нужно определить": "Как система возвращается в idle",
+      "Ответственный": "Синица / Tchisto",
+      "Статус": "Нужен референс",
+      "Комментарий": null,
+      "excelRow": 22
+    },
+    {
+      "ID": 21,
+      "Блок / зона": "MAX — стелла",
+      "Состояние": "Dialogue",
+      "Что происходит": "Человек общается с AI-агентом и отвечает на вопросы",
+      "Контент / объекты": "AI-интерфейс / ответы пользователя",
+      "Поведение / анимация": "Стелла реагирует на ответы и ведёт диалог",
+      "Триггер": "Голос / touch",
+      "Следующее состояние": "Answer Complete",
+      "Звук": "Dialogue cue",
+      "Референс": null,
+      "Что нужно определить": "Как MAX-ветка отличается визуально от VK Видео",
+      "Ответственный": "Синица / Tchisto",
+      "Статус": "Нужен референс",
+      "Комментарий": null,
+      "excelRow": 23
+    },
+    {
+      "ID": 22,
+      "Блок / зона": "MAX — стелла",
+      "Состояние": "Answer Complete",
+      "Что происходит": "Система получает финальный ответ пользователя",
+      "Контент / объекты": "Стелла / AI-субстанция",
+      "Поведение / анимация": "Вся стелла начинает заметно пульсировать",
+      "Триггер": "Последний ответ получен",
+      "Следующее состояние": "Metadata Run",
+      "Звук": "Pulse / confirmation",
+      "Референс": null,
+      "Что нужно определить": "Характер и амплитуда общей пульсации стеллы",
+      "Ответственный": "Синица / Tchisto",
+      "Статус": "Нужен референс",
+      "Комментарий": null,
+      "excelRow": 24
+    },
+    {
+      "ID": 23,
+      "Блок / зона": "MAX — стелла",
+      "Состояние": "Metadata Run",
+      "Что происходит": "Ответ превращается в метаданные и уходит дальше",
+      "Контент / объекты": "Текст / теги / поток метаданных",
+      "Поведение / анимация": "Метаданные бегут от стеллы по системе к экрану MAX",
+      "Триггер": "Answer Complete",
+      "Следующее состояние": "Mission Loading",
+      "Звук": "Data transfer",
+      "Референс": null,
+      "Что нужно определить": "Как выглядят метаданные и их движение между объектами",
+      "Ответственный": "Синица / Tchisto",
+      "Статус": "Нужен референс",
+      "Комментарий": null,
+      "excelRow": 25
+    },
+    {
+      "ID": 24,
+      "Блок / зона": "MAX — экран",
+      "Состояние": "Mission Loading",
+      "Что происходит": "На экране формируется персональная миссия пользователя",
+      "Контент / объекты": "Метаданные / карточка миссии",
+      "Поведение / анимация": "Данные собираются в понятную карточку / интерфейс миссии",
+      "Триггер": "Получены метаданные",
+      "Следующее состояние": "Mission Ready",
+      "Звук": "Loading / build-up",
+      "Референс": null,
+      "Что нужно определить": "Как данные превращаются в миссию на экране",
+      "Ответственный": "Синица / Tchisto",
+      "Статус": "Нужен референс",
+      "Комментарий": null,
+      "excelRow": 26
+    },
+    {
+      "ID": 25,
+      "Блок / зона": "MAX — экран",
+      "Состояние": "Mission Ready",
+      "Что происходит": "На экране появляется готовая миссия",
+      "Контент / объекты": "Карточка миссии / CTA",
+      "Поведение / анимация": "Миссия появляется и приглашает начать взаимодействие",
+      "Триггер": "Mission Loading завершён",
+      "Следующее состояние": "Mission Start",
+      "Звук": "Confirmation",
+      "Референс": null,
+      "Что нужно определить": "Появление миссии, акцент на CTA, idle до тапа",
+      "Ответственный": "Синица / Tchisto",
+      "Статус": "Нужен референс",
+      "Комментарий": null,
+      "excelRow": 27
+    },
+    {
+      "ID": 26,
+      "Блок / зона": "MAX — экран",
+      "Состояние": "Mission Start",
+      "Что происходит": "Пользователь тапает миссию и запускает механику",
+      "Контент / объекты": "Интерфейс миссии",
+      "Поведение / анимация": "Карточка раскрывается в игровую механику",
+      "Триггер": "Tap по миссии",
+      "Следующее состояние": "Mission Gameplay",
+      "Звук": "Start cue",
+      "Референс": null,
+      "Что нужно определить": "Переход от карточки к игровому сценарию",
+      "Ответственный": "Синица / Tchisto",
+      "Статус": "Нужен референс",
+      "Комментарий": null,
+      "excelRow": 28
+    },
+    {
+      "ID": 27,
+      "Блок / зона": "MAX — экран",
+      "Состояние": "Mission Gameplay",
+      "Что происходит": "Пользователь проходит последовательность действий внутри миссии",
+      "Контент / объекты": "Шаги / иконки / элементы MAX",
+      "Поведение / анимация": "Элементы выбираются, двигаются, раскрываются; система даёт feedback",
+      "Триггер": "Действия пользователя",
+      "Следующее состояние": "Mission Complete",
+      "Звук": "Interaction feedback",
+      "Референс": null,
+      "Что нужно определить": "Общая динамика игрового интерфейса и реакций",
+      "Ответственный": "Синица / Tchisto",
+      "Статус": "Нужен референс",
+      "Комментарий": null,
+      "excelRow": 29
+    },
+    {
+      "ID": 28,
+      "Блок / зона": "MAX — экран",
+      "Состояние": "Mission Complete",
+      "Что происходит": "Пользователь успешно заканчивает миссию",
+      "Контент / объекты": "Результат / собранный сценарий",
+      "Поведение / анимация": "Финальная сборка, подтверждение успеха",
+      "Триггер": "Все шаги выполнены",
+      "Следующее состояние": "Real MAX CTA",
+      "Звук": "Success cue",
+      "Референс": null,
+      "Что нужно определить": "Как выглядит финал и ощущение завершения",
+      "Ответственный": "Синица / Tchisto",
+      "Статус": "Нужен референс",
+      "Комментарий": null,
+      "excelRow": 30
+    },
+    {
+      "ID": 29,
+      "Блок / зона": "MAX — экран",
+      "Состояние": "Real MAX CTA",
+      "Что происходит": "Предлагаем повторить действие уже в реальном MAX",
+      "Контент / объекты": "QR / CTA / интерфейс MAX",
+      "Поведение / анимация": "Появляется предложение перейти в MAX и сделать это в реальности",
+      "Триггер": "Mission Complete",
+      "Следующее состояние": "QR / Exit",
+      "Звук": "CTA cue",
+      "Референс": null,
+      "Что нужно определить": "Как связать игровой результат с реальным действием без резкого перехода",
+      "Ответственный": "Синица / Tchisto",
+      "Статус": "Нужен референс",
+      "Комментарий": null,
+      "excelRow": 31
+    },
+    {
+      "ID": 30,
+      "Блок / зона": "MAX — экран",
+      "Состояние": "QR / Exit",
+      "Что происходит": "Пользователь сканирует QR или завершает взаимодействие",
+      "Контент / объекты": "QR-код / финальный экран",
+      "Поведение / анимация": "QR остаётся доступным, затем система возвращается в базовое состояние",
+      "Триггер": "Скан QR / таймаут",
+      "Следующее состояние": "Idle",
+      "Звук": "Soft release",
+      "Референс": null,
+      "Что нужно определить": "Время показа QR и возврат в idle",
+      "Ответственный": "Синица / Tchisto",
+      "Статус": "Нужен референс",
+      "Комментарий": null,
+      "excelRow": 32
+    }
+  ],
+  "embeddedOrExternalParts": []
+}

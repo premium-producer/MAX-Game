@@ -1,0 +1,2304 @@
+{
+  "id": "2299:85983",
+  "name": "Cоздание ЦИД - 4 (согласие для минцифры)",
+  "type": "FRAME",
+  "parent": "2299:85913",
+  "bounds": {
+    "x": 21646,
+    "y": 3341,
+    "width": 360,
+    "height": 800
+  },
+  "visible": true,
+  "fontSize": 0,
+  "hasImage": false,
+  "task": "unassigned",
+  "confidence": "none",
+  "reviewed": false,
+  "include": true,
+  "group": "2299:85913",
+  "groupName": "Цифровой ID / Cоздание ЦИД",
+  "containerPath": [
+    {
+      "id": "2299:85912",
+      "name": "Цифровой ID",
+      "type": "SECTION"
+    },
+    {
+      "id": "2299:85913",
+      "name": "Cоздание ЦИД",
+      "type": "SECTION"
+    }
+  ],
+  "sectionPath": [
+    {
+      "id": "2299:85912",
+      "name": "Цифровой ID",
+      "type": "SECTION"
+    },
+    {
+      "id": "2299:85913",
+      "name": "Cоздание ЦИД",
+      "type": "SECTION"
+    }
+  ],
+  "sequence": {
+    "series": "Cоздание ЦИД",
+    "number": 4,
+    "description": "согласие для минцифры"
+  },
+  "detection": "structure",
+  "evidence": [],
+  "ancestors": [
+    {
+      "id": "2299:85913",
+      "name": "Cоздание ЦИД",
+      "type": "SECTION"
+    },
+    {
+      "id": "2299:85912",
+      "name": "Цифровой ID",
+      "type": "SECTION"
+    }
+  ],
+  "nearbyHeadings": [],
+  "contextRegion": null,
+  "warnings": [
+    "Задание не указано в названиях — назначьте при необходимости"
+  ],
+  "order": 60,
+  "fingerprint": "[\"Cоздание ЦИД - 4 (согласие для минцифры)\",{\"x\":21646,\"y\":3341,\"width\":360,\"height\":800},\"FRAME\",[[\"2299:85913\",\"Cоздание ЦИД\",\"SECTION\"],[\"2299:85912\",\"Цифровой ID\",\"SECTION\"],[\"1:8\",\"Page 8\",\"PAGE\"]],\"content-v1\",2031258862,2582787606,84]",
+  "manualTask": false,
+  "title": "Cоздание ЦИД - 4 (согласие для минцифры)",
+  "exportStatus": "ok",
+  "texts": [
+    {
+      "id": "I2299:85987;4:10095",
+      "name": "9:41",
+      "type": "TEXT",
+      "parent": "2299:85987",
+      "bounds": {
+        "x": 21666,
+        "y": 3355,
+        "width": 28,
+        "height": 20
+      },
+      "text": "9:41",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "9:41",
+          "start": 0,
+          "end": 4,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:85992",
+      "name": "✏️ Заголовок экрана",
+      "type": "TEXT",
+      "parent": "2299:85988",
+      "bounds": {
+        "x": 21704,
+        "y": 3389,
+        "width": 288,
+        "height": 64
+      },
+      "text": "Согласие",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 22,
+      "segments": [
+        {
+          "characters": "Согласие",
+          "start": 0,
+          "end": 8,
+          "fontSize": 22,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:85995",
+      "name": "Заголовок",
+      "type": "TEXT",
+      "parent": "2299:85994",
+      "bounds": {
+        "x": 21674,
+        "y": 3493,
+        "width": 304,
+        "height": 48
+      },
+      "text": "Согласие на обработку персональных данных",
+      "fontName": {
+        "family": "Roboto",
+        "style": "SemiBold",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 600
+        }
+      },
+      "fontSize": 18,
+      "segments": [
+        {
+          "characters": "Согласие на обработку персональных данных",
+          "start": 0,
+          "end": 41,
+          "fontSize": 18,
+          "fontName": {
+            "family": "Roboto",
+            "style": "SemiBold",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 600
+            }
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:85999",
+      "name": "Заголовок",
+      "type": "TEXT",
+      "parent": "2299:85998",
+      "bounds": {
+        "x": 21674,
+        "y": 3565,
+        "width": 304,
+        "height": 20
+      },
+      "text": "Кто запрашивает",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Кто запрашивает",
+          "start": 0,
+          "end": 15,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86000",
+      "name": "Строка подписи",
+      "type": "TEXT",
+      "parent": "2299:85998",
+      "bounds": {
+        "x": 21674,
+        "y": 3593,
+        "width": 304,
+        "height": 20
+      },
+      "text": "Минцифры",
+      "fontName": null,
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Минцифры",
+          "start": 0,
+          "end": 8,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86001",
+      "name": "Текст текстовой кнопки",
+      "type": "TEXT",
+      "parent": "2299:85997",
+      "bounds": {
+        "x": 21674,
+        "y": 3629,
+        "width": 106,
+        "height": 20
+      },
+      "text": "Об организации",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Об организации",
+          "start": 0,
+          "end": 14,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0941176488995552,
+                "g": 0.3529411852359772,
+                "b": 0.772549033164978
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:4928cd8f77ee8178487b8bff90d504154e31deab/28519:1"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86005",
+      "name": "Заголовок",
+      "type": "TEXT",
+      "parent": "2299:86004",
+      "bounds": {
+        "x": 21674,
+        "y": 3690,
+        "width": 304,
+        "height": 20
+      },
+      "text": "Цель согласия",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Цель согласия",
+          "start": 0,
+          "end": 13,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86006",
+      "name": "Строка подписи",
+      "type": "TEXT",
+      "parent": "2299:86004",
+      "bounds": {
+        "x": 21674,
+        "y": 3718,
+        "width": 304,
+        "height": 40
+      },
+      "text": "Получение, хранение и обновление ваших данных в личном кабинете на Госуслугах",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Получение, хранение и обновление ваших данных в личном кабинете на Госуслугах",
+          "start": 0,
+          "end": 77,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86010",
+      "name": "Заголовок",
+      "type": "TEXT",
+      "parent": "2299:86009",
+      "bounds": {
+        "x": 21674,
+        "y": 3799,
+        "width": 304,
+        "height": 20
+      },
+      "text": "Срок действия",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Срок действия",
+          "start": 0,
+          "end": 13,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86011",
+      "name": "Строка подписи",
+      "type": "TEXT",
+      "parent": "2299:86009",
+      "bounds": {
+        "x": 21674,
+        "y": 3827,
+        "width": 304,
+        "height": 20
+      },
+      "text": "C 15 июня 2024 до момента отзыва",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "C 15 июня 2024 до момента отзыва",
+          "start": 0,
+          "end": 32,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86015",
+      "name": "Заголовок",
+      "type": "TEXT",
+      "parent": "2299:86014",
+      "bounds": {
+        "x": 21674,
+        "y": 3888,
+        "width": 319,
+        "height": 20
+      },
+      "text": "Кто и какие данные предоставляет",
+      "fontName": {
+        "family": "SF Pro",
+        "style": "Semibold",
+        "variationSettings": {
+          "opsz": 28,
+          "wdth": 100,
+          "wght": 590
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Кто и какие данные предоставляет",
+          "start": 0,
+          "end": 32,
+          "fontSize": 14,
+          "fontName": {
+            "family": "SF Pro",
+            "style": "Semibold",
+            "variationSettings": {
+              "opsz": 28,
+              "wdth": 100,
+              "wght": 590
+            }
+          },
+          "fontWeight": 590,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86018",
+      "name": "Строка подписи",
+      "type": "TEXT",
+      "parent": "2299:86017",
+      "bounds": {
+        "x": 21694,
+        "y": 3944,
+        "width": 242,
+        "height": 20
+      },
+      "text": "Министерство внутренних дел",
+      "fontName": null,
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Министерство внутренних дел",
+          "start": 0,
+          "end": 27,
+          "fontSize": 14,
+          "fontName": {
+            "family": "SF Pro",
+            "style": "Regular",
+            "variationSettings": {
+              "opsz": 28,
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:c2e809d049781e9358d70076cde2afeb79c28680,11143:11",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86022",
+      "name": "Строка подписи",
+      "type": "TEXT",
+      "parent": "2299:86021",
+      "bounds": {
+        "x": 21694,
+        "y": 4012,
+        "width": 235,
+        "height": 20
+      },
+      "text": "Министерство здравоохранения",
+      "fontName": null,
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Министерство здравоохранения",
+          "start": 0,
+          "end": 28,
+          "fontSize": 14,
+          "fontName": {
+            "family": "SF Pro",
+            "style": "Regular",
+            "variationSettings": {
+              "opsz": 28,
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:c2e809d049781e9358d70076cde2afeb79c28680,11143:11",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86026",
+      "name": "Строка подписи",
+      "type": "TEXT",
+      "parent": "2299:86025",
+      "bounds": {
+        "x": 21694,
+        "y": 4080,
+        "width": 235,
+        "height": 20
+      },
+      "text": "Росреестр",
+      "fontName": null,
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Росреестр",
+          "start": 0,
+          "end": 9,
+          "fontSize": 14,
+          "fontName": {
+            "family": "SF Pro",
+            "style": "Regular",
+            "variationSettings": {
+              "opsz": 28,
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:c2e809d049781e9358d70076cde2afeb79c28680,11143:11",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86030",
+      "name": "Строка подписи",
+      "type": "TEXT",
+      "parent": "2299:86029",
+      "bounds": {
+        "x": 21694,
+        "y": 4148,
+        "width": 254,
+        "height": 20
+      },
+      "text": "Российский союз автостраховщиков",
+      "fontName": null,
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Российский союз автостраховщиков",
+          "start": 0,
+          "end": 32,
+          "fontSize": 14,
+          "fontName": {
+            "family": "SF Pro",
+            "style": "Regular",
+            "variationSettings": {
+              "opsz": 28,
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:c2e809d049781e9358d70076cde2afeb79c28680,11143:11",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86034",
+      "name": "Строка подписи",
+      "type": "TEXT",
+      "parent": "2299:86033",
+      "bounds": {
+        "x": 21694,
+        "y": 4216,
+        "width": 235,
+        "height": 20
+      },
+      "text": "Социальный фонд России",
+      "fontName": null,
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Социальный фонд России",
+          "start": 0,
+          "end": 22,
+          "fontSize": 14,
+          "fontName": {
+            "family": "SF Pro",
+            "style": "Regular",
+            "variationSettings": {
+              "opsz": 28,
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:c2e809d049781e9358d70076cde2afeb79c28680,11143:11",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86038",
+      "name": "Строка подписи",
+      "type": "TEXT",
+      "parent": "2299:86037",
+      "bounds": {
+        "x": 21694,
+        "y": 4284,
+        "width": 235,
+        "height": 20
+      },
+      "text": "Федеральная налоговая служба",
+      "fontName": null,
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Федеральная налоговая служба",
+          "start": 0,
+          "end": 28,
+          "fontSize": 14,
+          "fontName": {
+            "family": "SF Pro",
+            "style": "Regular",
+            "variationSettings": {
+              "opsz": 28,
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:c2e809d049781e9358d70076cde2afeb79c28680,11143:11",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86042",
+      "name": "Строка подписи",
+      "type": "TEXT",
+      "parent": "2299:86041",
+      "bounds": {
+        "x": 21694,
+        "y": 4352,
+        "width": 247,
+        "height": 40
+      },
+      "text": "Федеральная служба по надзору в сфере образования и науки",
+      "fontName": {
+        "family": "SF Pro",
+        "style": "Regular",
+        "variationSettings": {
+          "opsz": 28,
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Федеральная служба по надзору в сфере образования и науки",
+          "start": 0,
+          "end": 57,
+          "fontSize": 14,
+          "fontName": {
+            "family": "SF Pro",
+            "style": "Regular",
+            "variationSettings": {
+              "opsz": 28,
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86046",
+      "name": "Строка подписи",
+      "type": "TEXT",
+      "parent": "2299:86045",
+      "bounds": {
+        "x": 21694,
+        "y": 4440,
+        "width": 247,
+        "height": 40
+      },
+      "text": "Федеральный фонд обязательного медицинского страхования",
+      "fontName": null,
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Федеральный фонд обязательного медицинского страхования",
+          "start": 0,
+          "end": 55,
+          "fontSize": 14,
+          "fontName": {
+            "family": "SF Pro",
+            "style": "Regular",
+            "variationSettings": {
+              "opsz": 28,
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:c2e809d049781e9358d70076cde2afeb79c28680,11143:11",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86052",
+      "name": "Текст основной кнопки",
+      "type": "TEXT",
+      "parent": "2299:86051",
+      "bounds": {
+        "x": 21674,
+        "y": 3993,
+        "width": 304,
+        "height": 20
+      },
+      "text": "Предоставить",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 16,
+      "segments": [
+        {
+          "characters": "Предоставить",
+          "start": 0,
+          "end": 12,
+          "fontSize": 16,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "S:1216c7e768fde5f08b7316b3a8f0852435287b72,30410:28",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86054",
+      "name": "Текст второстепенной кнопки",
+      "type": "TEXT",
+      "parent": "2299:86053",
+      "bounds": {
+        "x": 21674,
+        "y": 4065,
+        "width": 304,
+        "height": 20
+      },
+      "text": "Отклонить",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 16,
+      "segments": [
+        {
+          "characters": "Отклонить",
+          "start": 0,
+          "end": 9,
+          "fontSize": 16,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0941176488995552,
+                "g": 0.3529411852359772,
+                "b": 0.772549033164978
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:4928cd8f77ee8178487b8bff90d504154e31deab/28519:1"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:1216c7e768fde5f08b7316b3a8f0852435287b72,30410:28",
+          "hyperlink": null
+        }
+      ]
+    }
+  ],
+  "layers": [
+    {
+      "id": "2299:85983",
+      "name": "Cоздание ЦИД - 4 (согласие для минцифры)",
+      "type": "FRAME",
+      "parent": "2299:85913",
+      "bounds": {
+        "x": 21646,
+        "y": 3341,
+        "width": 360,
+        "height": 800
+      }
+    },
+    {
+      "id": "2299:85984",
+      "name": "Согласие",
+      "type": "FRAME",
+      "parent": "2299:85983",
+      "bounds": {
+        "x": 21646,
+        "y": 3341,
+        "width": 360,
+        "height": 800
+      }
+    },
+    {
+      "id": "2299:85985",
+      "name": "Контент",
+      "type": "FRAME",
+      "parent": "2299:85984",
+      "bounds": {
+        "x": 21646,
+        "y": 3341,
+        "width": 360,
+        "height": 1179
+      }
+    },
+    {
+      "id": "2299:85986",
+      "name": "✏️ Хедер",
+      "type": "FRAME",
+      "parent": "2299:85985",
+      "bounds": {
+        "x": 21646,
+        "y": 3341,
+        "width": 360,
+        "height": 116
+      }
+    },
+    {
+      "id": "2299:85987",
+      "name": ".Status Bar/Android/Default",
+      "type": "INSTANCE",
+      "parent": "2299:85986",
+      "bounds": {
+        "x": 21646,
+        "y": 3341,
+        "width": 360,
+        "height": 48.000030517578125
+      }
+    },
+    {
+      "id": "I2299:85987;4:10095",
+      "name": "9:41",
+      "type": "TEXT",
+      "parent": "2299:85987",
+      "bounds": {
+        "x": 21666,
+        "y": 3355,
+        "width": 28,
+        "height": 20
+      }
+    },
+    {
+      "id": "I2299:85987;4:10096",
+      "name": "System Status",
+      "type": "FRAME",
+      "parent": "2299:85987",
+      "bounds": {
+        "x": 21934,
+        "y": 3353,
+        "width": 52.00006103515625,
+        "height": 24.000030517578125
+      }
+    },
+    {
+      "id": "I2299:85987;4:10097",
+      "name": "Wifi",
+      "type": "FRAME",
+      "parent": "I2299:85987;4:10096",
+      "bounds": {
+        "x": 21934,
+        "y": 3357,
+        "width": 18.666690826416016,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I2299:85987;4:10098",
+      "name": "wifi",
+      "type": "VECTOR",
+      "parent": "I2299:85987;4:10097",
+      "bounds": {
+        "x": 21936,
+        "y": 3359,
+        "width": 14.666685104370117,
+        "height": 11.333348274230957
+      }
+    },
+    {
+      "id": "I2299:85987;4:10099",
+      "name": "Data",
+      "type": "FRAME",
+      "parent": "I2299:85987;4:10096",
+      "bounds": {
+        "x": 21954.666015625,
+        "y": 3357,
+        "width": 16.00002098083496,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I2299:85987;4:10100",
+      "name": "data",
+      "type": "VECTOR",
+      "parent": "I2299:85987;4:10099",
+      "bounds": {
+        "x": 21953.609375,
+        "y": 3359.274658203125,
+        "width": 12.391877174377441,
+        "height": 12.391878128051758
+      }
+    },
+    {
+      "id": "I2299:85987;4:10101",
+      "name": "Battery",
+      "type": "FRAME",
+      "parent": "I2299:85987;4:10096",
+      "bounds": {
+        "x": 21972.666015625,
+        "y": 3357,
+        "width": 13.33335018157959,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I2299:85987;4:10102",
+      "name": "Union",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "I2299:85987;4:10101",
+      "bounds": {
+        "x": 21975.33203125,
+        "y": 3358.333251953125,
+        "width": 8,
+        "height": 13.3330078125
+      }
+    },
+    {
+      "id": "I2299:85987;4:10103",
+      "name": "stroke",
+      "type": "VECTOR",
+      "parent": "I2299:85987;4:10102",
+      "bounds": {
+        "x": 21975.33203125,
+        "y": 3358.333251953125,
+        "width": 8.00001049041748,
+        "height": 13.33335018157959
+      }
+    },
+    {
+      "id": "I2299:85987;4:10104",
+      "name": "fill",
+      "type": "RECTANGLE",
+      "parent": "I2299:85987;4:10102",
+      "bounds": {
+        "x": 21975.998046875,
+        "y": 3359.666748046875,
+        "width": 6.666675090789795,
+        "height": 12.000015258789062
+      }
+    },
+    {
+      "id": "2299:85988",
+      "name": "Frame 1",
+      "type": "FRAME",
+      "parent": "2299:85986",
+      "bounds": {
+        "x": 21646,
+        "y": 3389,
+        "width": 346,
+        "height": 64
+      }
+    },
+    {
+      "id": "2299:85989",
+      "name": "❌ Назад",
+      "type": "FRAME",
+      "parent": "2299:85988",
+      "bounds": {
+        "x": 21646,
+        "y": 3397,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "2299:85990",
+      "name": "❌ [Core] Back / AND",
+      "type": "FRAME",
+      "parent": "2299:85989",
+      "bounds": {
+        "x": 21658,
+        "y": 3409,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "2299:85991",
+      "name": "Icon",
+      "type": "VECTOR",
+      "parent": "2299:85990",
+      "bounds": {
+        "x": 21662,
+        "y": 3413,
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "id": "2299:85992",
+      "name": "✏️ Заголовок экрана",
+      "type": "TEXT",
+      "parent": "2299:85988",
+      "bounds": {
+        "x": 21704,
+        "y": 3389,
+        "width": 288,
+        "height": 64
+      }
+    },
+    {
+      "id": "2299:85993",
+      "name": "Контент",
+      "type": "FRAME",
+      "parent": "2299:85985",
+      "bounds": {
+        "x": 21646,
+        "y": 3473,
+        "width": 360,
+        "height": 1047
+      }
+    },
+    {
+      "id": "2299:85994",
+      "name": "Карточка",
+      "type": "FRAME",
+      "parent": "2299:85993",
+      "bounds": {
+        "x": 21654,
+        "y": 3473,
+        "width": 344,
+        "height": 1047
+      }
+    },
+    {
+      "id": "2299:85995",
+      "name": "Заголовок",
+      "type": "TEXT",
+      "parent": "2299:85994",
+      "bounds": {
+        "x": 21674,
+        "y": 3493,
+        "width": 304,
+        "height": 48
+      }
+    },
+    {
+      "id": "2299:85996",
+      "name": "Контент",
+      "type": "FRAME",
+      "parent": "2299:85994",
+      "bounds": {
+        "x": 21674,
+        "y": 3565,
+        "width": 304,
+        "height": 935
+      }
+    },
+    {
+      "id": "2299:85997",
+      "name": "Кто запрашивает",
+      "type": "FRAME",
+      "parent": "2299:85996",
+      "bounds": {
+        "x": 21674,
+        "y": 3565,
+        "width": 304,
+        "height": 84
+      }
+    },
+    {
+      "id": "2299:85998",
+      "name": "Subheadline +",
+      "type": "FRAME",
+      "parent": "2299:85997",
+      "bounds": {
+        "x": 21674,
+        "y": 3565,
+        "width": 304,
+        "height": 48
+      }
+    },
+    {
+      "id": "2299:85999",
+      "name": "Заголовок",
+      "type": "TEXT",
+      "parent": "2299:85998",
+      "bounds": {
+        "x": 21674,
+        "y": 3565,
+        "width": 304,
+        "height": 20
+      }
+    },
+    {
+      "id": "2299:86000",
+      "name": "Строка подписи",
+      "type": "TEXT",
+      "parent": "2299:85998",
+      "bounds": {
+        "x": 21674,
+        "y": 3593,
+        "width": 304,
+        "height": 20
+      }
+    },
+    {
+      "id": "2299:86001",
+      "name": "Текст текстовой кнопки",
+      "type": "TEXT",
+      "parent": "2299:85997",
+      "bounds": {
+        "x": 21674,
+        "y": 3629,
+        "width": 106,
+        "height": 20
+      }
+    },
+    {
+      "id": "2299:86002",
+      "name": "Разделитель",
+      "type": "FRAME",
+      "parent": "2299:85996",
+      "bounds": {
+        "x": 21674,
+        "y": 3669,
+        "width": 304,
+        "height": 1
+      }
+    },
+    {
+      "id": "2299:86003",
+      "name": "Line",
+      "type": "RECTANGLE",
+      "parent": "2299:86002",
+      "bounds": {
+        "x": 21674,
+        "y": 3669,
+        "width": 304,
+        "height": 1
+      }
+    },
+    {
+      "id": "2299:86004",
+      "name": "Цель согласия",
+      "type": "FRAME",
+      "parent": "2299:85996",
+      "bounds": {
+        "x": 21674,
+        "y": 3690,
+        "width": 304,
+        "height": 68
+      }
+    },
+    {
+      "id": "2299:86005",
+      "name": "Заголовок",
+      "type": "TEXT",
+      "parent": "2299:86004",
+      "bounds": {
+        "x": 21674,
+        "y": 3690,
+        "width": 304,
+        "height": 20
+      }
+    },
+    {
+      "id": "2299:86006",
+      "name": "Строка подписи",
+      "type": "TEXT",
+      "parent": "2299:86004",
+      "bounds": {
+        "x": 21674,
+        "y": 3718,
+        "width": 304,
+        "height": 40
+      }
+    },
+    {
+      "id": "2299:86007",
+      "name": "Разделитель",
+      "type": "FRAME",
+      "parent": "2299:85996",
+      "bounds": {
+        "x": 21674,
+        "y": 3778,
+        "width": 304,
+        "height": 1
+      }
+    },
+    {
+      "id": "2299:86008",
+      "name": "Line",
+      "type": "RECTANGLE",
+      "parent": "2299:86007",
+      "bounds": {
+        "x": 21674,
+        "y": 3778,
+        "width": 304,
+        "height": 1
+      }
+    },
+    {
+      "id": "2299:86009",
+      "name": "Срок действия",
+      "type": "FRAME",
+      "parent": "2299:85996",
+      "bounds": {
+        "x": 21674,
+        "y": 3799,
+        "width": 304,
+        "height": 48
+      }
+    },
+    {
+      "id": "2299:86010",
+      "name": "Заголовок",
+      "type": "TEXT",
+      "parent": "2299:86009",
+      "bounds": {
+        "x": 21674,
+        "y": 3799,
+        "width": 304,
+        "height": 20
+      }
+    },
+    {
+      "id": "2299:86011",
+      "name": "Строка подписи",
+      "type": "TEXT",
+      "parent": "2299:86009",
+      "bounds": {
+        "x": 21674,
+        "y": 3827,
+        "width": 304,
+        "height": 20
+      }
+    },
+    {
+      "id": "2299:86012",
+      "name": "Разделитель",
+      "type": "FRAME",
+      "parent": "2299:85996",
+      "bounds": {
+        "x": 21674,
+        "y": 3867,
+        "width": 304,
+        "height": 1
+      }
+    },
+    {
+      "id": "2299:86013",
+      "name": "Line",
+      "type": "RECTANGLE",
+      "parent": "2299:86012",
+      "bounds": {
+        "x": 21674,
+        "y": 3867,
+        "width": 304,
+        "height": 1
+      }
+    },
+    {
+      "id": "2299:86014",
+      "name": "Организации",
+      "type": "FRAME",
+      "parent": "2299:85996",
+      "bounds": {
+        "x": 21674,
+        "y": 3888,
+        "width": 319,
+        "height": 612
+      }
+    },
+    {
+      "id": "2299:86015",
+      "name": "Заголовок",
+      "type": "TEXT",
+      "parent": "2299:86014",
+      "bounds": {
+        "x": 21674,
+        "y": 3888,
+        "width": 319,
+        "height": 20
+      }
+    },
+    {
+      "id": "2299:86016",
+      "name": "Организации",
+      "type": "FRAME",
+      "parent": "2299:86014",
+      "bounds": {
+        "x": 21674,
+        "y": 3924,
+        "width": 319,
+        "height": 576
+      }
+    },
+    {
+      "id": "2299:86017",
+      "name": "Карточка с обводкой",
+      "type": "FRAME",
+      "parent": "2299:86016",
+      "bounds": {
+        "x": 21674,
+        "y": 3924,
+        "width": 319,
+        "height": 60
+      }
+    },
+    {
+      "id": "2299:86018",
+      "name": "Строка подписи",
+      "type": "TEXT",
+      "parent": "2299:86017",
+      "bounds": {
+        "x": 21694,
+        "y": 3944,
+        "width": 242,
+        "height": 20
+      }
+    },
+    {
+      "id": "2299:86019",
+      "name": "Arrow / Right",
+      "type": "FRAME",
+      "parent": "2299:86017",
+      "bounds": {
+        "x": 21960,
+        "y": 3944,
+        "width": 13.000005722045898,
+        "height": 19.999990463256836
+      }
+    },
+    {
+      "id": "2299:86020",
+      "name": "Icon",
+      "type": "VECTOR",
+      "parent": "2299:86019",
+      "bounds": {
+        "x": 21967,
+        "y": 3949,
+        "width": 6.000006198883057,
+        "height": 9.999990463256836
+      }
+    },
+    {
+      "id": "2299:86021",
+      "name": "Карточка с обводкой",
+      "type": "FRAME",
+      "parent": "2299:86016",
+      "bounds": {
+        "x": 21674,
+        "y": 3992,
+        "width": 319,
+        "height": 60
+      }
+    },
+    {
+      "id": "2299:86022",
+      "name": "Строка подписи",
+      "type": "TEXT",
+      "parent": "2299:86021",
+      "bounds": {
+        "x": 21694,
+        "y": 4012,
+        "width": 235,
+        "height": 20
+      }
+    },
+    {
+      "id": "2299:86023",
+      "name": "Arrow / Right",
+      "type": "FRAME",
+      "parent": "2299:86021",
+      "bounds": {
+        "x": 21953,
+        "y": 4012,
+        "width": 20,
+        "height": 20
+      }
+    },
+    {
+      "id": "2299:86024",
+      "name": "Icon",
+      "type": "VECTOR",
+      "parent": "2299:86023",
+      "bounds": {
+        "x": 21967,
+        "y": 4017,
+        "width": 6.000006198883057,
+        "height": 9.999990463256836
+      }
+    },
+    {
+      "id": "2299:86025",
+      "name": "Карточка с обводкой",
+      "type": "FRAME",
+      "parent": "2299:86016",
+      "bounds": {
+        "x": 21674,
+        "y": 4060,
+        "width": 319,
+        "height": 60
+      }
+    },
+    {
+      "id": "2299:86026",
+      "name": "Строка подписи",
+      "type": "TEXT",
+      "parent": "2299:86025",
+      "bounds": {
+        "x": 21694,
+        "y": 4080,
+        "width": 235,
+        "height": 20
+      }
+    },
+    {
+      "id": "2299:86027",
+      "name": "Arrow / Right",
+      "type": "FRAME",
+      "parent": "2299:86025",
+      "bounds": {
+        "x": 21953,
+        "y": 4080,
+        "width": 20,
+        "height": 20
+      }
+    },
+    {
+      "id": "2299:86028",
+      "name": "Icon",
+      "type": "VECTOR",
+      "parent": "2299:86027",
+      "bounds": {
+        "x": 21967,
+        "y": 4085,
+        "width": 6.000006198883057,
+        "height": 9.999990463256836
+      }
+    },
+    {
+      "id": "2299:86029",
+      "name": "Карточка с обводкой",
+      "type": "FRAME",
+      "parent": "2299:86016",
+      "bounds": {
+        "x": 21674,
+        "y": 4128,
+        "width": 319,
+        "height": 60
+      }
+    },
+    {
+      "id": "2299:86030",
+      "name": "Строка подписи",
+      "type": "TEXT",
+      "parent": "2299:86029",
+      "bounds": {
+        "x": 21694,
+        "y": 4148,
+        "width": 254,
+        "height": 20
+      }
+    },
+    {
+      "id": "2299:86031",
+      "name": "Arrow / Right",
+      "type": "FRAME",
+      "parent": "2299:86029",
+      "bounds": {
+        "x": 21960,
+        "y": 4148,
+        "width": 13.000005722045898,
+        "height": 19.999990463256836
+      }
+    },
+    {
+      "id": "2299:86032",
+      "name": "Icon",
+      "type": "VECTOR",
+      "parent": "2299:86031",
+      "bounds": {
+        "x": 21967,
+        "y": 4153,
+        "width": 6.000006198883057,
+        "height": 9.999990463256836
+      }
+    },
+    {
+      "id": "2299:86033",
+      "name": "Карточка с обводкой",
+      "type": "FRAME",
+      "parent": "2299:86016",
+      "bounds": {
+        "x": 21674,
+        "y": 4196,
+        "width": 319,
+        "height": 60
+      }
+    },
+    {
+      "id": "2299:86034",
+      "name": "Строка подписи",
+      "type": "TEXT",
+      "parent": "2299:86033",
+      "bounds": {
+        "x": 21694,
+        "y": 4216,
+        "width": 235,
+        "height": 20
+      }
+    },
+    {
+      "id": "2299:86035",
+      "name": "Arrow / Right",
+      "type": "FRAME",
+      "parent": "2299:86033",
+      "bounds": {
+        "x": 21953,
+        "y": 4216,
+        "width": 20,
+        "height": 20
+      }
+    },
+    {
+      "id": "2299:86036",
+      "name": "Icon",
+      "type": "VECTOR",
+      "parent": "2299:86035",
+      "bounds": {
+        "x": 21967,
+        "y": 4221,
+        "width": 6.000006198883057,
+        "height": 9.999990463256836
+      }
+    },
+    {
+      "id": "2299:86037",
+      "name": "Карточка с обводкой",
+      "type": "FRAME",
+      "parent": "2299:86016",
+      "bounds": {
+        "x": 21674,
+        "y": 4264,
+        "width": 319,
+        "height": 60
+      }
+    },
+    {
+      "id": "2299:86038",
+      "name": "Строка подписи",
+      "type": "TEXT",
+      "parent": "2299:86037",
+      "bounds": {
+        "x": 21694,
+        "y": 4284,
+        "width": 235,
+        "height": 20
+      }
+    },
+    {
+      "id": "2299:86039",
+      "name": "Arrow / Right",
+      "type": "FRAME",
+      "parent": "2299:86037",
+      "bounds": {
+        "x": 21953,
+        "y": 4284,
+        "width": 20,
+        "height": 20
+      }
+    },
+    {
+      "id": "2299:86040",
+      "name": "Icon",
+      "type": "VECTOR",
+      "parent": "2299:86039",
+      "bounds": {
+        "x": 21967,
+        "y": 4289,
+        "width": 6.000006198883057,
+        "height": 9.999990463256836
+      }
+    },
+    {
+      "id": "2299:86041",
+      "name": "Карточка с обводкой",
+      "type": "FRAME",
+      "parent": "2299:86016",
+      "bounds": {
+        "x": 21674,
+        "y": 4332,
+        "width": 319,
+        "height": 80
+      }
+    },
+    {
+      "id": "2299:86042",
+      "name": "Строка подписи",
+      "type": "TEXT",
+      "parent": "2299:86041",
+      "bounds": {
+        "x": 21694,
+        "y": 4352,
+        "width": 247,
+        "height": 40
+      }
+    },
+    {
+      "id": "2299:86043",
+      "name": "Arrow / Right",
+      "type": "FRAME",
+      "parent": "2299:86041",
+      "bounds": {
+        "x": 21953,
+        "y": 4352,
+        "width": 20,
+        "height": 20
+      }
+    },
+    {
+      "id": "2299:86044",
+      "name": "Icon",
+      "type": "VECTOR",
+      "parent": "2299:86043",
+      "bounds": {
+        "x": 21967,
+        "y": 4357,
+        "width": 6.000006198883057,
+        "height": 9.999990463256836
+      }
+    },
+    {
+      "id": "2299:86045",
+      "name": "Карточка с обводкой",
+      "type": "FRAME",
+      "parent": "2299:86016",
+      "bounds": {
+        "x": 21674,
+        "y": 4420,
+        "width": 319,
+        "height": 80
+      }
+    },
+    {
+      "id": "2299:86046",
+      "name": "Строка подписи",
+      "type": "TEXT",
+      "parent": "2299:86045",
+      "bounds": {
+        "x": 21694,
+        "y": 4440,
+        "width": 247,
+        "height": 40
+      }
+    },
+    {
+      "id": "2299:86047",
+      "name": "Arrow / Right",
+      "type": "FRAME",
+      "parent": "2299:86045",
+      "bounds": {
+        "x": 21953,
+        "y": 4440,
+        "width": 20,
+        "height": 20
+      }
+    },
+    {
+      "id": "2299:86048",
+      "name": "Icon",
+      "type": "VECTOR",
+      "parent": "2299:86047",
+      "bounds": {
+        "x": 21967,
+        "y": 4445,
+        "width": 6.000006198883057,
+        "height": 9.999990463256836
+      }
+    },
+    {
+      "id": "2299:86049",
+      "name": "Кнопки",
+      "type": "FRAME",
+      "parent": "2299:85984",
+      "bounds": {
+        "x": 21646,
+        "y": 3965,
+        "width": 360,
+        "height": 176
+      }
+    },
+    {
+      "id": "2299:86050",
+      "name": "Кнопки",
+      "type": "FRAME",
+      "parent": "2299:86049",
+      "bounds": {
+        "x": 21646,
+        "y": 3973,
+        "width": 360,
+        "height": 132
+      }
+    },
+    {
+      "id": "2299:86051",
+      "name": "Button",
+      "type": "FRAME",
+      "parent": "2299:86050",
+      "bounds": {
+        "x": 21654,
+        "y": 3973,
+        "width": 344,
+        "height": 60
+      }
+    },
+    {
+      "id": "2299:86052",
+      "name": "Текст основной кнопки",
+      "type": "TEXT",
+      "parent": "2299:86051",
+      "bounds": {
+        "x": 21674,
+        "y": 3993,
+        "width": 304,
+        "height": 20
+      }
+    },
+    {
+      "id": "2299:86053",
+      "name": "Button",
+      "type": "FRAME",
+      "parent": "2299:86050",
+      "bounds": {
+        "x": 21654,
+        "y": 4045,
+        "width": 344,
+        "height": 60
+      }
+    },
+    {
+      "id": "2299:86054",
+      "name": "Текст второстепенной кнопки",
+      "type": "TEXT",
+      "parent": "2299:86053",
+      "bounds": {
+        "x": 21674,
+        "y": 4065,
+        "width": 304,
+        "height": 20
+      }
+    },
+    {
+      "id": "2299:86055",
+      "name": "📎 Home Indicator",
+      "type": "INSTANCE",
+      "parent": "2299:86049",
+      "bounds": {
+        "x": 21646,
+        "y": 4117,
+        "width": 360,
+        "height": 24
+      }
+    },
+    {
+      "id": "I2299:86055;1350:1201",
+      "name": "Home Indicator",
+      "type": "VECTOR",
+      "parent": "2299:86055",
+      "bounds": {
+        "x": 21774,
+        "y": 4129,
+        "width": 104,
+        "height": 0
+      }
+    }
+  ],
+  "imageHashes": [],
+  "notes": [],
+  "pngScale": 1,
+  "pngFile": "Цифровой-ID/Cоздание-ЦИД/Cоздание-ЦИД---4-(согласие-для-минцифры)/screen.png",
+  "previewFile": "Цифровой-ID/Cоздание-ЦИД/Cоздание-ЦИД---4-(согласие-для-минцифры)/preview.png",
+  "svgFile": "Цифровой-ID/Cоздание-ЦИД/Cоздание-ЦИД---4-(согласие-для-минцифры)/screen.svg",
+  "documentFile": "Цифровой-ID/Cоздание-ЦИД/Cоздание-ЦИД---4-(согласие-для-минцифры)/figma.json",
+  "images": []
+}

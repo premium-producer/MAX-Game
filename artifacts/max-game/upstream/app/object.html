@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090f18">
+  <title>Банк объектов — Космос на связи</title>
+  <link rel="stylesheet" href="./src/object-bank.css?v=debug-exit-button-223">
+</head>
+<body>
+  <header class="bank-header">
+    <a class="brand" href="./"><img src="./assets/nodes/logo.svg" alt="Бюро 1440"><span>БАНК ОБЪЕКТОВ</span></a>
+    <nav aria-label="Инструменты проекта"><a href="./object.html?mode=screen">Размеры для ракурса ↗</a><a href="./editor.html">Редактор миссий ↗</a><a href="./wording.html">Тексты RU / EN ↗</a><a href="./earth.html">Вид планеты ↗</a><a href="./">Игра ↗</a></nav>
+    <div class="save-actions"><button data-command="undo" aria-label="Отменить">↶</button><button data-command="redo" aria-label="Повторить">↷</button><button data-command="save" class="primary" disabled>СОХРАНИТЬ ИЗМЕНЕНИЯ</button></div>
+  </header>
+  <div class="bank-state"><span id="save-state" role="status">Загрузка проекта…</span><span id="draft-state"></span><button data-command="export-draft">Экспорт JSON</button><button data-command="reload">Перечитать из игры</button></div>
+  <nav class="bank-tabs" aria-label="Разделы банка">
+    <button data-section="objects" aria-current="page">01 · Оборудование</button>
+    <button data-section="icons">02 · Иконки точек</button>
+    <button data-section="sets">03 · Наборы для миссий</button>
+  </nav>
+  <main class="bank-workspace" id="bank-app">
+    <aside class="bank-sidebar" aria-label="Список записей">
+      <div class="list-heading"><h1 id="list-title">Оборудование</h1><button data-command="create" class="primary" aria-label="Добавить запись">＋</button></div>
+      <label class="search-label"><span>Поиск по названию или ID</span><input id="bank-search" type="search" placeholder="Поиск…"></label>
+      <div id="bank-list" class="bank-list"></div>
+    </aside>
+    <section id="bank-detail" class="bank-detail" aria-label="Параметры выбранной записи"><p>Загрузка банка…</p></section>
+  </main>
+  <section id="bank-validation" class="bank-validation" aria-live="polite"></section>
+  <div id="bank-notice" role="status" class="bank-notice" hidden></div>
+  <script type="module" src="./objects.js?v=debug-exit-button-223"></script>
+</body>
+</html>

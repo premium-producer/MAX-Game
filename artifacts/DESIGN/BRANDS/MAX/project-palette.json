@@ -1,0 +1,24 @@
+{
+  "id": "max.project.palette.20260927",
+  "status": "user-approved",
+  "scope": "MAX game and new authored MAX graphics in this project; existing source assets remain unchanged",
+  "allowedHex": [
+    "#00BFFF",
+    "#6E1AFF",
+    "#0D001A",
+    "#471AFF",
+    "#9500FF",
+    "#FFFFFF"
+  ],
+  "source": "User screenshot of brandbook 2.2, supplied 2026-09-27",
+  "blueDecision": "Use printed HEX #471AFF. Source RGB 26 75 255 conflicts; historical source rule remains recorded. This project decision supersedes exclusion of blue.",
+  "coverage": [
+    "CSS",
+    "JSON presets and defaults",
+    "Three.js materials",
+    "GLSL colors",
+    "success/error states",
+    "Earth texture tinting"
+  ],
+  "rendering": "Alpha, shading and interpolation may produce intermediate pixel values. No extra authored hues. Raw source Main gradient is archived; game overrides its middle stop with #6E1AFF. Shared stand background keeps its cross-brand transition; VK Video assets are outside MAX recoloring scope."
+}

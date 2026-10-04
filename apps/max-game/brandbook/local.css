@@ -1,0 +1,12 @@
+/* Local interaction support; the page's five original stylesheets are preserved. */
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:132px}
+.menuButton:focus-visible,.swatch-card__copy:focus-visible{outline:2px solid #00bfff;outline-offset:4px}
+.swatch-card__copy[data-copied]{box-shadow:0 0 0 2px currentColor;animation:local-copy-feedback 1.2s ease-out}
+@keyframes local-copy-feedback{0%{opacity:.55}25%,100%{opacity:1}}
+.mobileMenu{overflow:auto}
+.logo-card--download-visible .logo-card__tap-target{pointer-events:none}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ *,*::before,*::after{animation:none!important;transition:none!important}
+}

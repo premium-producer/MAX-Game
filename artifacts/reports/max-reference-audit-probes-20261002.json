@@ -1,0 +1,33 @@
+{
+  "scope": "CPU counterexamples; no browser, no gameplay mutation",
+  "solverBoundary": {
+    "inputDelta": 0.02,
+    "before": {
+      "x": -38.00000000000001,
+      "y": 40
+    },
+    "after": {
+      "x": 118,
+      "y": 40
+    },
+    "outputJump": 156
+  },
+  "newObstacle": {
+    "without": {
+      "x": 40,
+      "y": 40
+    },
+    "withObstacle": {
+      "x": 40,
+      "y": -38
+    },
+    "outputJump": 78
+  },
+  "referenceGateAfter800ms": {
+    "alpha": 0.9877044761785129,
+    "positionError": 18.44328573223038,
+    "speed": 127.60759857975748,
+    "adapterReady": true
+  },
+  "conclusion": "Nonintersection does not prove continuous motion; alpha does not prove positional readiness."
+}

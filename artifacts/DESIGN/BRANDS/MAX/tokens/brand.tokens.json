@@ -1,0 +1,144 @@
+{
+  "color": {
+    "cyan": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.0,
+          0.7490196078431373,
+          1.0
+        ]
+      },
+      "$description": "#00BFFF: Акцент, когда фирменный градиент не нужен.",
+      "$extensions": {
+        "local.brand": {
+          "ruleId": "max.color.cyan",
+          "nodeId": "8379:54226"
+        }
+      }
+    },
+    "violet": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.43137254901960786,
+          0.10196078431372549,
+          1.0
+        ]
+      },
+      "$description": "#6E1AFF: Основной фон, когда градиент использовать невозможно.",
+      "$extensions": {
+        "local.brand": {
+          "ruleId": "max.color.violet",
+          "nodeId": "8379:54243"
+        }
+      }
+    },
+    "dark": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.050980392156862744,
+          0.0,
+          0.10196078431372549
+        ]
+      },
+      "$description": "#0D001A: Основной тёмный фон в паре с градиентом.",
+      "$extensions": {
+        "local.brand": {
+          "ruleId": "max.color.dark",
+          "nodeId": "8379:54260"
+        }
+      }
+    },
+    "purple": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.5843137254901961,
+          0.0,
+          1.0
+        ]
+      },
+      "$description": "#9500FF: Дополнительный цвет графики и фона.",
+      "$extensions": {
+        "local.brand": {
+          "ruleId": "max.color.purple",
+          "nodeId": "8379:54294"
+        }
+      }
+    },
+    "white": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "$description": "#FFFFFF: Дополнительный светлый фон в паре с градиентом.",
+      "$extensions": {
+        "local.brand": {
+          "ruleId": "max.color.white",
+          "nodeId": "8379:54311"
+        }
+      }
+    }
+  },
+  "gradient": {
+    "main": {
+      "$type": "gradient",
+      "$value": [
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0,
+              0.75,
+              1
+            ],
+            "alpha": 1
+          },
+          "position": 0
+        },
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0.35720524191856384,
+              0.20000000298023224,
+              1
+            ],
+            "alpha": 1
+          },
+          "position": 0.504807710647583
+        },
+        {
+          "color": {
+            "colorSpace": "srgb",
+            "components": [
+              0.5843137502670288,
+              0,
+              1
+            ],
+            "alpha": 1
+          },
+          "position": 1
+        }
+      ],
+      "$extensions": {
+        "local.brand": {
+          "nodeId": "8379:54393",
+          "direction": "left-to-right",
+          "scope": "Main linear swatch, not Angular background"
+        }
+      }
+    }
+  }
+}

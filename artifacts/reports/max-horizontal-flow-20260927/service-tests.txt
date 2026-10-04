@@ -1,0 +1,26 @@
+✔ wall side fade reaches zero before clipping while preserving the opaque interior (0.8179ms)
+✔ both sides fade continuously with zero slope at the clipping boundary (0.3587ms)
+✔ moving a filled shape out of the wall loses light gradually instead of exposing a bright cut (1.8279ms)
+✔ right wall preserves full 4096x1280 DOM composition and single GPU packing (2.1063ms)
+✔ interactive field is physically lower and shifted right by two thirds of its width, without stretching (0.1962ms)
+✔ trusted input accounts for stamp rows and releases on cancellation (0.241ms)
+✔ full gesture lifecycle reaches game; disconnect and timeout release input (0.426ms)
+✔ MAX game mounted in dev master without changing screen assignments (65.2265ms)
+✔ MAX game mounted in run master without changing screen assignments (29.2761ms)
+✔ full portable build includes MAX runtime and uses build manifests (0.2455ms)
+✔ right-screen service routes full pointer lifecycle to MAX and cancels on pause (26.9008ms)
+✔ rear split uses the same field position and vertical grid at every quality setting (2.0978ms)
+✔ both Spout crops render one virtual canvas with overlapping filter support (0.5865ms)
+✔ a square crossing 3072 keeps its size, color, opacity and remaining half (7.2055ms)
+✔ approved module-aligned regions cover the rear wall exactly, with executable render/transport plans (0.3293ms)
+✔ saved profiles are not confused with an old frame or a stopped/updating output (0.3694ms)
+✔ a profile or source assignment different from the approved map is reported, not silently scaled (0.0825ms)
+✔ ribbon terminal samples the physical upper rear joint, not the start of the left wall (0.3094ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 175.8662

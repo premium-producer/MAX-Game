@@ -1,0 +1,1052 @@
+{
+  "id": "296:16433",
+  "name": "Экран 5",
+  "title": "005-Экран",
+  "bounds": {
+    "x": 19416,
+    "y": 6588,
+    "width": 360,
+    "height": 753
+  },
+  "task": "unassigned",
+  "include": true,
+  "reviewed": false,
+  "confidence": "structure",
+  "group": "296:16383",
+  "groupName": "Общение на максимум / История",
+  "containerPath": [
+    {
+      "id": "296:15779",
+      "name": "03-Общение на максимум"
+    },
+    {
+      "id": "296:16383",
+      "name": "05-История"
+    }
+  ],
+  "ancestors": [],
+  "nearbyHeadings": [],
+  "evidence": [
+    {
+      "source": "autolayout",
+      "text": "Порядок children; названия фреймов не используются"
+    }
+  ],
+  "warnings": [],
+  "detection": "structure",
+  "order": 72,
+  "content": {
+    "kind": "screen",
+    "missionOrder": 3,
+    "missionNodeId": "296:15779",
+    "iconOrder": 5,
+    "iconNodeId": "296:16383",
+    "iconText": "История",
+    "iconTexts": [
+      {
+        "id": "296:16387",
+        "order": 1,
+        "text": "История",
+        "fontName": {
+          "family": "Inter",
+          "style": "Regular",
+          "variationSettings": {
+            "slnt": 0,
+            "wght": 400
+          }
+        },
+        "fontSize": 55,
+        "segments": [
+          {
+            "characters": "История",
+            "start": 0,
+            "end": 7,
+            "fontSize": 55,
+            "fontName": {
+              "family": "Inter",
+              "style": "Regular",
+              "variationSettings": {
+                "slnt": 0,
+                "wght": 400
+              }
+            },
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 0.07999999821186066,
+                  "g": 0.05999999865889549,
+                  "b": 0.11999999731779099
+                },
+                "boundVariables": {}
+              }
+            ],
+            "hyperlink": null
+          }
+        ],
+        "bounds": {
+          "x": 19725.5,
+          "y": 572,
+          "width": 424,
+          "height": 67
+        }
+      }
+    ],
+    "screenOrder": 5,
+    "screenNodeId": "296:16430",
+    "visualNodeId": "296:16433",
+    "helpNodeId": "296:16450"
+  },
+  "instruction": {
+    "blocks": [
+      {
+        "id": "296:16451",
+        "order": 1,
+        "text": "Задание выполнено. Миссия пройдена.",
+        "fontName": {
+          "family": "Inter",
+          "style": "Regular",
+          "variationSettings": {
+            "slnt": 0,
+            "wght": 400
+          }
+        },
+        "fontSize": 32,
+        "segments": [
+          {
+            "characters": "Задание выполнено. Миссия пройдена.",
+            "start": 0,
+            "end": 35,
+            "fontSize": 32,
+            "fontName": {
+              "family": "Inter",
+              "style": "Regular",
+              "variationSettings": {
+                "slnt": 0,
+                "wght": 400
+              }
+            },
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 0.07999999821186066,
+                  "g": 0.05999999865889549,
+                  "b": 0.11999999731779099
+                },
+                "boundVariables": {}
+              }
+            ],
+            "hyperlink": null
+          }
+        ],
+        "bounds": {
+          "x": 19948,
+          "y": 7031,
+          "width": 547,
+          "height": 78
+        }
+      }
+    ],
+    "text": "Задание выполнено. Миссия пройдена."
+  },
+  "watchNodeId": "296:16430",
+  "contextNodeIds": [
+    "296:16384",
+    "296:15780"
+  ],
+  "sequenceParents": [
+    "296:16388",
+    "296:16383",
+    "296:15781",
+    "296:15779"
+  ],
+  "fingerprint": "[\"[\\\"История · Результат\\\",{\\\"x\\\":19276,\\\"y\\\":6462,\\\"width\\\":1323,\\\"height\\\":1216},\\\"FRAME\\\",[[\\\"296:16388\\\",\\\"задание миссии\\\",\\\"FRAME\\\"],[\\\"296:16383\\\",\\\"иконка_задание · История\\\",\\\"FRAME\\\"],[\\\"296:15781\\\",\\\"Миссия · возможности слева направо\\\",\\\"FRAME\\\"],[\\\"296:15779\\\",\\\"Общение на максимум\\\",\\\"FRAME\\\"],[\\\"296:13218\\\",\\\"MAX аудит миссий\\\",\\\"FRAME\\\"],[\\\"296:13217\\\",\\\"DEV 2\\\",\\\"PAGE\\\"]],\\\"content-v1\\\",752363000,3337577904,78]\",[\"[\\\"игровая иконка\\\",{\\\"x\\\":19681.5,\\\"y\\\":376,\\\"width\\\":512,\\\"height\\\":307},\\\"FRAME\\\",[[\\\"296:16383\\\",\\\"иконка_задание · История\\\",\\\"FRAME\\\"],[\\\"296:15781\\\",\\\"Миссия · возможности слева направо\\\",\\\"FRAME\\\"],[\\\"296:15779\\\",\\\"Общение на максимум\\\",\\\"FRAME\\\"],[\\\"296:13218\\\",\\\"MAX аудит миссий\\\",\\\"FRAME\\\"],[\\\"296:13217\\\",\\\"DEV 2\\\",\\\"PAGE\\\"]],\\\"content-v1\\\",1745404202,1265529870,4]\",\"[\\\"Общение на максимум\\\",{\\\"x\\\":13720,\\\"y\\\":206,\\\"width\\\":1600,\\\"height\\\":77},\\\"TEXT\\\",[[\\\"296:15779\\\",\\\"Общение на максимум\\\",\\\"FRAME\\\"],[\\\"296:13218\\\",\\\"MAX аудит миссий\\\",\\\"FRAME\\\"],[\\\"296:13217\\\",\\\"DEV 2\\\",\\\"PAGE\\\"]],\\\"content-v1\\\",3519000807,1665311739,1]\"],[[\"296:16388\",[\"296:16389\",\"296:16399\",\"296:16408\",\"296:16420\",\"296:16430\"]],[\"296:16383\",[\"296:16384\",\"296:16388\"]],[\"296:15781\",[\"296:15782\",\"296:15974\",\"296:16029\",\"296:16142\",\"296:16383\"]],[\"296:15779\",[\"296:15780\",\"296:15781\"]]]]",
+  "exportStatus": "ok",
+  "texts": [
+    {
+      "id": "I296:16440;6609:34120;6135:35532",
+      "name": "Contact Name",
+      "type": "TEXT",
+      "parent": "I296:16440;6609:34120;12893:54998",
+      "bounds": {
+        "x": 19480,
+        "y": 6674,
+        "width": 108,
+        "height": 20
+      },
+      "text": "Ваша история",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 16,
+      "segments": [
+        {
+          "characters": "Ваша история",
+          "start": 0,
+          "end": 12,
+          "fontSize": 16,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:175ca4baaf020cd4b444777e153b6ba3285dd289/31494:1966"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:b54f78cdc1ebec93a8d8419f3a73d9f449e3b22f,13678:263",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:16447;2522:12269",
+      "name": "9:41",
+      "type": "TEXT",
+      "parent": "296:16447",
+      "bounds": {
+        "x": 19436,
+        "y": 6602,
+        "width": 28,
+        "height": 20
+      },
+      "text": "9:41",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "9:41",
+          "start": 0,
+          "end": 4,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.800000011920929,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/2210:106"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:16451",
+      "order": 1,
+      "text": "Задание выполнено. Миссия пройдена.",
+      "fontName": {
+        "family": "Inter",
+        "style": "Regular",
+        "variationSettings": {
+          "slnt": 0,
+          "wght": 400
+        }
+      },
+      "fontSize": 32,
+      "segments": [
+        {
+          "characters": "Задание выполнено. Миссия пройдена.",
+          "start": 0,
+          "end": 35,
+          "fontSize": 32,
+          "fontName": {
+            "family": "Inter",
+            "style": "Regular",
+            "variationSettings": {
+              "slnt": 0,
+              "wght": 400
+            }
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.07999999821186066,
+                "g": 0.05999999865889549,
+                "b": 0.11999999731779099
+              },
+              "boundVariables": {}
+            }
+          ],
+          "hyperlink": null
+        }
+      ],
+      "bounds": {
+        "x": 19948,
+        "y": 7031,
+        "width": 547,
+        "height": 78
+      },
+      "contentRole": "instruction"
+    }
+  ],
+  "layers": [
+    {
+      "id": "296:16433",
+      "name": "Просмотр",
+      "type": "FRAME",
+      "parent": "296:16431",
+      "bounds": {
+        "x": 19416,
+        "y": 6588,
+        "width": 360,
+        "height": 753
+      }
+    },
+    {
+      "id": "296:16434",
+      "name": "content",
+      "type": "FRAME",
+      "parent": "296:16433",
+      "bounds": {
+        "x": 19416,
+        "y": 6636,
+        "width": 393,
+        "height": 672
+      }
+    },
+    {
+      "id": "296:16435",
+      "name": "image",
+      "type": "RECTANGLE",
+      "parent": "296:16434",
+      "bounds": {
+        "x": 19416,
+        "y": 6636,
+        "width": 393,
+        "height": 672
+      }
+    },
+    {
+      "id": "296:16436",
+      "name": "fade",
+      "type": "RECTANGLE",
+      "parent": "296:16434",
+      "bounds": {
+        "x": 19416,
+        "y": 6636,
+        "width": 393,
+        "height": 112
+      }
+    },
+    {
+      "id": "296:16437",
+      "name": "Story Header",
+      "type": "FRAME",
+      "parent": "296:16434",
+      "bounds": {
+        "x": 19416,
+        "y": 6636,
+        "width": 393,
+        "height": 112
+      }
+    },
+    {
+      "id": "296:16438",
+      "name": "Button Icon Overlay",
+      "type": "INSTANCE",
+      "parent": "296:16437",
+      "bounds": {
+        "x": 19753,
+        "y": 6657,
+        "width": 56,
+        "height": 56
+      }
+    },
+    {
+      "id": "I296:16438;14499:6922",
+      "name": "Swap Icon",
+      "type": "INSTANCE",
+      "parent": "296:16438",
+      "bounds": {
+        "x": 19767,
+        "y": 6671,
+        "width": 28,
+        "height": 28
+      }
+    },
+    {
+      "id": "I296:16438;14499:6922;14340:92879",
+      "name": "Wrapper",
+      "type": "FRAME",
+      "parent": "I296:16438;14499:6922",
+      "bounds": {
+        "x": 19767,
+        "y": 6671,
+        "width": 28,
+        "height": 28
+      }
+    },
+    {
+      "id": "I296:16438;14499:6922;8448:75851",
+      "name": "icon",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "I296:16438;14499:6922;14340:92879",
+      "bounds": {
+        "x": 19772,
+        "y": 6675.9970703125,
+        "width": 17.999923706054688,
+        "height": 18.00018310546875
+      }
+    },
+    {
+      "id": "I296:16438;14499:6922;147:9239",
+      "name": ".cross_28",
+      "type": "INSTANCE",
+      "parent": "I296:16438;14499:6922;8448:75851",
+      "bounds": {
+        "x": 19767,
+        "y": 6671,
+        "width": 28,
+        "height": 28
+      }
+    },
+    {
+      "id": "I296:16438;14499:6922;147:9239;2363:106058",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:16438;14499:6922;147:9239",
+      "bounds": {
+        "x": 19772,
+        "y": 6675.9970703125,
+        "width": 18,
+        "height": 18
+      }
+    },
+    {
+      "id": "296:16439",
+      "name": "Button Icon Overlay",
+      "type": "INSTANCE",
+      "parent": "296:16437",
+      "bounds": {
+        "x": 19697,
+        "y": 6657,
+        "width": 56,
+        "height": 56
+      }
+    },
+    {
+      "id": "I296:16439;14499:6922",
+      "name": "Swap Icon",
+      "type": "INSTANCE",
+      "parent": "296:16439",
+      "bounds": {
+        "x": 19711,
+        "y": 6671,
+        "width": 28,
+        "height": 28
+      }
+    },
+    {
+      "id": "I296:16439;14499:6922;14340:92879",
+      "name": "Wrapper",
+      "type": "FRAME",
+      "parent": "I296:16439;14499:6922",
+      "bounds": {
+        "x": 19711,
+        "y": 6671,
+        "width": 28,
+        "height": 28
+      }
+    },
+    {
+      "id": "I296:16439;14499:6922;8448:75851",
+      "name": "icon",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "I296:16439;14499:6922;14340:92879",
+      "bounds": {
+        "x": 19723.25,
+        "y": 6676.25,
+        "width": 3.5,
+        "height": 17.5
+      }
+    },
+    {
+      "id": "I296:16439;14499:6922;147:9239",
+      "name": "dots_vertical",
+      "type": "INSTANCE",
+      "parent": "I296:16439;14499:6922;8448:75851",
+      "bounds": {
+        "x": 19711,
+        "y": 6671,
+        "width": 28,
+        "height": 28
+      }
+    },
+    {
+      "id": "I296:16439;14499:6922;147:9239;71:630",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:16439;14499:6922;147:9239",
+      "bounds": {
+        "x": 19723.25,
+        "y": 6676.25,
+        "width": 3.5,
+        "height": 17.5
+      }
+    },
+    {
+      "id": "296:16440",
+      "name": "Cell Search",
+      "type": "INSTANCE",
+      "parent": "296:16437",
+      "bounds": {
+        "x": 19416,
+        "y": 6654,
+        "width": 184,
+        "height": 60
+      }
+    },
+    {
+      "id": "I296:16440;6609:34120",
+      "name": "Simple",
+      "type": "INSTANCE",
+      "parent": "296:16440",
+      "bounds": {
+        "x": 19416,
+        "y": 6654,
+        "width": 184,
+        "height": 60
+      }
+    },
+    {
+      "id": "I296:16440;6609:34120;6135:35529",
+      "name": "Avatar",
+      "type": "INSTANCE",
+      "parent": "I296:16440;6609:34120",
+      "bounds": {
+        "x": 19428,
+        "y": 6664,
+        "width": 40,
+        "height": 40
+      }
+    },
+    {
+      "id": "I296:16440;6609:34120;6135:35529;2109:2438",
+      "name": "Container for Scale",
+      "type": "FRAME",
+      "parent": "I296:16440;6609:34120;6135:35529",
+      "bounds": {
+        "x": 19428,
+        "y": 6664,
+        "width": 40,
+        "height": 40
+      }
+    },
+    {
+      "id": "I296:16440;6609:34120;6135:35529;2109:2439",
+      "name": "Content",
+      "type": "FRAME",
+      "parent": "I296:16440;6609:34120;6135:35529;2109:2438",
+      "bounds": {
+        "x": 19428,
+        "y": 6664,
+        "width": 40,
+        "height": 40
+      }
+    },
+    {
+      "id": "I296:16440;6609:34120;6135:35529;2109:2444",
+      "name": "👨🏻‍🦰 Choose Image",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "I296:16440;6609:34120;6135:35529;2109:2439",
+      "bounds": {
+        "x": 19428,
+        "y": 6664,
+        "width": 40,
+        "height": 40
+      }
+    },
+    {
+      "id": "I296:16440;6609:34120;6135:35529;2109:2445",
+      "name": "Group 1",
+      "type": "GROUP",
+      "parent": "I296:16440;6609:34120;6135:35529;2109:2444",
+      "bounds": {
+        "x": 19428,
+        "y": 6664,
+        "width": 40,
+        "height": 40
+      }
+    },
+    {
+      "id": "I296:16440;6609:34120;6135:35529;2109:2446",
+      "name": "Choose Form",
+      "type": "INSTANCE",
+      "parent": "I296:16440;6609:34120;6135:35529;2109:2445",
+      "bounds": {
+        "x": 19428,
+        "y": 6664,
+        "width": 40,
+        "height": 40
+      }
+    },
+    {
+      "id": "I296:16440;6609:34120;6135:35529;2109:2446;2109:2030",
+      "name": "Ellipse 1",
+      "type": "ELLIPSE",
+      "parent": "I296:16440;6609:34120;6135:35529;2109:2446",
+      "bounds": {
+        "x": 19428,
+        "y": 6664,
+        "width": 40,
+        "height": 40
+      }
+    },
+    {
+      "id": "I296:16440;6609:34120;6135:35530",
+      "name": "Middle",
+      "type": "FRAME",
+      "parent": "I296:16440;6609:34120",
+      "bounds": {
+        "x": 19480,
+        "y": 6674,
+        "width": 108,
+        "height": 20
+      }
+    },
+    {
+      "id": "I296:16440;6609:34120;12893:54998",
+      "name": "Name",
+      "type": "FRAME",
+      "parent": "I296:16440;6609:34120;6135:35530",
+      "bounds": {
+        "x": 19480,
+        "y": 6674,
+        "width": 108,
+        "height": 20
+      }
+    },
+    {
+      "id": "I296:16440;6609:34120;6135:35532",
+      "name": "Contact Name",
+      "type": "TEXT",
+      "parent": "I296:16440;6609:34120;12893:54998",
+      "bounds": {
+        "x": 19480,
+        "y": 6674,
+        "width": 108,
+        "height": 20
+      }
+    },
+    {
+      "id": "296:16441",
+      "name": "progress",
+      "type": "FRAME",
+      "parent": "296:16437",
+      "bounds": {
+        "x": 19428,
+        "y": 6648,
+        "width": 369,
+        "height": 4
+      }
+    },
+    {
+      "id": "296:16442",
+      "name": "segment",
+      "type": "FRAME",
+      "parent": "296:16441",
+      "bounds": {
+        "x": 19428,
+        "y": 6648,
+        "width": 117.66666412353516,
+        "height": 4
+      }
+    },
+    {
+      "id": "296:16443",
+      "name": "segment",
+      "type": "FRAME",
+      "parent": "296:16441",
+      "bounds": {
+        "x": 19553.666015625,
+        "y": 6648,
+        "width": 117.66667175292969,
+        "height": 4
+      }
+    },
+    {
+      "id": "296:16444",
+      "name": "segment",
+      "type": "FRAME",
+      "parent": "296:16441",
+      "bounds": {
+        "x": 19679.333984375,
+        "y": 6648,
+        "width": 117.66667175292969,
+        "height": 4
+      }
+    },
+    {
+      "id": "296:16445",
+      "name": "Frame 1",
+      "type": "FRAME",
+      "parent": "296:16433",
+      "bounds": {
+        "x": 19416,
+        "y": 7317,
+        "width": 360,
+        "height": 24
+      }
+    },
+    {
+      "id": "296:16446",
+      "name": ".Home Indicator",
+      "type": "INSTANCE",
+      "parent": "296:16445",
+      "bounds": {
+        "x": 19416,
+        "y": 7317,
+        "width": 393,
+        "height": 24
+      }
+    },
+    {
+      "id": "I296:16446;2081:3447",
+      "name": "Home Indicator",
+      "type": "FRAME",
+      "parent": "296:16446",
+      "bounds": {
+        "x": 19416,
+        "y": 7317,
+        "width": 393,
+        "height": 24
+      }
+    },
+    {
+      "id": "I296:16446;2081:3448",
+      "name": "handle",
+      "type": "RECTANGLE",
+      "parent": "I296:16446;2081:3447",
+      "bounds": {
+        "x": 19559,
+        "y": 7327,
+        "width": 108,
+        "height": 4
+      }
+    },
+    {
+      "id": "296:16447",
+      "name": "Status Bar",
+      "type": "INSTANCE",
+      "parent": "296:16433",
+      "bounds": {
+        "x": 19416,
+        "y": 6588,
+        "width": 360,
+        "height": 48.000030517578125
+      }
+    },
+    {
+      "id": "I296:16447;2522:12269",
+      "name": "9:41",
+      "type": "TEXT",
+      "parent": "296:16447",
+      "bounds": {
+        "x": 19436,
+        "y": 6602,
+        "width": 28,
+        "height": 20
+      }
+    },
+    {
+      "id": "I296:16447;2522:12270",
+      "name": "System Status",
+      "type": "FRAME",
+      "parent": "296:16447",
+      "bounds": {
+        "x": 19704,
+        "y": 6600,
+        "width": 52.00006103515625,
+        "height": 24.000030517578125
+      }
+    },
+    {
+      "id": "I296:16447;2522:12271",
+      "name": "Wifi",
+      "type": "FRAME",
+      "parent": "I296:16447;2522:12270",
+      "bounds": {
+        "x": 19704,
+        "y": 6604,
+        "width": 18.666690826416016,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I296:16447;2522:12272",
+      "name": "wifi",
+      "type": "VECTOR",
+      "parent": "I296:16447;2522:12271",
+      "bounds": {
+        "x": 19706,
+        "y": 6606,
+        "width": 14.666685104370117,
+        "height": 11.333348274230957
+      }
+    },
+    {
+      "id": "I296:16447;2522:12273",
+      "name": "Data",
+      "type": "FRAME",
+      "parent": "I296:16447;2522:12270",
+      "bounds": {
+        "x": 19724.666015625,
+        "y": 6604,
+        "width": 16.00002098083496,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I296:16447;2522:12274",
+      "name": "data",
+      "type": "VECTOR",
+      "parent": "I296:16447;2522:12273",
+      "bounds": {
+        "x": 19723.609375,
+        "y": 6606.27490234375,
+        "width": 12.391877174377441,
+        "height": 12.391878128051758
+      }
+    },
+    {
+      "id": "I296:16447;2522:12275",
+      "name": "Battery",
+      "type": "FRAME",
+      "parent": "I296:16447;2522:12270",
+      "bounds": {
+        "x": 19742.666015625,
+        "y": 6604,
+        "width": 13.33335018157959,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I296:16447;2522:12276",
+      "name": "Union",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "I296:16447;2522:12275",
+      "bounds": {
+        "x": 19745.33203125,
+        "y": 6605.33349609375,
+        "width": 8,
+        "height": 13.3330078125
+      }
+    },
+    {
+      "id": "I296:16447;2522:12277",
+      "name": "stroke",
+      "type": "VECTOR",
+      "parent": "I296:16447;2522:12276",
+      "bounds": {
+        "x": 19745.33203125,
+        "y": 6605.33349609375,
+        "width": 8.00001049041748,
+        "height": 13.33335018157959
+      }
+    },
+    {
+      "id": "I296:16447;2522:12278",
+      "name": "fill",
+      "type": "RECTANGLE",
+      "parent": "I296:16447;2522:12276",
+      "bounds": {
+        "x": 19745.998046875,
+        "y": 6606.6669921875,
+        "width": 6.666675090789795,
+        "height": 12.000015258789062
+      }
+    }
+  ],
+  "imageHashes": [
+    "b71583a396568048be5ff60c6472b02dd8ccbf92",
+    "63902932f4ab0e5a6ec921a1c7c5053e58037654"
+  ],
+  "notes": [],
+  "visualTexts": [
+    {
+      "id": "I296:16440;6609:34120;6135:35532",
+      "name": "Contact Name",
+      "type": "TEXT",
+      "parent": "I296:16440;6609:34120;12893:54998",
+      "bounds": {
+        "x": 19480,
+        "y": 6674,
+        "width": 108,
+        "height": 20
+      },
+      "text": "Ваша история",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 16,
+      "segments": [
+        {
+          "characters": "Ваша история",
+          "start": 0,
+          "end": 12,
+          "fontSize": 16,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:175ca4baaf020cd4b444777e153b6ba3285dd289/31494:1966"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:b54f78cdc1ebec93a8d8419f3a73d9f449e3b22f,13678:263",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:16447;2522:12269",
+      "name": "9:41",
+      "type": "TEXT",
+      "parent": "296:16447",
+      "bounds": {
+        "x": 19436,
+        "y": 6602,
+        "width": 28,
+        "height": 20
+      },
+      "text": "9:41",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "9:41",
+          "start": 0,
+          "end": 4,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.800000011920929,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/2210:106"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    }
+  ],
+  "pngScale": 1,
+  "pngFile": "03-Общение-на-максимум/05-История/005-Экран/screen.png",
+  "previewFile": "03-Общение-на-максимум/05-История/005-Экран/preview.png",
+  "svgFile": "03-Общение-на-максимум/05-История/005-Экран/screen.svg",
+  "documentFile": "03-Общение-на-максимум/05-История/005-Экран/figma.json",
+  "images": [
+    {
+      "hash": "b71583a396568048be5ff60c6472b02dd8ccbf92",
+      "file": "03-Общение-на-максимум/05-История/005-Экран/images/85fe031e51c8f8fbb40617133972056d7e3d476774d4c351675ce06a186f5620.png"
+    },
+    {
+      "hash": "63902932f4ab0e5a6ec921a1c7c5053e58037654",
+      "file": "03-Общение-на-максимум/05-История/005-Экран/images/23b6585600ed201c42c9d62b9775474863f087accc720dd2c236d5dc7946d404.png"
+    }
+  ]
+}

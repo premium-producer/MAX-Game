@@ -1,0 +1,50 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><title>MAX — материалы клиента</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font:12px/1.45 Inter,Arial,sans-serif;background:var(--figma-color-bg,#fff);color:var(--figma-color-text,#222)}header,footer{padding:14px 18px;background:var(--figma-color-bg-secondary,#f4f4f7)}h1{font-size:17px;margin:0 0 6px}p{margin:6px 0}button,select,input{font:inherit}button,select{padding:7px 9px;border:1px solid #9996;border-radius:6px;background:var(--figma-color-bg,#fff);color:inherit}button{cursor:pointer}button:disabled{opacity:.45;cursor:default}button.primary{background:#6440db;color:#fff;border:0}label{display:inline-flex;gap:5px;align-items:center;margin:3px 10px 3px 0}main{padding:12px 18px;height:445px;overflow:auto}footer{position:sticky;bottom:0}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}.group{border:1px solid #9995;border-radius:8px;margin-bottom:12px;padding:10px}.group h2{font-size:13px;margin:0 0 8px}.row{display:grid;grid-template-columns:22px 48px 1fr;gap:7px;border-top:1px solid #9993;padding:8px 0}.row input[type=text]{width:100%;padding:4px;background:transparent;color:inherit;border:1px solid #9995}.row input[type=number]{width:45px}.row select{width:100%;margin:4px 0}.muted{opacity:.65}.warn{color:#ae6300}.preview{max-width:80px;max-height:150px;object-fit:contain;display:block;margin-top:7px}#status{white-space:pre-wrap}#coverage{white-space:pre-wrap;font-size:11px}summary{cursor:pointer}input[type=checkbox]{accent-color:#6440db}
+</style>
+<header><h1>MAX · сбор материалов клиента</h1><p>Читает текущую страницу. Сохраняет экраны и их контекст, не меняет макет. Передаёт экраны локальному серверу по одному с проверкой сохранения.</p>
+<div class="toolbar"><select id="scope"><option value="selection">Выделенные секции / экраны</option><option value="page">Вся текущая страница</option></select><select id="detection" aria-label="Способ чтения"><option value="structure">По секциям и именам фреймов</option><option value="legacy">Старый макет · поиск по виду и заголовкам</option></select><button id="scan" class="primary">1. Найти экраны</button><button id="cancel" disabled>Отменить</button></div>
+<p class="muted">Секция → подсекция (если есть) → фреймы. Имена сохраняются целиком; «Комментарий — 1 (начало)» идёт перед «Комментарий — 2 (фокус инпута)».</p></header>
+<main><p id="intro">Будут собраны фреймы из выбранных секций, включая вложенные подсекции. Пропорции экрана не ограничены. Назначение задания можно изменить целой группе; названия и иерархия берутся из макета.</p><div id="summary"></div><div class="toolbar" id="filters" hidden><select id="filter"><option value="all">Все группы</option><option value="review">Требуют проверки</option></select><button id="all">Выбрать все</button><button id="none">Снять всё</button></div><div id="groups"></div><details><summary>Покрытие заданий</summary><div id="coverage">После сканирования здесь появится список.</div></details></main>
+<footer><div><label>PNG <select id="scale"><option value="1">1×</option><option value="2">2×</option></select></label><label><input id="structure" type="checkbox" checked>Структура слоёв</label><label><input id="images" type="checkbox" checked>Исходные растры</label><label><input id="svg" type="checkbox">SVG экранов</label></div>
+<div class="toolbar"><button id="export" disabled class="primary">2. Экспортировать / продолжить</button><button id="new-export" disabled>Новая выгрузка</button></div><progress id="progress" value="0" max="1" style="width:100%"></progress><p id="saved"></p><p id="status" role="status">Готов к чтению страницы.</p><p class="muted">Сначала откройте Start-Server.bat. Результат — одна папка с датой экспорта. При сбое нажмите «Экспортировать / продолжить»: проверенные экраны будут пропущены. Шрифты и видео не выгружаются.</p></footer>
+<script>
+const $=id=>document.getElementById(id),post=m=>parent.postMessage({pluginMessage:m},'*');let scan=null,bundle=null,busy=false;const previews=new Map();
+const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
+const status=t=>$('status').textContent=t;
+function lock(value){busy=value;for(const id of ['scan','export','new-export','scope','detection','scale','structure','images','svg','all','none'])$(id).disabled=value||['export','new-export'].includes(id)&&!scan;$('cancel').disabled=!value;$('groups').inert=value;}
+function options(value){const s=el('select');for(const t of scan.tasks){const o=el('option',t.label);o.value=t.id;s.append(o);}s.value=value;return s;}
+function coverage(){if(!scan)return;const selected=scan.records.filter(r=>r.include);$('coverage').textContent=scan.tasks.filter(t=>t.id!=='unassigned').map(t=>`${t.label}: ${selected.filter(r=>r.task===t.id).length} экранов`).join('\n')+'\n\nКоличество не означает полноту сценария. Непоказанное на этой странице может быть на другой.';}
+function invalidate(){bundle=null;coverage();}
+function draw(){
+ $('groups').replaceChildren();$('intro').hidden=true;$('filters').hidden=false;
+ const grouped=new Map();for(const r of scan.records){if(!grouped.has(r.group))grouped.set(r.group,[]);grouped.get(r.group).push(r);}
+ for(const [key,records] of grouped){if($('filter').value==='review'&&records.every(r=>r.reviewed))continue;
+  const box=el('section',undefined,'group'),first=records[0],heading=first.groupName||first.evidence.find(e=>e.id===key)?.text||first.nearbyHeadings[0]?.text||first.ancestors[0]?.name||first.name;
+  box.append(el('h2',`${heading} · ${records.length} экранов`));
+  const tools=el('div',undefined,'toolbar'),assign=options(first.task),apply=el('button','Назначить всей группе'),check=el('button','Группа проверена'),preview=el('button','Превью группы');
+  apply.onclick=()=>{records.forEach(r=>{r.task=assign.value;r.reviewed=true;});invalidate();draw();};check.onclick=()=>{records.forEach(r=>r.reviewed=true);invalidate();draw();};
+  preview.onclick=()=>{lock(true);post({type:'preview',ids:records.map(r=>r.id)});};tools.append(assign,apply,check,preview);box.append(tools);
+  for(const r of records){const row=el('div',undefined,'row'),inc=el('input');inc.type='checkbox';inc.checked=r.include;inc.onchange=()=>{r.include=inc.checked;invalidate();};
+   const order=el('input');order.type='number';order.min=1;order.value=r.order;order.title='Порядок в выгрузке (можно исправить)';order.onchange=()=>{r.order=Number(order.value);invalidate();};
+   const body=el('div'),title=el('input');title.type='text';title.value=r.title||r.name;title.title='Название в каталоге; исходный слой не переименовывается';title.onchange=()=>{r.title=title.value;invalidate();};const task=options(r.task);task.onchange=()=>{r.task=task.value;r.reviewed=true;invalidate();};
+   body.append(title,task,el('div',`${r.id} · ${Math.round(r.bounds.width)}×${Math.round(r.bounds.height)} · ${r.reviewed?'проверено':r.confidence==='high'?'по имени/секции — проверить':r.confidence==='inferred'?'по заголовку — проверить':'нужно назначение'}`,r.reviewed?'muted':'warn'));
+   const details=el('details'),summary=el('summary','Почему так определено');details.append(summary,el('p',r.ancestors.map(a=>a.name).reverse().join(' / ')),el('p',r.evidence.slice(0,6).map(e=>`${e.source}: ${e.text}`).join('\n')||'Нет тематического контекста'),el('p',r.warnings.join('; ')));body.append(details);
+   if(previews.has(r.id)){const img=el('img',undefined,'preview');img.alt=r.title||r.name;img.src='data:image/png;base64,'+previews.get(r.id);body.append(img);}row.append(inc,order,body);box.append(row);
+  }$('groups').append(box);
+ }coverage();
+}
+$('scan').onclick=()=>{invalidate();previews.clear();lock(true);status('Читаю страницу…');post({type:'scan',scope:$('scope').value,detection:$('detection').value||'structure'});};
+$('cancel').onclick=()=>{post({type:'cancel'});status('Отмена после текущей операции Figma…');};
+$('filter').onchange=draw;for(const [id,v] of [['all',true],['none',false]])$(id).onclick=()=>{scan.records.forEach(r=>r.include=v);invalidate();draw();};
+onmessage=event=>{const m=event.data.pluginMessage;if(!m)return;
+ if(m.type==='status')status(m.text);
+ if(m.type==='scan'){scan=m;bundle=null;lock(false);$('summary').textContent=`${m.source.pageName}: ${m.records.length} экранов, ${m.layerCount} слоёв. ${m.warnings.join(' ')}`;draw();status(m.source.detection==='structure'?'Прочитаны секции и имена фреймов. Проверьте список и нажмите «Экспортировать / продолжить».':'Проверьте найденные группы и назначения.');}
+ if(m.type==='preview'){previews.set(m.id,m.data);draw();$('groups').inert=busy;}
+ if(m.type==='idle'){lock(false);status(m.text);}
+ if(m.type==='export-start')status(`Экспорт: 0 / ${m.total}`);
+ if(m.type==='progress'){$('progress').max=m.total;$('progress').value=m.count;status(`Сохранено и проверено: ${m.count} / ${m.total}`);}
+ if(m.type==='error'){lock(false);status(m.text);}
+};
+/*__SERVER_CLIENT__*/
+</script></html>

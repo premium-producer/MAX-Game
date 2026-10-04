@@ -1,0 +1,25 @@
+{
+  "url": "http://localhost:8770/max-game/webgl-v5/?backend=local&layout=wall&v=frost-origin-1",
+  "change": "Frost parent viewport to letterboxed iframe coordinates",
+  "checks": [
+    {
+      "file": "common-map-background.js",
+      "status": 200,
+      "sha256": "abebefa1c30489858fc85d4ac5f1db5e24dd062391f59306792755e766a6e2bd"
+    },
+    {
+      "file": "common-map-game-background.js",
+      "status": 200,
+      "sha256": "be99e2cdc94ca48e5c3ec5ac693e32cf659e2d8dd77025a67647b7bbb16f8d6c"
+    },
+    {
+      "file": "common-map-game-frost.js",
+      "status": 200,
+      "sha256": "710500ad21e0ff05c1bee48cb2c22fe111497d1d85549b96d447a68a7fdfc5eb"
+    }
+  ],
+  "cpuTests": 6,
+  "visual": "OPEN",
+  "gpu": "NOT_CHECKED",
+  "serviceMode": "run"
+}

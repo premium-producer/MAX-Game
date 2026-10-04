@@ -1,0 +1,46 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {pathToFileURL} from 'node:url';
+import {releaseTarget} from './build-figma-backend.mjs';
+
+const manifest=JSON.parse(await fs.readFile(path.join(releaseTarget,'manifest.json'),'utf8'));
+let bytes=0;
+for(const [name,hash] of Object.entries(manifest.files)){
+ const data=await fs.readFile(path.join(releaseTarget,name));
+ assert.equal(createHash('sha256').update(data).digest('hex'),hash,name);bytes+=data.length;
+}
+const moduleAt=rel=>import(pathToFileURL(path.join(releaseTarget,rel)).href);
+const {createMissionSessionApplication}=await moduleAt('src/application/mission-session.mjs');
+const {createMemoryPersistencePort}=await moduleAt('src/application/memory-persistence.mjs');
+const persistence=createMemoryPersistencePort();let now=1000;
+let app=createMissionSessionApplication({persistence,now:()=>now});
+const id='figma.release.check';let snap=await app.createSession({sessionId:id});
+assert.equal(snap.view.missions.length,4);
+assert.ok(snap.view.missions.every(m=>m.icon.origin.kind==='provided-ui-icon'));
+assert.equal(snap.view.icons.fallback.assetId,'max-icon.missing');
+snap=await app.inputOwnerChanged(id,{active:true});
+const command=(type,fields,commandId)=>({schemaVersion:1,type,commandId,sessionId:id,contentRevision:snap.state.contentRevision,expectedRevision:snap.state.revision,...fields});
+let response=await app.sendCommand(command('SELECT_MISSION',{missionId:'blogger'},'select'));
+assert.equal(response.reply.ok,true);snap=response.snapshot;
+await app.handleContact(id,{contactId:'hand',sequence:0,type:'down',inside:true});
+now+=800;snap=await app.handleContact(id,{contactId:'hand',sequence:1,type:'up',inside:true});
+assert.equal(snap.state.screenId,'blogger.channel.chats');
+assert.ok(snap.view.nodes.every(n=>n.icon.origin.kind==='provided-ui-icon'));
+assert.match(snap.view.device.asset.path,/assets\/figma-20261003\//);
+assert.equal(snap.view.instruction.text,'Приступаем к созданию канала в MAX');
+const action=snap.view.actions[0];assert.equal(action.placement,'hotspot');
+const act=command('ACT',{screenId:snap.state.screenId,actionId:action.actionId},'plus');
+response=await app.sendCommand(act);assert.equal(response.reply.ok,true);
+assert.equal(response.snapshot.state.screenId,'blogger.channel.menu');
+assert.equal((await app.sendCommand(act)).duplicate,true);
+await app.close();now+=100;
+app=createMissionSessionApplication({persistence,now:()=>now});
+snap=await app.getSnapshot(id);
+assert.equal(snap.state.screenId,'blogger.channel.menu');assert.equal(snap.state.ownerActive,false);
+assert.equal((await app.sendCommand(act)).duplicate,true);
+await app.close();
+const result={status:'PASS',release:manifest.sourceRelease,checkedFiles:Object.keys(manifest.files).length,bytes,assetCount:manifest.assets.length??Object.keys(manifest.assets).length,sessionPort:'built package: select, hold, hotspot, duplicate, restore',storage:'explicit memory test fixture; no production database touched'};
+const report=path.resolve('artifacts/reports/max-backend-icons-20261003.json');
+await fs.writeFile(report,JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));

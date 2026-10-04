@@ -1,0 +1,94 @@
+/* MAX artwork and fixed coordinates; BFM native motion tokens below. */
+:root{--ease-fade:cubic-bezier(.37,0,.63,1);--ease-out:cubic-bezier(.22,1,.36,1);--motion-fast:220ms;--motion-medium:620ms;--motion-slow:820ms;color:#fff;font-family:var(--max-font),sans-serif;background:#0d001a}
+*{box-sizing:border-box}body{margin:0;overflow:hidden}button{font:inherit;color:inherit;cursor:pointer}button:focus-visible{outline:3px solid #00bfff;outline-offset:8px}[hidden]{display:none!important}
+#ambient{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;view-transition-name:bfm-background}
+#wall{position:absolute;width:4096px;height:1280px;left:0;top:0;transform-origin:0 0}
+#identity{position:absolute;left:132px;top:90px;width:540px;view-transition-name:kiosk-hud}#identity img{width:280px;height:90px;object-fit:contain;object-position:left}#mission-title{font-size:42px;line-height:1.12;max-width:520px;color:#b69cff}
+#hud{position:absolute;right:110px;top:88px;display:flex;gap:25px;z-index:3;view-transition-name:kiosk-steps}#hud button{border:1px solid #ffffff30;background:#250d62;border-radius:40px;padding:16px 28px;font-size:32px}
+#stage{position:absolute;left:1984px;top:168px;width:1543px;height:950px;view-transition-name:kiosk-stage}
+[data-screen]{position:absolute;inset:0}[data-screen=menu] h1{text-align:center;font-size:54px;font-weight:500;margin:55px 0 50px}#missions{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;padding:0 40px}.mission{min-height:165px;padding:25px 35px;border:1px solid #b894ff60;border-radius:32px;text-align:left;background:#251061dd;font-size:34px;line-height:1.14;transition:background var(--motion-fast),box-shadow var(--motion-fast)}.mission:hover{background:#441397}.mission small{display:block;font-size:22px;color:#baa0e8;margin-top:12px}
+#scan-content{position:absolute;left:584px;top:420px;width:0;height:0;text-align:center}#palm{position:absolute;left:-60px;top:-60px;touch-action:none;user-select:none}#scan-content h1{position:absolute;left:-440px;top:100px;width:880px;font-size:64px;font-weight:400;line-height:1.12;margin:0}#scan-content p{position:absolute;left:-240px;top:295px;width:480px;font-size:24px;color:#b5a3d7}
+.tile{width:120px;height:120px;border:0;border-radius:32px;background:radial-gradient(ellipse at 5% 100%,#00caff 0,transparent 68%),linear-gradient(125deg,#404dff 8%,#6c18ff 55%,#ad00ff);box-shadow:0 4px 24px #661aff40;color:white}.tile svg{width:64px;height:64px;margin:28px}.tile .reference-glyph{width:120px;height:120px;margin:0}#palm::after{content:'';position:absolute;inset:-9px;border:3px solid #00cfff;border-radius:42px;opacity:0;transition:opacity 220ms}#palm.held::after{opacity:1}#palm.held{box-shadow:0 0 60px #2385ff99}
+#nodes{position:absolute;inset:0}.node{position:absolute;left:524px;top:360px;width:120px;height:205px}.node-inner{width:120px;animation:bfm-float 3600ms ease-in-out infinite alternate;animation-delay:var(--float-delay,0ms)}.node-label{position:absolute;top:135px;left:-50px;width:220px;text-align:center;font-size:24px;line-height:1.16;margin:0}.is-pending-entrance [data-enter]{opacity:0}
+@keyframes bfm-float{from{transform:translateY(-4px)}to{transform:translateY(4px)}}
+.motion-paused *{animation-play-state:paused!important}
+#iteration{position:fixed;bottom:8px;left:12px;font-size:12px;color:#c7b9ef;background:#16082acc;padding:5px 9px;border-radius:8px}#error{position:fixed;bottom:44px;left:12px;max-width:650px;background:#6c1834;color:white;padding:18px;border-radius:12px;z-index:100}
+/* BFM persistent layers: document snapshots render above ordinary z-index.
+   Keep every permanent overlay in its own snapshot, above the scene/background. */
+#pixel-map-overlay{view-transition-name:bfm-pixel-map}
+#pixel-map-control{view-transition-name:bfm-map-control}
+#gradient-controls{view-transition-name:bfm-gradient-controls}
+#iteration{view-transition-name:bfm-iteration}
+#viewport-control{view-transition-name:bfm-viewport-control}
+.game-zone-guide{view-transition-name:bfm-play-guide}
+/* The root snapshot includes the opaque page fill: keep it below the GPU background. */
+::view-transition-group(root){z-index:0}
+::view-transition-group(bfm-background){z-index:1}
+::view-transition-group(kiosk-stage){z-index:2;animation-duration:720ms;animation-timing-function:var(--ease-fade)}
+::view-transition-old(kiosk-stage){animation:stage-out 560ms var(--ease-fade) both}
+::view-transition-new(kiosk-stage){animation:stage-in 720ms 60ms var(--ease-fade) both}
+::view-transition-group(kiosk-hud),::view-transition-group(kiosk-steps){z-index:100}
+::view-transition-group(bfm-play-guide){z-index:120}
+::view-transition-group(bfm-pixel-map){z-index:200}
+::view-transition-group(bfm-iteration){z-index:210}
+::view-transition-group(bfm-gradient-controls){z-index:220}
+::view-transition-group(bfm-map-control){z-index:230}
+::view-transition-group(bfm-viewport-control){z-index:240;animation:none}
+::view-transition-old(bfm-viewport-control){animation:none;opacity:0}
+::view-transition-new(bfm-viewport-control){animation:none;opacity:1;mix-blend-mode:normal}
+::view-transition-group(kiosk-hud),::view-transition-group(kiosk-steps),::view-transition-group(bfm-background),::view-transition-group(bfm-play-guide),::view-transition-group(bfm-pixel-map),::view-transition-group(bfm-iteration),::view-transition-group(bfm-gradient-controls),::view-transition-group(bfm-map-control){animation:none}
+::view-transition-old(kiosk-hud),::view-transition-old(kiosk-steps),::view-transition-old(bfm-background),::view-transition-old(bfm-play-guide),::view-transition-old(bfm-pixel-map),::view-transition-old(bfm-iteration),::view-transition-old(bfm-gradient-controls),::view-transition-old(bfm-map-control),::view-transition-old(root){animation:none;opacity:0}
+::view-transition-new(kiosk-hud),::view-transition-new(kiosk-steps),::view-transition-new(bfm-background),::view-transition-new(bfm-play-guide),::view-transition-new(bfm-pixel-map),::view-transition-new(bfm-iteration),::view-transition-new(bfm-gradient-controls),::view-transition-new(bfm-map-control),::view-transition-new(root){animation:none;opacity:1;mix-blend-mode:normal}
+.is-view-transitioning{pointer-events:none}
+@keyframes stage-out{from{opacity:1}to{opacity:0}}@keyframes stage-in{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+/* Only the paint layer rotates; glyphs, captions, outline and input stay fixed. */
+.tile{position:relative;isolation:isolate;--tile-gradient:radial-gradient(ellipse at 5% 100%,#00caff 0,transparent 68%),linear-gradient(125deg,#404dff 8%,#6c18ff 55%,#ad00ff)}
+/* Explicit native rounded clipping stays attached to the moving paint layer. */
+.gradient-clip{position:absolute;inset:0;border-radius:inherit;overflow:hidden;clip-path:border-box;pointer-events:none;z-index:0}
+.gradient-surface{position:absolute;inset:-35%;background:var(--tile-gradient)}
+.tile>svg{position:relative;z-index:1}
+#gradient-controls{position:fixed;right:12px;bottom:12px;z-index:10;width:260px;padding:12px 16px;border:1px solid #b894ff60;border-radius:16px;background:#190d38f2;font-size:14px;color:#fff}
+#gradient-controls summary{cursor:pointer}#gradient-controls label{display:flex;justify-content:space-between;gap:10px;margin-top:16px}#gradient-controls input[type=range]{display:block;width:100%;accent-color:#6e1aff;margin-top:8px}#gradient-controls .gradient-pause{justify-content:flex-start;align-items:center}
+
+/* Shared backend descriptors, rendered using MAX reference dimensions. */
+/* Static authored alignment: phone centre (110+540/2) meets scene centre475.
+   The stage has one enlarged scale from boot, never a task-time zoom. */
+[data-screen=task]{translate:0 95px}
+#timer{padding:16px 28px;font-size:32px;background:#250d62;border-radius:40px;min-width:130px;text-align:center}
+.mission-complete{border-color:#00bfff}.mission-complete::after{content:' · ✓';color:#00bfff}
+#task-route{position:absolute;inset:0;pointer-events:none}#task-route .node{top:360px}#task-route .node-complete .node-label::after{content:' ✓';color:#00bfff}
+#task-links{position:absolute;inset:0;width:1543px;height:950px;pointer-events:none}#task-links path{fill:none;stroke:url(#link-color);stroke-width:5;stroke-linecap:round;stroke-dasharray:1500;animation:bfm-link-enter 820ms var(--ease-out) both}
+@keyframes bfm-link-enter{from{stroke-dashoffset:1500;opacity:0}to{stroke-dashoffset:0;opacity:1}}
+#mission-content{position:absolute;inset:0;pointer-events:none}.task-dialog{position:absolute;inset:0}
+.demo-app{position:absolute;left:472px;top:110px;width:224px;padding:8px;border:1px solid #9980ff80;border-radius:32px;background:#241048;box-shadow:0 0 24px #6e1aff50;pointer-events:auto}
+.phone-content{position:relative}.task-media-frame{width:100%}.task-media-canvas{position:relative;width:100%;overflow:hidden;border-radius:24px;background:#170a30}.task-media-image{display:block;width:100%;height:100%;object-fit:contain}.media-hotspot{position:absolute;z-index:2;background:transparent;border:0;padding:0;border-radius:6px;touch-action:manipulation}.media-hotspot:focus-visible{outline:3px solid #00bfff;outline-offset:-3px}.media-hotspot:active{background:#00bfff20}
+.client-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.pill{border:1px solid #b894ff70;background:linear-gradient(100deg,#00bfff,#6e1aff 65%,#9500ff);border-radius:22px;font-size:24px;padding:16px 20px;color:white}.client-actions .pill{flex:1 1 100%;font-size:21px;padding:13px 12px;line-height:1.15}.client-actions:empty{display:none}.phone-camera,.phone-home{display:none}
+.instruction{position:absolute;left:835px;top:410px;transform:translateY(-50%);width:660px;min-height:350px;padding:56px 64px;border:1px solid #8e68e06b;border-radius:80px;background:radial-gradient(ellipse at 80% 100%,#6e1aff90,transparent 70%),#28105ef0;pointer-events:none;z-index:2}.instruction .eyebrow{font-size:20px;color:#b5a3d7}.instruction h2{font-size:48px;line-height:1.08;margin:20px 0 24px;font-weight:500}.instruction p{font-size:34px;line-height:1.22;margin:0;white-space:pre-line}
+.demo-app[data-device=pc]{left:410px;top:200px;width:540px;border-radius:24px}.demo-app[data-device=pc] .task-media-canvas{border-radius:15px}.pc-chrome{font-size:18px;padding:8px 12px 14px;color:#cdbfff}.demo-app[data-device=pc] .client-actions .pill{flex-basis:auto}.task-dialog:has([data-device=pc]) .instruction{left:1010px;width:480px;padding:42px;border-radius:50px}.task-dialog:has([data-device=pc]) .instruction h2{font-size:40px}.task-dialog:has([data-device=pc]) .instruction p{font-size:28px}.media-missing{padding:32px 22px;min-height:260px;font-size:24px;line-height:1.3;display:flex;align-items:center;margin:0}
+.mission-finish{position:absolute;left:260px;top:60px;width:950px;min-height:700px;padding:54px;text-align:center;border-radius:60px;border:1px solid #8e68e080;background:#25105ef0;pointer-events:auto}.mission-finish h1{font-size:58px;line-height:1.1;margin:0 0 24px}.mission-finish p{font-size:30px;line-height:1.2}.mission-qr{display:block;width:250px;height:250px;object-fit:contain;margin:28px auto 12px;background:white;border-radius:20px;padding:12px}.mission-finish .qr-label{font-size:22px}.mission-finish button{margin:10px}
+#media-status{position:absolute;left:2456px;top:300px;width:350px;z-index:5;background:#25105ef5;padding:24px;border-radius:28px;border:1px solid #9980ff80;font-size:26px;text-align:center}#media-retry{display:block;margin:20px auto 0;border:0;border-radius:16px;background:#6e1aff;padding:12px 20px}
+
+/* Read-only guides follow the real stage and palm hit rectangle; never capture input. */
+.game-zone-guide{position:absolute;inset:0;border:3px dashed #b99bffa6;border-radius:32px;pointer-events:none;z-index:4}
+.game-zone-guide>span,.scanner-zone-guide>span{position:absolute;white-space:nowrap;background:#160b38ed;font-size:28px;font-weight:500;line-height:1.2;padding:8px 18px;border-radius:12px}
+.game-zone-guide>span{left:28px;top:-27px;color:#ddceff;border:1px solid #b99bff80}
+.scanner-zone-guide{position:absolute;left:-60px;top:-60px;width:120px;height:120px;border:3px solid #00bfff;border-radius:32px;pointer-events:none;z-index:4}
+.scanner-zone-guide>span{left:50%;bottom:calc(100% + 22px);transform:translateX(-50%);color:#7de6ff;border:1px solid #00bfff99}
+
+/* Full right-wall fit: physical pixel grid and GPU crop share the same viewport. */
+#ambient{inset:auto;left:50%;top:50%;width:min(100vw,320vh);height:min(100vh,31.25vw);transform:translate(-50%,-50%)}
+#pixel-map-overlay{position:absolute;inset:0;z-index:6;pointer-events:none}
+#pixel-map-overlay>svg{display:block;width:100%;height:100%}
+.map-copy{font:28px var(--max-font),sans-serif;fill:white;paint-order:stroke;stroke:#100823;stroke-width:6px;stroke-linejoin:round}
+.map-lidar{fill:#ffd080}.map-comfort{fill:#75ffd5}
+#pixel-map-control{position:fixed;top:10px;left:10px;z-index:20;display:flex;gap:8px;align-items:center;padding:9px 12px;border:1px solid #ffffff50;border-radius:10px;background:#160b38ee;color:white;font-size:14px}
+#viewport-control{position:fixed;top:10px;right:12px;z-index:20;display:flex;gap:8px;align-items:center;padding:9px 12px;border:1px solid #ffffff50;border-radius:10px;background:#160b38ee;color:white;font-size:14px}
+#viewport-layout{font:inherit;color:white;background:#25105e;border:1px solid #b894ff60;border-radius:6px;padding:4px 8px}
+
+/* One authored scene fitted by the browser into the user-selected physical band. */
+#stage{transform-origin:center}
+#scan-content{left:50%;top:50%}
+#nodes>.node{left:calc(50% - 60px);top:calc(50% - 60px)}
+.mission-finish{left:50%;top:50%;transform:translate(-50%,-50%)}

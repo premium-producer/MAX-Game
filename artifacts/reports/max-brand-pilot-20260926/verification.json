@@ -1,0 +1,58 @@
+{
+  "date": "2026-09-26",
+  "build": {
+    "assets": 10,
+    "rules": 41,
+    "colors": 5,
+    "gradientStops": 3
+  },
+  "deterministicRebuild": true,
+  "packageFiles": 19,
+  "packageBytes": 576307,
+  "sourceIndexBytes": 182804,
+  "assetHashesVerified": 10,
+  "jsonFilesParsed": 9,
+  "rules": {
+    "total": 41,
+    "sourceVerified": 39,
+    "conflicts": 2,
+    "evidenceMatchesSource": true
+  },
+  "unitTests": {
+    "passed": 8,
+    "failed": 0,
+    "command": "python -B artifacts/DESIGN/brand-tools/test_brand_tools.py"
+  },
+  "skills": [
+    {
+      "name": "brandbook-ingest",
+      "frontmatterAndLinks": "pass"
+    },
+    {
+      "name": "max-brand",
+      "frontmatterAndLinks": "pass"
+    }
+  ],
+  "skillValidationMethod": "Simple frontmatter constraints and local reference checks; official quick_validate.py not run because PyYAML is unavailable.",
+  "browser": {
+    "url": "http://localhost:47839/proof.html",
+    "tabs": 1,
+    "imagesLoaded": 5,
+    "horizontalOverflow": false,
+    "consoleWarningsErrors": [],
+    "fontRequests200": 5,
+    "cssRequest200": true,
+    "visualCheck": "Logo variants, proportions, Cyrillic font specimens and palette inspected.",
+    "note": "Initial favicon request was 404; explicit data favicon added. FontFaceSet inspection unavailable through read-only bridge; font network requests and visible samples used.",
+    "cleanup": "Test tab closed and its localhost server stopped."
+  },
+  "sourceIntegrity": "1264 inventory files verified; source metadata hashes match pinned snapshot",
+  "embodyManagedSectionUnchanged": true,
+  "limitations": [
+    "No full pixel comparison with live Figma",
+    "No PDF editor round trip",
+    "No production app integration",
+    "No brand-owner approval",
+    "No second-brand trial"
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "$schema": "../mission-v2.schema.json",
+  "number": 2,
+  "id": "arctic-route",
+  "name": "АРКТИКА НА СВЯЗИ",
+  "description": "Удалённая точка в Арктике находится вне зоны покрытия, а выбрать место для наземной станции можно только там, где есть необходимая инфраструктура.\n\nЗадача: определи высоту орбиты и число спутников, найди подходящее место для наземной станции.",
+  "summary": "Обеспечь спутниковое покрытие в удалённой точке Арктики",
+  "level": "СРЕДНИЙ",
+  "timeSeconds": 150,
+  "mapPosition": {
+    "latitude": 60.4473,
+    "longitude": 87.4832
+  },
+  "endpoints": {
+    "start-point-a-1": {
+      "label": "",
+      "icon": "point-a",
+      "roles": [
+        "start"
+      ],
+      "latitude": 65.2148,
+      "longitude": 154.8417
+    },
+    "finish-point-b-1": {
+      "label": "",
+      "icon": "point-b",
+      "roles": [
+        "finish"
+      ],
+      "latitude": 73.7534,
+      "longitude": -34.9433
+    }
+  },
+  "connectEndpointsOnComplete": false,
+  "objectives": [
+    {
+      "id": "double-satellite",
+      "label": "определи высоту орбиты спутников",
+      "condition": {
+        "type": "segment",
+        "path": "main",
+        "from": 2,
+        "to": 3,
+        "anchor": "start"
+      }
+    },
+    {
+      "id": "return-to-ground",
+      "label": "найди место для шлюзовой станции",
+      "condition": {
+        "type": "segment",
+        "path": "main",
+        "from": 3,
+        "to": 5,
+        "anchor": "start"
+      }
+    },
+    {
+      "id": "use-all-equipment",
+      "label": "используй все необходимые элементы сети",
+      "condition": {
+        "type": "allPlaced"
+      }
+    }
+  ],
+  "successText": "Связь с удалённой точкой в Арктике установлена",
+  "unlock": {
+    "requiresCompleted": [
+      1
+    ]
+  },
+  "equipmentSet": "set-2",
+  "topology": {
+    "paths": [
+      {
+        "id": "main",
+        "from": "start-point-a-1",
+        "to": "finish-point-b-1",
+        "endpointSelection": {
+          "from": "anyRole",
+          "to": "specific"
+        },
+        "endpointSignals": {
+          "from": "nearest",
+          "to": "nearest"
+        },
+        "steps": [
+          {
+            "role": "terminal-1",
+            "type": "terminal"
+          },
+          {
+            "role": "satellite-2",
+            "type": "satellite"
+          },
+          {
+            "role": "satellite-3",
+            "type": "satellite"
+          },
+          {
+            "role": "gateway-4",
+            "type": "gateway"
+          },
+          {
+            "role": "core-5",
+            "type": "core"
+          }
+        ],
+        "connection": {
+          "policy": "geographicCorridor",
+          "corridorWidth": 2,
+          "ambiguityEpsilon": 0.0001
+        }
+      }
+    ]
+  },
+  "completion": {
+    "type": "allPaths"
+  },
+  "feedback": {
+    "invalid": "neutral"
+  },
+  "feedbackEvents": {
+    "success": [
+      {
+        "id": "mission-complete",
+        "eyebrow": "МИССИЯ № 2 ВЫПОЛНЕНА",
+        "title": "МИССИЯ ВЫПОЛНЕНА",
+        "message": "Связь с удалённой точкой в Арктике установлена",
+        "condition": {
+          "type": "missionComplete"
+        },
+        "action": "complete"
+      }
+    ],
+    "error": [
+      {
+        "id": "satellite-too-high",
+        "eyebrow": "ОШИБКА ОРБИТЫ",
+        "title": "СВЯЗЬ НЕ УСТАНОВЛЕНА",
+        "message": "Спутник слишком высоко\nОпусти его ниже допустимого уровня, чтобы восстановить устойчивую связь",
+        "condition": {
+          "type": "altitude",
+          "object": "satellite",
+          "comparison": "above",
+          "value": 1,
+          "quantifier": "any"
+        },
+        "negativeConnections": "matched"
+      },
+      {
+        "id": "invalid-connection",
+        "eyebrow": "ОШИБКА СОЕДИНЕНИЯ",
+        "title": "СВЯЗЬ НЕ УСТАНОВЛЕНА",
+        "message": "Нарушена последовательность элементов",
+        "condition": {
+          "type": "invalidConnection"
+        },
+        "negativeConnections": "invalid"
+      }
+    ]
+  },
+  "objectSettings": {},
+  "engineVersion": 2,
+  "_revision": "e45be3a1-7109-4e6e-9c04-9b03bf3c3874"
+}

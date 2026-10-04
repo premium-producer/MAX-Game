@@ -1,0 +1,9 @@
+# Guided Reveal в локальном мастере — 30.09.2026
+
+По запросу пользователя актуальная редакция MAX Guided Reveal подключена к источнику `max-wall-right` локального мастера. Worker загружает `/max-game/guided-reveal/?surface=right&service=1&layout=single`; ссылки полного качества ведут на `/max-game/guided-reveal/`. В service-режиме игра располагается внутри логического правого экрана 4096×1280 и показывает общий фон задней стены мастера. Предыдущие самостоятельные версии игры сохранены. Публикация на сервер не выполнялась.
+
+Обновлены runtime `apps/max-game` и `apps/stand-service` штатными сборщиками. До и после сборки `check_project_duplicates.py` — PASS. `node --check` изменённых JS — PASS; 33 CPU-теста Guided Reveal, media и worker — PASS; `check-local.mjs` — PASS. SHA исходников и runtime для worker/master совпадают. HTTP `/service/max-game-worker.js`, `/max-game/guided-app.js` и `/max-game/guided-reveal/index.html` — 200, содержимое соответствует runtime.
+
+Через штатный API перезапущен только `max-wall-right`. Поколение worker сменилось с `f68bfc3d-f66b-48ae-a68c-8b149c858682` на `1b024e88-f513-4689-b57a-366ea24faed1`; источник `running`, кадры идут, Spout `sending`. Штатный `apps/STARTUP/Check.bat` после перезапуска — PASS для всех пяти источников. В одной вкладке браузера открыт [экран MAX](http://localhost:8770/service/presentation.html?instance=max-wall-right): поток декодируется (`readyState=4`, preview 960×300), на кадре видны новый экран ладони, таймер и общий фон. Ошибок и предупреждений консоли при проверке не было. [Подтверждающий кадр](presentation.png).
+
+Ограничения проверки: preview и Spout подтверждены, приём изображения физическим TD-выходом этим прогоном не подтверждался. `Check.bat` показал около 24,5 FPS для источника MAX — целевые 60 FPS не подтверждены; нагрузочный GPU-прогон не запускался. Художественная приёмка и физическая читаемость остаются за просмотром на стенде.

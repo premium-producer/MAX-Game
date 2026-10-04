@@ -1,0 +1,61 @@
+{
+  "$schema": "./audio.schema.json",
+  "schemaVersion": 1,
+  "settings": {
+    "storageKey": "max-space-audio-muted",
+    "loopFadeMs": 120,
+    "stopFadeMs": 80,
+    "maxLateStartMs": 350
+  },
+  "buses": {
+    "master": { "gain": 0.8 },
+    "music": { "gain": 0.3 },
+    "ui": { "gain": 0.8 },
+    "gameplay": { "gain": 0.75 },
+    "signal": { "gain": 0.25 }
+  },
+  "assets": [
+    { "id": "background", "url": "./audio/background.webm", "preloadGroup": "boot" },
+    { "id": "cta-screen-enter", "url": "./audio/cta-screen-enter.webm", "preloadGroup": "boot" },
+    { "id": "navigation-back", "url": "./audio/navigation-back.webm", "preloadGroup": "boot" },
+    { "id": "camera-orbit-01", "url": "./audio/camera-orbit-01.webm", "preloadGroup": "boot" },
+    { "id": "camera-orbit-02", "url": "./audio/camera-orbit-02.webm", "preloadGroup": "boot" },
+    { "id": "camera-orbit-03", "url": "./audio/camera-orbit-03.webm", "preloadGroup": "boot" },
+    { "id": "cta-primary", "url": "./audio/cta-primary.webm", "preloadGroup": "boot" },
+    { "id": "onboarding-to-missions", "url": "./audio/onboarding-to-missions.webm", "preloadGroup": "onboarding" },
+    { "id": "mission-card-hover", "url": "./audio/mission-card-hover.webm", "preloadGroup": "mission-select" },
+    { "id": "mission-card-press", "url": "./audio/mission-card-press.webm", "preloadGroup": "mission-select" },
+    { "id": "mission-launch", "url": "./audio/mission-launch.webm", "preloadGroup": "mission-select" },
+    { "id": "mission-select-finish", "url": "./audio/mission-select-finish.webm", "preloadGroup": "mission-select" },
+    { "id": "mission-success-continue", "url": "./audio/mission-success-continue.webm", "preloadGroup": "mission-play" },
+    { "id": "mission-restart", "url": "./audio/mission-restart.webm", "preloadGroup": "mission-play" },
+    { "id": "node-place-or-move", "url": "./audio/node-place-or-move.webm", "preloadGroup": "mission-play" },
+    { "id": "popup-success", "url": "./audio/popup-success.webm", "preloadGroup": "mission-play" },
+    { "id": "popup-error", "url": "./audio/popup-error.webm", "preloadGroup": "mission-play" },
+    { "id": "link-blue-loop", "url": "./audio/link-blue-loop.webm", "preloadGroup": "mission-play" },
+    { "id": "link-green-loop", "url": "./audio/link-green-loop.webm", "preloadGroup": "mission-play" },
+    { "id": "link-red-loop", "url": "./audio/link-red-loop.webm", "preloadGroup": "mission-play" },
+    { "id": "end-finish-game", "url": "./audio/end-finish-game.webm", "preloadGroup": "end" }
+  ],
+  "events": [
+    { "id": "audio.background.loop", "assets": ["background"], "kind": "loop", "bus": "music", "gain": 1, "screens": ["CTA", "ONBOARDING", "MISSION_SELECT", "MISSION_PLAY", "END"], "instancePolicy": "single-global" },
+    { "id": "ui.cta.screen_enter", "assets": ["cta-screen-enter"], "kind": "one-shot", "bus": "ui", "gain": 0.88, "screens": ["CTA"], "exclusive": true, "maxInstances": 1, "instancePolicy": "restart-single-voice" },
+    { "id": "ui.cta.camera_orbit", "assets": ["camera-orbit-01", "camera-orbit-02", "camera-orbit-03"], "kind": "one-shot", "bus": "ui", "gain": 0.72, "screens": ["CTA"], "lateStartPolicy": "drop", "cooldownMs": 180, "maxInstances": 1, "instancePolicy": "restart-single-voice" },
+    { "id": "ui.cta.primary", "assets": ["cta-primary"], "kind": "one-shot", "bus": "ui", "gain": 0.88, "screens": ["CTA"], "maxInstances": 2, "instancePolicy": "allow-tail-across-transition" },
+    { "id": "ui.navigation.back", "assets": ["navigation-back"], "kind": "one-shot", "bus": "ui", "gain": 0.88, "screens": ["ONBOARDING", "MISSION_SELECT", "MISSION_PLAY", "END"], "maxInstances": 2, "instancePolicy": "allow-tail-across-transition" },
+    { "id": "ui.onboarding.to_mission_select", "assets": ["onboarding-to-missions"], "kind": "one-shot", "bus": "ui", "gain": 0.88, "screens": ["ONBOARDING"], "maxInstances": 2, "instancePolicy": "allow-tail-across-transition" },
+    { "id": "ui.mission_select.card_hover", "assets": ["mission-card-hover"], "kind": "one-shot", "bus": "ui", "gain": 0.58, "screens": ["MISSION_SELECT"], "lateStartPolicy": "drop", "cooldownMs": 300, "maxInstances": 1, "instancePolicy": "restart-single-voice" },
+    { "id": "ui.mission_select.card_press", "assets": ["mission-card-press"], "kind": "one-shot", "bus": "ui", "gain": 0.75, "screens": ["MISSION_SELECT"], "maxInstances": 1, "instancePolicy": "restart-single-voice" },
+    { "id": "ui.mission_select.launch", "assets": ["mission-launch"], "kind": "one-shot", "bus": "ui", "gain": 0.88, "screens": ["MISSION_SELECT"], "maxInstances": 2, "instancePolicy": "allow-tail-across-transition" },
+    { "id": "ui.mission_select.finish", "assets": ["mission-select-finish"], "kind": "one-shot", "bus": "ui", "gain": 0.88, "screens": ["MISSION_SELECT"], "maxInstances": 2, "instancePolicy": "allow-tail-across-transition" },
+    { "id": "ui.mission.success_continue", "assets": ["mission-success-continue"], "kind": "one-shot", "bus": "ui", "gain": 0.85, "screens": ["MISSION_PLAY"], "maxInstances": 2, "instancePolicy": "allow-tail-across-transition" },
+    { "id": "ui.mission.restart", "assets": ["mission-restart"], "kind": "one-shot", "bus": "ui", "gain": 0.82, "screens": ["MISSION_PLAY"], "maxInstances": 1, "instancePolicy": "restart-single-voice" },
+    { "id": "ui.end.finish_game", "assets": ["end-finish-game"], "kind": "one-shot", "bus": "ui", "gain": 0.88, "screens": ["END"], "maxInstances": 2, "instancePolicy": "allow-tail-across-transition" },
+    { "id": "game.node.place_or_move", "assets": ["node-place-or-move"], "kind": "one-shot", "bus": "gameplay", "gain": 0.8, "screens": ["MISSION_PLAY"], "maxInstances": 1, "instancePolicy": "restart-single-voice" },
+    { "id": "game.popup.success", "assets": ["popup-success"], "kind": "one-shot", "bus": "gameplay", "gain": 0.92, "screens": ["MISSION_PLAY", "MISSION_SELECT"], "maxInstances": 1, "instancePolicy": "restart-single-voice" },
+    { "id": "game.popup.error", "assets": ["popup-error"], "kind": "one-shot", "bus": "gameplay", "gain": 0.9, "screens": ["MISSION_PLAY"], "maxInstances": 1, "instancePolicy": "restart-single-voice" },
+    { "id": "game.link.blue_loop", "assets": ["link-blue-loop"], "kind": "loop", "bus": "signal", "gain": 0.68, "screens": ["MISSION_PLAY"], "instancePolicy": "one-global-layer-for-color" },
+    { "id": "game.link.green_loop", "assets": ["link-green-loop"], "kind": "loop", "bus": "signal", "gain": 0.58, "screens": ["MISSION_PLAY"], "instancePolicy": "one-global-layer-for-color" },
+    { "id": "game.link.red_loop", "assets": ["link-red-loop"], "kind": "loop", "bus": "signal", "gain": 0.62, "screens": ["MISSION_PLAY"], "instancePolicy": "one-global-layer-for-color" }
+  ]
+}

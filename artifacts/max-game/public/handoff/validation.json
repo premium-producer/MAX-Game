@@ -1,0 +1,35 @@
+{
+  "status": "warning",
+  "summary": {
+    "errors": 0,
+    "warnings": 2,
+    "info": 1,
+    "screens": 10,
+    "assets": 129,
+    "images": 4,
+    "references": 10,
+    "uniqueMediaFiles": 91,
+    "duplicatesRemoved": 52,
+    "duplicateBytesSaved": 115356
+  },
+  "items": [
+    {
+      "severity": "warning",
+      "code": "NO_LOCAL_TOKENS",
+      "message": "В файле нет local styles и variables; используйте tokens-derived.json как инвентаризацию фактических значений."
+    },
+    {
+      "severity": "warning",
+      "code": "ACTIONLESS_REACTIONS",
+      "count": 4,
+      "message": "Найдены prototype triggers без назначенного action; навигационную логику нужно описать отдельно."
+    },
+    {
+      "severity": "info",
+      "code": "MEDIA_DEDUPLICATED",
+      "count": 52,
+      "savedBytes": 115356,
+      "message": "Совпадающие медиа сохранены один раз; asset index ссылается на канонический файл."
+    }
+  ]
+}

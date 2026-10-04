@@ -1,0 +1,141 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><title>MAX — экспорт финального контента</title>
+<style>*{box-sizing:border-box}body{margin:0;font:13px/1.5 Arial,sans-serif;color:#222;background:#fff}header,footer{padding:16px;background:#f5f4f8}h1{font-size:19px;margin:0 0 8px}p{margin:6px 0}button,select{padding:9px;border:1px solid #ddd;border-radius:7px;font:inherit}button{cursor:pointer}button.primary{background:#701aff;color:white;border:0}button:disabled{opacity:.4;cursor:default}main{height:350px;overflow:auto;padding:16px}.row{padding:10px 0;border-bottom:1px solid #eee}.help{white-space:pre-wrap;color:#555}.warn{color:#9b3300;white-space:pre-wrap}.bar{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}label{margin-right:10px}#status,#saved{white-space:pre-wrap;overflow-wrap:anywhere}progress{width:100%}</style>
+<header><h1>MAX · экспорт финального контента</h1><p>Порядок Auto Layout → иконка → задания. Визуал отдельно, все тексты справки — вместе. Названия фреймов не определяют содержание.</p><div class="bar"><select id="scope"><option value="selection">Выделенные миссии / общий контейнер</option><option value="page">Текущая страница</option></select><button id="scan" class="primary">1. Прочитать карту</button><button id="cancel" disabled>Остановить</button></div></header>
+<main><div id="summary" style="white-space:pre-wrap">Выделите финальную карту в Figma. Макет не изменяется.</div><details><summary>Предупреждения и отдельные визуалы</summary><div id="warnings" class="warn"></div><div id="groups"></div></details></main>
+<footer><label>PNG <select id="scale"><option value="1">1×</option><option value="2">2×</option></select></label><label><input id="structure" type="checkbox" checked>Структура</label><label><input id="images" type="checkbox" checked>Исходные растры</label><label><input id="svg" type="checkbox">SVG</label><div class="bar"><button id="export" class="primary" disabled>2. Экспортировать / продолжить</button><button id="new-export" disabled>Новая выгрузка</button></div><progress id="progress" max="1" value="0"></progress><p id="status">Сначала запустите Start-Server.bat.</p><p id="saved"></p><p>Одна датированная папка. Без ZIP. Пробелы остаются в карте; завершение выгрузки не означает полноту контента.</p></footer>
+<script>
+/* Read-only presentation of the audited map; gaps are counted, never hidden. */
+const ContentMapSummary=map=>{
+ const missions=map?.missions||[],lines=[`Миссий: ${missions.length}`];
+ for(const m of missions){
+  const tasks=m.icons.filter(i=>i.screens.length>0||i.status==='ambiguous');
+  lines.push('',`${m.order}. ${m.text||'Без текста'} — заданий: ${tasks.length}`);
+  for(const i of tasks){
+   const ready=i.screens.filter(s=>s.status==='ready').length;
+   const gaps=i.screens.length-ready;
+   const visualCount=i.screens.reduce((sum,s)=>sum+(s.visualCount??s.candidateNodeIds?.length??(s.status==='ready'?1:0)),0);
+   const unknown=i.screens.filter(s=>s.visualCount==null&&!s.candidateNodeIds&&s.status!=='ready').length;
+   const detail=i.status==='ambiguous'?' — структура задания не определена':gaps?` — готовы: ${ready}, требуют разбора: ${gaps}`:'';
+   lines.push(`  • ${i.text||`Задание ${i.order}`} — экранов: ${i.screens.length}, визуалов: ${visualCount}${unknown?` (не определено у ${unknown} экранов)`:''}${detail}`);
+  }
+  const empty=m.icons.filter(i=>!tasks.includes(i));
+  if(empty.length)lines.push(`  Иконки без экранов (не включены в задания): ${empty.map(i=>i.text||`Иконка ${i.order}`).join(', ')}`);
+ }
+ return lines.join('\n');
+};
+if(typeof module!=='undefined')module.exports=ContentMapSummary;
+
+const $=id=>document.getElementById(id),post=m=>parent.postMessage({pluginMessage:m},'*');let scan=null,busy=false;
+const status=t=>$('status').textContent=t;
+function lock(v){busy=v;for(const id of ['scan','scope','scale','structure','images','svg','export','new-export'])$(id).disabled=v||(['export','new-export'].includes(id)&&!scan?.records.length);$('cancel').disabled=!v;$('groups').inert=v;}
+function draw(){const root=$('groups');root.replaceChildren();for(const r of scan.records){const row=document.createElement('div');row.className='row';const cb=document.createElement('input');cb.type='checkbox';cb.checked=r.include;cb.onchange=()=>{r.include=cb.checked;};const title=document.createElement('strong');title.textContent=` ${r.content.missionOrder}.${r.content.iconOrder}${r.content.screenOrder?'.'+r.content.screenOrder:''} · ${r.content.iconText||'Без текста'} · ${r.content.kind==='icon'?'Иконка':'Экран'}`;const help=document.createElement('div');help.className='help';help.textContent=r.instruction.text||'Без справки';const ids=document.createElement('small');ids.textContent=`Визуал: ${r.id} · Справка: ${r.content.helpNodeId||'—'}`;row.append(cb,title,help,ids);root.append(row);}}
+$('scan').onclick=()=>{scan=null;lock(true);status('Читаю выделенную структуру…');post({type:'scan',scope:$('scope').value,detection:'structure'});};
+onmessage=event=>{const m=event.data?.pluginMessage;if(!m)return;if(m.type==='scan'){scan=m;lock(false);$('summary').textContent=ContentMapSummary(m.source.contentMap)+`\n\nВизуалов для экспорта: ${m.records.length}. Предупреждений: ${m.warnings.length}.`; $('warnings').textContent=m.warnings.join('\n');draw();status('Проверьте сводку. Подробности и выбор визуалов — в раскрывающемся списке.');}else if(m.type==='status')status(m.text);else if(m.type==='error'){lock(false);status(m.text);}else if(m.type==='export-start')status(`Экспорт: ${m.total} визуалов`);else if(m.type==='progress'){$('progress').max=m.total;$('progress').value=m.count;status(`Сохранено и проверено: ${m.count} / ${m.total}`);}};
+// SHA-256 for Figma's iframe, where Web Crypto subtle may be unavailable.
+// Process bounded chunks and yield between them so progress/cancel remain responsive.
+(function(root){
+  const K=new Uint32Array([
+    0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,
+    0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,
+    0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,
+    0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,
+    0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,
+    0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,
+    0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,
+    0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2
+  ]);
+  const rotate=(x,n)=>(x>>>n)|(x<<(32-n));
+  async function digest(input){
+    const bytes=ArrayBuffer.isView(input)?new Uint8Array(input.buffer,input.byteOffset,input.byteLength):new Uint8Array(input);
+    const state=new Uint32Array([0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19]);
+    const w=new Uint32Array(64);
+    function block(data,offset){
+      for(let i=0;i<16;i++){const j=offset+i*4;w[i]=(data[j]<<24)|(data[j+1]<<16)|(data[j+2]<<8)|data[j+3];}
+      for(let i=16;i<64;i++){
+        const a=w[i-15],b=w[i-2];
+        w[i]=(w[i-16]+(rotate(a,7)^rotate(a,18)^(a>>>3))+w[i-7]+(rotate(b,17)^rotate(b,19)^(b>>>10)))>>>0;
+      }
+      let [a,b,c,d,e,f,g,h]=state;
+      for(let i=0;i<64;i++){
+        const t1=(h+(rotate(e,6)^rotate(e,11)^rotate(e,25))+((e&f)^(~e&g))+K[i]+w[i])>>>0;
+        const t2=((rotate(a,2)^rotate(a,13)^rotate(a,22))+((a&b)^(a&c)^(b&c)))>>>0;
+        h=g;g=f;f=e;e=(d+t1)>>>0;d=c;c=b;b=a;a=(t1+t2)>>>0;
+      }
+      const next=[a,b,c,d,e,f,g,h];for(let i=0;i<8;i++)state[i]=(state[i]+next[i])>>>0;
+    }
+    const end=bytes.length-bytes.length%64;
+    for(let offset=0;offset<end;offset+=64){
+      block(bytes,offset);
+      if((offset+64)%1048576===0)await new Promise(resolve=>setTimeout(resolve,0));
+    }
+    const remainder=bytes.length-end,tail=new Uint8Array(remainder<56?64:128);
+    tail.set(bytes.subarray(end));tail[remainder]=0x80;
+    const length=new DataView(tail.buffer);length.setUint32(tail.length-8,Math.floor(bytes.length/0x20000000));length.setUint32(tail.length-4,(bytes.length*8)>>>0);
+    for(let offset=0;offset<tail.length;offset+=64)block(tail,offset);
+    return Array.from(state,n=>n.toString(16).padStart(8,'0')).join('');
+  }
+  const api={digest};if(typeof module==='object'&&module.exports)module.exports=api;else root.ArchiveHash=api;
+})(typeof globalThis!=='undefined'?globalThis:this);
+
+const SERVER='http://localhost:47831';
+let serverRun=null,transfer=null,stopped=false,epoch=0;
+async function serverRequest(route,method='GET',body,sha){
+ const controller=new AbortController();transfer=controller;const timer=setTimeout(()=>controller.abort(),150000);
+ try{
+  const response=await fetch(SERVER+route,{method,headers:{'X-Frame-Archive':'1',...(serverRun?{Authorization:'Bearer '+serverRun.token}:{}),...(body?{'Content-Type':'application/json'}:{}),...(sha?{'X-Content-SHA256':sha}:{})},body:body===undefined?undefined:typeof body==='string'?body:JSON.stringify(body),signal:controller.signal});
+  const data=await response.json();if(!response.ok)throw Error(data.error||'HTTP '+response.status);return data;
+ }catch(e){if(e.name==='AbortError')throw Error(stopped?'Выгрузка остановлена':'Сервер не подтвердил сохранение вовремя. Можно продолжить.');throw e;}
+ finally{clearTimeout(timer);if(transfer===controller)transfer=null;}
+}
+async function beginExport(resume){
+ if(busy||!scan)return;if(!scan.records.some(r=>r.include)){status('Выберите экраны.');return;}
+ const current=++epoch;stopped=false;serverRun=null;lock(true);status('Подключаю сервер…');$('progress').value=0;
+ try{
+  const health=await serverRequest('/api/health');
+  if(health.service!=='figma-frame-archive'||!health.capabilities?.includes('max-materials-v1'))throw Error('Обновите сервер через Start-Server.bat в папке сборщика MAX.');
+  if(current!==epoch)return;
+  if(stopped){lock(false);return;}
+  post({type:'export',streaming:true,resume,scanId:scan.id,edits:scan.records.map(({id,task,include,reviewed,title,order})=>({id,task,include,reviewed,title,order})),scale:Number($('scale').value),structure:$('structure').checked,images:$('images').checked,svg:$('svg').checked});
+ }catch(e){if(current===epoch){lock(false);status(e.message+' Запустите Start-Server.bat и повторите.');}}
+}
+$('export').onclick=()=>beginExport(true);
+$('new-export').onclick=()=>beginExport(false);
+$('cancel').onclick=()=>{stopped=true;transfer?.abort();post({type:'cancel'});status('Остановка. Уже проверенные экраны сохранены в папке экспорта.');};
+const baseMessage=onmessage;
+onmessage=event=>{
+ const m=event.data?.pluginMessage;if(!m)return;
+ if(m.type==='stream-plan'||m.type==='stream-frame'){
+  const current=epoch;
+  (async()=>{
+   try{
+    if(stopped)throw Error('Операция остановлена');
+    if(m.type==='stream-plan'){
+     status('Проверяю файлы и очередь на сервере…');
+     const result=await serverRequest('/api/max/exports','POST',{...m.plan,resume:m.resume});
+     if(current!==epoch)return;
+     serverRun=result;
+     $('saved').textContent='Папка экспорта: '+serverRun.outputPath;
+     if(current!==epoch)return;
+     if(stopped)throw Error('Операция остановлена');
+     post({type:'stream-ack',job:m.job,key:m.key,completed:serverRun.completed});
+    }else{
+     const body=JSON.stringify(m.packet),bytes=new TextEncoder().encode(body),sha=await ArchiveHash.digest(bytes);
+     if(current!==epoch)return;
+     if(stopped)throw Error('Операция остановлена');
+     status('Передаю и проверяю: '+m.packet.screens[0].name);
+     const result=await serverRequest('/api/max/exports/'+serverRun.id+'/screens/'+encodeURIComponent(m.key),'PUT',body,sha);
+     if(current!==epoch)return;
+     if(result.verified!==true||result.screenId!==m.key||result.sha256!==sha||result.bytes!==bytes.length)throw Error('Сервер не подтвердил целостность экрана');
+     post({type:'stream-ack',job:m.job,key:m.key});
+    }
+   }catch(e){if(current===epoch){post({type:'stream-ack',job:m.job,key:m.key,error:e.message});status(e.message);}}
+  })();return;
+ }
+ if(m.type==='stream-finished'){
+  epoch++;
+  lock(false);status(m.status==='complete'?'Готово. Все выбранные экраны сохранены и проверены.':(m.error||'Выгрузка остановлена')+' Проверенные экраны сохранены. Нажмите «Экспортировать / продолжить».');return;
+ }
+ baseMessage(event);
+};
+
+</script></html>

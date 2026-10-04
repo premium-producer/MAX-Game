@@ -1,0 +1,716 @@
+{
+  "schemaVersion": 1,
+  "brandId": "max",
+  "approval": "source-verified-by-agent; not brand-owner approval",
+  "rules": [
+    {
+      "id": "max.naming.service",
+      "status": "user-directed",
+      "basis": "explicit-user-instruction-2026-09-29",
+      "scope": "all-project-service-name-text",
+      "statement": "Название сервиса всегда писать MAX: латинские заглавные M, A, X (U+004D U+0041 U+0058). Применять во всех интерфейсах, игре, стеле, CTA, подписях, макетах/Figma, документации и коммуникациях. Max/max, МАКС/макс и смешение алфавитов для названия сервиса недопустимы. При переносе клиентского вординга нормализовать рабочий текст, сохраняя оригинальный документ. Оригинальные логотипы, технические идентификаторы/пути и название шрифта Max Sans не изменять.",
+      "canonicalName": "MAX",
+      "evidence": [
+        {
+          "source": "direct-user-instruction",
+          "date": "2026-09-29",
+          "text": "название сервиса \"MAX\" мы всегда пишем латиницей заглавными буквами"
+        }
+      ]
+    },
+    {
+      "id": "max.logo.primary",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "communication-materials",
+      "statement": "При возможности использовать основную версию логотипа.",
+      "evidence": [
+        {
+          "frameId": "8379:53605",
+          "frame": "1.2",
+          "nodeId": "8379:53651",
+          "text": "Является ключевым элементом идентификации бренда. Везде, где это возможно, используется  именно основная версия логотипа"
+        }
+      ]
+    },
+    {
+      "id": "max.logo.minimum-digital",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "communication-materials",
+      "statement": "Минимальная высота основного логотипа в цифровой среде 32 px; ниже использовать монохромную версию.",
+      "evidence": [
+        {
+          "frameId": "8379:53605",
+          "frame": "1.2",
+          "nodeId": "8379:53657",
+          "text": "В печати — 15 мм по высоте В цифровой среде — 32 px по высоте  Если необходимо разместить логотип меньшего размера, используется монохромная версия"
+        }
+      ],
+      "check": {
+        "kind": "min-height",
+        "value": 32,
+        "unit": "px",
+        "assetKind": "primary-logo"
+      }
+    },
+    {
+      "id": "max.logo.symbol",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "communication-materials",
+      "statement": "Фирменный знак предназначен для ограниченного пространства или когда не нужно отражать название.",
+      "evidence": [
+        {
+          "frameId": "8379:54093",
+          "frame": "1.3",
+          "nodeId": "8379:54127",
+          "text": "Используется, когда нужно  расположить логотип в ограниченном пространстве  или нет необходимости отражать название бренда"
+        }
+      ]
+    },
+    {
+      "id": "max.logo.background",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "communication-materials",
+      "statement": "Полноцветный знак использовать на однотонном светлом или тёмном фоне; для прочих фонов выбирать монохром или бейдж.",
+      "evidence": [
+        {
+          "frameId": "8379:53911",
+          "frame": "1.10",
+          "nodeId": "8379:53915",
+          "text": "Полноцветный логотип можно размещать на однотонных фонах тёмного и светлого цвета  В других случаях рекомендуем использовать монохромную  версию или бейдж"
+        }
+      ]
+    },
+    {
+      "id": "max.logo.no-recolor",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "communication-materials",
+      "statement": "Не перекрашивать знак или логотип целиком в другие цвета.",
+      "evidence": [
+        {
+          "frameId": "8379:53705",
+          "frame": "1.14",
+          "nodeId": "8379:53735",
+          "text": "Нельзя окрашивать знак или логотип целиком в другие цвета"
+        }
+      ]
+    },
+    {
+      "id": "max.logo.no-app-icon-lockup",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "communication-materials",
+      "statement": "Не заменять фирменный знак иконкой приложения рядом с текстовой частью.",
+      "evidence": [
+        {
+          "frameId": "8379:53705",
+          "frame": "1.14",
+          "nodeId": "8379:53720",
+          "text": "Нельзя использовать иконку приложения вместе с текстовой частью логотипа"
+        }
+      ]
+    },
+    {
+      "id": "max.logo.no-outline",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "communication-materials",
+      "statement": "Не использовать аутлайн как логотип.",
+      "evidence": [
+        {
+          "frameId": "8379:53705",
+          "frame": "1.14",
+          "nodeId": "8379:53744",
+          "text": "Нельзя использовать аутлайн как логотип "
+        }
+      ]
+    },
+    {
+      "id": "max.logo.business",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "communication-materials",
+      "statement": "MAX Бизнес предназначен исключительно для коммуникации с бизнес-партнёрами.",
+      "evidence": [
+        {
+          "frameId": "8379:53875",
+          "frame": "1.6",
+          "nodeId": "8379:53882",
+          "text": "Существует исключительно для коммуникации с бизнес-партнерами. \nК нему применяются те же правила, что и к основному логотипу"
+        }
+      ]
+    },
+    {
+      "id": "max.logo.placement",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "communication-materials",
+      "statement": "Предпочтительны слева сверху, слева снизу и центр; правая сторона — исключение.",
+      "evidence": [
+        {
+          "frameId": "8379:53896",
+          "frame": "1.9",
+          "nodeId": "8379:53909",
+          "text": "Для выстраивания композиции  рекомендуем выбирать:\n— левый верхний  — левый нижний угол\n— центр страницы\n\nЛоготип на правой стороне стоит ставить только в исключительных случаях"
+        }
+      ]
+    },
+    {
+      "id": "max.layout.clearspace",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "communication-layout",
+      "statement": "Охранные поля макета равны половине высоты фирменного знака.",
+      "evidence": [
+        {
+          "frameId": "8379:55534",
+          "frame": "5.1",
+          "nodeId": "8379:55571",
+          "text": "Размер охранных полей равен 1/2 X,  где Х — высота фирменного знака. "
+        }
+      ],
+      "check": {
+        "kind": "margin",
+        "min": 0.5,
+        "unit": "symbol-height"
+      }
+    },
+    {
+      "id": "max.logo.partner-space",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "partner-layout",
+      "statement": "Для размещения с другими логотипами свободное пространство равно высоте логотипа.",
+      "evidence": [
+        {
+          "frameId": "8379:54040",
+          "frame": "1.13",
+          "nodeId": "8379:54046",
+          "text": "Когда логотип используется  в сочетании с другими логотипами, свободное пространство вокруг  него равно его высоте"
+        }
+      ]
+    },
+    {
+      "id": "max.logo.cobrand",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "co-branding",
+      "statement": "В горизонтальном кобрендинге использовать разделительную черту и одинаковый визуальный вес знаков.",
+      "evidence": [
+        {
+          "frameId": "8379:53943",
+          "frame": "1.11",
+          "nodeId": "8379:53980",
+          "text": "Для горизонтального указания партнерства и кобрендинга используется черта. Визуальный вес логотипов должен быть одинаковым\n\nХ — высота фирменного знака. От него строятся размер черты и отступы логотипов"
+        }
+      ]
+    },
+    {
+      "id": "max.color.cyan",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "communication-materials",
+      "statement": "#00BFFF: Акцент, когда фирменный градиент не нужен.",
+      "evidence": [
+        {
+          "frameId": "8379:54217",
+          "frame": "2.2",
+          "nodeId": "8379:54226",
+          "text": "#00BFFF"
+        },
+        {
+          "frameId": "8379:54217",
+          "frame": "2.2",
+          "nodeId": "8379:54239",
+          "text": "Используется как акцентный цвет в случаях, когда нет необходимости в фирменном градиенте"
+        }
+      ]
+    },
+    {
+      "id": "max.color.violet",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "communication-materials",
+      "statement": "#6E1AFF: Основной фон, когда градиент использовать невозможно.",
+      "evidence": [
+        {
+          "frameId": "8379:54217",
+          "frame": "2.2",
+          "nodeId": "8379:54243",
+          "text": "#6E1AFF"
+        },
+        {
+          "frameId": "8379:54217",
+          "frame": "2.2",
+          "nodeId": "8379:54256",
+          "text": "Используется как основной фоновый цвет в случаях, когда нет возможности использовать фирменный градиент"
+        }
+      ]
+    },
+    {
+      "id": "max.color.dark",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "communication-materials",
+      "statement": "#0D001A: Основной тёмный фон в паре с градиентом.",
+      "evidence": [
+        {
+          "frameId": "8379:54217",
+          "frame": "2.2",
+          "nodeId": "8379:54260",
+          "text": "#0D001A"
+        },
+        {
+          "frameId": "8379:54217",
+          "frame": "2.2",
+          "nodeId": "8379:54273",
+          "text": "Используется как основной фоновый цвет в паре с фирменным градиентом\n"
+        }
+      ]
+    },
+    {
+      "id": "max.color.purple",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "communication-materials",
+      "statement": "#9500FF: Дополнительный цвет графики и фона.",
+      "evidence": [
+        {
+          "frameId": "8379:54217",
+          "frame": "2.2",
+          "nodeId": "8379:54294",
+          "text": "#9500FF"
+        },
+        {
+          "frameId": "8379:54217",
+          "frame": "2.2",
+          "nodeId": "8379:54307",
+          "text": "Дополнительный цвет для графики и фона"
+        }
+      ]
+    },
+    {
+      "id": "max.color.white",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "communication-materials",
+      "statement": "#FFFFFF: Дополнительный светлый фон в паре с градиентом.",
+      "evidence": [
+        {
+          "frameId": "8379:54217",
+          "frame": "2.2",
+          "nodeId": "8379:54311",
+          "text": "#FFFFFF"
+        },
+        {
+          "frameId": "8379:54217",
+          "frame": "2.2",
+          "nodeId": "8379:54324",
+          "text": "Дополнительный фоновый цвет в паре с градиентом"
+        }
+      ]
+    },
+    {
+      "id": "max.color.blue-conflict",
+      "status": "conflict",
+      "basis": "explicit",
+      "scope": "all",
+      "statement": "HEX #471AFF расходится с RGB 26 75 255 и заливкой карточки (~#1A4BFF). Не выбирать молча.",
+      "evidence": [
+        {
+          "frameId": "8379:54217",
+          "frame": "2.2",
+          "nodeId": "8379:54277",
+          "text": "#471AFF"
+        }
+      ],
+      "alternatives": [
+        "#471AFF",
+        "#1A4BFF"
+      ]
+    },
+    {
+      "id": "max.gradient.main",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "communication-materials",
+      "statement": "Main — предпочтительный фирменный линейный градиент. Точные stops брать из узла 8379:54393, включая среднюю остановку.",
+      "evidence": [
+        {
+          "frameId": "8379:54379",
+          "frame": "2.3",
+          "nodeId": "8379:54389",
+          "text": "Это основная версия градиента, она охватывает весь цветовой диапазон бренда и является предпочтительной к использованию во всех сценариях"
+        }
+      ]
+    },
+    {
+      "id": "max.gradient.angular",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "communication-materials",
+      "statement": "Для фоновой композиции предпочтителен целый Angular-компонент; линейная полоска Main не является его заменой.",
+      "evidence": [
+        {
+          "frameId": "8379:54450",
+          "frame": "2.4",
+          "nodeId": "11723:16287",
+          "text": "Градиент представлен в виде цельного компонента с Angular заливкой, охватывающей весь цветовой диапазон бренда  Именно эта версия градиента предпочтительна к использованию в большинстве макетов"
+        }
+      ]
+    },
+    {
+      "id": "max.gradient.scale",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "communication-materials",
+      "statement": "Не деформировать Angular; в Figma масштабировать через Scale с сохранением эффектов.",
+      "evidence": [
+        {
+          "frameId": "8379:54450",
+          "frame": "2.4",
+          "nodeId": "8379:54459",
+          "text": "Компонент Angular–градиента нельзя изменять, растягивать или сжимать\n\nДля сохранения корректных значений размытия градиента, масштабирование должно осуществляться исключительно  через инструмент Scale (K)"
+        }
+      ]
+    },
+    {
+      "id": "max.gradient.coverage",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "communication-background",
+      "statement": "Градиент занимает 50–75% композиции с читаемым цветовым переходом.",
+      "evidence": [
+        {
+          "frameId": "8379:54402",
+          "frame": "2.5",
+          "nodeId": "11723:16291",
+          "text": "В макетах фон строится на переходе из тёмного или белого цветов в фирменный градиент\n\nДля достижения консистентности важно сохранять постоянство цветовых пропорций внутри макета. Градиент должен занимать от 50% до 75% пространства макета и всегда отражать цветовой переход"
+        }
+      ],
+      "check": {
+        "kind": "visual-coverage",
+        "min": 0.5,
+        "max": 0.75,
+        "automated": false
+      }
+    },
+    {
+      "id": "max.gradient.edge",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "communication-materials",
+      "statement": "Центр Angular располагается на границе макета и выравнивается относительно её центра.",
+      "evidence": [
+        {
+          "frameId": "8379:54472",
+          "frame": "2.6",
+          "nodeId": "11723:16296",
+          "text": "Центр окружности компонента всегда располагается на границе макета и выравнивается относительно её центра"
+        }
+      ]
+    },
+    {
+      "id": "max.gradient.spotlight-cyan",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "spotlight-dark",
+      "statement": "В тёмной версии Spotlight не использовать круги цвета Голубая комета; не расширять этот запрет на все случаи применения циана.",
+      "evidence": [
+        {
+          "frameId": "8379:54421",
+          "frame": "2.8",
+          "nodeId": "8379:54449",
+          "text": "В версии на тёмном  фоне не допускается  использование кругов цвета  Голубая комета #00BFFF"
+        }
+      ]
+    },
+    {
+      "id": "max.glass.limit",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "communication-background",
+      "statement": "В фоне максимум четыре Glass Shape; центры на границах, пропорции сохранять.",
+      "evidence": [
+        {
+          "frameId": "8379:54807",
+          "frame": "3.2",
+          "nodeId": "11723:16258",
+          "text": "Центр компонентов всегда располагается  по границам макета. Размер компонентов определяется индивидуально под каждый носитель  В рамках одного макета не может  использоваться более 4 компонентов\n\nКомпонент Glass Shape нельзя изменять,  растягивать или сжимать. Для сохранения корректных значений эффекта,  масштабирование должно осуществляться исключительно через инструмент Scale (K)"
+        }
+      ],
+      "check": {
+        "kind": "max-count",
+        "value": 4,
+        "component": "Glass Shape"
+      }
+    },
+    {
+      "id": "max.glass.dispersion",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "glass-effect",
+      "statement": "Не использовать Dispersion.",
+      "evidence": [
+        {
+          "frameId": "8379:54852",
+          "frame": "3.3",
+          "nodeId": "8379:55279",
+          "text": "Не допускается  использование Dispersion"
+        }
+      ]
+    },
+    {
+      "id": "max.glass.highlights",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "glass-effect",
+      "statement": "Не размещать блики под текстом или логотипом.",
+      "evidence": [
+        {
+          "frameId": "8379:54552",
+          "frame": "3.6",
+          "nodeId": "8379:54596",
+          "text": "Нельзя размещать блики под текстом или логотипом "
+        }
+      ]
+    },
+    {
+      "id": "max.overlay.layering",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "communication-background",
+      "statement": "Overlay Lines располагаются над градиентом и под стеклянными кругами.",
+      "evidence": [
+        {
+          "frameId": "8379:54651",
+          "frame": "3.5",
+          "nodeId": "8379:54659",
+          "text": "В слоях макета Overlay Lines всегда должны располагаться под cтеклянными кругами и над фирменным градиентом"
+        }
+      ]
+    },
+    {
+      "id": "max.overlay.paint",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "communication-background",
+      "statement": "Overlay Lines имеют белую обводку и режим Overlay.",
+      "evidence": [
+        {
+          "frameId": "8379:54651",
+          "frame": "3.5",
+          "nodeId": "8379:54657",
+          "text": "Используется в паре со стеклянными  кругами на фирменных фонах\n\nЛинии имеют белый цвет обводки  и режим наложения Overlay"
+        }
+      ]
+    },
+    {
+      "id": "max.type.family",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "communication-materials",
+      "statement": "В коммуникационных материалах использовать Max Sans.",
+      "evidence": [
+        {
+          "frameId": "8379:55406",
+          "frame": "4.1",
+          "nodeId": "8379:55418",
+          "text": "Во всех коммуникационных материалах используется фирменный шрифт Max Sans"
+        }
+      ]
+    },
+    {
+      "id": "max.type.regular",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "communication-materials",
+      "statement": "Regular — большие объёмы информации.",
+      "evidence": [
+        {
+          "frameId": "8379:55421",
+          "frame": "4.2",
+          "nodeId": "8379:55445",
+          "text": "Используется для набора больших объёмов информации"
+        }
+      ]
+    },
+    {
+      "id": "max.type.medium",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "communication-materials",
+      "statement": "Medium — подзаголовки.",
+      "evidence": [
+        {
+          "frameId": "8379:55421",
+          "frame": "4.2",
+          "nodeId": "8379:55451",
+          "text": "Используется для подзаголовков"
+        }
+      ]
+    },
+    {
+      "id": "max.type.demibold",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "communication-materials",
+      "statement": "DemiBold — заголовки.",
+      "evidence": [
+        {
+          "frameId": "8379:55421",
+          "frame": "4.2",
+          "nodeId": "8379:55457",
+          "text": "Используется для заголовков"
+        }
+      ]
+    },
+    {
+      "id": "max.type.lines",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "communication-materials",
+      "statement": "Рекомендованы две строки заголовка, максимум три.",
+      "evidence": [
+        {
+          "frameId": "8379:55466",
+          "frame": "4.3",
+          "nodeId": "8379:55470",
+          "text": "Заголовок может быть размещён по левому краю или по центру по всей вертикали (сверху, по центру или снизу) в зависимости от композиции \nРекомендованный размер заголовка — 2 строки, максимальный — 3 строки"
+        }
+      ],
+      "check": {
+        "kind": "max-lines",
+        "value": 3
+      }
+    },
+    {
+      "id": "max.type.no-right",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "communication-materials",
+      "statement": "Не выравнивать заголовок по правому краю.",
+      "evidence": [
+        {
+          "frameId": "8379:55280",
+          "frame": "4.5",
+          "nodeId": "8379:55303",
+          "text": "Нельзя использовать выключку по правому краю\n"
+        }
+      ]
+    },
+    {
+      "id": "max.type.highlight",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "communication-materials",
+      "statement": "Выделять ключевую часть заголовка только Main; оставшуюся часть набирать белым, градиент растягивать на саму выделенную область.",
+      "evidence": [
+        {
+          "frameId": "8379:55383",
+          "frame": "4.4",
+          "nodeId": "8379:55389",
+          "text": "При необходимости допускается выделение ключевой информации фирменным градиентом Main (Голубая комета — Пурпурная туманность)  Оставшаяся часть сообщения набирается белым цветом\n\nГрадиент всегда начинается в начале выделяемой области и заканчивается в её конце"
+        }
+      ]
+    },
+    {
+      "id": "max.type.fast-reading",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "fast-reading-media",
+      "statement": "Не применять градиентное выделение там, где важны скорость и простота считывания.",
+      "evidence": [
+        {
+          "frameId": "8379:55383",
+          "frame": "4.4",
+          "nodeId": "8379:55405",
+          "text": "Нельзя использовать в носителях, где важна скорость  и простота считывания контента"
+        }
+      ]
+    },
+    {
+      "id": "max.cta.horizontal",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "horizontal-communication",
+      "statement": "В горизонтальных коммуникационных макетах CTA имеет ширину и высоту логотипа.",
+      "evidence": [
+        {
+          "frameId": "8379:55634",
+          "frame": "5.3",
+          "nodeId": "8379:55720",
+          "text": "Кнопки всегда имеют ту же ширину и высоту, что и логотип"
+        }
+      ]
+    },
+    {
+      "id": "max.cta.vertical",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "vertical-communication",
+      "statement": "В вертикальных коммуникационных макетах CTA занимает ширину носителя за вычетом охранных полей.",
+      "evidence": [
+        {
+          "frameId": "8379:55634",
+          "frame": "5.3",
+          "nodeId": "8379:55723",
+          "text": "Кнопки всегда верстаются во всю ширину носителя с отступами, равными охранному полю макета\n\nКнопки всегда окрашиваются в фирменный градиент Main (Голубая комета — Пурпурная туманность). Если кнопку необходимо расположить поверх фирменного градиента,  её можно залить фирменным цветом Тёмная материя или белым"
+        }
+      ]
+    },
+    {
+      "id": "max.logo.mono-unit-conflict",
+      "status": "conflict",
+      "basis": "explicit",
+      "scope": "mono-logo-clearspace",
+      "statement": "В тексте X назван высотой знака, на схеме высота знака — 8x. Не переносить числовой множитель без проверки контекста.",
+      "evidence": [
+        {
+          "frameId": "8379:53771",
+          "frame": "1.4",
+          "nodeId": "8379:53820",
+          "text": "Х — высота фирменного знака.  От него строится выравнивание  логотипа и его охранное поле"
+        }
+      ]
+    },
+    {
+      "id": "max.cta.paint",
+      "status": "source-verified",
+      "basis": "explicit",
+      "scope": "vertical-communication",
+      "statement": "Кнопки коммуникационных макетов окрашиваются в Main; поверх фирменного градиента допускается Тёмная материя или белый.",
+      "evidence": [
+        {
+          "frameId": "8379:55634",
+          "frame": "5.3",
+          "nodeId": "8379:55723",
+          "text": "Кнопки всегда верстаются во всю ширину носителя с отступами, равными охранному полю макета\n\nКнопки всегда окрашиваются в фирменный градиент Main (Голубая комета — Пурпурная туманность). Если кнопку необходимо расположить поверх фирменного градиента,  её можно залить фирменным цветом Тёмная материя или белым"
+        }
+      ]
+    },
+    {
+      "id": "max.lines.svg-gradients-20261001",
+      "status": "user-authorized",
+      "basis": "direct-user-instruction",
+      "scope": "shared-rear-wall-moving-lines/MAX-color-region",
+      "statement": "The supplied Angular.svg is one large-scale base gradient for moving MAX strips. Each independent strip rotates that base by its own angle and samples only a small sector; a full rainbow cycle inside one strip is disallowed. Group 2131331001.svg shows separate example strips, not groups of strips. Scope is limited to the shared rear-wall lines.",
+      "evidence": [
+        {
+          "kind": "user-attachment",
+          "assetId": "max-moving-line-gradient-reference",
+          "sha256": "0948bf74ec1ef608edad25f865e37b31cb5d1648d4e9627508c4cf61261f2ce2"
+        },
+        {
+          "kind": "user-attachment",
+          "assetId": "max-angular-line-gradient-base",
+          "sha256": "71c418c83dde488aa7a56b7422646c0d32c11014c3fe2c53106e34bf53f81c3f"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "sourceUrl": "https://go.max.ru/brandbook",
+  "retrievedAt": "2026-10-01",
+  "status": "source-extracted-not-integrated",
+  "html": "Exact first logo hero-card fragment; original /s/img path and #logo link retained",
+  "css": "Original top-level rules containing animated-card or hero-card, including original responsive wrappers and keyframes; Svelte scope classes retained",
+  "imageSource": "https://go.max.ru/s/img/brandbook-map.png",
+  "dependencies": [
+    "Max Sans font and --font",
+    "--static-colors-white",
+    "--sign-tertiary",
+    "Surrounding responsive sizing/container",
+    "Rewrite /s/img/brandbook-map.png to local asset URL when integrating"
+  ],
+  "integrationNotes": [
+    "HTML/CSS may be adapted for DOM UI; no Svelte runtime required for this CSS hover effect.",
+    "Source hover/focus glow switches opacity directly and animates left/top; adapt interruption/touch and reduced motion before game integration.",
+    "Original CSS colors include values outside project six-color palette. Keep original here and normalize explicitly in an adaptation.",
+    "Do not paste into WebGL icon layer; reproduce visual in existing renderer/shared clock.",
+    "Original responsive wrappers may contain unrelated selectors; scope to isolated preview or narrow before integration."
+  ],
+  "files": [
+    {
+      "file": "card-source.html",
+      "bytes": 793,
+      "sha256": "d7213fb67853cfc6f944af0df99fc4bf4662bcda72d582c025ac47af3e4b2b3a"
+    },
+    {
+      "file": "card-source.css",
+      "bytes": 7000,
+      "sha256": "d2dbd85c4a4dd8b3d11d281db8fdd6cdbe4ad1bf96d798facdc5bbd159685078"
+    },
+    {
+      "file": "brandbook-map.png",
+      "bytes": 372186,
+      "sha256": "84a6e88178af3a41e97d589c149c8f554a0ba6c3ca3f1af526f2c6202e6b807e"
+    }
+  ]
+}

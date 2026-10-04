@@ -1,0 +1,11 @@
+{
+  "name": "MAX Journey — все экраны",
+  "id": "max-journey-source-screens-local",
+  "api": "1.0.0",
+  "main": "internal/code.js",
+  "ui": "internal/ui.html",
+  "editorType": ["figma"],
+  "documentAccess": "dynamic-page",
+  "networkAccess": { "allowedDomains": ["https://api.figma.com"], "reasoning": "Чтение комментариев выбранного файла по запросу пользователя; токен вводится только на время запроса и не сохраняется." },
+  "relaunchButtons": [{ "command": "open", "name": "Собрать экраны MAX" }]
+}

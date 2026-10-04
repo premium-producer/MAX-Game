@@ -1,0 +1,85 @@
+{
+  "sourceRevision": "missions-figma-20261003-151916-v2",
+  "revision": "missions-reviewed-20261003-abe878cfed89",
+  "annotationSha256": "abe878cfed89ab54948e7c5121ebb96c5d053087fab71f9f71b026d28f96d41f",
+  "records": 75,
+  "screenSettings": 84,
+  "disabled": [
+    "blogger.channel.result",
+    "blogger.comments.sent",
+    "digital-id.create-id.redirect",
+    "communication.call.calling",
+    "communication.message.voice-recording",
+    "communication.message.video-ready",
+    "communication.message.video-recording",
+    "communication.story.publish",
+    "business.platform.result",
+    "business.channel.ready",
+    "business.bot.details",
+    "business.bot.conversation",
+    "business.store.connect",
+    "business.store.ready"
+  ],
+  "manual": [
+    "digital-id.create-id.biometry",
+    "communication.message.voice-sent"
+  ],
+  "finalScreens": [
+    "blogger.channel.created",
+    "blogger.comments.result",
+    "blogger.statistics.statistics",
+    "digital-id.create-id.ready",
+    "digital-id.hotel.result",
+    "digital-id.benefit.result",
+    "digital-id.age.result",
+    "communication.call.result",
+    "communication.message.video-sent",
+    "communication.reaction.sent",
+    "communication.story.ready",
+    "business.platform.ready",
+    "business.channel.result",
+    "business.bot.result",
+    "business.store.result"
+  ],
+  "effectiveScreens": 70,
+  "flowSchemaVersion": 3,
+  "flowSha256": "b761cd8006fba1a6b6767d96744f9623173a037b7bb83fd71091710e577d0c2e",
+  "rectCorrections": [
+    {
+      "screenId": "digital-id.create-id.quick",
+      "interactionId": "digital-id.create-id.quick.action-1",
+      "expectedRect": [
+        12.4,
+        1412.49,
+        772.01,
+        153.34
+      ],
+      "rect": [
+        12.4,
+        1412.49,
+        772.01,
+        151.66
+      ],
+      "reason": "User approved 2026-10-04: split the overlapping strip at its midpoint in the game copy only."
+    },
+    {
+      "screenId": "digital-id.create-id.quick",
+      "interactionId": "digital-id.create-id.quick.action-2",
+      "expectedRect": [
+        24.53,
+        1562.46,
+        754.1,
+        146.62
+      ],
+      "rect": [
+        24.53,
+        1564.15,
+        754.1,
+        144.93
+      ],
+      "reason": "User approved 2026-10-04: retain original bottom edge; share a non-overlapping boundary at y=1564.15."
+    }
+  ],
+  "adapter": "manual-source-actions-v1",
+  "activeInteractions": 75
+}

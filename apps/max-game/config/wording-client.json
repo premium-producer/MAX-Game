@@ -1,0 +1,740 @@
+{
+  "$schema": "./wording.schema.json",
+  "schemaVersion": 1,
+  "defaultLanguage": "ru",
+  "languages": [
+    "ru",
+    "en"
+  ],
+  "entries": {
+    "placement.input.scroll": {
+      "ru": "Прокрутка карточек оборудования",
+      "en": "Scroll equipment cards"
+    },
+    "placement.input.placeHint": {
+      "ru": "Нажмите на свободное место для установки",
+      "en": "Tap an empty location to place the object"
+    },
+    "placement.input.existing": {
+      "ru": "Выбран объект: {item}",
+      "en": "Selected object: {item}"
+    },
+    "placement.input.new": {
+      "ru": "Новый объект: {item}",
+      "en": "New object: {item}"
+    },
+    "placement.input.noSelection": {
+      "ru": "Объект не выбран",
+      "en": "No object selected"
+    },
+    "placement.input.moveHint": {
+      "ru": "Нажмите на новое место или выберите другой объект",
+      "en": "Tap a new location or select another object"
+    },
+    "placement.input.lower": {
+      "ru": "Ниже",
+      "en": "Lower"
+    },
+    "placement.input.raise": {
+      "ru": "Выше",
+      "en": "Higher"
+    },
+    "placement.input.delete": {
+      "ru": "Удалить",
+      "en": "Delete"
+    },
+    "placement.input.clear": {
+      "ru": "Снять выбор",
+      "en": "Deselect"
+    },
+    "placement.input.altitude": {
+      "ru": "Высота орбиты: {value}%",
+      "en": "Orbit height: {value}%"
+    },
+    "placement.input.toggle": {
+      "ru": "Сейчас: {current}\nПереключить на режим «{next}»",
+      "en": "Current: {current}\nSwitch to {next} mode"
+    },
+    "placement.input.mode": {
+      "ru": "Способ установки элементов",
+      "en": "Placement controls"
+    },
+    "placement.input.tap": {
+      "ru": "Касание",
+      "en": "Tap"
+    },
+    "placement.input.drag": {
+      "ru": "Перетаскивание",
+      "en": "Drag"
+    },
+    "placement.input.tapHint": {
+      "ru": "Выберите новую карточку или нажмите на объект на поле",
+      "en": "Select a new card or tap an object on the field"
+    },
+    "placement.input.dragHint": {
+      "ru": "Перетащите карточку на место установки",
+      "en": "Drag a card to where you want to place it"
+    },
+    "app.title": {
+      "ru": "MAX — Возможности рядом",
+      "en": "MAX — Possibilities nearby"
+    },
+    "app.titleWithScreen": {
+      "ru": "{screen} — MAX",
+      "en": "{screen} — MAX"
+    },
+    "app.aria.game": {
+      "ru": "Интерактивные миссии MAX",
+      "en": "Interactive MAX missions"
+    },
+    "app.aria.earth": {
+      "ru": "Двумерное игровое поле",
+      "en": "Two-dimensional game field"
+    },
+    "app.aria.logo": {
+      "ru": "MAX",
+      "en": "MAX"
+    },
+    "app.header.title": {
+      "ru": "Возможности рядом",
+      "en": "Possibilities nearby"
+    },
+    "app.header.back": {
+      "ru": "НАЗАД",
+      "en": "BACK"
+    },
+    "app.header.language": {
+      "ru": "Язык интерфейса",
+      "en": "Interface language"
+    },
+    "app.audio.mute": {
+      "ru": "Выключить звук",
+      "en": "Mute sound"
+    },
+    "app.audio.unmute": {
+      "ru": "Включить звук",
+      "en": "Unmute sound"
+    },
+    "app.inventory.aria": {
+      "ru": "Действия миссии",
+      "en": "Mission actions"
+    },
+    "app.inventory.title": {
+      "ru": "действия\nмиссии",
+      "en": "mission\nactions"
+    },
+    "app.inventory.itemAria": {
+      "ru": "{item}, осталось {count}",
+      "en": "{item}, {count} remaining"
+    },
+    "app.loading": {
+      "ru": "ЗАГРУЗКА",
+      "en": "LOADING"
+    },
+    "app.loadingError": {
+      "ru": "Не удалось обновить игру\nОбнови страницу и попробуй ещё раз",
+      "en": "Could not update the game\nReload the page and try again"
+    },
+    "app.debug.fullscreen": {
+      "ru": "полный экран",
+      "en": "fullscreen"
+    },
+    "screen.cta.title": {
+      "ru": "Начало",
+      "en": "Start"
+    },
+    "screen.onboarding.title": {
+      "ru": "Как играть",
+      "en": "How to play"
+    },
+    "screen.missionSelect.title": {
+      "ru": "Выбор миссии",
+      "en": "Mission selection"
+    },
+    "screen.missionPlay.title": {
+      "ru": "Миссия {number}",
+      "en": "Mission {number}"
+    },
+    "screen.end.title": {
+      "ru": "Финал",
+      "en": "Final"
+    },
+    "cta.aria": {
+      "ru": "Начальный экран",
+      "en": "Start screen"
+    },
+    "cta.title": {
+      "ru": "Космос\nна связи",
+      "en": "Space\nis online"
+    },
+    "cta.primary": {
+      "ru": "Начать путешествие",
+      "en": "Start the journey"
+    },
+    "onboarding.aria": {
+      "ru": "Как играть",
+      "en": "How to play"
+    },
+    "onboarding.title": {
+      "ru": "Три шага к связи",
+      "en": "Three steps to connection"
+    },
+    "onboarding.primary": {
+      "ru": "К ВЫБОРУ МИССИИ",
+      "en": "CHOOSE A MISSION"
+    },
+    "onboarding.step": {
+      "ru": "Шаг {number}",
+      "en": "STEP {number}"
+    },
+    "onboarding.steps.1.title": {
+      "ru": "ВЫБЕРИ МИССИЮ",
+      "en": "CHOOSE YOUR MISSION"
+    },
+    "onboarding.steps.1.body": {
+      "ru": "У каждой миссии своя задача и свои условия",
+      "en": "Each mission has its own objectives and conditions"
+    },
+    "onboarding.steps.2.title": {
+      "ru": "ПОСТРОЙ МАРШРУТ",
+      "en": "MAP YOUR ROUTE"
+    },
+    "onboarding.steps.2.body": {
+      "ru": "Управляй элементами сети спутниковой связи на Земле и в космосе",
+      "en": "Arrange the elements of the satellite communications network on Earth and in space"
+    },
+    "onboarding.steps.3.title": {
+      "ru": "ЗАПУСТИ СИГНАЛ",
+      "en": "INITIATE YOUR SIGNAL"
+    },
+    "onboarding.steps.3.body": {
+      "ru": "Пройди все миссии\nГотов ли ты стать космическим инженером?",
+      "en": "Complete all the missions\nAre you ready to become a space engineer?"
+    },
+    "missionSelect.aria": {
+      "ru": "Выбор миссии",
+      "en": "Mission selection"
+    },
+    "missionSelect.mapAria": {
+      "ru": "Четыре миссии MAX",
+      "en": "Four MAX missions"
+    },
+    "missionSelect.start": {
+      "ru": "НАЧАТЬ",
+      "en": "START"
+    },
+    "missionSelect.finish": {
+      "ru": "ЗАВЕРШИТЬ",
+      "en": "FINISH"
+    },
+    "missionSelect.markerAria": {
+      "ru": "Миссия {number}: {name}\n{status}",
+      "en": "Mission {number}: {name}\n{status}"
+    },
+    "mission.status.locked": {
+      "ru": "ЗАКРЫТА",
+      "en": "LOCKED"
+    },
+    "mission.status.open": {
+      "ru": "ОТКРЫТА",
+      "en": "OPEN"
+    },
+    "mission.status.completed": {
+      "ru": "ВЫПОЛНЕНА",
+      "en": "COMPLETED"
+    },
+    "mission.number": {
+      "ru": "МИССИЯ № {number}",
+      "en": "MISSION #{number}"
+    },
+    "mission.time": {
+      "ru": "ВРЕМЯ",
+      "en": "TIME"
+    },
+    "mission.restart": {
+      "ru": "Начать миссию заново",
+      "en": "Restart mission"
+    },
+    "mission.routeAria": {
+      "ru": "Маршрут",
+      "en": "Route"
+    },
+    "mission.feedback.playing": {
+      "ru": "Расположи элементы между точками маршрута в правильной последовательности",
+      "en": "Place the components between the route points in the correct order"
+    },
+    "mission.feedback.incomplete": {
+      "ru": "Маршрут собран не полностью",
+      "en": "Route is not fully assembled"
+    },
+    "mission.feedback.error": {
+      "ru": "Нарушена последовательность элементов",
+      "en": "Elements are sequenced incorrectly"
+    },
+    "mission.feedback.disconnected": {
+      "ru": "В маршруте остался разрыв",
+      "en": "There is a gap in the route"
+    },
+    "mission.feedback.timeout": {
+      "ru": "Время вышло\nСобери маршрут ещё раз",
+      "en": "Time is up\nBuild the route again"
+    },
+    "popup.timeout.title": {
+      "ru": "ВРЕМЯ ВЫШЛО",
+      "en": "TIME IS UP"
+    },
+    "popup.timeout.aria": {
+      "ru": "Время миссии истекло",
+      "en": "Mission time expired"
+    },
+    "popup.success.aria": {
+      "ru": "Миссия выполнена",
+      "en": "Mission completed"
+    },
+    "popup.error.aria": {
+      "ru": "Ошибка соединения",
+      "en": "Connection error"
+    },
+    "popup.close": {
+      "ru": "Закрыть сообщение",
+      "en": "Close message"
+    },
+    "popup.retry": {
+      "ru": "ПОВТОРИТЬ МИССИЮ",
+      "en": "REPLAY MISSION"
+    },
+    "popup.leave": {
+      "ru": "ПОКИНУТЬ ИГРУ",
+      "en": "LEAVE GAME"
+    },
+    "popup.continue": {
+      "ru": "К МИССИЯМ",
+      "en": "BACK TO MISSIONS"
+    },
+    "end.aria": {
+      "ru": "Финальный экран",
+      "en": "Final screen"
+    },
+    "end.primary": {
+      "ru": "Новое путешествие",
+      "en": "Start again"
+    },
+    "end.title": {
+      "ru": "Связь установлена",
+      "en": "Connection established"
+    },
+    "end.learnMore": {
+      "ru": "УЗНАТЬ БОЛЬШЕ",
+      "en": "LEARN MORE"
+    },
+    "end.ready": {
+      "ru": "ТЫ ГОТОВ СТАТЬ\nКОСМИЧЕСКИМ\nИНЖЕНЕРОМ!",
+      "en": "YOU’RE READY TO BECOME\nA SPACE\nENGINEER!"
+    },
+    "end.description": {
+      "ru": "Мы создаём низкоорбитальную спутниковую систему для широкополосной передачи данных в любую точку планеты",
+      "en": "We are building a low-orbit satellite system for broadband data transmission anywhere on the planet"
+    },
+    "end.coverage": {
+      "ru": "ГЛОБАЛЬНОЕ\nПОКРЫТИЕ",
+      "en": "GLOBAL\nCOVERAGE"
+    },
+    "end.spacecraft": {
+      "ru": "КОСМИЧЕСКИХ\nАППАРАТОВ",
+      "en": "SPACECRAFT"
+    },
+    "content.icons.terminal": {
+      "ru": "Терминал",
+      "en": "User terminal"
+    },
+    "content.icons.satellite": {
+      "ru": "Спутник",
+      "en": "Satellite"
+    },
+    "content.icons.gateway": {
+      "ru": "Шлюз",
+      "en": "Gateway station"
+    },
+    "content.icons.core": {
+      "ru": "Центр обработки данных",
+      "en": "Data processing center"
+    },
+    "content.icons.internet": {
+      "ru": "Интернет",
+      "en": "Internet"
+    },
+    "content.icons.point-a": {
+      "ru": "Буква A",
+      "en": "Letter A"
+    },
+    "content.icons.point-b": {
+      "ru": "Буква Б",
+      "en": "Letter B"
+    },
+    "content.icons.point-ship": {
+      "ru": "Корабль",
+      "en": "Ship"
+    },
+    "content.icons.point-internet": {
+      "ru": "Интернет",
+      "en": "Internet"
+    },
+    "content.objects.terminal.label": {
+      "ru": "абонентский терминал",
+      "en": "user terminal"
+    },
+    "content.objects.terminal.short": {
+      "ru": "абонентский терминал",
+      "en": "user terminal"
+    },
+    "content.objects.satellite.label": {
+      "ru": "космический аппарат",
+      "en": "satellite"
+    },
+    "content.objects.satellite.short": {
+      "ru": "космический аппарат",
+      "en": "satellite"
+    },
+    "content.objects.gateway.label": {
+      "ru": "шлюзовая станция",
+      "en": "gateway station"
+    },
+    "content.objects.gateway.short": {
+      "ru": "шлюзовая станция",
+      "en": "gateway station"
+    },
+    "content.objects.core.label": {
+      "ru": "центр обработки данных",
+      "en": "data processing center"
+    },
+    "content.objects.core.short": {
+      "ru": "центр обработки данных",
+      "en": "data processing center"
+    },
+    "content.objects.internet.label": {
+      "ru": "интернет",
+      "en": "internet"
+    },
+    "content.objects.internet.short": {
+      "ru": "интернет",
+      "en": "internet"
+    },
+    "content.equipmentSets.set-1": {
+      "ru": "Набор 1 · ЕСТЬ ПИНГ!",
+      "en": "Set 1 · WE HAVE A PING!"
+    },
+    "content.equipmentSets.set-2": {
+      "ru": "Набор 2 · АРКТИКА НА СВЯЗИ",
+      "en": "Set 2 · THE ARCTIC IS ONLINE"
+    },
+    "content.equipmentSets.set-3": {
+      "ru": "Набор 3 · СВЯЗЬ ДЛЯ БОЛЬШОЙ СТРАНЫ",
+      "en": "Set 3 · CONNECTIVITY FOR A LARGE COUNTRY"
+    },
+    "content.missions.first-signal.name": {
+      "ru": "ЕСТЬ ПИНГ!",
+      "en": "WE HAVE A PING!"
+    },
+    "content.missions.first-signal.description": {
+      "ru": "На удалённом исследовательском посту установлен новый абонентский терминал. Расположи элементы сети спутниковой связи и задай соединения между ними. Команде необходимо впервые вывести объект в интернет через спутниковую инфраструктуру.\nДля этого нужно определить роль каждого элемента и правильно выстроить маршрут сигнала.\nПосле сборки маршрута система проведёт проверку соединения. Если все устройства расположены в верной последовательности, сигнал пройдёт от терминала через спутник и наземную станцию к центру обработки данных, а пост получит стабильный доступ в интернет.\n\nЗадача: определи верную последовательность элементов сети и запусти сигнал.",
+      "en": "A new user terminal was installed at an isolated research station. Arrange the satellite communications network elements and define their connections to each other. The team needs to get the station online via the satellite infrastructure for the first time.\nTo do this, the role of each element must be determined and the signal route must be set up correctly.\nAfter the route is assembled, the system will check the connection. If all devices are arranged in the correct sequence, the signal will pass from the terminal through the satellite and the ground station to the data processing center, and the station will receive stable internet access.\n\nMission: Determine the correct sequence of network elements and initiate the signal."
+    },
+    "content.missions.first-signal.success": {
+      "ru": "Абонентский терминал подключён к интернету",
+      "en": "User terminal connected to the internet"
+    },
+    "content.missions.first-signal.objectives.place-terminal": {
+      "ru": "размести абонентский терминал",
+      "en": "place the user terminal"
+    },
+    "content.missions.first-signal.objectives.terminal-to-satellite": {
+      "ru": "соедини терминал со спутником",
+      "en": "connect the terminal to the satellite"
+    },
+    "content.missions.first-signal.objectives.satellite-to-gateway": {
+      "ru": "подключи шлюзовую станцию",
+      "en": "connect the gateway station"
+    },
+    "content.missions.first-signal.objectives.core-to-internet": {
+      "ru": "выведи сигнал в интернет",
+      "en": "route the signal to the internet"
+    },
+    "content.missions.first-signal.feedback.success.mission-complete.eyebrow": {
+      "ru": "МИССИЯ № 1 ВЫПОЛНЕНА",
+      "en": "MISSION #1 COMPLETED"
+    },
+    "content.missions.first-signal.feedback.success.mission-complete.title": {
+      "ru": "МИССИЯ ВЫПОЛНЕНА",
+      "en": "MISSION COMPLETED"
+    },
+    "content.missions.first-signal.feedback.success.mission-complete.message": {
+      "ru": "Абонентский терминал подключён к интернету",
+      "en": "User terminal connected to the internet"
+    },
+    "content.missions.first-signal.feedback.error.invalid-connection.eyebrow": {
+      "ru": "ОШИБКА СОЕДИНЕНИЯ",
+      "en": "CONNECTION ERROR"
+    },
+    "content.missions.first-signal.feedback.error.invalid-connection.title": {
+      "ru": "СВЯЗЬ НЕ УСТАНОВЛЕНА",
+      "en": "NO CONNECTION"
+    },
+    "content.missions.first-signal.feedback.error.invalid-connection.message": {
+      "ru": "Нарушена последовательность элементов",
+      "en": "Elements are sequenced incorrectly"
+    },
+    "content.missions.arctic-route.name": {
+      "ru": "АРКТИКА НА СВЯЗИ",
+      "en": "THE ARCTIC IS ONLINE"
+    },
+    "content.missions.arctic-route.description": {
+      "ru": "Удалённая точка в Арктике находится вне зоны покрытия, а выбрать место для наземной станции можно только там, где есть необходимая инфраструктура.\n\nЗадача: определи высоту орбиты и число спутников, найди подходящее место для наземной станции.",
+      "en": "An isolated location in the Arctic is outside the coverage area. A site for a ground station can only be chosen where the essential infrastructure is available.\n\nMission: Determine the orbital altitude and the number of satellites. Find a suitable location for the ground station."
+    },
+    "content.missions.arctic-route.success": {
+      "ru": "Связь с удалённой точкой в Арктике установлена",
+      "en": "The isolated location in the Arctic is online"
+    },
+    "content.missions.arctic-route.objectives.double-satellite": {
+      "ru": "определи высоту орбиты спутников",
+      "en": "determine the orbital altitude"
+    },
+    "content.missions.arctic-route.objectives.return-to-ground": {
+      "ru": "найди место для шлюзовой станции",
+      "en": "find a suitable location for the ground station"
+    },
+    "content.missions.arctic-route.objectives.use-all-equipment": {
+      "ru": "используй все необходимые элементы сети",
+      "en": "use all required network components"
+    },
+    "content.missions.arctic-route.feedback.success.mission-complete.eyebrow": {
+      "ru": "МИССИЯ № 2 ВЫПОЛНЕНА",
+      "en": "MISSION #2 COMPLETED"
+    },
+    "content.missions.arctic-route.feedback.success.mission-complete.title": {
+      "ru": "МИССИЯ ВЫПОЛНЕНА",
+      "en": "MISSION COMPLETED"
+    },
+    "content.missions.arctic-route.feedback.success.mission-complete.message": {
+      "ru": "Связь с удалённой точкой в Арктике установлена",
+      "en": "The isolated location in the Arctic is online"
+    },
+    "content.missions.arctic-route.feedback.error.satellite-too-high.eyebrow": {
+      "ru": "ОШИБКА ОРБИТЫ",
+      "en": "ORBIT ERROR"
+    },
+    "content.missions.arctic-route.feedback.error.satellite-too-high.title": {
+      "ru": "СВЯЗЬ НЕ УСТАНОВЛЕНА",
+      "en": "NO CONNECTION"
+    },
+    "content.missions.arctic-route.feedback.error.satellite-too-high.message": {
+      "ru": "Спутник слишком высоко\nОпусти его ниже допустимого уровня, чтобы восстановить устойчивую связь",
+      "en": "The satellite is too high\nLower it to the permitted altitude to restore a stable connection"
+    },
+    "content.missions.arctic-route.feedback.error.invalid-connection.eyebrow": {
+      "ru": "ОШИБКА СОЕДИНЕНИЯ",
+      "en": "CONNECTION ERROR"
+    },
+    "content.missions.arctic-route.feedback.error.invalid-connection.title": {
+      "ru": "СВЯЗЬ НЕ УСТАНОВЛЕНА",
+      "en": "NO CONNECTION"
+    },
+    "content.missions.arctic-route.feedback.error.invalid-connection.message": {
+      "ru": "Нарушена последовательность элементов",
+      "en": "Elements are sequenced incorrectly"
+    },
+    "content.missions.protected-network.name": {
+      "ru": "СВЯЗЬ ДЛЯ БОЛЬШОЙ СТРАНЫ",
+      "en": "CONNECTIVITY FOR A LARGE COUNTRY"
+    },
+    "content.missions.protected-network.description": {
+      "ru": "Абонентские терминалы в Калининграде и на судне, прибывающем во Владивосток, разделяет вся страна, поэтому одного спутника для такого маршрута недостаточно.\n\nЗадача: распредели элементы сети спутниковой связи через всю страну, чтобы создать надёжный маршрут для передачи данных.\nНебольшая подсказка: западную и восточную части страны посередине связывает центр обработки данных.",
+      "en": "User terminals in Kaliningrad and on a ship arriving in Vladivostok are separated by the entire country, so a single satellite is not sufficient.\n\nMission: Position the elements of the satellite communications network across the entire country to create a reliable route for data transmission.\nHere’s a little hint: the data processing center connects the western and eastern ends of the country in the middle."
+    },
+    "content.missions.protected-network.success": {
+      "ru": "Корпоративные данные переданы на судно, прибывающее во Владивосток",
+      "en": "Corporate data transferred successfully to the ship arriving in Vladivostok"
+    },
+    "content.missions.protected-network.objectives.eastern-network": {
+      "ru": "построй восточную часть сети",
+      "en": "build the eastern part of the network"
+    },
+    "content.missions.protected-network.objectives.western-network": {
+      "ru": "построй западную часть сети",
+      "en": "build the western part of the network"
+    },
+    "content.missions.protected-network.objectives.unite-through-core": {
+      "ru": "установи связь через центр обработки данных",
+      "en": "establish a connection through the data processing center"
+    },
+    "content.missions.protected-network.objectives.calibrate-network": {
+      "ru": "откалибруй связь",
+      "en": "calibrate the connection"
+    },
+    "content.missions.protected-network.feedback.success.mission-complete.eyebrow": {
+      "ru": "МИССИЯ № 3 ВЫПОЛНЕНА",
+      "en": "MISSION #3 COMPLETED"
+    },
+    "content.missions.protected-network.feedback.success.mission-complete.title": {
+      "ru": "МИССИЯ ВЫПОЛНЕНА",
+      "en": "MISSION COMPLETED"
+    },
+    "content.missions.protected-network.feedback.success.mission-complete.message": {
+      "ru": "Корпоративные данные переданы на судно, прибывающее во Владивосток",
+      "en": "Corporate data transferred successfully to the ship arriving in Vladivostok"
+    },
+    "content.missions.protected-network.feedback.error.invalid-connection.eyebrow": {
+      "ru": "ОШИБКА СОЕДИНЕНИЯ",
+      "en": "CONNECTION ERROR"
+    },
+    "content.missions.protected-network.feedback.error.invalid-connection.title": {
+      "ru": "ДАННЫЕ НЕ ПЕРЕДАНЫ",
+      "en": "DATA NOT TRANSMITTED"
+    },
+    "content.missions.protected-network.feedback.error.invalid-connection.message": {
+      "ru": "Нарушена последовательность элементов",
+      "en": "Elements are sequenced incorrectly"
+    },
+    "content.missions.first-signal.level": {
+      "ru": "БАЗОВЫЙ",
+      "en": "BASIC"
+    },
+    "content.missions.first-signal.summary": {
+      "ru": "Построй маршрут через спутниковую сеть, чтобы подключить абонентский терминал к интернету",
+      "en": "Map your route through the satellite network to connect the user terminal to the internet"
+    },
+    "content.missions.arctic-route.level": {
+      "ru": "СРЕДНИЙ",
+      "en": "INTERMEDIATE"
+    },
+    "content.missions.arctic-route.summary": {
+      "ru": "Обеспечь спутниковое покрытие в удалённой точке Арктики",
+      "en": "Provide satellite coverage to an isolated location in the Arctic"
+    },
+    "content.missions.protected-network.level": {
+      "ru": "ПРОДВИНУТЫЙ",
+      "en": "ADVANCED"
+    },
+    "content.missions.protected-network.summary": {
+      "ru": "Передай корпоративные данные из Калининграда во Владивосток через всю страну",
+      "en": "Transfer corporate data from Kaliningrad to Vladivostok, across the entire country"
+    },
+    "loading.title": {
+      "ru": "ЗАГРУЗКА ИГРЫ",
+      "en": "LOADING GAME"
+    },
+    "loading.config": {
+      "ru": "Подготовка миссий",
+      "en": "Preparing missions"
+    },
+    "loading.images": {
+      "ru": "Загрузка карты",
+      "en": "Loading the map"
+    },
+    "loading.fonts": {
+      "ru": "Подготовка к игре",
+      "en": "Getting ready to play"
+    },
+    "loading.audio": {
+      "ru": "Подготовка звука",
+      "en": "Preparing audio"
+    },
+    "loading.scene": {
+      "ru": "Подготовка миссий",
+      "en": "Preparing missions"
+    },
+    "loading.gpu": {
+      "ru": "Подготовка к запуску",
+      "en": "Getting ready to start"
+    },
+    "loading.ready": {
+      "ru": "Игра готова",
+      "en": "Game ready"
+    },
+    "loading.retry": {
+      "ru": "ПОВТОРИТЬ",
+      "en": "RETRY"
+    },
+    "loading.error": {
+      "ru": "Не удалось загрузить игру\nПроверь соединение и попробуй ещё раз",
+      "en": "Could not load the game\nCheck your connection and try again"
+    },
+    "loading.progress": {
+      "ru": "Загрузка игры",
+      "en": "Game loading progress"
+    },
+    "placement.water.title": {
+      "ru": "НЕЛЬЗЯ УСТАНОВИТЬ НА ВОДУ",
+      "en": "CANNOT PLACE ON WATER"
+    },
+    "placement.water.message": {
+      "ru": "Нельзя установить объект на воду\nРазмести его на суше",
+      "en": "This object cannot be placed on water\nPlace it on land"
+    },
+    "placement.land.title": {
+      "ru": "НУЖНА ВОДНАЯ ПОВЕРХНОСТЬ",
+      "en": "WATER SURFACE REQUIRED"
+    },
+    "placement.land.message": {
+      "ru": "Этот объект можно установить только на воду\nВыбери место на воде",
+      "en": "This object can only be placed on water\nChoose a location on water"
+    },
+    "placement.unavailable.title": {
+      "ru": "УСТАНОВКА НЕДОСТУПНА",
+      "en": "PLACEMENT UNAVAILABLE"
+    },
+    "placement.unavailable.message": {
+      "ru": "Не удалось проверить место установки\nПопробуй ещё раз",
+      "en": "The placement location could not be checked\nPlease try again"
+    },
+    "app.debug.unlockAll": {
+      "ru": "Разрешить запуск всех миссий",
+      "en": "Allow all missions to be played"
+    },
+    "app.debug.completeAll": {
+      "ru": "Пройти все миссии",
+      "en": "Complete all missions"
+    },
+    "connection.mode": {
+      "ru": "Механика связи",
+      "en": "Connection mode"
+    },
+    "connection.world": {
+      "ru": "ПО РАССТОЯНИЮ",
+      "en": "BY DISTANCE"
+    },
+    "connection.screen": {
+      "ru": "ПО РАКУРСУ",
+      "en": "BY VIEW"
+    },
+    "connection.hint": {
+      "ru": "Собери цепочку действий так, чтобы зоны связи соседних узлов пересеклись",
+      "en": "Arrange actions so neighbouring connection zones overlap"
+    },
+    "connection.hold": {
+      "ru": "Удержи соединённый маршрут",
+      "en": "Keep the route connected"
+    },
+    "connection.hybrid": {
+      "ru": "СМЕШАННЫЙ",
+      "en": "HYBRID"
+    },
+    "connection.hybridHint": {
+      "ru": "Размести действия по порядку от А к Б",
+      "en": "Place actions in order from A to B"
+    },
+    "missionSelect.allCompleted": {
+      "ru": "ВСЕ МИССИИ ПРОЙДЕНЫ",
+      "en": "ALL MISSIONS COMPLETED"
+    },
+    "missionSelect.continue": {
+      "ru": "ПРОДОЛЖИТЬ",
+      "en": "CONTINUE"
+    },
+    "app.debug.off": {
+      "ru": "Выключить дебаг",
+      "en": "Turn off debug mode"
+    }
+  },
+  "translationReview": []
+}

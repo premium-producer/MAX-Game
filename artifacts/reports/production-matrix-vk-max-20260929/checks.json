@@ -1,0 +1,123 @@
+{
+  "copiedBytesIdentical": true,
+  "sha256": "8986facea22e8c282637023737c245b5c91b4e39bfdd494c766c10dbb024bab2",
+  "zipCRC": "pass",
+  "stateCount": 30,
+  "idsSequential": true,
+  "byZone": {
+    "AI-стелла": 4,
+    "Арка": 4,
+    "Discovery": 4,
+    "Медиалента": 2,
+    "VK Видео — стена": 6,
+    "MAX — стелла": 3,
+    "MAX — экран": 7
+  },
+  "byStatus": {
+    "Нужен референс": 30
+  },
+  "emptyReferences": 30,
+  "emptyComments": 30,
+  "formulaCount": 0,
+  "embeddedOrExternalParts": [],
+  "sheets": [
+    {
+      "name": "Production Matrix",
+      "state": "visible",
+      "dimensions": "A1:N32",
+      "merges": [
+        "A1:N1"
+      ],
+      "hiddenRows": [],
+      "hiddenColumns": [],
+      "validation": [
+        {
+          "range": "M3:M200",
+          "type": "list",
+          "formula": "Lists!$A$2:$A$5"
+        },
+        {
+          "range": "L3:L200",
+          "type": "list",
+          "formula": "Lists!$B$2:$B$4"
+        },
+        {
+          "range": "M23:M32",
+          "type": "list",
+          "formula": "Lists!$A$2:$A$5"
+        },
+        {
+          "range": "L23:L32",
+          "type": "list",
+          "formula": "Lists!$B$2:$B$4"
+        }
+      ]
+    },
+    {
+      "name": "Lists",
+      "state": "visible",
+      "dimensions": "A1:B5",
+      "merges": [],
+      "hiddenRows": [],
+      "hiddenColumns": [],
+      "validation": []
+    }
+  ],
+  "diff": {
+    "previousSha256": "d991fc149c3d0820bb9ee86bbb0eacf39efdab9121d2a3b53b8ab0d63363aa5b",
+    "updatedSha256": "8986facea22e8c282637023737c245b5c91b4e39bfdd494c766c10dbb024bab2",
+    "previousCount": 20,
+    "updatedCount": 30,
+    "addedIds": [
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30
+    ],
+    "removedIds": [],
+    "changedFields": [],
+    "listsIdentical": true
+  },
+  "workbookModified": false,
+  "runtimeModified": false,
+  "scenarioIDsExactlyOnce": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30
+  ],
+  "localMarkdownLinksChecked": 24,
+  "sourceStillIdentical": true
+}

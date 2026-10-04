@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LumiCells — Web Component</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23050632'/%3E%3Crect x='6' y='6' width='8' height='8' rx='2' fill='%23f21239'/%3E%3Crect x='18' y='6' width='8' height='8' rx='2' fill='%23c43db2'/%3E%3Crect x='6' y='18' width='8' height='8' rx='2' fill='%23e0267a'/%3E%3Crect x='18' y='18' width='8' height='8' rx='2' fill='%230476ff'/%3E%3C/svg%3E"
+    />
+    <style>
+      :root {
+        --red: #ee2848;
+        --blue: #0481f5;
+        --ink: #eceeff;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        background: #050512;
+        color: var(--ink);
+        font: 15px/1.5 Inter, ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+      }
+      main {
+        display: grid;
+        gap: 40px;
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 16px 64px;
+      }
+      h1,
+      h2 {
+        margin: 0 0 8px;
+        font-weight: 600;
+      }
+      p {
+        margin: 0 0 12px;
+        color: #aab0d8;
+      }
+      code {
+        padding: 1px 5px;
+        border-radius: 4px;
+        background: rgba(255, 255, 255, 0.08);
+        color: #d7dcff;
+        font: 13px ui-monospace, 'Cascadia Code', Consolas, monospace;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        align-items: flex-start;
+      }
+
+      /* ---- 1. The element hosts a scene of plain HTML bubbles --------------------------- */
+      #hero {
+        flex: 1 1 420px;
+        max-width: 640px;
+        aspect-ratio: 1;
+        border-radius: 20px;
+        overflow: clip;
+      }
+      .bubble {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        padding: 10px 20px;
+        /* A light rim and a dark shadow keep the pill readable over the cells it lights up. */
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 999px;
+        background: var(--red);
+        box-shadow: 0 3px 12px rgba(0, 0, 24, 0.55);
+        color: #fff;
+        font: 600 15px/1 inherit;
+        cursor: pointer;
+        transition:
+          transform 0.25s cubic-bezier(0.2, 0.9, 0.3, 1.4),
+          background-color 0.25s;
+      }
+      .bubble:hover {
+        transform: translate(-50%, -50%) scale(1.06);
+      }
+      .bubble.blue {
+        background: var(--blue);
+      }
+      .bubble.big {
+        padding: 14px 28px;
+        font-size: 18px;
+      }
+      .title {
+        position: absolute;
+        left: 50%;
+        top: 46%;
+        transform: translate(-50%, -50%);
+        margin: 0;
+        color: var(--ink);
+        font-size: clamp(16px, 3.2vw, 22px);
+        font-weight: 600;
+        text-align: center;
+        pointer-events: none;
+      }
+      .title mark {
+        padding: 0 6px;
+        border-radius: 6px;
+        background: var(--red);
+        color: #fff;
+      }
+
+      /* ---- 2. A card with its own animation ------------------------------------------------ */
+      #card {
+        flex: 1 1 280px;
+        min-height: 240px;
+        border-radius: 20px;
+        overflow: clip;
+      }
+      #card .inner {
+        display: grid;
+        gap: 12px;
+        place-content: center;
+        justify-items: start;
+        height: 100%;
+        min-height: 240px;
+        padding: 28px;
+      }
+      .controls button,
+      .controls select,
+      #card button {
+        padding: 8px 14px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 10px;
+        background: rgba(0, 0, 20, 0.55);
+        color: var(--ink);
+        font: inherit;
+        cursor: pointer;
+      }
+
+      /* ---- 3. Config from a file ----------------------------------------------------------- */
+      #from-file {
+        flex: 1 1 100%;
+        height: 200px;
+        border-radius: 20px;
+        overflow: clip;
+      }
+      #from-file .inner {
+        display: grid;
+        place-content: center;
+        height: 100%;
+        text-align: center;
+      }
+
+      /* A portal: lives outside <lumi-cells>, bound through data-lc-for="hero". */
+      .portal {
+        display: inline-block;
+        padding: 10px 18px;
+        border: 1px dashed rgba(255, 255, 255, 0.35);
+        border-radius: 12px;
+        color: var(--ink);
+      }
+
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+        margin-bottom: 12px;
+      }
+      #log {
+        height: 140px;
+        margin: 0;
+        padding: 10px 12px;
+        overflow: auto;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.05);
+        color: #b8c0ff;
+        font: 12px/1.5 ui-monospace, 'Cascadia Code', Consolas, monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p><a href="../">← Back to the playground</a></p>
+        <h1>&lt;lumi-cells&gt; without a framework</h1>
+        <p>
+          Plain HTML: one tag, the <code>preset</code>, <code>interactive</code> and
+          <code>src</code> attributes, and declarative element binding through
+          <code>data-lc-*</code>.
+        </p>
+      </header>
+
+      <section>
+        <h2>1. A scene of HTML bubbles</h2>
+        <p>
+          Every bubble with <code>data-lc-influence</code> lights up the grid under it,
+          <code>data-lc-pulse="click"</code> sends a ring on click and
+          <code>data-lc-lift="hover"</code> lifts pixels on hover. The light color
+          (<code>data-lc-color</code>) of the blue bubbles is lighter than their fill, so they do
+          not blend into their own glow.
+        </p>
+        <div class="row">
+          <lumi-cells id="hero" preset="reference" interactive>
+            <p class="title">pick what <mark>you</mark> are into</p>
+
+            <button type="button"
+              class="bubble big blue"
+              style="left: 68%; top: 68%"
+              data-lc-influence
+              data-lc-color="#39b8ff"
+              data-lc-strength="0.9"
+              data-lc-pulse="click"
+              data-lc-lift="hover"
+            >
+              Science
+            </button>
+            <button type="button"
+              class="bubble"
+              style="left: 68%; top: 26%"
+              data-lc-influence
+              data-lc-pulse="click"
+              data-lc-lift="hover"
+            >
+              Travel
+            </button>
+            <button type="button"
+              class="bubble"
+              style="left: 28%; top: 30%"
+              data-lc-influence
+              data-lc-pulse="click"
+              data-lc-lift="hover"
+            >
+              Music
+            </button>
+            <button type="button"
+              class="bubble"
+              style="left: 22%; top: 60%"
+              data-lc-influence="shadow"
+              data-lc-falloff="3"
+              data-lc-pulse="click"
+            >
+              Silence
+            </button>
+            <button type="button"
+              class="bubble blue"
+              style="left: 40%; top: 80%"
+              data-lc-influence
+              data-lc-color="#39b8ff"
+              data-lc-strength="0.8"
+              data-lc-pulse="click"
+              data-lc-lift="hover"
+            >
+              Back
+            </button>
+          </lumi-cells>
+
+          <div class="portal" data-lc-for="hero" data-lc-influence data-lc-pulse="click">
+            Outside the tag: <code>data-lc-for="hero"</code>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>2. A second instance and a config file</h2>
+        <div class="row">
+          <lumi-cells id="card" preset="pulse">
+            <div class="inner">
+              <strong>Pulse</strong>
+              <span>The <code>pulse</code> preset: rings spread from the center.</span>
+              <button type="button" data-lc-pulse="click" data-lc-color="#c43db2">Send a ring</button>
+            </div>
+          </lumi-cells>
+
+          <!-- src is fetched next to the page; the file only lists what differs from the preset. -->
+          <lumi-cells id="from-file" src="./lumicells.config.json">
+            <div class="inner">
+              <div>
+                <strong>Config from a file</strong>
+                <p><code>&lt;lumi-cells src="./lumicells.config.json"&gt;</code></p>
+              </div>
+            </div>
+          </lumi-cells>
+        </div>
+      </section>
+
+      <section>
+        <h2>3. Properties and events</h2>
+        <div class="controls">
+          <label>
+            Preset
+            <select id="preset">
+              <option value="reference">reference</option>
+              <option value="orb">orb</option>
+              <option value="pulse">pulse</option>
+              <option value="life">life</option>
+              <option value="vortex">vortex</option>
+              <option value="waves">waves</option>
+              <option value="ripples">ripples</option>
+              <option value="rain">rain</option>
+              <option value="minimal">minimal</option>
+            </select>
+          </label>
+          <button id="pause" type="button">Pause</button>
+          <button id="speed" type="button">config.animation.speed = 2</button>
+        </div>
+        <pre id="log" aria-live="polite"></pre>
+      </section>
+    </main>
+
+    <script type="module">
+      import 'lumicells/element/define';
+
+      const hero = document.getElementById('hero');
+      const log = document.getElementById('log');
+      const write = (text) => {
+        log.textContent += `${text}\n`;
+        log.scrollTop = log.scrollHeight;
+      };
+
+      // Events are plain CustomEvents and bubble, so one listener on the document sees them all.
+      for (const type of ['lc-ready', 'lc-config', 'lc-error', 'lc-fallback']) {
+        document.addEventListener(type, (e) => {
+          const detail = e.detail;
+          const extra =
+            type === 'lc-config'
+              ? `${detail.source}: ${detail.changed.length} parameters`
+              : type === 'lc-error'
+                ? detail.message
+                : type === 'lc-fallback'
+                  ? detail.reason
+                  : '';
+          write(`${type} #${e.target.id} ${extra}`);
+        });
+      }
+
+      document.getElementById('preset').addEventListener('change', (e) => {
+        hero.preset = e.target.value;
+      });
+
+      document.getElementById('pause').addEventListener('click', (e) => {
+        hero.paused = !hero.paused;
+        e.target.textContent = hero.paused ? 'Resume' : 'Pause';
+      });
+
+      let fast = false;
+      document.getElementById('speed').addEventListener('click', () => {
+        fast = !fast;
+        // Properties are the source of truth: assigning `config` re-applies with a transition.
+        hero.config = { animation: { speed: fast ? 2 : 1 } };
+      });
+    </script>
+  </body>
+</html>

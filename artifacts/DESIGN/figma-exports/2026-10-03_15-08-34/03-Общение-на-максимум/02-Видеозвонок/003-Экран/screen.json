@@ -1,0 +1,1759 @@
+{
+  "id": "296:16000",
+  "name": "Экран 3",
+  "title": "003-Экран",
+  "bounds": {
+    "x": 14622,
+    "y": 3641,
+    "width": 360,
+    "height": 800
+  },
+  "task": "unassigned",
+  "include": true,
+  "reviewed": false,
+  "confidence": "structure",
+  "group": "296:15974",
+  "groupName": "Общение на максимум / Видеозвонок",
+  "containerPath": [
+    {
+      "id": "296:15779",
+      "name": "03-Общение на максимум"
+    },
+    {
+      "id": "296:15974",
+      "name": "02-Видеозвонок"
+    }
+  ],
+  "ancestors": [],
+  "nearbyHeadings": [],
+  "evidence": [
+    {
+      "source": "autolayout",
+      "text": "Порядок children; названия фреймов не используются"
+    }
+  ],
+  "warnings": [],
+  "detection": "structure",
+  "order": 48,
+  "content": {
+    "kind": "screen",
+    "missionOrder": 3,
+    "missionNodeId": "296:15779",
+    "iconOrder": 2,
+    "iconNodeId": "296:15974",
+    "iconText": "Видеозвонок",
+    "iconTexts": [
+      {
+        "id": "296:15978",
+        "order": 1,
+        "text": "Видеозвонок",
+        "fontName": {
+          "family": "Inter",
+          "style": "Regular",
+          "variationSettings": {
+            "slnt": 0,
+            "wght": 400
+          }
+        },
+        "fontSize": 55,
+        "segments": [
+          {
+            "characters": "Видеозвонок",
+            "start": 0,
+            "end": 11,
+            "fontSize": 55,
+            "fontName": {
+              "family": "Inter",
+              "style": "Regular",
+              "variationSettings": {
+                "slnt": 0,
+                "wght": 400
+              }
+            },
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 0.07999999821186066,
+                  "g": 0.05999999865889549,
+                  "b": 0.11999999731779099
+                },
+                "boundVariables": {}
+              }
+            ],
+            "hyperlink": null
+          }
+        ],
+        "bounds": {
+          "x": 14931.5,
+          "y": 572,
+          "width": 424,
+          "height": 67
+        }
+      }
+    ],
+    "screenOrder": 3,
+    "screenNodeId": "296:15997",
+    "visualNodeId": "296:16000",
+    "helpNodeId": "296:16015"
+  },
+  "instruction": {
+    "blocks": [
+      {
+        "id": "296:16017",
+        "order": 1,
+        "text": "Текст справки удалён по комментарию клиента",
+        "fontName": {
+          "family": "Inter",
+          "style": "Regular",
+          "variationSettings": {
+            "slnt": 0,
+            "wght": 400
+          }
+        },
+        "fontSize": 24,
+        "segments": [
+          {
+            "characters": "Текст справки удалён по комментарию клиента",
+            "start": 0,
+            "end": 43,
+            "fontSize": 24,
+            "fontName": {
+              "family": "Inter",
+              "style": "Regular",
+              "variationSettings": {
+                "slnt": 0,
+                "wght": 400
+              }
+            },
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 0.07999999821186066,
+                  "g": 0.05999999865889549,
+                  "b": 0.11999999731779099
+                },
+                "boundVariables": {}
+              }
+            ],
+            "hyperlink": null
+          }
+        ],
+        "bounds": {
+          "x": 15154,
+          "y": 4031.5,
+          "width": 547,
+          "height": 58
+        }
+      }
+    ],
+    "text": "Текст справки удалён по комментарию клиента"
+  },
+  "watchNodeId": "296:15997",
+  "contextNodeIds": [
+    "296:15975",
+    "296:15780"
+  ],
+  "sequenceParents": [
+    "296:15979",
+    "296:15974",
+    "296:15781",
+    "296:15779"
+  ],
+  "fingerprint": "[\"[\\\"Видеозвонок · 03 · Вы на связи\\\",{\\\"x\\\":14482,\\\"y\\\":3515,\\\"width\\\":1323,\\\"height\\\":1091},\\\"FRAME\\\",[[\\\"296:15979\\\",\\\"задание миссии\\\",\\\"FRAME\\\"],[\\\"296:15974\\\",\\\"иконка_задание · Видеозвонок\\\",\\\"FRAME\\\"],[\\\"296:15781\\\",\\\"Миссия · возможности слева направо\\\",\\\"FRAME\\\"],[\\\"296:15779\\\",\\\"Общение на максимум\\\",\\\"FRAME\\\"],[\\\"296:13218\\\",\\\"MAX аудит миссий\\\",\\\"FRAME\\\"],[\\\"296:13217\\\",\\\"DEV 2\\\",\\\"PAGE\\\"]],\\\"content-v1\\\",2985683855,3736503579,181]\",[\"[\\\"игровая иконка\\\",{\\\"x\\\":14887.5,\\\"y\\\":376,\\\"width\\\":512,\\\"height\\\":307},\\\"FRAME\\\",[[\\\"296:15974\\\",\\\"иконка_задание · Видеозвонок\\\",\\\"FRAME\\\"],[\\\"296:15781\\\",\\\"Миссия · возможности слева направо\\\",\\\"FRAME\\\"],[\\\"296:15779\\\",\\\"Общение на максимум\\\",\\\"FRAME\\\"],[\\\"296:13218\\\",\\\"MAX аудит миссий\\\",\\\"FRAME\\\"],[\\\"296:13217\\\",\\\"DEV 2\\\",\\\"PAGE\\\"]],\\\"content-v1\\\",2357695785,2162600687,4]\",\"[\\\"Общение на максимум\\\",{\\\"x\\\":13720,\\\"y\\\":206,\\\"width\\\":1600,\\\"height\\\":77},\\\"TEXT\\\",[[\\\"296:15779\\\",\\\"Общение на максимум\\\",\\\"FRAME\\\"],[\\\"296:13218\\\",\\\"MAX аудит миссий\\\",\\\"FRAME\\\"],[\\\"296:13217\\\",\\\"DEV 2\\\",\\\"PAGE\\\"]],\\\"content-v1\\\",3519000807,1665311739,1]\"],[[\"296:15979\",[\"296:15980\",\"296:15987\",\"296:15997\",\"296:16018\"]],[\"296:15974\",[\"296:15975\",\"296:15979\"]],[\"296:15781\",[\"296:15782\",\"296:15974\",\"296:16029\",\"296:16142\",\"296:16383\"]],[\"296:15779\",[\"296:15780\",\"296:15781\"]]]]",
+  "exportStatus": "ok",
+  "texts": [
+    {
+      "id": "I296:16002;6277:2547;1915:1645;1851:136",
+      "name": "Time",
+      "type": "TEXT",
+      "parent": "I296:16002;6277:2547;1915:1645",
+      "bounds": {
+        "x": 14646,
+        "y": 3663,
+        "width": 29,
+        "height": 20
+      },
+      "text": "9:30",
+      "fontName": null,
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "9:30",
+          "start": 0,
+          "end": 4,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:16006",
+      "name": "Павел Селезнев",
+      "type": "TEXT",
+      "parent": "296:16005",
+      "bounds": {
+        "x": 14622,
+        "y": 3783,
+        "width": 360,
+        "height": 32
+      },
+      "text": "Павел Селезнев",
+      "fontName": {
+        "family": "Roboto",
+        "style": "SemiBold",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 600
+        }
+      },
+      "fontSize": 28,
+      "segments": [
+        {
+          "characters": "Павел Селезнев",
+          "start": 0,
+          "end": 14,
+          "fontSize": 28,
+          "fontName": {
+            "family": "Roboto",
+            "style": "SemiBold",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 600
+            }
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.800000011920929,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:0af30f4380fce519624c68d2dc55e4467590684a/4263:365"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:d5428d8903c74f4ecb67c4ef3ac420ddc0286a2a,3684:80",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:16008",
+      "name": "00:03",
+      "type": "TEXT",
+      "parent": "296:16007",
+      "bounds": {
+        "x": 14784,
+        "y": 3827,
+        "width": 36,
+        "height": 18
+      },
+      "text": "00:03",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "00:03",
+          "start": 0,
+          "end": 5,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.6399999856948853,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:4c4633b73f04062295f5cba9c91128e605821b9c/4264:386"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:e90797c2e243ebd462e1946b5c699aec972290e3,19702:15",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:16011;6490:10113;86:20175;69:14041",
+      "name": "Вы",
+      "type": "TEXT",
+      "parent": "I296:16011;6490:10113;86:20175;69:14040",
+      "bounds": {
+        "x": 14848,
+        "y": 4267,
+        "width": 22,
+        "height": 20
+      },
+      "text": "Вы",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 15,
+      "segments": [
+        {
+          "characters": "Вы",
+          "start": 0,
+          "end": 2,
+          "fontSize": 15,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.800000011920929,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/2210:106"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:4133a80be032647b641cf7a7e92e63fbacaf59f1,3684:94",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:16017",
+      "order": 1,
+      "text": "Текст справки удалён по комментарию клиента",
+      "fontName": {
+        "family": "Inter",
+        "style": "Regular",
+        "variationSettings": {
+          "slnt": 0,
+          "wght": 400
+        }
+      },
+      "fontSize": 24,
+      "segments": [
+        {
+          "characters": "Текст справки удалён по комментарию клиента",
+          "start": 0,
+          "end": 43,
+          "fontSize": 24,
+          "fontName": {
+            "family": "Inter",
+            "style": "Regular",
+            "variationSettings": {
+              "slnt": 0,
+              "wght": 400
+            }
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.07999999821186066,
+                "g": 0.05999999865889549,
+                "b": 0.11999999731779099
+              },
+              "boundVariables": {}
+            }
+          ],
+          "hyperlink": null
+        }
+      ],
+      "bounds": {
+        "x": 15154,
+        "y": 4031.5,
+        "width": 547,
+        "height": 58
+      },
+      "contentRole": "instruction"
+    }
+  ],
+  "layers": [
+    {
+      "id": "296:16000",
+      "name": "Android_Активный звонок",
+      "type": "FRAME",
+      "parent": "296:15998",
+      "bounds": {
+        "x": 14622,
+        "y": 3641,
+        "width": 360,
+        "height": 800
+      }
+    },
+    {
+      "id": "296:16001",
+      "name": "Call background",
+      "type": "INSTANCE",
+      "parent": "296:16000",
+      "bounds": {
+        "x": 14622,
+        "y": 3641,
+        "width": 360,
+        "height": 800
+      }
+    },
+    {
+      "id": "I296:16001;6277:4272",
+      "name": "3",
+      "type": "ELLIPSE",
+      "parent": "296:16001",
+      "bounds": {
+        "x": 14562,
+        "y": 3801,
+        "width": 480,
+        "height": 480
+      }
+    },
+    {
+      "id": "I296:16001;6277:4273",
+      "name": "2",
+      "type": "GROUP",
+      "parent": "296:16001",
+      "bounds": {
+        "x": 14622,
+        "y": 3861,
+        "width": 360.0005187988281,
+        "height": 360.00006103515625
+      }
+    },
+    {
+      "id": "I296:16001;6277:4274",
+      "name": "Ellipse 4",
+      "type": "ELLIPSE",
+      "parent": "I296:16001;6277:4273",
+      "bounds": {
+        "x": 14622,
+        "y": 3951.00341796875,
+        "width": 179.99856567382812,
+        "height": 179.9986114501953
+      }
+    },
+    {
+      "id": "I296:16001;6277:4275",
+      "name": "Ellipse 3",
+      "type": "ELLIPSE",
+      "parent": "I296:16001;6277:4273",
+      "bounds": {
+        "x": 14712.001953125,
+        "y": 4041.00146484375,
+        "width": 179.99856567382812,
+        "height": 179.9986114501953
+      }
+    },
+    {
+      "id": "I296:16001;6277:4276",
+      "name": "Ellipse 2",
+      "type": "ELLIPSE",
+      "parent": "I296:16001;6277:4273",
+      "bounds": {
+        "x": 14802.001953125,
+        "y": 3951.00390625,
+        "width": 179.99856567382812,
+        "height": 179.9986114501953
+      }
+    },
+    {
+      "id": "I296:16001;6277:4277",
+      "name": "Ellipse 1",
+      "type": "ELLIPSE",
+      "parent": "I296:16001;6277:4273",
+      "bounds": {
+        "x": 14711.99609375,
+        "y": 3861,
+        "width": 179.99856567382812,
+        "height": 179.9986114501953
+      }
+    },
+    {
+      "id": "I296:16001;6277:4278",
+      "name": "1",
+      "type": "GROUP",
+      "parent": "296:16001",
+      "bounds": {
+        "x": 14703,
+        "y": 3941,
+        "width": 200,
+        "height": 200
+      }
+    },
+    {
+      "id": "I296:16001;6277:4279",
+      "name": "Ellipse 2431",
+      "type": "ELLIPSE",
+      "parent": "I296:16001;6277:4278",
+      "bounds": {
+        "x": 14743,
+        "y": 3941,
+        "width": 160,
+        "height": 160
+      }
+    },
+    {
+      "id": "I296:16001;6277:4280",
+      "name": "Ellipse 2430",
+      "type": "ELLIPSE",
+      "parent": "I296:16001;6277:4278",
+      "bounds": {
+        "x": 14703,
+        "y": 3981,
+        "width": 160,
+        "height": 160
+      }
+    },
+    {
+      "id": "296:16002",
+      "name": "Call Header",
+      "type": "INSTANCE",
+      "parent": "296:16000",
+      "bounds": {
+        "x": 14622,
+        "y": 3641,
+        "width": 360,
+        "height": 124
+      }
+    },
+    {
+      "id": "I296:16002;6277:2547",
+      "name": "Status Bar",
+      "type": "INSTANCE",
+      "parent": "296:16002",
+      "bounds": {
+        "x": 14622,
+        "y": 3641,
+        "width": 360,
+        "height": 52
+      }
+    },
+    {
+      "id": "I296:16002;6277:2547;1915:1645",
+      "name": "Bar",
+      "type": "INSTANCE",
+      "parent": "I296:16002;6277:2547",
+      "bounds": {
+        "x": 14622,
+        "y": 3641,
+        "width": 360,
+        "height": 52
+      }
+    },
+    {
+      "id": "I296:16002;6277:2547;1915:1645;1851:136",
+      "name": "Time",
+      "type": "TEXT",
+      "parent": "I296:16002;6277:2547;1915:1645",
+      "bounds": {
+        "x": 14646,
+        "y": 3663,
+        "width": 29,
+        "height": 20
+      }
+    },
+    {
+      "id": "I296:16002;6277:2547;1915:1645;3399:3829",
+      "name": "Spacer",
+      "type": "FRAME",
+      "parent": "I296:16002;6277:2547;1915:1645",
+      "bounds": {
+        "x": 14675,
+        "y": 3651,
+        "width": 237,
+        "height": 32
+      }
+    },
+    {
+      "id": "I296:16002;6277:2547;1915:1645;1851:137",
+      "name": "Levels",
+      "type": "FRAME",
+      "parent": "I296:16002;6277:2547;1915:1645",
+      "bounds": {
+        "x": 14912,
+        "y": 3666,
+        "width": 46,
+        "height": 17
+      }
+    },
+    {
+      "id": "I296:16002;6277:2547;1915:1645;1851:138",
+      "name": "Wifi",
+      "type": "GROUP",
+      "parent": "I296:16002;6277:2547;1915:1645;1851:137",
+      "bounds": {
+        "x": 14912,
+        "y": 3666,
+        "width": 17,
+        "height": 17
+      }
+    },
+    {
+      "id": "I296:16002;6277:2547;1915:1645;1851:141",
+      "name": "Path",
+      "type": "VECTOR",
+      "parent": "I296:16002;6277:2547;1915:1645;1851:138",
+      "bounds": {
+        "x": 14912,
+        "y": 3666,
+        "width": 17,
+        "height": 17
+      }
+    },
+    {
+      "id": "I296:16002;6277:2547;1915:1645;1851:142",
+      "name": "Path",
+      "type": "VECTOR",
+      "parent": "I296:16002;6277:2547;1915:1645;1851:138",
+      "bounds": {
+        "x": 14912,
+        "y": 3667.416748046875,
+        "width": 17,
+        "height": 14.166666984558105
+      }
+    },
+    {
+      "id": "I296:16002;6277:2547;1915:1645;1851:143",
+      "name": "Signal",
+      "type": "GROUP",
+      "parent": "I296:16002;6277:2547;1915:1645;1851:137",
+      "bounds": {
+        "x": 14928,
+        "y": 3666,
+        "width": 17,
+        "height": 17
+      }
+    },
+    {
+      "id": "I296:16002;6277:2547;1915:1645;1851:144",
+      "name": "Path",
+      "type": "VECTOR",
+      "parent": "I296:16002;6277:2547;1915:1645;1851:143",
+      "bounds": {
+        "x": 14928,
+        "y": 3666,
+        "width": 17,
+        "height": 17
+      }
+    },
+    {
+      "id": "I296:16002;6277:2547;1915:1645;1851:145",
+      "name": "Path",
+      "type": "VECTOR",
+      "parent": "I296:16002;6277:2547;1915:1645;1851:143",
+      "bounds": {
+        "x": 14929.4169921875,
+        "y": 3667.416748046875,
+        "width": 14.166666984558105,
+        "height": 14.166666984558105
+      }
+    },
+    {
+      "id": "I296:16002;6277:2547;1915:1645;1851:146",
+      "name": "Battery",
+      "type": "FRAME",
+      "parent": "I296:16002;6277:2547;1915:1645;1851:137",
+      "bounds": {
+        "x": 14950,
+        "y": 3667,
+        "width": 8,
+        "height": 15
+      }
+    },
+    {
+      "id": "I296:16002;6277:2547;1915:1645;1851:147",
+      "name": "Base",
+      "type": "VECTOR",
+      "parent": "I296:16002;6277:2547;1915:1645;1851:146",
+      "bounds": {
+        "x": 14950,
+        "y": 3667,
+        "width": 8,
+        "height": 15
+      }
+    },
+    {
+      "id": "I296:16002;6277:2547;1915:1645;1851:148",
+      "name": "Charge",
+      "type": "VECTOR",
+      "parent": "I296:16002;6277:2547;1915:1645;1851:146",
+      "bounds": {
+        "x": 14950,
+        "y": 3675,
+        "width": 8,
+        "height": 7
+      }
+    },
+    {
+      "id": "I296:16002;6277:2548",
+      "name": "newHead",
+      "type": "FRAME",
+      "parent": "296:16002",
+      "bounds": {
+        "x": 14622,
+        "y": 3693,
+        "width": 360,
+        "height": 64
+      }
+    },
+    {
+      "id": "I296:16002;6277:2549",
+      "name": "Frame 2087329124",
+      "type": "FRAME",
+      "parent": "I296:16002;6277:2548",
+      "bounds": {
+        "x": 14634,
+        "y": 3705,
+        "width": 288,
+        "height": 40
+      }
+    },
+    {
+      "id": "I296:16002;6277:2550",
+      "name": ".Button",
+      "type": "INSTANCE",
+      "parent": "I296:16002;6277:2549",
+      "bounds": {
+        "x": 14634,
+        "y": 3705,
+        "width": 40,
+        "height": 40
+      }
+    },
+    {
+      "id": "I296:16002;6277:2550;1:4669",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "I296:16002;6277:2550",
+      "bounds": {
+        "x": 14642,
+        "y": 3713,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "I296:16002;6277:2550;1:4669;348:954",
+      "name": "Icon 24",
+      "type": "FRAME",
+      "parent": "I296:16002;6277:2550;1:4669",
+      "bounds": {
+        "x": 14642,
+        "y": 3713,
+        "width": 24,
+        "height": 24.000099182128906
+      }
+    },
+    {
+      "id": "I296:16002;6277:2550;1:4669;348:955",
+      "name": "After",
+      "type": "FRAME",
+      "parent": "I296:16002;6277:2550;1:4669;348:954",
+      "bounds": {
+        "x": 14642,
+        "y": 3713,
+        "width": 24,
+        "height": 0
+      }
+    },
+    {
+      "id": "I296:16002;6277:2550;1:4669;348:956",
+      "name": "Null",
+      "type": "FRAME",
+      "parent": "I296:16002;6277:2550;1:4669;348:955",
+      "bounds": {
+        "x": 14642,
+        "y": 3713,
+        "width": 0.00009999999747378752,
+        "height": 0.00009999999747378752
+      }
+    },
+    {
+      "id": "I296:16002;6277:2550;1:4669;348:957",
+      "name": "Null size",
+      "type": "FRAME",
+      "parent": "I296:16002;6277:2550;1:4669;348:955",
+      "bounds": {
+        "x": 14642,
+        "y": 3393,
+        "width": 0,
+        "height": 120
+      }
+    },
+    {
+      "id": "I296:16002;6277:2550;1:4669;348:988",
+      "name": "Before",
+      "type": "FRAME",
+      "parent": "I296:16002;6277:2550;1:4669;348:954",
+      "bounds": {
+        "x": 14642,
+        "y": 3713,
+        "width": 24,
+        "height": 0.00009999999747378752
+      }
+    },
+    {
+      "id": "I296:16002;6277:2550;1:4669;348:989",
+      "name": "Null",
+      "type": "FRAME",
+      "parent": "I296:16002;6277:2550;1:4669;348:988",
+      "bounds": {
+        "x": 14642,
+        "y": 3713,
+        "width": 0.00009999999747378752,
+        "height": 0.00009999999747378752
+      }
+    },
+    {
+      "id": "I296:16002;6277:2550;1:4669;348:990",
+      "name": "Null",
+      "type": "FRAME",
+      "parent": "I296:16002;6277:2550;1:4669;348:988",
+      "bounds": {
+        "x": 14665,
+        "y": 3713,
+        "width": 1,
+        "height": 0.00009999999747378752
+      }
+    },
+    {
+      "id": "I296:16002;6277:2550;1:4669;348:958",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "I296:16002;6277:2550;1:4669;348:954",
+      "bounds": {
+        "x": 14642,
+        "y": 3713.00048828125,
+        "width": 24,
+        "height": 23.999025344848633
+      }
+    },
+    {
+      "id": "I296:16002;6277:2550;1:4669;348:958;71:314",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:16002;6277:2550;1:4669;348:958",
+      "bounds": {
+        "x": 14645,
+        "y": 3716.00048828125,
+        "width": 18.0003719329834,
+        "height": 18.000057220458984
+      }
+    },
+    {
+      "id": "I296:16002;6277:2556",
+      "name": "btn",
+      "type": "FRAME",
+      "parent": "I296:16002;6277:2548",
+      "bounds": {
+        "x": 14930,
+        "y": 3705,
+        "width": 40,
+        "height": 40
+      }
+    },
+    {
+      "id": "I296:16002;6277:2558",
+      "name": ".Button",
+      "type": "INSTANCE",
+      "parent": "I296:16002;6277:2556",
+      "bounds": {
+        "x": 14930,
+        "y": 3705,
+        "width": 40,
+        "height": 40
+      }
+    },
+    {
+      "id": "I296:16002;6277:2558;69:16267",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "I296:16002;6277:2558",
+      "bounds": {
+        "x": 14938,
+        "y": 3713,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "I296:16002;6277:2558;69:16267;71:630",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:16002;6277:2558;69:16267",
+      "bounds": {
+        "x": 14948.5,
+        "y": 3717.5,
+        "width": 3,
+        "height": 15
+      }
+    },
+    {
+      "id": "296:16003",
+      "name": "call",
+      "type": "INSTANCE",
+      "parent": "296:16000",
+      "bounds": {
+        "x": 14686,
+        "y": 3667,
+        "width": 12,
+        "height": 12
+      }
+    },
+    {
+      "id": "I296:16003;429:131171",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:16003",
+      "bounds": {
+        "x": 14687.5,
+        "y": 3668.5,
+        "width": 9,
+        "height": 9
+      }
+    },
+    {
+      "id": "296:16004",
+      "name": "Frame 2131327320",
+      "type": "FRAME",
+      "parent": "296:16000",
+      "bounds": {
+        "x": 14622,
+        "y": 3783,
+        "width": 360,
+        "height": 62
+      }
+    },
+    {
+      "id": "296:16005",
+      "name": "Frame 2131327321",
+      "type": "FRAME",
+      "parent": "296:16004",
+      "bounds": {
+        "x": 14622,
+        "y": 3783,
+        "width": 360,
+        "height": 32
+      }
+    },
+    {
+      "id": "296:16006",
+      "name": "Павел Селезнев",
+      "type": "TEXT",
+      "parent": "296:16005",
+      "bounds": {
+        "x": 14622,
+        "y": 3783,
+        "width": 360,
+        "height": 32
+      }
+    },
+    {
+      "id": "296:16007",
+      "name": "Frame 2087328597",
+      "type": "FRAME",
+      "parent": "296:16004",
+      "bounds": {
+        "x": 14622,
+        "y": 3827,
+        "width": 360,
+        "height": 18
+      }
+    },
+    {
+      "id": "296:16008",
+      "name": "00:03",
+      "type": "TEXT",
+      "parent": "296:16007",
+      "bounds": {
+        "x": 14784,
+        "y": 3827,
+        "width": 36,
+        "height": 18
+      }
+    },
+    {
+      "id": "296:16009",
+      "name": "Avatar / Default",
+      "type": "INSTANCE",
+      "parent": "296:16000",
+      "bounds": {
+        "x": 14702,
+        "y": 3941,
+        "width": 200,
+        "height": 200
+      }
+    },
+    {
+      "id": "I296:16009;744:2052",
+      "name": "Avatar",
+      "type": "FRAME",
+      "parent": "296:16009",
+      "bounds": {
+        "x": 14702,
+        "y": 3941,
+        "width": 200,
+        "height": 200
+      }
+    },
+    {
+      "id": "296:16010",
+      "name": "Call Bar / Mobile",
+      "type": "INSTANCE",
+      "parent": "296:16000",
+      "bounds": {
+        "x": 14622,
+        "y": 4313,
+        "width": 360,
+        "height": 128
+      }
+    },
+    {
+      "id": "I296:16010;12923:9318",
+      "name": "Bar",
+      "type": "FRAME",
+      "parent": "296:16010",
+      "bounds": {
+        "x": 14622,
+        "y": 4321,
+        "width": 360,
+        "height": 80
+      }
+    },
+    {
+      "id": "I296:16010;12923:9344",
+      "name": "Bar",
+      "type": "FRAME",
+      "parent": "I296:16010;12923:9318",
+      "bounds": {
+        "x": 14622,
+        "y": 4321,
+        "width": 360,
+        "height": 80
+      }
+    },
+    {
+      "id": "I296:16010;12913:9117",
+      "name": "Bar",
+      "type": "FRAME",
+      "parent": "I296:16010;12923:9344",
+      "bounds": {
+        "x": 14651,
+        "y": 4321,
+        "width": 302,
+        "height": 80
+      }
+    },
+    {
+      "id": "I296:16010;12913:9118",
+      "name": "Speaker  ────────────",
+      "type": "INSTANCE",
+      "parent": "I296:16010;12913:9117",
+      "bounds": {
+        "x": 14659,
+        "y": 4329,
+        "width": 64,
+        "height": 64
+      }
+    },
+    {
+      "id": "I296:16010;12913:9118;12735:21141",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "I296:16010;12913:9118",
+      "bounds": {
+        "x": 14675,
+        "y": 4345,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "I296:16010;12913:9118;12735:21141;71:166",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:16010;12913:9118;12735:21141",
+      "bounds": {
+        "x": 14677.6669921875,
+        "y": 4350.3330078125,
+        "width": 26.666669845581055,
+        "height": 21.33333396911621
+      }
+    },
+    {
+      "id": "I296:16010;12913:9119",
+      "name": "Microphone   ──────────",
+      "type": "INSTANCE",
+      "parent": "I296:16010;12913:9117",
+      "bounds": {
+        "x": 14733,
+        "y": 4329,
+        "width": 64,
+        "height": 64
+      }
+    },
+    {
+      "id": "I296:16010;12913:9119;12735:21153",
+      "name": "Icon",
+      "type": "FRAME",
+      "parent": "I296:16010;12913:9119",
+      "bounds": {
+        "x": 14749,
+        "y": 4345,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "I296:16010;12913:9119;12735:21154",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "I296:16010;12913:9119;12735:21153",
+      "bounds": {
+        "x": 14749,
+        "y": 4345,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "I296:16010;12913:9119;12735:21154;71:1297",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:16010;12913:9119;12735:21154",
+      "bounds": {
+        "x": 14754,
+        "y": 4347.6669921875,
+        "width": 22,
+        "height": 26.666669845581055
+      }
+    },
+    {
+      "id": "I296:16010;12913:9119;12735:21155",
+      "name": "Wave",
+      "type": "FRAME",
+      "parent": "I296:16010;12913:9119",
+      "bounds": {
+        "x": 14733,
+        "y": 4329,
+        "width": 64,
+        "height": 64
+      }
+    },
+    {
+      "id": "I296:16010;12913:9120",
+      "name": "Camera   ────────────",
+      "type": "INSTANCE",
+      "parent": "I296:16010;12913:9117",
+      "bounds": {
+        "x": 14807,
+        "y": 4329,
+        "width": 64,
+        "height": 64
+      }
+    },
+    {
+      "id": "I296:16010;12913:9120;12735:21169",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "I296:16010;12913:9120",
+      "bounds": {
+        "x": 14823,
+        "y": 4345,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "I296:16010;12913:9120;12735:21169;71:86",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:16010;12913:9120;12735:21169",
+      "bounds": {
+        "x": 14825.6669921875,
+        "y": 4351.00439453125,
+        "width": 26.666669845581055,
+        "height": 20.000211715698242
+      }
+    },
+    {
+      "id": "I296:16010;12913:9122",
+      "name": "Call",
+      "type": "INSTANCE",
+      "parent": "I296:16010;12913:9117",
+      "bounds": {
+        "x": 14881,
+        "y": 4329,
+        "width": 64,
+        "height": 64
+      }
+    },
+    {
+      "id": "I296:16010;12913:9122;12927:17217",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "I296:16010;12913:9122",
+      "bounds": {
+        "x": 14897,
+        "y": 4345,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "I296:16010;12913:9122;12927:17217;71:72",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:16010;12913:9122;12927:17217",
+      "bounds": {
+        "x": 14899.6669921875,
+        "y": 4355,
+        "width": 26.666669845581055,
+        "height": 12.000000953674316
+      }
+    },
+    {
+      "id": "I296:16010;12913:9116",
+      "name": "Height",
+      "type": "FRAME",
+      "parent": "I296:16010;12923:9318",
+      "bounds": {
+        "x": 14622,
+        "y": 4321,
+        "width": 360,
+        "height": 80
+      }
+    },
+    {
+      "id": "I296:16010;12913:9123",
+      "name": "After 390+",
+      "type": "FRAME",
+      "parent": "I296:16010;12913:9116",
+      "bounds": {
+        "x": 14622,
+        "y": 4321,
+        "width": 360,
+        "height": 80
+      }
+    },
+    {
+      "id": "I296:16010;12913:9124",
+      "name": "Bar",
+      "type": "FRAME",
+      "parent": "I296:16010;12913:9123",
+      "bounds": {
+        "x": 14648,
+        "y": 4321,
+        "width": 308,
+        "height": 80
+      }
+    },
+    {
+      "id": "I296:16010;12913:9125",
+      "name": "Size",
+      "type": "FRAME",
+      "parent": "I296:16010;12913:9123",
+      "bounds": {
+        "x": 14956,
+        "y": 4321,
+        "width": 0,
+        "height": 20
+      }
+    },
+    {
+      "id": "I296:16010;12913:9126",
+      "name": "Before 390+",
+      "type": "FRAME",
+      "parent": "I296:16010;12913:9116",
+      "bounds": {
+        "x": 14622,
+        "y": 4333,
+        "width": 360,
+        "height": 68
+      }
+    },
+    {
+      "id": "I296:16010;12913:9127",
+      "name": "Bar",
+      "type": "FRAME",
+      "parent": "I296:16010;12913:9126",
+      "bounds": {
+        "x": 14622,
+        "y": 4333,
+        "width": 360,
+        "height": 68
+      }
+    },
+    {
+      "id": "I296:16010;12913:9128",
+      "name": "Home Indicator",
+      "type": "INSTANCE",
+      "parent": "296:16010",
+      "bounds": {
+        "x": 14622,
+        "y": 4417,
+        "width": 360,
+        "height": 24
+      }
+    },
+    {
+      "id": "I296:16010;12913:9128;1350:1201",
+      "name": "Home Indicator",
+      "type": "VECTOR",
+      "parent": "I296:16010;12913:9128",
+      "bounds": {
+        "x": 14750,
+        "y": 4429,
+        "width": 104,
+        "height": 0
+      }
+    },
+    {
+      "id": "296:16011",
+      "name": "PiP tile",
+      "type": "INSTANCE",
+      "parent": "296:16000",
+      "bounds": {
+        "x": 14834,
+        "y": 4101,
+        "width": 132,
+        "height": 200
+      }
+    },
+    {
+      "id": "I296:16011;6391:37506",
+      "name": "video",
+      "type": "RECTANGLE",
+      "parent": "296:16011",
+      "bounds": {
+        "x": 14834,
+        "y": 4101,
+        "width": 132,
+        "height": 200
+      }
+    },
+    {
+      "id": "I296:16011;6490:10113",
+      "name": "Tile bottom",
+      "type": "INSTANCE",
+      "parent": "296:16011",
+      "bounds": {
+        "x": 14834,
+        "y": 4257,
+        "width": 132,
+        "height": 40
+      }
+    },
+    {
+      "id": "I296:16011;6490:10113;86:20175",
+      "name": "Status",
+      "type": "INSTANCE",
+      "parent": "I296:16011;6490:10113",
+      "bounds": {
+        "x": 14838,
+        "y": 4261,
+        "width": 42,
+        "height": 32
+      }
+    },
+    {
+      "id": "I296:16011;6490:10113;86:20175;69:14040",
+      "name": "Label Wrapper",
+      "type": "FRAME",
+      "parent": "I296:16011;6490:10113;86:20175",
+      "bounds": {
+        "x": 14844,
+        "y": 4265,
+        "width": 30,
+        "height": 24
+      }
+    },
+    {
+      "id": "I296:16011;6490:10113;86:20175;69:14041",
+      "name": "Вы",
+      "type": "TEXT",
+      "parent": "I296:16011;6490:10113;86:20175;69:14040",
+      "bounds": {
+        "x": 14848,
+        "y": 4267,
+        "width": 22,
+        "height": 20
+      }
+    },
+    {
+      "id": "I296:16011;6490:10069",
+      "name": ".Button",
+      "type": "INSTANCE",
+      "parent": "296:16011",
+      "bounds": {
+        "x": 14922,
+        "y": 4105,
+        "width": 40,
+        "height": 40
+      }
+    },
+    {
+      "id": "I296:16011;6490:10069;6277:1125",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "I296:16011;6490:10069",
+      "bounds": {
+        "x": 14930,
+        "y": 4113,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "I296:16011;6490:10069;6277:1125;71:35",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:16011;6490:10069;6277:1125",
+      "bounds": {
+        "x": 14933,
+        "y": 4116,
+        "width": 18,
+        "height": 18.000730514526367
+      }
+    }
+  ],
+  "imageHashes": [
+    "b4576bdd65bb68dbf2fca5231a110f24997ee7ab"
+  ],
+  "notes": [],
+  "visualTexts": [
+    {
+      "id": "I296:16002;6277:2547;1915:1645;1851:136",
+      "name": "Time",
+      "type": "TEXT",
+      "parent": "I296:16002;6277:2547;1915:1645",
+      "bounds": {
+        "x": 14646,
+        "y": 3663,
+        "width": 29,
+        "height": 20
+      },
+      "text": "9:30",
+      "fontName": null,
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "9:30",
+          "start": 0,
+          "end": 4,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:16006",
+      "name": "Павел Селезнев",
+      "type": "TEXT",
+      "parent": "296:16005",
+      "bounds": {
+        "x": 14622,
+        "y": 3783,
+        "width": 360,
+        "height": 32
+      },
+      "text": "Павел Селезнев",
+      "fontName": {
+        "family": "Roboto",
+        "style": "SemiBold",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 600
+        }
+      },
+      "fontSize": 28,
+      "segments": [
+        {
+          "characters": "Павел Селезнев",
+          "start": 0,
+          "end": 14,
+          "fontSize": 28,
+          "fontName": {
+            "family": "Roboto",
+            "style": "SemiBold",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 600
+            }
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.800000011920929,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:0af30f4380fce519624c68d2dc55e4467590684a/4263:365"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:d5428d8903c74f4ecb67c4ef3ac420ddc0286a2a,3684:80",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:16008",
+      "name": "00:03",
+      "type": "TEXT",
+      "parent": "296:16007",
+      "bounds": {
+        "x": 14784,
+        "y": 3827,
+        "width": 36,
+        "height": 18
+      },
+      "text": "00:03",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "00:03",
+          "start": 0,
+          "end": 5,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.6399999856948853,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:4c4633b73f04062295f5cba9c91128e605821b9c/4264:386"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:e90797c2e243ebd462e1946b5c699aec972290e3,19702:15",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:16011;6490:10113;86:20175;69:14041",
+      "name": "Вы",
+      "type": "TEXT",
+      "parent": "I296:16011;6490:10113;86:20175;69:14040",
+      "bounds": {
+        "x": 14848,
+        "y": 4267,
+        "width": 22,
+        "height": 20
+      },
+      "text": "Вы",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 15,
+      "segments": [
+        {
+          "characters": "Вы",
+          "start": 0,
+          "end": 2,
+          "fontSize": 15,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.800000011920929,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/2210:106"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:4133a80be032647b641cf7a7e92e63fbacaf59f1,3684:94",
+          "hyperlink": null
+        }
+      ]
+    }
+  ],
+  "pngScale": 1,
+  "pngFile": "03-Общение-на-максимум/02-Видеозвонок/003-Экран/screen.png",
+  "previewFile": "03-Общение-на-максимум/02-Видеозвонок/003-Экран/preview.png",
+  "svgFile": "03-Общение-на-максимум/02-Видеозвонок/003-Экран/screen.svg",
+  "documentFile": "03-Общение-на-максимум/02-Видеозвонок/003-Экран/figma.json",
+  "images": [
+    {
+      "hash": "b4576bdd65bb68dbf2fca5231a110f24997ee7ab",
+      "file": "03-Общение-на-максимум/02-Видеозвонок/003-Экран/images/ecba25404026027ba2f4abea64bb9e987472a8a7d869b4a42595469d2826dea4.jpg"
+    }
+  ]
+}

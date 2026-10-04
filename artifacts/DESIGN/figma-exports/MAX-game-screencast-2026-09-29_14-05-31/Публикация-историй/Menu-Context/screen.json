@@ -1,0 +1,301 @@
+{
+  "id": "2299:74626",
+  "name": "Menu Context",
+  "type": "INSTANCE",
+  "parent": "2299:74308",
+  "bounds": {
+    "x": 9874,
+    "y": 5072,
+    "width": 250,
+    "height": 104
+  },
+  "visible": true,
+  "fontSize": 0,
+  "hasImage": false,
+  "task": "communication.story",
+  "confidence": "high",
+  "reviewed": false,
+  "include": true,
+  "group": "2299:74308",
+  "groupName": "Публикация историй",
+  "containerPath": [
+    {
+      "id": "2299:74308",
+      "name": "Публикация историй",
+      "type": "SECTION"
+    }
+  ],
+  "sectionPath": [
+    {
+      "id": "2299:74308",
+      "name": "Публикация историй",
+      "type": "SECTION"
+    }
+  ],
+  "sequence": null,
+  "detection": "structure",
+  "evidence": [
+    {
+      "task": "communication.story",
+      "source": "ancestor",
+      "id": "2299:74308",
+      "text": "Публикация историй",
+      "weight": 99
+    }
+  ],
+  "ancestors": [
+    {
+      "id": "2299:74308",
+      "name": "Публикация историй",
+      "type": "SECTION"
+    }
+  ],
+  "nearbyHeadings": [],
+  "contextRegion": null,
+  "warnings": [],
+  "order": 27,
+  "fingerprint": "[\"Menu Context\",{\"x\":9874,\"y\":5072,\"width\":250,\"height\":104},\"INSTANCE\",[[\"2299:74308\",\"Публикация историй\",\"SECTION\"],[\"1:8\",\"Page 8\",\"PAGE\"]],\"content-v1\",2302393798,1970598136,45]",
+  "manualTask": false,
+  "title": "Menu Context",
+  "exportStatus": "ok",
+  "texts": [
+    {
+      "id": "I2299:74626;5599:30930;5599:30573",
+      "name": "Label",
+      "type": "TEXT",
+      "parent": "I2299:74626;5599:30930",
+      "bounds": {
+        "x": 9922,
+        "y": 5080,
+        "width": 190,
+        "height": 40
+      },
+      "text": "Сохранить в галерею",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 16,
+      "segments": [
+        {
+          "characters": "Сохранить в галерею",
+          "start": 0,
+          "end": 19,
+          "fontSize": 16,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.800000011920929,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/2210:106"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:8a722485a3d2a68acc9b72b601f3c1d47d532f12,19702:20",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:74626;5599:30932;5599:30607",
+      "name": "Label",
+      "type": "TEXT",
+      "parent": "I2299:74626;5599:30932",
+      "bounds": {
+        "x": 9922,
+        "y": 5128,
+        "width": 190,
+        "height": 40
+      },
+      "text": "Удалить историю",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 16,
+      "segments": [
+        {
+          "characters": "Удалить историю",
+          "start": 0,
+          "end": 15,
+          "fontSize": 16,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.8078431487083435,
+                "g": 0.25882354378700256,
+                "b": 0.34117648005485535
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:1602c3d136499938148d88328b059affcd35ac5e/2210:114"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:8a722485a3d2a68acc9b72b601f3c1d47d532f12,19702:20",
+          "hyperlink": null
+        }
+      ]
+    }
+  ],
+  "layers": [
+    {
+      "id": "2299:74626",
+      "name": "Menu Context",
+      "type": "INSTANCE",
+      "parent": "2299:74308",
+      "bounds": {
+        "x": 9874,
+        "y": 5072,
+        "width": 250,
+        "height": 104
+      }
+    },
+    {
+      "id": "I2299:74626;5599:30930",
+      "name": "Menu Cell 2",
+      "type": "INSTANCE",
+      "parent": "2299:74626",
+      "bounds": {
+        "x": 9874,
+        "y": 5076,
+        "width": 250,
+        "height": 48
+      }
+    },
+    {
+      "id": "I2299:74626;5599:30930;5599:30572",
+      "name": "download_20",
+      "type": "INSTANCE",
+      "parent": "I2299:74626;5599:30930",
+      "bounds": {
+        "x": 9886,
+        "y": 5088,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "I2299:74626;5599:30930;5599:30572;2069:296",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:74626;5599:30930;5599:30572",
+      "bounds": {
+        "x": 9888.072265625,
+        "y": 5090,
+        "width": 19.855823516845703,
+        "height": 20.00081443786621
+      }
+    },
+    {
+      "id": "I2299:74626;5599:30930;5599:30573",
+      "name": "Label",
+      "type": "TEXT",
+      "parent": "I2299:74626;5599:30930",
+      "bounds": {
+        "x": 9922,
+        "y": 5080,
+        "width": 190,
+        "height": 40
+      }
+    },
+    {
+      "id": "I2299:74626;5599:30932",
+      "name": "Menu Cell 4",
+      "type": "INSTANCE",
+      "parent": "2299:74626",
+      "bounds": {
+        "x": 9874,
+        "y": 5124,
+        "width": 250,
+        "height": 48
+      }
+    },
+    {
+      "id": "I2299:74626;5599:30932;5599:30606",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "I2299:74626;5599:30932",
+      "bounds": {
+        "x": 9886,
+        "y": 5136,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "I2299:74626;5599:30932;5599:30606;3254:29",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:74626;5599:30932;5599:30606",
+      "bounds": {
+        "x": 9889,
+        "y": 5138.00048828125,
+        "width": 18,
+        "height": 19.999820709228516
+      }
+    },
+    {
+      "id": "I2299:74626;5599:30932;5599:30607",
+      "name": "Label",
+      "type": "TEXT",
+      "parent": "I2299:74626;5599:30932",
+      "bounds": {
+        "x": 9922,
+        "y": 5128,
+        "width": 190,
+        "height": 40
+      }
+    }
+  ],
+  "imageHashes": [],
+  "notes": [],
+  "pngScale": 1,
+  "pngFile": "Публикация-историй/Menu-Context/screen.png",
+  "previewFile": "Публикация-историй/Menu-Context/preview.png",
+  "svgFile": "Публикация-историй/Menu-Context/screen.svg",
+  "documentFile": "Публикация-историй/Menu-Context/figma.json",
+  "images": []
+}

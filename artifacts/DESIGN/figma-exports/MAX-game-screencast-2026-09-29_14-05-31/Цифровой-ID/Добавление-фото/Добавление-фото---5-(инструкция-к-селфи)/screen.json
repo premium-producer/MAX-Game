@@ -1,0 +1,1018 @@
+{
+  "id": "2299:86258",
+  "name": "Добавление фото - 5 (инструкция к селфи)",
+  "type": "FRAME",
+  "parent": "2299:86188",
+  "bounds": {
+    "x": 22206,
+    "y": 6107,
+    "width": 360,
+    "height": 800
+  },
+  "visible": true,
+  "fontSize": 0,
+  "hasImage": false,
+  "task": "digital-id.photo",
+  "confidence": "high",
+  "reviewed": false,
+  "include": true,
+  "group": "2299:86188",
+  "groupName": "Цифровой ID / Добавление фото",
+  "containerPath": [
+    {
+      "id": "2299:85912",
+      "name": "Цифровой ID",
+      "type": "SECTION"
+    },
+    {
+      "id": "2299:86188",
+      "name": "Добавление фото",
+      "type": "SECTION"
+    }
+  ],
+  "sectionPath": [
+    {
+      "id": "2299:85912",
+      "name": "Цифровой ID",
+      "type": "SECTION"
+    },
+    {
+      "id": "2299:86188",
+      "name": "Добавление фото",
+      "type": "SECTION"
+    }
+  ],
+  "sequence": {
+    "series": "Добавление фото",
+    "number": 5,
+    "description": "инструкция к селфи"
+  },
+  "detection": "structure",
+  "evidence": [
+    {
+      "task": "digital-id.photo",
+      "source": "frame-name",
+      "id": "2299:86258",
+      "text": "Добавление фото - 5 (инструкция к селфи)",
+      "weight": 100
+    },
+    {
+      "task": "digital-id.photo",
+      "source": "ancestor",
+      "id": "2299:86188",
+      "text": "Добавление фото",
+      "weight": 99
+    }
+  ],
+  "ancestors": [
+    {
+      "id": "2299:86188",
+      "name": "Добавление фото",
+      "type": "SECTION"
+    },
+    {
+      "id": "2299:85912",
+      "name": "Цифровой ID",
+      "type": "SECTION"
+    }
+  ],
+  "nearbyHeadings": [],
+  "contextRegion": null,
+  "warnings": [],
+  "order": 74,
+  "fingerprint": "[\"Добавление фото - 5 (инструкция к селфи)\",{\"x\":22206,\"y\":6107,\"width\":360,\"height\":800},\"FRAME\",[[\"2299:86188\",\"Добавление фото\",\"SECTION\"],[\"2299:85912\",\"Цифровой ID\",\"SECTION\"],[\"1:8\",\"Page 8\",\"PAGE\"]],\"content-v1\",1776239253,869445481,39]",
+  "manualTask": false,
+  "title": "Добавление фото - 5 (инструкция к селфи)",
+  "exportStatus": "ok",
+  "texts": [
+    {
+      "id": "I2299:86262;4:10095",
+      "name": "9:41",
+      "type": "TEXT",
+      "parent": "2299:86262",
+      "bounds": {
+        "x": 22226,
+        "y": 6121,
+        "width": 28,
+        "height": 20
+      },
+      "text": "9:41",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "9:41",
+          "start": 0,
+          "end": 4,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86265",
+      "name": "Текст текстовой кнопки",
+      "type": "TEXT",
+      "parent": "2299:86264",
+      "bounds": {
+        "x": 22493,
+        "y": 6177,
+        "width": 57,
+        "height": 20
+      },
+      "text": "закрыть",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "закрыть",
+          "start": 0,
+          "end": 7,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0941176488995552,
+                "g": 0.3529411852359772,
+                "b": 0.772549033164978
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86266",
+      "name": "✏️ Заголовок экрана",
+      "type": "TEXT",
+      "parent": "2299:86263",
+      "bounds": {
+        "x": 22222,
+        "y": 6173,
+        "width": 328,
+        "height": 28
+      },
+      "text": "Цифровой ID",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 22,
+      "segments": [
+        {
+          "characters": "Цифровой ID",
+          "start": 0,
+          "end": 11,
+          "fontSize": 22,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86269",
+      "name": "Строка подписи 1",
+      "type": "TEXT",
+      "parent": "2299:86268",
+      "bounds": {
+        "x": 22234,
+        "y": 6508,
+        "width": 303,
+        "height": 20
+      },
+      "text": "Нейтральное выражение лица",
+      "fontName": null,
+      "fontSize": 16,
+      "segments": [
+        {
+          "characters": "Нейтральное выражение лица",
+          "start": 0,
+          "end": 26,
+          "fontSize": 16,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.5199999809265137,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:4c4633b73f04062295f5cba9c91128e605821b9c/4264:386"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86277",
+      "name": "Заголовок",
+      "type": "TEXT",
+      "parent": "2299:86276",
+      "bounds": {
+        "x": 22234.5,
+        "y": 6563,
+        "width": 303,
+        "height": 24
+      },
+      "text": "Сделайте селфи",
+      "fontName": null,
+      "fontSize": 20,
+      "segments": [
+        {
+          "characters": "Сделайте селфи",
+          "start": 0,
+          "end": 14,
+          "fontSize": 20,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Bold",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 700
+            }
+          },
+          "fontWeight": 700,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86278",
+      "name": "Строка подписи 1",
+      "type": "TEXT",
+      "parent": "2299:86276",
+      "bounds": {
+        "x": 22234.5,
+        "y": 6599,
+        "width": 303,
+        "height": 40
+      },
+      "text": "На однотонном, светлом фоне, без посторонних предметов и теней",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "На однотонном, светлом фоне, без посторонних предметов и теней",
+          "start": 0,
+          "end": 62,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.5199999809265137,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:4c4633b73f04062295f5cba9c91128e605821b9c/4264:386"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86280",
+      "name": "Текст текстовой кнопки",
+      "type": "TEXT",
+      "parent": "2299:86279",
+      "bounds": {
+        "x": 22326.5,
+        "y": 6659,
+        "width": 119,
+        "height": 20
+      },
+      "text": "Как делать селфи",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Как делать селфи",
+          "start": 0,
+          "end": 16,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0941176488995552,
+                "g": 0.3529411852359772,
+                "b": 0.772549033164978
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86284",
+      "name": "Текст основной кнопки",
+      "type": "TEXT",
+      "parent": "2299:86283",
+      "bounds": {
+        "x": 22234,
+        "y": 6831,
+        "width": 304,
+        "height": 20
+      },
+      "text": "Сделать селфи",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 16,
+      "segments": [
+        {
+          "characters": "Сделать селфи",
+          "start": 0,
+          "end": 13,
+          "fontSize": 16,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    }
+  ],
+  "layers": [
+    {
+      "id": "2299:86258",
+      "name": "Добавление фото - 5 (инструкция к селфи)",
+      "type": "FRAME",
+      "parent": "2299:86188",
+      "bounds": {
+        "x": 22206,
+        "y": 6107,
+        "width": 360,
+        "height": 800
+      }
+    },
+    {
+      "id": "2299:86259",
+      "name": "Контент",
+      "type": "FRAME",
+      "parent": "2299:86258",
+      "bounds": {
+        "x": 22206,
+        "y": 6107,
+        "width": 360,
+        "height": 582
+      }
+    },
+    {
+      "id": "2299:86260",
+      "name": "✏️ Хедер",
+      "type": "FRAME",
+      "parent": "2299:86259",
+      "bounds": {
+        "x": 22206,
+        "y": 6107,
+        "width": 360,
+        "height": 112.00003051757812
+      }
+    },
+    {
+      "id": "2299:86261",
+      "name": "❌ [Core]",
+      "type": "FRAME",
+      "parent": "2299:86260",
+      "bounds": {
+        "x": 22206,
+        "y": 6107,
+        "width": 360,
+        "height": 112.00003051757812
+      }
+    },
+    {
+      "id": "2299:86262",
+      "name": ".Status Bar/Android/Default",
+      "type": "INSTANCE",
+      "parent": "2299:86261",
+      "bounds": {
+        "x": 22206,
+        "y": 6107,
+        "width": 360,
+        "height": 48.000030517578125
+      }
+    },
+    {
+      "id": "I2299:86262;4:10095",
+      "name": "9:41",
+      "type": "TEXT",
+      "parent": "2299:86262",
+      "bounds": {
+        "x": 22226,
+        "y": 6121,
+        "width": 28,
+        "height": 20
+      }
+    },
+    {
+      "id": "I2299:86262;4:10096",
+      "name": "System Status",
+      "type": "FRAME",
+      "parent": "2299:86262",
+      "bounds": {
+        "x": 22494,
+        "y": 6119,
+        "width": 52.00006103515625,
+        "height": 24.000030517578125
+      }
+    },
+    {
+      "id": "I2299:86262;4:10097",
+      "name": "Wifi",
+      "type": "FRAME",
+      "parent": "I2299:86262;4:10096",
+      "bounds": {
+        "x": 22494,
+        "y": 6123,
+        "width": 18.666690826416016,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I2299:86262;4:10098",
+      "name": "wifi",
+      "type": "VECTOR",
+      "parent": "I2299:86262;4:10097",
+      "bounds": {
+        "x": 22496,
+        "y": 6125,
+        "width": 14.666685104370117,
+        "height": 11.333348274230957
+      }
+    },
+    {
+      "id": "I2299:86262;4:10099",
+      "name": "Data",
+      "type": "FRAME",
+      "parent": "I2299:86262;4:10096",
+      "bounds": {
+        "x": 22514.666015625,
+        "y": 6123,
+        "width": 16.00002098083496,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I2299:86262;4:10100",
+      "name": "data",
+      "type": "VECTOR",
+      "parent": "I2299:86262;4:10099",
+      "bounds": {
+        "x": 22513.609375,
+        "y": 6125.27490234375,
+        "width": 12.391877174377441,
+        "height": 12.391878128051758
+      }
+    },
+    {
+      "id": "I2299:86262;4:10101",
+      "name": "Battery",
+      "type": "FRAME",
+      "parent": "I2299:86262;4:10096",
+      "bounds": {
+        "x": 22532.666015625,
+        "y": 6123,
+        "width": 13.33335018157959,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I2299:86262;4:10102",
+      "name": "Union",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "I2299:86262;4:10101",
+      "bounds": {
+        "x": 22535.33203125,
+        "y": 6124.33349609375,
+        "width": 8,
+        "height": 13.3330078125
+      }
+    },
+    {
+      "id": "I2299:86262;4:10103",
+      "name": "stroke",
+      "type": "VECTOR",
+      "parent": "I2299:86262;4:10102",
+      "bounds": {
+        "x": 22535.33203125,
+        "y": 6124.33349609375,
+        "width": 8.00001049041748,
+        "height": 13.33335018157959
+      }
+    },
+    {
+      "id": "I2299:86262;4:10104",
+      "name": "fill",
+      "type": "RECTANGLE",
+      "parent": "I2299:86262;4:10102",
+      "bounds": {
+        "x": 22535.998046875,
+        "y": 6125.6669921875,
+        "width": 6.666675090789795,
+        "height": 12.000015258789062
+      }
+    },
+    {
+      "id": "2299:86263",
+      "name": "Title and Controls",
+      "type": "FRAME",
+      "parent": "2299:86261",
+      "bounds": {
+        "x": 22206,
+        "y": 6155,
+        "width": 360,
+        "height": 64
+      }
+    },
+    {
+      "id": "2299:86264",
+      "name": "✏️ Кнопка текстовая",
+      "type": "FRAME",
+      "parent": "2299:86263",
+      "bounds": {
+        "x": 22493,
+        "y": 6163,
+        "width": 57,
+        "height": 48
+      }
+    },
+    {
+      "id": "2299:86265",
+      "name": "Текст текстовой кнопки",
+      "type": "TEXT",
+      "parent": "2299:86264",
+      "bounds": {
+        "x": 22493,
+        "y": 6177,
+        "width": 57,
+        "height": 20
+      }
+    },
+    {
+      "id": "2299:86266",
+      "name": "✏️ Заголовок экрана",
+      "type": "TEXT",
+      "parent": "2299:86263",
+      "bounds": {
+        "x": 22222,
+        "y": 6173,
+        "width": 328,
+        "height": 28
+      }
+    },
+    {
+      "id": "2299:86267",
+      "name": "Инфоскрин – Блок",
+      "type": "FRAME",
+      "parent": "2299:86259",
+      "bounds": {
+        "x": 22226.5,
+        "y": 6235,
+        "width": 319,
+        "height": 454
+      }
+    },
+    {
+      "id": "2299:86268",
+      "name": "Иллюстрация",
+      "type": "FRAME",
+      "parent": "2299:86267",
+      "bounds": {
+        "x": 22226.5,
+        "y": 6235,
+        "width": 319,
+        "height": 300
+      }
+    },
+    {
+      "id": "2299:86269",
+      "name": "Строка подписи 1",
+      "type": "TEXT",
+      "parent": "2299:86268",
+      "bounds": {
+        "x": 22234,
+        "y": 6508,
+        "width": 303,
+        "height": 20
+      }
+    },
+    {
+      "id": "2299:86270",
+      "name": "Group 277131889",
+      "type": "GROUP",
+      "parent": "2299:86268",
+      "bounds": {
+        "x": 22271.287109375,
+        "y": 6250.2998046875,
+        "width": 229.6904296875,
+        "height": 236.4003448486328
+      }
+    },
+    {
+      "id": "2299:86271",
+      "name": "Union",
+      "type": "VECTOR",
+      "parent": "2299:86270",
+      "bounds": {
+        "x": 22271.287109375,
+        "y": 6250.2998046875,
+        "width": 224.41268920898438,
+        "height": 236.4003448486328
+      }
+    },
+    {
+      "id": "2299:86272",
+      "name": "Union",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "2299:86270",
+      "bounds": {
+        "x": 22396,
+        "y": 6395.654296875,
+        "width": 104.9775390625,
+        "height": 77.2275390625
+      }
+    },
+    {
+      "id": "2299:86273",
+      "name": "Rectangle 1",
+      "type": "RECTANGLE",
+      "parent": "2299:86272",
+      "bounds": {
+        "x": 22396,
+        "y": 6429.000242851619,
+        "width": 43.76727062964346,
+        "height": 43.88180332418051
+      }
+    },
+    {
+      "id": "2299:86274",
+      "name": "Rectangle 2",
+      "type": "RECTANGLE",
+      "parent": "2299:86272",
+      "bounds": {
+        "x": 22423.998774294636,
+        "y": 6395.654539726619,
+        "width": 76.97778820536405,
+        "height": 77.22762148960919
+      }
+    },
+    {
+      "id": "2299:86275",
+      "name": "Title 3 +",
+      "type": "FRAME",
+      "parent": "2299:86267",
+      "bounds": {
+        "x": 22234.5,
+        "y": 6563,
+        "width": 303,
+        "height": 126
+      }
+    },
+    {
+      "id": "2299:86276",
+      "name": "Текст",
+      "type": "FRAME",
+      "parent": "2299:86275",
+      "bounds": {
+        "x": 22234.5,
+        "y": 6563,
+        "width": 303,
+        "height": 76
+      }
+    },
+    {
+      "id": "2299:86277",
+      "name": "Заголовок",
+      "type": "TEXT",
+      "parent": "2299:86276",
+      "bounds": {
+        "x": 22234.5,
+        "y": 6563,
+        "width": 303,
+        "height": 24
+      }
+    },
+    {
+      "id": "2299:86278",
+      "name": "Строка подписи 1",
+      "type": "TEXT",
+      "parent": "2299:86276",
+      "bounds": {
+        "x": 22234.5,
+        "y": 6599,
+        "width": 303,
+        "height": 40
+      }
+    },
+    {
+      "id": "2299:86279",
+      "name": "✏️ Кнопка текстовая 1",
+      "type": "FRAME",
+      "parent": "2299:86275",
+      "bounds": {
+        "x": 22234.5,
+        "y": 6649,
+        "width": 303,
+        "height": 40
+      }
+    },
+    {
+      "id": "2299:86280",
+      "name": "Текст текстовой кнопки",
+      "type": "TEXT",
+      "parent": "2299:86279",
+      "bounds": {
+        "x": 22326.5,
+        "y": 6659,
+        "width": 119,
+        "height": 20
+      }
+    },
+    {
+      "id": "2299:86281",
+      "name": "Кнопки",
+      "type": "FRAME",
+      "parent": "2299:86258",
+      "bounds": {
+        "x": 22206,
+        "y": 6803,
+        "width": 360,
+        "height": 104
+      }
+    },
+    {
+      "id": "2299:86282",
+      "name": "Кнопки",
+      "type": "FRAME",
+      "parent": "2299:86281",
+      "bounds": {
+        "x": 22206,
+        "y": 6811,
+        "width": 360,
+        "height": 60
+      }
+    },
+    {
+      "id": "2299:86283",
+      "name": "Button",
+      "type": "FRAME",
+      "parent": "2299:86282",
+      "bounds": {
+        "x": 22214,
+        "y": 6811,
+        "width": 344,
+        "height": 60
+      }
+    },
+    {
+      "id": "2299:86284",
+      "name": "Текст основной кнопки",
+      "type": "TEXT",
+      "parent": "2299:86283",
+      "bounds": {
+        "x": 22234,
+        "y": 6831,
+        "width": 304,
+        "height": 20
+      }
+    },
+    {
+      "id": "2299:86285",
+      "name": "📎 Home Indicator",
+      "type": "INSTANCE",
+      "parent": "2299:86281",
+      "bounds": {
+        "x": 22206,
+        "y": 6883,
+        "width": 360,
+        "height": 24
+      }
+    },
+    {
+      "id": "I2299:86285;1350:1201",
+      "name": "Home Indicator",
+      "type": "VECTOR",
+      "parent": "2299:86285",
+      "bounds": {
+        "x": 22334,
+        "y": 6895,
+        "width": 104,
+        "height": 0
+      }
+    }
+  ],
+  "imageHashes": [],
+  "notes": [],
+  "pngScale": 1,
+  "pngFile": "Цифровой-ID/Добавление-фото/Добавление-фото---5-(инструкция-к-селфи)/screen.png",
+  "previewFile": "Цифровой-ID/Добавление-фото/Добавление-фото---5-(инструкция-к-селфи)/preview.png",
+  "svgFile": "Цифровой-ID/Добавление-фото/Добавление-фото---5-(инструкция-к-селфи)/screen.svg",
+  "documentFile": "Цифровой-ID/Добавление-фото/Добавление-фото---5-(инструкция-к-селфи)/figma.json",
+  "images": []
+}

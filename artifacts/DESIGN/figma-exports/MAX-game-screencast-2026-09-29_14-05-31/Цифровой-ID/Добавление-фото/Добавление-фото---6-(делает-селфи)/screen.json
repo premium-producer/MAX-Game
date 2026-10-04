@@ -1,0 +1,634 @@
+{
+  "id": "2299:86286",
+  "name": "Добавление фото - 6 (делает селфи)",
+  "type": "FRAME",
+  "parent": "2299:86188",
+  "bounds": {
+    "x": 22766,
+    "y": 6107,
+    "width": 360,
+    "height": 800
+  },
+  "visible": true,
+  "fontSize": 0,
+  "hasImage": false,
+  "task": "digital-id.photo",
+  "confidence": "high",
+  "reviewed": false,
+  "include": true,
+  "group": "2299:86188",
+  "groupName": "Цифровой ID / Добавление фото",
+  "containerPath": [
+    {
+      "id": "2299:85912",
+      "name": "Цифровой ID",
+      "type": "SECTION"
+    },
+    {
+      "id": "2299:86188",
+      "name": "Добавление фото",
+      "type": "SECTION"
+    }
+  ],
+  "sectionPath": [
+    {
+      "id": "2299:85912",
+      "name": "Цифровой ID",
+      "type": "SECTION"
+    },
+    {
+      "id": "2299:86188",
+      "name": "Добавление фото",
+      "type": "SECTION"
+    }
+  ],
+  "sequence": {
+    "series": "Добавление фото",
+    "number": 6,
+    "description": "делает селфи"
+  },
+  "detection": "structure",
+  "evidence": [
+    {
+      "task": "digital-id.photo",
+      "source": "frame-name",
+      "id": "2299:86286",
+      "text": "Добавление фото - 6 (делает селфи)",
+      "weight": 100
+    },
+    {
+      "task": "digital-id.photo",
+      "source": "ancestor",
+      "id": "2299:86188",
+      "text": "Добавление фото",
+      "weight": 99
+    }
+  ],
+  "ancestors": [
+    {
+      "id": "2299:86188",
+      "name": "Добавление фото",
+      "type": "SECTION"
+    },
+    {
+      "id": "2299:85912",
+      "name": "Цифровой ID",
+      "type": "SECTION"
+    }
+  ],
+  "nearbyHeadings": [],
+  "contextRegion": null,
+  "warnings": [],
+  "order": 75,
+  "fingerprint": "[\"Добавление фото - 6 (делает селфи)\",{\"x\":22766,\"y\":6107,\"width\":360,\"height\":800},\"FRAME\",[[\"2299:86188\",\"Добавление фото\",\"SECTION\"],[\"2299:85912\",\"Цифровой ID\",\"SECTION\"],[\"1:8\",\"Page 8\",\"PAGE\"]],\"content-v1\",1313094914,3293048786,35]",
+  "manualTask": false,
+  "title": "Добавление фото - 6 (делает селфи)",
+  "exportStatus": "ok",
+  "texts": [
+    {
+      "id": "I2299:86301;4:10095",
+      "name": "9:41",
+      "type": "TEXT",
+      "parent": "2299:86301",
+      "bounds": {
+        "x": 22786,
+        "y": 6121,
+        "width": 28,
+        "height": 20
+      },
+      "text": "9:41",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "9:41",
+          "start": 0,
+          "end": 4,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86308",
+      "name": "Подсказка",
+      "type": "TEXT",
+      "parent": "2299:86307",
+      "bounds": {
+        "x": 22794,
+        "y": 6247,
+        "width": 304,
+        "height": 40
+      },
+      "text": "Поместите лицо в овал и сделайте фото, когда рамка станет зелёной",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Bold",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 700
+        }
+      },
+      "fontSize": 16,
+      "segments": [
+        {
+          "characters": "Поместите лицо в овал и сделайте фото, когда рамка станет зелёной",
+          "start": 0,
+          "end": 65,
+          "fontSize": 16,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Bold",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 700
+            }
+          },
+          "fontWeight": 700,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:e4732f707bda1caa385560bfc71becb0dbf98642/2210:111"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    }
+  ],
+  "layers": [
+    {
+      "id": "2299:86286",
+      "name": "Добавление фото - 6 (делает селфи)",
+      "type": "FRAME",
+      "parent": "2299:86188",
+      "bounds": {
+        "x": 22766,
+        "y": 6107,
+        "width": 360,
+        "height": 800
+      }
+    },
+    {
+      "id": "2299:86287",
+      "name": "Фото",
+      "type": "RECTANGLE",
+      "parent": "2299:86286",
+      "bounds": {
+        "x": 22766,
+        "y": 6326,
+        "width": 360,
+        "height": 362
+      }
+    },
+    {
+      "id": "2299:86288",
+      "name": "Фото",
+      "type": "RECTANGLE",
+      "parent": "2299:86286",
+      "bounds": {
+        "x": 22766,
+        "y": 6326,
+        "width": 360,
+        "height": 362
+      }
+    },
+    {
+      "id": "2299:86289",
+      "name": "Маска",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "2299:86286",
+      "bounds": {
+        "x": 22766,
+        "y": 6107,
+        "width": 360,
+        "height": 800
+      }
+    },
+    {
+      "id": "2299:86290",
+      "name": "Фон маски",
+      "type": "RECTANGLE",
+      "parent": "2299:86289",
+      "bounds": {
+        "x": 22766,
+        "y": 6107,
+        "width": 360,
+        "height": 800
+      }
+    },
+    {
+      "id": "2299:86291",
+      "name": "Маска",
+      "type": "ELLIPSE",
+      "parent": "2299:86289",
+      "bounds": {
+        "x": 22831,
+        "y": 6359,
+        "width": 230,
+        "height": 300
+      }
+    },
+    {
+      "id": "2299:86292",
+      "name": "Окно",
+      "type": "ELLIPSE",
+      "parent": "2299:86286",
+      "bounds": {
+        "x": 22831,
+        "y": 6357,
+        "width": 230,
+        "height": 300
+      }
+    },
+    {
+      "id": "2299:86293",
+      "name": "Frame 2136139674",
+      "type": "FRAME",
+      "parent": "2299:86286",
+      "bounds": {
+        "x": 22766,
+        "y": 6688,
+        "width": 360,
+        "height": 219
+      }
+    },
+    {
+      "id": "2299:86294",
+      "name": "Frame 2136139675",
+      "type": "FRAME",
+      "parent": "2299:86293",
+      "bounds": {
+        "x": 22912,
+        "y": 6688,
+        "width": 68,
+        "height": 195
+      }
+    },
+    {
+      "id": "2299:86295",
+      "name": "Кнопка фото",
+      "type": "FRAME",
+      "parent": "2299:86294",
+      "bounds": {
+        "x": 22912,
+        "y": 6751.5,
+        "width": 68,
+        "height": 68
+      }
+    },
+    {
+      "id": "2299:86296",
+      "name": "Кнопка фото",
+      "type": "ELLIPSE",
+      "parent": "2299:86295",
+      "bounds": {
+        "x": 22916,
+        "y": 6755.5,
+        "width": 59.36507797241211,
+        "height": 59.36507797241211
+      }
+    },
+    {
+      "id": "2299:86297",
+      "name": "📎 Home Indicator",
+      "type": "INSTANCE",
+      "parent": "2299:86293",
+      "bounds": {
+        "x": 22766,
+        "y": 6883,
+        "width": 360,
+        "height": 24
+      }
+    },
+    {
+      "id": "I2299:86297;1350:1201",
+      "name": "Home Indicator",
+      "type": "VECTOR",
+      "parent": "2299:86297",
+      "bounds": {
+        "x": 22894,
+        "y": 6895,
+        "width": 104,
+        "height": 0
+      }
+    },
+    {
+      "id": "2299:86298",
+      "name": "Frame 2136139678",
+      "type": "FRAME",
+      "parent": "2299:86286",
+      "bounds": {
+        "x": 22766,
+        "y": 6107,
+        "width": 360,
+        "height": 219
+      }
+    },
+    {
+      "id": "2299:86299",
+      "name": "Frame 2136139677",
+      "type": "FRAME",
+      "parent": "2299:86298",
+      "bounds": {
+        "x": 22766,
+        "y": 6107,
+        "width": 360,
+        "height": 190.00003051757812
+      }
+    },
+    {
+      "id": "2299:86300",
+      "name": "✏️ Хедер Госкан",
+      "type": "FRAME",
+      "parent": "2299:86299",
+      "bounds": {
+        "x": 22766,
+        "y": 6107,
+        "width": 360,
+        "height": 112.00003051757812
+      }
+    },
+    {
+      "id": "2299:86301",
+      "name": ".Status Bar/Android/Default",
+      "type": "INSTANCE",
+      "parent": "2299:86300",
+      "bounds": {
+        "x": 22766,
+        "y": 6107,
+        "width": 360,
+        "height": 48.000030517578125
+      }
+    },
+    {
+      "id": "I2299:86301;4:10095",
+      "name": "9:41",
+      "type": "TEXT",
+      "parent": "2299:86301",
+      "bounds": {
+        "x": 22786,
+        "y": 6121,
+        "width": 28,
+        "height": 20
+      }
+    },
+    {
+      "id": "I2299:86301;4:10096",
+      "name": "System Status",
+      "type": "FRAME",
+      "parent": "2299:86301",
+      "bounds": {
+        "x": 23054,
+        "y": 6119,
+        "width": 52.00006103515625,
+        "height": 24.000030517578125
+      }
+    },
+    {
+      "id": "I2299:86301;4:10097",
+      "name": "Wifi",
+      "type": "FRAME",
+      "parent": "I2299:86301;4:10096",
+      "bounds": {
+        "x": 23054,
+        "y": 6123,
+        "width": 18.666690826416016,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I2299:86301;4:10098",
+      "name": "wifi",
+      "type": "VECTOR",
+      "parent": "I2299:86301;4:10097",
+      "bounds": {
+        "x": 23056,
+        "y": 6125,
+        "width": 14.666685104370117,
+        "height": 11.333348274230957
+      }
+    },
+    {
+      "id": "I2299:86301;4:10099",
+      "name": "Data",
+      "type": "FRAME",
+      "parent": "I2299:86301;4:10096",
+      "bounds": {
+        "x": 23074.666015625,
+        "y": 6123,
+        "width": 16.00002098083496,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I2299:86301;4:10100",
+      "name": "data",
+      "type": "VECTOR",
+      "parent": "I2299:86301;4:10099",
+      "bounds": {
+        "x": 23073.609375,
+        "y": 6125.27490234375,
+        "width": 12.391877174377441,
+        "height": 12.391878128051758
+      }
+    },
+    {
+      "id": "I2299:86301;4:10101",
+      "name": "Battery",
+      "type": "FRAME",
+      "parent": "I2299:86301;4:10096",
+      "bounds": {
+        "x": 23092.666015625,
+        "y": 6123,
+        "width": 13.33335018157959,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I2299:86301;4:10102",
+      "name": "Union",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "I2299:86301;4:10101",
+      "bounds": {
+        "x": 23095.33203125,
+        "y": 6124.33349609375,
+        "width": 8,
+        "height": 13.3330078125
+      }
+    },
+    {
+      "id": "I2299:86301;4:10103",
+      "name": "stroke",
+      "type": "VECTOR",
+      "parent": "I2299:86301;4:10102",
+      "bounds": {
+        "x": 23095.33203125,
+        "y": 6124.33349609375,
+        "width": 8.00001049041748,
+        "height": 13.33335018157959
+      }
+    },
+    {
+      "id": "I2299:86301;4:10104",
+      "name": "fill",
+      "type": "RECTANGLE",
+      "parent": "I2299:86301;4:10102",
+      "bounds": {
+        "x": 23095.998046875,
+        "y": 6125.6669921875,
+        "width": 6.666675090789795,
+        "height": 12.000015258789062
+      }
+    },
+    {
+      "id": "2299:86302",
+      "name": "Панель действий",
+      "type": "FRAME",
+      "parent": "2299:86300",
+      "bounds": {
+        "x": 22766,
+        "y": 6155,
+        "width": 360,
+        "height": 64
+      }
+    },
+    {
+      "id": "2299:86303",
+      "name": "✏️ Кнопка-иконка",
+      "type": "FRAME",
+      "parent": "2299:86302",
+      "bounds": {
+        "x": 23090,
+        "y": 6179,
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "id": "2299:86304",
+      "name": "Icon",
+      "type": "VECTOR",
+      "parent": "2299:86303",
+      "bounds": {
+        "x": 23090,
+        "y": 6179,
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "id": "2299:86305",
+      "name": "✏️ Кнопка-иконка (хедер) белая",
+      "type": "FRAME",
+      "parent": "2299:86302",
+      "bounds": {
+        "x": 22770,
+        "y": 6163.5,
+        "width": 48,
+        "height": 47
+      }
+    },
+    {
+      "id": "2299:86306",
+      "name": "Icon",
+      "type": "VECTOR",
+      "parent": "2299:86305",
+      "bounds": {
+        "x": 22784,
+        "y": 6177.5,
+        "width": 20,
+        "height": 19
+      }
+    },
+    {
+      "id": "2299:86307",
+      "name": "Frame 2136139676",
+      "type": "FRAME",
+      "parent": "2299:86299",
+      "bounds": {
+        "x": 22766,
+        "y": 6237,
+        "width": 360,
+        "height": 60
+      }
+    },
+    {
+      "id": "2299:86308",
+      "name": "Подсказка",
+      "type": "TEXT",
+      "parent": "2299:86307",
+      "bounds": {
+        "x": 22794,
+        "y": 6247,
+        "width": 304,
+        "height": 40
+      }
+    }
+  ],
+  "imageHashes": [
+    "32969c75aa43e9323e780079fa04159e70268ae0"
+  ],
+  "notes": [],
+  "pngScale": 1,
+  "pngFile": "Цифровой-ID/Добавление-фото/Добавление-фото---6-(делает-селфи)/screen.png",
+  "previewFile": "Цифровой-ID/Добавление-фото/Добавление-фото---6-(делает-селфи)/preview.png",
+  "svgFile": "Цифровой-ID/Добавление-фото/Добавление-фото---6-(делает-селфи)/screen.svg",
+  "documentFile": "Цифровой-ID/Добавление-фото/Добавление-фото---6-(делает-селфи)/figma.json",
+  "images": [
+    {
+      "hash": "32969c75aa43e9323e780079fa04159e70268ae0",
+      "file": "Цифровой-ID/Добавление-фото/Добавление-фото---6-(делает-селфи)/images/a2ddfecf20d94979f4423e4fff6107657949aa81626f5e74b49922c0865f325f.png"
+    }
+  ]
+}

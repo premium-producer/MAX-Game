@@ -1,0 +1,275 @@
+{
+  "$schema": "./ui-shell.schema.json",
+  "schemaVersion": 8,
+  "designViewport": {
+    "width": 1920,
+    "height": 1080
+  },
+  "typography": {
+    "missionTextLayout": "adaptive"
+  },
+  "rendering": {
+    "maxDrawingBufferPixels": 2073600,
+    "earth": {
+      "russiaContour": "decorative-2026",
+      "dayTint": "#6E1AFF",
+      "nightTint": "#0D001A",
+      "dayIntensity": 1.79,
+      "ambientIntensity": 0.36,
+      "saturation": 0,
+      "textureColorMix": 0,
+      "textureSaturation": 0,
+      "surfaceExposure": 1.08,
+      "surfaceGamma": 1,
+      "surfaceContrast": 1.12,
+      "oceanColor": "#0D001A",
+      "oceanIntensity": 0.52,
+      "russiaSurfaceBoost": 1.01,
+      "outsideSurfaceDim": 0.39,
+      "russiaMaskFeather": 1.05,
+      "cityLightsColor": "#00BFFF",
+      "cityLightsHotColor": "#FFFFFF",
+      "cityLightsIntensity": 1.8,
+      "cityLightsHotIntensity": 2.4,
+      "cityLightsGlowIntensity": 0.72,
+      "cityLightsCoreStart": 0.12,
+      "cityLightsGlowStart": 0.055,
+      "cityLightsDayVisibility": 0.08,
+      "cityLightsBlackPoint": 0.018,
+      "cityLightsWhitePoint": 0.34,
+      "cityLightsGamma": 1.1,
+      "cityLightsHotPoint": 0.58,
+      "cityLightsLimbStart": 0.035,
+      "cityLightsLimbEnd": 0.2,
+      "terminatorSoftness": 0.53,
+      "specularIntensity": 0.04,
+      "normalStrength": 2,
+      "cloudHighlights": 1.22,
+      "cloudColor": "#FFFFFF",
+      "cloudIntensity": 0.74,
+      "cloudOpacity": 0,
+      "cloudBlackPoint": 0.15,
+      "cloudWhitePoint": 0.58,
+      "cloudAltitude": 0.014,
+      "cloudShadowIntensity": 0.16,
+      "hazeColor": "#6E1AFF",
+      "hazeIntensity": 0.86,
+      "hazePower": 0.5,
+      "borderColor": "#00BFFF",
+      "borderIntensity": 0.75,
+      "borderCoreIntensity": 1.82,
+      "borderCoreWidth": 2.3,
+      "borderGlowIntensity": 0.45,
+      "emissiveBloomRadius": 5,
+      "emissiveBloomStrength": 0.2,
+      "emissiveBloomQuality": "medium",
+      "atmosphereColor": "#9500FF",
+      "atmosphereIntensity": 0.32,
+      "atmospherePower": 8,
+      "atmosphereInnerFeather": 0.031,
+      "atmosphereOuterFeather": 0.088,
+      "atmosphereSunBias": 0.18
+    },
+    "nodeIconBackdrop": {
+      "color": "#0D001A",
+      "opacity": 0.9,
+      "radius": 0.127
+    },
+    "signalLinks": {
+      "strandCount": 5,
+      "segmentCount": 80,
+      "particleCount": 32,
+      "flowSpeed": 0.19,
+      "waveAmplitude": 0.025,
+      "waveFrequency": 1.4,
+      "strandSpacing": 0.018
+    }
+  },
+  "interaction": {
+    "earthOrbit": {
+      "limitsDegrees": {
+        "west": 25,
+        "east": 25,
+        "north": 12,
+        "south": 12
+      },
+      "centerRussia": true,
+      "verticalCenteringPx": 140,
+      "missionMarkerSafePaddingPx": 50,
+      "endpointSafePaddingPx": 32
+    }
+  },
+  "geometry": {
+    "outerInset": 24,
+    "headerHeight": 102,
+    "frameGap": 10,
+    "headerPadding": 28,
+    "headerSideColumn": 270,
+    "footerHeight": 118,
+    "footerBottom": 16,
+    "inventoryWidth": 220,
+    "columnGap": 24,
+    "borderWidth": 2,
+    "borderRadius": 10
+  },
+  "motion": {
+    "layoutDurationMs": 660,
+    "fadeDurationMs": 450,
+    "screenDurationMs": 840,
+    "screenExitDurationMs": 480,
+    "contentStaggerMs": 84,
+    "microDurationMs": 220,
+    "ambientDurationMs": 4200,
+    "cameraIdle": {
+      "delayMs": 10000,
+      "fadeMs": 1800,
+      "periodMs": 16000,
+      "yawDegrees": 0.55,
+      "pitchDegrees": 0.28
+    },
+    "easing": "cubic-bezier(.2, .78, .2, 1)",
+    "springEasing": "cubic-bezier(.18, .82, .24, 1)"
+  },
+  "states": {
+    "CTA": {
+      "header": false,
+      "frame": false,
+      "footer": false,
+      "inventory": false,
+      "frameAvoidsFooter": false,
+      "footerStyle": "hidden",
+      "earthMask": "full",
+      "frameRight": 24,
+      "frameBottom": 24,
+      "footerRight": 24,
+      "backgroundBlur": 0,
+      "backgroundDim": 0,
+      "cameraView": {
+        "target": [
+          -0.032321,
+          2.43938,
+          0.004702
+        ],
+        "rotation": [
+          -0.00671931,
+          -0.11911893,
+          -0.03734984
+        ],
+        "distance": 7.973365,
+        "fov": 25
+      }
+    },
+    "ONBOARDING": {
+      "header": true,
+      "frame": true,
+      "footer": false,
+      "inventory": false,
+      "frameAvoidsFooter": false,
+      "footerStyle": "panel",
+      "earthMask": "frame",
+      "frameRight": 24,
+      "frameBottom": 24,
+      "footerRight": 24,
+      "backgroundBlur": 12,
+      "backgroundDim": 0.28,
+      "cameraView": {
+        "target": [
+          -0.032,
+          2.439,
+          0.005
+        ],
+        "rotation": [
+          -0.00663225,
+          -0.11920599,
+          -0.03735005
+        ],
+        "distance": 10.05,
+        "fov": 25
+      }
+    },
+    "MISSION_SELECT": {
+      "header": true,
+      "frame": true,
+      "footer": false,
+      "inventory": false,
+      "frameAvoidsFooter": false,
+      "footerStyle": "panel",
+      "earthMask": "frame",
+      "frameRight": 24,
+      "frameBottom": 24,
+      "footerRight": 24,
+      "backgroundBlur": 0,
+      "backgroundDim": 0,
+      "cameraView": {
+        "target": [
+          -0.032,
+          2.439,
+          0.005
+        ],
+        "rotation": [
+          -0.06084888,
+          -0.11120436,
+          -0.03735005
+        ],
+        "distance": 10.099405,
+        "fov": 25
+      }
+    },
+    "MISSION_PLAY": {
+      "header": true,
+      "frame": true,
+      "footer": true,
+      "inventory": true,
+      "frameAvoidsFooter": true,
+      "footerStyle": "panel",
+      "earthMask": "frame",
+      "frameRight": 268,
+      "frameBottom": 24,
+      "footerRight": 268,
+      "backgroundBlur": 0,
+      "backgroundDim": 0,
+      "cameraView": {
+        "target": [
+          -0.174,
+          1.996,
+          0.04
+        ],
+        "rotation": [
+          -0.08779006,
+          -0.00810351,
+          -0.04066617
+        ],
+        "distance": 9,
+        "fov": 25
+      }
+    },
+    "END": {
+      "header": true,
+      "frame": true,
+      "footer": true,
+      "inventory": false,
+      "frameAvoidsFooter": true,
+      "footerStyle": "panel",
+      "earthMask": "frame",
+      "frameRight": 24,
+      "frameBottom": 24,
+      "footerRight": 24,
+      "backgroundBlur": 12,
+      "backgroundDim": 0.28,
+      "cameraView": {
+        "target": [
+          -0.032321,
+          2.43938,
+          0.004702
+        ],
+        "rotation": [
+          -0.00671931,
+          -0.11911893,
+          -0.03734984
+        ],
+        "distance": 7.973365,
+        "fov": 25
+      }
+    }
+  }
+}

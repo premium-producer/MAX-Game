@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LumiCells — vanilla JS</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23050632'/%3E%3Crect x='6' y='6' width='8' height='8' rx='2' fill='%23f21239'/%3E%3Crect x='18' y='6' width='8' height='8' rx='2' fill='%23c43db2'/%3E%3Crect x='6' y='18' width='8' height='8' rx='2' fill='%23e0267a'/%3E%3Crect x='18' y='18' width='8' height='8' rx='2' fill='%230476ff'/%3E%3C/svg%3E"
+    />
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+      }
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        background: #000032;
+        overflow: hidden;
+      }
+      /* Fullscreen background host; its children sit above the canvas (positioned, later in DOM). */
+      #bg {
+        position: fixed;
+        inset: 0;
+      }
+      .bubble {
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding: 10px 18px;
+        /* A light rim and a dark shadow keep the pill readable over the cells it lights up. */
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 999px;
+        font: 600 15px/1.2 inherit;
+        color: #fff;
+        background: #ee2848;
+        box-shadow:
+          0 3px 12px rgba(0, 0, 24, 0.55),
+          0 0 24px rgba(238, 40, 72, 0.45);
+        cursor: pointer;
+        will-change: transform;
+        white-space: nowrap;
+      }
+      .bubble.blue {
+        background: #0481f5;
+        /* No blue glow: it would merge with the blue light the pill casts on the grid. */
+        box-shadow: 0 3px 12px rgba(0, 0, 24, 0.65);
+      }
+      .bubble:hover {
+        filter: brightness(1.15);
+      }
+      .title {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0;
+        padding: 6px 14px;
+        color: #fff;
+        font: 700 clamp(22px, 4vmin, 40px) / 1.15 inherit;
+        text-align: center;
+        letter-spacing: 0.01em;
+        pointer-events: none;
+        border-radius: 12px;
+      }
+      .title em {
+        font-style: normal;
+        color: #6fb6ff;
+      }
+      /* Small card with its own instance; the glow and floating pixels leave its bounds. */
+      .card {
+        position: fixed;
+        left: 96px;
+        bottom: 96px;
+        width: 320px;
+        height: 200px;
+        border-radius: 18px;
+        overflow: visible;
+        z-index: 2;
+      }
+      .card-body {
+        position: relative;
+        z-index: 1;
+        padding: 18px 20px;
+        color: #fff;
+        font: 500 14px/1.4 inherit;
+        pointer-events: none;
+      }
+      .card-body b {
+        display: block;
+        font-size: 20px;
+        margin-bottom: 6px;
+      }
+      #hud {
+        position: fixed;
+        top: 12px;
+        right: 12px;
+        z-index: 10;
+        min-width: 280px;
+        padding: 10px 12px;
+        border-radius: 10px;
+        background: rgba(4, 8, 40, 0.78);
+        border: 1px solid rgba(120, 150, 255, 0.25);
+        color: #cfe0ff;
+        font: 12px/1.45 ui-monospace, Consolas, monospace;
+        white-space: pre;
+        backdrop-filter: blur(6px);
+      }
+      #hud .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 8px;
+        white-space: normal;
+      }
+      #hud button {
+        font: 12px/1 inherit;
+        padding: 6px 8px;
+        border-radius: 6px;
+        border: 1px solid rgba(120, 150, 255, 0.35);
+        background: rgba(30, 50, 140, 0.5);
+        color: #fff;
+        cursor: pointer;
+      }
+      #hud .back {
+        align-self: center;
+        margin-right: 4px;
+        color: #9fc2ff;
+        text-decoration: none;
+      }
+      #hud .back:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="bg">
+      <h1 class="title" id="title">Living pixels<br /><em>without a framework</em></h1>
+    </div>
+    <div class="card" id="card">
+      <div class="card-body">
+        <b>Card 320×200</b>
+        overflow: 60px, pixels float past the edge
+      </div>
+    </div>
+    <div id="hud">
+      <div id="hud-text">loading…</div>
+      <div class="row">
+        <a class="back" href="../">← Playground</a>
+        <!-- Stress-test controls, shown with ?debug -->
+        <button type="button" id="btn-lose" hidden>Lose context</button>
+        <button type="button" id="btn-recreate" hidden>Recreate ×20</button>
+        <button type="button" id="btn-radius">Sphere radius 0.3 ↔ 0.66</button>
+        <button type="button" id="btn-pointer">Pointer light</button>
+      </div>
+    </div>
+    <script type="module" src="./core-basic/main.ts"></script>
+  </body>
+</html>

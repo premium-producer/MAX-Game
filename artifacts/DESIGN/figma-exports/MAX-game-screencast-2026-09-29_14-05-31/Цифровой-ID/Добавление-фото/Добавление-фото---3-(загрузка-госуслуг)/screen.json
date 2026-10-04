@@ -1,0 +1,435 @@
+{
+  "id": "2299:86210",
+  "name": "Добавление фото - 3 (загрузка госуслуг)",
+  "type": "FRAME",
+  "parent": "2299:86188",
+  "bounds": {
+    "x": 21086,
+    "y": 6107,
+    "width": 360,
+    "height": 800
+  },
+  "visible": true,
+  "fontSize": 0,
+  "hasImage": false,
+  "task": "digital-id.photo",
+  "confidence": "high",
+  "reviewed": false,
+  "include": true,
+  "group": "2299:86188",
+  "groupName": "Цифровой ID / Добавление фото",
+  "containerPath": [
+    {
+      "id": "2299:85912",
+      "name": "Цифровой ID",
+      "type": "SECTION"
+    },
+    {
+      "id": "2299:86188",
+      "name": "Добавление фото",
+      "type": "SECTION"
+    }
+  ],
+  "sectionPath": [
+    {
+      "id": "2299:85912",
+      "name": "Цифровой ID",
+      "type": "SECTION"
+    },
+    {
+      "id": "2299:86188",
+      "name": "Добавление фото",
+      "type": "SECTION"
+    }
+  ],
+  "sequence": {
+    "series": "Добавление фото",
+    "number": 3,
+    "description": "загрузка госуслуг"
+  },
+  "detection": "structure",
+  "evidence": [
+    {
+      "task": "digital-id.photo",
+      "source": "frame-name",
+      "id": "2299:86210",
+      "text": "Добавление фото - 3 (загрузка госуслуг)",
+      "weight": 100
+    },
+    {
+      "task": "digital-id.photo",
+      "source": "ancestor",
+      "id": "2299:86188",
+      "text": "Добавление фото",
+      "weight": 99
+    }
+  ],
+  "ancestors": [
+    {
+      "id": "2299:86188",
+      "name": "Добавление фото",
+      "type": "SECTION"
+    },
+    {
+      "id": "2299:85912",
+      "name": "Цифровой ID",
+      "type": "SECTION"
+    }
+  ],
+  "nearbyHeadings": [],
+  "contextRegion": null,
+  "warnings": [],
+  "order": 72,
+  "fingerprint": "[\"Добавление фото - 3 (загрузка госуслуг)\",{\"x\":21086,\"y\":6107,\"width\":360,\"height\":800},\"FRAME\",[[\"2299:86188\",\"Добавление фото\",\"SECTION\"],[\"2299:85912\",\"Цифровой ID\",\"SECTION\"],[\"1:8\",\"Page 8\",\"PAGE\"]],\"content-v1\",3642987209,993155693,23]",
+  "manualTask": false,
+  "title": "Добавление фото - 3 (загрузка госуслуг)",
+  "exportStatus": "ok",
+  "texts": [
+    {
+      "id": "I2299:86212;4:10095",
+      "name": "9:41",
+      "type": "TEXT",
+      "parent": "2299:86212",
+      "bounds": {
+        "x": 21106,
+        "y": 6121,
+        "width": 28,
+        "height": 20
+      },
+      "text": "9:41",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "9:41",
+          "start": 0,
+          "end": 4,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    }
+  ],
+  "layers": [
+    {
+      "id": "2299:86210",
+      "name": "Добавление фото - 3 (загрузка госуслуг)",
+      "type": "FRAME",
+      "parent": "2299:86188",
+      "bounds": {
+        "x": 21086,
+        "y": 6107,
+        "width": 360,
+        "height": 800
+      }
+    },
+    {
+      "id": "2299:86211",
+      "name": "Переход в ГУ",
+      "type": "FRAME",
+      "parent": "2299:86210",
+      "bounds": {
+        "x": 21086,
+        "y": 6107,
+        "width": 360,
+        "height": 800
+      }
+    },
+    {
+      "id": "2299:86212",
+      "name": ".Status Bar/Android/Default",
+      "type": "INSTANCE",
+      "parent": "2299:86211",
+      "bounds": {
+        "x": 21086,
+        "y": 6107,
+        "width": 360,
+        "height": 48.000030517578125
+      }
+    },
+    {
+      "id": "I2299:86212;4:10095",
+      "name": "9:41",
+      "type": "TEXT",
+      "parent": "2299:86212",
+      "bounds": {
+        "x": 21106,
+        "y": 6121,
+        "width": 28,
+        "height": 20
+      }
+    },
+    {
+      "id": "I2299:86212;4:10096",
+      "name": "System Status",
+      "type": "FRAME",
+      "parent": "2299:86212",
+      "bounds": {
+        "x": 21374,
+        "y": 6119,
+        "width": 52.00006103515625,
+        "height": 24.000030517578125
+      }
+    },
+    {
+      "id": "I2299:86212;4:10097",
+      "name": "Wifi",
+      "type": "FRAME",
+      "parent": "I2299:86212;4:10096",
+      "bounds": {
+        "x": 21374,
+        "y": 6123,
+        "width": 18.666690826416016,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I2299:86212;4:10098",
+      "name": "wifi",
+      "type": "VECTOR",
+      "parent": "I2299:86212;4:10097",
+      "bounds": {
+        "x": 21376,
+        "y": 6125,
+        "width": 14.666685104370117,
+        "height": 11.333348274230957
+      }
+    },
+    {
+      "id": "I2299:86212;4:10099",
+      "name": "Data",
+      "type": "FRAME",
+      "parent": "I2299:86212;4:10096",
+      "bounds": {
+        "x": 21394.666015625,
+        "y": 6123,
+        "width": 16.00002098083496,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I2299:86212;4:10100",
+      "name": "data",
+      "type": "VECTOR",
+      "parent": "I2299:86212;4:10099",
+      "bounds": {
+        "x": 21393.609375,
+        "y": 6125.27490234375,
+        "width": 12.391877174377441,
+        "height": 12.391878128051758
+      }
+    },
+    {
+      "id": "I2299:86212;4:10101",
+      "name": "Battery",
+      "type": "FRAME",
+      "parent": "I2299:86212;4:10096",
+      "bounds": {
+        "x": 21412.666015625,
+        "y": 6123,
+        "width": 13.33335018157959,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I2299:86212;4:10102",
+      "name": "Union",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "I2299:86212;4:10101",
+      "bounds": {
+        "x": 21415.33203125,
+        "y": 6124.33349609375,
+        "width": 8,
+        "height": 13.3330078125
+      }
+    },
+    {
+      "id": "I2299:86212;4:10103",
+      "name": "stroke",
+      "type": "VECTOR",
+      "parent": "I2299:86212;4:10102",
+      "bounds": {
+        "x": 21415.33203125,
+        "y": 6124.33349609375,
+        "width": 8.00001049041748,
+        "height": 13.33335018157959
+      }
+    },
+    {
+      "id": "I2299:86212;4:10104",
+      "name": "fill",
+      "type": "RECTANGLE",
+      "parent": "I2299:86212;4:10102",
+      "bounds": {
+        "x": 21415.998046875,
+        "y": 6125.6669921875,
+        "width": 6.666675090789795,
+        "height": 12.000015258789062
+      }
+    },
+    {
+      "id": "2299:86213",
+      "name": "gosuslugi.ru 2",
+      "type": "FRAME",
+      "parent": "2299:86211",
+      "bounds": {
+        "x": 21186,
+        "y": 6427,
+        "width": 160,
+        "height": 160
+      }
+    },
+    {
+      "id": "2299:86214",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "2299:86213",
+      "bounds": {
+        "x": 21193.111328125,
+        "y": 6427,
+        "width": 145.77755737304688,
+        "height": 160
+      }
+    },
+    {
+      "id": "2299:86215",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "2299:86214",
+      "bounds": {
+        "x": 21193.130859375,
+        "y": 6507.79296875,
+        "width": 122.63243103027344,
+        "height": 28.645328521728516
+      }
+    },
+    {
+      "id": "2299:86216",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "2299:86214",
+      "bounds": {
+        "x": 21193.111328125,
+        "y": 6477.8642578125,
+        "width": 56.30126190185547,
+        "height": 21.767108917236328
+      }
+    },
+    {
+      "id": "2299:86217",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "2299:86214",
+      "bounds": {
+        "x": 21198.111328125,
+        "y": 6427,
+        "width": 140.77853393554688,
+        "height": 160
+      }
+    },
+    {
+      "id": "2299:86218",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "2299:86214",
+      "bounds": {
+        "x": 21234.3515625,
+        "y": 6508.4736328125,
+        "width": 18.883554458618164,
+        "height": 20.405332565307617
+      }
+    },
+    {
+      "id": "2299:86219",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "2299:86211",
+      "bounds": {
+        "x": 21246,
+        "y": 6763,
+        "width": 40,
+        "height": 40
+      }
+    },
+    {
+      "id": "I2299:86219;71:999",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "2299:86219",
+      "bounds": {
+        "x": 21246,
+        "y": 6763,
+        "width": 40.001617431640625,
+        "height": 29.41669464111328
+      }
+    },
+    {
+      "id": "2299:86220",
+      "name": "📎 Home Indicator",
+      "type": "INSTANCE",
+      "parent": "2299:86211",
+      "bounds": {
+        "x": 21086,
+        "y": 6883,
+        "width": 360,
+        "height": 24
+      }
+    },
+    {
+      "id": "I2299:86220;1350:1201",
+      "name": "Home Indicator",
+      "type": "VECTOR",
+      "parent": "2299:86220",
+      "bounds": {
+        "x": 21214,
+        "y": 6895,
+        "width": 104,
+        "height": 0
+      }
+    }
+  ],
+  "imageHashes": [],
+  "notes": [],
+  "pngScale": 1,
+  "pngFile": "Цифровой-ID/Добавление-фото/Добавление-фото---3-(загрузка-госуслуг)/screen.png",
+  "previewFile": "Цифровой-ID/Добавление-фото/Добавление-фото---3-(загрузка-госуслуг)/preview.png",
+  "svgFile": "Цифровой-ID/Добавление-фото/Добавление-фото---3-(загрузка-госуслуг)/screen.svg",
+  "documentFile": "Цифровой-ID/Добавление-фото/Добавление-фото---3-(загрузка-госуслуг)/figma.json",
+  "images": []
+}

@@ -1,0 +1,24 @@
+{
+  "release": "20260910-040117",
+  "build": "debug-exit-button-223",
+  "previous_release": "20260908-144142",
+  "https_files_sha256_verified": 163,
+  "authoring_urls_404": 13,
+  "cache_control": "no-store",
+  "legacy_route": "ok",
+  "tls_verification": true,
+  "transport": "pinned Selectel IP with original domain SNI and certificate verification",
+  "local_dns": "lookup failed; no local DNS settings changed",
+  "server_dns": "135.106.199.175",
+  "server_https_health": 200,
+  "services": {
+    "caddy": "active",
+    "ai_mirror": "active",
+    "aihelper": "active"
+  },
+  "api_health": {
+    "ai_mirror": 200,
+    "aihelper": 200
+  },
+  "rollback_release_present": true
+}

@@ -1,0 +1,170 @@
+{
+  "id": "2299:99720",
+  "name": "Link",
+  "type": "FRAME",
+  "parent": "2299:99694",
+  "bounds": {
+    "x": 45586,
+    "y": -5386,
+    "width": 295,
+    "height": 96
+  },
+  "visible": true,
+  "fontSize": 0,
+  "hasImage": false,
+  "task": "unassigned",
+  "confidence": "none",
+  "reviewed": false,
+  "include": true,
+  "group": "2299:99694",
+  "groupName": "Flow платформа",
+  "containerPath": [
+    {
+      "id": "2299:99694",
+      "name": "Flow платформа",
+      "type": "SECTION"
+    }
+  ],
+  "sectionPath": [
+    {
+      "id": "2299:99694",
+      "name": "Flow платформа",
+      "type": "SECTION"
+    }
+  ],
+  "sequence": null,
+  "detection": "structure",
+  "evidence": [],
+  "ancestors": [
+    {
+      "id": "2299:99694",
+      "name": "Flow платформа",
+      "type": "SECTION"
+    }
+  ],
+  "nearbyHeadings": [],
+  "contextRegion": null,
+  "warnings": [
+    "Задание не указано в названиях — назначьте при необходимости"
+  ],
+  "order": 118,
+  "fingerprint": "[\"Link\",{\"x\":45586,\"y\":-5386,\"width\":295,\"height\":96},\"FRAME\",[[\"2299:99694\",\"Flow платформа\",\"SECTION\"],[\"1:8\",\"Page 8\",\"PAGE\"]],\"content-v1\",4213831688,843563662,4]",
+  "manualTask": false,
+  "title": "Link",
+  "exportStatus": "ok",
+  "texts": [
+    {
+      "id": "2299:99722",
+      "name": "Цифровой ID",
+      "type": "TEXT",
+      "parent": "2299:99720",
+      "bounds": {
+        "x": 45670,
+        "y": -5354,
+        "width": 175,
+        "height": 32
+      },
+      "text": "Цифровой ID",
+      "fontName": {
+        "family": "VK Sans Display",
+        "style": "Regular"
+      },
+      "fontSize": 28,
+      "segments": [
+        {
+          "characters": "Цифровой ID",
+          "start": 0,
+          "end": 11,
+          "fontSize": 28,
+          "fontName": {
+            "family": "VK Sans Display",
+            "style": "Regular"
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:21c744ff5ed9c23b0ada95fa73cb62789d4f8200/10030:253"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": {
+            "type": "URL",
+            "value": "https://www.figma.com/design/6wqJXne4r3Kv7vpTBPobqV/%D0%A6%D0%B8%D1%84%D1%80%D0%BE%D0%B2%D0%BE%D0%B9-ID?node-id=1-2&t=p8GGJVvBjTzHT7cL-1"
+          }
+        }
+      ]
+    }
+  ],
+  "layers": [
+    {
+      "id": "2299:99720",
+      "name": "Link",
+      "type": "FRAME",
+      "parent": "2299:99694",
+      "bounds": {
+        "x": 45586,
+        "y": -5386,
+        "width": 295,
+        "height": 96
+      }
+    },
+    {
+      "id": "2299:99721",
+      "name": "link_32",
+      "type": "INSTANCE",
+      "parent": "2299:99720",
+      "bounds": {
+        "x": 45626,
+        "y": -5354,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "I2299:99721;11994:449",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "2299:99721",
+      "bounds": {
+        "x": 45629.33203125,
+        "y": -5350.6669921875,
+        "width": 25.33333396911621,
+        "height": 25.33333396911621
+      }
+    },
+    {
+      "id": "2299:99722",
+      "name": "Цифровой ID",
+      "type": "TEXT",
+      "parent": "2299:99720",
+      "bounds": {
+        "x": 45670,
+        "y": -5354,
+        "width": 175,
+        "height": 32
+      }
+    }
+  ],
+  "imageHashes": [],
+  "notes": [],
+  "pngScale": 1,
+  "pngFile": "Flow-платформа/Link-4/screen.png",
+  "previewFile": "Flow-платформа/Link-4/preview.png",
+  "svgFile": "Flow-платформа/Link-4/screen.svg",
+  "documentFile": "Flow-платформа/Link-4/figma.json",
+  "images": []
+}

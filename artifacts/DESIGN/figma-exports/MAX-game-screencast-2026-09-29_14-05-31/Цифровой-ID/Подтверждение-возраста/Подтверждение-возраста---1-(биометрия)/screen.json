@@ -1,0 +1,2934 @@
+{
+  "id": "2299:86516",
+  "name": "Подтверждение возраста - 1 (биометрия)",
+  "type": "FRAME",
+  "parent": "2299:86515",
+  "bounds": {
+    "x": 19957,
+    "y": 12006,
+    "width": 360,
+    "height": 800
+  },
+  "visible": true,
+  "fontSize": 0,
+  "hasImage": false,
+  "task": "digital-id.age",
+  "confidence": "high",
+  "reviewed": false,
+  "include": true,
+  "group": "2299:86515",
+  "groupName": "Цифровой ID / Подтверждение возраста",
+  "containerPath": [
+    {
+      "id": "2299:85912",
+      "name": "Цифровой ID",
+      "type": "SECTION"
+    },
+    {
+      "id": "2299:86515",
+      "name": "Подтверждение возраста",
+      "type": "SECTION"
+    }
+  ],
+  "sectionPath": [
+    {
+      "id": "2299:85912",
+      "name": "Цифровой ID",
+      "type": "SECTION"
+    },
+    {
+      "id": "2299:86515",
+      "name": "Подтверждение возраста",
+      "type": "SECTION"
+    }
+  ],
+  "sequence": {
+    "series": "Подтверждение возраста",
+    "number": 1,
+    "description": "биометрия"
+  },
+  "detection": "structure",
+  "evidence": [
+    {
+      "task": "digital-id.age",
+      "source": "frame-name",
+      "id": "2299:86516",
+      "text": "Подтверждение возраста - 1 (биометрия)",
+      "weight": 100
+    },
+    {
+      "task": "digital-id.age",
+      "source": "ancestor",
+      "id": "2299:86515",
+      "text": "Подтверждение возраста",
+      "weight": 99
+    }
+  ],
+  "ancestors": [
+    {
+      "id": "2299:86515",
+      "name": "Подтверждение возраста",
+      "type": "SECTION"
+    },
+    {
+      "id": "2299:85912",
+      "name": "Цифровой ID",
+      "type": "SECTION"
+    }
+  ],
+  "nearbyHeadings": [],
+  "contextRegion": null,
+  "warnings": [],
+  "order": 88,
+  "fingerprint": "[\"Подтверждение возраста - 1 (биометрия)\",{\"x\":19957,\"y\":12006,\"width\":360,\"height\":800},\"FRAME\",[[\"2299:86515\",\"Подтверждение возраста\",\"SECTION\"],[\"2299:85912\",\"Цифровой ID\",\"SECTION\"],[\"1:8\",\"Page 8\",\"PAGE\"]],\"content-v1\",189228130,1839796462,351]",
+  "manualTask": false,
+  "title": "Подтверждение возраста - 1 (биометрия)",
+  "exportStatus": "ok",
+  "texts": [
+    {
+      "id": "I2299:86519;28518:3202",
+      "name": "Subtitle",
+      "type": "TEXT",
+      "parent": "I2299:86519;28518:3088",
+      "bounds": {
+        "x": 19989,
+        "y": 12215,
+        "width": 296,
+        "height": 40
+      },
+      "text": "Введите ПИН-код",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 16,
+      "segments": [
+        {
+          "characters": "Введите ПИН-код",
+          "start": 0,
+          "end": 15,
+          "fontSize": 16,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.6800000071525574,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:0af30f4380fce519624c68d2dc55e4467590684a/4263:365"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:4bcb0c6459e93af7fbf097e732bccb2d6d1df741,4550:2070",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:86520;28821:71945",
+      "name": "Number",
+      "type": "TEXT",
+      "parent": "I2299:86520;28821:71943",
+      "bounds": {
+        "x": 20029,
+        "y": 12356,
+        "width": 16,
+        "height": 32
+      },
+      "text": "1",
+      "fontName": {
+        "family": "Roboto",
+        "style": "SemiBold",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 600
+        }
+      },
+      "fontSize": 28,
+      "segments": [
+        {
+          "characters": "1",
+          "start": 0,
+          "end": 1,
+          "fontSize": 28,
+          "fontName": {
+            "family": "Roboto",
+            "style": "SemiBold",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 600
+            }
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:86520;28821:71948",
+      "name": "Number",
+      "type": "TEXT",
+      "parent": "I2299:86520;28821:71946",
+      "bounds": {
+        "x": 20129,
+        "y": 12356,
+        "width": 16,
+        "height": 32
+      },
+      "text": "2",
+      "fontName": {
+        "family": "Roboto",
+        "style": "SemiBold",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 600
+        }
+      },
+      "fontSize": 28,
+      "segments": [
+        {
+          "characters": "2",
+          "start": 0,
+          "end": 1,
+          "fontSize": 28,
+          "fontName": {
+            "family": "Roboto",
+            "style": "SemiBold",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 600
+            }
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:86520;28821:71951",
+      "name": "Number",
+      "type": "TEXT",
+      "parent": "I2299:86520;28821:71949",
+      "bounds": {
+        "x": 20229,
+        "y": 12356,
+        "width": 16,
+        "height": 32
+      },
+      "text": "3",
+      "fontName": {
+        "family": "Roboto",
+        "style": "SemiBold",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 600
+        }
+      },
+      "fontSize": 28,
+      "segments": [
+        {
+          "characters": "3",
+          "start": 0,
+          "end": 1,
+          "fontSize": 28,
+          "fontName": {
+            "family": "Roboto",
+            "style": "SemiBold",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 600
+            }
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:86520;28821:71955",
+      "name": "Number",
+      "type": "TEXT",
+      "parent": "I2299:86520;28821:71953",
+      "bounds": {
+        "x": 20029,
+        "y": 12446,
+        "width": 16,
+        "height": 32
+      },
+      "text": "4",
+      "fontName": {
+        "family": "Roboto",
+        "style": "SemiBold",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 600
+        }
+      },
+      "fontSize": 28,
+      "segments": [
+        {
+          "characters": "4",
+          "start": 0,
+          "end": 1,
+          "fontSize": 28,
+          "fontName": {
+            "family": "Roboto",
+            "style": "SemiBold",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 600
+            }
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:86520;28821:71958",
+      "name": "Number",
+      "type": "TEXT",
+      "parent": "I2299:86520;28821:71956",
+      "bounds": {
+        "x": 20129,
+        "y": 12446,
+        "width": 16,
+        "height": 32
+      },
+      "text": "5",
+      "fontName": {
+        "family": "Roboto",
+        "style": "SemiBold",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 600
+        }
+      },
+      "fontSize": 28,
+      "segments": [
+        {
+          "characters": "5",
+          "start": 0,
+          "end": 1,
+          "fontSize": 28,
+          "fontName": {
+            "family": "Roboto",
+            "style": "SemiBold",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 600
+            }
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:86520;28821:71961",
+      "name": "Number",
+      "type": "TEXT",
+      "parent": "I2299:86520;28821:71959",
+      "bounds": {
+        "x": 20229,
+        "y": 12446,
+        "width": 16,
+        "height": 32
+      },
+      "text": "6",
+      "fontName": {
+        "family": "Roboto",
+        "style": "SemiBold",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 600
+        }
+      },
+      "fontSize": 28,
+      "segments": [
+        {
+          "characters": "6",
+          "start": 0,
+          "end": 1,
+          "fontSize": 28,
+          "fontName": {
+            "family": "Roboto",
+            "style": "SemiBold",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 600
+            }
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:86520;28821:71965",
+      "name": "Number",
+      "type": "TEXT",
+      "parent": "I2299:86520;28821:71963",
+      "bounds": {
+        "x": 20029,
+        "y": 12536,
+        "width": 16,
+        "height": 32
+      },
+      "text": "7",
+      "fontName": {
+        "family": "Roboto",
+        "style": "SemiBold",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 600
+        }
+      },
+      "fontSize": 28,
+      "segments": [
+        {
+          "characters": "7",
+          "start": 0,
+          "end": 1,
+          "fontSize": 28,
+          "fontName": {
+            "family": "Roboto",
+            "style": "SemiBold",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 600
+            }
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:86520;28821:71968",
+      "name": "Number",
+      "type": "TEXT",
+      "parent": "I2299:86520;28821:71966",
+      "bounds": {
+        "x": 20129,
+        "y": 12536,
+        "width": 16,
+        "height": 32
+      },
+      "text": "8",
+      "fontName": {
+        "family": "Roboto",
+        "style": "SemiBold",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 600
+        }
+      },
+      "fontSize": 28,
+      "segments": [
+        {
+          "characters": "8",
+          "start": 0,
+          "end": 1,
+          "fontSize": 28,
+          "fontName": {
+            "family": "Roboto",
+            "style": "SemiBold",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 600
+            }
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:86520;28821:71971",
+      "name": "Number",
+      "type": "TEXT",
+      "parent": "I2299:86520;28821:71969",
+      "bounds": {
+        "x": 20229,
+        "y": 12536,
+        "width": 16,
+        "height": 32
+      },
+      "text": "9",
+      "fontName": {
+        "family": "Roboto",
+        "style": "SemiBold",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 600
+        }
+      },
+      "fontSize": 28,
+      "segments": [
+        {
+          "characters": "9",
+          "start": 0,
+          "end": 1,
+          "fontSize": 28,
+          "fontName": {
+            "family": "Roboto",
+            "style": "SemiBold",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 600
+            }
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:86520;28842:30437;28842:30434",
+      "name": "Message",
+      "type": "TEXT",
+      "parent": "I2299:86520;28842:30437;28842:30432",
+      "bounds": {
+        "x": 20197,
+        "y": 12626,
+        "width": 80,
+        "height": 32
+      },
+      "text": "Забыли\nкод?",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 13,
+      "segments": [
+        {
+          "characters": "Забыли\nкод?",
+          "start": 0,
+          "end": 11,
+          "fontSize": 13,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:69aa591b17973a4452facdfac163c5769d0e54b4,4550:2072",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:86520;28821:71978",
+      "name": "Number",
+      "type": "TEXT",
+      "parent": "I2299:86520;28821:71976",
+      "bounds": {
+        "x": 20129,
+        "y": 12626,
+        "width": 16,
+        "height": 32
+      },
+      "text": "0",
+      "fontName": {
+        "family": "Roboto",
+        "style": "SemiBold",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 600
+        }
+      },
+      "fontSize": 28,
+      "segments": [
+        {
+          "characters": "0",
+          "start": 0,
+          "end": 1,
+          "fontSize": 28,
+          "fontName": {
+            "family": "Roboto",
+            "style": "SemiBold",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 600
+            }
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:86521;1353:711;1353:635",
+      "name": "Label",
+      "type": "TEXT",
+      "parent": "I2299:86521;1353:711",
+      "bounds": {
+        "x": 19969,
+        "y": 12758,
+        "width": 78,
+        "height": 12
+      },
+      "text": "Цифровой ID",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 10,
+      "segments": [
+        {
+          "characters": "Цифровой ID",
+          "start": 0,
+          "end": 11,
+          "fontSize": 10,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0.47843137383461,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:32627ce18f59bd737f6502af69826cccbfa6c919/2210:110"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:0a09eba0a6518bc91c9c135619045e8dd6ea881c,4550:2081",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:86521;1353:712;1353:631",
+      "name": "Label",
+      "type": "TEXT",
+      "parent": "I2299:86521;1353:712",
+      "bounds": {
+        "x": 20055,
+        "y": 12758,
+        "width": 78,
+        "height": 12
+      },
+      "text": "Звонки",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 10,
+      "segments": [
+        {
+          "characters": "Звонки",
+          "start": 0,
+          "end": 6,
+          "fontSize": 10,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.5199999809265137,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:4c4633b73f04062295f5cba9c91128e605821b9c/4264:386"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:0a09eba0a6518bc91c9c135619045e8dd6ea881c,4550:2081",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:86521;1353:713;1353:631",
+      "name": "Label",
+      "type": "TEXT",
+      "parent": "I2299:86521;1353:713",
+      "bounds": {
+        "x": 20141,
+        "y": 12758,
+        "width": 78,
+        "height": 12
+      },
+      "text": "Чаты",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 10,
+      "segments": [
+        {
+          "characters": "Чаты",
+          "start": 0,
+          "end": 4,
+          "fontSize": 10,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.5199999809265137,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:4c4633b73f04062295f5cba9c91128e605821b9c/4264:386"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:0a09eba0a6518bc91c9c135619045e8dd6ea881c,4550:2081",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:86521;1353:714;1353:631",
+      "name": "Label",
+      "type": "TEXT",
+      "parent": "I2299:86521;1353:714",
+      "bounds": {
+        "x": 20227,
+        "y": 12758,
+        "width": 78,
+        "height": 12
+      },
+      "text": "Настройки",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 10,
+      "segments": [
+        {
+          "characters": "Настройки",
+          "start": 0,
+          "end": 9,
+          "fontSize": 10,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.5199999809265137,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:4c4633b73f04062295f5cba9c91128e605821b9c/4264:386"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:0a09eba0a6518bc91c9c135619045e8dd6ea881c,4550:2081",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:86522;3876:6739;2522:12269",
+      "name": "12:30",
+      "type": "TEXT",
+      "parent": "I2299:86522;3876:6739",
+      "bounds": {
+        "x": 19977,
+        "y": 12020,
+        "width": 28,
+        "height": 20
+      },
+      "text": "9:41",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "9:41",
+          "start": 0,
+          "end": 4,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:86522;3876:6740;12638:16204",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I2299:86522;3876:6740;12638:16202",
+      "bounds": {
+        "x": 20074,
+        "y": 12075,
+        "width": 104,
+        "height": 22
+      },
+      "text": "Цифровой ID",
+      "fontName": {
+        "family": "Roboto",
+        "style": "SemiBold",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 600
+        }
+      },
+      "fontSize": 17,
+      "segments": [
+        {
+          "characters": "Цифровой ID",
+          "start": 0,
+          "end": 11,
+          "fontSize": 17,
+          "fontName": {
+            "family": "Roboto",
+            "style": "SemiBold",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 600
+            }
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:86523;22764:213202",
+      "name": "✏️ Edit Subtitle",
+      "type": "TEXT",
+      "parent": "I2299:86523;22764:213199",
+      "bounds": {
+        "x": 19973,
+        "y": 12450,
+        "width": 328,
+        "height": 19
+      },
+      "text": "MAX",
+      "fontName": null,
+      "fontSize": 16,
+      "segments": [
+        {
+          "characters": "MAX",
+          "start": 0,
+          "end": 3,
+          "fontSize": 16,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:ea43d2e78081c2b3380a48ce8d661530c5af1765,13:105",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:86523;22764:213204",
+      "name": "✏️ Edit Title",
+      "type": "TEXT",
+      "parent": "I2299:86523;22764:213203",
+      "bounds": {
+        "x": 19981,
+        "y": 12513,
+        "width": 312,
+        "height": 23
+      },
+      "text": "Цифровой ID",
+      "fontName": null,
+      "fontSize": 20,
+      "segments": [
+        {
+          "characters": "Цифровой ID",
+          "start": 0,
+          "end": 11,
+          "fontSize": 20,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:8e787f0bf27db37c39b74b9861661eb5332ca567,13:106",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:86523;22764:213208",
+      "name": "✏️ Edit Descriptor Text",
+      "type": "TEXT",
+      "parent": "I2299:86523;22764:213207",
+      "bounds": {
+        "x": 20009,
+        "y": 12664,
+        "width": 256,
+        "height": 14
+      },
+      "text": "Прикоснитесь к сканеру отпечатков пальцев",
+      "fontName": null,
+      "fontSize": 12,
+      "segments": [
+        {
+          "characters": "Прикоснитесь к сканеру отпечатков пальцев",
+          "start": 0,
+          "end": 41,
+          "fontSize": 12,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.5199999809265137,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:4c4633b73f04062295f5cba9c91128e605821b9c/4264:386"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:8ef02d49c21606fec10482f04d30034ee7004d7c,13:104",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:86523;22764:213212",
+      "name": "✏️ Button Text",
+      "type": "TEXT",
+      "parent": "I2299:86523;22764:213211",
+      "bounds": {
+        "x": 19973,
+        "y": 12746,
+        "width": 66,
+        "height": 16
+      },
+      "text": "Отменить",
+      "fontName": null,
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Отменить",
+          "start": 0,
+          "end": 8,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0.47843137383461,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:32627ce18f59bd737f6502af69826cccbfa6c919/2210:110"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:dd256c74fb82666f642910296b31426f6afd5364,13:103",
+          "hyperlink": null
+        }
+      ]
+    }
+  ],
+  "layers": [
+    {
+      "id": "2299:86516",
+      "name": "Подтверждение возраста - 1 (биометрия)",
+      "type": "FRAME",
+      "parent": "2299:86515",
+      "bounds": {
+        "x": 19957,
+        "y": 12006,
+        "width": 360,
+        "height": 800
+      }
+    },
+    {
+      "id": "2299:86517",
+      "name": "Пин-код в Цифровом ID",
+      "type": "FRAME",
+      "parent": "2299:86516",
+      "bounds": {
+        "x": 19957,
+        "y": 12006,
+        "width": 360,
+        "height": 800
+      }
+    },
+    {
+      "id": "2299:86518",
+      "name": "Container",
+      "type": "FRAME",
+      "parent": "2299:86517",
+      "bounds": {
+        "x": 19957,
+        "y": 12118,
+        "width": 360,
+        "height": 596
+      }
+    },
+    {
+      "id": "2299:86519",
+      "name": "PIN area",
+      "type": "INSTANCE",
+      "parent": "2299:86518",
+      "bounds": {
+        "x": 19957,
+        "y": 12118,
+        "width": 360,
+        "height": 198
+      }
+    },
+    {
+      "id": "I2299:86519;28518:3088",
+      "name": "Content",
+      "type": "FRAME",
+      "parent": "2299:86519",
+      "bounds": {
+        "x": 19989,
+        "y": 12179,
+        "width": 296,
+        "height": 76
+      }
+    },
+    {
+      "id": "I2299:86519;28520:3204",
+      "name": "Dots",
+      "type": "FRAME",
+      "parent": "I2299:86519;28518:3088",
+      "bounds": {
+        "x": 20089,
+        "y": 12179,
+        "width": 96,
+        "height": 12
+      }
+    },
+    {
+      "id": "I2299:86519;28518:3089",
+      "name": "Dot",
+      "type": "RECTANGLE",
+      "parent": "I2299:86519;28520:3204",
+      "bounds": {
+        "x": 20089,
+        "y": 12179,
+        "width": 12,
+        "height": 12
+      }
+    },
+    {
+      "id": "I2299:86519;28518:3090",
+      "name": "Dot",
+      "type": "RECTANGLE",
+      "parent": "I2299:86519;28520:3204",
+      "bounds": {
+        "x": 20117,
+        "y": 12179,
+        "width": 12,
+        "height": 12
+      }
+    },
+    {
+      "id": "I2299:86519;28518:3091",
+      "name": "Dot",
+      "type": "RECTANGLE",
+      "parent": "I2299:86519;28520:3204",
+      "bounds": {
+        "x": 20145,
+        "y": 12179,
+        "width": 12,
+        "height": 12
+      }
+    },
+    {
+      "id": "I2299:86519;28518:3094",
+      "name": "Dot",
+      "type": "RECTANGLE",
+      "parent": "I2299:86519;28520:3204",
+      "bounds": {
+        "x": 20173,
+        "y": 12179,
+        "width": 12,
+        "height": 12
+      }
+    },
+    {
+      "id": "I2299:86519;28518:3202",
+      "name": "Subtitle",
+      "type": "TEXT",
+      "parent": "I2299:86519;28518:3088",
+      "bounds": {
+        "x": 19989,
+        "y": 12215,
+        "width": 296,
+        "height": 40
+      }
+    },
+    {
+      "id": "2299:86520",
+      "name": "Keyboard container",
+      "type": "INSTANCE",
+      "parent": "2299:86518",
+      "bounds": {
+        "x": 19957,
+        "y": 12316,
+        "width": 360,
+        "height": 398
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71942",
+      "name": "Number line",
+      "type": "FRAME",
+      "parent": "2299:86520",
+      "bounds": {
+        "x": 19997,
+        "y": 12332,
+        "width": 280,
+        "height": 80
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71943",
+      "name": "Button",
+      "type": "FRAME",
+      "parent": "I2299:86520;28821:71942",
+      "bounds": {
+        "x": 19997,
+        "y": 12332,
+        "width": 80,
+        "height": 80
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71944",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:86520;28821:71943",
+      "bounds": {
+        "x": 19997,
+        "y": 12332,
+        "width": 80,
+        "height": 80
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71945",
+      "name": "Number",
+      "type": "TEXT",
+      "parent": "I2299:86520;28821:71943",
+      "bounds": {
+        "x": 20029,
+        "y": 12356,
+        "width": 16,
+        "height": 32
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71946",
+      "name": "Button",
+      "type": "FRAME",
+      "parent": "I2299:86520;28821:71942",
+      "bounds": {
+        "x": 20097,
+        "y": 12332,
+        "width": 80,
+        "height": 80
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71947",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:86520;28821:71946",
+      "bounds": {
+        "x": 20097,
+        "y": 12332,
+        "width": 80,
+        "height": 80
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71948",
+      "name": "Number",
+      "type": "TEXT",
+      "parent": "I2299:86520;28821:71946",
+      "bounds": {
+        "x": 20129,
+        "y": 12356,
+        "width": 16,
+        "height": 32
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71949",
+      "name": "Button",
+      "type": "FRAME",
+      "parent": "I2299:86520;28821:71942",
+      "bounds": {
+        "x": 20197,
+        "y": 12332,
+        "width": 80,
+        "height": 80
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71950",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:86520;28821:71949",
+      "bounds": {
+        "x": 20197,
+        "y": 12332,
+        "width": 80,
+        "height": 80
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71951",
+      "name": "Number",
+      "type": "TEXT",
+      "parent": "I2299:86520;28821:71949",
+      "bounds": {
+        "x": 20229,
+        "y": 12356,
+        "width": 16,
+        "height": 32
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71952",
+      "name": "Number line",
+      "type": "FRAME",
+      "parent": "2299:86520",
+      "bounds": {
+        "x": 19997,
+        "y": 12422,
+        "width": 280,
+        "height": 80
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71953",
+      "name": "Button",
+      "type": "FRAME",
+      "parent": "I2299:86520;28821:71952",
+      "bounds": {
+        "x": 19997,
+        "y": 12422,
+        "width": 80,
+        "height": 80
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71954",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:86520;28821:71953",
+      "bounds": {
+        "x": 19997,
+        "y": 12422,
+        "width": 80,
+        "height": 80
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71955",
+      "name": "Number",
+      "type": "TEXT",
+      "parent": "I2299:86520;28821:71953",
+      "bounds": {
+        "x": 20029,
+        "y": 12446,
+        "width": 16,
+        "height": 32
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71956",
+      "name": "Button",
+      "type": "FRAME",
+      "parent": "I2299:86520;28821:71952",
+      "bounds": {
+        "x": 20097,
+        "y": 12422,
+        "width": 80,
+        "height": 80
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71957",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:86520;28821:71956",
+      "bounds": {
+        "x": 20097,
+        "y": 12422,
+        "width": 80,
+        "height": 80
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71958",
+      "name": "Number",
+      "type": "TEXT",
+      "parent": "I2299:86520;28821:71956",
+      "bounds": {
+        "x": 20129,
+        "y": 12446,
+        "width": 16,
+        "height": 32
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71959",
+      "name": "Button",
+      "type": "FRAME",
+      "parent": "I2299:86520;28821:71952",
+      "bounds": {
+        "x": 20197,
+        "y": 12422,
+        "width": 80,
+        "height": 80
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71960",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:86520;28821:71959",
+      "bounds": {
+        "x": 20197,
+        "y": 12422,
+        "width": 80,
+        "height": 80
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71961",
+      "name": "Number",
+      "type": "TEXT",
+      "parent": "I2299:86520;28821:71959",
+      "bounds": {
+        "x": 20229,
+        "y": 12446,
+        "width": 16,
+        "height": 32
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71962",
+      "name": "Number line",
+      "type": "FRAME",
+      "parent": "2299:86520",
+      "bounds": {
+        "x": 19997,
+        "y": 12512,
+        "width": 280,
+        "height": 80
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71963",
+      "name": "Button",
+      "type": "FRAME",
+      "parent": "I2299:86520;28821:71962",
+      "bounds": {
+        "x": 19997,
+        "y": 12512,
+        "width": 80,
+        "height": 80
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71964",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:86520;28821:71963",
+      "bounds": {
+        "x": 19997,
+        "y": 12512,
+        "width": 80,
+        "height": 80
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71965",
+      "name": "Number",
+      "type": "TEXT",
+      "parent": "I2299:86520;28821:71963",
+      "bounds": {
+        "x": 20029,
+        "y": 12536,
+        "width": 16,
+        "height": 32
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71966",
+      "name": "Button",
+      "type": "FRAME",
+      "parent": "I2299:86520;28821:71962",
+      "bounds": {
+        "x": 20097,
+        "y": 12512,
+        "width": 80,
+        "height": 80
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71967",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:86520;28821:71966",
+      "bounds": {
+        "x": 20097,
+        "y": 12512,
+        "width": 80,
+        "height": 80
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71968",
+      "name": "Number",
+      "type": "TEXT",
+      "parent": "I2299:86520;28821:71966",
+      "bounds": {
+        "x": 20129,
+        "y": 12536,
+        "width": 16,
+        "height": 32
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71969",
+      "name": "Button",
+      "type": "FRAME",
+      "parent": "I2299:86520;28821:71962",
+      "bounds": {
+        "x": 20197,
+        "y": 12512,
+        "width": 80,
+        "height": 80
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71970",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:86520;28821:71969",
+      "bounds": {
+        "x": 20197,
+        "y": 12512,
+        "width": 80,
+        "height": 80
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71971",
+      "name": "Number",
+      "type": "TEXT",
+      "parent": "I2299:86520;28821:71969",
+      "bounds": {
+        "x": 20229,
+        "y": 12536,
+        "width": 16,
+        "height": 32
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71972",
+      "name": "Number line",
+      "type": "FRAME",
+      "parent": "2299:86520",
+      "bounds": {
+        "x": 19997,
+        "y": 12602,
+        "width": 280,
+        "height": 80
+      }
+    },
+    {
+      "id": "I2299:86520;28842:30437",
+      "name": "Right Button",
+      "type": "INSTANCE",
+      "parent": "I2299:86520;28821:71972",
+      "bounds": {
+        "x": 20197,
+        "y": 12602,
+        "width": 80,
+        "height": 80
+      }
+    },
+    {
+      "id": "I2299:86520;28842:30437;28842:30432",
+      "name": "Icon Wrapper",
+      "type": "FRAME",
+      "parent": "I2299:86520;28842:30437",
+      "bounds": {
+        "x": 20197,
+        "y": 12602,
+        "width": 80,
+        "height": 80
+      }
+    },
+    {
+      "id": "I2299:86520;28842:30437;28842:30434",
+      "name": "Message",
+      "type": "TEXT",
+      "parent": "I2299:86520;28842:30437;28842:30432",
+      "bounds": {
+        "x": 20197,
+        "y": 12626,
+        "width": 80,
+        "height": 32
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71976",
+      "name": "Button",
+      "type": "FRAME",
+      "parent": "I2299:86520;28821:71972",
+      "bounds": {
+        "x": 20097,
+        "y": 12602,
+        "width": 80,
+        "height": 80
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71977",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:86520;28821:71976",
+      "bounds": {
+        "x": 20097,
+        "y": 12602,
+        "width": 80,
+        "height": 80
+      }
+    },
+    {
+      "id": "I2299:86520;28821:71978",
+      "name": "Number",
+      "type": "TEXT",
+      "parent": "I2299:86520;28821:71976",
+      "bounds": {
+        "x": 20129,
+        "y": 12626,
+        "width": 16,
+        "height": 32
+      }
+    },
+    {
+      "id": "I2299:86520;28836:16885",
+      "name": "Button",
+      "type": "FRAME",
+      "parent": "I2299:86520;28821:71972",
+      "bounds": {
+        "x": 19997,
+        "y": 12602,
+        "width": 80,
+        "height": 80
+      }
+    },
+    {
+      "id": "I2299:86520;28836:16886",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:86520;28836:16885",
+      "bounds": {
+        "x": 19997,
+        "y": 12602,
+        "width": 80,
+        "height": 80
+      }
+    },
+    {
+      "id": "I2299:86520;28836:16927",
+      "name": "Left Button",
+      "type": "INSTANCE",
+      "parent": "I2299:86520;28836:16885",
+      "bounds": {
+        "x": 20021,
+        "y": 12626,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "I2299:86520;28836:16927;29238:61165",
+      "name": ".Biometry_Android",
+      "type": "INSTANCE",
+      "parent": "I2299:86520;28836:16927",
+      "bounds": {
+        "x": 20021,
+        "y": 12626,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "I2299:86520;28836:16927;29238:61165;29238:61163",
+      "name": "Union",
+      "type": "VECTOR",
+      "parent": "I2299:86520;28836:16927;29238:61165",
+      "bounds": {
+        "x": 20024,
+        "y": 12627.2998046875,
+        "width": 27,
+        "height": 29.33830451965332
+      }
+    },
+    {
+      "id": "2299:86521",
+      "name": "Tab Bar",
+      "type": "INSTANCE",
+      "parent": "2299:86517",
+      "bounds": {
+        "x": 19957,
+        "y": 12714,
+        "width": 360,
+        "height": 92.00039672851562
+      }
+    },
+    {
+      "id": "I2299:86521;1353:708",
+      "name": "Tabbar Wrapper",
+      "type": "FRAME",
+      "parent": "2299:86521",
+      "bounds": {
+        "x": 19957,
+        "y": 12714,
+        "width": 360,
+        "height": 68.00039672851562
+      }
+    },
+    {
+      "id": "I2299:86521;1353:709",
+      "name": "Platform Spacer",
+      "type": "INSTANCE",
+      "parent": "I2299:86521;1353:708",
+      "bounds": {
+        "x": 19969,
+        "y": 12772,
+        "width": 336,
+        "height": 10.000200271606445
+      }
+    },
+    {
+      "id": "I2299:86521;1353:709;12727:9954",
+      "name": "Start",
+      "type": "FRAME",
+      "parent": "I2299:86521;1353:709",
+      "bounds": {
+        "x": 19969,
+        "y": 12772,
+        "width": 0.00009999999747378752,
+        "height": 0.00009999999747378752
+      }
+    },
+    {
+      "id": "I2299:86521;1353:709;12727:9955",
+      "name": "Stop",
+      "type": "FRAME",
+      "parent": "I2299:86521;1353:709",
+      "bounds": {
+        "x": 19969,
+        "y": 12782,
+        "width": 0.00009999999747378752,
+        "height": 0.00009999999747378752
+      }
+    },
+    {
+      "id": "I2299:86521;1353:710",
+      "name": "Platform Spacer",
+      "type": "INSTANCE",
+      "parent": "I2299:86521;1353:708",
+      "bounds": {
+        "x": 19969,
+        "y": 12714,
+        "width": 336,
+        "height": 10.000200271606445
+      }
+    },
+    {
+      "id": "I2299:86521;1353:710;12727:9954",
+      "name": "Start",
+      "type": "FRAME",
+      "parent": "I2299:86521;1353:710",
+      "bounds": {
+        "x": 19969,
+        "y": 12714,
+        "width": 0.00009999999747378752,
+        "height": 0.00009999999747378752
+      }
+    },
+    {
+      "id": "I2299:86521;1353:710;12727:9955",
+      "name": "Stop",
+      "type": "FRAME",
+      "parent": "I2299:86521;1353:710",
+      "bounds": {
+        "x": 19969,
+        "y": 12724,
+        "width": 0.00009999999747378752,
+        "height": 0.00009999999747378752
+      }
+    },
+    {
+      "id": "I2299:86521;1353:711",
+      "name": "① Tab ————————————–",
+      "type": "INSTANCE",
+      "parent": "I2299:86521;1353:708",
+      "bounds": {
+        "x": 19969,
+        "y": 12724,
+        "width": 78,
+        "height": 48
+      }
+    },
+    {
+      "id": "I2299:86521;1353:711;1353:634",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "I2299:86521;1353:711",
+      "bounds": {
+        "x": 19994,
+        "y": 12728,
+        "width": 28,
+        "height": 28
+      }
+    },
+    {
+      "id": "I2299:86521;1353:711;1353:634;251:1031",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:86521;1353:711;1353:634",
+      "bounds": {
+        "x": 19995.515625,
+        "y": 12729.5166015625,
+        "width": 24.9677734375,
+        "height": 24.9677734375
+      }
+    },
+    {
+      "id": "I2299:86521;1353:711;1353:635",
+      "name": "Label",
+      "type": "TEXT",
+      "parent": "I2299:86521;1353:711",
+      "bounds": {
+        "x": 19969,
+        "y": 12758,
+        "width": 78,
+        "height": 12
+      }
+    },
+    {
+      "id": "I2299:86521;1353:712",
+      "name": "② Tab ————————————–",
+      "type": "INSTANCE",
+      "parent": "I2299:86521;1353:708",
+      "bounds": {
+        "x": 20055,
+        "y": 12724,
+        "width": 78,
+        "height": 48
+      }
+    },
+    {
+      "id": "I2299:86521;1353:712;1353:626",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "I2299:86521;1353:712",
+      "bounds": {
+        "x": 20080,
+        "y": 12728,
+        "width": 28,
+        "height": 28
+      }
+    },
+    {
+      "id": "I2299:86521;1353:712;1353:626;14:15",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:86521;1353:712;1353:626",
+      "bounds": {
+        "x": 20084.4453125,
+        "y": 12730.3330078125,
+        "width": 21.000001907348633,
+        "height": 23.333332061767578
+      }
+    },
+    {
+      "id": "I2299:86521;1353:712;1353:631",
+      "name": "Label",
+      "type": "TEXT",
+      "parent": "I2299:86521;1353:712",
+      "bounds": {
+        "x": 20055,
+        "y": 12758,
+        "width": 78,
+        "height": 12
+      }
+    },
+    {
+      "id": "I2299:86521;1353:713",
+      "name": "③ Tab ————————————–",
+      "type": "INSTANCE",
+      "parent": "I2299:86521;1353:708",
+      "bounds": {
+        "x": 20141,
+        "y": 12724,
+        "width": 78,
+        "height": 48
+      }
+    },
+    {
+      "id": "I2299:86521;1353:713;1353:626",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "I2299:86521;1353:713",
+      "bounds": {
+        "x": 20166,
+        "y": 12728,
+        "width": 28,
+        "height": 28
+      }
+    },
+    {
+      "id": "I2299:86521;1353:713;1353:626;14:22",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:86521;1353:713;1353:626",
+      "bounds": {
+        "x": 20168.333984375,
+        "y": 12731.5,
+        "width": 23.333332061767578,
+        "height": 23.333662033081055
+      }
+    },
+    {
+      "id": "I2299:86521;1353:713;1353:631",
+      "name": "Label",
+      "type": "TEXT",
+      "parent": "I2299:86521;1353:713",
+      "bounds": {
+        "x": 20141,
+        "y": 12758,
+        "width": 78,
+        "height": 12
+      }
+    },
+    {
+      "id": "I2299:86521;1353:714",
+      "name": "④ Tab ————————————–",
+      "type": "INSTANCE",
+      "parent": "I2299:86521;1353:708",
+      "bounds": {
+        "x": 20227,
+        "y": 12724,
+        "width": 78,
+        "height": 48
+      }
+    },
+    {
+      "id": "I2299:86521;1353:714;1353:626",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "I2299:86521;1353:714",
+      "bounds": {
+        "x": 20252,
+        "y": 12728,
+        "width": 28,
+        "height": 28
+      }
+    },
+    {
+      "id": "I2299:86521;1353:714;1353:626;71:494",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:86521;1353:714;1353:626",
+      "bounds": {
+        "x": 20254.259765625,
+        "y": 12729,
+        "width": 23.478864669799805,
+        "height": 25.999103546142578
+      }
+    },
+    {
+      "id": "I2299:86521;1353:714;1353:631",
+      "name": "Label",
+      "type": "TEXT",
+      "parent": "I2299:86521;1353:714",
+      "bounds": {
+        "x": 20227,
+        "y": 12758,
+        "width": 78,
+        "height": 12
+      }
+    },
+    {
+      "id": "I2299:86521;1353:715",
+      "name": "Home Indicator",
+      "type": "INSTANCE",
+      "parent": "2299:86521",
+      "bounds": {
+        "x": 19957,
+        "y": 12782,
+        "width": 360,
+        "height": 24
+      }
+    },
+    {
+      "id": "I2299:86521;1353:715;1350:1201",
+      "name": "Home Indicator",
+      "type": "VECTOR",
+      "parent": "I2299:86521;1353:715",
+      "bounds": {
+        "x": 20085,
+        "y": 12794,
+        "width": 104,
+        "height": 0
+      }
+    },
+    {
+      "id": "I2299:86521;1353:716",
+      "name": "Background",
+      "type": "INSTANCE",
+      "parent": "2299:86521",
+      "bounds": {
+        "x": 19957,
+        "y": 12714,
+        "width": 360,
+        "height": 92
+      }
+    },
+    {
+      "id": "2299:86522",
+      "name": "Top Bar (Navigation Bar)",
+      "type": "INSTANCE",
+      "parent": "2299:86517",
+      "bounds": {
+        "x": 19957,
+        "y": 12006,
+        "width": 360,
+        "height": 112.00003051757812
+      }
+    },
+    {
+      "id": "I2299:86522;3876:6739",
+      "name": "Status Bar",
+      "type": "INSTANCE",
+      "parent": "2299:86522",
+      "bounds": {
+        "x": 19957,
+        "y": 12006,
+        "width": 360,
+        "height": 48.000030517578125
+      }
+    },
+    {
+      "id": "I2299:86522;3876:6739;2522:12269",
+      "name": "12:30",
+      "type": "TEXT",
+      "parent": "I2299:86522;3876:6739",
+      "bounds": {
+        "x": 19977,
+        "y": 12020,
+        "width": 28,
+        "height": 20
+      }
+    },
+    {
+      "id": "I2299:86522;3876:6739;2522:12270",
+      "name": "System Status",
+      "type": "FRAME",
+      "parent": "I2299:86522;3876:6739",
+      "bounds": {
+        "x": 20245,
+        "y": 12018,
+        "width": 52.00006103515625,
+        "height": 24.000030517578125
+      }
+    },
+    {
+      "id": "I2299:86522;3876:6739;2522:12271",
+      "name": "Wifi",
+      "type": "FRAME",
+      "parent": "I2299:86522;3876:6739;2522:12270",
+      "bounds": {
+        "x": 20245,
+        "y": 12022,
+        "width": 18.666690826416016,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I2299:86522;3876:6739;2522:12272",
+      "name": "wifi",
+      "type": "VECTOR",
+      "parent": "I2299:86522;3876:6739;2522:12271",
+      "bounds": {
+        "x": 20247,
+        "y": 12024,
+        "width": 14.666685104370117,
+        "height": 11.333348274230957
+      }
+    },
+    {
+      "id": "I2299:86522;3876:6739;2522:12273",
+      "name": "Data",
+      "type": "FRAME",
+      "parent": "I2299:86522;3876:6739;2522:12270",
+      "bounds": {
+        "x": 20265.666015625,
+        "y": 12022,
+        "width": 16.00002098083496,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I2299:86522;3876:6739;2522:12274",
+      "name": "data",
+      "type": "VECTOR",
+      "parent": "I2299:86522;3876:6739;2522:12273",
+      "bounds": {
+        "x": 20264.609375,
+        "y": 12024.2744140625,
+        "width": 12.391877174377441,
+        "height": 12.391878128051758
+      }
+    },
+    {
+      "id": "I2299:86522;3876:6739;2522:12275",
+      "name": "Battery",
+      "type": "FRAME",
+      "parent": "I2299:86522;3876:6739;2522:12270",
+      "bounds": {
+        "x": 20283.666015625,
+        "y": 12022,
+        "width": 13.33335018157959,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I2299:86522;3876:6739;2522:12276",
+      "name": "Union",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "I2299:86522;3876:6739;2522:12275",
+      "bounds": {
+        "x": 20286.33203125,
+        "y": 12023.3330078125,
+        "width": 8,
+        "height": 13.3330078125
+      }
+    },
+    {
+      "id": "I2299:86522;3876:6739;2522:12277",
+      "name": "stroke",
+      "type": "VECTOR",
+      "parent": "I2299:86522;3876:6739;2522:12276",
+      "bounds": {
+        "x": 20286.33203125,
+        "y": 12023.3330078125,
+        "width": 8.00001049041748,
+        "height": 13.33335018157959
+      }
+    },
+    {
+      "id": "I2299:86522;3876:6739;2522:12278",
+      "name": "fill",
+      "type": "RECTANGLE",
+      "parent": "I2299:86522;3876:6739;2522:12276",
+      "bounds": {
+        "x": 20286.998046875,
+        "y": 12024.666015625,
+        "width": 6.666675090789795,
+        "height": 12.000015258789062
+      }
+    },
+    {
+      "id": "I2299:86522;3876:6740",
+      "name": "Header",
+      "type": "INSTANCE",
+      "parent": "2299:86522",
+      "bounds": {
+        "x": 19957,
+        "y": 12054,
+        "width": 360,
+        "height": 64
+      }
+    },
+    {
+      "id": "I2299:86522;3876:6740;12638:16201",
+      "name": "Middle",
+      "type": "FRAME",
+      "parent": "I2299:86522;3876:6740",
+      "bounds": {
+        "x": 19961,
+        "y": 12064,
+        "width": 352,
+        "height": 44
+      }
+    },
+    {
+      "id": "I2299:86522;3876:6740;12638:16202",
+      "name": "Title",
+      "type": "FRAME",
+      "parent": "I2299:86522;3876:6740;12638:16201",
+      "bounds": {
+        "x": 19985,
+        "y": 12075,
+        "width": 304,
+        "height": 22
+      }
+    },
+    {
+      "id": "I2299:86522;3876:6740;12638:16204",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I2299:86522;3876:6740;12638:16202",
+      "bounds": {
+        "x": 20074,
+        "y": 12075,
+        "width": 104,
+        "height": 22
+      }
+    },
+    {
+      "id": "I2299:86522;3876:6740;12890:44447",
+      "name": "Verification Mark",
+      "type": "INSTANCE",
+      "parent": "I2299:86522;3876:6740;12638:16202",
+      "bounds": {
+        "x": 20184,
+        "y": 12077,
+        "width": 16,
+        "height": 18
+      }
+    },
+    {
+      "id": "I2299:86522;3876:6740;12890:44447;12890:41470",
+      "name": "verification_color_16",
+      "type": "INSTANCE",
+      "parent": "I2299:86522;3876:6740;12890:44447",
+      "bounds": {
+        "x": 20184,
+        "y": 12079,
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "id": "I2299:86522;3876:6740;12890:44447;12890:41470;3151:1362",
+      "name": "↳ Icon Color",
+      "type": "VECTOR",
+      "parent": "I2299:86522;3876:6740;12890:44447;12890:41470",
+      "bounds": {
+        "x": 20185,
+        "y": 12080,
+        "width": 14,
+        "height": 14
+      }
+    },
+    {
+      "id": "I2299:86522;3876:6740;12890:44447;12890:41470;3151:1363",
+      "name": "↳ Icon Color",
+      "type": "VECTOR",
+      "parent": "I2299:86522;3876:6740;12890:44447;12890:41470",
+      "bounds": {
+        "x": 20188.75,
+        "y": 12084.896484375,
+        "width": 6.55287504196167,
+        "height": 4.536235809326172
+      }
+    },
+    {
+      "id": "I2299:86522;3876:6740;12638:16209",
+      "name": "Right Compact",
+      "type": "INSTANCE",
+      "parent": "I2299:86522;3876:6740",
+      "bounds": {
+        "x": 20265,
+        "y": 12062,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "I2299:86522;3876:6740;12638:16209;12638:37022",
+      "name": "Right Action Elements Android",
+      "type": "INSTANCE",
+      "parent": "I2299:86522;3876:6740;12638:16209",
+      "bounds": {
+        "x": 20265,
+        "y": 12062,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "I2299:86522;3876:6740;12638:16209;12638:37022;12638:37015",
+      "name": "Button Wrapper",
+      "type": "FRAME",
+      "parent": "I2299:86522;3876:6740;12638:16209;12638:37022",
+      "bounds": {
+        "x": 20265,
+        "y": 12062,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "I2299:86522;3876:6740;12638:16209;12638:37022;12638:15974",
+      "name": "Left Button",
+      "type": "INSTANCE",
+      "parent": "I2299:86522;3876:6740;12638:16209;12638:37022;12638:37015",
+      "bounds": {
+        "x": 20273,
+        "y": 12070,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "I2299:86522;3876:6740;12638:16209;12638:37022;12638:15974;4992:67132",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "I2299:86522;3876:6740;12638:16209;12638:37022;12638:15974",
+      "bounds": {
+        "x": 20277,
+        "y": 12074,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "I2299:86522;3876:6740;12638:16209;12638:37022;12638:15974;4992:67132;71:630",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:86522;3876:6740;12638:16209;12638:37022;12638:15974;4992:67132",
+      "bounds": {
+        "x": 20287.5,
+        "y": 12078.5,
+        "width": 3,
+        "height": 15
+      }
+    },
+    {
+      "id": "2299:86523",
+      "name": ".Biometrics_Android",
+      "type": "INSTANCE",
+      "parent": "2299:86516",
+      "bounds": {
+        "x": 19957,
+        "y": 12006,
+        "width": 360,
+        "height": 800
+      }
+    },
+    {
+      "id": "I2299:86523;22764:213197",
+      "name": "scrim",
+      "type": "RECTANGLE",
+      "parent": "2299:86523",
+      "bounds": {
+        "x": 19957,
+        "y": 12006,
+        "width": 360,
+        "height": 800
+      }
+    },
+    {
+      "id": "I2299:86523;22764:213198",
+      "name": "BiometricPrompt/Fingerprint Authenitcation/Light/Tall",
+      "type": "FRAME",
+      "parent": "2299:86523",
+      "bounds": {
+        "x": 19957,
+        "y": 12370,
+        "width": 360,
+        "height": 436
+      }
+    },
+    {
+      "id": "I2299:86523;22764:213199",
+      "name": "Fingerprint Authentication",
+      "type": "FRAME",
+      "parent": "I2299:86523;22764:213198",
+      "bounds": {
+        "x": 19973,
+        "y": 12394,
+        "width": 328,
+        "height": 75
+      }
+    },
+    {
+      "id": "I2299:86523;22764:213200",
+      "name": "48x48",
+      "type": "FRAME",
+      "parent": "I2299:86523;22764:213199",
+      "bounds": {
+        "x": 20113,
+        "y": 12394,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "I2299:86523;22764:213201",
+      "name": "НГ_Иконка_кристалл_01 1",
+      "type": "RECTANGLE",
+      "parent": "I2299:86523;22764:213200",
+      "bounds": {
+        "x": 20113,
+        "y": 12394,
+        "width": 48,
+        "height": 48
+      }
+    },
+    {
+      "id": "I2299:86523;22764:213202",
+      "name": "✏️ Edit Subtitle",
+      "type": "TEXT",
+      "parent": "I2299:86523;22764:213199",
+      "bounds": {
+        "x": 19973,
+        "y": 12450,
+        "width": 328,
+        "height": 19
+      }
+    },
+    {
+      "id": "I2299:86523;22764:213203",
+      "name": "Content",
+      "type": "FRAME",
+      "parent": "I2299:86523;22764:213198",
+      "bounds": {
+        "x": 19973,
+        "y": 12493,
+        "width": 328,
+        "height": 63
+      }
+    },
+    {
+      "id": "I2299:86523;22764:213204",
+      "name": "✏️ Edit Title",
+      "type": "TEXT",
+      "parent": "I2299:86523;22764:213203",
+      "bounds": {
+        "x": 19981,
+        "y": 12513,
+        "width": 312,
+        "height": 23
+      }
+    },
+    {
+      "id": "I2299:86523;22764:213205",
+      "name": "Container",
+      "type": "FRAME",
+      "parent": "I2299:86523;22764:213198",
+      "bounds": {
+        "x": 20009,
+        "y": 12580,
+        "width": 256,
+        "height": 98
+      }
+    },
+    {
+      "id": "I2299:86523;22764:213206",
+      "name": "Fingerprint Icon",
+      "type": "INSTANCE",
+      "parent": "I2299:86523;22764:213205",
+      "bounds": {
+        "x": 20105,
+        "y": 12580,
+        "width": 64,
+        "height": 64
+      }
+    },
+    {
+      "id": "I2299:86523;22764:213206;39:309",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:86523;22764:213206",
+      "bounds": {
+        "x": 20112.9921875,
+        "y": 12585.3330078125,
+        "width": 47.99018096923828,
+        "height": 53.333335876464844
+      }
+    },
+    {
+      "id": "I2299:86523;22764:213207",
+      "name": "Descriptor",
+      "type": "FRAME",
+      "parent": "I2299:86523;22764:213205",
+      "bounds": {
+        "x": 20009,
+        "y": 12664,
+        "width": 256,
+        "height": 14
+      }
+    },
+    {
+      "id": "I2299:86523;22764:213208",
+      "name": "✏️ Edit Descriptor Text",
+      "type": "TEXT",
+      "parent": "I2299:86523;22764:213207",
+      "bounds": {
+        "x": 20009,
+        "y": 12664,
+        "width": 256,
+        "height": 14
+      }
+    },
+    {
+      "id": "I2299:86523;22764:213209",
+      "name": "Spacer",
+      "type": "RECTANGLE",
+      "parent": "I2299:86523;22764:213198",
+      "bounds": {
+        "x": 20122,
+        "y": 12702,
+        "width": 30,
+        "height": 8
+      }
+    },
+    {
+      "id": "I2299:86523;22764:213210",
+      "name": "Auto-added frame",
+      "type": "FRAME",
+      "parent": "I2299:86523;22764:213198",
+      "bounds": {
+        "x": 19973,
+        "y": 12734,
+        "width": 328,
+        "height": 40
+      }
+    },
+    {
+      "id": "I2299:86523;22764:213211",
+      "name": "Button",
+      "type": "FRAME",
+      "parent": "I2299:86523;22764:213210",
+      "bounds": {
+        "x": 19973,
+        "y": 12734,
+        "width": 66,
+        "height": 40
+      }
+    },
+    {
+      "id": "I2299:86523;22764:213212",
+      "name": "✏️ Button Text",
+      "type": "TEXT",
+      "parent": "I2299:86523;22764:213211",
+      "bounds": {
+        "x": 19973,
+        "y": 12746,
+        "width": 66,
+        "height": 16
+      }
+    },
+    {
+      "id": "I2299:86523;22764:215871",
+      "name": ".Home Indicator",
+      "type": "INSTANCE",
+      "parent": "I2299:86523;22764:213198",
+      "bounds": {
+        "x": 19957,
+        "y": 12782,
+        "width": 360,
+        "height": 24
+      }
+    },
+    {
+      "id": "I2299:86523;22764:215871;2081:3447",
+      "name": "Home Indicator",
+      "type": "FRAME",
+      "parent": "I2299:86523;22764:215871",
+      "bounds": {
+        "x": 19957,
+        "y": 12782,
+        "width": 360,
+        "height": 24
+      }
+    },
+    {
+      "id": "I2299:86523;22764:215871;2081:3448",
+      "name": "handle",
+      "type": "RECTANGLE",
+      "parent": "I2299:86523;22764:215871;2081:3447",
+      "bounds": {
+        "x": 20083,
+        "y": 12792,
+        "width": 108,
+        "height": 4
+      }
+    }
+  ],
+  "imageHashes": [
+    "b992213a096a8781164b68b23c893b0ac9fdf693"
+  ],
+  "notes": [],
+  "pngScale": 1,
+  "pngFile": "Цифровой-ID/Подтверждение-возраста/Подтверждение-возраста---1-(биометрия)/screen.png",
+  "previewFile": "Цифровой-ID/Подтверждение-возраста/Подтверждение-возраста---1-(биометрия)/preview.png",
+  "svgFile": "Цифровой-ID/Подтверждение-возраста/Подтверждение-возраста---1-(биометрия)/screen.svg",
+  "documentFile": "Цифровой-ID/Подтверждение-возраста/Подтверждение-возраста---1-(биометрия)/figma.json",
+  "images": [
+    {
+      "hash": "b992213a096a8781164b68b23c893b0ac9fdf693",
+      "file": "Цифровой-ID/Подтверждение-возраста/Подтверждение-возраста---1-(биометрия)/images/62f85e5320241bb7ded4242c0e830657e3c5fd7357d30bc6bc1690d6c9959200.png"
+    }
+  ]
+}

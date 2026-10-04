@@ -1,0 +1,186 @@
+{
+  "build": "english-typesetting-218",
+  "reason": "User requests identical RU/EN typesetting and editorial rules; supersedes literal DOC08 punctuation while preserving the source document and original mapping.",
+  "changes": [
+    {
+      "key": "placement.input.placeHint",
+      "language": "ru",
+      "before": "Нажмите на свободное место для установки.",
+      "after": "Нажмите на свободное место для установки"
+    },
+    {
+      "key": "placement.input.placeHint",
+      "language": "en",
+      "before": "Tap an empty location to place the object.",
+      "after": "Tap an empty location to place the object"
+    },
+    {
+      "key": "placement.input.moveHint",
+      "language": "ru",
+      "before": "Нажмите на новое место или выберите другой объект.",
+      "after": "Нажмите на новое место или выберите другой объект"
+    },
+    {
+      "key": "placement.input.moveHint",
+      "language": "en",
+      "before": "Tap a new location or select another object.",
+      "after": "Tap a new location or select another object"
+    },
+    {
+      "key": "placement.input.toggle",
+      "language": "ru",
+      "before": "Сейчас: {current}. Переключить на режим «{next}»",
+      "after": "Сейчас: {current}\nПереключить на режим «{next}»"
+    },
+    {
+      "key": "placement.input.toggle",
+      "language": "en",
+      "before": "Current: {current}. Switch to {next} mode",
+      "after": "Current: {current}\nSwitch to {next} mode"
+    },
+    {
+      "key": "placement.input.tapHint",
+      "language": "ru",
+      "before": "Выберите новую карточку или нажмите на объект на поле.",
+      "after": "Выберите новую карточку или нажмите на объект на поле"
+    },
+    {
+      "key": "placement.input.tapHint",
+      "language": "en",
+      "before": "Select a new card or tap an object on the field.",
+      "after": "Select a new card or tap an object on the field"
+    },
+    {
+      "key": "placement.input.dragHint",
+      "language": "ru",
+      "before": "Перетащите карточку на место установки.",
+      "after": "Перетащите карточку на место установки"
+    },
+    {
+      "key": "placement.input.dragHint",
+      "language": "en",
+      "before": "Drag a card to where you want to place it.",
+      "after": "Drag a card to where you want to place it"
+    },
+    {
+      "key": "app.inventory.title",
+      "language": "en",
+      "before": "elements of the\nsatellite communications\nnetwork",
+      "after": "network elements\nfor satellite\ncommunications"
+    },
+    {
+      "key": "onboarding.steps.1.body",
+      "language": "en",
+      "before": "Each mission has its own objectives and conditions.",
+      "after": "Each mission has its own objectives and conditions"
+    },
+    {
+      "key": "onboarding.steps.2.body",
+      "language": "en",
+      "before": "Arrange the elements of the satellite communications network on Earth and in space.",
+      "after": "Arrange the elements of the satellite communications network on Earth and in space"
+    },
+    {
+      "key": "onboarding.steps.3.body",
+      "language": "en",
+      "before": "Complete all the missions.\nAre you ready to become a space engineer?",
+      "after": "Complete all the missions\nAre you ready to become a space engineer?"
+    },
+    {
+      "key": "mission.feedback.incomplete",
+      "language": "en",
+      "before": "Route is not fully assembled.",
+      "after": "Route is not fully assembled"
+    },
+    {
+      "key": "mission.feedback.error",
+      "language": "en",
+      "before": "Elements are sequenced incorrectly.",
+      "after": "Elements are sequenced incorrectly"
+    },
+    {
+      "key": "mission.feedback.disconnected",
+      "language": "en",
+      "before": "There is a gap in the route.",
+      "after": "There is a gap in the route"
+    },
+    {
+      "key": "content.missions.first-signal.description",
+      "language": "en",
+      "before": "A new user terminal was installed at an isolated research station. Arrange the satellite communications network elements and define their connections to each other. The team needs to get the station online via the satellite infrastructure for the first time. To do this, the role of each element must be determined and the signal route must be set up correctly.\nAfter the route is assembled, the system will check the connection. If all devices are arranged in the correct sequence, the signal will pass from the terminal through the satellite and the ground station to the data processing center, and the station will receive stable internet access.\n\nMission: Determine the correct sequence of network elements and initiate the signal.",
+      "after": "A new user terminal was installed at an isolated research station. Arrange the satellite communications network elements and define their connections to each other. The team needs to get the station online via the satellite infrastructure for the first time.\nTo do this, the role of each element must be determined and the signal route must be set up correctly.\nAfter the route is assembled, the system will check the connection. If all devices are arranged in the correct sequence, the signal will pass from the terminal through the satellite and the ground station to the data processing center, and the station will receive stable internet access.\n\nMission: Determine the correct sequence of network elements and initiate the signal."
+    },
+    {
+      "key": "content.missions.first-signal.success",
+      "language": "en",
+      "before": "User terminal connected to the internet.",
+      "after": "User terminal connected to the internet"
+    },
+    {
+      "key": "content.missions.first-signal.feedback.success.mission-complete.message",
+      "language": "en",
+      "before": "User terminal connected to the internet.",
+      "after": "User terminal connected to the internet"
+    },
+    {
+      "key": "content.missions.first-signal.feedback.error.invalid-connection.message",
+      "language": "en",
+      "before": "Elements are sequenced incorrectly.",
+      "after": "Elements are sequenced incorrectly"
+    },
+    {
+      "key": "content.missions.arctic-route.success",
+      "language": "en",
+      "before": "Isolated location in the Arctic is online.",
+      "after": "The isolated location in the Arctic is online"
+    },
+    {
+      "key": "content.missions.arctic-route.feedback.success.mission-complete.message",
+      "language": "en",
+      "before": "Isolated location in the Arctic is online.",
+      "after": "The isolated location in the Arctic is online"
+    },
+    {
+      "key": "content.missions.arctic-route.feedback.error.invalid-connection.message",
+      "language": "en",
+      "before": "Elements are sequenced incorrectly.",
+      "after": "Elements are sequenced incorrectly"
+    },
+    {
+      "key": "content.missions.protected-network.success",
+      "language": "en",
+      "before": "Corporate data transferred successfully to the ship arriving in Vladivostok.",
+      "after": "Corporate data transferred successfully to the ship arriving in Vladivostok"
+    },
+    {
+      "key": "content.missions.protected-network.feedback.success.mission-complete.message",
+      "language": "en",
+      "before": "Corporate data transferred successfully to the ship arriving in Vladivostok.",
+      "after": "Corporate data transferred successfully to the ship arriving in Vladivostok"
+    },
+    {
+      "key": "content.missions.protected-network.feedback.error.invalid-connection.message",
+      "language": "en",
+      "before": "Elements are sequenced incorrectly.",
+      "after": "Elements are sequenced incorrectly"
+    },
+    {
+      "key": "content.missions.first-signal.summary",
+      "language": "en",
+      "before": "Map your route through the satellite network to connect the user terminal to the internet.",
+      "after": "Map your route through the satellite network to connect the user terminal to the internet"
+    },
+    {
+      "key": "content.missions.arctic-route.summary",
+      "language": "en",
+      "before": "Provide satellite coverage to an isolated location in the Arctic.",
+      "after": "Provide satellite coverage to an isolated location in the Arctic"
+    },
+    {
+      "key": "content.missions.protected-network.summary",
+      "language": "en",
+      "before": "Transfer corporate data from Kaliningrad to Vladivostok, across the entire country.",
+      "after": "Transfer corporate data from Kaliningrad to Vladivostok, across the entire country"
+    }
+  ]
+}

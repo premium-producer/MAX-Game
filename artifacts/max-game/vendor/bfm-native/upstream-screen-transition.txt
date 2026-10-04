@@ -1,0 +1,59 @@
+function applyState(state) {
+  app.dataset.state = state;
+  screens.forEach((screen) => { screen.hidden = screen.dataset.screen !== state; });
+  const current = stateStep[state];
+  steps.forEach((step, index) => {
+    step.classList.toggle('is-complete', Number.isInteger(current) && index < current);
+    step.classList.toggle('is-active', index === current);
+  });
+  currentState = state;
+  if (state !== 'attract') armIdleTimer();
+}
+
+function playScreenEntrance(state) {
+  clearTimeout(entranceTimer);
+  screens.forEach((screen) => screen.classList.remove('is-arriving', 'is-pending-entrance'));
+  const screen = screens.find((candidate) => candidate.dataset.screen === state);
+  if (!screen || screen.hidden) return;
+
+  void screen.offsetWidth;
+  screen.classList.add('is-arriving');
+  entranceTimer = setTimeout(() => screen.classList.remove('is-arriving'), 1600);
+}
+
+function setState(state, { immediate = false } = {}) {
+  requestedState = state;
+  if (state === currentState && !immediate) return;
+  if (state === 'attract' || state === 'processing') clearIdleWatchdog();
+  const previousIndex = flowOrder.indexOf(currentState);
+  const nextIndex = flowOrder.indexOf(state);
+  const direction = nextIndex >= previousIndex ? 'forward' : 'backward';
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const shouldShowSteps = state !== 'attract' && state !== 'result';
+
+  if (!shouldShowSteps) app.classList.remove('has-flow-steps');
+
+  document.documentElement.dataset.motion = direction;
+  if (!immediate && !reduceMotion && document.startViewTransition) {
+    const incomingScreen = screens.find((screen) => screen.dataset.screen === state);
+    screens.forEach((screen) => screen.classList.remove('is-pending-entrance'));
+    incomingScreen?.classList.add('is-pending-entrance');
+    app.classList.add('is-view-transitioning');
+    const transition = document.startViewTransition(() => applyState(state));
+    const finishTransition = () => {
+      app.classList.remove('is-view-transitioning');
+      app.classList.toggle('has-flow-steps', shouldShowSteps);
+      delete document.documentElement.dataset.motion;
+      playScreenEntrance(state);
+    };
+    transition.finished.then(finishTransition, finishTransition);
+    return;
+  }
+  applyState(state);
+  requestAnimationFrame(() => {
+    app.classList.toggle('has-flow-steps', shouldShowSteps);
+    delete document.documentElement.dataset.motion;
+    playScreenEntrance(state);
+  });
+}
+

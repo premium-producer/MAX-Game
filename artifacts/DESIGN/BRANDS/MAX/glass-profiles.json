@@ -1,0 +1,60 @@
+{
+  "scope": "MAX project adaptation: separate large panel and interactive controls",
+  "status": "user-reference; Figma numbers are not WebGL units",
+  "panel": {
+    "lightAngleDegrees": -68,
+    "lightIntensityPercent": 70,
+    "refraction": 100,
+    "depth": 116.91,
+    "dispersion": 0,
+    "frost": 0,
+    "splay": 0
+  },
+  "controls": {
+    "lightAngleDegrees": -45,
+    "lightIntensityPercent": 80,
+    "refraction": 100,
+    "depth": 33.47,
+    "dispersion": 0,
+    "frost": 56.25,
+    "splay": 0,
+    "settingsReference": "../../../max-game/incoming/glass-buttons-settings.png",
+    "visualReference": "../../../max-game/incoming/glass-buttons-reference.png",
+    "webCalibration": {
+      "frostRadiusLogicalPx": 18,
+      "backgroundSamples": 4,
+      "prefilter": "four overlapping bilinear samples of trilinear premultiplied mipmaps; LOD limited to 5; matte surfaces without refraction",
+      "lodMax": 5,
+      "transmission": 0.72,
+      "violetTint": 0.24,
+      "filter": "overlapping-mip-blur-v2"
+    },
+    "note": "Separate frosted violet control; text and icon remain sharp. Not a numeric reproduction of Figma optics.",
+    "layering": {
+      "beneath": [
+        "wall gradient flows",
+        "game fibers and their bloom"
+      ],
+      "above": [
+        "sharp icon glyph",
+        "text",
+        "notification badge"
+      ],
+      "sharpFiberCoreInsideControl": false
+    },
+    "visualReference20260928": "../../../max-game/incoming/glass-frost-target-20260928.png"
+  },
+  "contextCard": {
+    "reference": "controls",
+    "userOverride": "2026-09-28: stronger matte card blurs all content behind it, including other objects and text. 2026-09-29: smooth blur replaces sparse Frost samples; no refraction under matte controls.",
+    "webCalibration": {
+      "frostRadiusLogicalPx": 36,
+      "uiLodMax": 5,
+      "otherObjectOpacity": 0.45,
+      "activeOriginalOpacity": 0,
+      "uiBackdropTarget": "one lazy reusable RGBA8 mipmapped target at actual drawing-buffer size, only used while a task popup is open",
+      "filter": "overlapping-mip-blur-v2",
+      "backgroundSamples": 4
+    }
+  }
+}

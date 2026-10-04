@@ -1,0 +1,766 @@
+{
+  "id": "2299:86341",
+  "name": "Добавление фото - 8 (подтвержденное фото)",
+  "type": "FRAME",
+  "parent": "2299:86188",
+  "bounds": {
+    "x": 23886,
+    "y": 6107,
+    "width": 360,
+    "height": 800
+  },
+  "visible": true,
+  "fontSize": 0,
+  "hasImage": false,
+  "task": "digital-id.photo",
+  "confidence": "high",
+  "reviewed": false,
+  "include": true,
+  "group": "2299:86188",
+  "groupName": "Цифровой ID / Добавление фото",
+  "containerPath": [
+    {
+      "id": "2299:85912",
+      "name": "Цифровой ID",
+      "type": "SECTION"
+    },
+    {
+      "id": "2299:86188",
+      "name": "Добавление фото",
+      "type": "SECTION"
+    }
+  ],
+  "sectionPath": [
+    {
+      "id": "2299:85912",
+      "name": "Цифровой ID",
+      "type": "SECTION"
+    },
+    {
+      "id": "2299:86188",
+      "name": "Добавление фото",
+      "type": "SECTION"
+    }
+  ],
+  "sequence": {
+    "series": "Добавление фото",
+    "number": 8,
+    "description": "подтвержденное фото"
+  },
+  "detection": "structure",
+  "evidence": [
+    {
+      "task": "digital-id.photo",
+      "source": "frame-name",
+      "id": "2299:86341",
+      "text": "Добавление фото - 8 (подтвержденное фото)",
+      "weight": 100
+    },
+    {
+      "task": "digital-id.photo",
+      "source": "ancestor",
+      "id": "2299:86188",
+      "text": "Добавление фото",
+      "weight": 99
+    }
+  ],
+  "ancestors": [
+    {
+      "id": "2299:86188",
+      "name": "Добавление фото",
+      "type": "SECTION"
+    },
+    {
+      "id": "2299:85912",
+      "name": "Цифровой ID",
+      "type": "SECTION"
+    }
+  ],
+  "nearbyHeadings": [],
+  "contextRegion": null,
+  "warnings": [],
+  "order": 77,
+  "fingerprint": "[\"Добавление фото - 8 (подтвержденное фото)\",{\"x\":23886,\"y\":6107,\"width\":360,\"height\":800},\"FRAME\",[[\"2299:86188\",\"Добавление фото\",\"SECTION\"],[\"2299:85912\",\"Цифровой ID\",\"SECTION\"],[\"1:8\",\"Page 8\",\"PAGE\"]],\"content-v1\",3183032304,1718933548,31]",
+  "manualTask": false,
+  "title": "Добавление фото - 8 (подтвержденное фото)",
+  "exportStatus": "ok",
+  "texts": [
+    {
+      "id": "I2299:86345;4:10095",
+      "name": "9:41",
+      "type": "TEXT",
+      "parent": "2299:86345",
+      "bounds": {
+        "x": 23906,
+        "y": 6121,
+        "width": 28,
+        "height": 20
+      },
+      "text": "9:41",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "9:41",
+          "start": 0,
+          "end": 4,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86347",
+      "name": "✏️ Заголовок экрана",
+      "type": "TEXT",
+      "parent": "2299:86346",
+      "bounds": {
+        "x": 23902,
+        "y": 6173,
+        "width": 328,
+        "height": 28
+      },
+      "text": "Цифровой ID",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 22,
+      "segments": [
+        {
+          "characters": "Цифровой ID",
+          "start": 0,
+          "end": 11,
+          "fontSize": 22,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86354",
+      "name": "Текст статуса",
+      "type": "TEXT",
+      "parent": "2299:86351",
+      "bounds": {
+        "x": 24011.5,
+        "y": 6503,
+        "width": 133,
+        "height": 20
+      },
+      "text": "фото подтверждено",
+      "fontName": null,
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "фото подтверждено",
+          "start": 0,
+          "end": 17,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.6800000071525574,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:0af30f4380fce519624c68d2dc55e4467590684a/4263:365"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86355",
+      "name": "Текст",
+      "type": "TEXT",
+      "parent": "2299:86348",
+      "bounds": {
+        "x": 23914,
+        "y": 6551,
+        "width": 304,
+        "height": 40
+      },
+      "text": "Вы автоматически перейдёте в приложение MAX через 0:03",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Вы автоматически перейдёте в приложение MAX через 0:03",
+          "start": 0,
+          "end": 54,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.5199999809265137,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:4c4633b73f04062295f5cba9c91128e605821b9c/4264:386"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86359",
+      "name": "Текст основной кнопки",
+      "type": "TEXT",
+      "parent": "2299:86358",
+      "bounds": {
+        "x": 23914,
+        "y": 6831,
+        "width": 304,
+        "height": 20
+      },
+      "text": "Продолжить в MAX",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 16,
+      "segments": [
+        {
+          "characters": "Продолжить в MAX",
+          "start": 0,
+          "end": 16,
+          "fontSize": 16,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    }
+  ],
+  "layers": [
+    {
+      "id": "2299:86341",
+      "name": "Добавление фото - 8 (подтвержденное фото)",
+      "type": "FRAME",
+      "parent": "2299:86188",
+      "bounds": {
+        "x": 23886,
+        "y": 6107,
+        "width": 360,
+        "height": 800
+      }
+    },
+    {
+      "id": "2299:86342",
+      "name": "Контент",
+      "type": "FRAME",
+      "parent": "2299:86341",
+      "bounds": {
+        "x": 23886,
+        "y": 6107,
+        "width": 360,
+        "height": 484.0000305175781
+      }
+    },
+    {
+      "id": "2299:86343",
+      "name": "✏️ Хедер",
+      "type": "FRAME",
+      "parent": "2299:86342",
+      "bounds": {
+        "x": 23886,
+        "y": 6107,
+        "width": 360,
+        "height": 112.00003051757812
+      }
+    },
+    {
+      "id": "2299:86344",
+      "name": "❌ [Core]",
+      "type": "FRAME",
+      "parent": "2299:86343",
+      "bounds": {
+        "x": 23886,
+        "y": 6107,
+        "width": 360,
+        "height": 112.00003051757812
+      }
+    },
+    {
+      "id": "2299:86345",
+      "name": ".Status Bar/Android/Default",
+      "type": "INSTANCE",
+      "parent": "2299:86344",
+      "bounds": {
+        "x": 23886,
+        "y": 6107,
+        "width": 360,
+        "height": 48.000030517578125
+      }
+    },
+    {
+      "id": "I2299:86345;4:10095",
+      "name": "9:41",
+      "type": "TEXT",
+      "parent": "2299:86345",
+      "bounds": {
+        "x": 23906,
+        "y": 6121,
+        "width": 28,
+        "height": 20
+      }
+    },
+    {
+      "id": "I2299:86345;4:10096",
+      "name": "System Status",
+      "type": "FRAME",
+      "parent": "2299:86345",
+      "bounds": {
+        "x": 24174,
+        "y": 6119,
+        "width": 52.00006103515625,
+        "height": 24.000030517578125
+      }
+    },
+    {
+      "id": "I2299:86345;4:10097",
+      "name": "Wifi",
+      "type": "FRAME",
+      "parent": "I2299:86345;4:10096",
+      "bounds": {
+        "x": 24174,
+        "y": 6123,
+        "width": 18.666690826416016,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I2299:86345;4:10098",
+      "name": "wifi",
+      "type": "VECTOR",
+      "parent": "I2299:86345;4:10097",
+      "bounds": {
+        "x": 24176,
+        "y": 6125,
+        "width": 14.666685104370117,
+        "height": 11.333348274230957
+      }
+    },
+    {
+      "id": "I2299:86345;4:10099",
+      "name": "Data",
+      "type": "FRAME",
+      "parent": "I2299:86345;4:10096",
+      "bounds": {
+        "x": 24194.666015625,
+        "y": 6123,
+        "width": 16.00002098083496,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I2299:86345;4:10100",
+      "name": "data",
+      "type": "VECTOR",
+      "parent": "I2299:86345;4:10099",
+      "bounds": {
+        "x": 24193.609375,
+        "y": 6125.27490234375,
+        "width": 12.391877174377441,
+        "height": 12.391878128051758
+      }
+    },
+    {
+      "id": "I2299:86345;4:10101",
+      "name": "Battery",
+      "type": "FRAME",
+      "parent": "I2299:86345;4:10096",
+      "bounds": {
+        "x": 24212.666015625,
+        "y": 6123,
+        "width": 13.33335018157959,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I2299:86345;4:10102",
+      "name": "Union",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "I2299:86345;4:10101",
+      "bounds": {
+        "x": 24215.33203125,
+        "y": 6124.33349609375,
+        "width": 8,
+        "height": 13.3330078125
+      }
+    },
+    {
+      "id": "I2299:86345;4:10103",
+      "name": "stroke",
+      "type": "VECTOR",
+      "parent": "I2299:86345;4:10102",
+      "bounds": {
+        "x": 24215.33203125,
+        "y": 6124.33349609375,
+        "width": 8.00001049041748,
+        "height": 13.33335018157959
+      }
+    },
+    {
+      "id": "I2299:86345;4:10104",
+      "name": "fill",
+      "type": "RECTANGLE",
+      "parent": "I2299:86345;4:10102",
+      "bounds": {
+        "x": 24215.998046875,
+        "y": 6125.6669921875,
+        "width": 6.666675090789795,
+        "height": 12.000015258789062
+      }
+    },
+    {
+      "id": "2299:86346",
+      "name": "Title and Controls",
+      "type": "FRAME",
+      "parent": "2299:86344",
+      "bounds": {
+        "x": 23886,
+        "y": 6155,
+        "width": 360,
+        "height": 64
+      }
+    },
+    {
+      "id": "2299:86347",
+      "name": "✏️ Заголовок экрана",
+      "type": "TEXT",
+      "parent": "2299:86346",
+      "bounds": {
+        "x": 23902,
+        "y": 6173,
+        "width": 328,
+        "height": 28
+      }
+    },
+    {
+      "id": "2299:86348",
+      "name": "Фото",
+      "type": "FRAME",
+      "parent": "2299:86342",
+      "bounds": {
+        "x": 23886,
+        "y": 6235,
+        "width": 360,
+        "height": 356
+      }
+    },
+    {
+      "id": "2299:86349",
+      "name": "Фото 1:1",
+      "type": "FRAME",
+      "parent": "2299:86348",
+      "bounds": {
+        "x": 23946,
+        "y": 6235,
+        "width": 240,
+        "height": 240
+      }
+    },
+    {
+      "id": "2299:86350",
+      "name": "Фото",
+      "type": "RECTANGLE",
+      "parent": "2299:86349",
+      "bounds": {
+        "x": 23900,
+        "y": 6155,
+        "width": 318,
+        "height": 362
+      }
+    },
+    {
+      "id": "2299:86351",
+      "name": "Статус",
+      "type": "FRAME",
+      "parent": "2299:86348",
+      "bounds": {
+        "x": 23987.5,
+        "y": 6503,
+        "width": 157,
+        "height": 20
+      }
+    },
+    {
+      "id": "2299:86352",
+      "name": "❌ [Core] Icon 16x16",
+      "type": "FRAME",
+      "parent": "2299:86351",
+      "bounds": {
+        "x": 23987.5,
+        "y": 6505,
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "id": "2299:86353",
+      "name": "Icon",
+      "type": "VECTOR",
+      "parent": "2299:86352",
+      "bounds": {
+        "x": 23991.49999973773,
+        "y": 6509.99999774296,
+        "width": 8.000004076966434,
+        "height": 6.000002257040251
+      }
+    },
+    {
+      "id": "2299:86354",
+      "name": "Текст статуса",
+      "type": "TEXT",
+      "parent": "2299:86351",
+      "bounds": {
+        "x": 24011.5,
+        "y": 6503,
+        "width": 133,
+        "height": 20
+      }
+    },
+    {
+      "id": "2299:86355",
+      "name": "Текст",
+      "type": "TEXT",
+      "parent": "2299:86348",
+      "bounds": {
+        "x": 23914,
+        "y": 6551,
+        "width": 304,
+        "height": 40
+      }
+    },
+    {
+      "id": "2299:86356",
+      "name": "Кнопки",
+      "type": "FRAME",
+      "parent": "2299:86341",
+      "bounds": {
+        "x": 23886,
+        "y": 6803,
+        "width": 360,
+        "height": 104
+      }
+    },
+    {
+      "id": "2299:86357",
+      "name": "Кнопки",
+      "type": "FRAME",
+      "parent": "2299:86356",
+      "bounds": {
+        "x": 23886,
+        "y": 6811,
+        "width": 360,
+        "height": 60
+      }
+    },
+    {
+      "id": "2299:86358",
+      "name": "Button",
+      "type": "FRAME",
+      "parent": "2299:86357",
+      "bounds": {
+        "x": 23894,
+        "y": 6811,
+        "width": 344,
+        "height": 60
+      }
+    },
+    {
+      "id": "2299:86359",
+      "name": "Текст основной кнопки",
+      "type": "TEXT",
+      "parent": "2299:86358",
+      "bounds": {
+        "x": 23914,
+        "y": 6831,
+        "width": 304,
+        "height": 20
+      }
+    },
+    {
+      "id": "2299:86360",
+      "name": "📎 Home Indicator",
+      "type": "INSTANCE",
+      "parent": "2299:86356",
+      "bounds": {
+        "x": 23886,
+        "y": 6883,
+        "width": 360,
+        "height": 24
+      }
+    },
+    {
+      "id": "I2299:86360;1350:1201",
+      "name": "Home Indicator",
+      "type": "VECTOR",
+      "parent": "2299:86360",
+      "bounds": {
+        "x": 24014,
+        "y": 6895,
+        "width": 104,
+        "height": 0
+      }
+    }
+  ],
+  "imageHashes": [
+    "32969c75aa43e9323e780079fa04159e70268ae0"
+  ],
+  "notes": [],
+  "pngScale": 1,
+  "pngFile": "Цифровой-ID/Добавление-фото/Добавление-фото---8-(подтвержденное-фото)/screen.png",
+  "previewFile": "Цифровой-ID/Добавление-фото/Добавление-фото---8-(подтвержденное-фото)/preview.png",
+  "svgFile": "Цифровой-ID/Добавление-фото/Добавление-фото---8-(подтвержденное-фото)/screen.svg",
+  "documentFile": "Цифровой-ID/Добавление-фото/Добавление-фото---8-(подтвержденное-фото)/figma.json",
+  "images": [
+    {
+      "hash": "32969c75aa43e9323e780079fa04159e70268ae0",
+      "file": "Цифровой-ID/Добавление-фото/Добавление-фото---8-(подтвержденное-фото)/images/a2ddfecf20d94979f4423e4fff6107657949aa81626f5e74b49922c0865f325f.png"
+    }
+  ]
+}

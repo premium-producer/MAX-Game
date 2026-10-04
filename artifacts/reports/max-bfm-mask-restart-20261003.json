@@ -1,0 +1,341 @@
+{
+  "before": {
+    "mode": "run",
+    "assignments": {
+      "SCREEN_LINE_UP": "ribbon-up",
+      "SCREEN_LINE_DOWN": "ribbon-up",
+      "SCREEN_LEFT": "video-wall-left",
+      "SCREEN_STELLA": "vk-stella",
+      "SCREEN_ARKA": "vk-arch",
+      "SCREEN_RIGHT": "max-wall-right"
+    },
+    "instances": [
+      {
+        "id": "ribbon-up",
+        "generation": "b2f05927-689d-41e8-a176-301ffb45085d",
+        "status": "running",
+        "frame": 701778,
+        "error": null,
+        "tdMasks": {
+          "large": {
+            "live": true,
+            "sequence": 395504,
+            "size": [
+              160,
+              8
+            ],
+            "atlas": "Ribbon",
+            "sourceFrame": 916665
+          },
+          "fine": {
+            "live": true,
+            "sequence": 395504,
+            "size": [
+              320,
+              16
+            ],
+            "atlas": "Ribbon",
+            "sourceFrame": 916665
+          }
+        }
+      },
+      {
+        "id": "video-wall-left",
+        "generation": "1e9cab1f-8e02-430f-a213-41569e423df1",
+        "status": "running",
+        "frame": 606486,
+        "error": null,
+        "tdMasks": {
+          "large": {
+            "live": true,
+            "sequence": 398092,
+            "size": [
+              106,
+              19
+            ],
+            "atlas": "MainLeft",
+            "sourceFrame": 916704
+          },
+          "fine": {
+            "live": true,
+            "sequence": 398092,
+            "size": [
+              212,
+              38
+            ],
+            "atlas": "MainLeft",
+            "sourceFrame": 916704
+          }
+        }
+      },
+      {
+        "id": "vk-stella",
+        "generation": "a4a92d4f-4cdd-444a-8df9-830fb329abde",
+        "status": "running",
+        "frame": 723372,
+        "error": null,
+        "tdMasks": {
+          "large": {
+            "live": false
+          },
+          "fine": {
+            "live": false
+          }
+        }
+      },
+      {
+        "id": "vk-arch",
+        "generation": "06b2c739-d299-403b-a7a3-ff3ba6faa36c",
+        "status": "running",
+        "frame": 709205,
+        "error": null,
+        "tdMasks": {
+          "large": {
+            "live": true,
+            "sequence": 398124,
+            "size": [
+              80,
+              8
+            ],
+            "atlas": "Arch",
+            "sourceFrame": 916723
+          },
+          "fine": {
+            "live": true,
+            "sequence": 398124,
+            "size": [
+              160,
+              16
+            ],
+            "atlas": "Arch",
+            "sourceFrame": 916723
+          }
+        }
+      },
+      {
+        "id": "max-wall-right",
+        "generation": "5b585f8c-1859-4440-bd20-9d531979a587",
+        "status": "running",
+        "frame": 544500,
+        "error": null,
+        "tdMasks": {
+          "large": {
+            "live": true,
+            "sequence": 397982,
+            "size": [
+              106,
+              19
+            ],
+            "atlas": "MainRight",
+            "sourceFrame": 916671
+          },
+          "fine": {
+            "live": true,
+            "sequence": 397982,
+            "size": [
+              212,
+              38
+            ],
+            "atlas": "MainRight",
+            "sourceFrame": 916671
+          }
+        }
+      }
+    ],
+    "configHashes": {
+      "discovery-tags.json": "6985c4c29c0729cc464f47e0539e0985aaf32f5de65e890161fae6bf10029274",
+      "discovery.json": "5cfeeb058f687ca310116a9d4f16a23655a30eea80dcf62e54d2f9e4067ec721",
+      "lumicells-mask-presets.json": "37b03967db3f5c00823eb117843e1ab0dda942c55f70a6abcd0a1b72db643d0e",
+      "project.json": "4e5cdb633164b89c63be3548a0ff3511ea13fc06a9e74cdb6ff50365f271a210",
+      "row-streams.json": "53955021ed1ef0628d8afb5246b7df01bb8e76a295eae6addefcbc82b609c8eb",
+      "stand-service.json": "6a8599a249eef37ad9ef71b7a285a6895936574661bcf1dcfecd731d7e3367c1",
+      "video-wall-clusters.json": "bda17b11af76b925950601f9271b5f0c3c2b97dd44d28e9d13268877f1bf0bd4",
+      "visitor-simulation.json": "26b71bdd0f899d5629c092407f4c62cd9cd8f4665a5972169bc94aa34898ea36"
+    }
+  },
+  "after": {
+    "mode": "run",
+    "assignments": {
+      "SCREEN_LINE_UP": "ribbon-up",
+      "SCREEN_LINE_DOWN": "ribbon-up",
+      "SCREEN_LEFT": "video-wall-left",
+      "SCREEN_STELLA": "vk-stella",
+      "SCREEN_ARKA": "vk-arch",
+      "SCREEN_RIGHT": "max-wall-right"
+    },
+    "instances": [
+      {
+        "id": "ribbon-up",
+        "generation": "ecdd670d-8ee6-4419-945f-bdf890a3ad13",
+        "status": "running",
+        "frame": 1375,
+        "error": null,
+        "tdMasks": {
+          "large": {
+            "live": true,
+            "sequence": 1012,
+            "size": [
+              160,
+              8
+            ],
+            "atlas": "Ribbon",
+            "sourceFrame": 919719
+          },
+          "fine": {
+            "live": true,
+            "sequence": 1012,
+            "size": [
+              320,
+              16
+            ],
+            "atlas": "Ribbon",
+            "sourceFrame": 919719
+          }
+        }
+      },
+      {
+        "id": "video-wall-left",
+        "generation": "51ba60c4-8b93-4b26-bb69-10efb88b500f",
+        "status": "running",
+        "frame": 1380,
+        "error": null,
+        "tdMasks": {
+          "large": {
+            "live": true,
+            "sequence": 1016,
+            "size": [
+              106,
+              19
+            ],
+            "atlas": "MainLeft",
+            "sourceFrame": 919715
+          },
+          "fine": {
+            "live": true,
+            "sequence": 1016,
+            "size": [
+              212,
+              38
+            ],
+            "atlas": "MainLeft",
+            "sourceFrame": 919715
+          }
+        }
+      },
+      {
+        "id": "vk-stella",
+        "generation": "0ae43ff7-e09e-453a-b9e2-fccf278ff11a",
+        "status": "running",
+        "frame": 1418,
+        "error": null,
+        "tdMasks": {
+          "large": {
+            "live": false
+          },
+          "fine": {
+            "live": false
+          }
+        }
+      },
+      {
+        "id": "vk-arch",
+        "generation": "48d41a6e-e832-4115-86da-00911c501c6d",
+        "status": "running",
+        "frame": 1337,
+        "error": null,
+        "tdMasks": {
+          "large": {
+            "live": true,
+            "sequence": 988,
+            "size": [
+              80,
+              8
+            ],
+            "atlas": "Arch",
+            "sourceFrame": 919678
+          },
+          "fine": {
+            "live": true,
+            "sequence": 988,
+            "size": [
+              160,
+              16
+            ],
+            "atlas": "Arch",
+            "sourceFrame": 919678
+          }
+        }
+      },
+      {
+        "id": "max-wall-right",
+        "generation": "8132e5e5-5e69-4bd9-bcb5-1667853b79a0",
+        "status": "running",
+        "frame": 1246,
+        "error": null,
+        "tdMasks": {
+          "large": {
+            "live": true,
+            "sequence": 1009,
+            "size": [
+              106,
+              19
+            ],
+            "atlas": "MainRight",
+            "sourceFrame": 919718
+          },
+          "fine": {
+            "live": true,
+            "sequence": 1009,
+            "size": [
+              212,
+              38
+            ],
+            "atlas": "MainRight",
+            "sourceFrame": 919718
+          }
+        }
+      }
+    ],
+    "configHashes": {
+      "discovery-tags.json": "6985c4c29c0729cc464f47e0539e0985aaf32f5de65e890161fae6bf10029274",
+      "discovery.json": "5cfeeb058f687ca310116a9d4f16a23655a30eea80dcf62e54d2f9e4067ec721",
+      "lumicells-mask-presets.json": "37b03967db3f5c00823eb117843e1ab0dda942c55f70a6abcd0a1b72db643d0e",
+      "project.json": "4e5cdb633164b89c63be3548a0ff3511ea13fc06a9e74cdb6ff50365f271a210",
+      "row-streams.json": "53955021ed1ef0628d8afb5246b7df01bb8e76a295eae6addefcbc82b609c8eb",
+      "stand-service.json": "6a8599a249eef37ad9ef71b7a285a6895936574661bcf1dcfecd731d7e3367c1",
+      "video-wall-clusters.json": "bda17b11af76b925950601f9271b5f0c3c2b97dd44d28e9d13268877f1bf0bd4",
+      "visitor-simulation.json": "26b71bdd0f899d5629c092407f4c62cd9cd8f4665a5972169bc94aa34898ea36"
+    }
+  },
+  "maskFrames": [
+    {
+      "status": 200,
+      "bytes": 65000,
+      "X-TD-Schema": "1",
+      "X-TD-Width": "250",
+      "X-TD-Height": "65",
+      "X-TD-Sequence": "1006",
+      "X-TD-Source-Frame": "919713",
+      "X-TD-Age-Ms": "16",
+      "headerValid": true,
+      "sourceFrameMatches": true
+    },
+    {
+      "status": 200,
+      "bytes": 65000,
+      "X-TD-Schema": "1",
+      "X-TD-Width": "250",
+      "X-TD-Height": "65",
+      "X-TD-Sequence": "1016",
+      "X-TD-Source-Frame": "919731",
+      "X-TD-Age-Ms": "12",
+      "headerValid": true,
+      "sourceFrameMatches": true
+    }
+  ],
+  "assignmentsPreserved": true,
+  "allGenerationsChanged": true,
+  "maskAdvances": true,
+  "liveConsumerCPU": "PASS: actual TDControlFeed and TDControlTexture, live HTTP, sequence advancement; no GPU",
+  "changedConfigJSON": []
+}

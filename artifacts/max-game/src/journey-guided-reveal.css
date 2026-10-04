@@ -1,0 +1,25 @@
+html[data-reveal=true] #circles .guided-palm .object-label{max-width:240px}
+html[data-reveal=true] #circles .guided-nav{z-index:30}
+html[data-reveal=true] #circles [data-mission-timer]{min-width:128px;font-variant-numeric:tabular-nums}
+html[data-reveal=true] #circles .guided-restart{width:64px;padding:16px;flex-shrink:0}
+html[data-reveal=true] #circles .guided-restart .glyph{width:32px;height:32px}
+html[data-reveal=true] #circles .route-phone .phone-drag-label{top:-42px;font-size:24px}
+html[data-reveal=true] #circles [data-node-state=future] .tile{opacity:.7}
+html[data-reveal=true] #circles .guided-caption{font-size:24px;bottom:12px}
+html[data-reveal=true] #circles .task-dialog:not(.guided-choice) .instruction{left:var(--instruction-left,20px)}
+html[data-reveal=true] #circles .task-dialog:not(.guided-choice) .close{left:calc(var(--instruction-left,20px) + 488px)}
+html[data-reveal=true] #circles .guided-choice .instruction{left:var(--instruction-left,20px);top:76px;width:520px;height:480px}
+html[data-reveal=true] #circles .guided-choice .close{left:calc(var(--instruction-left,20px) + 488px);top:48px}
+html[data-reveal=true] #circles .route-phone .client-actions{display:flex;flex-direction:column;gap:10px}
+html[data-reveal=true] #circles .route-phone .client-action{font-size:24px;line-height:1.15;padding:12px 14px;min-height:48px}
+html[data-reveal=true] #circles .route-phone .client-actions p{font-size:24px}
+/* A fixed ×2 route tile owns its glyph, caption and hit area together. */
+html[data-reveal=true][data-service=false] #circles .object:not(.guided-palm){width:256px;height:256px;gap:0}
+html[data-reveal=true][data-service=false] #circles .object:not(.guided-palm) .tile{width:256px;height:256px;border-radius:60px;flex-shrink:0}
+html[data-reveal=true][data-service=false] #circles .object.route-first .tile{border-radius:50%}
+html[data-reveal=true][data-service=false] #circles .object:not(.guided-palm) .tile>.glyph{position:absolute;left:48px;top:6px;width:160px;height:160px}
+html[data-reveal=true][data-service=false] #circles .object:not(.guided-palm) .route-brand{position:absolute;left:48px;top:6px;width:160px;height:160px}
+html[data-reveal=true][data-service=false] #circles .object:not(.guided-palm) .route-intro-plus{top:6px;bottom:auto;height:160px}
+html[data-reveal=true][data-service=false] #circles .object:not(.guided-palm) .route-intro-plus>.glyph{width:160px;height:160px}
+html[data-reveal=true][data-service=false] #circles .object:not(.guided-palm) .object-label{position:absolute;left:16px;right:16px;top:172px;bottom:10px;width:224px;max-width:224px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:32px;font-weight:500;line-height:1.06;color:#fff;overflow-wrap:normal;pointer-events:none}
+html[data-reveal=true][data-service=false] #circles .object:not(.guided-palm) .object-label small{display:none}

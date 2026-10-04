@@ -1,0 +1,443 @@
+{
+  "id": "296:17134",
+  "name": "Экран 4",
+  "title": "004-Экран",
+  "bounds": {
+    "x": 22131,
+    "y": 4004.99609375,
+    "width": 998,
+    "height": 474
+  },
+  "task": "unassigned",
+  "include": true,
+  "reviewed": false,
+  "confidence": "structure",
+  "group": "296:16647",
+  "groupName": "Продвижение бизнеса / Бизнес-аккаунт",
+  "containerPath": [
+    {
+      "id": "296:16452",
+      "name": "06-Продвижение бизнеса"
+    },
+    {
+      "id": "296:16647",
+      "name": "02-Бизнес-аккаунт"
+    }
+  ],
+  "ancestors": [],
+  "nearbyHeadings": [],
+  "evidence": [
+    {
+      "source": "autolayout",
+      "text": "Порядок children; названия фреймов не используются"
+    }
+  ],
+  "warnings": [],
+  "detection": "structure",
+  "order": 80,
+  "content": {
+    "kind": "screen",
+    "missionOrder": 6,
+    "missionNodeId": "296:16452",
+    "iconOrder": 2,
+    "iconNodeId": "296:16647",
+    "iconText": "Бизнес-аккаунт",
+    "iconTexts": [
+      {
+        "id": "296:16651",
+        "order": 1,
+        "text": "Бизнес-аккаунт",
+        "fontName": {
+          "family": "Inter",
+          "style": "Regular",
+          "variationSettings": {
+            "slnt": 0,
+            "wght": 400
+          }
+        },
+        "fontSize": 55,
+        "segments": [
+          {
+            "characters": "Бизнес-аккаунт",
+            "start": 0,
+            "end": 14,
+            "fontSize": 55,
+            "fontName": {
+              "family": "Inter",
+              "style": "Regular",
+              "variationSettings": {
+                "slnt": 0,
+                "wght": 400
+              }
+            },
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 0.07999999821186066,
+                  "g": 0.05999999865889549,
+                  "b": 0.11999999731779099
+                },
+                "boundVariables": {}
+              }
+            ],
+            "hyperlink": null
+          }
+        ],
+        "bounds": {
+          "x": 22759.5,
+          "y": 572,
+          "width": 424,
+          "height": 134
+        }
+      }
+    ],
+    "screenOrder": 4,
+    "screenNodeId": "296:17130",
+    "visualNodeId": "296:17134",
+    "helpNodeId": "296:17142"
+  },
+  "instruction": {
+    "blocks": [
+      {
+        "id": "296:17143",
+        "order": 1,
+        "text": "Профиль подтвержден – приступаем к продвижению бизнеса",
+        "fontName": {
+          "family": "Inter",
+          "style": "Regular",
+          "variationSettings": {
+            "slnt": 0,
+            "wght": 400
+          }
+        },
+        "fontSize": 32,
+        "segments": [
+          {
+            "characters": "Профиль подтвержден – приступаем к продвижению бизнеса",
+            "start": 0,
+            "end": 54,
+            "fontSize": 32,
+            "fontName": {
+              "family": "Inter",
+              "style": "Regular",
+              "variationSettings": {
+                "slnt": 0,
+                "wght": 400
+              }
+            },
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 0.07999999821186066,
+                  "g": 0.05999999865889549,
+                  "b": 0.11999999731779099
+                },
+                "boundVariables": {}
+              }
+            ],
+            "hyperlink": null
+          }
+        ],
+        "bounds": {
+          "x": 23254,
+          "y": 4130.49609375,
+          "width": 547,
+          "height": 117
+        }
+      }
+    ],
+    "text": "Профиль подтвержден – приступаем к продвижению бизнеса"
+  },
+  "watchNodeId": "296:17130",
+  "contextNodeIds": [
+    "296:16648",
+    "296:16453"
+  ],
+  "sequenceParents": [
+    "296:16652",
+    "296:16647",
+    "296:16454",
+    "296:16452"
+  ],
+  "fingerprint": "[\"[\\\"ДОБАВЛЕНО · Доступные возможности для бизнеса\\\",{\\\"x\\\":22038,\\\"y\\\":3825.99609375,\\\"width\\\":1867,\\\"height\\\":726},\\\"FRAME\\\",[[\\\"296:16652\\\",\\\"задание миссии\\\",\\\"FRAME\\\"],[\\\"296:16647\\\",\\\"иконка_задание · Бизнес-аккаунт\\\",\\\"FRAME\\\"],[\\\"296:16454\\\",\\\"Миссия · возможности слева направо\\\",\\\"FRAME\\\"],[\\\"296:16452\\\",\\\"Продвижение бизнеса\\\",\\\"FRAME\\\"],[\\\"296:13218\\\",\\\"MAX аудит миссий\\\",\\\"FRAME\\\"],[\\\"296:13217\\\",\\\"DEV 2\\\",\\\"PAGE\\\"]],\\\"content-v1\\\",3355922222,4103082724,63]\",[\"[\\\"игровая иконка\\\",{\\\"x\\\":22715.5,\\\"y\\\":376,\\\"width\\\":512,\\\"height\\\":374},\\\"FRAME\\\",[[\\\"296:16647\\\",\\\"иконка_задание · Бизнес-аккаунт\\\",\\\"FRAME\\\"],[\\\"296:16454\\\",\\\"Миссия · возможности слева направо\\\",\\\"FRAME\\\"],[\\\"296:16452\\\",\\\"Продвижение бизнеса\\\",\\\"FRAME\\\"],[\\\"296:13218\\\",\\\"MAX аудит миссий\\\",\\\"FRAME\\\"],[\\\"296:13217\\\",\\\"DEV 2\\\",\\\"PAGE\\\"]],\\\"content-v1\\\",2337087922,1492416828,4]\",\"[\\\"Продвижение бизнеса\\\",{\\\"x\\\":21276,\\\"y\\\":206,\\\"width\\\":1600,\\\"height\\\":77},\\\"TEXT\\\",[[\\\"296:16452\\\",\\\"Продвижение бизнеса\\\",\\\"FRAME\\\"],[\\\"296:13218\\\",\\\"MAX аудит миссий\\\",\\\"FRAME\\\"],[\\\"296:13217\\\",\\\"DEV 2\\\",\\\"PAGE\\\"]],\\\"content-v1\\\",3411646121,1499354171,1]\"],[[\"296:16652\",[\"296:16653\",\"296:16740\",\"296:16935\",\"296:17130\",\"296:17144\"]],[\"296:16647\",[\"296:16648\",\"296:16652\"]],[\"296:16454\",[\"296:16455\",\"296:16647\",\"296:17342\",\"296:18549\",\"296:19486\"]],[\"296:16452\",[\"296:16453\",\"296:16454\"]]]]",
+  "exportStatus": "ok",
+  "texts": [
+    {
+      "id": "296:17138",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "296:17137",
+      "bounds": {
+        "x": 22475.080078125,
+        "y": 4227.80859375,
+        "width": 365.9474792480469,
+        "height": 28
+      },
+      "text": "Профиль подтверждён",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 22.178638458251953,
+      "segments": [
+        {
+          "characters": "Профиль подтверждён",
+          "start": 0,
+          "end": 19,
+          "fontSize": 22.178638458251953,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:4e62bae077411f4304788aeac9dc972382e0ab71/2988:653"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:17143",
+      "order": 1,
+      "text": "Профиль подтвержден – приступаем к продвижению бизнеса",
+      "fontName": {
+        "family": "Inter",
+        "style": "Regular",
+        "variationSettings": {
+          "slnt": 0,
+          "wght": 400
+        }
+      },
+      "fontSize": 32,
+      "segments": [
+        {
+          "characters": "Профиль подтвержден – приступаем к продвижению бизнеса",
+          "start": 0,
+          "end": 54,
+          "fontSize": 32,
+          "fontName": {
+            "family": "Inter",
+            "style": "Regular",
+            "variationSettings": {
+              "slnt": 0,
+              "wght": 400
+            }
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.07999999821186066,
+                "g": 0.05999999865889549,
+                "b": 0.11999999731779099
+              },
+              "boundVariables": {}
+            }
+          ],
+          "hyperlink": null
+        }
+      ],
+      "bounds": {
+        "x": 23254,
+        "y": 4130.49609375,
+        "width": 547,
+        "height": 117
+      },
+      "contentRole": "instruction"
+    }
+  ],
+  "layers": [
+    {
+      "id": "296:17134",
+      "name": "Frame 2147222644",
+      "type": "FRAME",
+      "parent": "296:17131",
+      "bounds": {
+        "x": 22131,
+        "y": 4004.99609375,
+        "width": 998,
+        "height": 474
+      }
+    },
+    {
+      "id": "296:17135",
+      "name": "Snack Body",
+      "type": "FRAME",
+      "parent": "296:17134",
+      "bounds": {
+        "x": 22403,
+        "y": 4202.99609375,
+        "width": 454.66204833984375,
+        "height": 77.62522888183594
+      }
+    },
+    {
+      "id": "296:17136",
+      "name": "Before",
+      "type": "INSTANCE",
+      "parent": "296:17135",
+      "bounds": {
+        "x": 22419.634765625,
+        "y": 4219.6298828125,
+        "width": 38.812618255615234,
+        "height": 44.357276916503906
+      }
+    },
+    {
+      "id": "I296:17136;2751:72751",
+      "name": "done_fill_round_28",
+      "type": "INSTANCE",
+      "parent": "296:17136",
+      "bounds": {
+        "x": 22419.634765625,
+        "y": 4222.40234375,
+        "width": 38.812618255615234,
+        "height": 38.812618255615234
+      }
+    },
+    {
+      "id": "I296:17136;2751:72751;2374:50187",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:17136;2751:72751",
+      "bounds": {
+        "x": 22422.869140625,
+        "y": 4225.63671875,
+        "width": 32.34384536743164,
+        "height": 32.34384536743164
+      }
+    },
+    {
+      "id": "296:17137",
+      "name": "Middle",
+      "type": "FRAME",
+      "parent": "296:17135",
+      "bounds": {
+        "x": 22475.080078125,
+        "y": 4227.80859375,
+        "width": 365.9475402832031,
+        "height": 28
+      }
+    },
+    {
+      "id": "296:17138",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "296:17137",
+      "bounds": {
+        "x": 22475.080078125,
+        "y": 4227.80859375,
+        "width": 365.9474792480469,
+        "height": 28
+      }
+    }
+  ],
+  "imageHashes": [],
+  "notes": [],
+  "visualTexts": [
+    {
+      "id": "296:17138",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "296:17137",
+      "bounds": {
+        "x": 22475.080078125,
+        "y": 4227.80859375,
+        "width": 365.9474792480469,
+        "height": 28
+      },
+      "text": "Профиль подтверждён",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 22.178638458251953,
+      "segments": [
+        {
+          "characters": "Профиль подтверждён",
+          "start": 0,
+          "end": 19,
+          "fontSize": 22.178638458251953,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:4e62bae077411f4304788aeac9dc972382e0ab71/2988:653"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    }
+  ],
+  "pngScale": 1,
+  "pngFile": "06-Продвижение-бизнеса/02-Бизнес-аккаунт/004-Экран/screen.png",
+  "previewFile": "06-Продвижение-бизнеса/02-Бизнес-аккаунт/004-Экран/preview.png",
+  "svgFile": "06-Продвижение-бизнеса/02-Бизнес-аккаунт/004-Экран/screen.svg",
+  "documentFile": "06-Продвижение-бизнеса/02-Бизнес-аккаунт/004-Экран/figma.json",
+  "images": []
+}

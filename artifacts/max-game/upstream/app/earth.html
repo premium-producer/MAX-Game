@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070b12">
+  <title>Вид планеты — Космос на связи</title>
+  <link rel="stylesheet" href="./src/earth-editor.css?v=contour-variants-153">
+</head>
+<body>
+  <main id="earth-editor" class="earth-studio" aria-label="Визуальный редактор планеты Космос на связи">
+    <header class="studio-header">
+      <a class="studio-brand" href="./"><img src="./assets/nodes/logo.svg" alt="Бюро 1440"><span>ВИЗУАЛЬНЫЙ РЕДАКТОР ПЛАНЕТЫ</span></a>
+      <nav aria-label="Разделы проекта"><a href="./editor.html">Миссии ↗</a><a href="./object.html">Объекты ↗</a><a href="./">Игра ↗</a></nav>
+      <div class="studio-actions">
+        <a href="./wording.html">ТЕКСТЫ RU / EN ↗</a>
+        <button type="button" data-action="restore">ВЕРНУТЬ СОХРАНЁННОЕ</button>
+        <button type="button" data-action="defaults">ЗАВОДСКОЙ ПРОФИЛЬ</button>
+        <button type="button" data-action="save" class="is-primary">СОХРАНИТЬ В ИГРУ</button>
+      </div>
+    </header>
+
+    <section class="studio-workspace">
+      <section class="planet-preview" aria-label="Живой предпросмотр Земли">
+        <div class="preview-head">
+          <div><strong>LIVE · THREE.JS</strong><span>тот же shader, текстуры и bloom, что в игре</span></div>
+          <label>РАКУРС
+            <select id="preview-state">
+              <option value="CTA">CTA</option>
+              <option value="ONBOARDING">ONBOARDING</option>
+              <option value="MISSION_SELECT" selected>MISSION SELECT</option>
+              <option value="MISSION_PLAY">MISSION PLAY</option>
+              <option value="END">END</option>
+            </select>
+          </label>
+        </div>
+        <div id="earth-preview" class="earth-preview"></div>
+        <p class="preview-hint">Перетаскивайте Землю и используйте колесо для проверки эффекта под разными углами. Ракурс здесь не сохраняется.</p>
+      </section>
+
+      <aside class="control-panel" aria-label="Параметры визуального профиля">
+        <div class="control-panel__head">
+          <div><span>ВИЗУАЛЬНЫЙ ПРОФИЛЬ</span><h1>ЗЕМЛЯ</h1></div>
+          <span id="dirty-state" class="dirty-state">ЗАГРУЗКА</span>
+        </div>
+        <label class="control-search"><span>Найти параметр</span><input id="control-search" type="search" placeholder="Например: вода, огни, bloom…"></label>
+        <div id="earth-controls" class="earth-controls"></div>
+      </aside>
+    </section>
+
+    <section class="texture-library" aria-label="Карты текстур Земли">
+      <div class="texture-library__head"><div><span>RUNTIME-КАРТЫ</span><h2>ТЕКСТУРЫ И МАСКИ</h2></div><p>Эти исходники не содержат запечённого glow. Параметры выше управляют их интерпретацией в shader и общим realtime bloom.</p></div>
+      <div id="texture-grid" class="texture-grid"></div>
+    </section>
+
+    <footer class="studio-status"><span id="save-state" role="status">Подключение к локальному серверу…</span><span id="save-detail"></span><button type="button" data-action="reload">ПЕРЕЧИТАТЬ</button><button type="button" data-action="export-draft">ЭКСПОРТ</button></footer>
+    <div id="studio-notice" class="studio-notice" role="status" hidden></div>
+  </main>
+<script type="module" src="./earth-editor.js?v=contour-variants-153"></script>
+</body>
+</html>

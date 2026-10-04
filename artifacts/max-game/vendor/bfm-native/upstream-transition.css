@@ -1,0 +1,46 @@
+::view-transition-group(kiosk-stage) {
+  animation-duration: 720ms;
+  animation-timing-function: var(--ease-fade);
+}
+
+::view-transition-old(kiosk-stage) {
+  animation: stage-out 560ms var(--ease-fade) both;
+}
+
+::view-transition-new(kiosk-stage) {
+  animation: stage-in 720ms 60ms var(--ease-fade) both;
+}
+
+::view-transition-group(kiosk-hud),
+::view-transition-group(kiosk-steps) {
+  z-index: 100;
+  animation: none;
+}
+
+::view-transition-old(kiosk-hud),
+::view-transition-new(kiosk-hud),
+::view-transition-old(kiosk-steps),
+::view-transition-new(kiosk-steps) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(kiosk-hud),
+::view-transition-old(kiosk-steps) { opacity: 0; }
+
+::view-transition-new(kiosk-hud),
+::view-transition-new(kiosk-steps) { opacity: 1; }
+
+.kiosk.is-view-transitioning { pointer-events: none; }
+
+@keyframes stage-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes stage-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes screen-reveal { from { opacity: 0; } to { opacity: 1; } }

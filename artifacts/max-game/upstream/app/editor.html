@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07101d" />
+    <title>Редактор миссий — Космос на связи</title>
+    <link rel="stylesheet" href="./src/editor.css?v=debug-exit-button-223" />
+  </head>
+  <body>
+    <main id="editor-app" class="editor-app" aria-label="Редактор миссий Космос на связи">
+      <header class="editor-header">
+        <a class="editor-brand" href="./" aria-label="Открыть игру">
+          <img src="./assets/nodes/logo.svg" alt="Бюро 1440" />
+          <span>РЕДАКТОР МИССИЙ</span>
+        </a>
+        <nav class="editor-actions" aria-label="Файл и история">
+          <button type="button" data-action="save-project" class="is-primary">СОХРАНИТЬ ИЗМЕНЕНИЯ</button>
+          <span class="editor-actions__divider" aria-hidden="true"></span>
+          <button type="button" data-action="undo" aria-label="Отменить">↶</button>
+          <button type="button" data-action="redo" aria-label="Повторить">↷</button>
+          <button type="button" data-action="validate">ПРОВЕРИТЬ</button>
+          <button type="button" data-action="reload-project">ПЕРЕЧИТАТЬ</button>
+          <button type="button" data-action="export-draft">ЭКСПОРТ</button>
+          <a href="./wording.html" target="_blank" rel="noopener">ТЕКСТЫ RU / EN ↗</a>
+          <a href="./earth.html" target="_blank" rel="noopener">ВИД ПЛАНЕТЫ ↗</a>
+          <a href="./object.html" target="_blank" rel="noopener">БАНК ОБЪЕКТОВ ↗</a>
+        </nav>
+        <div class="editor-file-state"><i id="dirty-dot"></i><span id="file-state">ЗАГРУЗКА</span></div>
+      </header>
+
+      <section class="editor-workspace">
+        <aside class="editor-panel mission-catalog" aria-label="Каталог миссий">
+          <div class="panel-heading">
+            <div><span>КАТАЛОГ</span><h1>МИССИИ</h1></div>
+            <button type="button" class="square-action" data-action="add-mission" aria-label="Добавить миссию">＋</button>
+          </div>
+          <div id="mission-list" class="mission-list"></div>
+          <div class="mission-text-settings">
+            <label for="mission-text-layout">ОПИСАНИЯ МИССИЙ И КАРТОЧЕК</label>
+            <select id="mission-text-layout" disabled>
+              <option value="adaptive">Основной — адаптивная ширина</option>
+              <optgroup label="Дополнительные варианты">
+                <option value="left">По левому краю</option>
+                <option value="justify">По ширине — с переносами</option>
+                <option value="justify-4">По ширине — переносы от 4 букв</option>
+              </optgroup>
+            </select>
+            <p>Выбери вид и нажми «Сохранить изменения»</p>
+            <div class="mission-text-comparison">
+              <a href="./" target="_blank" rel="noopener">Открой основной вариант ↗</a>
+              <a href="./?textLayout=left" target="_blank" rel="noopener">Сравни: по левому краю ↗</a>
+              <a href="./?textLayout=justify" target="_blank" rel="noopener">Сравни: по ширине ↗</a>
+              <a href="./?textLayout=justify-4" target="_blank" rel="noopener">Сравни: переносы от 4 букв ↗</a>
+            </div>
+          </div>
+          <div class="catalog-actions">
+            <button type="button" data-action="mission-up">ВЫШЕ</button>
+            <button type="button" data-action="mission-down">НИЖЕ</button>
+            <button type="button" data-action="duplicate-mission">ДУБЛИРОВАТЬ</button>
+            <button type="button" data-action="delete-mission" class="is-danger">УДАЛИТЬ</button>
+          </div>
+        </aside>
+
+        <section class="earth-editor" aria-label="Карта размещения">
+          <div class="preview-toolbar-row">
+            <div class="map-toolbar" role="toolbar" aria-label="Инструменты карты">
+              <button type="button" data-map-tool="navigate" class="is-active">НАВИГАЦИЯ</button>
+              <button type="button" data-map-tool="mission">ТОЧКА МИССИИ</button>
+              <button type="button" data-point-group="start">СТАРТОВЫЕ ТОЧКИ <b>0</b></button>
+              <button type="button" data-point-group="finish">ЗАВЕРШАЮЩИЕ ТОЧКИ <b>0</b></button>
+              <div id="point-group-menu" class="point-group-menu" hidden></div>
+            </div>
+            <div class="preview-resolution"><strong id="preview-resolution">1920 × 1080</strong><span>16:9 · РЕАЛЬНЫЙ UI-SHELL</span></div>
+          </div>
+          <div id="preview-host" class="preview-host">
+            <div id="preview-stage" class="preview-stage" data-earth-mask="frame">
+              <div id="editor-world" class="editor-world"></div>
+              <div class="preview-backdrop" aria-hidden="true"></div>
+              <div id="map-labels" class="map-labels" aria-hidden="true"></div>
+              <div id="preview-shell" class="preview-shell" data-header="visible" data-frame="visible" data-footer="visible" data-inventory="hidden" aria-hidden="true">
+                <div class="preview-frame"></div>
+                <div class="preview-header"><span>HEADER</span><b id="preview-state-label">MISSION_SELECT</b></div>
+                <div class="preview-footer"><span>FOOTER</span></div>
+                <div class="preview-inventory"><span>INVENTORY</span></div>
+              </div>
+              <div id="map-hint" class="map-hint">ЛКМ: X/Y · Alt+ЛКМ или ПКМ: Z · Shift+ЛКМ: камера · колесо: зум</div>
+            </div>
+          </div>
+          <div class="view-toolbar">
+            <label>РАКУРС ДЛЯ <select id="camera-state" aria-label="Состояние приложения"><option>CTA</option><option>ONBOARDING</option><option>MISSION_SELECT</option><option>MISSION_PLAY</option><option>END</option></select></label>
+            <div class="camera-axis-controls" role="group" aria-label="Точное вращение камеры по трём осям">
+              <label>X° <input id="camera-axis-x" data-camera-axis="0" type="number" step="0.1" value="0" /></label>
+              <label>Y° <input id="camera-axis-y" data-camera-axis="1" type="number" step="0.1" value="0" /></label>
+              <label>Z° <input id="camera-axis-z" data-camera-axis="2" type="number" step="0.1" value="0" /></label>
+            </div>
+            <div class="camera-target-controls" role="group" aria-label="Точное смещение камеры по трём осям">
+              <span>СДВИГ</span>
+              <label>X <input id="camera-target-x" data-camera-target="0" type="number" step="0.01" value="0" /></label>
+              <label>Y <input id="camera-target-y" data-camera-target="1" type="number" step="0.01" value="2.31" /></label>
+              <label>Z <input id="camera-target-z" data-camera-target="2" type="number" step="0.01" value="0" /></label>
+            </div>
+            <label>ЗУМ <input id="camera-distance" type="number" min="4" max="14" step="0.05" value="7.2" /></label>
+            <label>FOV° <input id="camera-fov" type="number" min="15" max="100" step="0.5" value="38" /></label>
+            <div class="earth-orbit-controls" role="group" aria-label="Ограничения игрового вращения Земли">
+              <span>ЛИМИТЫ ИГРОВОГО ВРАЩЕНИЯ</span>
+              <label>ЗАПАД° <input data-earth-limit="west" type="number" min="0" max="180" step="0.5" /></label>
+              <label>ВОСТОК° <input data-earth-limit="east" type="number" min="0" max="180" step="0.5" /></label>
+              <label>СЕВЕР° <input data-earth-limit="north" type="number" min="0" max="180" step="0.5" /></label>
+              <label>ЮГ° <input data-earth-limit="south" type="number" min="0" max="180" step="0.5" /></label>
+              <label class="earth-centering-toggle"><input id="earth-center-russia" type="checkbox" /> МЕСТО НАД ЗЕМЛЁЙ · МИССИЯ 2</label>
+              <label title="Максимальный сдвиг Земли вниз при вертикальном повороте во второй миссии">СДВИГ ВНИЗ, PX <input id="earth-centering-px" type="number" min="0" step="1" /></label>
+            </div>
+            <button type="button" data-action="capture-view">ЗАПОМНИТЬ РАКУРС</button>
+            <button type="button" data-action="capture-view-all" class="is-accent">СОХРАНИТЬ РАКУРС НА ВСЕ ЭКРАНЫ</button>
+            <button type="button" data-action="restore-view">ВЕРНУТЬ РАКУРС</button>
+          </div>
+        </section>
+
+        <aside class="editor-panel mission-inspector" aria-label="Настройки миссии">
+          <div class="panel-heading"><div><span>ПАРАМЕТРЫ</span><h2 id="inspector-title">МИССИЯ</h2></div></div>
+          <div id="inspector" class="inspector-scroll"></div>
+        </aside>
+      </section>
+
+      <section class="route-editor" aria-label="Конструктор маршрута">
+        <div class="route-palette-wrap">
+          <span class="route-label">ДОБАВИТЬ ОБЪЕКТ</span>
+          <div id="route-palette" class="route-palette"></div>
+        </div>
+        <div class="route-builder-wrap">
+          <div class="route-builder-heading"><span class="route-label">МАРШРУТЫ И РОЛИ</span><div id="route-counts" class="route-counts"></div></div>
+          <ol id="route-sequence" class="route-sequence"></ol>
+        </div>
+      </section>
+
+      <footer class="editor-statusbar">
+        <div id="validation-summary" class="validation-summary"></div>
+        <div id="draft-state">Локальный черновик ещё не создан</div>
+      </footer>
+      <div id="toast" class="editor-toast" role="status" aria-live="polite"></div>
+    </main>
+<script type="module" src="./editor.js?v=debug-exit-button-223"></script>
+  </body>
+</html>

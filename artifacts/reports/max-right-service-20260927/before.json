@@ -1,0 +1,99 @@
+{
+  "mode": "run",
+  "projectId": "003229b1-f32e-4951-9b82-249c4e0b7369",
+  "assignments": {
+    "SCREEN_LINE_UP": "ribbon-up",
+    "SCREEN_LINE_DOWN": "ribbon-up",
+    "SCREEN_LEFT": "video-wall-left",
+    "SCREEN_STELLA": "vk-stella",
+    "SCREEN_ARKA": "vk-arch",
+    "SCREEN_RIGHT": "max-wall-right"
+  },
+  "instances": [
+    {
+      "id": "ribbon-up",
+      "generation": "1ea0a134-9e2e-479c-bb63-f6c7fdabcd2f",
+      "status": "running",
+      "renderProfile": {
+        "width": 10240,
+        "height": 512,
+        "aspectWidth": 10240,
+        "aspectHeight": 512,
+        "lockAspect": true,
+        "minShortSide": 512
+      },
+      "outputs": {
+        "spout": true,
+        "ndi": false
+      }
+    },
+    {
+      "id": "video-wall-left",
+      "generation": "ec45a39e-8d2c-4ed1-833c-042c09fae30a",
+      "status": "running",
+      "renderProfile": {
+        "width": 3072,
+        "height": 1280,
+        "aspectWidth": 3072,
+        "aspectHeight": 1280,
+        "lockAspect": true,
+        "minShortSide": 1080
+      },
+      "outputs": {
+        "spout": true,
+        "ndi": false
+      }
+    },
+    {
+      "id": "vk-stella",
+      "generation": "92b809ee-a358-4655-81b2-b481fe3d74a4",
+      "status": "running",
+      "renderProfile": {
+        "width": 1080,
+        "height": 1920,
+        "aspectWidth": 1080,
+        "aspectHeight": 1920,
+        "lockAspect": true,
+        "minShortSide": 1080
+      },
+      "outputs": {
+        "spout": true,
+        "ndi": false
+      }
+    },
+    {
+      "id": "vk-arch",
+      "generation": "b5963b00-3084-49e9-9edd-35cb024c8843",
+      "status": "running",
+      "renderProfile": {
+        "width": 6656,
+        "height": 512,
+        "aspectWidth": 6656,
+        "aspectHeight": 512,
+        "lockAspect": true,
+        "minShortSide": 512
+      },
+      "outputs": {
+        "spout": true,
+        "ndi": false
+      }
+    },
+    {
+      "id": "max-wall-right",
+      "generation": "85a6d0cb-c710-4edb-a502-6b651b435c9a",
+      "status": "running",
+      "renderProfile": {
+        "width": 4096,
+        "height": 1280,
+        "aspectWidth": 4096,
+        "aspectHeight": 1280,
+        "lockAspect": true,
+        "minShortSide": 1080
+      },
+      "outputs": {
+        "spout": true,
+        "ndi": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "width": 4096,
+  "height": 2048,
+  "encoding": "water-bitset-lsb",
+  "origin": "north-west",
+  "data": "Earth_Surface_4K.bin",
+  "byteLength": 1048576,
+  "sha256": "0714d8ea0cc0de65dbdbca7b34ccc7a20e7a68c1ee04cb738e15ae0b72c457d4",
+  "source": "Earth_Specular_4K.webp",
+  "sourceSha256": "94616acf545127b0f7079352cf614d34949cb896b29f584ed3185158fdfb671d",
+  "rule": "Source red >= 128 is water; otherwise land. No dilation. Nearest pixel.",
+  "waterPixels": 5633298,
+  "landPixels": 2755310
+}

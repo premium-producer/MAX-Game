@@ -1,0 +1,278 @@
+[
+  {
+    "mode": "linear-test",
+    "complete": false,
+    "diagnostics": [
+      {
+        "rule": "coverage",
+        "path": "main",
+        "message": "Маршрут main: неполная цепочка или разрыв радиопокрытия"
+      }
+    ],
+    "placed": 4,
+    "runStatus": "disconnected",
+    "nodes": [
+      {
+        "id": 1,
+        "type": "terminal",
+        "latitude": 66.6379,
+        "longitude": 123.21086666666667,
+        "altitude": 0.08,
+        "droppedAt": 0
+      },
+      {
+        "id": 2,
+        "type": "satellite",
+        "latitude": 68.06099999999999,
+        "longitude": 91.58003333333335,
+        "altitude": 0.34,
+        "droppedAt": 0
+      },
+      {
+        "id": 3,
+        "type": "satellite",
+        "latitude": 69.4841,
+        "longitude": 59.949200000000005,
+        "altitude": 0.34,
+        "droppedAt": 0
+      },
+      {
+        "id": 4,
+        "type": "gateway",
+        "latitude": 70.9072,
+        "longitude": 28.318366666666677,
+        "altitude": 0.08,
+        "droppedAt": 0
+      },
+      {
+        "id": 5,
+        "type": "core",
+        "latitude": 72.3303,
+        "longitude": -3.3124666666666656,
+        "altitude": 0.08,
+        "droppedAt": 0
+      }
+    ],
+    "committed": [
+      {
+        "id": 1,
+        "type": "terminal",
+        "latitude": 66.6379,
+        "longitude": 123.21086666666667,
+        "altitude": 0.08,
+        "rotation": 0,
+        "droppedAt": 0
+      },
+      {
+        "id": 2,
+        "type": "satellite",
+        "latitude": 68.06099999999999,
+        "longitude": 91.58003333333335,
+        "altitude": 0.34,
+        "rotation": 0,
+        "droppedAt": 0
+      },
+      {
+        "id": 3,
+        "type": "satellite",
+        "latitude": 69.4841,
+        "longitude": 59.949200000000005,
+        "altitude": 0.34,
+        "rotation": 0,
+        "droppedAt": 0
+      },
+      {
+        "id": 4,
+        "type": "gateway",
+        "latitude": 70.9072,
+        "longitude": 28.318366666666677,
+        "altitude": 0.08,
+        "rotation": 0,
+        "droppedAt": 0
+      }
+    ]
+  },
+  {
+    "mode": "great-circle",
+    "complete": true,
+    "diagnostics": [],
+    "placed": 4,
+    "runStatus": "disconnected",
+    "nodes": [
+      {
+        "id": 1,
+        "type": "terminal",
+        "latitude": 72.00418935278628,
+        "longitude": 156.44032714881837,
+        "altitude": 0.08,
+        "droppedAt": 0
+      },
+      {
+        "id": 2,
+        "type": "satellite",
+        "latitude": 78.76534468110613,
+        "longitude": 159.88177274815882,
+        "altitude": 0.34,
+        "droppedAt": 0
+      },
+      {
+        "id": 3,
+        "type": "satellite",
+        "latitude": 85.3727228633261,
+        "longitude": 173.17208724352847,
+        "altitude": 0.34,
+        "droppedAt": 0
+      },
+      {
+        "id": 4,
+        "type": "gateway",
+        "latitude": 86.92880913019503,
+        "longitude": -63.543836909986446,
+        "altitude": 0.08,
+        "droppedAt": 0
+      },
+      {
+        "id": 5,
+        "type": "core",
+        "latitude": 80.49846953116264,
+        "longitude": -39.430507256994304,
+        "altitude": 0.08,
+        "droppedAt": 0
+      }
+    ],
+    "committed": [
+      {
+        "id": 1,
+        "type": "satellite",
+        "latitude": 78.76534468110613,
+        "longitude": 159.88177274815882,
+        "altitude": 0.34,
+        "rotation": 0,
+        "droppedAt": 0
+      },
+      {
+        "id": 2,
+        "type": "satellite",
+        "latitude": 85.3727228633261,
+        "longitude": 173.17208724352847,
+        "altitude": 0.34,
+        "rotation": 0,
+        "droppedAt": 0
+      },
+      {
+        "id": 3,
+        "type": "gateway",
+        "latitude": 82,
+        "longitude": -63.543836909986446,
+        "altitude": 0.08,
+        "rotation": 0,
+        "droppedAt": 0
+      },
+      {
+        "id": 4,
+        "type": "core",
+        "latitude": 80.49846953116264,
+        "longitude": -39.430507256994304,
+        "altitude": 0.08,
+        "rotation": 0,
+        "droppedAt": 0
+      }
+    ]
+  },
+  {
+    "mode": "great-circle-land",
+    "complete": true,
+    "diagnostics": [],
+    "placed": 5,
+    "runStatus": "complete",
+    "nodes": [
+      {
+        "id": 1,
+        "type": "terminal",
+        "latitude": 71.03826352649722,
+        "longitude": 156.18150810371586,
+        "altitude": 0.08,
+        "droppedAt": 0
+      },
+      {
+        "id": 2,
+        "type": "satellite",
+        "latitude": 78.76534468110613,
+        "longitude": 159.88177274815882,
+        "altitude": 0.34,
+        "droppedAt": 0
+      },
+      {
+        "id": 3,
+        "type": "satellite",
+        "latitude": 85.3727228633261,
+        "longitude": 173.17208724352847,
+        "altitude": 0.34,
+        "droppedAt": 0
+      },
+      {
+        "id": 4,
+        "type": "gateway",
+        "latitude": 86.92880913019503,
+        "longitude": -63.543836909986446,
+        "altitude": 0.08,
+        "droppedAt": 0
+      },
+      {
+        "id": 5,
+        "type": "core",
+        "latitude": 80.49846953116264,
+        "longitude": -39.430507256994304,
+        "altitude": 0.08,
+        "droppedAt": 0
+      }
+    ],
+    "committed": [
+      {
+        "id": 1,
+        "type": "terminal",
+        "latitude": 71.03826352649722,
+        "longitude": 156.18150810371586,
+        "altitude": 0.08,
+        "rotation": 0,
+        "droppedAt": 0
+      },
+      {
+        "id": 2,
+        "type": "satellite",
+        "latitude": 78.76534468110613,
+        "longitude": 159.88177274815882,
+        "altitude": 0.34,
+        "rotation": 0,
+        "droppedAt": 0
+      },
+      {
+        "id": 3,
+        "type": "satellite",
+        "latitude": 85.3727228633261,
+        "longitude": 173.17208724352847,
+        "altitude": 0.34,
+        "rotation": 0,
+        "droppedAt": 0
+      },
+      {
+        "id": 4,
+        "type": "gateway",
+        "latitude": 82,
+        "longitude": -63.543836909986446,
+        "altitude": 0.08,
+        "rotation": 0,
+        "droppedAt": 0
+      },
+      {
+        "id": 5,
+        "type": "core",
+        "latitude": 80.49846953116264,
+        "longitude": -39.430507256994304,
+        "altitude": 0.08,
+        "rotation": 0,
+        "droppedAt": 0
+      }
+    ]
+  }
+]

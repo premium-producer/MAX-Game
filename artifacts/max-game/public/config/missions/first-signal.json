@@ -1,0 +1,163 @@
+{
+  "$schema": "../mission-v2.schema.json",
+  "number": 1,
+  "id": "first-signal",
+  "name": "ЕСТЬ ПИНГ!",
+  "description": "На удалённом исследовательском посту установлен новый абонентский терминал. Расположи элементы сети спутниковой связи и задай соединения между ними. Команде необходимо впервые вывести объект в интернет через спутниковую инфраструктуру.\nДля этого нужно определить роль каждого элемента и правильно выстроить маршрут сигнала.\nПосле сборки маршрута система проведёт проверку соединения. Если все устройства расположены в верной последовательности, сигнал пройдёт от терминала через спутник и наземную станцию к центру обработки данных, а пост получит стабильный доступ в интернет.\n\nЗадача: определи верную последовательность элементов сети и запусти сигнал.",
+  "summary": "Построй маршрут через спутниковую сеть, чтобы подключить абонентский терминал к интернету",
+  "level": "БАЗОВЫЙ",
+  "timeSeconds": 120,
+  "mapPosition": {
+    "latitude": 57.4897,
+    "longitude": 42.6061
+  },
+  "endpoints": {
+    "A": {
+      "label": "",
+      "icon": "point-a",
+      "roles": [
+        "start"
+      ],
+      "latitude": 58.3901,
+      "longitude": 41.423
+    },
+    "B": {
+      "label": "",
+      "icon": "point-b",
+      "roles": [
+        "finish"
+      ],
+      "latitude": 56.158,
+      "longitude": 98.6752
+    }
+  },
+  "connectEndpointsOnComplete": true,
+  "objectives": [
+    {
+      "id": "place-terminal",
+      "label": "размести абонентский терминал",
+      "condition": {
+        "type": "placed",
+        "object": "terminal",
+        "count": 1
+      }
+    },
+    {
+      "id": "terminal-to-satellite",
+      "label": "соедини терминал со спутником",
+      "condition": {
+        "type": "segment",
+        "path": "main",
+        "from": 1,
+        "to": 2,
+        "anchor": "start"
+      }
+    },
+    {
+      "id": "satellite-to-gateway",
+      "label": "подключи шлюзовую станцию",
+      "condition": {
+        "type": "segment",
+        "path": "main",
+        "from": 2,
+        "to": 3,
+        "anchor": "start"
+      }
+    },
+    {
+      "id": "core-to-internet",
+      "label": "выведи сигнал в интернет",
+      "condition": {
+        "type": "segment",
+        "path": "main",
+        "from": 4,
+        "to": 5,
+        "anchor": "start"
+      }
+    }
+  ],
+  "successText": "Абонентский терминал подключён к интернету",
+  "unlock": {
+    "requiresCompleted": []
+  },
+  "equipmentSet": "set-1",
+  "topology": {
+    "paths": [
+      {
+        "id": "main",
+        "from": "A",
+        "to": "B",
+        "steps": [
+          {
+            "role": "terminal-1",
+            "type": "terminal"
+          },
+          {
+            "role": "satellite-2",
+            "type": "satellite"
+          },
+          {
+            "role": "gateway-3",
+            "type": "gateway"
+          },
+          {
+            "role": "core-4",
+            "type": "core"
+          },
+          {
+            "role": "internet-5",
+            "type": "internet"
+          }
+        ],
+        "connection": {
+          "policy": "geographicCorridor",
+          "corridorWidth": 2,
+          "ambiguityEpsilon": 0.0001
+        },
+        "endpointSelection": {
+          "from": "specific",
+          "to": "specific"
+        },
+        "endpointSignals": {
+          "from": "nearest",
+          "to": "nearest"
+        }
+      }
+    ]
+  },
+  "completion": {
+    "type": "allPaths"
+  },
+  "feedback": {
+    "invalid": "neutral"
+  },
+  "feedbackEvents": {
+    "success": [
+      {
+        "id": "mission-complete",
+        "eyebrow": "МИССИЯ № 1 ВЫПОЛНЕНА",
+        "title": "МИССИЯ ВЫПОЛНЕНА",
+        "message": "Абонентский терминал подключён к интернету",
+        "condition": {
+          "type": "missionComplete"
+        },
+        "action": "complete"
+      }
+    ],
+    "error": [
+      {
+        "id": "invalid-connection",
+        "eyebrow": "ОШИБКА СОЕДИНЕНИЯ",
+        "title": "СВЯЗЬ НЕ УСТАНОВЛЕНА",
+        "message": "Нарушена последовательность элементов",
+        "condition": {
+          "type": "invalidConnection"
+        },
+        "negativeConnections": "invalid"
+      }
+    ]
+  },
+  "objectSettings": {},
+  "engineVersion": 2,
+  "_revision": "e45be3a1-7109-4e6e-9c04-9b03bf3c3874"
+}

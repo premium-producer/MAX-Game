@@ -1,0 +1,193 @@
+{
+  "files": {
+    "app.py": "bf2393a4224d659c27d8597b17b72c7c4e2dbc53458cf4b32e6814b68d27058a",
+    "asset_api.py": "bd48860ec82a70018394642348eb344fe5dfb196ca8f8afe45cc9bb10665b413",
+    "asset_models.py": "ba87faabfb0559a836f439ec02f696da076549e27cc59eebd1c3e84f878fa775",
+    "asset_provider.py": "a8a8928249c332e2f9b4917c3bedec6016d95d6f803c112b44351b3eb14ff104",
+    "asset_store.py": "80ba9b99a0cffff02cb6febfe64afe3fc9a5321319a5e54c7d352dd02e6261f1",
+    "asset_workflows.py": "5d41f7fe5cf15a89cb4b31ba9c46033a78c08219508d39f3a6566f4f0e8a406b",
+    "early_result_api.py": "968db6f2f7d1a9dae1f21d910d4f3f62846e56dd50c2d79ef4e350004b531089",
+    "execution-client.mjs": "618d0fd1a94ae1d0080ca666cbe5c98ac12287b9ac4564bd2f269b43f3d4ae31",
+    "index.html": "40a72c04dcb55d063ae04d9a9f294ed537638a8a412ae2ff4abbfaf640b3d287",
+    "max-launch-renderer.mjs": "e760a3db2c627e2bf0e1853ab2fad9289c6db88a34c72084b5eb107a8ecad6cf",
+    "max_api.py": "dc2a77fd45568570dc8a104ac985d674f581565603a0af14193811f79c6024ca",
+    "max_launch_models.py": "3ed5e26cee60d5a1c06c893ea8e6ad21f13cb571b81eec0b1c373709d27ed813",
+    "max_launch_store.py": "94141bce7ec5537d68d6475bec0e04ec8f2fed45d033766dec9cdb1ea64933d7",
+    "max_launch_workflows.py": "4b6c549e65dfdc866490aa4863e702a391a2b4f20a6caba17d603a39bb34b51a",
+    "panel.js": "660a1d15acad5351feb8c5570b956fec55ec8e8b0a7ec5e740b0ed25c885879b",
+    "registry.py": "4797e2a560d36a1559f349c15b6973009e1e17c51d62ebb911e0fd0a8011a43d",
+    "result.css": "03ca556e1c8e4235cd7cd0856a7d886b7211f5eb2f54c6959bdbcccba32dd2b1",
+    "result.html": "29bee7857b284f6de8ded3b8444ff3c3a9cb4749b82f9bcd688a6a5d3dc989ba",
+    "result.js": "9aa0ef4624237bb40bb5c501bf6a62dd3d8116e58d8fac2079586b0c99e7cb3a",
+    "runner-coordinator.mjs": "833136cbc06be28cd2ea1775e830096c6cdd80f6035ff2f640952cf49352397f",
+    "runner-render-port.mjs": "f699158c07eb580947f3a5356239a4a9556a414f2cfd3ba85149d4288908afd8",
+    "runner.css": "1c351522e2a275ce8e65f76dd9fd025a8e5c7b8aeac7d2883cbd97faae5f851d",
+    "runner.html": "2c247028a9470fde0cae87fcb35fb75a63ec33fac6e63a49c5402baeff29f8e0",
+    "runner.js": "df5ca0f72138aaa30b95e55a42e68cd3010c16bd73e7f80d738ca248c1129988",
+    "configs/max-launch.json": "7795682acb6a676dfd871022af03b3d3071eb3e7956897fef7082f1ae45842df"
+  },
+  "baseline": {
+    "app.py": "c33f61c8f997757c3b7482c259b89d22f4a98db7a03f068cc6c49c487cde512b",
+    "asset_api.py": null,
+    "asset_models.py": null,
+    "asset_provider.py": null,
+    "asset_store.py": null,
+    "asset_workflows.py": null,
+    "early_result_api.py": "2886dfe62d98a2993a5dfb9c99066d2f46652728002b05620c86a9e7bed75b7d",
+    "execution-client.mjs": "8e6926de43c5131ff24e1f0121511769757b5df285e5b4cd7aa19454234a7b09",
+    "index.html": "89095d851bc286e86a50d9448e025c147d29dd5e4930b2d91c5ede1db75312b1",
+    "max-launch-renderer.mjs": "c2a7dfb3c77fd1d5618462e3e00fbca0a4623afa78e63af1584d44796d0a349e",
+    "max_api.py": "e99009d174c06e3c056c1fcd98487c2462c6e8517867e4f41c8cf3c4d9f2c65c",
+    "max_launch_models.py": "d7b3b7258614ca7bc9afe0546f8c2f7261a447b3dab126d62e602e9b23b56c95",
+    "max_launch_store.py": "58e2ee9c2f20e161c0493e50f9939efcc7ae906e69adf26e27a391635da92db6",
+    "max_launch_workflows.py": "1e394b1ebfb90d84aea635c79aeca10ace87d27bea78357e314272c9acbba0f1",
+    "panel.js": "2a55457d561d8ec675c3afbe25132183b9289d993c114c036c6f1fb6f58d9b4e",
+    "registry.py": "31b53a2d95425ced4959ccc2215c43c1966f5bc20cc4cdaea12c647c5a148552",
+    "result.css": "43d6953236a1333d0dc5fb34d72a77ad9c6ec2f90304ff189cb535867aa27100",
+    "result.html": "901199f3f9958d0616230a12bbc07209d6e849be457b6540b5a3c1b7446cc9a8",
+    "result.js": "f954264f4507b7518f037de1d5016c76ea66e4466e1f3e6b4047bf270bedca7c",
+    "runner-coordinator.mjs": null,
+    "runner-render-port.mjs": null,
+    "runner.css": null,
+    "runner.html": null,
+    "runner.js": null,
+    "configs/max-launch.json": "b4dd0da0fae1634455793d54858c134da0356a3d93a1f8143b452a4392c73b48"
+  },
+  "lifecycle": [
+    {
+      "action": "stop",
+      "returncode": 0,
+      "stdout": "{\"status\": \"stopped\", \"pid\": 38168, \"port\": 8782, \"databasesRetained\": true}\n",
+      "stderr": ""
+    },
+    {
+      "action": "start",
+      "returncode": 0,
+      "stdout": "{\"status\": \"ready\", \"pid\": 81908, \"port\": 8782, \"bootId\": \"9a331b73-1525-43f0-82c4-7e802f4cd7ac\", \"instanceKey\": \"3e0d0d7ce09c82e8baced010ba4b48b7bb9e6e3ff2e4cef8590336ea940342b3\"}\n",
+      "stderr": ""
+    },
+    {
+      "action": "check",
+      "returncode": 0,
+      "stdout": "{\"status\": \"ready\", \"pid\": 81908, \"port\": 8782, \"bootId\": \"9a331b73-1525-43f0-82c4-7e802f4cd7ac\", \"instanceKey\": \"3e0d0d7ce09c82e8baced010ba4b48b7bb9e6e3ff2e4cef8590336ea940342b3\"}\n",
+      "stderr": ""
+    }
+  ],
+  "beforeHealth": {
+    "service": "stand-local-master",
+    "ready": true,
+    "bootId": "3850c014-60d3-4967-98a3-4a055db97a20",
+    "questions": [
+      {
+        "text": "Что вам интереснее?",
+        "options": [
+          "Спорт",
+          "Кино",
+          "Технологии"
+        ]
+      },
+      {
+        "text": "Какой формат предпочитаете?",
+        "options": [
+          "Короткие видео",
+          "Большие истории",
+          "Прямой эфир"
+        ]
+      },
+      {
+        "text": "Какое настроение выберем?",
+        "options": [
+          "Энергичное",
+          "Спокойное",
+          "Неожиданное"
+        ]
+      }
+    ],
+    "applicationVersion": "local-master-v1",
+    "processId": 38168,
+    "instanceKey": "3e0d0d7ce09c82e8baced010ba4b48b7bb9e6e3ff2e4cef8590336ea940342b3",
+    "stellaVkProtocol": "stella-vk-v1",
+    "stellaVkArcProtocol": "arc-tags-v1",
+    "discoveryCycleProtocol": "discovery-cycle-v1",
+    "stellaVkEarlyPlanProtocol": "stella-early-plan-v1",
+    "localResultProtocol": "local-result-v1",
+    "maxProtocol": "technical-max-v1",
+    "maxQuizProtocol": "stella-max-v1"
+  },
+  "backup": "F:\\project\\VK_DigitalProducts_Stand\\artifacts\\workspace\\backups\\integration-wave4-20261004-140909",
+  "integrity": {
+    "master.sqlite": "ok",
+    "registry.sqlite": "ok"
+  },
+  "afterHealth": {
+    "service": "stand-local-master",
+    "ready": true,
+    "bootId": "9a331b73-1525-43f0-82c4-7e802f4cd7ac",
+    "questions": [
+      {
+        "text": "Что вам интереснее?",
+        "options": [
+          "Спорт",
+          "Кино",
+          "Технологии"
+        ]
+      },
+      {
+        "text": "Какой формат предпочитаете?",
+        "options": [
+          "Короткие видео",
+          "Большие истории",
+          "Прямой эфир"
+        ]
+      },
+      {
+        "text": "Какое настроение выберем?",
+        "options": [
+          "Энергичное",
+          "Спокойное",
+          "Неожиданное"
+        ]
+      }
+    ],
+    "applicationVersion": "local-master-v1",
+    "processId": 81908,
+    "instanceKey": "3e0d0d7ce09c82e8baced010ba4b48b7bb9e6e3ff2e4cef8590336ea940342b3",
+    "stellaVkProtocol": "stella-vk-v1",
+    "stellaVkArcProtocol": "arc-tags-v1",
+    "discoveryCycleProtocol": "discovery-cycle-v1",
+    "stellaVkEarlyPlanProtocol": "stella-early-plan-v1",
+    "localResultProtocol": "local-result-v1",
+    "maxProtocol": "technical-max-v1",
+    "maxQuizProtocol": "stella-max-v1"
+  },
+  "preservedRows": {
+    "sessions": 20,
+    "admissions": 20,
+    "stations": 1,
+    "content_packages": 16,
+    "execution_states": 23,
+    "wall_entries": 9,
+    "wall_item_arrivals": 0,
+    "max_world": 1,
+    "max_assignments": 1,
+    "max_command_receipts": 5
+  },
+  "staticChecks": {
+    "index.html": "SHA/cache PASS",
+    "runner.html": "SHA/cache PASS",
+    "runner.js": "SHA/cache PASS",
+    "runner.css": "SHA/cache PASS",
+    "runner-coordinator.mjs": "SHA/cache PASS",
+    "runner-render-port.mjs": "SHA/cache PASS",
+    "execution-client.mjs": "SHA/cache PASS",
+    "max-launch-renderer.mjs": "SHA/cache PASS",
+    "result.js": "SHA/cache PASS",
+    "result.css": "SHA/cache PASS",
+    "panel.js": "SHA/cache PASS"
+  },
+  "assetTables": {
+    "asset_resources": 0,
+    "asset_commands": 0
+  },
+  "status": "applied-and-verified"
+}

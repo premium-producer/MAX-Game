@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "missions.schema.json",
+  "title": "X-SPUTNIK mission catalog",
+  "type": "object",
+  "required": ["schemaVersion", "missions"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "missionSelectObjects": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/missionSelectObject" }
+    },
+    "objectSettings": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "terminal": { "$ref": "#/$defs/nodeSettings" },
+        "satellite": { "$ref": "#/$defs/satelliteSettings" },
+        "gateway": { "$ref": "#/$defs/nodeSettings" },
+        "core": { "$ref": "#/$defs/nodeSettings" },
+        "internet": { "$ref": "#/$defs/nodeSettings" },
+        "endpoint:A": { "$ref": "#/$defs/nodeSettings" },
+        "endpoint:B": { "$ref": "#/$defs/nodeSettings" }
+      }
+    },
+    "schemaVersion": { "const": 1 },
+    "missions": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/mission" } }
+  },
+  "$defs": {
+    "missionSelectObject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "icon", "latitude", "longitude", "altitude", "size", "signalRadius", "signalMode", "successWhen"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^(?!(?:__proto__|constructor|prototype)$)[a-zA-Z0-9_-]+$" },
+        "kind": { "const": "orbital-signal" },
+        "icon": { "enum": ["satellite"] },
+        "latitude": { "type": "number", "minimum": -82, "maximum": 82 },
+        "longitude": { "type": "number", "minimum": -180, "maximum": 180 },
+        "altitude": { "type": "number", "exclusiveMinimum": 0, "maximum": 3 },
+        "size": { "type": "number", "exclusiveMinimum": 0 },
+        "signalRadius": { "type": "number", "exclusiveMinimum": 0 },
+        "signalMode": { "const": "always" },
+        "successWhen": { "const": "all-missions-completed" }
+      }
+    },
+    "nodeSettings": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "size": { "type": "number", "exclusiveMinimum": 0, "description": "Множитель размера маркера, ножки и платформы. 1 — исходный размер. Не изменяет радиус сигнала." },
+        "signalRadius": { "type": "number", "exclusiveMinimum": 0, "description": "Радиус покрытия в единицах 3D-сцены; радиус Земли равен 3." }
+      }
+    },
+    "satelliteSettings": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "size": { "type": "number", "exclusiveMinimum": 0 },
+        "signalRadius": { "type": "number", "exclusiveMinimum": 0, "description": "Значение для отсутствующих границ высотной зависимости." },
+        "radiusAtMinAltitude": { "type": "number", "exclusiveMinimum": 0, "description": "Радиус сигнала на минимальной высоте 0.34." },
+        "radiusAtMaxAltitude": { "type": "number", "exclusiveMinimum": 0, "description": "Радиус сигнала на максимальной высоте 1.4. Между границами используется линейная интерполяция." }
+      }
+    },
+    "mission": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["number", "id", "name", "description", "timeSeconds", "mapPosition", "endpoints", "connectEndpointsOnComplete", "route", "objectives", "successText", "unlock"],
+      "properties": {
+        "number": { "type": "integer", "minimum": 1 },
+        "id": { "type": "string", "minLength": 1 },
+        "name": { "type": "string", "minLength": 1 },
+        "description": { "type": "string" },
+        "timeSeconds": { "type": "integer", "minimum": 1 },
+        "mapPosition": { "$ref": "#/$defs/mapPosition" },
+        "endpoints": {
+          "type": "object",
+          "required": ["A", "B"],
+          "additionalProperties": false,
+          "properties": { "A": { "$ref": "#/$defs/endpoint" }, "B": { "$ref": "#/$defs/endpoint" } }
+        },
+        "connectEndpointsOnComplete": { "type": "boolean" },
+        "route": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/objectType" } },
+        "objectives": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/objective" } },
+        "successText": { "type": "string", "minLength": 1 },
+        "unlock": {
+          "type": "object",
+          "required": ["requiresCompleted"],
+          "additionalProperties": false,
+          "properties": { "requiresCompleted": { "type": "array", "items": { "type": "integer", "minimum": 1 }, "uniqueItems": true } }
+        }
+      }
+    },
+    "objectType": { "enum": ["terminal", "satellite", "gateway", "core", "internet"] },
+    "mapPosition": {
+      "type": "object",
+      "required": ["latitude", "longitude"],
+      "additionalProperties": false,
+      "properties": {
+        "latitude": { "type": "number", "minimum": -82, "maximum": 82 },
+        "longitude": { "type": "number", "minimum": -180, "maximum": 180 }
+      }
+    },
+    "endpoint": {
+      "type": "object",
+      "required": ["label", "latitude", "longitude"],
+      "additionalProperties": false,
+      "properties": {
+        "label": { "type": "string", "minLength": 1 },
+        "latitude": { "type": "number", "minimum": -82, "maximum": 82 },
+        "longitude": { "type": "number", "minimum": -180, "maximum": 180 }
+      }
+    },
+    "objective": {
+      "type": "object",
+      "required": ["id", "label", "condition"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "label": { "type": "string", "minLength": 1 },
+        "condition": { "$ref": "#/$defs/condition" }
+      }
+    },
+    "condition": {
+      "oneOf": [
+        { "type": "object", "required": ["type", "object"], "additionalProperties": false, "properties": { "type": { "const": "placed" }, "object": { "$ref": "#/$defs/objectType" }, "count": { "type": "integer", "minimum": 1 } } },
+        { "type": "object", "required": ["type", "first", "second"], "additionalProperties": false, "properties": { "type": { "const": "adjacent" }, "first": { "$ref": "#/$defs/objectType" }, "second": { "$ref": "#/$defs/objectType" }, "count": { "type": "integer", "minimum": 1 } } },
+        { "type": "object", "required": ["type", "sequence"], "additionalProperties": false, "properties": { "type": { "const": "connectedSequence" }, "sequence": { "type": "array", "minItems": 2, "items": { "enum": ["terminal", "satellite", "gateway", "core", "internet", "endpoint:A", "endpoint:B"] }, "description": "Соединённая цепочка минимум из двух объектов. endpoint:A только в начале, endpoint:B только в конце закрепляют цепочку за краем маршрута." } } },
+        { "type": "object", "required": ["type"], "additionalProperties": false, "properties": { "type": { "const": "allPlaced" } } },
+        { "type": "object", "required": ["type"], "additionalProperties": false, "properties": { "type": { "const": "routeCorrect" } } },
+        { "type": "object", "required": ["type"], "additionalProperties": false, "properties": { "type": { "const": "networkConnected" } } }
+      ]
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "url": "http://localhost:8770/max-game/webgl-v5/?backend=local&layout=wall",
+  "profile": "webgl-bfm-v5",
+  "checks": [
+    {
+      "file": "app.js",
+      "status": 200,
+      "sha256": "c7eb40923d05db410cea49a00f16766c50193c8886c3f1bc0009b2223ea34fbe"
+    },
+    {
+      "file": "index.html",
+      "status": 200,
+      "sha256": "70f6f92c97c05be0f8897bf83912a37077ce022179d2ef07860c9a1cd61a8bf1"
+    },
+    {
+      "file": "v5.css",
+      "status": 200,
+      "sha256": "62e743fa236d327a78accb16929945b7566dcd00fef956af54173def18dcf439"
+    },
+    {
+      "file": "journey.css",
+      "status": 200,
+      "sha256": "84043200dca1248646a296eda2477ff464cd4a091aa25f348aa7a1ba180c8721"
+    },
+    {
+      "file": "journey-guided.css",
+      "status": 200,
+      "sha256": "a03281b011ccfc772db966a831c54664fbdf6d893a1c5c7a0438d713f3c31350"
+    },
+    {
+      "file": "journey-guided-line.css",
+      "status": 200,
+      "sha256": "dd227fa968c1826603f10a527777fce1d4cb462b67d394522430637b91900d45"
+    },
+    {
+      "file": "journey-guided-reveal.css",
+      "status": 200,
+      "sha256": "c58bb33399c8e8dd878249f13e3f50e3b94fbdccab51f8a28a0e45466faa0901"
+    }
+  ],
+  "browser": "BLOCKED_AUTO_REVIEW",
+  "gpu": "NOT_CHECKED",
+  "cpu": {
+    "passed": 30,
+    "failed": 0
+  }
+}

@@ -1,0 +1,12 @@
+import fs from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+const base=process.argv[2];
+if(!base?.startsWith('https://'))throw Error('Provide HTTPS release URL');
+const manifest=await fetch(new URL('release.json',base)).then(r=>{if(!r.ok)throw Error(r.status);return r.json();});
+const queue=Object.entries(manifest.files),errors=[];
+let checked=0;
+await Promise.all(Array.from({length:4},async()=>{while(queue.length){const [name,digest]=queue.shift();const response=await fetch(new URL(name,base));const bytes=Buffer.from(await response.arrayBuffer());if(!response.ok||createHash('sha256').update(bytes).digest('hex')!==digest)errors.push(name);checked++;}}));
+const result={url:base,release:manifest.release,checked,errors,checkedAt:new Date().toISOString()};
+if(process.argv[3])await fs.writeFile(process.argv[3],JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify(result));
+if(errors.length)process.exitCode=1;

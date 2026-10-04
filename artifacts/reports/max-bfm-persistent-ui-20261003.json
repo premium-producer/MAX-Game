@@ -1,0 +1,22 @@
+{
+  "at": "2026-10-03T08:57:47.825Z",
+  "url": "http://localhost:8770/max-game/bfm-design/?backend=local&layout=wall",
+  "css": {
+    "status": 200,
+    "sourceSha": "449cfd43e526265f603cfc38af10de9dd6a4e3b5ca43bbe8844fbf2b7573920a",
+    "runtimeSha": "449cfd43e526265f603cfc38af10de9dd6a4e3b5ca43bbe8844fbf2b7573920a",
+    "httpSha": "449cfd43e526265f603cfc38af10de9dd6a4e3b5ca43bbe8844fbf2b7573920a",
+    "allMatch": true
+  },
+  "checks": {
+    "cssParser": "PASS esbuild",
+    "transitionCpuTests": "PASS 3/3",
+    "duplicateGuard": "PASS"
+  },
+  "browser": {
+    "phase": "finish",
+    "permanentPanelsVisible": true,
+    "screenshot": "max-bfm-persistent-ui-20261003.jpg"
+  },
+  "pending": "Native transition visual regression: restart authorization requested; no reset performed"
+}

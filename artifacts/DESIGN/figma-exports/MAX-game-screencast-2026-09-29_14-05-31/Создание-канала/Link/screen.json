@@ -1,0 +1,173 @@
+{
+  "id": "2299:100201",
+  "name": "Link",
+  "type": "FRAME",
+  "parent": "2299:100200",
+  "bounds": {
+    "x": 41917,
+    "y": -2836,
+    "width": 227,
+    "height": 96
+  },
+  "visible": true,
+  "fontSize": 0,
+  "hasImage": false,
+  "task": "blogger.channel",
+  "confidence": "high",
+  "reviewed": false,
+  "include": true,
+  "group": "2299:100200",
+  "groupName": "Создание канала",
+  "containerPath": [
+    {
+      "id": "2299:100200",
+      "name": "Создание канала",
+      "type": "SECTION"
+    }
+  ],
+  "sectionPath": [
+    {
+      "id": "2299:100200",
+      "name": "Создание канала",
+      "type": "SECTION"
+    }
+  ],
+  "sequence": null,
+  "detection": "structure",
+  "evidence": [
+    {
+      "task": "blogger.channel",
+      "source": "ancestor",
+      "id": "2299:100200",
+      "text": "Создание канала",
+      "weight": 99
+    }
+  ],
+  "ancestors": [
+    {
+      "id": "2299:100200",
+      "name": "Создание канала",
+      "type": "SECTION"
+    }
+  ],
+  "nearbyHeadings": [],
+  "contextRegion": null,
+  "warnings": [],
+  "order": 131,
+  "fingerprint": "[\"Link\",{\"x\":41917,\"y\":-2836,\"width\":227,\"height\":96},\"FRAME\",[[\"2299:100200\",\"Создание канала\",\"SECTION\"],[\"1:8\",\"Page 8\",\"PAGE\"]],\"content-v1\",1519087933,3991377915,4]",
+  "manualTask": false,
+  "title": "Link",
+  "exportStatus": "ok",
+  "texts": [
+    {
+      "id": "2299:100203",
+      "name": "Главная",
+      "type": "TEXT",
+      "parent": "2299:100201",
+      "bounds": {
+        "x": 42001,
+        "y": -2804,
+        "width": 103,
+        "height": 32
+      },
+      "text": "Главная",
+      "fontName": {
+        "family": "VK Sans Display",
+        "style": "Regular"
+      },
+      "fontSize": 28,
+      "segments": [
+        {
+          "characters": "Главная",
+          "start": 0,
+          "end": 7,
+          "fontSize": 28,
+          "fontName": {
+            "family": "VK Sans Display",
+            "style": "Regular"
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:21c744ff5ed9c23b0ada95fa73cb62789d4f8200/10030:253"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    }
+  ],
+  "layers": [
+    {
+      "id": "2299:100201",
+      "name": "Link",
+      "type": "FRAME",
+      "parent": "2299:100200",
+      "bounds": {
+        "x": 41917,
+        "y": -2836,
+        "width": 227,
+        "height": 96
+      }
+    },
+    {
+      "id": "2299:100202",
+      "name": "link_32",
+      "type": "INSTANCE",
+      "parent": "2299:100201",
+      "bounds": {
+        "x": 41957,
+        "y": -2804,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "I2299:100202;11994:449",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "2299:100202",
+      "bounds": {
+        "x": 41960.33203125,
+        "y": -2800.667236328125,
+        "width": 25.33333396911621,
+        "height": 25.33333396911621
+      }
+    },
+    {
+      "id": "2299:100203",
+      "name": "Главная",
+      "type": "TEXT",
+      "parent": "2299:100201",
+      "bounds": {
+        "x": 42001,
+        "y": -2804,
+        "width": 103,
+        "height": 32
+      }
+    }
+  ],
+  "imageHashes": [],
+  "notes": [],
+  "pngScale": 1,
+  "pngFile": "Создание-канала/Link/screen.png",
+  "previewFile": "Создание-канала/Link/preview.png",
+  "svgFile": "Создание-канала/Link/screen.svg",
+  "documentFile": "Создание-канала/Link/figma.json",
+  "images": []
+}

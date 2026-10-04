@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Тексты RU / EN — Космос на связи</title>
+  <link rel="stylesheet" href="./src/object-bank.css?v=contour-variants-153">
+  <link rel="stylesheet" href="./src/wording-editor.css?v=contour-variants-153">
+</head>
+<body>
+  <header class="bank-header">
+    <a class="brand" href="./"><img src="./assets/nodes/logo.svg" alt="Бюро 1440"><span>ТЕКСТЫ RU / EN</span></a>
+    <nav aria-label="Инструменты проекта"><a href="./editor.html">Миссии ↗</a><a href="./object.html">Банк объектов ↗</a><a href="./earth.html">Вид планеты ↗</a></nav>
+    <div class="save-actions"><button data-command="undo" disabled aria-label="Отменить">↶</button><button data-command="redo" disabled aria-label="Повторить">↷</button><button data-command="save" class="primary" disabled>СОХРАНИТЬ В ИГРУ</button></div>
+  </header>
+  <div class="bank-state"><span id="save-state" role="status">Загрузка проекта…</span><span id="draft-state"></span><button data-command="reload">Перечитать из игры</button><button data-command="export">Экспорт JSON</button></div>
+  <main class="bank-workspace">
+    <aside class="bank-sidebar">
+      <div class="list-heading"><h1>Словарь игры</h1><span id="entry-count"></span></div>
+      <label class="search-label"><span>Поиск фразы или ключа</span><input id="wording-search" type="search" placeholder="Поиск…"></label>
+      <label class="review-filter"><input id="review-only" type="checkbox"> Только требующие проверки EN</label>
+      <div id="wording-list" class="bank-list"></div>
+    </aside>
+    <section id="wording-detail" class="bank-detail"><p>Подключение к серверу сохранения…</p></section>
+  </main>
+  <div id="wording-notice" role="status" class="bank-notice" hidden></div>
+  <script type="module" src="./wording-editor.js?v=contour-variants-153"></script>
+</body>
+</html>

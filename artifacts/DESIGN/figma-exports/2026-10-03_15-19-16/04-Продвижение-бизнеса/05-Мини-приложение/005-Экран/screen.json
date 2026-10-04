@@ -1,0 +1,4588 @@
+{
+  "id": "296:19936",
+  "name": "Экран 5",
+  "title": "005-Экран",
+  "bounds": {
+    "x": 28595,
+    "y": 4761.5078125,
+    "width": 922,
+    "height": 590
+  },
+  "task": "unassigned",
+  "include": true,
+  "reviewed": false,
+  "confidence": "structure",
+  "group": "296:19486",
+  "groupName": "Продвижение бизнеса / Мини-приложение",
+  "containerPath": [
+    {
+      "id": "296:16452",
+      "name": "04-Продвижение бизнеса"
+    },
+    {
+      "id": "296:19486",
+      "name": "05-Мини-приложение"
+    }
+  ],
+  "ancestors": [],
+  "nearbyHeadings": [],
+  "evidence": [
+    {
+      "source": "autolayout",
+      "text": "Порядок children; названия фреймов не используются"
+    }
+  ],
+  "warnings": [],
+  "detection": "structure",
+  "order": 103,
+  "content": {
+    "kind": "screen",
+    "missionOrder": 4,
+    "missionNodeId": "296:16452",
+    "iconOrder": 5,
+    "iconNodeId": "296:19486",
+    "iconText": "Мини-приложение",
+    "iconTexts": [
+      {
+        "id": "296:19490",
+        "order": 1,
+        "text": "Мини-приложение",
+        "fontName": {
+          "family": "Inter",
+          "style": "Regular",
+          "variationSettings": {
+            "slnt": 0,
+            "wght": 400
+          }
+        },
+        "fontSize": 55,
+        "segments": [
+          {
+            "characters": "Мини-приложение",
+            "start": 0,
+            "end": 15,
+            "fontSize": 55,
+            "fontName": {
+              "family": "Inter",
+              "style": "Regular",
+              "variationSettings": {
+                "slnt": 0,
+                "wght": 400
+              }
+            },
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 0.07999999821186066,
+                  "g": 0.05999999865889549,
+                  "b": 0.11999999731779099
+                },
+                "boundVariables": {}
+              }
+            ],
+            "hyperlink": null
+          }
+        ],
+        "bounds": {
+          "x": 29185.5,
+          "y": 572,
+          "width": 424,
+          "height": 134
+        }
+      }
+    ],
+    "screenOrder": 5,
+    "screenNodeId": "296:19933",
+    "visualNodeId": "296:19936",
+    "helpNodeId": "296:20130"
+  },
+  "instruction": {
+    "blocks": [
+      {
+        "id": "296:20131",
+        "order": 1,
+        "text": "Миссия пройдена",
+        "fontName": {
+          "family": "Inter",
+          "style": "Regular",
+          "variationSettings": {
+            "slnt": 0,
+            "wght": 400
+          }
+        },
+        "fontSize": 32,
+        "segments": [
+          {
+            "characters": "Миссия пройдена",
+            "start": 0,
+            "end": 15,
+            "fontSize": 32,
+            "fontName": {
+              "family": "Inter",
+              "style": "Regular",
+              "variationSettings": {
+                "slnt": 0,
+                "wght": 400
+              }
+            },
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 0.07999999821186066,
+                  "g": 0.05999999865889549,
+                  "b": 0.11999999731779099
+                },
+                "boundVariables": {}
+              }
+            ],
+            "hyperlink": null
+          }
+        ],
+        "bounds": {
+          "x": 29680,
+          "y": 5056.5078125,
+          "width": 547,
+          "height": 39
+        }
+      }
+    ],
+    "text": "Миссия пройдена"
+  },
+  "watchNodeId": "296:19933",
+  "contextNodeIds": [
+    "296:19487",
+    "296:16453"
+  ],
+  "sequenceParents": [
+    "296:19491",
+    "296:19486",
+    "296:16454",
+    "296:16452"
+  ],
+  "fingerprint": "[\"[\\\"Канал · 01 · Канал бизнеса · Запуск канала\\\",{\\\"x\\\":28464,\\\"y\\\":4635.5078125,\\\"width\\\":1867,\\\"height\\\":881},\\\"FRAME\\\",[[\\\"296:19491\\\",\\\"задание миссии\\\",\\\"FRAME\\\"],[\\\"296:19486\\\",\\\"иконка_задание · Мини-приложение\\\",\\\"FRAME\\\"],[\\\"296:16454\\\",\\\"Миссия · возможности слева направо\\\",\\\"FRAME\\\"],[\\\"296:16452\\\",\\\"Продвижение бизнеса\\\",\\\"FRAME\\\"],[\\\"296:13218\\\",\\\"MAX аудит миссий\\\",\\\"FRAME\\\"],[\\\"296:13217\\\",\\\"DEV 2\\\",\\\"PAGE\\\"]],\\\"content-v1\\\",970768135,2531923609,253]\",[\"[\\\"игровая иконка\\\",{\\\"x\\\":29141.5,\\\"y\\\":376,\\\"width\\\":512,\\\"height\\\":374},\\\"FRAME\\\",[[\\\"296:19486\\\",\\\"иконка_задание · Мини-приложение\\\",\\\"FRAME\\\"],[\\\"296:16454\\\",\\\"Миссия · возможности слева направо\\\",\\\"FRAME\\\"],[\\\"296:16452\\\",\\\"Продвижение бизнеса\\\",\\\"FRAME\\\"],[\\\"296:13218\\\",\\\"MAX аудит миссий\\\",\\\"FRAME\\\"],[\\\"296:13217\\\",\\\"DEV 2\\\",\\\"PAGE\\\"]],\\\"content-v1\\\",2664989852,893126004,4]\",\"[\\\"Продвижение бизнеса\\\",{\\\"x\\\":21276,\\\"y\\\":206,\\\"width\\\":1600,\\\"height\\\":77},\\\"TEXT\\\",[[\\\"296:16452\\\",\\\"Продвижение бизнеса\\\",\\\"FRAME\\\"],[\\\"296:13218\\\",\\\"MAX аудит миссий\\\",\\\"FRAME\\\"],[\\\"296:13217\\\",\\\"DEV 2\\\",\\\"PAGE\\\"]],\\\"content-v1\\\",3411646121,1499354171,1]\"],[[\"296:19491\",[\"296:19492\",\"296:19720\",\"296:19727\",\"296:19734\",\"296:19933\"]],[\"296:19486\",[\"296:19487\",\"296:19491\"]],[\"296:16454\",[\"296:16455\",\"296:16647\",\"296:17342\",\"296:18549\",\"296:19486\"]],[\"296:16452\",[\"296:16453\",\"296:16454\"]]]]",
+  "exportStatus": "ok",
+  "texts": [
+    {
+      "id": "296:19946",
+      "name": "✏️ Time",
+      "type": "TEXT",
+      "parent": "296:19945",
+      "bounds": {
+        "x": 28950.4453125,
+        "y": 4797.75341796875,
+        "width": 37.2881965637207,
+        "height": 13.810441017150879
+      },
+      "text": "9:41",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Semibold"
+      },
+      "fontSize": 11.048357009887695,
+      "segments": [
+        {
+          "characters": "9:41",
+          "start": 0,
+          "end": 4,
+          "fontSize": 11.048357009887695,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Semibold"
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:98a49ab135b7e04f9b315bcf76744a1e773f06ec/207:1207"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:19965",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "296:19964",
+      "bounds": {
+        "x": 29010.8984375,
+        "y": 4848.037109375,
+        "width": 77,
+        "height": 16
+      },
+      "text": "Кофе в зернах",
+      "fontName": {
+        "family": "SF Pro",
+        "style": "Semibold",
+        "variationSettings": {
+          "opsz": 28,
+          "wdth": 100,
+          "wght": 590
+        }
+      },
+      "fontSize": 10.426081657409668,
+      "segments": [
+        {
+          "characters": "Кофе в зернах",
+          "start": 0,
+          "end": 13,
+          "fontSize": 10.426081657409668,
+          "fontName": {
+            "family": "SF Pro",
+            "style": "Semibold",
+            "variationSettings": {
+              "opsz": 28,
+              "wdth": 100,
+              "wght": 590
+            }
+          },
+          "fontWeight": 590,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:20048",
+      "name": "10%",
+      "type": "TEXT",
+      "parent": "296:20047",
+      "bounds": {
+        "x": 29021.67578125,
+        "y": 4893.2529296875,
+        "width": 12,
+        "height": 4
+      },
+      "text": "10%",
+      "fontName": {
+        "family": "Max Sans",
+        "style": "Medium"
+      },
+      "fontSize": 6.21064567565918,
+      "segments": [
+        {
+          "characters": "10%",
+          "start": 0,
+          "end": 3,
+          "fontSize": 6.21064567565918,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:20049",
+      "name": "3460 ₽",
+      "type": "TEXT",
+      "parent": "296:20045",
+      "bounds": {
+        "x": 28936.205078125,
+        "y": 4998.27880859375,
+        "width": 37,
+        "height": 7
+      },
+      "text": "3460 ₽",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Bold"
+      },
+      "fontSize": 10.310770988464355,
+      "segments": [
+        {
+          "characters": "3460 ₽",
+          "start": 0,
+          "end": 6,
+          "fontSize": 10.310770988464355,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Bold"
+          },
+          "fontWeight": 700,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:20050",
+      "name": "Арабика 1кг.",
+      "type": "TEXT",
+      "parent": "296:20045",
+      "bounds": {
+        "x": 28936.205078125,
+        "y": 5011.9814453125,
+        "width": 33,
+        "height": 4
+      },
+      "text": "Арабика 1кг.",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Regular"
+      },
+      "fontSize": 5.551952838897705,
+      "segments": [
+        {
+          "characters": "Арабика 1кг.",
+          "start": 0,
+          "end": 12,
+          "fontSize": 5.551952838897705,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Regular"
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:20051;8668:63669",
+      "name": "Start",
+      "type": "TEXT",
+      "parent": "296:20051",
+      "bounds": {
+        "x": 28971.095703125,
+        "y": 5028.8447265625,
+        "width": 35,
+        "height": 9
+      },
+      "text": "В корзину",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 6.940421104431152,
+      "segments": [
+        {
+          "characters": "В корзину",
+          "start": 0,
+          "end": 9,
+          "fontSize": 6.940421104431152,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:448adad6ddfd9665034350729ff05dca453c01b7/8298:18"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:20054",
+      "name": "5.00",
+      "type": "TEXT",
+      "parent": "296:20052",
+      "bounds": {
+        "x": 29028.517578125,
+        "y": 5000.49951171875,
+        "width": 10,
+        "height": 3
+      },
+      "text": "5.00",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 4.56540584564209,
+      "segments": [
+        {
+          "characters": "5.00",
+          "start": 0,
+          "end": 4,
+          "fontSize": 4.56540584564209,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:20055",
+      "name": "5 400 ₽",
+      "type": "TEXT",
+      "parent": "296:20045",
+      "bounds": {
+        "x": 28977.1640625,
+        "y": 4997.53515625,
+        "width": 19,
+        "height": 4
+      },
+      "text": "5 400 ₽",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Regular"
+      },
+      "fontSize": 5.213040828704834,
+      "segments": [
+        {
+          "characters": "5 400 ₽",
+          "start": 0,
+          "end": 7,
+          "fontSize": 5.213040828704834,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Regular"
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:20060",
+      "name": "3460 ₽",
+      "type": "TEXT",
+      "parent": "296:20056",
+      "bounds": {
+        "x": 29056.845703125,
+        "y": 4998.27880859375,
+        "width": 37,
+        "height": 7
+      },
+      "text": "3460 ₽",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Bold"
+      },
+      "fontSize": 10.310770988464355,
+      "segments": [
+        {
+          "characters": "3460 ₽",
+          "start": 0,
+          "end": 6,
+          "fontSize": 10.310770988464355,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Bold"
+          },
+          "fontWeight": 700,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:20061",
+      "name": "Кения 1кг.",
+      "type": "TEXT",
+      "parent": "296:20056",
+      "bounds": {
+        "x": 29056.845703125,
+        "y": 5011.9814453125,
+        "width": 26,
+        "height": 4
+      },
+      "text": "Кения 1кг.",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Regular"
+      },
+      "fontSize": 5.551952838897705,
+      "segments": [
+        {
+          "characters": "Кения 1кг.",
+          "start": 0,
+          "end": 10,
+          "fontSize": 5.551952838897705,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Regular"
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:20062;8668:63669",
+      "name": "Start",
+      "type": "TEXT",
+      "parent": "296:20062",
+      "bounds": {
+        "x": 29091.736328125,
+        "y": 5028.8447265625,
+        "width": 35,
+        "height": 9
+      },
+      "text": "В корзину",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 6.940421104431152,
+      "segments": [
+        {
+          "characters": "В корзину",
+          "start": 0,
+          "end": 9,
+          "fontSize": 6.940421104431152,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:448adad6ddfd9665034350729ff05dca453c01b7/8298:18"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:20065",
+      "name": "4.20",
+      "type": "TEXT",
+      "parent": "296:20063",
+      "bounds": {
+        "x": 29149.900390625,
+        "y": 5001.24560546875,
+        "width": 10,
+        "height": 3
+      },
+      "text": "4.20",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 4.56540584564209,
+      "segments": [
+        {
+          "characters": "4.20",
+          "start": 0,
+          "end": 4,
+          "fontSize": 4.56540584564209,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:20085",
+      "name": "10%",
+      "type": "TEXT",
+      "parent": "296:20084",
+      "bounds": {
+        "x": 29142.31640625,
+        "y": 5067.51318359375,
+        "width": 12,
+        "height": 4
+      },
+      "text": "10%",
+      "fontName": {
+        "family": "Max Sans",
+        "style": "Medium"
+      },
+      "fontSize": 6.21064567565918,
+      "segments": [
+        {
+          "characters": "10%",
+          "start": 0,
+          "end": 3,
+          "fontSize": 6.21064567565918,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:20086",
+      "name": "790 ₽",
+      "type": "TEXT",
+      "parent": "296:20082",
+      "bounds": {
+        "x": 29056.845703125,
+        "y": 5172.544921875,
+        "width": 30,
+        "height": 7
+      },
+      "text": "790 ₽",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Bold"
+      },
+      "fontSize": 10.310770988464355,
+      "segments": [
+        {
+          "characters": "790 ₽",
+          "start": 0,
+          "end": 5,
+          "fontSize": 10.310770988464355,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Bold"
+          },
+          "fontWeight": 700,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:20087",
+      "name": "Перу дрип-кофе",
+      "type": "TEXT",
+      "parent": "296:20082",
+      "bounds": {
+        "x": 29056.845703125,
+        "y": 5186.2470703125,
+        "width": 43,
+        "height": 4
+      },
+      "text": "Перу дрип-кофе",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Regular"
+      },
+      "fontSize": 5.551952838897705,
+      "segments": [
+        {
+          "characters": "Перу дрип-кофе",
+          "start": 0,
+          "end": 14,
+          "fontSize": 5.551952838897705,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Regular"
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:20088;8668:63669",
+      "name": "Start",
+      "type": "TEXT",
+      "parent": "296:20088",
+      "bounds": {
+        "x": 29091.736328125,
+        "y": 5203.1103515625,
+        "width": 35,
+        "height": 9
+      },
+      "text": "В корзину",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 6.940421104431152,
+      "segments": [
+        {
+          "characters": "В корзину",
+          "start": 0,
+          "end": 9,
+          "fontSize": 6.940421104431152,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:448adad6ddfd9665034350729ff05dca453c01b7/8298:18"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:20089",
+      "name": "860 ₽",
+      "type": "TEXT",
+      "parent": "296:20082",
+      "bounds": {
+        "x": 29098.546875,
+        "y": 5171.8046875,
+        "width": 15,
+        "height": 4
+      },
+      "text": "860 ₽",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Regular"
+      },
+      "fontSize": 5.213040828704834,
+      "segments": [
+        {
+          "characters": "860 ₽",
+          "start": 0,
+          "end": 5,
+          "fontSize": 5.213040828704834,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Regular"
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:20092",
+      "name": "4.45",
+      "type": "TEXT",
+      "parent": "296:20090",
+      "bounds": {
+        "x": 29149.900390625,
+        "y": 5175.51513671875,
+        "width": 10,
+        "height": 3
+      },
+      "text": "4.45",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 4.56540584564209,
+      "segments": [
+        {
+          "characters": "4.45",
+          "start": 0,
+          "end": 4,
+          "fontSize": 4.56540584564209,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:20097",
+      "name": "6 100 ₽",
+      "type": "TEXT",
+      "parent": "296:20093",
+      "bounds": {
+        "x": 28936.205078125,
+        "y": 5344.57373046875,
+        "width": 38,
+        "height": 7
+      },
+      "text": "6 100 ₽",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Bold"
+      },
+      "fontSize": 10.310770988464355,
+      "segments": [
+        {
+          "characters": "6 100 ₽",
+          "start": 0,
+          "end": 7,
+          "fontSize": 10.310770988464355,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Bold"
+          },
+          "fontWeight": 700,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:20098",
+      "name": "Рюкзак велосипедный",
+      "type": "TEXT",
+      "parent": "296:20093",
+      "bounds": {
+        "x": 28936.205078125,
+        "y": 5358.2763671875,
+        "width": 59,
+        "height": 4
+      },
+      "text": "Рюкзак велосипедный",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Regular"
+      },
+      "fontSize": 5.551952838897705,
+      "segments": [
+        {
+          "characters": "Рюкзак велосипедный",
+          "start": 0,
+          "end": 19,
+          "fontSize": 5.551952838897705,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Regular"
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:20099;8668:63669",
+      "name": "Start",
+      "type": "TEXT",
+      "parent": "296:20099",
+      "bounds": {
+        "x": 28971.095703125,
+        "y": 5375.1396484375,
+        "width": 35,
+        "height": 9
+      },
+      "text": "В корзину",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 6.940421104431152,
+      "segments": [
+        {
+          "characters": "В корзину",
+          "start": 0,
+          "end": 9,
+          "fontSize": 6.940421104431152,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:448adad6ddfd9665034350729ff05dca453c01b7/8298:18"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:20102",
+      "name": "4.30",
+      "type": "TEXT",
+      "parent": "296:20100",
+      "bounds": {
+        "x": 29029.259765625,
+        "y": 5347.54052734375,
+        "width": 10,
+        "height": 3
+      },
+      "text": "4.30",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 4.56540584564209,
+      "segments": [
+        {
+          "characters": "4.30",
+          "start": 0,
+          "end": 4,
+          "fontSize": 4.56540584564209,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:20106",
+      "name": "10%",
+      "type": "TEXT",
+      "parent": "296:20105",
+      "bounds": {
+        "x": 29142.31640625,
+        "y": 5239.5498046875,
+        "width": 12,
+        "height": 4
+      },
+      "text": "10%",
+      "fontName": {
+        "family": "Max Sans",
+        "style": "Medium"
+      },
+      "fontSize": 6.21064567565918,
+      "segments": [
+        {
+          "characters": "10%",
+          "start": 0,
+          "end": 3,
+          "fontSize": 6.21064567565918,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:20107",
+      "name": "1 190 ₽",
+      "type": "TEXT",
+      "parent": "296:20103",
+      "bounds": {
+        "x": 29056.845703125,
+        "y": 5344.57568359375,
+        "width": 36,
+        "height": 7
+      },
+      "text": "1 190 ₽",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Bold"
+      },
+      "fontSize": 10.310770988464355,
+      "segments": [
+        {
+          "characters": "1 190 ₽",
+          "start": 0,
+          "end": 7,
+          "fontSize": 10.310770988464355,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Bold"
+          },
+          "fontWeight": 700,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:20108",
+      "name": "Насос велосипедный",
+      "type": "TEXT",
+      "parent": "296:20103",
+      "bounds": {
+        "x": 29056.845703125,
+        "y": 5358.2783203125,
+        "width": 56,
+        "height": 4
+      },
+      "text": "Насос велосипедный",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Regular"
+      },
+      "fontSize": 5.551952838897705,
+      "segments": [
+        {
+          "characters": "Насос велосипедный",
+          "start": 0,
+          "end": 18,
+          "fontSize": 5.551952838897705,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Regular"
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:20109;8668:63669",
+      "name": "Start",
+      "type": "TEXT",
+      "parent": "296:20109",
+      "bounds": {
+        "x": 29091.736328125,
+        "y": 5375.1416015625,
+        "width": 35,
+        "height": 9
+      },
+      "text": "В корзину",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 6.940421104431152,
+      "segments": [
+        {
+          "characters": "В корзину",
+          "start": 0,
+          "end": 9,
+          "fontSize": 6.940421104431152,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:448adad6ddfd9665034350729ff05dca453c01b7/8298:18"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:20112",
+      "name": "5.00",
+      "type": "TEXT",
+      "parent": "296:20110",
+      "bounds": {
+        "x": 29149.158203125,
+        "y": 5346.80029296875,
+        "width": 10,
+        "height": 3
+      },
+      "text": "5.00",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 4.56540584564209,
+      "segments": [
+        {
+          "characters": "5.00",
+          "start": 0,
+          "end": 4,
+          "fontSize": 4.56540584564209,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:20117",
+      "name": "790 ₽",
+      "type": "TEXT",
+      "parent": "296:20113",
+      "bounds": {
+        "x": 28888.5625,
+        "y": 5194.953125,
+        "width": 40,
+        "height": 10
+      },
+      "text": "790 ₽",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Bold"
+      },
+      "fontSize": 13.970436096191406,
+      "segments": [
+        {
+          "characters": "790 ₽",
+          "start": 0,
+          "end": 5,
+          "fontSize": 13.970436096191406,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Bold"
+          },
+          "fontWeight": 700,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:20118",
+      "name": "Колумбия дрип-кофе",
+      "type": "TEXT",
+      "parent": "296:20113",
+      "bounds": {
+        "x": 28888.5625,
+        "y": 5214.03466796875,
+        "width": 75,
+        "height": 5
+      },
+      "text": "Колумбия дрип-кофе ",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Regular"
+      },
+      "fontSize": 7.522541522979736,
+      "segments": [
+        {
+          "characters": "Колумбия дрип-кофе ",
+          "start": 0,
+          "end": 19,
+          "fontSize": 7.522541522979736,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Regular"
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:20123",
+      "name": "Start",
+      "type": "TEXT",
+      "parent": "296:20119",
+      "bounds": {
+        "x": 28948.546875,
+        "y": 5236.560546875,
+        "width": 22,
+        "height": 12
+      },
+      "text": "1 шт.",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 9.403826713562012,
+      "segments": [
+        {
+          "characters": "1 шт.",
+          "start": 0,
+          "end": 5,
+          "fontSize": 9.403826713562012,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:448adad6ddfd9665034350729ff05dca453c01b7/8298:18"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:20128",
+      "name": "4.95",
+      "type": "TEXT",
+      "parent": "296:20126",
+      "bounds": {
+        "x": 29014.423828125,
+        "y": 5199.00732421875,
+        "width": 14,
+        "height": 4
+      },
+      "text": "4.95",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 6.185832977294922,
+      "segments": [
+        {
+          "characters": "4.95",
+          "start": 0,
+          "end": 4,
+          "fontSize": 6.185832977294922,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:20131",
+      "order": 1,
+      "text": "Миссия пройдена",
+      "fontName": {
+        "family": "Inter",
+        "style": "Regular",
+        "variationSettings": {
+          "slnt": 0,
+          "wght": 400
+        }
+      },
+      "fontSize": 32,
+      "segments": [
+        {
+          "characters": "Миссия пройдена",
+          "start": 0,
+          "end": 15,
+          "fontSize": 32,
+          "fontName": {
+            "family": "Inter",
+            "style": "Regular",
+            "variationSettings": {
+              "slnt": 0,
+              "wght": 400
+            }
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.07999999821186066,
+                "g": 0.05999999865889549,
+                "b": 0.11999999731779099
+              },
+              "boundVariables": {}
+            }
+          ],
+          "hyperlink": null
+        }
+      ],
+      "bounds": {
+        "x": 29680,
+        "y": 5056.5078125,
+        "width": 547,
+        "height": 39
+      },
+      "contentRole": "instruction"
+    }
+  ],
+  "layers": [
+    {
+      "id": "296:19936",
+      "name": "Frame 2147222646",
+      "type": "FRAME",
+      "parent": "296:19934",
+      "bounds": {
+        "x": 28595,
+        "y": 4761.5078125,
+        "width": 922,
+        "height": 590
+      }
+    },
+    {
+      "id": "296:19937",
+      "name": "телефон",
+      "type": "FRAME",
+      "parent": "296:19936",
+      "bounds": {
+        "x": 28925.5,
+        "y": 4784.5234375,
+        "width": 261,
+        "height": 543
+      }
+    },
+    {
+      "id": "296:19938",
+      "name": "5",
+      "type": "RECTANGLE",
+      "parent": "296:19937",
+      "bounds": {
+        "x": 28621.5,
+        "y": 4649.515625,
+        "width": 857,
+        "height": 857
+      }
+    },
+    {
+      "id": "296:19939",
+      "name": "Каталог",
+      "type": "FRAME",
+      "parent": "296:19937",
+      "bounds": {
+        "x": 28925.03125,
+        "y": 4784.544921875,
+        "width": 248.73648071289062,
+        "height": 542.9152221679688
+      }
+    },
+    {
+      "id": "296:19940",
+      "name": "Header",
+      "type": "FRAME",
+      "parent": "296:19939",
+      "bounds": {
+        "x": 28925.03125,
+        "y": 4784.544921875,
+        "width": 248.73648071289062,
+        "height": 89.36639404296875
+      }
+    },
+    {
+      "id": "296:19941",
+      "name": ".Status Bar/iOS/Card Stack",
+      "type": "FRAME",
+      "parent": "296:19940",
+      "bounds": {
+        "x": 28925.03125,
+        "y": 4784.671875,
+        "width": 248.73648071289062,
+        "height": 46.9173583984375
+      }
+    },
+    {
+      "id": "296:19942",
+      "name": "Container",
+      "type": "FRAME",
+      "parent": "296:19941",
+      "bounds": {
+        "x": 28925.03125,
+        "y": 4784.671875,
+        "width": 248.73648071289062,
+        "height": 54.02198791503906
+      }
+    },
+    {
+      "id": "296:19943",
+      "name": "Status Bar",
+      "type": "FRAME",
+      "parent": "296:19942",
+      "bounds": {
+        "x": 28925.03125,
+        "y": 4784.6328125,
+        "width": 248.73648071289062,
+        "height": 41.431331634521484
+      }
+    },
+    {
+      "id": "296:19944",
+      "name": "Left Side",
+      "type": "FRAME",
+      "parent": "296:19943",
+      "bounds": {
+        "x": 28925.03125,
+        "y": 4784.6328125,
+        "width": 81.21060180664062,
+        "height": 41.431331634521484
+      }
+    },
+    {
+      "id": "296:19945",
+      "name": "_StatusBar-time",
+      "type": "FRAME",
+      "parent": "296:19944",
+      "bounds": {
+        "x": 28950.4453125,
+        "y": 4797.06201171875,
+        "width": 37.2881965637207,
+        "height": 14.50096607208252
+      }
+    },
+    {
+      "id": "296:19946",
+      "name": "✏️ Time",
+      "type": "TEXT",
+      "parent": "296:19945",
+      "bounds": {
+        "x": 28950.4453125,
+        "y": 4797.75341796875,
+        "width": 37.2881965637207,
+        "height": 13.810441017150879
+      }
+    },
+    {
+      "id": "296:19947",
+      "name": "Dynamic Island",
+      "type": "FRAME",
+      "parent": "296:19943",
+      "bounds": {
+        "x": 29006.2421875,
+        "y": 4784.6328125,
+        "width": 86.31527709960938,
+        "height": 41.431331634521484
+      }
+    },
+    {
+      "id": "296:19949",
+      "name": "Right Side",
+      "type": "FRAME",
+      "parent": "296:19943",
+      "bounds": {
+        "x": 29092.556640625,
+        "y": 4784.6328125,
+        "width": 81.21060180664062,
+        "height": 41.431331634521484
+      }
+    },
+    {
+      "id": "296:19950",
+      "name": "Signal, Wifi, Battery",
+      "type": "FRAME",
+      "parent": "296:19949",
+      "bounds": {
+        "x": 29102.294921875,
+        "y": 4800.85986328125,
+        "width": 54.138153076171875,
+        "height": 8.976787567138672
+      }
+    },
+    {
+      "id": "296:19951",
+      "name": "Icon / Mobile Signal",
+      "type": "VECTOR",
+      "parent": "296:19950",
+      "bounds": {
+        "x": 29102.294921875,
+        "y": 4800.85986328125,
+        "width": 12.429397583007812,
+        "height": 8.28626537322998
+      }
+    },
+    {
+      "id": "296:19952",
+      "name": "Wifi",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "296:19950",
+      "bounds": {
+        "x": 29120.248046875,
+        "y": 4800.85986328125,
+        "width": 11.739266395568848,
+        "height": 8.171758651733398
+      }
+    },
+    {
+      "id": "296:19953",
+      "name": "Wifi-path",
+      "type": "VECTOR",
+      "parent": "296:19952",
+      "bounds": {
+        "x": 29120.248046875,
+        "y": 4800.85986328125,
+        "width": 11.73887825012207,
+        "height": 3.7214484214782715
+      }
+    },
+    {
+      "id": "296:19954",
+      "name": "Wifi-path",
+      "type": "VECTOR",
+      "parent": "296:19952",
+      "bounds": {
+        "x": 29122.3203125,
+        "y": 4803.62255859375,
+        "width": 7.64715576171875,
+        "height": 2.8511478900909424
+      }
+    },
+    {
+      "id": "296:19955",
+      "name": "Wifi-path",
+      "type": "VECTOR",
+      "parent": "296:19952",
+      "bounds": {
+        "x": 29124.390625,
+        "y": 4806.384765625,
+        "width": 3.5559298992156982,
+        "height": 2.647491216659546
+      }
+    },
+    {
+      "id": "296:19956",
+      "name": "_StatusBar-battery",
+      "type": "FRAME",
+      "parent": "296:19950",
+      "bounds": {
+        "x": 29137.51171875,
+        "y": 4800.85986328125,
+        "width": 18.921133041381836,
+        "height": 8.976787567138672
+      }
+    },
+    {
+      "id": "296:19957",
+      "name": "Outline",
+      "type": "VECTOR",
+      "parent": "296:19956",
+      "bounds": {
+        "x": 29137.51171875,
+        "y": 4800.48095703125,
+        "width": 16.43888282775879,
+        "height": 8.976787567138672
+      }
+    },
+    {
+      "id": "296:19958",
+      "name": "Battery End",
+      "type": "VECTOR",
+      "parent": "296:19956",
+      "bounds": {
+        "x": 29154.64453125,
+        "y": 4803.93408203125,
+        "width": 0.9675557613372803,
+        "height": 2.914241313934326
+      }
+    },
+    {
+      "id": "296:19959",
+      "name": "Fill",
+      "type": "VECTOR",
+      "parent": "296:19956",
+      "bounds": {
+        "x": 29138.89453125,
+        "y": 4801.85986328125,
+        "width": 13.676793098449707,
+        "height": 6.214698791503906
+      }
+    },
+    {
+      "id": "296:19960",
+      "name": "Frame",
+      "type": "FRAME",
+      "parent": "296:19940",
+      "bounds": {
+        "x": 28925.03125,
+        "y": 4831.462890625,
+        "width": 248.73648071289062,
+        "height": 42.449039459228516
+      }
+    },
+    {
+      "id": "296:19961",
+      "name": "Shape/Background",
+      "type": "RECTANGLE",
+      "parent": "296:19960",
+      "bounds": {
+        "x": 28935.828125,
+        "y": 4831.462890625,
+        "width": 227.1478271484375,
+        "height": 6.925895690917969
+      }
+    },
+    {
+      "id": "296:19962",
+      "name": "Header",
+      "type": "FRAME",
+      "parent": "296:19960",
+      "bounds": {
+        "x": 28925.03125,
+        "y": 4838.1640625,
+        "width": 248.73648071289062,
+        "height": 35.746559143066406
+      }
+    },
+    {
+      "id": "296:19963",
+      "name": "Middle",
+      "type": "FRAME",
+      "parent": "296:19962",
+      "bounds": {
+        "x": 28930.572265625,
+        "y": 4840.80029296875,
+        "width": 237.655029296875,
+        "height": 30.473941802978516
+      }
+    },
+    {
+      "id": "296:19964",
+      "name": "Title",
+      "type": "FRAME",
+      "parent": "296:19963",
+      "bounds": {
+        "x": 28952.734375,
+        "y": 4848.037109375,
+        "width": 193.32933044433594,
+        "height": 16
+      }
+    },
+    {
+      "id": "296:19965",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "296:19964",
+      "bounds": {
+        "x": 29010.8984375,
+        "y": 4848.037109375,
+        "width": 77,
+        "height": 16
+      }
+    },
+    {
+      "id": "296:19969",
+      "name": "Left Action",
+      "type": "INSTANCE",
+      "parent": "296:19962",
+      "bounds": {
+        "x": 28925.03125,
+        "y": 4840.80078125,
+        "width": 24.9332275390625,
+        "height": 30.47394371032715
+      }
+    },
+    {
+      "id": "I296:19969;4:2724",
+      "name": "Close iOS",
+      "type": "INSTANCE",
+      "parent": "296:19969",
+      "bounds": {
+        "x": 28933.341796875,
+        "y": 4847.7265625,
+        "width": 16.622150421142578,
+        "height": 16.622150421142578
+      }
+    },
+    {
+      "id": "I296:19969;4:2724;4:2758",
+      "name": "cross_24",
+      "type": "INSTANCE",
+      "parent": "I296:19969;4:2724",
+      "bounds": {
+        "x": 28933.341796875,
+        "y": 4847.7265625,
+        "width": 16.622150421142578,
+        "height": 16.622150421142578
+      }
+    },
+    {
+      "id": "I296:19969;4:2724;4:2758;8:5",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:19969;4:2724;4:2758",
+      "bounds": {
+        "x": 28936.130859375,
+        "y": 4850.515625,
+        "width": 11.044057846069336,
+        "height": 11.044232368469238
+      }
+    },
+    {
+      "id": "296:19970",
+      "name": "Right Action",
+      "type": "INSTANCE",
+      "parent": "296:19962",
+      "bounds": {
+        "x": 29149.578125,
+        "y": 4840.80078125,
+        "width": 24.9332275390625,
+        "height": 30.47394371032715
+      }
+    },
+    {
+      "id": "I296:19970;4:2680",
+      "name": "dots_horizontal_24",
+      "type": "INSTANCE",
+      "parent": "296:19970",
+      "bounds": {
+        "x": 29149.578125,
+        "y": 4847.7265625,
+        "width": 16.622150421142578,
+        "height": 16.622150421142578
+      }
+    },
+    {
+      "id": "I296:19970;4:2680;8:29",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:19970;4:2680",
+      "bounds": {
+        "x": 29151.65625,
+        "y": 4854.65234375,
+        "width": 12.46661376953125,
+        "height": 2.7703585624694824
+      }
+    },
+    {
+      "id": "296:20044",
+      "name": "Content Container",
+      "type": "FRAME",
+      "parent": "296:19939",
+      "bounds": {
+        "x": 28925.03125,
+        "y": 4874.65625,
+        "width": 248.73648071289062,
+        "height": 464.70526123046875
+      }
+    },
+    {
+      "id": "296:20045",
+      "name": "контейнер",
+      "type": "FRAME",
+      "parent": "296:20044",
+      "bounds": {
+        "x": 28930.9921875,
+        "y": 4880.61328125,
+        "width": 116.17631530761719,
+        "height": 169.79615783691406
+      }
+    },
+    {
+      "id": "296:20046",
+      "name": "Frame 2131329271",
+      "type": "FRAME",
+      "parent": "296:20045",
+      "bounds": {
+        "x": 28936.205078125,
+        "y": 4885.826171875,
+        "width": 105.75023651123047,
+        "height": 105.75023651123047
+      }
+    },
+    {
+      "id": "296:20047",
+      "name": "Frame 2131329270",
+      "type": "FRAME",
+      "parent": "296:20046",
+      "bounds": {
+        "x": 29016.572265625,
+        "y": 4889.701171875,
+        "width": 22.207807540893555,
+        "height": 11.103903770446777
+      }
+    },
+    {
+      "id": "296:20048",
+      "name": "10%",
+      "type": "TEXT",
+      "parent": "296:20047",
+      "bounds": {
+        "x": 29021.67578125,
+        "y": 4893.2529296875,
+        "width": 12,
+        "height": 4
+      }
+    },
+    {
+      "id": "296:20049",
+      "name": "3460 ₽",
+      "type": "TEXT",
+      "parent": "296:20045",
+      "bounds": {
+        "x": 28936.205078125,
+        "y": 4998.27880859375,
+        "width": 37,
+        "height": 7
+      }
+    },
+    {
+      "id": "296:20050",
+      "name": "Арабика 1кг.",
+      "type": "TEXT",
+      "parent": "296:20045",
+      "bounds": {
+        "x": 28936.205078125,
+        "y": 5011.9814453125,
+        "width": 33,
+        "height": 4
+      }
+    },
+    {
+      "id": "296:20051",
+      "name": ".WebApp Button",
+      "type": "INSTANCE",
+      "parent": "296:20045",
+      "bounds": {
+        "x": 28936.205078125,
+        "y": 5022.68408203125,
+        "width": 104.77982330322266,
+        "height": 21.321475982666016
+      }
+    },
+    {
+      "id": "I296:20051;8668:63669",
+      "name": "Start",
+      "type": "TEXT",
+      "parent": "296:20051",
+      "bounds": {
+        "x": 28971.095703125,
+        "y": 5028.8447265625,
+        "width": 35,
+        "height": 9
+      }
+    },
+    {
+      "id": "296:20052",
+      "name": "оценка",
+      "type": "FRAME",
+      "parent": "296:20045",
+      "bounds": {
+        "x": 29020.359375,
+        "y": 4997.53125,
+        "width": 20.852157592773438,
+        "height": 8.936639785766602
+      }
+    },
+    {
+      "id": "296:20053",
+      "name": "favorites_star_fill_24",
+      "type": "INSTANCE",
+      "parent": "296:20052",
+      "bounds": {
+        "x": 29023.052734375,
+        "y": 4999.78466796875,
+        "width": 4.4302849769592285,
+        "height": 4.4302849769592285
+      }
+    },
+    {
+      "id": "I296:20053;44:143",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:20053",
+      "bounds": {
+        "x": 29023.314453125,
+        "y": 4999.96923828125,
+        "width": 3.9063727855682373,
+        "height": 3.7363643646240234
+      }
+    },
+    {
+      "id": "296:20054",
+      "name": "5.00",
+      "type": "TEXT",
+      "parent": "296:20052",
+      "bounds": {
+        "x": 29028.517578125,
+        "y": 5000.49951171875,
+        "width": 10,
+        "height": 3
+      }
+    },
+    {
+      "id": "296:20055",
+      "name": "5 400 ₽",
+      "type": "TEXT",
+      "parent": "296:20045",
+      "bounds": {
+        "x": 28977.1640625,
+        "y": 4997.53515625,
+        "width": 19,
+        "height": 4
+      }
+    },
+    {
+      "id": "296:20056",
+      "name": "контейнер",
+      "type": "FRAME",
+      "parent": "296:20044",
+      "bounds": {
+        "x": 29051.6328125,
+        "y": 4880.61328125,
+        "width": 116.17631530761719,
+        "height": 169.79615783691406
+      }
+    },
+    {
+      "id": "296:20057",
+      "name": "Frame 2131329271",
+      "type": "FRAME",
+      "parent": "296:20056",
+      "bounds": {
+        "x": 29056.845703125,
+        "y": 4885.826171875,
+        "width": 105.75023651123047,
+        "height": 105.75023651123047
+      }
+    },
+    {
+      "id": "296:20060",
+      "name": "3460 ₽",
+      "type": "TEXT",
+      "parent": "296:20056",
+      "bounds": {
+        "x": 29056.845703125,
+        "y": 4998.27880859375,
+        "width": 37,
+        "height": 7
+      }
+    },
+    {
+      "id": "296:20061",
+      "name": "Кения 1кг.",
+      "type": "TEXT",
+      "parent": "296:20056",
+      "bounds": {
+        "x": 29056.845703125,
+        "y": 5011.9814453125,
+        "width": 26,
+        "height": 4
+      }
+    },
+    {
+      "id": "296:20062",
+      "name": ".WebApp Button",
+      "type": "INSTANCE",
+      "parent": "296:20056",
+      "bounds": {
+        "x": 29056.845703125,
+        "y": 5022.68408203125,
+        "width": 104.77982330322266,
+        "height": 21.321475982666016
+      }
+    },
+    {
+      "id": "I296:20062;8668:63669",
+      "name": "Start",
+      "type": "TEXT",
+      "parent": "296:20062",
+      "bounds": {
+        "x": 29091.736328125,
+        "y": 5028.8447265625,
+        "width": 35,
+        "height": 9
+      }
+    },
+    {
+      "id": "296:20063",
+      "name": "оценка",
+      "type": "FRAME",
+      "parent": "296:20056",
+      "bounds": {
+        "x": 29141.7421875,
+        "y": 4998.27734375,
+        "width": 20.852157592773438,
+        "height": 8.936639785766602
+      }
+    },
+    {
+      "id": "296:20064",
+      "name": "favorites_star_fill_24",
+      "type": "INSTANCE",
+      "parent": "296:20063",
+      "bounds": {
+        "x": 29144.435546875,
+        "y": 5000.53076171875,
+        "width": 4.4302849769592285,
+        "height": 4.4302849769592285
+      }
+    },
+    {
+      "id": "I296:20064;44:143",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:20064",
+      "bounds": {
+        "x": 29144.697265625,
+        "y": 5000.71533203125,
+        "width": 3.9063727855682373,
+        "height": 3.7363643646240234
+      }
+    },
+    {
+      "id": "296:20065",
+      "name": "4.20",
+      "type": "TEXT",
+      "parent": "296:20063",
+      "bounds": {
+        "x": 29149.900390625,
+        "y": 5001.24560546875,
+        "width": 10,
+        "height": 3
+      }
+    },
+    {
+      "id": "296:20082",
+      "name": "контейнер",
+      "type": "FRAME",
+      "parent": "296:20044",
+      "bounds": {
+        "x": 29051.6328125,
+        "y": 5054.87890625,
+        "width": 116.17631530761719,
+        "height": 167.56201171875
+      }
+    },
+    {
+      "id": "296:20083",
+      "name": "Frame 2131329271",
+      "type": "FRAME",
+      "parent": "296:20082",
+      "bounds": {
+        "x": 29056.845703125,
+        "y": 5060.09228515625,
+        "width": 105.75023651123047,
+        "height": 105.75023651123047
+      }
+    },
+    {
+      "id": "296:20084",
+      "name": "Frame 2131329270",
+      "type": "FRAME",
+      "parent": "296:20083",
+      "bounds": {
+        "x": 29137.212890625,
+        "y": 5063.96142578125,
+        "width": 22.207807540893555,
+        "height": 11.103903770446777
+      }
+    },
+    {
+      "id": "296:20085",
+      "name": "10%",
+      "type": "TEXT",
+      "parent": "296:20084",
+      "bounds": {
+        "x": 29142.31640625,
+        "y": 5067.51318359375,
+        "width": 12,
+        "height": 4
+      }
+    },
+    {
+      "id": "296:20086",
+      "name": "790 ₽",
+      "type": "TEXT",
+      "parent": "296:20082",
+      "bounds": {
+        "x": 29056.845703125,
+        "y": 5172.544921875,
+        "width": 30,
+        "height": 7
+      }
+    },
+    {
+      "id": "296:20087",
+      "name": "Перу дрип-кофе",
+      "type": "TEXT",
+      "parent": "296:20082",
+      "bounds": {
+        "x": 29056.845703125,
+        "y": 5186.2470703125,
+        "width": 43,
+        "height": 4
+      }
+    },
+    {
+      "id": "296:20088",
+      "name": ".WebApp Button",
+      "type": "INSTANCE",
+      "parent": "296:20082",
+      "bounds": {
+        "x": 29056.845703125,
+        "y": 5196.94970703125,
+        "width": 104.77982330322266,
+        "height": 21.321475982666016
+      }
+    },
+    {
+      "id": "I296:20088;8668:63669",
+      "name": "Start",
+      "type": "TEXT",
+      "parent": "296:20088",
+      "bounds": {
+        "x": 29091.736328125,
+        "y": 5203.1103515625,
+        "width": 35,
+        "height": 9
+      }
+    },
+    {
+      "id": "296:20089",
+      "name": "860 ₽",
+      "type": "TEXT",
+      "parent": "296:20082",
+      "bounds": {
+        "x": 29098.546875,
+        "y": 5171.8046875,
+        "width": 15,
+        "height": 4
+      }
+    },
+    {
+      "id": "296:20090",
+      "name": "оценка",
+      "type": "FRAME",
+      "parent": "296:20082",
+      "bounds": {
+        "x": 29141.7421875,
+        "y": 5172.546875,
+        "width": 20.852157592773438,
+        "height": 8.936639785766602
+      }
+    },
+    {
+      "id": "296:20091",
+      "name": "favorites_star_fill_24",
+      "type": "INSTANCE",
+      "parent": "296:20090",
+      "bounds": {
+        "x": 29144.435546875,
+        "y": 5174.80029296875,
+        "width": 4.4302849769592285,
+        "height": 4.4302849769592285
+      }
+    },
+    {
+      "id": "I296:20091;44:143",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:20091",
+      "bounds": {
+        "x": 29144.697265625,
+        "y": 5174.98486328125,
+        "width": 3.9063727855682373,
+        "height": 3.7363643646240234
+      }
+    },
+    {
+      "id": "296:20092",
+      "name": "4.45",
+      "type": "TEXT",
+      "parent": "296:20090",
+      "bounds": {
+        "x": 29149.900390625,
+        "y": 5175.51513671875,
+        "width": 10,
+        "height": 3
+      }
+    },
+    {
+      "id": "296:20093",
+      "name": "контейнер",
+      "type": "FRAME",
+      "parent": "296:20044",
+      "bounds": {
+        "x": 28930.9921875,
+        "y": 5226.908203125,
+        "width": 116.17631530761719,
+        "height": 167.56201171875
+      }
+    },
+    {
+      "id": "296:20094",
+      "name": "Frame 2131329271",
+      "type": "FRAME",
+      "parent": "296:20093",
+      "bounds": {
+        "x": 28936.205078125,
+        "y": 5232.12109375,
+        "width": 105.75023651123047,
+        "height": 105.75023651123047
+      }
+    },
+    {
+      "id": "296:20097",
+      "name": "6 100 ₽",
+      "type": "TEXT",
+      "parent": "296:20093",
+      "bounds": {
+        "x": 28936.205078125,
+        "y": 5344.57373046875,
+        "width": 38,
+        "height": 7
+      }
+    },
+    {
+      "id": "296:20098",
+      "name": "Рюкзак велосипедный",
+      "type": "TEXT",
+      "parent": "296:20093",
+      "bounds": {
+        "x": 28936.205078125,
+        "y": 5358.2763671875,
+        "width": 59,
+        "height": 4
+      }
+    },
+    {
+      "id": "296:20099",
+      "name": ".WebApp Button",
+      "type": "INSTANCE",
+      "parent": "296:20093",
+      "bounds": {
+        "x": 28936.205078125,
+        "y": 5368.97900390625,
+        "width": 104.77982330322266,
+        "height": 21.321475982666016
+      }
+    },
+    {
+      "id": "I296:20099;8668:63669",
+      "name": "Start",
+      "type": "TEXT",
+      "parent": "296:20099",
+      "bounds": {
+        "x": 28971.095703125,
+        "y": 5375.1396484375,
+        "width": 35,
+        "height": 9
+      }
+    },
+    {
+      "id": "296:20100",
+      "name": "оценка",
+      "type": "FRAME",
+      "parent": "296:20093",
+      "bounds": {
+        "x": 29021.1015625,
+        "y": 5344.572265625,
+        "width": 20.852157592773438,
+        "height": 8.936639785766602
+      }
+    },
+    {
+      "id": "296:20101",
+      "name": "favorites_star_fill_24",
+      "type": "INSTANCE",
+      "parent": "296:20100",
+      "bounds": {
+        "x": 29023.794921875,
+        "y": 5346.82568359375,
+        "width": 4.4302849769592285,
+        "height": 4.4302849769592285
+      }
+    },
+    {
+      "id": "I296:20101;44:143",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:20101",
+      "bounds": {
+        "x": 29024.056640625,
+        "y": 5347.01025390625,
+        "width": 3.9063727855682373,
+        "height": 3.7363643646240234
+      }
+    },
+    {
+      "id": "296:20102",
+      "name": "4.30",
+      "type": "TEXT",
+      "parent": "296:20100",
+      "bounds": {
+        "x": 29029.259765625,
+        "y": 5347.54052734375,
+        "width": 10,
+        "height": 3
+      }
+    },
+    {
+      "id": "296:20103",
+      "name": "контейнер",
+      "type": "FRAME",
+      "parent": "296:20044",
+      "bounds": {
+        "x": 29051.6328125,
+        "y": 5226.91015625,
+        "width": 116.17631530761719,
+        "height": 167.56201171875
+      }
+    },
+    {
+      "id": "296:20104",
+      "name": "Frame 2131329271",
+      "type": "FRAME",
+      "parent": "296:20103",
+      "bounds": {
+        "x": 29056.845703125,
+        "y": 5232.123046875,
+        "width": 105.75023651123047,
+        "height": 105.75023651123047
+      }
+    },
+    {
+      "id": "296:20105",
+      "name": "Frame 2131329270",
+      "type": "FRAME",
+      "parent": "296:20104",
+      "bounds": {
+        "x": 29137.212890625,
+        "y": 5235.998046875,
+        "width": 22.207807540893555,
+        "height": 11.103903770446777
+      }
+    },
+    {
+      "id": "296:20106",
+      "name": "10%",
+      "type": "TEXT",
+      "parent": "296:20105",
+      "bounds": {
+        "x": 29142.31640625,
+        "y": 5239.5498046875,
+        "width": 12,
+        "height": 4
+      }
+    },
+    {
+      "id": "296:20107",
+      "name": "1 190 ₽",
+      "type": "TEXT",
+      "parent": "296:20103",
+      "bounds": {
+        "x": 29056.845703125,
+        "y": 5344.57568359375,
+        "width": 36,
+        "height": 7
+      }
+    },
+    {
+      "id": "296:20108",
+      "name": "Насос велосипедный",
+      "type": "TEXT",
+      "parent": "296:20103",
+      "bounds": {
+        "x": 29056.845703125,
+        "y": 5358.2783203125,
+        "width": 56,
+        "height": 4
+      }
+    },
+    {
+      "id": "296:20109",
+      "name": ".WebApp Button",
+      "type": "INSTANCE",
+      "parent": "296:20103",
+      "bounds": {
+        "x": 29056.845703125,
+        "y": 5368.98095703125,
+        "width": 104.77982330322266,
+        "height": 21.321475982666016
+      }
+    },
+    {
+      "id": "I296:20109;8668:63669",
+      "name": "Start",
+      "type": "TEXT",
+      "parent": "296:20109",
+      "bounds": {
+        "x": 29091.736328125,
+        "y": 5375.1416015625,
+        "width": 35,
+        "height": 9
+      }
+    },
+    {
+      "id": "296:20110",
+      "name": "оценка",
+      "type": "FRAME",
+      "parent": "296:20103",
+      "bounds": {
+        "x": 29141,
+        "y": 5343.83203125,
+        "width": 20.852157592773438,
+        "height": 8.936639785766602
+      }
+    },
+    {
+      "id": "296:20111",
+      "name": "favorites_star_fill_24",
+      "type": "INSTANCE",
+      "parent": "296:20110",
+      "bounds": {
+        "x": 29143.693359375,
+        "y": 5346.08544921875,
+        "width": 4.4302849769592285,
+        "height": 4.4302849769592285
+      }
+    },
+    {
+      "id": "I296:20111;44:143",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:20111",
+      "bounds": {
+        "x": 29143.955078125,
+        "y": 5346.27001953125,
+        "width": 3.9063727855682373,
+        "height": 3.7363643646240234
+      }
+    },
+    {
+      "id": "296:20112",
+      "name": "5.00",
+      "type": "TEXT",
+      "parent": "296:20110",
+      "bounds": {
+        "x": 29149.158203125,
+        "y": 5346.80029296875,
+        "width": 10,
+        "height": 3
+      }
+    },
+    {
+      "id": "296:20113",
+      "name": "контейнер",
+      "type": "FRAME",
+      "parent": "296:19937",
+      "bounds": {
+        "x": 28881.5,
+        "y": 5035.5234375,
+        "width": 157.41148376464844,
+        "height": 227.0358123779297
+      }
+    },
+    {
+      "id": "296:20114",
+      "name": "Frame 2131329271",
+      "type": "FRAME",
+      "parent": "296:20113",
+      "bounds": {
+        "x": 28888.5625,
+        "y": 5042.5869140625,
+        "width": 143.28482055664062,
+        "height": 143.28482055664062
+      }
+    },
+    {
+      "id": "296:20117",
+      "name": "790 ₽",
+      "type": "TEXT",
+      "parent": "296:20113",
+      "bounds": {
+        "x": 28888.5625,
+        "y": 5194.953125,
+        "width": 40,
+        "height": 10
+      }
+    },
+    {
+      "id": "296:20118",
+      "name": "Колумбия дрип-кофе",
+      "type": "TEXT",
+      "parent": "296:20113",
+      "bounds": {
+        "x": 28888.5625,
+        "y": 5214.03466796875,
+        "width": 75,
+        "height": 5
+      }
+    },
+    {
+      "id": "296:20119",
+      "name": ".WebApp Button",
+      "type": "FRAME",
+      "parent": "296:20113",
+      "bounds": {
+        "x": 28888.5625,
+        "y": 5228.11572265625,
+        "width": 141.9699249267578,
+        "height": 28.889230728149414
+      }
+    },
+    {
+      "id": "296:20121",
+      "name": "block_round_24",
+      "type": "FRAME",
+      "parent": "296:20119",
+      "bounds": {
+        "x": 28899.30859375,
+        "y": 5235.4677734375,
+        "width": 14.185359954833984,
+        "height": 14.185359954833984
+      }
+    },
+    {
+      "id": "296:20122",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:20121",
+      "bounds": {
+        "x": 28900.48828125,
+        "y": 5236.6513671875,
+        "width": 11.821134567260742,
+        "height": 11.821134567260742
+      }
+    },
+    {
+      "id": "296:20123",
+      "name": "Start",
+      "type": "TEXT",
+      "parent": "296:20119",
+      "bounds": {
+        "x": 28948.546875,
+        "y": 5236.560546875,
+        "width": 22,
+        "height": 12
+      }
+    },
+    {
+      "id": "296:20124",
+      "name": "block_round_24",
+      "type": "FRAME",
+      "parent": "296:20119",
+      "bounds": {
+        "x": 29005.599609375,
+        "y": 5235.4677734375,
+        "width": 14.185359954833984,
+        "height": 14.185359954833984
+      }
+    },
+    {
+      "id": "296:20125",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:20124",
+      "bounds": {
+        "x": 29006.779296875,
+        "y": 5236.6513671875,
+        "width": 11.821134567260742,
+        "height": 11.821134567260742
+      }
+    },
+    {
+      "id": "296:20126",
+      "name": "оценка",
+      "type": "FRAME",
+      "parent": "296:20113",
+      "bounds": {
+        "x": 29003.59375,
+        "y": 5194.953125,
+        "width": 28.253339767456055,
+        "height": 12.108575820922852
+      }
+    },
+    {
+      "id": "296:20127",
+      "name": "favorites_star_fill_24",
+      "type": "INSTANCE",
+      "parent": "296:20126",
+      "bounds": {
+        "x": 29007.017578125,
+        "y": 5198.005859375,
+        "width": 6.002753257751465,
+        "height": 6.002753257751465
+      }
+    },
+    {
+      "id": "I296:20127;44:143",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:20127",
+      "bounds": {
+        "x": 29007.373046875,
+        "y": 5198.255859375,
+        "width": 5.2928853034973145,
+        "height": 5.062534809112549
+      }
+    },
+    {
+      "id": "296:20128",
+      "name": "4.95",
+      "type": "TEXT",
+      "parent": "296:20126",
+      "bounds": {
+        "x": 29014.423828125,
+        "y": 5199.00732421875,
+        "width": 14,
+        "height": 4
+      }
+    }
+  ],
+  "imageHashes": [
+    "1eb2e1ae242673b8fc83f8e3e2816048ab882713"
+  ],
+  "notes": [],
+  "visualTexts": [
+    {
+      "id": "296:19946",
+      "name": "✏️ Time",
+      "type": "TEXT",
+      "parent": "296:19945",
+      "bounds": {
+        "x": 28950.4453125,
+        "y": 4797.75341796875,
+        "width": 37.2881965637207,
+        "height": 13.810441017150879
+      },
+      "text": "9:41",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Semibold"
+      },
+      "fontSize": 11.048357009887695,
+      "segments": [
+        {
+          "characters": "9:41",
+          "start": 0,
+          "end": 4,
+          "fontSize": 11.048357009887695,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Semibold"
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:98a49ab135b7e04f9b315bcf76744a1e773f06ec/207:1207"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:19965",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "296:19964",
+      "bounds": {
+        "x": 29010.8984375,
+        "y": 4848.037109375,
+        "width": 77,
+        "height": 16
+      },
+      "text": "Кофе в зернах",
+      "fontName": {
+        "family": "SF Pro",
+        "style": "Semibold",
+        "variationSettings": {
+          "opsz": 28,
+          "wdth": 100,
+          "wght": 590
+        }
+      },
+      "fontSize": 10.426081657409668,
+      "segments": [
+        {
+          "characters": "Кофе в зернах",
+          "start": 0,
+          "end": 13,
+          "fontSize": 10.426081657409668,
+          "fontName": {
+            "family": "SF Pro",
+            "style": "Semibold",
+            "variationSettings": {
+              "opsz": 28,
+              "wdth": 100,
+              "wght": 590
+            }
+          },
+          "fontWeight": 590,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:20048",
+      "name": "10%",
+      "type": "TEXT",
+      "parent": "296:20047",
+      "bounds": {
+        "x": 29021.67578125,
+        "y": 4893.2529296875,
+        "width": 12,
+        "height": 4
+      },
+      "text": "10%",
+      "fontName": {
+        "family": "Max Sans",
+        "style": "Medium"
+      },
+      "fontSize": 6.21064567565918,
+      "segments": [
+        {
+          "characters": "10%",
+          "start": 0,
+          "end": 3,
+          "fontSize": 6.21064567565918,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:20049",
+      "name": "3460 ₽",
+      "type": "TEXT",
+      "parent": "296:20045",
+      "bounds": {
+        "x": 28936.205078125,
+        "y": 4998.27880859375,
+        "width": 37,
+        "height": 7
+      },
+      "text": "3460 ₽",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Bold"
+      },
+      "fontSize": 10.310770988464355,
+      "segments": [
+        {
+          "characters": "3460 ₽",
+          "start": 0,
+          "end": 6,
+          "fontSize": 10.310770988464355,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Bold"
+          },
+          "fontWeight": 700,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:20050",
+      "name": "Арабика 1кг.",
+      "type": "TEXT",
+      "parent": "296:20045",
+      "bounds": {
+        "x": 28936.205078125,
+        "y": 5011.9814453125,
+        "width": 33,
+        "height": 4
+      },
+      "text": "Арабика 1кг.",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Regular"
+      },
+      "fontSize": 5.551952838897705,
+      "segments": [
+        {
+          "characters": "Арабика 1кг.",
+          "start": 0,
+          "end": 12,
+          "fontSize": 5.551952838897705,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Regular"
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:20051;8668:63669",
+      "name": "Start",
+      "type": "TEXT",
+      "parent": "296:20051",
+      "bounds": {
+        "x": 28971.095703125,
+        "y": 5028.8447265625,
+        "width": 35,
+        "height": 9
+      },
+      "text": "В корзину",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 6.940421104431152,
+      "segments": [
+        {
+          "characters": "В корзину",
+          "start": 0,
+          "end": 9,
+          "fontSize": 6.940421104431152,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:448adad6ddfd9665034350729ff05dca453c01b7/8298:18"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:20054",
+      "name": "5.00",
+      "type": "TEXT",
+      "parent": "296:20052",
+      "bounds": {
+        "x": 29028.517578125,
+        "y": 5000.49951171875,
+        "width": 10,
+        "height": 3
+      },
+      "text": "5.00",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 4.56540584564209,
+      "segments": [
+        {
+          "characters": "5.00",
+          "start": 0,
+          "end": 4,
+          "fontSize": 4.56540584564209,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:20055",
+      "name": "5 400 ₽",
+      "type": "TEXT",
+      "parent": "296:20045",
+      "bounds": {
+        "x": 28977.1640625,
+        "y": 4997.53515625,
+        "width": 19,
+        "height": 4
+      },
+      "text": "5 400 ₽",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Regular"
+      },
+      "fontSize": 5.213040828704834,
+      "segments": [
+        {
+          "characters": "5 400 ₽",
+          "start": 0,
+          "end": 7,
+          "fontSize": 5.213040828704834,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Regular"
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:20060",
+      "name": "3460 ₽",
+      "type": "TEXT",
+      "parent": "296:20056",
+      "bounds": {
+        "x": 29056.845703125,
+        "y": 4998.27880859375,
+        "width": 37,
+        "height": 7
+      },
+      "text": "3460 ₽",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Bold"
+      },
+      "fontSize": 10.310770988464355,
+      "segments": [
+        {
+          "characters": "3460 ₽",
+          "start": 0,
+          "end": 6,
+          "fontSize": 10.310770988464355,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Bold"
+          },
+          "fontWeight": 700,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:20061",
+      "name": "Кения 1кг.",
+      "type": "TEXT",
+      "parent": "296:20056",
+      "bounds": {
+        "x": 29056.845703125,
+        "y": 5011.9814453125,
+        "width": 26,
+        "height": 4
+      },
+      "text": "Кения 1кг.",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Regular"
+      },
+      "fontSize": 5.551952838897705,
+      "segments": [
+        {
+          "characters": "Кения 1кг.",
+          "start": 0,
+          "end": 10,
+          "fontSize": 5.551952838897705,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Regular"
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:20062;8668:63669",
+      "name": "Start",
+      "type": "TEXT",
+      "parent": "296:20062",
+      "bounds": {
+        "x": 29091.736328125,
+        "y": 5028.8447265625,
+        "width": 35,
+        "height": 9
+      },
+      "text": "В корзину",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 6.940421104431152,
+      "segments": [
+        {
+          "characters": "В корзину",
+          "start": 0,
+          "end": 9,
+          "fontSize": 6.940421104431152,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:448adad6ddfd9665034350729ff05dca453c01b7/8298:18"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:20065",
+      "name": "4.20",
+      "type": "TEXT",
+      "parent": "296:20063",
+      "bounds": {
+        "x": 29149.900390625,
+        "y": 5001.24560546875,
+        "width": 10,
+        "height": 3
+      },
+      "text": "4.20",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 4.56540584564209,
+      "segments": [
+        {
+          "characters": "4.20",
+          "start": 0,
+          "end": 4,
+          "fontSize": 4.56540584564209,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:20085",
+      "name": "10%",
+      "type": "TEXT",
+      "parent": "296:20084",
+      "bounds": {
+        "x": 29142.31640625,
+        "y": 5067.51318359375,
+        "width": 12,
+        "height": 4
+      },
+      "text": "10%",
+      "fontName": {
+        "family": "Max Sans",
+        "style": "Medium"
+      },
+      "fontSize": 6.21064567565918,
+      "segments": [
+        {
+          "characters": "10%",
+          "start": 0,
+          "end": 3,
+          "fontSize": 6.21064567565918,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:20086",
+      "name": "790 ₽",
+      "type": "TEXT",
+      "parent": "296:20082",
+      "bounds": {
+        "x": 29056.845703125,
+        "y": 5172.544921875,
+        "width": 30,
+        "height": 7
+      },
+      "text": "790 ₽",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Bold"
+      },
+      "fontSize": 10.310770988464355,
+      "segments": [
+        {
+          "characters": "790 ₽",
+          "start": 0,
+          "end": 5,
+          "fontSize": 10.310770988464355,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Bold"
+          },
+          "fontWeight": 700,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:20087",
+      "name": "Перу дрип-кофе",
+      "type": "TEXT",
+      "parent": "296:20082",
+      "bounds": {
+        "x": 29056.845703125,
+        "y": 5186.2470703125,
+        "width": 43,
+        "height": 4
+      },
+      "text": "Перу дрип-кофе",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Regular"
+      },
+      "fontSize": 5.551952838897705,
+      "segments": [
+        {
+          "characters": "Перу дрип-кофе",
+          "start": 0,
+          "end": 14,
+          "fontSize": 5.551952838897705,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Regular"
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:20088;8668:63669",
+      "name": "Start",
+      "type": "TEXT",
+      "parent": "296:20088",
+      "bounds": {
+        "x": 29091.736328125,
+        "y": 5203.1103515625,
+        "width": 35,
+        "height": 9
+      },
+      "text": "В корзину",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 6.940421104431152,
+      "segments": [
+        {
+          "characters": "В корзину",
+          "start": 0,
+          "end": 9,
+          "fontSize": 6.940421104431152,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:448adad6ddfd9665034350729ff05dca453c01b7/8298:18"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:20089",
+      "name": "860 ₽",
+      "type": "TEXT",
+      "parent": "296:20082",
+      "bounds": {
+        "x": 29098.546875,
+        "y": 5171.8046875,
+        "width": 15,
+        "height": 4
+      },
+      "text": "860 ₽",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Regular"
+      },
+      "fontSize": 5.213040828704834,
+      "segments": [
+        {
+          "characters": "860 ₽",
+          "start": 0,
+          "end": 5,
+          "fontSize": 5.213040828704834,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Regular"
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:20092",
+      "name": "4.45",
+      "type": "TEXT",
+      "parent": "296:20090",
+      "bounds": {
+        "x": 29149.900390625,
+        "y": 5175.51513671875,
+        "width": 10,
+        "height": 3
+      },
+      "text": "4.45",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 4.56540584564209,
+      "segments": [
+        {
+          "characters": "4.45",
+          "start": 0,
+          "end": 4,
+          "fontSize": 4.56540584564209,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:20097",
+      "name": "6 100 ₽",
+      "type": "TEXT",
+      "parent": "296:20093",
+      "bounds": {
+        "x": 28936.205078125,
+        "y": 5344.57373046875,
+        "width": 38,
+        "height": 7
+      },
+      "text": "6 100 ₽",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Bold"
+      },
+      "fontSize": 10.310770988464355,
+      "segments": [
+        {
+          "characters": "6 100 ₽",
+          "start": 0,
+          "end": 7,
+          "fontSize": 10.310770988464355,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Bold"
+          },
+          "fontWeight": 700,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:20098",
+      "name": "Рюкзак велосипедный",
+      "type": "TEXT",
+      "parent": "296:20093",
+      "bounds": {
+        "x": 28936.205078125,
+        "y": 5358.2763671875,
+        "width": 59,
+        "height": 4
+      },
+      "text": "Рюкзак велосипедный",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Regular"
+      },
+      "fontSize": 5.551952838897705,
+      "segments": [
+        {
+          "characters": "Рюкзак велосипедный",
+          "start": 0,
+          "end": 19,
+          "fontSize": 5.551952838897705,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Regular"
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:20099;8668:63669",
+      "name": "Start",
+      "type": "TEXT",
+      "parent": "296:20099",
+      "bounds": {
+        "x": 28971.095703125,
+        "y": 5375.1396484375,
+        "width": 35,
+        "height": 9
+      },
+      "text": "В корзину",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 6.940421104431152,
+      "segments": [
+        {
+          "characters": "В корзину",
+          "start": 0,
+          "end": 9,
+          "fontSize": 6.940421104431152,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:448adad6ddfd9665034350729ff05dca453c01b7/8298:18"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:20102",
+      "name": "4.30",
+      "type": "TEXT",
+      "parent": "296:20100",
+      "bounds": {
+        "x": 29029.259765625,
+        "y": 5347.54052734375,
+        "width": 10,
+        "height": 3
+      },
+      "text": "4.30",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 4.56540584564209,
+      "segments": [
+        {
+          "characters": "4.30",
+          "start": 0,
+          "end": 4,
+          "fontSize": 4.56540584564209,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:20106",
+      "name": "10%",
+      "type": "TEXT",
+      "parent": "296:20105",
+      "bounds": {
+        "x": 29142.31640625,
+        "y": 5239.5498046875,
+        "width": 12,
+        "height": 4
+      },
+      "text": "10%",
+      "fontName": {
+        "family": "Max Sans",
+        "style": "Medium"
+      },
+      "fontSize": 6.21064567565918,
+      "segments": [
+        {
+          "characters": "10%",
+          "start": 0,
+          "end": 3,
+          "fontSize": 6.21064567565918,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:20107",
+      "name": "1 190 ₽",
+      "type": "TEXT",
+      "parent": "296:20103",
+      "bounds": {
+        "x": 29056.845703125,
+        "y": 5344.57568359375,
+        "width": 36,
+        "height": 7
+      },
+      "text": "1 190 ₽",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Bold"
+      },
+      "fontSize": 10.310770988464355,
+      "segments": [
+        {
+          "characters": "1 190 ₽",
+          "start": 0,
+          "end": 7,
+          "fontSize": 10.310770988464355,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Bold"
+          },
+          "fontWeight": 700,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:20108",
+      "name": "Насос велосипедный",
+      "type": "TEXT",
+      "parent": "296:20103",
+      "bounds": {
+        "x": 29056.845703125,
+        "y": 5358.2783203125,
+        "width": 56,
+        "height": 4
+      },
+      "text": "Насос велосипедный",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Regular"
+      },
+      "fontSize": 5.551952838897705,
+      "segments": [
+        {
+          "characters": "Насос велосипедный",
+          "start": 0,
+          "end": 18,
+          "fontSize": 5.551952838897705,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Regular"
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:20109;8668:63669",
+      "name": "Start",
+      "type": "TEXT",
+      "parent": "296:20109",
+      "bounds": {
+        "x": 29091.736328125,
+        "y": 5375.1416015625,
+        "width": 35,
+        "height": 9
+      },
+      "text": "В корзину",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 6.940421104431152,
+      "segments": [
+        {
+          "characters": "В корзину",
+          "start": 0,
+          "end": 9,
+          "fontSize": 6.940421104431152,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:448adad6ddfd9665034350729ff05dca453c01b7/8298:18"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:20112",
+      "name": "5.00",
+      "type": "TEXT",
+      "parent": "296:20110",
+      "bounds": {
+        "x": 29149.158203125,
+        "y": 5346.80029296875,
+        "width": 10,
+        "height": 3
+      },
+      "text": "5.00",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 4.56540584564209,
+      "segments": [
+        {
+          "characters": "5.00",
+          "start": 0,
+          "end": 4,
+          "fontSize": 4.56540584564209,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:20117",
+      "name": "790 ₽",
+      "type": "TEXT",
+      "parent": "296:20113",
+      "bounds": {
+        "x": 28888.5625,
+        "y": 5194.953125,
+        "width": 40,
+        "height": 10
+      },
+      "text": "790 ₽",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Bold"
+      },
+      "fontSize": 13.970436096191406,
+      "segments": [
+        {
+          "characters": "790 ₽",
+          "start": 0,
+          "end": 5,
+          "fontSize": 13.970436096191406,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Bold"
+          },
+          "fontWeight": 700,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:20118",
+      "name": "Колумбия дрип-кофе",
+      "type": "TEXT",
+      "parent": "296:20113",
+      "bounds": {
+        "x": 28888.5625,
+        "y": 5214.03466796875,
+        "width": 75,
+        "height": 5
+      },
+      "text": "Колумбия дрип-кофе ",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Regular"
+      },
+      "fontSize": 7.522541522979736,
+      "segments": [
+        {
+          "characters": "Колумбия дрип-кофе ",
+          "start": 0,
+          "end": 19,
+          "fontSize": 7.522541522979736,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Regular"
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:20123",
+      "name": "Start",
+      "type": "TEXT",
+      "parent": "296:20119",
+      "bounds": {
+        "x": 28948.546875,
+        "y": 5236.560546875,
+        "width": 22,
+        "height": 12
+      },
+      "text": "1 шт.",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 9.403826713562012,
+      "segments": [
+        {
+          "characters": "1 шт.",
+          "start": 0,
+          "end": 5,
+          "fontSize": 9.403826713562012,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:448adad6ddfd9665034350729ff05dca453c01b7/8298:18"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:20128",
+      "name": "4.95",
+      "type": "TEXT",
+      "parent": "296:20126",
+      "bounds": {
+        "x": 29014.423828125,
+        "y": 5199.00732421875,
+        "width": 14,
+        "height": 4
+      },
+      "text": "4.95",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 6.185832977294922,
+      "segments": [
+        {
+          "characters": "4.95",
+          "start": 0,
+          "end": 4,
+          "fontSize": 6.185832977294922,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    }
+  ],
+  "pngScale": 2,
+  "pngFile": "04-Продвижение-бизнеса/05-Мини-приложение/005-Экран/screen.png",
+  "previewFile": "04-Продвижение-бизнеса/05-Мини-приложение/005-Экран/preview.png",
+  "svgFile": "04-Продвижение-бизнеса/05-Мини-приложение/005-Экран/screen.svg",
+  "documentFile": "04-Продвижение-бизнеса/05-Мини-приложение/005-Экран/figma.json",
+  "images": [
+    {
+      "hash": "1eb2e1ae242673b8fc83f8e3e2816048ab882713",
+      "file": "04-Продвижение-бизнеса/05-Мини-приложение/005-Экран/images/20cd57ff8e33336051d8520d88772eb3f9542883d045ba22ee22a007e99cfcfc.png"
+    }
+  ]
+}

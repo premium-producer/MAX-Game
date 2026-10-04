@@ -1,0 +1,336 @@
+{
+  "observedAt": "2026-09-27T12:48:13.818Z",
+  "mode": "run",
+  "hashes": [
+    {
+      "url": "/viewer/viewer.js",
+      "sha256": "0777b8c6247b7ec9bbe82c25272f0858982d0309162e5ce5bc78815a3890a015"
+    },
+    {
+      "url": "/viewer/walk-controls.js",
+      "sha256": "e119573bbe767c36b1695e369d2efb47bd4b8b276647e4d6d77cb38c43c963e7"
+    },
+    {
+      "url": "/viewer/screen-pointer.js",
+      "sha256": "dba2aab0b40fb49a3976c3687a886f2f0ea2108774ecfda4928e4729abf78b63"
+    },
+    {
+      "url": "/service/max-game-worker.html",
+      "sha256": "60d6aeebd0632662c313c8bb8ad7563b24fcaf7bdaf0c501e639abce7d5f24cd"
+    },
+    {
+      "url": "/service/max-shared-background.js",
+      "sha256": "69c3673077091782b4085658409010963fcb0a3217aec71111005d8f4d30ba92"
+    },
+    {
+      "url": "/max-game/app.js",
+      "sha256": "32ff494316ad608d455227252accf3f17c89c634408715b7190940596327e571"
+    },
+    {
+      "url": "/max-game/src/max-theme.css",
+      "sha256": "0f38066edb38fee2fce07ad8962d151250bc20d48a6f140a8b0bc2144286c4b0"
+    }
+  ],
+  "instances": [
+    {
+      "id": "ribbon-up",
+      "status": "running",
+      "generation": "5a525ced-6bc6-4ffc-a648-bb4193db4d42",
+      "frame": 10518,
+      "error": null
+    },
+    {
+      "id": "video-wall-left",
+      "status": "running",
+      "generation": "c737f21b-17b1-4c4f-91fe-bd58ac7e18eb",
+      "frame": 8135,
+      "error": null
+    },
+    {
+      "id": "vk-stella",
+      "status": "running",
+      "generation": "01a710bd-452c-4613-a325-6c2752fdb7b7",
+      "frame": 13040,
+      "error": null
+    },
+    {
+      "id": "vk-arch",
+      "status": "running",
+      "generation": "cd280270-56ee-458e-95a1-d12f36437c1e",
+      "frame": 13413,
+      "error": null
+    },
+    {
+      "id": "max-wall-right",
+      "status": "running",
+      "generation": "287ac836-66f8-49ed-9cb3-4dc098a93c11",
+      "frame": 2371,
+      "error": null
+    }
+  ],
+  "assignments": {
+    "SCREEN_LINE_UP": "ribbon-up",
+    "SCREEN_LINE_DOWN": "ribbon-up",
+    "SCREEN_LEFT": "video-wall-left",
+    "SCREEN_STELLA": "vk-stella",
+    "SCREEN_ARKA": "vk-arch",
+    "SCREEN_RIGHT": "max-wall-right"
+  },
+  "rearWall": {
+    "version": 1,
+    "id": "rear-wall",
+    "logicalSize": [
+      7168,
+      1280
+    ],
+    "moduleSize": [
+      256,
+      256
+    ],
+    "coordinateOrigin": "top-left",
+    "regions": [
+      {
+        "surfaceId": "SCREEN_LEFT",
+        "sourceId": "video-wall-left",
+        "label": "VK Видео",
+        "rect": [
+          0,
+          0,
+          3072,
+          1280
+        ],
+        "assignedSourceId": "video-wall-left",
+        "configured": true,
+        "rendering": true,
+        "sending": true,
+        "status": "sending",
+        "renderSize": [
+          3072,
+          1280
+        ],
+        "programPlan": {
+          "version": 1,
+          "logicalSize": [
+            3072,
+            1280
+          ],
+          "transportSize": [
+            3072,
+            1282
+          ],
+          "regions": [
+            {
+              "logicalRect": [
+                0,
+                0,
+                3072,
+                1280
+              ],
+              "packedRect": [
+                0,
+                2,
+                3072,
+                1280
+              ]
+            }
+          ],
+          "frameStampRect": [
+            0,
+            0,
+            64,
+            2
+          ],
+          "format": "BGRA8",
+          "colorSpace": "sRGB",
+          "targetFps": 60,
+          "renderScale": 1
+        },
+        "spout": {
+          "name": "VK-003229b1-video-wall-left-program",
+          "nodeId": "9a3fad2b-63ee-4eb9-9809-e60e2fefe5eb",
+          "state": "sending",
+          "size": [
+            3072,
+            1282
+          ]
+        }
+      },
+      {
+        "surfaceId": "SCREEN_RIGHT",
+        "sourceId": "max-wall-right",
+        "label": "MAX",
+        "rect": [
+          3072,
+          0,
+          4096,
+          1280
+        ],
+        "assignedSourceId": "max-wall-right",
+        "configured": true,
+        "rendering": true,
+        "sending": true,
+        "status": "sending",
+        "renderSize": [
+          4096,
+          1280
+        ],
+        "programPlan": {
+          "version": 1,
+          "logicalSize": [
+            4096,
+            1280
+          ],
+          "transportSize": [
+            4096,
+            1282
+          ],
+          "regions": [
+            {
+              "logicalRect": [
+                0,
+                0,
+                4096,
+                1280
+              ],
+              "packedRect": [
+                0,
+                2,
+                4096,
+                1280
+              ]
+            }
+          ],
+          "frameStampRect": [
+            0,
+            0,
+            64,
+            2
+          ],
+          "format": "BGRA8",
+          "colorSpace": "sRGB",
+          "targetFps": 60,
+          "renderScale": 1
+        },
+        "spout": {
+          "name": "VK-003229b1-max-wall-right-program",
+          "nodeId": "9a3fad2b-63ee-4eb9-9809-e60e2fefe5eb",
+          "state": "sending",
+          "size": [
+            4096,
+            1282
+          ]
+        }
+      }
+    ],
+    "configured": true,
+    "sending": true
+  },
+  "outputs": [
+    {
+      "instanceId": "ribbon-up",
+      "kind": "preview",
+      "state": "running",
+      "fps": null,
+      "frames": 0
+    },
+    {
+      "instanceId": "ribbon-up",
+      "kind": "spout",
+      "state": "sending",
+      "fps": 15.889583285746989,
+      "frames": 10457
+    },
+    {
+      "instanceId": "ribbon-up",
+      "kind": "ndi",
+      "state": "disabled",
+      "fps": null,
+      "frames": 0
+    },
+    {
+      "instanceId": "video-wall-left",
+      "kind": "preview",
+      "state": "running",
+      "fps": null,
+      "frames": 0
+    },
+    {
+      "instanceId": "video-wall-left",
+      "kind": "spout",
+      "state": "sending",
+      "fps": 8.658374317107201,
+      "frames": 8075
+    },
+    {
+      "instanceId": "video-wall-left",
+      "kind": "ndi",
+      "state": "disabled",
+      "fps": null,
+      "frames": 0
+    },
+    {
+      "instanceId": "vk-stella",
+      "kind": "preview",
+      "state": "running",
+      "fps": null,
+      "frames": 0
+    },
+    {
+      "instanceId": "vk-stella",
+      "kind": "spout",
+      "state": "sending",
+      "fps": 17.93490704835911,
+      "frames": 12980
+    },
+    {
+      "instanceId": "vk-stella",
+      "kind": "ndi",
+      "state": "disabled",
+      "fps": null,
+      "frames": 0
+    },
+    {
+      "instanceId": "vk-arch",
+      "kind": "preview",
+      "state": "running",
+      "fps": null,
+      "frames": 0
+    },
+    {
+      "instanceId": "vk-arch",
+      "kind": "spout",
+      "state": "sending",
+      "fps": 16.446089139349887,
+      "frames": 13354
+    },
+    {
+      "instanceId": "vk-arch",
+      "kind": "ndi",
+      "state": "disabled",
+      "fps": null,
+      "frames": 0
+    },
+    {
+      "instanceId": "max-wall-right",
+      "kind": "preview",
+      "state": "running",
+      "fps": null,
+      "frames": 0
+    },
+    {
+      "instanceId": "max-wall-right",
+      "kind": "spout",
+      "state": "sending",
+      "fps": 6.161340510532517,
+      "frames": 2368
+    },
+    {
+      "instanceId": "max-wall-right",
+      "kind": "ndi",
+      "state": "disabled",
+      "fps": null,
+      "frames": 0
+    }
+  ],
+  "otherGenerationsUnchanged": true
+}

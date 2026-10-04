@@ -1,0 +1,188 @@
+{
+  "$schema": "../mission-v2.schema.json",
+  "number": 3,
+  "id": "protected-network",
+  "name": "СВЯЗЬ ДЛЯ БОЛЬШОЙ СТРАНЫ",
+  "description": "Абонентские терминалы в Калининграде и на судне, прибывающем во Владивосток, разделяет вся страна, поэтому одного спутника для такого маршрута недостаточно.\n\nЗадача: распредели элементы сети спутниковой связи через всю страну, чтобы создать надёжный маршрут для передачи данных.\nНебольшая подсказка: западную и восточную части страны посередине связывает центр обработки данных.",
+  "summary": "Передай корпоративные данные из Калининграда во Владивосток через всю страну",
+  "level": "ПРОДВИНУТЫЙ",
+  "timeSeconds": 90,
+  "mapPosition": {
+    "latitude": 44.5915,
+    "longitude": 132.2067
+  },
+  "endpoints": {
+    "A": {
+      "label": "",
+      "icon": "point-a",
+      "roles": [
+        "start"
+      ],
+      "latitude": 54.71,
+      "longitude": 20.51
+    },
+    "B": {
+      "label": "",
+      "icon": "point-b",
+      "roles": [
+        "finish"
+      ],
+      "latitude": 43.12,
+      "longitude": 131.89
+    }
+  },
+  "connectEndpointsOnComplete": true,
+  "objectives": [
+    {
+      "id": "eastern-network",
+      "label": "построй восточную часть сети",
+      "condition": {
+        "type": "segment",
+        "path": "main",
+        "from": 7,
+        "to": 12,
+        "anchor": "end"
+      }
+    },
+    {
+      "id": "western-network",
+      "label": "построй западную часть сети",
+      "condition": {
+        "type": "segment",
+        "path": "main",
+        "from": 0,
+        "to": 5,
+        "anchor": "start"
+      }
+    },
+    {
+      "id": "unite-through-core",
+      "label": "установи связь через центр обработки данных",
+      "condition": {
+        "type": "segment",
+        "path": "main",
+        "from": 5,
+        "to": 7,
+        "anchor": "start"
+      }
+    },
+    {
+      "id": "calibrate-network",
+      "label": "откалибруй связь",
+      "condition": {
+        "type": "allPaths"
+      }
+    }
+  ],
+  "successText": "Корпоративные данные переданы на судно, прибывающее во Владивосток",
+  "unlock": {
+    "requiresCompleted": [
+      1,
+      2
+    ]
+  },
+  "equipmentSet": "set-3",
+  "topology": {
+    "paths": [
+      {
+        "id": "main",
+        "from": "A",
+        "to": "B",
+        "steps": [
+          {
+            "role": "terminal-1",
+            "type": "terminal"
+          },
+          {
+            "role": "satellite-2",
+            "type": "satellite"
+          },
+          {
+            "role": "satellite-3",
+            "type": "satellite"
+          },
+          {
+            "role": "satellite-4",
+            "type": "satellite"
+          },
+          {
+            "role": "gateway-west",
+            "type": "gateway"
+          },
+          {
+            "role": "core-5",
+            "type": "core"
+          },
+          {
+            "role": "gateway-east",
+            "type": "gateway"
+          },
+          {
+            "role": "satellite-6",
+            "type": "satellite"
+          },
+          {
+            "role": "satellite-7",
+            "type": "satellite"
+          },
+          {
+            "role": "satellite-8",
+            "type": "satellite"
+          },
+          {
+            "role": "terminal-9",
+            "type": "terminal"
+          }
+        ],
+        "connection": {
+          "policy": "geographicCorridor",
+          "corridorWidth": 2,
+          "ambiguityEpsilon": 0.0001
+        },
+        "endpointSelection": {
+          "from": "specific",
+          "to": "specific"
+        },
+        "endpointSignals": {
+          "from": "nearest",
+          "to": "nearest"
+        }
+      }
+    ]
+  },
+  "completion": {
+    "type": "allPaths"
+  },
+  "feedback": {
+    "invalid": "neutral"
+  },
+  "feedbackEvents": {
+    "success": [
+      {
+        "id": "mission-complete",
+        "eyebrow": "МИССИЯ № 3 ВЫПОЛНЕНА",
+        "title": "МИССИЯ ВЫПОЛНЕНА",
+        "message": "Корпоративные данные переданы на судно, прибывающее во Владивосток",
+        "condition": {
+          "type": "missionComplete"
+        },
+        "action": "complete"
+      }
+    ],
+    "error": [
+      {
+        "id": "invalid-connection",
+        "eyebrow": "ОШИБКА СОЕДИНЕНИЯ",
+        "title": "ДАННЫЕ НЕ ПЕРЕДАНЫ",
+        "message": "Нарушена последовательность элементов",
+        "condition": {
+          "type": "invalidConnection"
+        },
+        "negativeConnections": "invalid"
+      }
+    ]
+  },
+  "objectSettings": {},
+  "engineVersion": 2,
+  "_revision": "e45be3a1-7109-4e6e-9c04-9b03bf3c3874"
+}

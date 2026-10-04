@@ -1,0 +1,23 @@
+✔ right wall preserves full 4096x1280 DOM composition and single GPU packing (1.5772ms)
+✔ interactive field is physically lower and shifted right by two thirds of its width, without stretching (0.1674ms)
+✔ trusted input accounts for stamp rows and releases on cancellation (0.2453ms)
+✔ full gesture lifecycle reaches game; disconnect and timeout release input (0.4274ms)
+✔ optical panels exactly follow both gameplay layouts and stay on the flat wall (0.1364ms)
+✔ one global moving composition survives layout switches without duplicating or resizing spheres (0.2563ms)
+✔ tile culling retains panel edges and finite shadow reach in both layouts (0.3365ms)
+✔ refraction stays within the 64-native-pixel tile halo at every supported scale (0.0907ms)
+✔ clear pane refraction stays in halo64 with an eight pixel safety margin (0.1581ms)
+✔ bezel normal is flat before medial-axis singularity; face magnification stays finite (8.225ms)
+✔ face lens bends a horizontal flow at side edges while fixing its center (0.2225ms)
+✔ four corner normals are continuous around joins and inner diagonals (47.0413ms)
+✔ refraction is measurable, symmetric, zero at IOR=1 and independent of tile origin (0.2079ms)
+✔ all bevel samples stay within halo at supported output widths (1.1507ms)
+✔ reference uses a fixed light and clear non-dispersive surface (0.0682ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 76.3229

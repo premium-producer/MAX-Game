@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ru">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MAX — проверка рабочего пакета</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="tokens/brand.css">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f0f1f4;color:#17141e;font:16px/1.45 system-ui,sans-serif}main{max-width:1120px;margin:auto;padding:32px 24px}h1{font-size:28px;margin:0 0 12px}h2{margin-top:32px;font-size:22px}.note{max-width:860px;color:#514b5d}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.tile{padding:24px;background:var(--max-dark);border-radius:12px;color:var(--max-white);min-height:180px}.tile.light{background:var(--max-white);color:var(--max-dark)}.tile.gradient{background:var(--max-main-gradient)}.tile img{height:64px;max-width:100%;display:block;margin:8px 0 24px}.label{font:13px/1.4 system-ui,sans-serif;opacity:.85}.sample{font-family:var(--max-font);font-synthesis:none}.sample h3{font-weight:600;font-size:34px;margin:0 0 12px;line-height:1.15}.sample p{font-weight:400;margin:0}.sample h4{font-weight:500;font-size:20px;margin:18px 0 8px}.swatches{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.swatch{height:90px;border:1px solid #999;border-radius:8px;padding:12px;font-size:13px}.cyan{background:var(--max-cyan)}.violet{background:var(--max-violet);color:white}.dark{background:var(--max-dark);color:white}.purple{background:var(--max-purple);color:white}.white{background:var(--max-white)}.bar{height:70px;border-radius:10px;background:var(--max-main-gradient)}a{color:#4526b3}code{overflow-wrap:anywhere}@media(max-width:600px){.swatches{grid-template-columns:repeat(2,1fr)}main{padding:20px 16px}.sample h3{font-size:28px}}
+</style>
+<main>
+<h1>MAX — рабочие материалы из экспорта</h1>
+<p class="note">Технический образец пакета 0.1.0: настоящие SVG и локальные Max Sans. Проверяется загрузка и применение ресурсов. Это не утверждённый рекламный макет; размеры карточек и текста выбраны для этой проверки.</p>
+<h2>Логотипы</h2>
+<div class="grid">
+ <div class="tile"><img src="assets/logos/max-primary-white.svg" alt="MAX — полноцветный знак, белая надпись"><div class="label">Основной · однотонный тёмный фон<br>Источник: 1.2, 8379:53647</div></div>
+ <div class="tile light"><img src="assets/logos/max-primary-black.svg" alt="MAX — полноцветный знак, чёрная надпись"><div class="label">Основной · однотонный светлый фон<br>Источник: 1.10, 8379:53920</div></div>
+ <div class="tile gradient"><img src="assets/logos/max-mono-white.svg" alt="MAX — монохромный белый логотип"><div class="label">Монохром · фирменный градиент<br>Источник: 1.4, 8379:53813</div></div>
+ <div class="tile"><img src="assets/logos/max-symbol-color.svg" alt="Фирменный знак MAX"><div class="label">Фирменный знак · оригинальный SVG</div></div>
+ <div class="tile gradient"><img src="assets/logos/max-symbol-white.svg" alt="Белый знак MAX"><div class="label">Монохромный знак · оригинальный SVG</div></div>
+</div>
+<h2>Проверка кириллицы и ролей шрифта</h2>
+<section class="tile sample">
+ <h3>Общение начинается<br>с простых слов</h3>
+ <h4>Подзаголовок — Max Sans Medium, 500</h4>
+ <p>Основной текст — Regular, 400. Ёж, съёмка, связь, № 12345. Заголовок — DemiBold, 600.</p>
+ <p style="font-weight:300;margin-top:16px">Light, 300 — только для исключительных случаев.</p>
+ <p style="font-weight:700;margin-top:8px">Bold, 700 — только для исключительных случаев.</p>
+</section>
+<h2>Проверенные значения цветов</h2>
+<div class="swatches"><div class="swatch cyan">#00BFFF</div><div class="swatch violet">#6E1AFF</div><div class="swatch dark">#0D001A</div><div class="swatch purple">#9500FF</div><div class="swatch white">#FFFFFF</div></div>
+<p class="note">«Синий гигант» не включён: HEX #471AFF расходится с RGB и заливкой карточки. Это открытый вопрос источника.</p>
+<h2>Main — линейный образец</h2><div class="bar"></div>
+<p class="note">Три остановки из узла 8379:54393: #00BFFF → #5B33FF на 50,480771% → #9500FF. Angular-фон и Glass Effect требуют отдельного переноса; эта полоса их не заменяет.</p>
+<p><a href="README.md">Как использовать пакет</a> · <a href="rules.json">Правила и источники</a> · <a href="asset-index.json">Происхождение файлов</a></p>
+</main>
+</html>

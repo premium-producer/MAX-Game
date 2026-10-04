@@ -1,0 +1,48 @@
+{
+  "identicalContent": true,
+  "differentTasks": [],
+  "revision": "7bd7389df7dd3532edf0991c9f8a87cba57bf4ed8a5735557543488042d44801",
+  "exportedAt": "2026-10-04T05:41:42.563Z",
+  "tasks": 15,
+  "screens": 84,
+  "interactionKinds": {
+    "hotspot": 50,
+    "button": 41,
+    "timer": 5
+  },
+  "addedInteractions": [
+    {
+      "screen": "blogger.channel.chats",
+      "interaction": {
+        "interactionId": "zone:5c5367d3-387a-4e67-8b90-aece98a3376b",
+        "enabled": true,
+        "kind": "hotspot",
+        "target": {
+          "kind": "screen",
+          "screenId": "blogger.channel.menu"
+        },
+        "name": "Новая зона",
+        "rect": [
+          241.15,
+          224.14,
+          225.96,
+          98.56
+        ]
+      }
+    },
+    {
+      "screen": "blogger.channel.chats",
+      "interaction": {
+        "interactionId": "button:13272208-27ed-4b89-b106-0f4a9d18b1dd",
+        "enabled": true,
+        "kind": "button",
+        "target": {
+          "kind": "screen",
+          "screenId": "blogger.channel.menu"
+        },
+        "label": "Новая кнопка",
+        "order": 0
+      }
+    }
+  ]
+}

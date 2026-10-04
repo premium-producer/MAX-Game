@@ -1,0 +1,758 @@
+{
+  "id": "2299:86108",
+  "name": "Cоздание ЦИД - 6 (подтверждение входа)",
+  "type": "FRAME",
+  "parent": "2299:85913",
+  "bounds": {
+    "x": 22766,
+    "y": 3341,
+    "width": 360,
+    "height": 800
+  },
+  "visible": true,
+  "fontSize": 0,
+  "hasImage": false,
+  "task": "unassigned",
+  "confidence": "none",
+  "reviewed": false,
+  "include": true,
+  "group": "2299:85913",
+  "groupName": "Цифровой ID / Cоздание ЦИД",
+  "containerPath": [
+    {
+      "id": "2299:85912",
+      "name": "Цифровой ID",
+      "type": "SECTION"
+    },
+    {
+      "id": "2299:85913",
+      "name": "Cоздание ЦИД",
+      "type": "SECTION"
+    }
+  ],
+  "sectionPath": [
+    {
+      "id": "2299:85912",
+      "name": "Цифровой ID",
+      "type": "SECTION"
+    },
+    {
+      "id": "2299:85913",
+      "name": "Cоздание ЦИД",
+      "type": "SECTION"
+    }
+  ],
+  "sequence": {
+    "series": "Cоздание ЦИД",
+    "number": 6,
+    "description": "подтверждение входа"
+  },
+  "detection": "structure",
+  "evidence": [],
+  "ancestors": [
+    {
+      "id": "2299:85913",
+      "name": "Cоздание ЦИД",
+      "type": "SECTION"
+    },
+    {
+      "id": "2299:85912",
+      "name": "Цифровой ID",
+      "type": "SECTION"
+    }
+  ],
+  "nearbyHeadings": [],
+  "contextRegion": null,
+  "warnings": [
+    "Задание не указано в названиях — назначьте при необходимости"
+  ],
+  "order": 62,
+  "fingerprint": "[\"Cоздание ЦИД - 6 (подтверждение входа)\",{\"x\":22766,\"y\":3341,\"width\":360,\"height\":800},\"FRAME\",[[\"2299:85913\",\"Cоздание ЦИД\",\"SECTION\"],[\"2299:85912\",\"Цифровой ID\",\"SECTION\"],[\"1:8\",\"Page 8\",\"PAGE\"]],\"content-v1\",2099886104,2160506634,41]",
+  "manualTask": false,
+  "title": "Cоздание ЦИД - 6 (подтверждение входа)",
+  "exportStatus": "ok",
+  "texts": [
+    {
+      "id": "I2299:86111;4:10095",
+      "name": "9:41",
+      "type": "TEXT",
+      "parent": "2299:86111",
+      "bounds": {
+        "x": 22786,
+        "y": 3355,
+        "width": 28,
+        "height": 20
+      },
+      "text": "9:41",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "9:41",
+          "start": 0,
+          "end": 4,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86114",
+      "name": "Заголовок",
+      "type": "TEXT",
+      "parent": "2299:86113",
+      "bounds": {
+        "x": 22794,
+        "y": 3463,
+        "width": 304,
+        "height": 24
+      },
+      "text": "Подтвердите вход",
+      "fontName": null,
+      "fontSize": 20,
+      "segments": [
+        {
+          "characters": "Подтвердите вход",
+          "start": 0,
+          "end": 16,
+          "fontSize": 20,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Bold",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 700
+            }
+          },
+          "fontWeight": 700,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86115",
+      "name": "Строка подписи 1",
+      "type": "TEXT",
+      "parent": "2299:86113",
+      "bounds": {
+        "x": 22794,
+        "y": 3499,
+        "width": 304,
+        "height": 60
+      },
+      "text": "Приложение Цифровая платформа MAX запрашивает разрешение на вход через Госуслуги",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Приложение Цифровая платформа MAX запрашивает разрешение на вход через Госуслуги",
+          "start": 0,
+          "end": 80,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86134",
+      "name": "Текст основной кнопки",
+      "type": "TEXT",
+      "parent": "2299:86133",
+      "bounds": {
+        "x": 22794,
+        "y": 3993,
+        "width": 304,
+        "height": 20
+      },
+      "text": "Подтвердить",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 16,
+      "segments": [
+        {
+          "characters": "Подтвердить",
+          "start": 0,
+          "end": 11,
+          "fontSize": 16,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "S:1216c7e768fde5f08b7316b3a8f0852435287b72,30410:28",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:86136",
+      "name": "Текст второстепенной кнопки",
+      "type": "TEXT",
+      "parent": "2299:86135",
+      "bounds": {
+        "x": 22794,
+        "y": 4065,
+        "width": 304,
+        "height": 20
+      },
+      "text": "Отклонить",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 16,
+      "segments": [
+        {
+          "characters": "Отклонить",
+          "start": 0,
+          "end": 9,
+          "fontSize": 16,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0941176488995552,
+                "g": 0.3529411852359772,
+                "b": 0.772549033164978
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:4928cd8f77ee8178487b8bff90d504154e31deab/28519:1"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:1216c7e768fde5f08b7316b3a8f0852435287b72,30410:28",
+          "hyperlink": null
+        }
+      ]
+    }
+  ],
+  "layers": [
+    {
+      "id": "2299:86108",
+      "name": "Cоздание ЦИД - 6 (подтверждение входа)",
+      "type": "FRAME",
+      "parent": "2299:85913",
+      "bounds": {
+        "x": 22766,
+        "y": 3341,
+        "width": 360,
+        "height": 800
+      }
+    },
+    {
+      "id": "2299:86109",
+      "name": "Контент",
+      "type": "FRAME",
+      "parent": "2299:86108",
+      "bounds": {
+        "x": 22766,
+        "y": 3341,
+        "width": 360,
+        "height": 350
+      }
+    },
+    {
+      "id": "2299:86110",
+      "name": "✏️ Хедер",
+      "type": "FRAME",
+      "parent": "2299:86109",
+      "bounds": {
+        "x": 22766,
+        "y": 3341,
+        "width": 360,
+        "height": 106
+      }
+    },
+    {
+      "id": "2299:86111",
+      "name": ".Status Bar/Android/Default",
+      "type": "INSTANCE",
+      "parent": "2299:86110",
+      "bounds": {
+        "x": 22766,
+        "y": 3341,
+        "width": 360,
+        "height": 48.000030517578125
+      }
+    },
+    {
+      "id": "I2299:86111;4:10095",
+      "name": "9:41",
+      "type": "TEXT",
+      "parent": "2299:86111",
+      "bounds": {
+        "x": 22786,
+        "y": 3355,
+        "width": 28,
+        "height": 20
+      }
+    },
+    {
+      "id": "I2299:86111;4:10096",
+      "name": "System Status",
+      "type": "FRAME",
+      "parent": "2299:86111",
+      "bounds": {
+        "x": 23054,
+        "y": 3353,
+        "width": 52.00006103515625,
+        "height": 24.000030517578125
+      }
+    },
+    {
+      "id": "I2299:86111;4:10097",
+      "name": "Wifi",
+      "type": "FRAME",
+      "parent": "I2299:86111;4:10096",
+      "bounds": {
+        "x": 23054,
+        "y": 3357,
+        "width": 18.666690826416016,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I2299:86111;4:10098",
+      "name": "wifi",
+      "type": "VECTOR",
+      "parent": "I2299:86111;4:10097",
+      "bounds": {
+        "x": 23056,
+        "y": 3359,
+        "width": 14.666685104370117,
+        "height": 11.333348274230957
+      }
+    },
+    {
+      "id": "I2299:86111;4:10099",
+      "name": "Data",
+      "type": "FRAME",
+      "parent": "I2299:86111;4:10096",
+      "bounds": {
+        "x": 23074.666015625,
+        "y": 3357,
+        "width": 16.00002098083496,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I2299:86111;4:10100",
+      "name": "data",
+      "type": "VECTOR",
+      "parent": "I2299:86111;4:10099",
+      "bounds": {
+        "x": 23073.609375,
+        "y": 3359.274658203125,
+        "width": 12.391877174377441,
+        "height": 12.391878128051758
+      }
+    },
+    {
+      "id": "I2299:86111;4:10101",
+      "name": "Battery",
+      "type": "FRAME",
+      "parent": "I2299:86111;4:10096",
+      "bounds": {
+        "x": 23092.666015625,
+        "y": 3357,
+        "width": 13.33335018157959,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I2299:86111;4:10102",
+      "name": "Union",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "I2299:86111;4:10101",
+      "bounds": {
+        "x": 23095.33203125,
+        "y": 3358.333251953125,
+        "width": 8,
+        "height": 13.3330078125
+      }
+    },
+    {
+      "id": "I2299:86111;4:10103",
+      "name": "stroke",
+      "type": "VECTOR",
+      "parent": "I2299:86111;4:10102",
+      "bounds": {
+        "x": 23095.33203125,
+        "y": 3358.333251953125,
+        "width": 8.00001049041748,
+        "height": 13.33335018157959
+      }
+    },
+    {
+      "id": "I2299:86111;4:10104",
+      "name": "fill",
+      "type": "RECTANGLE",
+      "parent": "I2299:86111;4:10102",
+      "bounds": {
+        "x": 23095.998046875,
+        "y": 3359.666748046875,
+        "width": 6.666675090789795,
+        "height": 12.000015258789062
+      }
+    },
+    {
+      "id": "2299:86112",
+      "name": "Контент",
+      "type": "FRAME",
+      "parent": "2299:86109",
+      "bounds": {
+        "x": 22766,
+        "y": 3463,
+        "width": 360,
+        "height": 228
+      }
+    },
+    {
+      "id": "2299:86113",
+      "name": "Текст",
+      "type": "FRAME",
+      "parent": "2299:86112",
+      "bounds": {
+        "x": 22766,
+        "y": 3463,
+        "width": 360,
+        "height": 96
+      }
+    },
+    {
+      "id": "2299:86114",
+      "name": "Заголовок",
+      "type": "TEXT",
+      "parent": "2299:86113",
+      "bounds": {
+        "x": 22794,
+        "y": 3463,
+        "width": 304,
+        "height": 24
+      }
+    },
+    {
+      "id": "2299:86115",
+      "name": "Строка подписи 1",
+      "type": "TEXT",
+      "parent": "2299:86113",
+      "bounds": {
+        "x": 22794,
+        "y": 3499,
+        "width": 304,
+        "height": 60
+      }
+    },
+    {
+      "id": "2299:86116",
+      "name": "Иконки",
+      "type": "FRAME",
+      "parent": "2299:86112",
+      "bounds": {
+        "x": 22856,
+        "y": 3591,
+        "width": 180,
+        "height": 100
+      }
+    },
+    {
+      "id": "2299:86117",
+      "name": "MAX",
+      "type": "FRAME",
+      "parent": "2299:86116",
+      "bounds": {
+        "x": 22856,
+        "y": 3591,
+        "width": 100,
+        "height": 100
+      }
+    },
+    {
+      "id": "2299:86118",
+      "name": "Как сейчас",
+      "type": "FRAME",
+      "parent": "2299:86117",
+      "bounds": {
+        "x": 22863,
+        "y": 3598,
+        "width": 86,
+        "height": 86
+      }
+    },
+    {
+      "id": "2299:86119",
+      "name": "Iсon",
+      "type": "VECTOR",
+      "parent": "2299:86118",
+      "bounds": {
+        "x": 22892.025390625,
+        "y": 3619.5,
+        "width": 27.94999885559082,
+        "height": 43
+      }
+    },
+    {
+      "id": "2299:86129",
+      "name": "Я",
+      "type": "FRAME",
+      "parent": "2299:86116",
+      "bounds": {
+        "x": 22936,
+        "y": 3591,
+        "width": 100,
+        "height": 100
+      }
+    },
+    {
+      "id": "2299:86130",
+      "name": "Icon",
+      "type": "VECTOR",
+      "parent": "2299:86129",
+      "bounds": {
+        "x": 22943,
+        "y": 3598,
+        "width": 86,
+        "height": 86
+      }
+    },
+    {
+      "id": "2299:86131",
+      "name": "Кнопки",
+      "type": "FRAME",
+      "parent": "2299:86108",
+      "bounds": {
+        "x": 22766,
+        "y": 3965,
+        "width": 360,
+        "height": 176
+      }
+    },
+    {
+      "id": "2299:86132",
+      "name": "Кнопки",
+      "type": "FRAME",
+      "parent": "2299:86131",
+      "bounds": {
+        "x": 22766,
+        "y": 3973,
+        "width": 360,
+        "height": 132
+      }
+    },
+    {
+      "id": "2299:86133",
+      "name": "Button",
+      "type": "FRAME",
+      "parent": "2299:86132",
+      "bounds": {
+        "x": 22774,
+        "y": 3973,
+        "width": 344,
+        "height": 60
+      }
+    },
+    {
+      "id": "2299:86134",
+      "name": "Текст основной кнопки",
+      "type": "TEXT",
+      "parent": "2299:86133",
+      "bounds": {
+        "x": 22794,
+        "y": 3993,
+        "width": 304,
+        "height": 20
+      }
+    },
+    {
+      "id": "2299:86135",
+      "name": "Button",
+      "type": "FRAME",
+      "parent": "2299:86132",
+      "bounds": {
+        "x": 22774,
+        "y": 4045,
+        "width": 344,
+        "height": 60
+      }
+    },
+    {
+      "id": "2299:86136",
+      "name": "Текст второстепенной кнопки",
+      "type": "TEXT",
+      "parent": "2299:86135",
+      "bounds": {
+        "x": 22794,
+        "y": 4065,
+        "width": 304,
+        "height": 20
+      }
+    },
+    {
+      "id": "2299:86137",
+      "name": "📎 Home Indicator",
+      "type": "INSTANCE",
+      "parent": "2299:86131",
+      "bounds": {
+        "x": 22766,
+        "y": 4117,
+        "width": 360,
+        "height": 24
+      }
+    },
+    {
+      "id": "I2299:86137;1350:1201",
+      "name": "Home Indicator",
+      "type": "VECTOR",
+      "parent": "2299:86137",
+      "bounds": {
+        "x": 22894,
+        "y": 4129,
+        "width": 104,
+        "height": 0
+      }
+    }
+  ],
+  "imageHashes": [],
+  "notes": [],
+  "pngScale": 1,
+  "pngFile": "Цифровой-ID/Cоздание-ЦИД/Cоздание-ЦИД---6-(подтверждение-входа)/screen.png",
+  "previewFile": "Цифровой-ID/Cоздание-ЦИД/Cоздание-ЦИД---6-(подтверждение-входа)/preview.png",
+  "svgFile": "Цифровой-ID/Cоздание-ЦИД/Cоздание-ЦИД---6-(подтверждение-входа)/screen.svg",
+  "documentFile": "Цифровой-ID/Cоздание-ЦИД/Cоздание-ЦИД---6-(подтверждение-входа)/figma.json",
+  "images": []
+}

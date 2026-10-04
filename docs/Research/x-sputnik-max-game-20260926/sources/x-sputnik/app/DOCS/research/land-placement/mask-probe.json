@@ -1,0 +1,176 @@
+{
+  "date": "2026-09-08",
+  "source": "app/public/earth/Earth_Specular_4K.webp",
+  "sha256": "94616acf545127b0f7079352cf614d34949cb896b29f584ed3185158fdfb671d",
+  "dimensions": [
+    4096,
+    2048
+  ],
+  "method": "Pillow RGB red channel, nearest pixel; x=floor(w*wrap(lon+180,360)/360); y=clamp(floor(h*(90-lat)/180)); 3x3 neighborhood",
+  "note": "Read-only source samples; not proof of global classification or rendered coastal alignment. Endpoint names/icons are not terrain classifications.",
+  "controls": [
+    {
+      "label": "Moscow",
+      "latitude": 55.75,
+      "longitude": 37.62,
+      "pixel": [
+        2476,
+        389
+      ],
+      "red": 0,
+      "neighborhood_min": 0,
+      "neighborhood_max": 0
+    },
+    {
+      "label": "Central Siberia",
+      "latitude": 61,
+      "longitude": 93,
+      "pixel": [
+        3106,
+        329
+      ],
+      "red": 0,
+      "neighborhood_min": 0,
+      "neighborhood_max": 0
+    },
+    {
+      "label": "Pacific",
+      "latitude": 35,
+      "longitude": 160,
+      "pixel": [
+        3868,
+        625
+      ],
+      "red": 255,
+      "neighborhood_min": 255,
+      "neighborhood_max": 255
+    },
+    {
+      "label": "Arctic Ocean",
+      "latitude": 80,
+      "longitude": 120,
+      "pixel": [
+        3413,
+        113
+      ],
+      "red": 255,
+      "neighborhood_min": 255,
+      "neighborhood_max": 255
+    },
+    {
+      "label": "Baikal",
+      "latitude": 53.5,
+      "longitude": 108,
+      "pixel": [
+        3276,
+        415
+      ],
+      "red": 255,
+      "neighborhood_min": 251,
+      "neighborhood_max": 255
+    },
+    {
+      "label": "Caspian",
+      "latitude": 42,
+      "longitude": 50,
+      "pixel": [
+        2616,
+        546
+      ],
+      "red": 255,
+      "neighborhood_min": 255,
+      "neighborhood_max": 255
+    },
+    {
+      "label": "Greenland ice",
+      "latitude": 74.6876,
+      "longitude": -37.9307,
+      "pixel": [
+        1616,
+        174
+      ],
+      "red": 0,
+      "neighborhood_min": 0,
+      "neighborhood_max": 0
+    }
+  ],
+  "mission_endpoints": [
+    {
+      "label": "arctic-route/finish-point-ship-1",
+      "latitude": 74.6876,
+      "longitude": -37.9307,
+      "pixel": [
+        1616,
+        174
+      ],
+      "red": 0,
+      "neighborhood_min": 0,
+      "neighborhood_max": 0
+    },
+    {
+      "label": "arctic-route/start-point-internet-4",
+      "latitude": 61.036,
+      "longitude": 93.0117,
+      "pixel": [
+        3106,
+        329
+      ],
+      "red": 0,
+      "neighborhood_min": 0,
+      "neighborhood_max": 0
+    },
+    {
+      "label": "first-signal/A",
+      "latitude": 58.3901,
+      "longitude": 41.423,
+      "pixel": [
+        2519,
+        359
+      ],
+      "red": 0,
+      "neighborhood_min": 0,
+      "neighborhood_max": 0
+    },
+    {
+      "label": "first-signal/B",
+      "latitude": 56.158,
+      "longitude": 98.6752,
+      "pixel": [
+        3170,
+        385
+      ],
+      "red": 0,
+      "neighborhood_min": 0,
+      "neighborhood_max": 0
+    },
+    {
+      "label": "protected-network/A",
+      "latitude": 54.71,
+      "longitude": 20.51,
+      "pixel": [
+        2281,
+        401
+      ],
+      "red": 0,
+      "neighborhood_min": 0,
+      "neighborhood_max": 5
+    },
+    {
+      "label": "protected-network/B",
+      "latitude": 43.12,
+      "longitude": 131.89,
+      "pixel": [
+        3548,
+        533
+      ],
+      "red": 111,
+      "neighborhood_min": 10,
+      "neighborhood_max": 255
+    }
+  ],
+  "memory": {
+    "uint8_mib": 8.0,
+    "rgba8_mib": 32.0,
+    "bitset_mib": 1.0
+  }
+}

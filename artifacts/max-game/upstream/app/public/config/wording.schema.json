@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "wording.schema.json",
+  "title": "X-SPUTNIK player-facing wording",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "defaultLanguage", "languages", "entries"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "const": 1 },
+    "defaultLanguage": { "const": "ru" },
+    "languages": { "const": ["ru", "en"] },
+    "entries": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": { "pattern": "^[a-zA-Z0-9_.-]+$" },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["ru", "en"],
+        "properties": {
+          "ru": { "type": "string", "minLength": 1 },
+          "en": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

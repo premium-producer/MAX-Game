@@ -1,0 +1,167 @@
+{
+  "id": "2299:99712",
+  "name": "Link",
+  "type": "FRAME",
+  "parent": "2299:99694",
+  "bounds": {
+    "x": 45586,
+    "y": -6090,
+    "width": 242,
+    "height": 96
+  },
+  "visible": true,
+  "fontSize": 0,
+  "hasImage": false,
+  "task": "unassigned",
+  "confidence": "none",
+  "reviewed": false,
+  "include": true,
+  "group": "2299:99694",
+  "groupName": "Flow платформа",
+  "containerPath": [
+    {
+      "id": "2299:99694",
+      "name": "Flow платформа",
+      "type": "SECTION"
+    }
+  ],
+  "sectionPath": [
+    {
+      "id": "2299:99694",
+      "name": "Flow платформа",
+      "type": "SECTION"
+    }
+  ],
+  "sequence": null,
+  "detection": "structure",
+  "evidence": [],
+  "ancestors": [
+    {
+      "id": "2299:99694",
+      "name": "Flow платформа",
+      "type": "SECTION"
+    }
+  ],
+  "nearbyHeadings": [],
+  "contextRegion": null,
+  "warnings": [
+    "Задание не указано в названиях — назначьте при необходимости"
+  ],
+  "order": 116,
+  "fingerprint": "[\"Link\",{\"x\":45586,\"y\":-6090,\"width\":242,\"height\":96},\"FRAME\",[[\"2299:99694\",\"Flow платформа\",\"SECTION\"],[\"1:8\",\"Page 8\",\"PAGE\"]],\"content-v1\",1774713747,1399753057,4]",
+  "manualTask": false,
+  "title": "Link",
+  "exportStatus": "ok",
+  "texts": [
+    {
+      "id": "2299:99714",
+      "name": "Чат-боты",
+      "type": "TEXT",
+      "parent": "2299:99712",
+      "bounds": {
+        "x": 45670,
+        "y": -6058,
+        "width": 121,
+        "height": 32
+      },
+      "text": "Чат-боты",
+      "fontName": {
+        "family": "VK Sans Display",
+        "style": "Regular"
+      },
+      "fontSize": 28,
+      "segments": [
+        {
+          "characters": "Чат-боты",
+          "start": 0,
+          "end": 8,
+          "fontSize": 28,
+          "fontName": {
+            "family": "VK Sans Display",
+            "style": "Regular"
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:21c744ff5ed9c23b0ada95fa73cb62789d4f8200/10030:253"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    }
+  ],
+  "layers": [
+    {
+      "id": "2299:99712",
+      "name": "Link",
+      "type": "FRAME",
+      "parent": "2299:99694",
+      "bounds": {
+        "x": 45586,
+        "y": -6090,
+        "width": 242,
+        "height": 96
+      }
+    },
+    {
+      "id": "2299:99713",
+      "name": "link_32",
+      "type": "INSTANCE",
+      "parent": "2299:99712",
+      "bounds": {
+        "x": 45626,
+        "y": -6058,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "I2299:99713;11994:449",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "2299:99713",
+      "bounds": {
+        "x": 45629.33203125,
+        "y": -6054.6669921875,
+        "width": 25.33333396911621,
+        "height": 25.33333396911621
+      }
+    },
+    {
+      "id": "2299:99714",
+      "name": "Чат-боты",
+      "type": "TEXT",
+      "parent": "2299:99712",
+      "bounds": {
+        "x": 45670,
+        "y": -6058,
+        "width": 121,
+        "height": 32
+      }
+    }
+  ],
+  "imageHashes": [],
+  "notes": [],
+  "pngScale": 1,
+  "pngFile": "Flow-платформа/Link-2/screen.png",
+  "previewFile": "Flow-платформа/Link-2/preview.png",
+  "svgFile": "Flow-платформа/Link-2/screen.svg",
+  "documentFile": "Flow-платформа/Link-2/figma.json",
+  "images": []
+}

@@ -1,0 +1,6416 @@
+{
+  "id": "296:17579",
+  "name": "Экран 2",
+  "title": "002-Экран",
+  "bounds": {
+    "x": 24375.4140625,
+    "y": 1950.5078125,
+    "width": 793.1719360351562,
+    "height": 495.73248291015625
+  },
+  "task": "unassigned",
+  "include": true,
+  "reviewed": false,
+  "confidence": "structure",
+  "group": "296:17342",
+  "groupName": "Продвижение бизнеса / Канал",
+  "containerPath": [
+    {
+      "id": "296:16452",
+      "name": "06-Продвижение бизнеса"
+    },
+    {
+      "id": "296:17342",
+      "name": "03-Канал"
+    }
+  ],
+  "ancestors": [],
+  "nearbyHeadings": [],
+  "evidence": [
+    {
+      "source": "autolayout",
+      "text": "Порядок children; названия фреймов не используются"
+    }
+  ],
+  "warnings": [
+    "Слой «Before» (I296:17584;6850:72688;3168:31361): недоступно componentProperties. in get_componentProperties: Component set for node has existing errors"
+  ],
+  "detection": "structure",
+  "order": 84,
+  "content": {
+    "kind": "screen",
+    "missionOrder": 6,
+    "missionNodeId": "296:16452",
+    "iconOrder": 3,
+    "iconNodeId": "296:17342",
+    "iconText": "Канал",
+    "iconTexts": [
+      {
+        "id": "296:17346",
+        "order": 1,
+        "text": "Канал",
+        "fontName": {
+          "family": "Inter",
+          "style": "Regular",
+          "variationSettings": {
+            "slnt": 0,
+            "wght": 400
+          }
+        },
+        "fontSize": 55,
+        "segments": [
+          {
+            "characters": "Канал",
+            "start": 0,
+            "end": 5,
+            "fontSize": 55,
+            "fontName": {
+              "family": "Inter",
+              "style": "Regular",
+              "variationSettings": {
+                "slnt": 0,
+                "wght": 400
+              }
+            },
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 0.07999999821186066,
+                  "g": 0.05999999865889549,
+                  "b": 0.11999999731779099
+                },
+                "boundVariables": {}
+              }
+            ],
+            "hyperlink": null
+          }
+        ],
+        "bounds": {
+          "x": 24901.5,
+          "y": 572,
+          "width": 424,
+          "height": 67
+        }
+      }
+    ],
+    "screenOrder": 2,
+    "screenNodeId": "296:17576",
+    "visualNodeId": "296:17579",
+    "helpNodeId": "296:17778"
+  },
+  "instruction": {
+    "blocks": [
+      {
+        "id": "296:17779",
+        "order": 1,
+        "text": "Выберем опцию создания канала",
+        "fontName": {
+          "family": "Inter",
+          "style": "Regular",
+          "variationSettings": {
+            "slnt": 0,
+            "wght": 400
+          }
+        },
+        "fontSize": 32,
+        "segments": [
+          {
+            "characters": "Выберем опцию создания канала",
+            "start": 0,
+            "end": 29,
+            "fontSize": 32,
+            "fontName": {
+              "family": "Inter",
+              "style": "Regular",
+              "variationSettings": {
+                "slnt": 0,
+                "wght": 400
+              }
+            },
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 0.07999999821186066,
+                  "g": 0.05999999865889549,
+                  "b": 0.11999999731779099
+                },
+                "boundVariables": {}
+              }
+            ],
+            "hyperlink": null
+          }
+        ],
+        "bounds": {
+          "x": 25396,
+          "y": 2198.3740234375,
+          "width": 547,
+          "height": 39
+        }
+      }
+    ],
+    "text": "Выберем опцию создания канала"
+  },
+  "watchNodeId": "296:17576",
+  "contextNodeIds": [
+    "296:17343",
+    "296:16453"
+  ],
+  "sequenceParents": [
+    "296:17347",
+    "296:17342",
+    "296:16454",
+    "296:16452"
+  ],
+  "fingerprint": "[\"[\\\"Канал · 01 · Канал бизнеса · Запуск канала\\\",{\\\"x\\\":24180,\\\"y\\\":1824.5078125,\\\"width\\\":1867,\\\"height\\\":786.7324829101562},\\\"FRAME\\\",[[\\\"296:17347\\\",\\\"задание миссии\\\",\\\"FRAME\\\"],[\\\"296:17342\\\",\\\"иконка_задание · Канал\\\",\\\"FRAME\\\"],[\\\"296:16454\\\",\\\"Миссия · возможности слева направо\\\",\\\"FRAME\\\"],[\\\"296:16452\\\",\\\"Продвижение бизнеса\\\",\\\"FRAME\\\"],[\\\"296:13218\\\",\\\"MAX аудит миссий\\\",\\\"FRAME\\\"],[\\\"296:13217\\\",\\\"DEV 2\\\",\\\"PAGE\\\"]],\\\"content-v1\\\",2650576782,494792318,2791]\",[\"[\\\"игровая иконка\\\",{\\\"x\\\":24857.5,\\\"y\\\":376,\\\"width\\\":512,\\\"height\\\":307},\\\"FRAME\\\",[[\\\"296:17342\\\",\\\"иконка_задание · Канал\\\",\\\"FRAME\\\"],[\\\"296:16454\\\",\\\"Миссия · возможности слева направо\\\",\\\"FRAME\\\"],[\\\"296:16452\\\",\\\"Продвижение бизнеса\\\",\\\"FRAME\\\"],[\\\"296:13218\\\",\\\"MAX аудит миссий\\\",\\\"FRAME\\\"],[\\\"296:13217\\\",\\\"DEV 2\\\",\\\"PAGE\\\"]],\\\"content-v1\\\",2406802825,3792653911,4]\",\"[\\\"Продвижение бизнеса\\\",{\\\"x\\\":21276,\\\"y\\\":206,\\\"width\\\":1600,\\\"height\\\":77},\\\"TEXT\\\",[[\\\"296:16452\\\",\\\"Продвижение бизнеса\\\",\\\"FRAME\\\"],[\\\"296:13218\\\",\\\"MAX аудит миссий\\\",\\\"FRAME\\\"],[\\\"296:13217\\\",\\\"DEV 2\\\",\\\"PAGE\\\"]],\\\"content-v1\\\",3411646121,1499354171,1]\"],[[\"296:17347\",[\"296:17348\",\"296:17576\",\"296:17780\",\"296:17798\",\"296:17818\",\"296:17840\",\"296:17860\",\"296:17884\",\"296:17909\",\"296:18117\"]],[\"296:17342\",[\"296:17343\",\"296:17347\"]],[\"296:16454\",[\"296:16455\",\"296:16647\",\"296:17342\",\"296:18549\",\"296:19486\"]],[\"296:16452\",[\"296:16453\",\"296:16454\"]]]]",
+  "readWarnings": [
+    {
+      "nodeId": "I296:17584;6850:72688;3168:31361",
+      "nodeName": "Before",
+      "property": "componentProperties",
+      "message": "in get_componentProperties: Component set for node has existing errors"
+    }
+  ],
+  "exportStatus": "ok",
+  "texts": [
+    {
+      "id": "I296:17581;6848:9345;404:24014;233:32210;3236:94429",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:17581;6848:9345;404:24014;233:32210;3236:94427",
+      "bounds": {
+        "x": 24433.798828125,
+        "y": 2023.720947265625,
+        "width": 30,
+        "height": 10
+      },
+      "text": "Главная",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 7.7113938331604,
+      "segments": [
+        {
+          "characters": "Главная",
+          "start": 0,
+          "end": 7,
+          "fontSize": 7.7113938331604,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/2988:639"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24223;270:20870;3168:31365",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:17581;6848:9345;404:24223;270:20870;3168:31363",
+      "bounds": {
+        "x": 24433.798828125,
+        "y": 2056.769775390625,
+        "width": 36,
+        "height": 10
+      },
+      "text": "Чат-боты",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 7.7113938331604,
+      "segments": [
+        {
+          "characters": "Чат-боты",
+          "start": 0,
+          "end": 8,
+          "fontSize": 7.7113938331604,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/2988:639"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24408;382:23868;3236:94429",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:17581;6848:9345;404:24408;382:23868;3236:94427",
+      "bounds": {
+        "x": 24433.798828125,
+        "y": 2089.818603515625,
+        "width": 29,
+        "height": 10
+      },
+      "text": "Каналы",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 7.7113938331604,
+      "segments": [
+        {
+          "characters": "Каналы",
+          "start": 0,
+          "end": 6,
+          "fontSize": 7.7113938331604,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/2988:639"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:17581;6848:9345;678:36164;678:34396;3168:31365",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:17581;6848:9345;678:36164;678:34396;3168:31363",
+      "bounds": {
+        "x": 24433.798828125,
+        "y": 2122.867431640625,
+        "width": 48,
+        "height": 10
+      },
+      "text": "Цифровой ID",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 7.7113938331604,
+      "segments": [
+        {
+          "characters": "Цифровой ID",
+          "start": 0,
+          "end": 11,
+          "fontSize": 7.7113938331604,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/2988:639"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23865;387:25534;3168:31365",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:17581;6848:9345;453:23865;387:25534;3168:31363",
+      "bounds": {
+        "x": 24433.798828125,
+        "y": 2376.244140625,
+        "width": 44,
+        "height": 10
+      },
+      "text": "Сотрудники",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 7.7113938331604,
+      "segments": [
+        {
+          "characters": "Сотрудники",
+          "start": 0,
+          "end": 10,
+          "fontSize": 7.7113938331604,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/2988:639"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23866;387:25934;3168:31365",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:17581;6848:9345;453:23866;387:25934;3168:31363",
+      "bounds": {
+        "x": 24433.798828125,
+        "y": 2409.29296875,
+        "width": 55,
+        "height": 10
+      },
+      "text": "Документация",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 7.7113938331604,
+      "segments": [
+        {
+          "characters": "Документация",
+          "start": 0,
+          "end": 12,
+          "fontSize": 7.7113938331604,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/2988:639"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:17581;6848:9351;2005:40483",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:17581;6848:9351;2005:40482",
+      "bounds": {
+        "x": 24735.123046875,
+        "y": 2115.53857421875,
+        "width": 239,
+        "height": 18
+      },
+      "text": "Как вы хотите создать канал в MAX?",
+      "fontName": {
+        "family": "Max Sans",
+        "style": "DemiBold"
+      },
+      "fontSize": 13.219532012939453,
+      "segments": [
+        {
+          "characters": "Как вы хотите создать канал в MAX?",
+          "start": 0,
+          "end": 34,
+          "fontSize": 13.219532012939453,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "DemiBold"
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:075c4c23ab76de3d017507c7a561beca4f70e5ac/10030:220"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:17581;6848:9351;2005:40486;21354:147939;69:4737",
+      "name": "↪️ Cell Title",
+      "type": "TEXT",
+      "parent": "I296:17581;6848:9351;2005:40486;21354:147939;28123:220561",
+      "bounds": {
+        "x": 24776.984375,
+        "y": 2166.58740234375,
+        "width": 188.3251190185547,
+        "height": 23
+      },
+      "text": "Создать канал с ником из другого мессенджера или социальной сети",
+      "fontName": null,
+      "fontSize": 8.813021659851074,
+      "segments": [
+        {
+          "characters": "Создать канал с ником из другого мессенджера или социальной сети",
+          "start": 0,
+          "end": 64,
+          "fontSize": 8.813021659851074,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:075c4c23ab76de3d017507c7a561beca4f70e5ac/10030:220"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:17581;6848:9351;2005:40486;21354:147939;69:4744",
+      "name": "↪️ Cell Subtitle",
+      "type": "TEXT",
+      "parent": "I296:17581;6848:9351;2005:40486;21354:147939",
+      "bounds": {
+        "x": 24776.984375,
+        "y": 2190.689208984375,
+        "width": 188.3251190185547,
+        "height": 9
+      },
+      "text": "Если у вас есть регистрация в РКН",
+      "fontName": null,
+      "fontSize": 7.160580158233643,
+      "segments": [
+        {
+          "characters": "Если у вас есть регистрация в РКН",
+          "start": 0,
+          "end": 33,
+          "fontSize": 7.160580158233643,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.3960784375667572,
+                "g": 0.43921568989753723,
+                "b": 0.4901960790157318
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:ee0aa3ca05e7860e50c4271031ec92a048e92621/9909:256"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:17581;6848:9351;2005:40488;21354:147939;69:4737",
+      "name": "↪️ Cell Title",
+      "type": "TEXT",
+      "parent": "I296:17581;6848:9351;2005:40488;21354:147939;28123:220561",
+      "bounds": {
+        "x": 24776.984375,
+        "y": 2235.551025390625,
+        "width": 188.3251190185547,
+        "height": 12
+      },
+      "text": "Создать новый канал для бизнеса",
+      "fontName": null,
+      "fontSize": 8.813021659851074,
+      "segments": [
+        {
+          "characters": "Создать новый канал для бизнеса",
+          "start": 0,
+          "end": 31,
+          "fontSize": 8.813021659851074,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:075c4c23ab76de3d017507c7a561beca4f70e5ac/10030:220"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:17581;6864:104051;6864:97817;4074:19269;4074:19258",
+      "name": "Link",
+      "type": "TEXT",
+      "parent": "I296:17581;6864:104051;6864:97817;4074:19269",
+      "bounds": {
+        "x": 24575.912109375,
+        "y": 1977.5078125,
+        "width": 30,
+        "height": 10
+      },
+      "text": "Главная",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 7.7113938331604,
+      "segments": [
+        {
+          "characters": "Главная",
+          "start": 0,
+          "end": 7,
+          "fontSize": 7.7113938331604,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.5176470875740051,
+                "g": 0.5529412031173706,
+                "b": 0.5960784554481506
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:d1111407eec76a422d3c84c7210450bd84257bb3/2988:524"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:17581;6864:104051;6864:97817;4074:19273;4074:19264",
+      "name": "Link",
+      "type": "TEXT",
+      "parent": "I296:17581;6864:104051;6864:97817;4074:19273",
+      "bounds": {
+        "x": 24619.130859375,
+        "y": 1977.5078125,
+        "width": 29,
+        "height": 10
+      },
+      "text": "Каналы",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 7.7113938331604,
+      "segments": [
+        {
+          "characters": "Каналы",
+          "start": 0,
+          "end": 6,
+          "fontSize": 7.7113938331604,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.3450980484485626,
+                "g": 0.38823530077934265,
+                "b": 0.43529412150382996
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:daf69504f7d2f564cd6df5b735a0ee3389207baf/2988:523"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:17584;6850:72688;3370:24156",
+      "name": "Overtitle",
+      "type": "TEXT",
+      "parent": "I296:17584;6850:72688;3168:31362",
+      "bounds": {
+        "x": 25023.78125,
+        "y": 1969.9915771484375,
+        "width": 63,
+        "height": 11
+      },
+      "text": "Профиль бизнеса",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 7.350863456726074,
+      "segments": [
+        {
+          "characters": "Профиль бизнеса",
+          "start": 0,
+          "end": 15,
+          "fontSize": 7.350863456726074,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.3960784375667572,
+                "g": 0.43921568989753723,
+                "b": 0.4901960790157318
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:40111606192b8c3149bf8c29bf3bd6be41eeb6b2/3232:42"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:17584;6850:72688;3168:31365",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:17584;6850:72688;3168:31363",
+      "bounds": {
+        "x": 25023.78125,
+        "y": 1982.041748046875,
+        "width": 36,
+        "height": 13
+      },
+      "text": "Кофейня",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 8.400986671447754,
+      "segments": [
+        {
+          "characters": "Кофейня",
+          "start": 0,
+          "end": 7,
+          "fontSize": 8.400986671447754,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/3235:51"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:17584;6850:72688;3168:31372;3168:30820;3168:30812;2510:7013",
+      "name": "Label",
+      "type": "TEXT",
+      "parent": "I296:17584;6850:72688;3168:31372;3168:30820;3168:30812;2510:7012",
+      "bounds": {
+        "x": 25107.783203125,
+        "y": 1976.754150390625,
+        "width": 23,
+        "height": 11
+      },
+      "text": "Button",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 7.350863456726074,
+      "segments": [
+        {
+          "characters": "Button",
+          "start": 0,
+          "end": 6,
+          "fontSize": 7.350863456726074,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:945c7372d32f523c86aa40a4a949d2a0fbb47256/3235:60"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:17779",
+      "order": 1,
+      "text": "Выберем опцию создания канала",
+      "fontName": {
+        "family": "Inter",
+        "style": "Regular",
+        "variationSettings": {
+          "slnt": 0,
+          "wght": 400
+        }
+      },
+      "fontSize": 32,
+      "segments": [
+        {
+          "characters": "Выберем опцию создания канала",
+          "start": 0,
+          "end": 29,
+          "fontSize": 32,
+          "fontName": {
+            "family": "Inter",
+            "style": "Regular",
+            "variationSettings": {
+              "slnt": 0,
+              "wght": 400
+            }
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.07999999821186066,
+                "g": 0.05999999865889549,
+                "b": 0.11999999731779099
+              },
+              "boundVariables": {}
+            }
+          ],
+          "hyperlink": null
+        }
+      ],
+      "bounds": {
+        "x": 25396,
+        "y": 2198.3740234375,
+        "width": 547,
+        "height": 39
+      },
+      "contentRole": "instruction"
+    }
+  ],
+  "layers": [
+    {
+      "id": "296:17579",
+      "name": "Group 2087330775",
+      "type": "GROUP",
+      "parent": "296:17577",
+      "bounds": {
+        "x": 24375.4140625,
+        "y": 1950.5078125,
+        "width": 793.1719360351562,
+        "height": 495.73248291015625
+      }
+    },
+    {
+      "id": "296:17580",
+      "name": "Group 2087330774",
+      "type": "GROUP",
+      "parent": "296:17579",
+      "bounds": {
+        "x": 24375.4140625,
+        "y": 1950.5078125,
+        "width": 793.1719360351562,
+        "height": 495.73248291015625
+      }
+    },
+    {
+      "id": "296:17581",
+      "name": "Platform",
+      "type": "INSTANCE",
+      "parent": "296:17580",
+      "bounds": {
+        "x": 24375.4140625,
+        "y": 1950.5078125,
+        "width": 793.1719360351562,
+        "height": 495.73248291015625
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345",
+      "name": "Sidebar",
+      "type": "INSTANCE",
+      "parent": "296:17581",
+      "bounds": {
+        "x": 24375.4140625,
+        "y": 1950.5078125,
+        "width": 165.24415588378906,
+        "height": 495.73248291015625
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;232:25564",
+      "name": "Conteiner",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345",
+      "bounds": {
+        "x": 24384.2265625,
+        "y": 1959.32080078125,
+        "width": 156.43113708496094,
+        "height": 478.1064147949219
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;233:31043",
+      "name": "Header",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;232:25564",
+      "bounds": {
+        "x": 24384.2265625,
+        "y": 1959.32080078125,
+        "width": 156.43113708496094,
+        "height": 46.265995025634766
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;417:22465",
+      "name": "Button",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;233:31043",
+      "bounds": {
+        "x": 24531.96484375,
+        "y": 1974.05859375,
+        "width": 16.524415969848633,
+        "height": 16.524415969848633
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;417:22465;2510:9866",
+      "name": "Before",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;417:22465",
+      "bounds": {
+        "x": 24535.8203125,
+        "y": 1977.914306640625,
+        "width": 8.813021659851074,
+        "height": 8.813021659851074
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;417:22465;2510:9866;2102:1638",
+      "name": "Swap Icon",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;417:22465;2510:9866",
+      "bounds": {
+        "x": 24535.8203125,
+        "y": 1977.914306640625,
+        "width": 8.813021659851074,
+        "height": 8.813021659851074
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;417:22465;2510:9866;2102:1638;2013:71",
+      "name": "🔒 stub_outline_16",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;417:22465;2510:9866;2102:1638",
+      "bounds": {
+        "x": 24535.8203125,
+        "y": 1977.914306640625,
+        "width": 8.813021659851074,
+        "height": 8.813021659851074
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;417:22465;2510:9866;2102:1638;2013:71;124559:1086",
+      "name": "↳ Icon Color",
+      "type": "VECTOR",
+      "parent": "I296:17581;6848:9345;417:22465;2510:9866;2102:1638;2013:71",
+      "bounds": {
+        "x": 24536.646484375,
+        "y": 1978.740478515625,
+        "width": 7.160580635070801,
+        "height": 7.160580635070801
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;232:25586",
+      "name": "Container",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;232:25564",
+      "bounds": {
+        "x": 24384.2265625,
+        "y": 2005.5867919921875,
+        "width": 156.43113708496094,
+        "height": 352.5232238769531
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;483:30850",
+      "name": "Frame 2131329777",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;232:25586",
+      "bounds": {
+        "x": 24393.0390625,
+        "y": 2014.3997802734375,
+        "width": 138.80508422851562,
+        "height": 334.8971862792969
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24014",
+      "name": "Main/Full",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;483:30850",
+      "bounds": {
+        "x": 24393.0390625,
+        "y": 2014.3997802734375,
+        "width": 138.80508422851562,
+        "height": 28.64232063293457
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24014;233:32210",
+      "name": "Cell",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;404:24014",
+      "bounds": {
+        "x": 24393.0390625,
+        "y": 2014.3997802734375,
+        "width": 138.80508422851562,
+        "height": 28.64232063293457
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24014;233:32210;3236:94422",
+      "name": "Content",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;404:24014;233:32210",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2014.3997802734375,
+        "width": 123.38229370117188,
+        "height": 28.64232063293457
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24014;233:32210;3236:94425",
+      "name": "Before",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;404:24014;233:32210;3236:94422",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2014.3997802734375,
+        "width": 22.032554626464844,
+        "height": 28.64232063293457
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24014;233:32210;3236:94425;3168:30763",
+      "name": "Avatar",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;404:24014;233:32210;3236:94425",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2017.7047119140625,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24014;233:32210;3236:94425;3168:30763;3537:26978",
+      "name": "Container for scale",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;404:24014;233:32210;3236:94425;3168:30763",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2017.7047119140625,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24014;233:32210;3236:94425;3168:30763;2653:6866",
+      "name": "Container",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;404:24014;233:32210;3236:94425;3168:30763;3537:26978",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2017.7047119140625,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24014;233:32210;3236:94425;3168:30763;2653:6872",
+      "name": "Mask",
+      "type": "GROUP",
+      "parent": "I296:17581;6848:9345;404:24014;233:32210;3236:94425;3168:30763;2653:6866",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2017.7047119140625,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24014;233:32210;3236:94425;3168:30763;2653:6873",
+      "name": ".background form",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;404:24014;233:32210;3236:94425;3168:30763;2653:6872",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2017.7047119140625,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24014;233:32210;3236:94425;3168:30763;2653:6873;2640:18600",
+      "name": "Ellipse",
+      "type": "ELLIPSE",
+      "parent": "I296:17581;6848:9345;404:24014;233:32210;3236:94425;3168:30763;2653:6873",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2017.7047119140625,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24014;233:32210;3236:94425;3168:30763;2653:6874",
+      "name": "🖼️ Choose Image",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "I296:17581;6848:9345;404:24014;233:32210;3236:94425;3168:30763;2653:6866",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2017.7047119140625,
+        "width": 22.0322265625,
+        "height": 22.0322265625
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24014;233:32210;3236:94425;3168:30763;2653:6876",
+      "name": "Avatar Form",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;404:24014;233:32210;3236:94425;3168:30763;2653:6874",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2017.7047119140625,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24014;233:32210;3236:94425;3168:30763;2653:6876;2640:18600",
+      "name": "Ellipse",
+      "type": "ELLIPSE",
+      "parent": "I296:17581;6848:9345;404:24014;233:32210;3236:94425;3168:30763;2653:6876",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2017.7047119140625,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24014;233:32210;3236:94426",
+      "name": "Middle",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;404:24014;233:32210;3236:94422",
+      "bounds": {
+        "x": 24433.798828125,
+        "y": 2023.720947265625,
+        "width": 90.33346557617188,
+        "height": 10
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24014;233:32210;3236:94427",
+      "name": "Title ",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;404:24014;233:32210;3236:94426",
+      "bounds": {
+        "x": 24433.798828125,
+        "y": 2023.720947265625,
+        "width": 90.33346557617188,
+        "height": 10
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24014;233:32210;3236:94429",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:17581;6848:9345;404:24014;233:32210;3236:94427",
+      "bounds": {
+        "x": 24433.798828125,
+        "y": 2023.720947265625,
+        "width": 30,
+        "height": 10
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24223",
+      "name": "Chat-bots/Full",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;483:30850",
+      "bounds": {
+        "x": 24393.0390625,
+        "y": 2047.4486083984375,
+        "width": 138.80508422851562,
+        "height": 28.64232063293457
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24223;270:20870",
+      "name": "Cell",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;404:24223",
+      "bounds": {
+        "x": 24393.0390625,
+        "y": 2047.4486083984375,
+        "width": 138.80508422851562,
+        "height": 28.64232063293457
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24223;270:20870;3168:31358",
+      "name": "Content",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;404:24223;270:20870",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2047.4486083984375,
+        "width": 123.38229370117188,
+        "height": 28.64232063293457
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24223;270:20870;3168:31361",
+      "name": "Before",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;404:24223;270:20870;3168:31358",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2047.4486083984375,
+        "width": 22.032554626464844,
+        "height": 28.64232063293457
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24223;270:20870;3168:31361;3168:30763",
+      "name": "Avatar",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;404:24223;270:20870;3168:31361",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2050.75341796875,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24223;270:20870;3168:31361;3168:30763;3537:26978",
+      "name": "Container for scale",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;404:24223;270:20870;3168:31361;3168:30763",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2050.75341796875,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24223;270:20870;3168:31361;3168:30763;2653:6866",
+      "name": "Container",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;404:24223;270:20870;3168:31361;3168:30763;3537:26978",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2050.75341796875,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24223;270:20870;3168:31361;3168:30763;2653:6872",
+      "name": "Mask",
+      "type": "GROUP",
+      "parent": "I296:17581;6848:9345;404:24223;270:20870;3168:31361;3168:30763;2653:6866",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2050.75341796875,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24223;270:20870;3168:31361;3168:30763;2653:6873",
+      "name": ".background form",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;404:24223;270:20870;3168:31361;3168:30763;2653:6872",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2050.75341796875,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24223;270:20870;3168:31361;3168:30763;2653:6873;2640:18600",
+      "name": "Ellipse",
+      "type": "ELLIPSE",
+      "parent": "I296:17581;6848:9345;404:24223;270:20870;3168:31361;3168:30763;2653:6873",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2050.75341796875,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24223;270:20870;3168:31361;3168:30763;2653:6874",
+      "name": "🖼️ Choose Image",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "I296:17581;6848:9345;404:24223;270:20870;3168:31361;3168:30763;2653:6866",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2050.75341796875,
+        "width": 22.0322265625,
+        "height": 22.0322265625
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24223;270:20870;3168:31361;3168:30763;2653:6876",
+      "name": "Avatar Form",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;404:24223;270:20870;3168:31361;3168:30763;2653:6874",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2050.75341796875,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24223;270:20870;3168:31361;3168:30763;2653:6876;2640:18600",
+      "name": "Ellipse",
+      "type": "ELLIPSE",
+      "parent": "I296:17581;6848:9345;404:24223;270:20870;3168:31361;3168:30763;2653:6876",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2050.75341796875,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24223;270:20870;3168:31362",
+      "name": "Middle",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;404:24223;270:20870;3168:31358",
+      "bounds": {
+        "x": 24433.798828125,
+        "y": 2056.769775390625,
+        "width": 90.3334732055664,
+        "height": 10
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24223;270:20870;3168:31363",
+      "name": "Title ",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;404:24223;270:20870;3168:31362",
+      "bounds": {
+        "x": 24433.798828125,
+        "y": 2056.769775390625,
+        "width": 90.3334732055664,
+        "height": 10
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24223;270:20870;3168:31365",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:17581;6848:9345;404:24223;270:20870;3168:31363",
+      "bounds": {
+        "x": 24433.798828125,
+        "y": 2056.769775390625,
+        "width": 36,
+        "height": 10
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24408",
+      "name": "Channels/Full",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;483:30850",
+      "bounds": {
+        "x": 24393.0390625,
+        "y": 2080.49755859375,
+        "width": 138.80508422851562,
+        "height": 28.64232063293457
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24408;382:23868",
+      "name": "Cell",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;404:24408",
+      "bounds": {
+        "x": 24393.0390625,
+        "y": 2080.49755859375,
+        "width": 138.80508422851562,
+        "height": 28.64232063293457
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24408;382:23868;3236:94422",
+      "name": "Content",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;404:24408;382:23868",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2080.49755859375,
+        "width": 123.38229370117188,
+        "height": 28.64232063293457
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24408;382:23868;3236:94425",
+      "name": "Before",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;404:24408;382:23868;3236:94422",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2080.49755859375,
+        "width": 22.032554626464844,
+        "height": 28.64232063293457
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24408;382:23868;3236:94425;3168:30763",
+      "name": "Avatar",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;404:24408;382:23868;3236:94425",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2083.802490234375,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24408;382:23868;3236:94425;3168:30763;3537:26978",
+      "name": "Container for scale",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;404:24408;382:23868;3236:94425;3168:30763",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2083.802490234375,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24408;382:23868;3236:94425;3168:30763;2653:6866",
+      "name": "Container",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;404:24408;382:23868;3236:94425;3168:30763;3537:26978",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2083.802490234375,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24408;382:23868;3236:94425;3168:30763;2653:6872",
+      "name": "Mask",
+      "type": "GROUP",
+      "parent": "I296:17581;6848:9345;404:24408;382:23868;3236:94425;3168:30763;2653:6866",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2083.802490234375,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24408;382:23868;3236:94425;3168:30763;2653:6873",
+      "name": ".background form",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;404:24408;382:23868;3236:94425;3168:30763;2653:6872",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2083.802490234375,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24408;382:23868;3236:94425;3168:30763;2653:6873;2640:18600",
+      "name": "Ellipse",
+      "type": "ELLIPSE",
+      "parent": "I296:17581;6848:9345;404:24408;382:23868;3236:94425;3168:30763;2653:6873",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2083.802490234375,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24408;382:23868;3236:94425;3168:30763;2653:6874",
+      "name": "🖼️ Choose Image",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "I296:17581;6848:9345;404:24408;382:23868;3236:94425;3168:30763;2653:6866",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2083.802490234375,
+        "width": 22.0322265625,
+        "height": 22.0322265625
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24408;382:23868;3236:94425;3168:30763;2653:6876",
+      "name": "Avatar Form",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;404:24408;382:23868;3236:94425;3168:30763;2653:6874",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2083.802490234375,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24408;382:23868;3236:94425;3168:30763;2653:6876;2640:18600",
+      "name": "Ellipse",
+      "type": "ELLIPSE",
+      "parent": "I296:17581;6848:9345;404:24408;382:23868;3236:94425;3168:30763;2653:6876",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2083.802490234375,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24408;382:23868;3236:94426",
+      "name": "Middle",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;404:24408;382:23868;3236:94422",
+      "bounds": {
+        "x": 24433.798828125,
+        "y": 2089.818603515625,
+        "width": 90.33346557617188,
+        "height": 10
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24408;382:23868;3236:94427",
+      "name": "Title ",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;404:24408;382:23868;3236:94426",
+      "bounds": {
+        "x": 24433.798828125,
+        "y": 2089.818603515625,
+        "width": 90.33346557617188,
+        "height": 10
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24408;382:23868;3236:94429",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:17581;6848:9345;404:24408;382:23868;3236:94427",
+      "bounds": {
+        "x": 24433.798828125,
+        "y": 2089.818603515625,
+        "width": 29,
+        "height": 10
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;678:36164",
+      "name": "Digital_ID/Full",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;483:30850",
+      "bounds": {
+        "x": 24393.0390625,
+        "y": 2113.54638671875,
+        "width": 138.80508422851562,
+        "height": 28.64232063293457
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;678:36164;678:34396",
+      "name": "Cell",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;678:36164",
+      "bounds": {
+        "x": 24393.0390625,
+        "y": 2113.54638671875,
+        "width": 138.80508422851562,
+        "height": 28.64232063293457
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;678:36164;678:34396;3168:31358",
+      "name": "Content",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;678:36164;678:34396",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2113.54638671875,
+        "width": 123.38229370117188,
+        "height": 28.64232063293457
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;678:36164;678:34396;3168:31361",
+      "name": "Before",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;678:36164;678:34396;3168:31358",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2113.54638671875,
+        "width": 22.032554626464844,
+        "height": 28.64232063293457
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;678:36164;678:34396;3168:31361;3168:30763",
+      "name": "Avatar",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;678:36164;678:34396;3168:31361",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2116.851318359375,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;678:36164;678:34396;3168:31361;3168:30763;3537:26978",
+      "name": "Container for scale",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;678:36164;678:34396;3168:31361;3168:30763",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2116.851318359375,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;678:36164;678:34396;3168:31361;3168:30763;2653:6866",
+      "name": "Container",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;678:36164;678:34396;3168:31361;3168:30763;3537:26978",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2116.851318359375,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;678:36164;678:34396;3168:31361;3168:30763;2653:6872",
+      "name": "Mask",
+      "type": "GROUP",
+      "parent": "I296:17581;6848:9345;678:36164;678:34396;3168:31361;3168:30763;2653:6866",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2116.851318359375,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;678:36164;678:34396;3168:31361;3168:30763;2653:6873",
+      "name": ".background form",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;678:36164;678:34396;3168:31361;3168:30763;2653:6872",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2116.851318359375,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;678:36164;678:34396;3168:31361;3168:30763;2653:6873;2640:18600",
+      "name": "Ellipse",
+      "type": "ELLIPSE",
+      "parent": "I296:17581;6848:9345;678:36164;678:34396;3168:31361;3168:30763;2653:6873",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2116.851318359375,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;678:36164;678:34396;3168:31361;3168:30763;2653:6874",
+      "name": "🖼️ Choose Image",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "I296:17581;6848:9345;678:36164;678:34396;3168:31361;3168:30763;2653:6866",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2116.851318359375,
+        "width": 22.0322265625,
+        "height": 22.0322265625
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;678:36164;678:34396;3168:31361;3168:30763;2653:6876",
+      "name": "Avatar Form",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;678:36164;678:34396;3168:31361;3168:30763;2653:6874",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2116.851318359375,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;678:36164;678:34396;3168:31361;3168:30763;2653:6876;2640:18600",
+      "name": "Ellipse",
+      "type": "ELLIPSE",
+      "parent": "I296:17581;6848:9345;678:36164;678:34396;3168:31361;3168:30763;2653:6876",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2116.851318359375,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;678:36164;678:34396;3168:31362",
+      "name": "Middle",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;678:36164;678:34396;3168:31358",
+      "bounds": {
+        "x": 24433.798828125,
+        "y": 2122.867431640625,
+        "width": 90.3334732055664,
+        "height": 10
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;678:36164;678:34396;3168:31363",
+      "name": "Title ",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;678:36164;678:34396;3168:31362",
+      "bounds": {
+        "x": 24433.798828125,
+        "y": 2122.867431640625,
+        "width": 90.3334732055664,
+        "height": 10
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;678:36164;678:34396;3168:31365",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:17581;6848:9345;678:36164;678:34396;3168:31363",
+      "bounds": {
+        "x": 24433.798828125,
+        "y": 2122.867431640625,
+        "width": 48,
+        "height": 10
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;475:23732",
+      "name": "Line ",
+      "type": "LINE",
+      "parent": "I296:17581;6848:9345;232:25564",
+      "bounds": {
+        "x": 24384.2265625,
+        "y": 2358.110107421875,
+        "width": 156.43113708496094,
+        "height": 0
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23864",
+      "name": "Container",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;232:25564",
+      "bounds": {
+        "x": 24384.2265625,
+        "y": 2358.110107421875,
+        "width": 156.43113708496094,
+        "height": 79.31719207763672
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23865",
+      "name": "Employees/Full",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;453:23864",
+      "bounds": {
+        "x": 24393.0390625,
+        "y": 2366.923095703125,
+        "width": 138.80508422851562,
+        "height": 28.64232063293457
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23865;387:25534",
+      "name": "Cell",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;453:23865",
+      "bounds": {
+        "x": 24393.0390625,
+        "y": 2366.923095703125,
+        "width": 138.80508422851562,
+        "height": 28.64232063293457
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23865;387:25534;3168:31358",
+      "name": "Content",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;453:23865;387:25534",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2366.923095703125,
+        "width": 123.38229370117188,
+        "height": 28.64232063293457
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23865;387:25534;3168:31361",
+      "name": "Before",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;453:23865;387:25534;3168:31358",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2366.923095703125,
+        "width": 22.032554626464844,
+        "height": 28.64232063293457
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23865;387:25534;3168:31361;3168:30763",
+      "name": "Avatar",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;453:23865;387:25534;3168:31361",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2370.22802734375,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23865;387:25534;3168:31361;3168:30763;3537:26978",
+      "name": "Container for scale",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;453:23865;387:25534;3168:31361;3168:30763",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2370.22802734375,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23865;387:25534;3168:31361;3168:30763;2653:6866",
+      "name": "Container",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;453:23865;387:25534;3168:31361;3168:30763;3537:26978",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2370.22802734375,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23865;387:25534;3168:31361;3168:30763;2653:6872",
+      "name": "Mask",
+      "type": "GROUP",
+      "parent": "I296:17581;6848:9345;453:23865;387:25534;3168:31361;3168:30763;2653:6866",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2370.22802734375,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23865;387:25534;3168:31361;3168:30763;2653:6873",
+      "name": ".background form",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;453:23865;387:25534;3168:31361;3168:30763;2653:6872",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2370.22802734375,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23865;387:25534;3168:31361;3168:30763;2653:6873;2640:18600",
+      "name": "Ellipse",
+      "type": "ELLIPSE",
+      "parent": "I296:17581;6848:9345;453:23865;387:25534;3168:31361;3168:30763;2653:6873",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2370.22802734375,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23865;387:25534;3168:31361;3168:30763;2653:6874",
+      "name": "🖼️ Choose Image",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "I296:17581;6848:9345;453:23865;387:25534;3168:31361;3168:30763;2653:6866",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2370.22802734375,
+        "width": 22.0322265625,
+        "height": 22.0322265625
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23865;387:25534;3168:31361;3168:30763;2653:6876",
+      "name": "Avatar Form",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;453:23865;387:25534;3168:31361;3168:30763;2653:6874",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2370.22802734375,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23865;387:25534;3168:31361;3168:30763;2653:6876;2640:18600",
+      "name": "Ellipse",
+      "type": "ELLIPSE",
+      "parent": "I296:17581;6848:9345;453:23865;387:25534;3168:31361;3168:30763;2653:6876",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2370.22802734375,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23865;387:25534;3168:31362",
+      "name": "Middle",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;453:23865;387:25534;3168:31358",
+      "bounds": {
+        "x": 24433.798828125,
+        "y": 2376.244140625,
+        "width": 90.3334732055664,
+        "height": 10
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23865;387:25534;3168:31363",
+      "name": "Title ",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;453:23865;387:25534;3168:31362",
+      "bounds": {
+        "x": 24433.798828125,
+        "y": 2376.244140625,
+        "width": 90.3334732055664,
+        "height": 10
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23865;387:25534;3168:31365",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:17581;6848:9345;453:23865;387:25534;3168:31363",
+      "bounds": {
+        "x": 24433.798828125,
+        "y": 2376.244140625,
+        "width": 44,
+        "height": 10
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23866",
+      "name": "Documentation/Full",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;453:23864",
+      "bounds": {
+        "x": 24393.0390625,
+        "y": 2399.971923828125,
+        "width": 138.80508422851562,
+        "height": 28.64232063293457
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23866;387:25934",
+      "name": "Cell",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;453:23866",
+      "bounds": {
+        "x": 24393.0390625,
+        "y": 2399.971923828125,
+        "width": 138.80508422851562,
+        "height": 28.64232063293457
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23866;387:25934;3168:31358",
+      "name": "Content",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;453:23866;387:25934",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2399.971923828125,
+        "width": 123.38229370117188,
+        "height": 28.64232063293457
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23866;387:25934;3168:31361",
+      "name": "Before",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;453:23866;387:25934;3168:31358",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2399.971923828125,
+        "width": 22.032554626464844,
+        "height": 28.64232063293457
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23866;387:25934;3168:31361;3168:30763",
+      "name": "Avatar",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;453:23866;387:25934;3168:31361",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2403.27685546875,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23866;387:25934;3168:31361;3168:30763;3537:26978",
+      "name": "Container for scale",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;453:23866;387:25934;3168:31361;3168:30763",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2403.27685546875,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23866;387:25934;3168:31361;3168:30763;2653:6866",
+      "name": "Container",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;453:23866;387:25934;3168:31361;3168:30763;3537:26978",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2403.27685546875,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23866;387:25934;3168:31361;3168:30763;2653:6872",
+      "name": "Mask",
+      "type": "GROUP",
+      "parent": "I296:17581;6848:9345;453:23866;387:25934;3168:31361;3168:30763;2653:6866",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2403.27685546875,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23866;387:25934;3168:31361;3168:30763;2653:6873",
+      "name": ".background form",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;453:23866;387:25934;3168:31361;3168:30763;2653:6872",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2403.27685546875,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23866;387:25934;3168:31361;3168:30763;2653:6873;2640:18600",
+      "name": "Ellipse",
+      "type": "ELLIPSE",
+      "parent": "I296:17581;6848:9345;453:23866;387:25934;3168:31361;3168:30763;2653:6873",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2403.27685546875,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23866;387:25934;3168:31361;3168:30763;2653:6874",
+      "name": "🖼️ Choose Image",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "I296:17581;6848:9345;453:23866;387:25934;3168:31361;3168:30763;2653:6866",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2403.27685546875,
+        "width": 22.0322265625,
+        "height": 22.0322265625
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23866;387:25934;3168:31361;3168:30763;2653:6876",
+      "name": "Avatar Form",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9345;453:23866;387:25934;3168:31361;3168:30763;2653:6874",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2403.27685546875,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23866;387:25934;3168:31361;3168:30763;2653:6876;2640:18600",
+      "name": "Ellipse",
+      "type": "ELLIPSE",
+      "parent": "I296:17581;6848:9345;453:23866;387:25934;3168:31361;3168:30763;2653:6876",
+      "bounds": {
+        "x": 24400.75,
+        "y": 2403.27685546875,
+        "width": 22.032554626464844,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23866;387:25934;3168:31362",
+      "name": "Middle",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;453:23866;387:25934;3168:31358",
+      "bounds": {
+        "x": 24433.798828125,
+        "y": 2409.29296875,
+        "width": 90.3334732055664,
+        "height": 10
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23866;387:25934;3168:31363",
+      "name": "Title ",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9345;453:23866;387:25934;3168:31362",
+      "bounds": {
+        "x": 24433.798828125,
+        "y": 2409.29296875,
+        "width": 90.3334732055664,
+        "height": 10
+      }
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23866;387:25934;3168:31365",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:17581;6848:9345;453:23866;387:25934;3168:31363",
+      "bounds": {
+        "x": 24433.798828125,
+        "y": 2409.29296875,
+        "width": 55,
+        "height": 10
+      }
+    },
+    {
+      "id": "I296:17581;6848:9346",
+      "name": "Page",
+      "type": "FRAME",
+      "parent": "296:17581",
+      "bounds": {
+        "x": 24540.658203125,
+        "y": 1950.5078125,
+        "width": 627.9277954101562,
+        "height": 495.73248291015625
+      }
+    },
+    {
+      "id": "I296:17581;6848:9349",
+      "name": "Content",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9346",
+      "bounds": {
+        "x": 24558.28515625,
+        "y": 2014.4022216796875,
+        "width": 592.6757202148438,
+        "height": 414.2120056152344
+      }
+    },
+    {
+      "id": "I296:17581;6848:9351",
+      "name": "form",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9349",
+      "bounds": {
+        "x": 24708.68359375,
+        "y": 2089.099609375,
+        "width": 291.87811279296875,
+        "height": 200.92300415039062
+      }
+    },
+    {
+      "id": "I296:17581;6848:9351;2005:40482",
+      "name": "Popup Title",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9351",
+      "bounds": {
+        "x": 24735.123046875,
+        "y": 2115.53857421875,
+        "width": 239,
+        "height": 18
+      }
+    },
+    {
+      "id": "I296:17581;6848:9351;2005:40483",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:17581;6848:9351;2005:40482",
+      "bounds": {
+        "x": 24735.123046875,
+        "y": 2115.53857421875,
+        "width": 239,
+        "height": 18
+      }
+    },
+    {
+      "id": "I296:17581;6848:9351;2005:40484",
+      "name": "Spacing & Separator",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9351",
+      "bounds": {
+        "x": 24735.123046875,
+        "y": 2133.53857421875,
+        "width": 239,
+        "height": 22.032554626464844
+      }
+    },
+    {
+      "id": "I296:17581;6848:9351;2005:40484;26948:217901",
+      "name": "Padding",
+      "type": "RECTANGLE",
+      "parent": "I296:17581;6848:9351;2005:40484",
+      "bounds": {
+        "x": 24735.123046875,
+        "y": 2143.453125,
+        "width": 239,
+        "height": 2.2032554149627686
+      }
+    },
+    {
+      "id": "I296:17581;6848:9351;2005:40485",
+      "name": "Frame 2095585098",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9351",
+      "bounds": {
+        "x": 24735.123046875,
+        "y": 2155.5712890625,
+        "width": 239,
+        "height": 108.01231384277344
+      }
+    },
+    {
+      "id": "I296:17581;6848:9351;2005:40486",
+      "name": "Cell",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9351;2005:40485",
+      "bounds": {
+        "x": 24735.123046875,
+        "y": 2155.5712890625,
+        "width": 239,
+        "height": 55.13418197631836
+      }
+    },
+    {
+      "id": "I296:17581;6848:9351;2005:40486;25042:204057",
+      "name": "⚙️ Left",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9351;2005:40486",
+      "bounds": {
+        "x": 24743.935546875,
+        "y": 2166.614013671875,
+        "width": 33.048831939697266,
+        "height": 33.048831939697266
+      }
+    },
+    {
+      "id": "I296:17581;6848:9351;2005:40486;25042:204057;20:79814",
+      "name": "⚙️ Avatar",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9351;2005:40486;25042:204057",
+      "bounds": {
+        "x": 24743.935546875,
+        "y": 2169.9189453125,
+        "width": 26.439064025878906,
+        "height": 26.439064025878906
+      }
+    },
+    {
+      "id": "I296:17581;6848:9351;2005:40486;21354:147939",
+      "name": "⚙️ Middle",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9351;2005:40486",
+      "bounds": {
+        "x": 24776.984375,
+        "y": 2161.079345703125,
+        "width": 188.3251190185547,
+        "height": 44.11790466308594
+      }
+    },
+    {
+      "id": "I296:17581;6848:9351;2005:40486;21354:147939;28123:220561",
+      "name": "Title Layout",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9351;2005:40486;21354:147939",
+      "bounds": {
+        "x": 24776.984375,
+        "y": 2166.58740234375,
+        "width": 188.3251190185547,
+        "height": 23
+      }
+    },
+    {
+      "id": "I296:17581;6848:9351;2005:40486;21354:147939;69:4737",
+      "name": "↪️ Cell Title",
+      "type": "TEXT",
+      "parent": "I296:17581;6848:9351;2005:40486;21354:147939;28123:220561",
+      "bounds": {
+        "x": 24776.984375,
+        "y": 2166.58740234375,
+        "width": 188.3251190185547,
+        "height": 23
+      }
+    },
+    {
+      "id": "I296:17581;6848:9351;2005:40486;21354:147939;69:4744",
+      "name": "↪️ Cell Subtitle",
+      "type": "TEXT",
+      "parent": "I296:17581;6848:9351;2005:40486;21354:147939",
+      "bounds": {
+        "x": 24776.984375,
+        "y": 2190.689208984375,
+        "width": 188.3251190185547,
+        "height": 9
+      }
+    },
+    {
+      "id": "I296:17581;6848:9351;2005:40487",
+      "name": "Spacing & Separator",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9351;2005:40485",
+      "bounds": {
+        "x": 24735.123046875,
+        "y": 2210.70556640625,
+        "width": 239,
+        "height": 8.813021659851074
+      }
+    },
+    {
+      "id": "I296:17581;6848:9351;2005:40487;26948:217906",
+      "name": "Padding",
+      "type": "RECTANGLE",
+      "parent": "I296:17581;6848:9351;2005:40487",
+      "bounds": {
+        "x": 24735.123046875,
+        "y": 2214.010498046875,
+        "width": 239,
+        "height": 2.2032554149627686
+      }
+    },
+    {
+      "id": "I296:17581;6848:9351;2005:40488",
+      "name": "Cell",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9351;2005:40485",
+      "bounds": {
+        "x": 24735.123046875,
+        "y": 2219.5185546875,
+        "width": 239,
+        "height": 44.06510925292969
+      }
+    },
+    {
+      "id": "I296:17581;6848:9351;2005:40488;25042:204057",
+      "name": "⚙️ Left",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9351;2005:40488",
+      "bounds": {
+        "x": 24743.935546875,
+        "y": 2225.026611328125,
+        "width": 33.048831939697266,
+        "height": 33.048831939697266
+      }
+    },
+    {
+      "id": "I296:17581;6848:9351;2005:40488;25042:204057;20:79814",
+      "name": "⚙️ Avatar",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9351;2005:40488;25042:204057",
+      "bounds": {
+        "x": 24743.935546875,
+        "y": 2228.33154296875,
+        "width": 26.439064025878906,
+        "height": 26.439064025878906
+      }
+    },
+    {
+      "id": "I296:17581;6848:9351;2005:40488;21354:147939",
+      "name": "⚙️ Middle",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9351;2005:40488",
+      "bounds": {
+        "x": 24776.984375,
+        "y": 2230.04296875,
+        "width": 188.3251190185547,
+        "height": 23.016277313232422
+      }
+    },
+    {
+      "id": "I296:17581;6848:9351;2005:40488;21354:147939;28123:220561",
+      "name": "Title Layout",
+      "type": "FRAME",
+      "parent": "I296:17581;6848:9351;2005:40488;21354:147939",
+      "bounds": {
+        "x": 24776.984375,
+        "y": 2235.551025390625,
+        "width": 188.3251190185547,
+        "height": 12
+      }
+    },
+    {
+      "id": "I296:17581;6848:9351;2005:40488;21354:147939;69:4737",
+      "name": "↪️ Cell Title",
+      "type": "TEXT",
+      "parent": "I296:17581;6848:9351;2005:40488;21354:147939;28123:220561",
+      "bounds": {
+        "x": 24776.984375,
+        "y": 2235.551025390625,
+        "width": 188.3251190185547,
+        "height": 12
+      }
+    },
+    {
+      "id": "I296:17581;6848:9353",
+      "name": "Support",
+      "type": "INSTANCE",
+      "parent": "296:17581",
+      "bounds": {
+        "x": 25122.146484375,
+        "y": 2400.239501953125,
+        "width": 28.64232063293457,
+        "height": 28.64232063293457
+      }
+    },
+    {
+      "id": "I296:17581;6848:9353;483:39427",
+      "name": "Button",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9353",
+      "bounds": {
+        "x": 25122.50390625,
+        "y": 2400.59716796875,
+        "width": 28.64232063293457,
+        "height": 28.64232063293457
+      }
+    },
+    {
+      "id": "I296:17581;6848:9353;678:34387",
+      "name": "28/outline/support",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6848:9353",
+      "bounds": {
+        "x": 25128.755859375,
+        "y": 2406.849365234375,
+        "width": 15.4227876663208,
+        "height": 15.4227876663208
+      }
+    },
+    {
+      "id": "I296:17581;6848:9353;678:34387;1970:15809",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:17581;6848:9353;678:34387",
+      "bounds": {
+        "x": 25130.041015625,
+        "y": 2408.135009765625,
+        "width": 12.852323532104492,
+        "height": 12.852323532104492
+      }
+    },
+    {
+      "id": "I296:17581;6864:104051",
+      "name": "Header",
+      "type": "INSTANCE",
+      "parent": "296:17581",
+      "bounds": {
+        "x": 24558.28515625,
+        "y": 1950.5078125,
+        "width": 610.1298217773438,
+        "height": 63.894405364990234
+      }
+    },
+    {
+      "id": "I296:17581;6864:104051;6864:97817",
+      "name": "Breadcrumbs",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6864:104051",
+      "bounds": {
+        "x": 24575.912109375,
+        "y": 1977.5078125,
+        "width": 72.21953582763672,
+        "height": 10
+      }
+    },
+    {
+      "id": "I296:17581;6864:104051;6864:97817;4074:19269",
+      "name": "Breadcrumb Element",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6864:104051;6864:97817",
+      "bounds": {
+        "x": 24575.912109375,
+        "y": 1977.5078125,
+        "width": 30,
+        "height": 10
+      }
+    },
+    {
+      "id": "I296:17581;6864:104051;6864:97817;4074:19269;4074:19258",
+      "name": "Link",
+      "type": "TEXT",
+      "parent": "I296:17581;6864:104051;6864:97817;4074:19269",
+      "bounds": {
+        "x": 24575.912109375,
+        "y": 1977.5078125,
+        "width": 30,
+        "height": 10
+      }
+    },
+    {
+      "id": "I296:17581;6864:104051;6864:97817;4074:19276",
+      "name": "Element 2",
+      "type": "FRAME",
+      "parent": "I296:17581;6864:104051;6864:97817",
+      "bounds": {
+        "x": 24608.115234375,
+        "y": 1977.5078125,
+        "width": 40.01627731323242,
+        "height": 10
+      }
+    },
+    {
+      "id": "I296:17581;6864:104051;6864:97817;4074:19271",
+      "name": "Breadcrumb Element",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6864:104051;6864:97817;4074:19276",
+      "bounds": {
+        "x": 24608.115234375,
+        "y": 1978.101318359375,
+        "width": 8.813021659851074,
+        "height": 8.813021659851074
+      }
+    },
+    {
+      "id": "I296:17581;6864:104051;6864:97817;4074:19271;4508:29547",
+      "name": "12/outline/chevron",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6864:104051;6864:97817;4074:19271",
+      "bounds": {
+        "x": 24609.216796875,
+        "y": 1979.2030029296875,
+        "width": 6.609766006469727,
+        "height": 6.609766006469727
+      }
+    },
+    {
+      "id": "I296:17581;6864:104051;6864:97817;4074:19271;4508:29547;4406:32475",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:17581;6864:104051;6864:97817;4074:19271;4508:29547",
+      "bounds": {
+        "x": 24611.283203125,
+        "y": 1980.3046875,
+        "width": 2.4786622524261475,
+        "height": 4.406510829925537
+      }
+    },
+    {
+      "id": "I296:17581;6864:104051;6864:97817;4074:19273",
+      "name": "Breadcrumb Element",
+      "type": "INSTANCE",
+      "parent": "I296:17581;6864:104051;6864:97817;4074:19276",
+      "bounds": {
+        "x": 24619.130859375,
+        "y": 1977.5078125,
+        "width": 29,
+        "height": 10
+      }
+    },
+    {
+      "id": "I296:17581;6864:104051;6864:97817;4074:19273;4074:19264",
+      "name": "Link",
+      "type": "TEXT",
+      "parent": "I296:17581;6864:104051;6864:97817;4074:19273",
+      "bounds": {
+        "x": 24619.130859375,
+        "y": 1977.5078125,
+        "width": 29,
+        "height": 10
+      }
+    },
+    {
+      "id": "296:17582",
+      "name": "Right controls",
+      "type": "FRAME",
+      "parent": "296:17580",
+      "bounds": {
+        "x": 24955.4140625,
+        "y": 1968.864990234375,
+        "width": 184.8217010498047,
+        "height": 27.303207397460938
+      }
+    },
+    {
+      "id": "296:17584",
+      "name": "Profile/Desktop+Tablet",
+      "type": "INSTANCE",
+      "parent": "296:17582",
+      "bounds": {
+        "x": 24994.37890625,
+        "y": 1968.864990234375,
+        "width": 145.85702514648438,
+        "height": 27.303207397460938
+      }
+    },
+    {
+      "id": "I296:17584;6850:72688",
+      "name": "Cell",
+      "type": "INSTANCE",
+      "parent": "296:17584",
+      "bounds": {
+        "x": 24994.37890625,
+        "y": 1968.864990234375,
+        "width": 145.85702514648438,
+        "height": 27.303207397460938
+      }
+    },
+    {
+      "id": "I296:17584;6850:72688;3168:31358",
+      "name": "Content",
+      "type": "FRAME",
+      "parent": "I296:17584;6850:72688",
+      "bounds": {
+        "x": 24996.478515625,
+        "y": 1969.9915771484375,
+        "width": 137.45603942871094,
+        "height": 25.05012321472168
+      }
+    },
+    {
+      "id": "I296:17584;6850:72688;3168:31361",
+      "name": "Before",
+      "type": "INSTANCE",
+      "parent": "I296:17584;6850:72688;3168:31358",
+      "bounds": {
+        "x": 24996.478515625,
+        "y": 1972.015380859375,
+        "width": 21.002466201782227,
+        "height": 21.002466201782227
+      }
+    },
+    {
+      "id": "I296:17584;6850:72688;3168:31361;3168:30763",
+      "name": "Avatar",
+      "type": "INSTANCE",
+      "parent": "I296:17584;6850:72688;3168:31361",
+      "bounds": {
+        "x": 24996.478515625,
+        "y": 1972.015380859375,
+        "width": 21.002466201782227,
+        "height": 21.002466201782227
+      }
+    },
+    {
+      "id": "I296:17584;6850:72688;3168:31361;3168:30763;3537:26978",
+      "name": "Container for scale",
+      "type": "FRAME",
+      "parent": "I296:17584;6850:72688;3168:31361;3168:30763",
+      "bounds": {
+        "x": 24996.478515625,
+        "y": 1972.015380859375,
+        "width": 21.002466201782227,
+        "height": 21.002466201782227
+      }
+    },
+    {
+      "id": "I296:17584;6850:72688;3168:31361;3168:30763;2653:6866",
+      "name": "Container",
+      "type": "FRAME",
+      "parent": "I296:17584;6850:72688;3168:31361;3168:30763;3537:26978",
+      "bounds": {
+        "x": 24996.478515625,
+        "y": 1972.015380859375,
+        "width": 21.002466201782227,
+        "height": 21.002466201782227
+      }
+    },
+    {
+      "id": "I296:17584;6850:72688;3168:31361;3168:30763;2653:6872",
+      "name": "Mask",
+      "type": "GROUP",
+      "parent": "I296:17584;6850:72688;3168:31361;3168:30763;2653:6866",
+      "bounds": {
+        "x": 24996.478515625,
+        "y": 1972.015380859375,
+        "width": 21.002466201782227,
+        "height": 21.002466201782227
+      }
+    },
+    {
+      "id": "I296:17584;6850:72688;3168:31361;3168:30763;2653:6873",
+      "name": ".background form",
+      "type": "INSTANCE",
+      "parent": "I296:17584;6850:72688;3168:31361;3168:30763;2653:6872",
+      "bounds": {
+        "x": 24996.478515625,
+        "y": 1972.015380859375,
+        "width": 21.002466201782227,
+        "height": 21.002466201782227
+      }
+    },
+    {
+      "id": "I296:17584;6850:72688;3168:31361;3168:30763;2653:6873;2640:18600",
+      "name": "Ellipse",
+      "type": "ELLIPSE",
+      "parent": "I296:17584;6850:72688;3168:31361;3168:30763;2653:6873",
+      "bounds": {
+        "x": 24996.478515625,
+        "y": 1972.015380859375,
+        "width": 21.002466201782227,
+        "height": 21.002466201782227
+      }
+    },
+    {
+      "id": "I296:17584;6850:72688;3168:31361;3168:30763;2653:6874",
+      "name": "🖼️ Choose Image",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "I296:17584;6850:72688;3168:31361;3168:30763;2653:6866",
+      "bounds": {
+        "x": 24996.478515625,
+        "y": 1972.015380859375,
+        "width": 21.0029296875,
+        "height": 21.0029296875
+      }
+    },
+    {
+      "id": "I296:17584;6850:72688;3168:31361;3168:30763;2653:6876",
+      "name": "Avatar Form",
+      "type": "INSTANCE",
+      "parent": "I296:17584;6850:72688;3168:31361;3168:30763;2653:6874",
+      "bounds": {
+        "x": 24996.478515625,
+        "y": 1972.015380859375,
+        "width": 21.002466201782227,
+        "height": 21.002466201782227
+      }
+    },
+    {
+      "id": "I296:17584;6850:72688;3168:31361;3168:30763;2653:6876;2640:18600",
+      "name": "Ellipse",
+      "type": "ELLIPSE",
+      "parent": "I296:17584;6850:72688;3168:31361;3168:30763;2653:6876",
+      "bounds": {
+        "x": 24996.478515625,
+        "y": 1972.015380859375,
+        "width": 21.002466201782227,
+        "height": 21.002466201782227
+      }
+    },
+    {
+      "id": "I296:17584;6850:72688;3168:31362",
+      "name": "Middle",
+      "type": "FRAME",
+      "parent": "I296:17584;6850:72688;3168:31358",
+      "bounds": {
+        "x": 25023.78125,
+        "y": 1969.9915771484375,
+        "width": 63,
+        "height": 25.05012321472168
+      }
+    },
+    {
+      "id": "I296:17584;6850:72688;3370:24156",
+      "name": "Overtitle",
+      "type": "TEXT",
+      "parent": "I296:17584;6850:72688;3168:31362",
+      "bounds": {
+        "x": 25023.78125,
+        "y": 1969.9915771484375,
+        "width": 63,
+        "height": 11
+      }
+    },
+    {
+      "id": "I296:17584;6850:72688;3168:31363",
+      "name": "Title ",
+      "type": "FRAME",
+      "parent": "I296:17584;6850:72688;3168:31362",
+      "bounds": {
+        "x": 25023.78125,
+        "y": 1982.041748046875,
+        "width": 36,
+        "height": 13
+      }
+    },
+    {
+      "id": "I296:17584;6850:72688;3168:31365",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:17584;6850:72688;3168:31363",
+      "bounds": {
+        "x": 25023.78125,
+        "y": 1982.041748046875,
+        "width": 36,
+        "height": 13
+      }
+    },
+    {
+      "id": "I296:17584;6850:72688;3168:31372",
+      "name": "After",
+      "type": "INSTANCE",
+      "parent": "I296:17584;6850:72688;3168:31358",
+      "bounds": {
+        "x": 25093.08203125,
+        "y": 1969.9915771484375,
+        "width": 40.85209655761719,
+        "height": 25.05012321472168
+      }
+    },
+    {
+      "id": "I296:17584;6850:72688;3168:31372;3168:30820",
+      "name": "Actions",
+      "type": "INSTANCE",
+      "parent": "I296:17584;6850:72688;3168:31372",
+      "bounds": {
+        "x": 25093.08203125,
+        "y": 1969.9915771484375,
+        "width": 40.85209655761719,
+        "height": 25.05012321472168
+      }
+    },
+    {
+      "id": "I296:17584;6850:72688;3168:31372;3168:30820;3168:30812",
+      "name": "Button",
+      "type": "INSTANCE",
+      "parent": "I296:17584;6850:72688;3168:31372;3168:30820",
+      "bounds": {
+        "x": 25093.08203125,
+        "y": 1975.165771484375,
+        "width": 40.85209655761719,
+        "height": 14.701726913452148
+      }
+    },
+    {
+      "id": "I296:17584;6850:72688;3168:31372;3168:30820;3168:30812;2510:7332",
+      "name": "Before",
+      "type": "INSTANCE",
+      "parent": "I296:17584;6850:72688;3168:31372;3168:30820;3168:30812",
+      "bounds": {
+        "x": 25096.232421875,
+        "y": 1978.316162109375,
+        "width": 8.400986671447754,
+        "height": 8.400986671447754
+      }
+    },
+    {
+      "id": "I296:17584;6850:72688;3168:31372;3168:30820;3168:30812;2510:7332;2102:1638",
+      "name": "Swap Icon",
+      "type": "INSTANCE",
+      "parent": "I296:17584;6850:72688;3168:31372;3168:30820;3168:30812;2510:7332",
+      "bounds": {
+        "x": 25096.232421875,
+        "y": 1978.316162109375,
+        "width": 8.400986671447754,
+        "height": 8.400986671447754
+      }
+    },
+    {
+      "id": "I296:17584;6850:72688;3168:31372;3168:30820;3168:30812;2510:7332;2102:1638;2013:71",
+      "name": "stub_outline_16",
+      "type": "INSTANCE",
+      "parent": "I296:17584;6850:72688;3168:31372;3168:30820;3168:30812;2510:7332;2102:1638",
+      "bounds": {
+        "x": 25096.232421875,
+        "y": 1978.316162109375,
+        "width": 8.400986671447754,
+        "height": 8.400986671447754
+      }
+    },
+    {
+      "id": "I296:17584;6850:72688;3168:31372;3168:30820;3168:30812;2510:7332;2102:1638;2013:71;47:1075",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:17584;6850:72688;3168:31372;3168:30820;3168:30812;2510:7332;2102:1638;2013:71",
+      "bounds": {
+        "x": 25096.8203125,
+        "y": 1978.9033203125,
+        "width": 6.825802326202393,
+        "height": 6.825802326202393
+      }
+    },
+    {
+      "id": "I296:17584;6850:72688;3168:31372;3168:30820;3168:30812;2510:7012",
+      "name": "Middle",
+      "type": "FRAME",
+      "parent": "I296:17584;6850:72688;3168:31372;3168:30820;3168:30812",
+      "bounds": {
+        "x": 25107.783203125,
+        "y": 1976.4915771484375,
+        "width": 23,
+        "height": 12.05012321472168
+      }
+    },
+    {
+      "id": "I296:17584;6850:72688;3168:31372;3168:30820;3168:30812;2510:7013",
+      "name": "Label",
+      "type": "TEXT",
+      "parent": "I296:17584;6850:72688;3168:31372;3168:30820;3168:30812;2510:7012",
+      "bounds": {
+        "x": 25107.783203125,
+        "y": 1976.754150390625,
+        "width": 23,
+        "height": 11
+      }
+    },
+    {
+      "id": "296:17585",
+      "name": "Header",
+      "type": "FRAME",
+      "parent": "296:17579",
+      "bounds": {
+        "x": 24385.4140625,
+        "y": 1959.864990234375,
+        "width": 156.19908142089844,
+        "height": 44
+      }
+    },
+    {
+      "id": "296:17586",
+      "name": "Group 2087330774",
+      "type": "GROUP",
+      "parent": "296:17585",
+      "bounds": {
+        "x": 24394.21484375,
+        "y": 1968.6649169921875,
+        "width": 138.5991668701172,
+        "height": 26.400108337402344
+      }
+    },
+    {
+      "id": "296:17587",
+      "name": "Logo",
+      "type": "FRAME",
+      "parent": "296:17586",
+      "bounds": {
+        "x": 24394.21484375,
+        "y": 1968.6649169921875,
+        "width": 138.5991668701172,
+        "height": 26.400108337402344
+      }
+    },
+    {
+      "id": "296:17588",
+      "name": "Group 29",
+      "type": "GROUP",
+      "parent": "296:17587",
+      "bounds": {
+        "x": 24398.615234375,
+        "y": 1971.96484375,
+        "width": 117.82486724853516,
+        "height": 19.80014991760254
+      }
+    },
+    {
+      "id": "296:17589",
+      "name": "max",
+      "type": "GROUP",
+      "parent": "296:17588",
+      "bounds": {
+        "x": 24426.11328125,
+        "y": 1976.3885498046875,
+        "width": 37.480865478515625,
+        "height": 10.95086669921875
+      }
+    },
+    {
+      "id": "296:17590",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17589",
+      "bounds": {
+        "x": 24453.189453125,
+        "y": 1976.5928955078125,
+        "width": 10.404694557189941,
+        "height": 10.543874740600586
+      }
+    },
+    {
+      "id": "296:17591",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17589",
+      "bounds": {
+        "x": 24426.11328125,
+        "y": 1976.5928955078125,
+        "width": 12.471295356750488,
+        "height": 10.543874740600586
+      }
+    },
+    {
+      "id": "296:17592",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17589",
+      "bounds": {
+        "x": 24440.408203125,
+        "y": 1976.388671875,
+        "width": 11.37684154510498,
+        "height": 10.95086669921875
+      }
+    },
+    {
+      "id": "296:17593",
+      "name": "Icon",
+      "type": "FRAME",
+      "parent": "296:17588",
+      "bounds": {
+        "x": 24398.615234375,
+        "y": 1971.96484375,
+        "width": 19.80014991760254,
+        "height": 19.80014991760254
+      }
+    },
+    {
+      "id": "296:17594",
+      "name": "Shape",
+      "type": "GROUP",
+      "parent": "296:17593",
+      "bounds": {
+        "x": 24398.615234375,
+        "y": 1971.96533203125,
+        "width": 19.800146102905273,
+        "height": 19.72411346435547
+      }
+    },
+    {
+      "id": "296:17595",
+      "name": "clippath",
+      "type": "GROUP",
+      "parent": "296:17594",
+      "bounds": {
+        "x": 24398.615234375,
+        "y": 1971.9654541015625,
+        "width": 19.800146102905273,
+        "height": 19.72411346435547
+      }
+    },
+    {
+      "id": "296:17596",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17595",
+      "bounds": {
+        "x": 24398.615234375,
+        "y": 1971.9654541015625,
+        "width": 19.800146102905273,
+        "height": 19.72411346435547
+      }
+    },
+    {
+      "id": "296:17597",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "296:17594",
+      "bounds": {
+        "x": 24394.390625,
+        "y": 1967.7647705078125,
+        "width": 28.148509979248047,
+        "height": 28.152172088623047
+      }
+    },
+    {
+      "id": "296:17598",
+      "name": "unblurred",
+      "type": "GROUP",
+      "parent": "296:17597",
+      "bounds": {
+        "x": 24394.390625,
+        "y": 1967.7647705078125,
+        "width": 28.148509979248047,
+        "height": 28.152172088623047
+      }
+    },
+    {
+      "id": "296:17599",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24395.607421875,
+        "y": 1981.840576171875,
+        "width": 12.859333992004395,
+        "height": 6.823292255401611
+      }
+    },
+    {
+      "id": "296:17600",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24395.15625,
+        "y": 1981.840576171875,
+        "width": 13.309595108032227,
+        "height": 5.724541664123535
+      }
+    },
+    {
+      "id": "296:17601",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24394.810546875,
+        "y": 1981.840576171875,
+        "width": 13.657910346984863,
+        "height": 4.581899642944336
+      }
+    },
+    {
+      "id": "296:17602",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24394.56640625,
+        "y": 1981.840576171875,
+        "width": 13.902862548828125,
+        "height": 3.4052751064300537
+      }
+    },
+    {
+      "id": "296:17603",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24394.423828125,
+        "y": 1981.840576171875,
+        "width": 14.04162311553955,
+        "height": 2.2017478942871094
+      }
+    },
+    {
+      "id": "296:17604",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24394.390625,
+        "y": 1981.5946044921875,
+        "width": 14.07624340057373,
+        "height": 1.2275975942611694
+      }
+    },
+    {
+      "id": "296:17605",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24394.392578125,
+        "y": 1980.3685302734375,
+        "width": 14.072773933410645,
+        "height": 1.4725512266159058
+      }
+    },
+    {
+      "id": "296:17606",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24394.466796875,
+        "y": 1979.1549072265625,
+        "width": 13.997729301452637,
+        "height": 2.68599009513855
+      }
+    },
+    {
+      "id": "296:17607",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24394.650390625,
+        "y": 1977.96142578125,
+        "width": 13.817906379699707,
+        "height": 3.879606008529663
+      }
+    },
+    {
+      "id": "296:17608",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24394.93359375,
+        "y": 1976.7972412109375,
+        "width": 13.530479431152344,
+        "height": 5.0449042320251465
+      }
+    },
+    {
+      "id": "296:17609",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24395.326171875,
+        "y": 1975.67041015625,
+        "width": 13.141098022460938,
+        "height": 6.17055606842041
+      }
+    },
+    {
+      "id": "296:17610",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24395.8125,
+        "y": 1974.591552734375,
+        "width": 12.651196479797363,
+        "height": 7.249483585357666
+      }
+    },
+    {
+      "id": "296:17611",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24396.400390625,
+        "y": 1973.567626953125,
+        "width": 12.065008163452148,
+        "height": 8.273188591003418
+      }
+    },
+    {
+      "id": "296:17612",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24397.07421875,
+        "y": 1972.606201171875,
+        "width": 11.388197898864746,
+        "height": 9.234594345092773
+      }
+    },
+    {
+      "id": "296:17613",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24397.84375,
+        "y": 1971.716064453125,
+        "width": 10.623605728149414,
+        "height": 10.125205993652344
+      }
+    },
+    {
+      "id": "296:17614",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24398.689453125,
+        "y": 1970.90185546875,
+        "width": 9.778304100036621,
+        "height": 10.93935489654541
+      }
+    },
+    {
+      "id": "296:17615",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24399.611328125,
+        "y": 1970.1710205078125,
+        "width": 8.85796070098877,
+        "height": 11.669966697692871
+      }
+    },
+    {
+      "id": "296:17616",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24400.595703125,
+        "y": 1969.529541015625,
+        "width": 7.871068477630615,
+        "height": 12.311376571655273
+      }
+    },
+    {
+      "id": "296:17617",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24401.642578125,
+        "y": 1968.981689453125,
+        "width": 6.824707508087158,
+        "height": 12.859336853027344
+      }
+    },
+    {
+      "id": "296:17618",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24402.7421875,
+        "y": 1968.53125,
+        "width": 5.725956916809082,
+        "height": 13.309597969055176
+      }
+    },
+    {
+      "id": "296:17619",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24403.876953125,
+        "y": 1968.1845703125,
+        "width": 4.583314895629883,
+        "height": 13.657913208007812
+      }
+    },
+    {
+      "id": "296:17620",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24405.0625,
+        "y": 1967.93798828125,
+        "width": 3.4052743911743164,
+        "height": 13.90286636352539
+      }
+    },
+    {
+      "id": "296:17621",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24406.265625,
+        "y": 1967.800537109375,
+        "width": 2.201747417449951,
+        "height": 14.041627883911133
+      }
+    },
+    {
+      "id": "296:17622",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24407.486328125,
+        "y": 1967.7646484375,
+        "width": 1.2275980710983276,
+        "height": 14.076244354248047
+      }
+    },
+    {
+      "id": "296:17623",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1967.768310546875,
+        "width": 1.4725496768951416,
+        "height": 14.072774887084961
+      }
+    },
+    {
+      "id": "296:17624",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1967.84326171875,
+        "width": 2.685988426208496,
+        "height": 13.997734069824219
+      }
+    },
+    {
+      "id": "296:17625",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1968.0247802734375,
+        "width": 3.8796041011810303,
+        "height": 13.81649398803711
+      }
+    },
+    {
+      "id": "296:17626",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1968.310791015625,
+        "width": 5.044902324676514,
+        "height": 13.530478477478027
+      }
+    },
+    {
+      "id": "296:17627",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1968.699951171875,
+        "width": 6.170554161071777,
+        "height": 13.141101837158203
+      }
+    },
+    {
+      "id": "296:17628",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1969.1900634765625,
+        "width": 7.249481201171875,
+        "height": 12.65119743347168
+      }
+    },
+    {
+      "id": "296:17629",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1969.7757568359375,
+        "width": 8.273185729980469,
+        "height": 12.065008163452148
+      }
+    },
+    {
+      "id": "296:17630",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1970.454345703125,
+        "width": 9.234593391418457,
+        "height": 11.3867826461792
+      }
+    },
+    {
+      "id": "296:17631",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1971.217041015625,
+        "width": 10.125203132629395,
+        "height": 10.623607635498047
+      }
+    },
+    {
+      "id": "296:17632",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1972.0625,
+        "width": 10.939352035522461,
+        "height": 9.778305053710938
+      }
+    },
+    {
+      "id": "296:17633",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1972.98291015625,
+        "width": 11.668551445007324,
+        "height": 8.857961654663086
+      }
+    },
+    {
+      "id": "296:17634",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1973.969970703125,
+        "width": 12.311375617980957,
+        "height": 7.871070384979248
+      }
+    },
+    {
+      "id": "296:17635",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1975.0172119140625,
+        "width": 12.859330177307129,
+        "height": 6.823292255401611
+      }
+    },
+    {
+      "id": "296:17636",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1976.1162109375,
+        "width": 13.308174133300781,
+        "height": 5.724541664123535
+      }
+    },
+    {
+      "id": "296:17637",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1977.259033203125,
+        "width": 13.657910346984863,
+        "height": 4.583315849304199
+      }
+    },
+    {
+      "id": "296:17638",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1978.4354248046875,
+        "width": 13.902862548828125,
+        "height": 3.4052741527557373
+      }
+    },
+    {
+      "id": "296:17639",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1979.6387939453125,
+        "width": 14.04162311553955,
+        "height": 2.201747417449951
+      }
+    },
+    {
+      "id": "296:17640",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1980.859375,
+        "width": 14.07624340057373,
+        "height": 1.2275975942611694
+      }
+    },
+    {
+      "id": "296:17641",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.840576171875,
+        "width": 14.072773933410645,
+        "height": 1.4725512266159058
+      }
+    },
+    {
+      "id": "296:17642",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.840576171875,
+        "width": 13.997729301452637,
+        "height": 2.68599009513855
+      }
+    },
+    {
+      "id": "296:17643",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.840576171875,
+        "width": 13.816490173339844,
+        "height": 3.879606008529663
+      }
+    },
+    {
+      "id": "296:17644",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.839599609375,
+        "width": 13.530475616455078,
+        "height": 5.0449042320251465
+      }
+    },
+    {
+      "id": "296:17645",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.840576171875,
+        "width": 13.141098022460938,
+        "height": 6.17055606842041
+      }
+    },
+    {
+      "id": "296:17646",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.840576171875,
+        "width": 12.651192665100098,
+        "height": 7.249483585357666
+      }
+    },
+    {
+      "id": "296:17647",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.840576171875,
+        "width": 12.0650053024292,
+        "height": 8.273188591003418
+      }
+    },
+    {
+      "id": "296:17648",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.840576171875,
+        "width": 11.386781692504883,
+        "height": 9.234594345092773
+      }
+    },
+    {
+      "id": "296:17649",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.840576171875,
+        "width": 10.622187614440918,
+        "height": 10.125204086303711
+      }
+    },
+    {
+      "id": "296:17650",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.840576171875,
+        "width": 9.776886940002441,
+        "height": 10.93935489654541
+      }
+    },
+    {
+      "id": "296:17651",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.840576171875,
+        "width": 8.857959747314453,
+        "height": 11.669966697692871
+      }
+    },
+    {
+      "id": "296:17652",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.839599609375,
+        "width": 7.871067047119141,
+        "height": 12.311376571655273
+      }
+    },
+    {
+      "id": "296:17653",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.840576171875,
+        "width": 6.823290824890137,
+        "height": 12.85933780670166
+      }
+    },
+    {
+      "id": "296:17654",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.840576171875,
+        "width": 5.724540710449219,
+        "height": 13.308180809020996
+      }
+    },
+    {
+      "id": "296:17655",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.839599609375,
+        "width": 4.583314418792725,
+        "height": 13.657913208007812
+      }
+    },
+    {
+      "id": "296:17656",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.840576171875,
+        "width": 3.405272960662842,
+        "height": 13.90286636352539
+      }
+    },
+    {
+      "id": "296:17657",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.840576171875,
+        "width": 2.2017459869384766,
+        "height": 14.041627883911133
+      }
+    },
+    {
+      "id": "296:17658",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24408.21875,
+        "y": 1981.840576171875,
+        "width": 1.2275973558425903,
+        "height": 14.076244354248047
+      }
+    },
+    {
+      "id": "296:17659",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24406.9921875,
+        "y": 1981.840576171875,
+        "width": 1.4725514650344849,
+        "height": 14.072774887084961
+      }
+    },
+    {
+      "id": "296:17660",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24405.77734375,
+        "y": 1981.840576171875,
+        "width": 2.6859898567199707,
+        "height": 13.997734069824219
+      }
+    },
+    {
+      "id": "296:17661",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24404.5859375,
+        "y": 1981.840576171875,
+        "width": 3.879605770111084,
+        "height": 13.81649398803711
+      }
+    },
+    {
+      "id": "296:17662",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24403.423828125,
+        "y": 1981.840576171875,
+        "width": 5.044902324676514,
+        "height": 13.530478477478027
+      }
+    },
+    {
+      "id": "296:17663",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24402.294921875,
+        "y": 1981.840576171875,
+        "width": 6.170554161071777,
+        "height": 13.141101837158203
+      }
+    },
+    {
+      "id": "296:17664",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24401.21875,
+        "y": 1981.840576171875,
+        "width": 7.249481678009033,
+        "height": 12.651198387145996
+      }
+    },
+    {
+      "id": "296:17665",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24400.19921875,
+        "y": 1981.840576171875,
+        "width": 8.273187637329102,
+        "height": 12.065008163452148
+      }
+    },
+    {
+      "id": "296:17666",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24399.228515625,
+        "y": 1981.840576171875,
+        "width": 9.236007690429688,
+        "height": 11.3867826461792
+      }
+    },
+    {
+      "id": "296:17667",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24398.34375,
+        "y": 1981.840576171875,
+        "width": 10.125203132629395,
+        "height": 10.622191429138184
+      }
+    },
+    {
+      "id": "296:17668",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24397.52734375,
+        "y": 1981.840576171875,
+        "width": 10.939352035522461,
+        "height": 9.776890754699707
+      }
+    },
+    {
+      "id": "296:17669",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24396.796875,
+        "y": 1981.840576171875,
+        "width": 11.669965744018555,
+        "height": 8.857961654663086
+      }
+    },
+    {
+      "id": "296:17670",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17598",
+      "bounds": {
+        "x": 24396.154296875,
+        "y": 1981.840576171875,
+        "width": 12.311375617980957,
+        "height": 7.871070384979248
+      }
+    },
+    {
+      "id": "296:17671",
+      "name": "blurred",
+      "type": "GROUP",
+      "parent": "296:17597",
+      "bounds": {
+        "x": 24394.390625,
+        "y": 1967.7647705078125,
+        "width": 28.148509979248047,
+        "height": 28.152172088623047
+      }
+    },
+    {
+      "id": "296:17672",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24395.607421875,
+        "y": 1981.840576171875,
+        "width": 12.859333992004395,
+        "height": 6.823292255401611
+      }
+    },
+    {
+      "id": "296:17673",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24395.15625,
+        "y": 1981.840576171875,
+        "width": 13.309595108032227,
+        "height": 5.724541664123535
+      }
+    },
+    {
+      "id": "296:17674",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24394.810546875,
+        "y": 1981.840576171875,
+        "width": 13.657910346984863,
+        "height": 4.581899642944336
+      }
+    },
+    {
+      "id": "296:17675",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24394.56640625,
+        "y": 1981.840576171875,
+        "width": 13.902862548828125,
+        "height": 3.4052751064300537
+      }
+    },
+    {
+      "id": "296:17676",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24394.423828125,
+        "y": 1981.840576171875,
+        "width": 14.04162311553955,
+        "height": 2.2017478942871094
+      }
+    },
+    {
+      "id": "296:17677",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24394.390625,
+        "y": 1981.5946044921875,
+        "width": 14.07624340057373,
+        "height": 1.2275975942611694
+      }
+    },
+    {
+      "id": "296:17678",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24394.392578125,
+        "y": 1980.3685302734375,
+        "width": 14.072773933410645,
+        "height": 1.4725512266159058
+      }
+    },
+    {
+      "id": "296:17679",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24394.466796875,
+        "y": 1979.1549072265625,
+        "width": 13.997729301452637,
+        "height": 2.68599009513855
+      }
+    },
+    {
+      "id": "296:17680",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24394.650390625,
+        "y": 1977.96142578125,
+        "width": 13.817906379699707,
+        "height": 3.879606008529663
+      }
+    },
+    {
+      "id": "296:17681",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24394.93359375,
+        "y": 1976.7972412109375,
+        "width": 13.530479431152344,
+        "height": 5.0449042320251465
+      }
+    },
+    {
+      "id": "296:17682",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24395.326171875,
+        "y": 1975.67041015625,
+        "width": 13.141098022460938,
+        "height": 6.17055606842041
+      }
+    },
+    {
+      "id": "296:17683",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24395.8125,
+        "y": 1974.591552734375,
+        "width": 12.651196479797363,
+        "height": 7.249483585357666
+      }
+    },
+    {
+      "id": "296:17684",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24396.400390625,
+        "y": 1973.567626953125,
+        "width": 12.065008163452148,
+        "height": 8.273188591003418
+      }
+    },
+    {
+      "id": "296:17685",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24397.07421875,
+        "y": 1972.606201171875,
+        "width": 11.388197898864746,
+        "height": 9.234594345092773
+      }
+    },
+    {
+      "id": "296:17686",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24397.84375,
+        "y": 1971.716064453125,
+        "width": 10.623605728149414,
+        "height": 10.125205993652344
+      }
+    },
+    {
+      "id": "296:17687",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24398.689453125,
+        "y": 1970.90185546875,
+        "width": 9.778304100036621,
+        "height": 10.93935489654541
+      }
+    },
+    {
+      "id": "296:17688",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24399.611328125,
+        "y": 1970.1710205078125,
+        "width": 8.85796070098877,
+        "height": 11.669966697692871
+      }
+    },
+    {
+      "id": "296:17689",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24400.595703125,
+        "y": 1969.529541015625,
+        "width": 7.871068477630615,
+        "height": 12.311376571655273
+      }
+    },
+    {
+      "id": "296:17690",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24401.642578125,
+        "y": 1968.981689453125,
+        "width": 6.824707508087158,
+        "height": 12.859336853027344
+      }
+    },
+    {
+      "id": "296:17691",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24402.7421875,
+        "y": 1968.53125,
+        "width": 5.725956916809082,
+        "height": 13.309597969055176
+      }
+    },
+    {
+      "id": "296:17692",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24403.876953125,
+        "y": 1968.1845703125,
+        "width": 4.583314895629883,
+        "height": 13.657913208007812
+      }
+    },
+    {
+      "id": "296:17693",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24405.0625,
+        "y": 1967.93798828125,
+        "width": 3.4052743911743164,
+        "height": 13.90286636352539
+      }
+    },
+    {
+      "id": "296:17694",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24406.265625,
+        "y": 1967.800537109375,
+        "width": 2.201747417449951,
+        "height": 14.041627883911133
+      }
+    },
+    {
+      "id": "296:17695",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24407.486328125,
+        "y": 1967.7646484375,
+        "width": 1.2275980710983276,
+        "height": 14.076244354248047
+      }
+    },
+    {
+      "id": "296:17696",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1967.768310546875,
+        "width": 1.4725496768951416,
+        "height": 14.072774887084961
+      }
+    },
+    {
+      "id": "296:17697",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1967.84326171875,
+        "width": 2.685988426208496,
+        "height": 13.997734069824219
+      }
+    },
+    {
+      "id": "296:17698",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1968.0247802734375,
+        "width": 3.8796041011810303,
+        "height": 13.81649398803711
+      }
+    },
+    {
+      "id": "296:17699",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1968.310791015625,
+        "width": 5.044902324676514,
+        "height": 13.530478477478027
+      }
+    },
+    {
+      "id": "296:17700",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1968.699951171875,
+        "width": 6.170554161071777,
+        "height": 13.141101837158203
+      }
+    },
+    {
+      "id": "296:17701",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1969.1900634765625,
+        "width": 7.249481201171875,
+        "height": 12.65119743347168
+      }
+    },
+    {
+      "id": "296:17702",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1969.7757568359375,
+        "width": 8.273185729980469,
+        "height": 12.065008163452148
+      }
+    },
+    {
+      "id": "296:17703",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1970.454345703125,
+        "width": 9.234593391418457,
+        "height": 11.3867826461792
+      }
+    },
+    {
+      "id": "296:17704",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1971.217041015625,
+        "width": 10.125203132629395,
+        "height": 10.623607635498047
+      }
+    },
+    {
+      "id": "296:17705",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1972.0625,
+        "width": 10.939352035522461,
+        "height": 9.778305053710938
+      }
+    },
+    {
+      "id": "296:17706",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1972.98291015625,
+        "width": 11.668551445007324,
+        "height": 8.857961654663086
+      }
+    },
+    {
+      "id": "296:17707",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1973.969970703125,
+        "width": 12.311375617980957,
+        "height": 7.871070384979248
+      }
+    },
+    {
+      "id": "296:17708",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1975.0172119140625,
+        "width": 12.859330177307129,
+        "height": 6.823292255401611
+      }
+    },
+    {
+      "id": "296:17709",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1976.1162109375,
+        "width": 13.308174133300781,
+        "height": 5.724541664123535
+      }
+    },
+    {
+      "id": "296:17710",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1977.259033203125,
+        "width": 13.657910346984863,
+        "height": 4.583315849304199
+      }
+    },
+    {
+      "id": "296:17711",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1978.4354248046875,
+        "width": 13.902862548828125,
+        "height": 3.4052741527557373
+      }
+    },
+    {
+      "id": "296:17712",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1979.6387939453125,
+        "width": 14.04162311553955,
+        "height": 2.201747417449951
+      }
+    },
+    {
+      "id": "296:17713",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1980.859375,
+        "width": 14.07624340057373,
+        "height": 1.2275975942611694
+      }
+    },
+    {
+      "id": "296:17714",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.840576171875,
+        "width": 14.072773933410645,
+        "height": 1.4725512266159058
+      }
+    },
+    {
+      "id": "296:17715",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.840576171875,
+        "width": 13.997729301452637,
+        "height": 2.68599009513855
+      }
+    },
+    {
+      "id": "296:17716",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.840576171875,
+        "width": 13.816490173339844,
+        "height": 3.879606008529663
+      }
+    },
+    {
+      "id": "296:17717",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.839599609375,
+        "width": 13.530475616455078,
+        "height": 5.0449042320251465
+      }
+    },
+    {
+      "id": "296:17718",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.840576171875,
+        "width": 13.141098022460938,
+        "height": 6.17055606842041
+      }
+    },
+    {
+      "id": "296:17719",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.840576171875,
+        "width": 12.651192665100098,
+        "height": 7.249483585357666
+      }
+    },
+    {
+      "id": "296:17720",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.840576171875,
+        "width": 12.0650053024292,
+        "height": 8.273188591003418
+      }
+    },
+    {
+      "id": "296:17721",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.840576171875,
+        "width": 11.386781692504883,
+        "height": 9.234594345092773
+      }
+    },
+    {
+      "id": "296:17722",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.840576171875,
+        "width": 10.622187614440918,
+        "height": 10.125204086303711
+      }
+    },
+    {
+      "id": "296:17723",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.840576171875,
+        "width": 9.776886940002441,
+        "height": 10.93935489654541
+      }
+    },
+    {
+      "id": "296:17724",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.840576171875,
+        "width": 8.857959747314453,
+        "height": 11.669966697692871
+      }
+    },
+    {
+      "id": "296:17725",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.839599609375,
+        "width": 7.871067047119141,
+        "height": 12.311376571655273
+      }
+    },
+    {
+      "id": "296:17726",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.840576171875,
+        "width": 6.823290824890137,
+        "height": 12.85933780670166
+      }
+    },
+    {
+      "id": "296:17727",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.840576171875,
+        "width": 5.724540710449219,
+        "height": 13.308180809020996
+      }
+    },
+    {
+      "id": "296:17728",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.839599609375,
+        "width": 4.583314418792725,
+        "height": 13.657913208007812
+      }
+    },
+    {
+      "id": "296:17729",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.840576171875,
+        "width": 3.405272960662842,
+        "height": 13.90286636352539
+      }
+    },
+    {
+      "id": "296:17730",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.462890625,
+        "y": 1981.840576171875,
+        "width": 2.2017459869384766,
+        "height": 14.041627883911133
+      }
+    },
+    {
+      "id": "296:17731",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24408.21875,
+        "y": 1981.840576171875,
+        "width": 1.2275973558425903,
+        "height": 14.076244354248047
+      }
+    },
+    {
+      "id": "296:17732",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24406.9921875,
+        "y": 1981.840576171875,
+        "width": 1.4725514650344849,
+        "height": 14.072774887084961
+      }
+    },
+    {
+      "id": "296:17733",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24405.77734375,
+        "y": 1981.840576171875,
+        "width": 2.6859898567199707,
+        "height": 13.997734069824219
+      }
+    },
+    {
+      "id": "296:17734",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24404.5859375,
+        "y": 1981.840576171875,
+        "width": 3.879605770111084,
+        "height": 13.81649398803711
+      }
+    },
+    {
+      "id": "296:17735",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24403.423828125,
+        "y": 1981.840576171875,
+        "width": 5.044902324676514,
+        "height": 13.530478477478027
+      }
+    },
+    {
+      "id": "296:17736",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24402.294921875,
+        "y": 1981.840576171875,
+        "width": 6.170554161071777,
+        "height": 13.141101837158203
+      }
+    },
+    {
+      "id": "296:17737",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24401.21875,
+        "y": 1981.840576171875,
+        "width": 7.249481678009033,
+        "height": 12.651198387145996
+      }
+    },
+    {
+      "id": "296:17738",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24400.19921875,
+        "y": 1981.840576171875,
+        "width": 8.273187637329102,
+        "height": 12.065008163452148
+      }
+    },
+    {
+      "id": "296:17739",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24399.228515625,
+        "y": 1981.840576171875,
+        "width": 9.236007690429688,
+        "height": 11.3867826461792
+      }
+    },
+    {
+      "id": "296:17740",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24398.34375,
+        "y": 1981.840576171875,
+        "width": 10.125203132629395,
+        "height": 10.622191429138184
+      }
+    },
+    {
+      "id": "296:17741",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24397.52734375,
+        "y": 1981.840576171875,
+        "width": 10.939352035522461,
+        "height": 9.776890754699707
+      }
+    },
+    {
+      "id": "296:17742",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24396.796875,
+        "y": 1981.840576171875,
+        "width": 11.669965744018555,
+        "height": 8.857961654663086
+      }
+    },
+    {
+      "id": "296:17743",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17671",
+      "bounds": {
+        "x": 24396.154296875,
+        "y": 1981.840576171875,
+        "width": 12.311375617980957,
+        "height": 7.871070384979248
+      }
+    },
+    {
+      "id": "296:17744",
+      "name": "highlights",
+      "type": "GROUP",
+      "parent": "296:17597",
+      "bounds": {
+        "x": 24400.365234375,
+        "y": 1973.72265625,
+        "width": 16.823726654052734,
+        "height": 16.832298278808594
+      }
+    },
+    {
+      "id": "296:17745",
+      "name": "_x31_3",
+      "type": "GROUP",
+      "parent": "296:17744",
+      "bounds": {
+        "x": 24400.365234375,
+        "y": 1973.7227783203125,
+        "width": 8.144448280334473,
+        "height": 8.144495964050293
+      }
+    },
+    {
+      "id": "296:17746",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17745",
+      "bounds": {
+        "x": 24400.365234375,
+        "y": 1973.722900390625,
+        "width": 8.144448280334473,
+        "height": 8.144495964050293
+      }
+    },
+    {
+      "id": "296:17747",
+      "name": "_x31_2",
+      "type": "GROUP",
+      "parent": "296:17744",
+      "bounds": {
+        "x": 24400.388671875,
+        "y": 1973.747802734375,
+        "width": 8.118879318237305,
+        "height": 8.118881225585938
+      }
+    },
+    {
+      "id": "296:17748",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17747",
+      "bounds": {
+        "x": 24400.388671875,
+        "y": 1973.747802734375,
+        "width": 8.118879318237305,
+        "height": 8.118881225585938
+      }
+    },
+    {
+      "id": "296:17749",
+      "name": "_x31_1",
+      "type": "GROUP",
+      "parent": "296:17744",
+      "bounds": {
+        "x": 24400.388671875,
+        "y": 1973.748291015625,
+        "width": 8.118879318237305,
+        "height": 8.118881225585938
+      }
+    },
+    {
+      "id": "296:17750",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "296:17749",
+      "bounds": {
+        "x": 24400.388671875,
+        "y": 1973.748291015625,
+        "width": 8.118879318237305,
+        "height": 8.118881225585938
+      }
+    },
+    {
+      "id": "296:17751",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17750",
+      "bounds": {
+        "x": 24400.388671875,
+        "y": 1973.748291015625,
+        "width": 8.118879318237305,
+        "height": 8.118881225585938
+      }
+    },
+    {
+      "id": "296:17752",
+      "name": "_x31_0",
+      "type": "GROUP",
+      "parent": "296:17744",
+      "bounds": {
+        "x": 24400.38671875,
+        "y": 1973.7447509765625,
+        "width": 8.121365547180176,
+        "height": 8.120827674865723
+      }
+    },
+    {
+      "id": "296:17753",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17752",
+      "bounds": {
+        "x": 24400.38671875,
+        "y": 1973.7447509765625,
+        "width": 8.121365547180176,
+        "height": 8.120827674865723
+      }
+    },
+    {
+      "id": "296:17754",
+      "name": "_x39_",
+      "type": "GROUP",
+      "parent": "296:17744",
+      "bounds": {
+        "x": 24408.50390625,
+        "y": 1981.8671875,
+        "width": 8.68505573272705,
+        "height": 8.687888145446777
+      }
+    },
+    {
+      "id": "296:17755",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17754",
+      "bounds": {
+        "x": 24408.50390625,
+        "y": 1981.8671875,
+        "width": 8.68505573272705,
+        "height": 8.687888145446777
+      }
+    },
+    {
+      "id": "296:17756",
+      "name": "_x38_",
+      "type": "GROUP",
+      "parent": "296:17744",
+      "bounds": {
+        "x": 24400.3984375,
+        "y": 1973.7618408203125,
+        "width": 16.22779083251953,
+        "height": 16.22920799255371
+      }
+    },
+    {
+      "id": "296:17757",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17756",
+      "bounds": {
+        "x": 24400.3984375,
+        "y": 1973.7618408203125,
+        "width": 16.22779083251953,
+        "height": 16.22920799255371
+      }
+    },
+    {
+      "id": "296:17758",
+      "name": "_x37_",
+      "type": "GROUP",
+      "parent": "296:17744",
+      "bounds": {
+        "x": 24400.3984375,
+        "y": 1973.7618408203125,
+        "width": 16.22779083251953,
+        "height": 16.22920799255371
+      }
+    },
+    {
+      "id": "296:17759",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17758",
+      "bounds": {
+        "x": 24400.3984375,
+        "y": 1973.7618408203125,
+        "width": 16.22779083251953,
+        "height": 16.22920799255371
+      }
+    },
+    {
+      "id": "296:17760",
+      "name": "_x36_",
+      "type": "GROUP",
+      "parent": "296:17744",
+      "bounds": {
+        "x": 24400.3984375,
+        "y": 1973.7618408203125,
+        "width": 16.22779083251953,
+        "height": 16.22920799255371
+      }
+    },
+    {
+      "id": "296:17761",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17760",
+      "bounds": {
+        "x": 24400.3984375,
+        "y": 1973.7618408203125,
+        "width": 16.22779083251953,
+        "height": 16.22920799255371
+      }
+    },
+    {
+      "id": "296:17762",
+      "name": "_x35_",
+      "type": "GROUP",
+      "parent": "296:17744",
+      "bounds": {
+        "x": 24400.3984375,
+        "y": 1973.7618408203125,
+        "width": 16.22779083251953,
+        "height": 16.22920799255371
+      }
+    },
+    {
+      "id": "296:17763",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17762",
+      "bounds": {
+        "x": 24400.3984375,
+        "y": 1973.7618408203125,
+        "width": 16.22779083251953,
+        "height": 16.22920799255371
+      }
+    },
+    {
+      "id": "296:17764",
+      "name": "_x34_",
+      "type": "GROUP",
+      "parent": "296:17744",
+      "bounds": {
+        "x": 24400.3984375,
+        "y": 1973.7618408203125,
+        "width": 16.22779083251953,
+        "height": 16.22920799255371
+      }
+    },
+    {
+      "id": "296:17765",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17764",
+      "bounds": {
+        "x": 24400.3984375,
+        "y": 1973.7618408203125,
+        "width": 16.22779083251953,
+        "height": 16.22920799255371
+      }
+    },
+    {
+      "id": "296:17766",
+      "name": "_x33_",
+      "type": "GROUP",
+      "parent": "296:17744",
+      "bounds": {
+        "x": 24400.3984375,
+        "y": 1973.7618408203125,
+        "width": 16.22779083251953,
+        "height": 16.22920799255371
+      }
+    },
+    {
+      "id": "296:17767",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17766",
+      "bounds": {
+        "x": 24400.3984375,
+        "y": 1973.7618408203125,
+        "width": 16.22779083251953,
+        "height": 16.22920799255371
+      }
+    },
+    {
+      "id": "296:17768",
+      "name": "_x32_",
+      "type": "GROUP",
+      "parent": "296:17744",
+      "bounds": {
+        "x": 24401.955078125,
+        "y": 1975.31640625,
+        "width": 13.12269115447998,
+        "height": 13.12269401550293
+      }
+    },
+    {
+      "id": "296:17769",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17768",
+      "bounds": {
+        "x": 24401.955078125,
+        "y": 1975.31640625,
+        "width": 13.12269115447998,
+        "height": 13.12269401550293
+      }
+    },
+    {
+      "id": "296:17770",
+      "name": "_x31_",
+      "type": "GROUP",
+      "parent": "296:17744",
+      "bounds": {
+        "x": 24401.955078125,
+        "y": 1975.31640625,
+        "width": 13.12269115447998,
+        "height": 13.12269401550293
+      }
+    },
+    {
+      "id": "296:17771",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17770",
+      "bounds": {
+        "x": 24401.955078125,
+        "y": 1975.31640625,
+        "width": 13.12269115447998,
+        "height": 13.12269401550293
+      }
+    },
+    {
+      "id": "296:17772",
+      "name": "overlay",
+      "type": "GROUP",
+      "parent": "296:17744",
+      "bounds": {
+        "x": 24408.50390625,
+        "y": 1981.8671875,
+        "width": 8.68505573272705,
+        "height": 8.687888145446777
+      }
+    },
+    {
+      "id": "296:17773",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17772",
+      "bounds": {
+        "x": 24408.50390625,
+        "y": 1981.8671875,
+        "width": 8.68505573272705,
+        "height": 8.687888145446777
+      }
+    },
+    {
+      "id": "296:17774",
+      "name": "overlay",
+      "type": "GROUP",
+      "parent": "296:17744",
+      "bounds": {
+        "x": 24400.365234375,
+        "y": 1973.7227783203125,
+        "width": 8.144448280334473,
+        "height": 8.144495964050293
+      }
+    },
+    {
+      "id": "296:17775",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:17774",
+      "bounds": {
+        "x": 24400.365234375,
+        "y": 1973.722900390625,
+        "width": 8.144448280334473,
+        "height": 8.144495964050293
+      }
+    },
+    {
+      "id": "296:17776",
+      "name": "бизнес",
+      "type": "VECTOR",
+      "parent": "296:17588",
+      "bounds": {
+        "x": 24468.158203125,
+        "y": 1976.48779296875,
+        "width": 48.281898498535156,
+        "height": 10.798151016235352
+      }
+    }
+  ],
+  "imageHashes": [
+    "9b72bb7dfbcc52e4f5bd4436db51fc7423d96a8e"
+  ],
+  "notes": [],
+  "visualTexts": [
+    {
+      "id": "I296:17581;6848:9345;404:24014;233:32210;3236:94429",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:17581;6848:9345;404:24014;233:32210;3236:94427",
+      "bounds": {
+        "x": 24433.798828125,
+        "y": 2023.720947265625,
+        "width": 30,
+        "height": 10
+      },
+      "text": "Главная",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 7.7113938331604,
+      "segments": [
+        {
+          "characters": "Главная",
+          "start": 0,
+          "end": 7,
+          "fontSize": 7.7113938331604,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/2988:639"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24223;270:20870;3168:31365",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:17581;6848:9345;404:24223;270:20870;3168:31363",
+      "bounds": {
+        "x": 24433.798828125,
+        "y": 2056.769775390625,
+        "width": 36,
+        "height": 10
+      },
+      "text": "Чат-боты",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 7.7113938331604,
+      "segments": [
+        {
+          "characters": "Чат-боты",
+          "start": 0,
+          "end": 8,
+          "fontSize": 7.7113938331604,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/2988:639"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:17581;6848:9345;404:24408;382:23868;3236:94429",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:17581;6848:9345;404:24408;382:23868;3236:94427",
+      "bounds": {
+        "x": 24433.798828125,
+        "y": 2089.818603515625,
+        "width": 29,
+        "height": 10
+      },
+      "text": "Каналы",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 7.7113938331604,
+      "segments": [
+        {
+          "characters": "Каналы",
+          "start": 0,
+          "end": 6,
+          "fontSize": 7.7113938331604,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/2988:639"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:17581;6848:9345;678:36164;678:34396;3168:31365",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:17581;6848:9345;678:36164;678:34396;3168:31363",
+      "bounds": {
+        "x": 24433.798828125,
+        "y": 2122.867431640625,
+        "width": 48,
+        "height": 10
+      },
+      "text": "Цифровой ID",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 7.7113938331604,
+      "segments": [
+        {
+          "characters": "Цифровой ID",
+          "start": 0,
+          "end": 11,
+          "fontSize": 7.7113938331604,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/2988:639"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23865;387:25534;3168:31365",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:17581;6848:9345;453:23865;387:25534;3168:31363",
+      "bounds": {
+        "x": 24433.798828125,
+        "y": 2376.244140625,
+        "width": 44,
+        "height": 10
+      },
+      "text": "Сотрудники",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 7.7113938331604,
+      "segments": [
+        {
+          "characters": "Сотрудники",
+          "start": 0,
+          "end": 10,
+          "fontSize": 7.7113938331604,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/2988:639"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:17581;6848:9345;453:23866;387:25934;3168:31365",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:17581;6848:9345;453:23866;387:25934;3168:31363",
+      "bounds": {
+        "x": 24433.798828125,
+        "y": 2409.29296875,
+        "width": 55,
+        "height": 10
+      },
+      "text": "Документация",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 7.7113938331604,
+      "segments": [
+        {
+          "characters": "Документация",
+          "start": 0,
+          "end": 12,
+          "fontSize": 7.7113938331604,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/2988:639"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:17581;6848:9351;2005:40483",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:17581;6848:9351;2005:40482",
+      "bounds": {
+        "x": 24735.123046875,
+        "y": 2115.53857421875,
+        "width": 239,
+        "height": 18
+      },
+      "text": "Как вы хотите создать канал в MAX?",
+      "fontName": {
+        "family": "Max Sans",
+        "style": "DemiBold"
+      },
+      "fontSize": 13.219532012939453,
+      "segments": [
+        {
+          "characters": "Как вы хотите создать канал в MAX?",
+          "start": 0,
+          "end": 34,
+          "fontSize": 13.219532012939453,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "DemiBold"
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:075c4c23ab76de3d017507c7a561beca4f70e5ac/10030:220"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:17581;6848:9351;2005:40486;21354:147939;69:4737",
+      "name": "↪️ Cell Title",
+      "type": "TEXT",
+      "parent": "I296:17581;6848:9351;2005:40486;21354:147939;28123:220561",
+      "bounds": {
+        "x": 24776.984375,
+        "y": 2166.58740234375,
+        "width": 188.3251190185547,
+        "height": 23
+      },
+      "text": "Создать канал с ником из другого мессенджера или социальной сети",
+      "fontName": null,
+      "fontSize": 8.813021659851074,
+      "segments": [
+        {
+          "characters": "Создать канал с ником из другого мессенджера или социальной сети",
+          "start": 0,
+          "end": 64,
+          "fontSize": 8.813021659851074,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:075c4c23ab76de3d017507c7a561beca4f70e5ac/10030:220"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:17581;6848:9351;2005:40486;21354:147939;69:4744",
+      "name": "↪️ Cell Subtitle",
+      "type": "TEXT",
+      "parent": "I296:17581;6848:9351;2005:40486;21354:147939",
+      "bounds": {
+        "x": 24776.984375,
+        "y": 2190.689208984375,
+        "width": 188.3251190185547,
+        "height": 9
+      },
+      "text": "Если у вас есть регистрация в РКН",
+      "fontName": null,
+      "fontSize": 7.160580158233643,
+      "segments": [
+        {
+          "characters": "Если у вас есть регистрация в РКН",
+          "start": 0,
+          "end": 33,
+          "fontSize": 7.160580158233643,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.3960784375667572,
+                "g": 0.43921568989753723,
+                "b": 0.4901960790157318
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:ee0aa3ca05e7860e50c4271031ec92a048e92621/9909:256"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:17581;6848:9351;2005:40488;21354:147939;69:4737",
+      "name": "↪️ Cell Title",
+      "type": "TEXT",
+      "parent": "I296:17581;6848:9351;2005:40488;21354:147939;28123:220561",
+      "bounds": {
+        "x": 24776.984375,
+        "y": 2235.551025390625,
+        "width": 188.3251190185547,
+        "height": 12
+      },
+      "text": "Создать новый канал для бизнеса",
+      "fontName": null,
+      "fontSize": 8.813021659851074,
+      "segments": [
+        {
+          "characters": "Создать новый канал для бизнеса",
+          "start": 0,
+          "end": 31,
+          "fontSize": 8.813021659851074,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:075c4c23ab76de3d017507c7a561beca4f70e5ac/10030:220"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:17581;6864:104051;6864:97817;4074:19269;4074:19258",
+      "name": "Link",
+      "type": "TEXT",
+      "parent": "I296:17581;6864:104051;6864:97817;4074:19269",
+      "bounds": {
+        "x": 24575.912109375,
+        "y": 1977.5078125,
+        "width": 30,
+        "height": 10
+      },
+      "text": "Главная",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 7.7113938331604,
+      "segments": [
+        {
+          "characters": "Главная",
+          "start": 0,
+          "end": 7,
+          "fontSize": 7.7113938331604,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.5176470875740051,
+                "g": 0.5529412031173706,
+                "b": 0.5960784554481506
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:d1111407eec76a422d3c84c7210450bd84257bb3/2988:524"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:17581;6864:104051;6864:97817;4074:19273;4074:19264",
+      "name": "Link",
+      "type": "TEXT",
+      "parent": "I296:17581;6864:104051;6864:97817;4074:19273",
+      "bounds": {
+        "x": 24619.130859375,
+        "y": 1977.5078125,
+        "width": 29,
+        "height": 10
+      },
+      "text": "Каналы",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 7.7113938331604,
+      "segments": [
+        {
+          "characters": "Каналы",
+          "start": 0,
+          "end": 6,
+          "fontSize": 7.7113938331604,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.3450980484485626,
+                "g": 0.38823530077934265,
+                "b": 0.43529412150382996
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:daf69504f7d2f564cd6df5b735a0ee3389207baf/2988:523"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:17584;6850:72688;3370:24156",
+      "name": "Overtitle",
+      "type": "TEXT",
+      "parent": "I296:17584;6850:72688;3168:31362",
+      "bounds": {
+        "x": 25023.78125,
+        "y": 1969.9915771484375,
+        "width": 63,
+        "height": 11
+      },
+      "text": "Профиль бизнеса",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 7.350863456726074,
+      "segments": [
+        {
+          "characters": "Профиль бизнеса",
+          "start": 0,
+          "end": 15,
+          "fontSize": 7.350863456726074,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.3960784375667572,
+                "g": 0.43921568989753723,
+                "b": 0.4901960790157318
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:40111606192b8c3149bf8c29bf3bd6be41eeb6b2/3232:42"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:17584;6850:72688;3168:31365",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:17584;6850:72688;3168:31363",
+      "bounds": {
+        "x": 25023.78125,
+        "y": 1982.041748046875,
+        "width": 36,
+        "height": 13
+      },
+      "text": "Кофейня",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 8.400986671447754,
+      "segments": [
+        {
+          "characters": "Кофейня",
+          "start": 0,
+          "end": 7,
+          "fontSize": 8.400986671447754,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/3235:51"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:17584;6850:72688;3168:31372;3168:30820;3168:30812;2510:7013",
+      "name": "Label",
+      "type": "TEXT",
+      "parent": "I296:17584;6850:72688;3168:31372;3168:30820;3168:30812;2510:7012",
+      "bounds": {
+        "x": 25107.783203125,
+        "y": 1976.754150390625,
+        "width": 23,
+        "height": 11
+      },
+      "text": "Button",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 7.350863456726074,
+      "segments": [
+        {
+          "characters": "Button",
+          "start": 0,
+          "end": 6,
+          "fontSize": 7.350863456726074,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:945c7372d32f523c86aa40a4a949d2a0fbb47256/3235:60"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    }
+  ],
+  "pngScale": 1,
+  "pngFile": "06-Продвижение-бизнеса/03-Канал/002-Экран/screen.png",
+  "previewFile": "06-Продвижение-бизнеса/03-Канал/002-Экран/preview.png",
+  "svgFile": "06-Продвижение-бизнеса/03-Канал/002-Экран/screen.svg",
+  "documentFile": "06-Продвижение-бизнеса/03-Канал/002-Экран/figma.json",
+  "images": [
+    {
+      "hash": "9b72bb7dfbcc52e4f5bd4436db51fc7423d96a8e",
+      "file": "06-Продвижение-бизнеса/03-Канал/002-Экран/images/289b0308073512a9169d5c6b1b9b571e20da932990c6af9ca27b0c6952e1b9b6.jpg"
+    }
+  ]
+}

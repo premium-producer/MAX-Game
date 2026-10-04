@@ -1,0 +1,103 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><style>
+*{box-sizing:border-box}body{margin:0;padding:22px;background:var(--figma-color-bg,#171322);color:var(--figma-color-text,#fff);font:13px/1.45 system-ui,sans-serif}h1{font-size:22px;margin:0 0 6px}p{opacity:.76;margin:6px 0 14px}label{display:block;margin:10px 0 4px}select,button{width:100%;padding:10px;border:1px solid #7775;border-radius:8px;background:var(--figma-color-bg-secondary,#282236);color:inherit;font:inherit}button{cursor:pointer}button.primary{background:#6e1aff;color:white;border:0;font-weight:600}button:disabled{opacity:.45;cursor:default}.row{display:flex;gap:12px}.row>div{flex:1}.check{display:flex;gap:8px;align-items:center}.check input{margin:0}#status{min-height:44px;white-space:pre-wrap;margin:12px 0}#preview{width:100%;aspect-ratio:16/9;border-radius:8px;object-fit:contain;background:#0d001a}progress{width:100%;height:6px;margin:8px 0}.small{font-size:11px}.renderer{position:absolute;left:0;top:0;width:1600px;height:900px;transform:scale(.001);transform-origin:top left;pointer-events:none;opacity:.001;border:0}#stop{width:110px}#actions{display:flex;gap:8px;margin-top:14px}details{margin-top:10px}#proof{width:100%;height:260px;border:0;display:none}
+</style><style>
+html,body{height:100%;overflow:hidden}body{padding:0;display:flex;flex-direction:column}
+#content{min-height:0;flex:1;overflow:auto;padding:18px 20px 12px}
+h1{font-size:20px}.row>div{min-width:0}select{min-width:0}.check{align-items:flex-start}
+#preview-box{position:relative;height:176px;min-height:176px;max-height:176px;overflow:hidden;border:1px solid #7775;border-radius:8px;background:#0d001a;margin-top:12px;display:grid;place-items:center}
+#preview-box #preview{position:absolute;inset:0;display:block;width:100%;height:100%;max-height:100%;aspect-ratio:auto;object-fit:contain}
+#preview-box #preview[hidden]{display:none}
+#preview-placeholder{padding:20px;text-align:center;color:#c4bcd8;font-size:12px}
+#footer{flex:0 0 auto;border-top:1px solid #7775;padding:10px 20px 14px;background:var(--figma-color-bg,#171322)}
+#footer #status{margin:0;min-height:36px;max-height:72px;overflow:auto;font-size:12px;overflow-wrap:anywhere}
+#footer #status[data-error=true]{color:var(--figma-color-text-danger,#ffb5c0)}
+#actions{margin-top:6px}#progress{margin:5px 0}#proof{height:180px}
+</style><main id="content"><h1>UI игры MAX · 6 миссий</h1><p>Ладонь → все иконки вокруг → линия → задания. Текущий Guided Reveal, исходные фото, экраны ID и ПК.</p>
+<div class="row"><div><label for="edition">Редакция</label><select id="edition"><option value="reveal">Актуальная · Guided Reveal</option></select></div><div><label for="mission">Миссии</label><select id="mission"><option value="all">Все шесть миссий и меню</option><option value="blogger">Стать блогером</option><option value="digital-id">Цифровой ID</option><option value="communication">Общение на максимум</option><option value="business">Продвижение бизнеса · 3 ветки</option><option value="demo-benefit">Получение льготы · тест</option><option value="demo-business">Продвижение бизнеса · тест</option><option value="common">Общее меню</option></select></div></div>
+<label for="scope">Набор</label><select id="scope"><option value="main">Все миссии · раскладки, задания, варианты и итоги</option><option value="layouts">Только ладонь, круг и линия</option><option value="palm">Только начало с ладонью</option><option value="ring">Только иконки вокруг</option><option value="line">Только раскладка в линию</option><option value="tasks">Только задания и результаты</option><option value="all">Полный · также ошибочные ответы</option><option value="sample">Один экран · быстрая проверка</option></select>
+<label class="check"><input type="checkbox" id="editable">Редактируемый текст при наличии Max Sans в Figma</label>
+<label class="check"><input type="checkbox" id="reference" checked>Скрытый точный PNG-эталон каждого экрана</label>
+<p class="small">Текст — отдельные PNG-строки, иконки и исходные экраны ID — SVG, стекло и фон — PNG из шейдеров. Действия только внутри устройства, справа справка. Линия экспортируется целиком; подписи скрыты до подключения. Заглушки и маркировка «тест» сохранены.</p>
+<div id="preview-box"><span id="preview-placeholder">Превью появится после сборки первого экрана</span><img id="preview" width="1600" height="900" alt="Кадр игры" hidden></div>
+<details><summary>Состав и источник</summary><div id="inventory" class="small"></div></details><iframe id="proof" title="Проверка результата слоями"></iframe>
+<section id="review-panel" style="margin-top:20px;border-top:1px solid #7775;padding-top:12px">
+<h2 style="font-size:17px;margin:0 0 6px">Комментарии клиента → один JSON</h2>
+<p class="small">Выделите экраны или группы миссий на холсте. Экспорт включает карту выделения и все комментарии файла, включая непривязанные и спорные. Макет не изменяется.</p>
+<label for="review-file">Ссылка на файл Figma</label><input id="review-file" type="text" placeholder="https://www.figma.com/design/…" style="width:100%;padding:10px;border:1px solid #7775;border-radius:8px;background:var(--figma-color-bg-secondary,#282236);color:inherit">
+<p class="small">Вставьте ссылку именно на открытый файл с выделенными экранами.</p>
+<label for="review-token">Токен Figma · только чтение комментариев</label><input id="review-token" type="password" autocomplete="off" placeholder="file_comments:read" style="width:100%;padding:10px;border:1px solid #7775;border-radius:8px;background:var(--figma-color-bg-secondary,#282236);color:inherit">
+<p class="small">Токен используется для одного запроса к api.figma.com и очищается. В JSON и макет он не попадает.</p>
+<details><summary>Или загрузить готовый JSON комментариев</summary><label for="review-import">Ответ REST API с массивом comments</label><input id="review-import" type="file" accept=".json,application/json"></details>
+<label class="check"><input id="review-page" type="checkbox">Свободные комментарии без привязки относятся к текущей странице</label>
+<p class="small">Включайте, если это известно. Иначе свободные позиции сохраняются с кандидатами и статусом «страница неизвестна».</p>
+<div class="row"><button id="review-export" class="primary">Скачать экраны и комментарии · JSON</button><button id="review-cancel" disabled>Отменить</button></div>
+<p id="review-status" role="status" aria-live="polite">Готово к экспорту выделения.</p><a id="review-download" hidden style="color:inherit">Скачать max-review.json ещё раз</a>
+</section>
+</main><footer id="footer"><div id="status" role="status" aria-live="polite">Готово к сборке.</div><progress id="progress" value="0" max="1"></progress><div id="actions"><button id="run" class="primary">Собрать экраны</button><button id="stop" disabled>Стоп</button></div></footer>
+<script>
+/*__MAX_PAYLOAD__*/
+const $=id=>document.getElementById(id),post=m=>parent.postMessage({pluginMessage:m},'*');
+const isPreview=parent===window;let active=false,stopping=false,game=null,sequence=0,requests=new Map(),acks=new Map(),localResults=[],lastError='',fontNote='';
+function setStatus(text,error=false){$('status').textContent=text;$('status').dataset.error=String(error);}
+function showPreview(url){const img=$('preview');img.onload=()=>{img.hidden=false;$('preview-placeholder').hidden=true;};img.onerror=()=>{img.hidden=true;$('preview-placeholder').hidden=false;$('preview-placeholder').textContent='Кадр получен, но превью не удалось показать';};img.src=url;}
+const from64=s=>new TextDecoder().decode(Uint8Array.from(atob(s),c=>c.charCodeAt(0)));
+function selection(){let list=DATA.catalogs[$('edition').value];const mission=$('mission').value;if(mission!=='all')list=list.filter(s=>mission==='common'?!s.mission:s.mission===mission);const scope=$('scope').value;if(scope==='main')list=list.filter(s=>s.default);if(scope==='layouts')list=list.filter(s=>['palm','ring','line'].includes(s.kind));if(['palm','ring','line'].includes(scope))list=list.filter(s=>s.kind===scope);if(scope==='tasks')list=list.filter(s=>['task','result','branch'].includes(s.kind));if(scope==='sample')list=[list.find(s=>s.kind==='task')||list[0]].filter(Boolean);return list;}
+function update(){const list=selection();$('run').textContent=`Собрать ${list.length} экранов`;$('run').disabled=active||!list.length;$('inventory').textContent=`Снимок исходников: ${DATA.revision}. Шесть миссий, ${DATA.catalogs.reveal.length} состояний, три бизнес-ветки. Встроенных исходников и ассетов: ${Object.keys(DATA.sources).length}. Основной формат: 1600 × 1000; длинные линии шире, чтобы все узлы были видны. Интернет и запущенная игра не нужны.`;}
+function waiting(map,key,ms){return new Promise((resolve,reject)=>{const timer=setTimeout(()=>{map.delete(key);reject(Error('Истекло время ожидания: '+key));},ms);map.set(key,{resolve:v=>{clearTimeout(timer);map.delete(key);resolve(v);},reject:e=>{clearTimeout(timer);map.delete(key);reject(e);}});});}
+async function initRenderer(edition){
+ game?.remove();game=document.createElement('iframe');game.className='renderer';game.setAttribute('aria-hidden','true');game.setAttribute('sandbox','allow-scripts allow-same-origin');
+ let html=from64(DATA.html);game.style.width='1600px';game.style.height='1000px';
+ const ready=waiting(requests,'boot',60000);
+ game.onerror=()=>requests.get('boot')?.reject(Error('Встроенный рендер не загрузился'));
+ if(isPreview)game.src='/game.html';else game.srcdoc=html;document.body.append(game);await ready;
+}
+function settle(){active=false;$('run').disabled=false;$('stop').disabled=true;$('review-export').disabled=false;for(const id of ['edition','mission','scope','editable','reference'])$(id).disabled=false;game?.remove();game=null;}
+window.addEventListener('message',event=>{
+ const m=event.data;
+ if(event.source===game?.contentWindow){
+  if(m.type==='max-render-ready')requests.get('boot')?.resolve(m);
+  if(m.type==='max-export-result')requests.get(m.token)?.resolve(m.result);
+  if(m.type==='max-export-error')requests.get(m.token)?.reject(Error(m.error));
+  if(m.type==='max-render-error'){lastError='Ошибка рендера: '+m.error;setStatus(lastError,true);for(const pending of requests.values())pending.reject(Error(m.error));}
+  return;
+ }
+ // Figma relays sandbox messages; their WindowProxy need not equal parent (desktop/web).
+ const p=m?.pluginMessage;if(!p||!active)return;
+ if(p.type==='started')acks.get('start')?.resolve(p);
+ if(p.type==='screen-added')acks.get(p.id)?.resolve(p);
+ if(p.type==='error'){lastError=p.error;for(const pending of acks.values())pending.reject(Error(p.error));setStatus(p.error,true);}
+ if(p.type==='finished'){setStatus(lastError?`${lastError}\nСохранено экранов: ${p.count}.`:`${p.cancelled?'Остановлено':'Готово'}: ${p.count} экранов. Созданные экраны сохранены на текущей странице.${fontNote}`,!!lastError);settle();}
+});
+async function proof(s){
+ showPreview(s.reference);localResults.push({id:s.id,name:s.name,layers:s.layers.length,svg:s.layers.filter(l=>l.kind==='svg').length,text:s.layers.filter(l=>l.kind==='text').length});
+ const frame=$('proof');frame.style.display='block';
+ const html=`<html><body style="margin:0"><div style="position:relative;width:${s.width}px;height:${s.height}px;transform:scale(${480/s.width});transform-origin:top left"><img style="position:absolute;width:${s.width}px;height:${s.height}px" src="${s.base}">${s.layers.map(l=>`<div style="position:absolute;left:${l.x}px;top:${l.y}px;width:${l.w}px;height:${l.h}px;opacity:${l.opacity}">${l.kind==='svg'?l.svg.replace('<svg','<svg style="width:100%;height:100%"'):`<img style="width:100%;height:100%" src="${l.png}">`}</div>`).join('')}</div></body></html>`;
+ frame.srcdoc=html;
+}
+$('run').onclick=async()=>{
+ if(active||reviewRunning)return;const list=selection();if(!list.length)return;active=true;stopping=false;localResults=[];lastError='';fontNote='';$('run').disabled=true;$('stop').disabled=false;$('review-export').disabled=true;
+ for(const id of ['edition','mission','scope','editable','reference'])$(id).disabled=true;
+ $('progress').max=list.length;$('progress').value=0;
+ try{
+  setStatus('Запускаю исходный рендер игры и загружаю встроенные шрифты…');
+  await initRenderer($('edition').value);
+  if(stopping){settle();setStatus('Остановлено до создания страницы.');return;}
+  if(!isPreview){const ready=waiting(acks,'start',30000);post({type:'start',total:list.length,maxWidth:Math.max(...list.map(s=>s.width)),edition:$('edition').value,editable:$('editable').checked,reference:$('reference').checked,revision:DATA.revision});const response=await ready;if($('editable').checked&&!response.fontAvailable)fontNote=' Max Sans не найден: текст сохранён PNG-строками.';}
+  for(let i=0;i<list.length&&!stopping;i++){
+   const s=list[i];setStatus(`${i+1} / ${list.length} · ${s.group}\n${s.name}`);
+   game.style.width=s.width+'px';game.style.height=s.height+'px';
+   const token=++sequence,result=waiting(requests,token,90000);game.contentWindow.postMessage({type:'max-export-screen',token,screen:s},'*');
+   const capture=await result;showPreview(capture.reference);
+   if(isPreview)await proof(capture);else{const ack=waiting(acks,s.id,60000);post({type:'screen',screen:capture});await ack;}
+   $('progress').value=i+1;
+  }
+  if(isPreview){$('status').textContent=`Готово: ${localResults.length} экранов. ${JSON.stringify(localResults)}`;settle();}
+  else post({type:stopping?'cancel':'finish'});
+ }catch(error){lastError='Ошибка: '+error.message;setStatus(lastError,true);if(!isPreview)post({type:'cancel'});settle();}
+};
+$('stop').onclick=()=>{stopping=true;$('status').textContent='Остановка после текущего экрана…';};
+for(const id of ['edition','mission','scope'])$(id).onchange=update;
+if(isPreview){const p=new URLSearchParams(location.search);$('scope').value=p.get('scope')||'sample';if(p.get('mission'))$('mission').value=p.get('mission');document.title='MAX Figma plugin · локальная проверка';}
+update();
+/*__MAX_REVIEW_UI__*/
+</script></html>

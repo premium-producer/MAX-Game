@@ -1,0 +1,7 @@
+/* Keep the original landing styles and effects, with a local reduced-motion policy. */
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto!important}
+ *,*::before,*::after{animation:none!important;transition:none!important}
+ [data-animation-parallax],[data-animation-uprise]{transform:none!important;opacity:1!important}
+}
+.menu-toggle:focus-visible{outline:2px solid #00bfff;outline-offset:4px}

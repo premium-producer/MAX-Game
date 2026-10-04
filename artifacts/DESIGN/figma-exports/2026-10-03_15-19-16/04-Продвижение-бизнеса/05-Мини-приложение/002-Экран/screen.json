@@ -1,0 +1,5274 @@
+{
+  "id": "296:19723",
+  "name": "Экран 2",
+  "title": "002-Экран",
+  "bounds": {
+    "x": 28608,
+    "y": 2017.5078125,
+    "width": 896,
+    "height": 560
+  },
+  "task": "unassigned",
+  "include": true,
+  "reviewed": false,
+  "confidence": "structure",
+  "group": "296:19486",
+  "groupName": "Продвижение бизнеса / Мини-приложение",
+  "containerPath": [
+    {
+      "id": "296:16452",
+      "name": "04-Продвижение бизнеса"
+    },
+    {
+      "id": "296:19486",
+      "name": "05-Мини-приложение"
+    }
+  ],
+  "ancestors": [],
+  "nearbyHeadings": [],
+  "evidence": [
+    {
+      "source": "autolayout",
+      "text": "Порядок children; названия фреймов не используются"
+    }
+  ],
+  "warnings": [],
+  "detection": "structure",
+  "order": 100,
+  "content": {
+    "kind": "screen",
+    "missionOrder": 4,
+    "missionNodeId": "296:16452",
+    "iconOrder": 5,
+    "iconNodeId": "296:19486",
+    "iconText": "Мини-приложение",
+    "iconTexts": [
+      {
+        "id": "296:19490",
+        "order": 1,
+        "text": "Мини-приложение",
+        "fontName": {
+          "family": "Inter",
+          "style": "Regular",
+          "variationSettings": {
+            "slnt": 0,
+            "wght": 400
+          }
+        },
+        "fontSize": 55,
+        "segments": [
+          {
+            "characters": "Мини-приложение",
+            "start": 0,
+            "end": 15,
+            "fontSize": 55,
+            "fontName": {
+              "family": "Inter",
+              "style": "Regular",
+              "variationSettings": {
+                "slnt": 0,
+                "wght": 400
+              }
+            },
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 0.07999999821186066,
+                  "g": 0.05999999865889549,
+                  "b": 0.11999999731779099
+                },
+                "boundVariables": {}
+              }
+            ],
+            "hyperlink": null
+          }
+        ],
+        "bounds": {
+          "x": 29185.5,
+          "y": 572,
+          "width": 424,
+          "height": 134
+        }
+      }
+    ],
+    "screenOrder": 2,
+    "screenNodeId": "296:19720",
+    "visualNodeId": "296:19723",
+    "helpNodeId": "296:19725"
+  },
+  "instruction": {
+    "blocks": [
+      {
+        "id": "296:19726",
+        "order": 1,
+        "text": "Заходим в расширенные настройки бота и добавляем ссылку которую хотим открывать в мини-приложении и кнопку для отображения в боте",
+        "fontName": {
+          "family": "Inter",
+          "style": "Regular",
+          "variationSettings": {
+            "slnt": 0,
+            "wght": 400
+          }
+        },
+        "fontSize": 32,
+        "segments": [
+          {
+            "characters": "Заходим в расширенные настройки бота и добавляем ссылку которую хотим открывать в мини-приложении и кнопку для отображения в боте",
+            "start": 0,
+            "end": 129,
+            "fontSize": 32,
+            "fontName": {
+              "family": "Inter",
+              "style": "Regular",
+              "variationSettings": {
+                "slnt": 0,
+                "wght": 400
+              }
+            },
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 0.07999999821186066,
+                  "g": 0.05999999865889549,
+                  "b": 0.11999999731779099
+                },
+                "boundVariables": {}
+              }
+            ],
+            "hyperlink": null
+          }
+        ],
+        "bounds": {
+          "x": 29680,
+          "y": 2173.5078125,
+          "width": 547,
+          "height": 195
+        }
+      }
+    ],
+    "text": "Заходим в расширенные настройки бота и добавляем ссылку которую хотим открывать в мини-приложении и кнопку для отображения в боте"
+  },
+  "watchNodeId": "296:19720",
+  "contextNodeIds": [
+    "296:19487",
+    "296:16453"
+  ],
+  "sequenceParents": [
+    "296:19491",
+    "296:19486",
+    "296:16454",
+    "296:16452"
+  ],
+  "fingerprint": "[\"[\\\"Канал · 01 · Канал бизнеса · Запуск канала\\\",{\\\"x\\\":28464,\\\"y\\\":1891.5078125,\\\"width\\\":1867,\\\"height\\\":759},\\\"FRAME\\\",[[\\\"296:19491\\\",\\\"задание миссии\\\",\\\"FRAME\\\"],[\\\"296:19486\\\",\\\"иконка_задание · Мини-приложение\\\",\\\"FRAME\\\"],[\\\"296:16454\\\",\\\"Миссия · возможности слева направо\\\",\\\"FRAME\\\"],[\\\"296:16452\\\",\\\"Продвижение бизнеса\\\",\\\"FRAME\\\"],[\\\"296:13218\\\",\\\"MAX аудит миссий\\\",\\\"FRAME\\\"],[\\\"296:13217\\\",\\\"DEV 2\\\",\\\"PAGE\\\"]],\\\"content-v1\\\",1123973184,1482869780,3460]\",[\"[\\\"игровая иконка\\\",{\\\"x\\\":29141.5,\\\"y\\\":376,\\\"width\\\":512,\\\"height\\\":374},\\\"FRAME\\\",[[\\\"296:19486\\\",\\\"иконка_задание · Мини-приложение\\\",\\\"FRAME\\\"],[\\\"296:16454\\\",\\\"Миссия · возможности слева направо\\\",\\\"FRAME\\\"],[\\\"296:16452\\\",\\\"Продвижение бизнеса\\\",\\\"FRAME\\\"],[\\\"296:13218\\\",\\\"MAX аудит миссий\\\",\\\"FRAME\\\"],[\\\"296:13217\\\",\\\"DEV 2\\\",\\\"PAGE\\\"]],\\\"content-v1\\\",2664989852,893126004,4]\",\"[\\\"Продвижение бизнеса\\\",{\\\"x\\\":21276,\\\"y\\\":206,\\\"width\\\":1600,\\\"height\\\":77},\\\"TEXT\\\",[[\\\"296:16452\\\",\\\"Продвижение бизнеса\\\",\\\"FRAME\\\"],[\\\"296:13218\\\",\\\"MAX аудит миссий\\\",\\\"FRAME\\\"],[\\\"296:13217\\\",\\\"DEV 2\\\",\\\"PAGE\\\"]],\\\"content-v1\\\",3411646121,1499354171,1]\"],[[\"296:19491\",[\"296:19492\",\"296:19720\",\"296:19727\",\"296:19734\",\"296:19933\"]],[\"296:19486\",[\"296:19487\",\"296:19491\"]],[\"296:16454\",[\"296:16455\",\"296:16647\",\"296:17342\",\"296:18549\",\"296:19486\"]],[\"296:16452\",[\"296:16453\",\"296:16454\"]]]]",
+  "exportStatus": "ok",
+  "texts": [
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9444",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80012;8684:96182",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2090.929931640625,
+        "width": 148.08888244628906,
+        "height": 15
+      },
+      "text": "Кофейня",
+      "fontName": {
+        "family": "VK Sans Display",
+        "style": "DemiBold"
+      },
+      "fontSize": 11.822221755981445,
+      "segments": [
+        {
+          "characters": "Кофейня",
+          "start": 0,
+          "end": 7,
+          "fontSize": 11.822221755981445,
+          "fontName": {
+            "family": "VK Sans Display",
+            "style": "DemiBold"
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/3235:51"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;8684:96139",
+      "name": "Subtitle",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80012;8684:96182",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2107.17431640625,
+        "width": 148.08888244628906,
+        "height": 12
+      },
+      "text": "@id00000000000_bot",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 8.711111068725586,
+      "segments": [
+        {
+          "characters": "@id00000000000_bot",
+          "start": 0,
+          "end": 18,
+          "fontSize": 8.711111068725586,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.3450980484485626,
+                "g": 0.38823530077934265,
+                "b": 0.43529412150382996
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:daf69504f7d2f564cd6df5b735a0ee3389207baf/3204:1334"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9518;3168:31365",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9518;3168:31363",
+      "bounds": {
+        "x": 28659.021484375,
+        "y": 2148.018798828125,
+        "width": 97,
+        "height": 12
+      },
+      "text": "Основная информация",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 8.711111068725586,
+      "segments": [
+        {
+          "characters": "Основная информация",
+          "start": 0,
+          "end": 19,
+          "fontSize": 8.711111068725586,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/3235:51"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9542;3236:94429",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9542;3236:94427",
+      "bounds": {
+        "x": 28659.021484375,
+        "y": 2185.35205078125,
+        "width": 46,
+        "height": 12
+      },
+      "text": "Настройки",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 8.711111068725586,
+      "segments": [
+        {
+          "characters": "Настройки",
+          "start": 0,
+          "end": 9,
+          "fontSize": 8.711111068725586,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/3235:51"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9470;3168:31365",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9470;3168:31363",
+      "bounds": {
+        "x": 28659.021484375,
+        "y": 2498.08544921875,
+        "width": 62,
+        "height": 12
+      },
+      "text": "Документация",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 8.711111068725586,
+      "segments": [
+        {
+          "characters": "Документация",
+          "start": 0,
+          "end": 12,
+          "fontSize": 8.711111068725586,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/3235:51"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;8199:48338;3168:31365",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80012;8199:48338;3168:31363",
+      "bounds": {
+        "x": 28659.021484375,
+        "y": 2535.418701171875,
+        "width": 49,
+        "height": 12
+      },
+      "text": "Поддержка",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 8.711111068725586,
+      "segments": [
+        {
+          "characters": "Поддержка",
+          "start": 0,
+          "end": 9,
+          "fontSize": 8.711111068725586,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/3235:51"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8379:85446;8379:85373",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8379:85446;8379:85372",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2057.330078125,
+        "width": 318.5777587890625,
+        "height": 18
+      },
+      "text": "Настройки",
+      "fontName": {
+        "family": "VK Sans Display",
+        "style": "DemiBold"
+      },
+      "fontSize": 14.311110496520996,
+      "segments": [
+        {
+          "characters": "Настройки",
+          "start": 0,
+          "end": 9,
+          "fontSize": 14.311110496520996,
+          "fontName": {
+            "family": "VK Sans Display",
+            "style": "DemiBold"
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/3235:51"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7890:179306;9539:104350",
+      "name": "Description",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7890:179306;9539:104348",
+      "bounds": {
+        "x": 28858.1328125,
+        "y": 2102.707763671875,
+        "width": 276.26666259765625,
+        "height": 38
+      },
+      "text": "Информация опубликована в мессенджере МАКС.\nИзменение информации потребует повторной модерации",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 9.955554962158203,
+      "segments": [
+        {
+          "characters": "Информация опубликована в мессенджере МАКС.\nИзменение информации потребует повторной модерации",
+          "start": 0,
+          "end": 94,
+          "fontSize": 9.955554962158203,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/3235:51"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;3299:90525",
+      "name": "↪️ Title",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;3299:90524",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2170.574462890625,
+        "width": 45,
+        "height": 15
+      },
+      "text": "Чат-бот",
+      "fontName": {
+        "family": "VK Sans Display",
+        "style": "DemiBold"
+      },
+      "fontSize": 11.822221755981445,
+      "segments": [
+        {
+          "characters": "Чат-бот",
+          "start": 0,
+          "end": 7,
+          "fontSize": 11.822221755981445,
+          "fontName": {
+            "family": "VK Sans Display",
+            "style": "DemiBold"
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:075c4c23ab76de3d017507c7a561beca4f70e5ac/10030:220"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33194;2983:11977",
+      "name": "Subhead",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33194",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2201.752197265625,
+        "width": 61,
+        "height": 12
+      },
+      "text": "Токен доступа",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 8.711111068725586,
+      "segments": [
+        {
+          "characters": "Токен доступа",
+          "start": 0,
+          "end": 13,
+          "fontSize": 8.711111068725586,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.3450980484485626,
+                "g": 0.38823530077934265,
+                "b": 0.43529412150382996
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:bb8d65021fc46b572ec774bfe77e9a93851e699b/9909:226"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33196;3476:14511;3031:31034;3038:11516",
+      "name": "Text Filed",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33196;3476:14511;3031:31034;3038:11515",
+      "bounds": {
+        "x": 28833.244140625,
+        "y": 2225.9189453125,
+        "width": 248.8888702392578,
+        "height": 13
+      },
+      "text": "eyJ•••••••••••••••••••••••••••••••••••••••••••••••••••CJ9",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 9.955554962158203,
+      "segments": [
+        {
+          "characters": "eyJ•••••••••••••••••••••••••••••••••••••••••••••••••••CJ9",
+          "start": 0,
+          "end": 57,
+          "fontSize": 9.955554962158203,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/3235:51"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33199",
+      "name": "Caption Default",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33198",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2251.085693359375,
+        "width": 283.7333068847656,
+        "height": 32
+      },
+      "text": "Используйте токен для настройки логики чат-бота и подключения интеграций",
+      "fontName": null,
+      "fontSize": 13,
+      "segments": [
+        {
+          "characters": "Используйте токен для настройки логики чат-бота и подключения ",
+          "start": 0,
+          "end": 62,
+          "fontSize": 13,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.5176470875740051,
+                "g": 0.5529412031173706,
+                "b": 0.5960784554481506
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:f6930f7296862961aa71c5c4fd7e45301143363c/9909:259"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:0621cda1a7c94dd9f2592f422306a6b36da7ec11,41616:37",
+          "hyperlink": null
+        },
+        {
+          "characters": "интеграций",
+          "start": 62,
+          "end": 72,
+          "fontSize": 13,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.14901961386203766,
+                "g": 0.5333333611488342,
+                "b": 0.9215686321258545
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:7db1e48bf3489ec9f6729877be583235aa94275f/3204:1459"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:0621cda1a7c94dd9f2592f422306a6b36da7ec11,41616:37",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7881:218599;7881:213318",
+      "name": "Input Text",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7881:218599;7881:213317",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2298.018798828125,
+        "width": 147,
+        "height": 13
+      },
+      "text": "Добавление в групповые чаты",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 9.955554962158203,
+      "segments": [
+        {
+          "characters": "Добавление в групповые чаты",
+          "start": 0,
+          "end": 27,
+          "fontSize": 9.955554962158203,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/3235:51"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7881:218599;7881:213320",
+      "name": "Caption Default",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7881:218599;7881:213316",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2313.507568359375,
+        "width": 283.7333068847656,
+        "height": 20
+      },
+      "text": "Если включено, бот сможет участвовать в групповых чатах и взаимодействовать с их участниками",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 8.088888168334961,
+      "segments": [
+        {
+          "characters": "Если включено, бот сможет участвовать в групповых чатах и взаимодействовать с их участниками",
+          "start": 0,
+          "end": 92,
+          "fontSize": 8.088888168334961,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.5176470875740051,
+                "g": 0.5529412031173706,
+                "b": 0.5960784554481506
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:f6930f7296862961aa71c5c4fd7e45301143363c/9909:259"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;3299:90534",
+      "name": "↪️ Title",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;3299:90533",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2355.263427734375,
+        "width": 111,
+        "height": 15
+      },
+      "text": "Мини-приложение",
+      "fontName": {
+        "family": "VK Sans Display",
+        "style": "DemiBold"
+      },
+      "fontSize": 11.822221755981445,
+      "segments": [
+        {
+          "characters": "Мини-приложение",
+          "start": 0,
+          "end": 15,
+          "fontSize": 11.822221755981445,
+          "fontName": {
+            "family": "VK Sans Display",
+            "style": "DemiBold"
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:075c4c23ab76de3d017507c7a561beca4f70e5ac/10030:220"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252;3031:33194;2983:11977",
+      "name": "Subhead",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252;3031:33194",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2386.441162109375,
+        "width": 67,
+        "height": 12
+      },
+      "text": "Введите ссылку",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 8.711111068725586,
+      "segments": [
+        {
+          "characters": "Введите ссылку",
+          "start": 0,
+          "end": 14,
+          "fontSize": 8.711111068725586,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.3450980484485626,
+                "g": 0.38823530077934265,
+                "b": 0.43529412150382996
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:bb8d65021fc46b572ec774bfe77e9a93851e699b/9909:226"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252;3031:33196;3476:14511;3031:31034;3038:11516",
+      "name": "Text Filed",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252;3031:33196;3476:14511;3031:31034;3038:11515",
+      "bounds": {
+        "x": 28833.244140625,
+        "y": 2410.60791015625,
+        "width": 303.6444396972656,
+        "height": 13
+      },
+      "text": "https://mycoffee.ru",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 9.955554962158203,
+      "segments": [
+        {
+          "characters": "https://mycoffee.ru",
+          "start": 0,
+          "end": 19,
+          "fontSize": 9.955554962158203,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/3235:51"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252;3031:33199",
+      "name": "Caption Default",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252;3031:33198",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2435.774658203125,
+        "width": 318.5777587890625,
+        "height": 10
+      },
+      "text": "Укажите ссылку на мини-приложение, которое вы хотите подключить к боту",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 8.088888168334961,
+      "segments": [
+        {
+          "characters": "Укажите ссылку на мини-приложение, которое вы хотите подключить к боту",
+          "start": 0,
+          "end": 70,
+          "fontSize": 8.088888168334961,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.5176470875740051,
+                "g": 0.5529412031173706,
+                "b": 0.5960784554481506
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:f6930f7296862961aa71c5c4fd7e45301143363c/9909:259"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7892:168338",
+      "name": "Subhead",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7892:168337",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2460.707763671875,
+        "width": 194,
+        "height": 12
+      },
+      "text": "Выберите кнопку открытия мини-приложения",
+      "fontName": null,
+      "fontSize": 8.711111068725586,
+      "segments": [
+        {
+          "characters": "Выберите кнопку открытия мини-приложения",
+          "start": 0,
+          "end": 40,
+          "fontSize": 8.711111068725586,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.3450980484485626,
+                "g": 0.38823530077934265,
+                "b": 0.43529412150382996
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:bb8d65021fc46b572ec774bfe77e9a93851e699b/9909:226"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176300;8668:63676",
+      "name": "Open",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176300",
+      "bounds": {
+        "x": 28920.9765625,
+        "y": 2492.618896484375,
+        "width": 41.68888473510742,
+        "height": 12.444441795349121
+      },
+      "text": "Открыть",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 9.955554962158203,
+      "segments": [
+        {
+          "characters": "Открыть",
+          "start": 0,
+          "end": 7,
+          "fontSize": 9.955554962158203,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:4e62bae077411f4304788aeac9dc972382e0ab71/3204:1464"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176312;8668:63676",
+      "name": "Open",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176312",
+      "bounds": {
+        "x": 29001.244140625,
+        "y": 2492.618896484375,
+        "width": 28.622222900390625,
+        "height": 12.44444465637207
+      },
+      "text": "Старт",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 9.955554962158203,
+      "segments": [
+        {
+          "characters": "Старт",
+          "start": 0,
+          "end": 5,
+          "fontSize": 9.955554962158203,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.5176470875740051,
+                "g": 0.5529412031173706,
+                "b": 0.5960784554481506
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:d1111407eec76a422d3c84c7210450bd84257bb3/3204:1335"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176316;8668:63676",
+      "name": "Open",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176316",
+      "bounds": {
+        "x": 29068.443359375,
+        "y": 2492.618896484375,
+        "width": 34.22222137451172,
+        "height": 12.444443702697754
+      },
+      "text": "Играть",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 9.955554962158203,
+      "segments": [
+        {
+          "characters": "Играть",
+          "start": 0,
+          "end": 6,
+          "fontSize": 9.955554962158203,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.5176470875740051,
+                "g": 0.5529412031173706,
+                "b": 0.5960784554481506
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:d1111407eec76a422d3c84c7210450bd84257bb3/3204:1335"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8262:100165;2580:8006;2580:6891;2699:138487",
+      "name": "Label",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8262:100165;2580:8006;2580:6891;2699:138486",
+      "bounds": {
+        "x": 28959.91015625,
+        "y": 2517.0966796875,
+        "width": 50,
+        "height": 13
+      },
+      "text": "Сохранить",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 9.955554962158203,
+      "segments": [
+        {
+          "characters": "Сохранить",
+          "start": 0,
+          "end": 9,
+          "fontSize": 9.955554962158203,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:945c7372d32f523c86aa40a4a949d2a0fbb47256/3235:60"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:19726",
+      "order": 1,
+      "text": "Заходим в расширенные настройки бота и добавляем ссылку которую хотим открывать в мини-приложении и кнопку для отображения в боте",
+      "fontName": {
+        "family": "Inter",
+        "style": "Regular",
+        "variationSettings": {
+          "slnt": 0,
+          "wght": 400
+        }
+      },
+      "fontSize": 32,
+      "segments": [
+        {
+          "characters": "Заходим в расширенные настройки бота и добавляем ссылку которую хотим открывать в мини-приложении и кнопку для отображения в боте",
+          "start": 0,
+          "end": 129,
+          "fontSize": 32,
+          "fontName": {
+            "family": "Inter",
+            "style": "Regular",
+            "variationSettings": {
+              "slnt": 0,
+              "wght": 400
+            }
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.07999999821186066,
+                "g": 0.05999999865889549,
+                "b": 0.11999999731779099
+              },
+              "boundVariables": {}
+            }
+          ],
+          "hyperlink": null
+        }
+      ],
+      "bounds": {
+        "x": 29680,
+        "y": 2173.5078125,
+        "width": 547,
+        "height": 195
+      },
+      "contentRole": "instruction"
+    }
+  ],
+  "layers": [
+    {
+      "id": "296:19723",
+      "name": ".",
+      "type": "FRAME",
+      "parent": "296:19721",
+      "bounds": {
+        "x": 28608,
+        "y": 2017.5078125,
+        "width": 896,
+        "height": 560
+      }
+    },
+    {
+      "id": "296:19724",
+      "name": "Modal & Drawer",
+      "type": "INSTANCE",
+      "parent": "296:19723",
+      "bounds": {
+        "x": 28608,
+        "y": 2017.5078125,
+        "width": 895.9999389648438,
+        "height": 559.9999389648438
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994",
+      "name": "Drawer",
+      "type": "INSTANCE",
+      "parent": "296:19724",
+      "bounds": {
+        "x": 28617.955078125,
+        "y": 2027.46337890625,
+        "width": 876.0888671875,
+        "height": 540.0888671875
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012",
+      "name": "Drawer sidebar",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994",
+      "bounds": {
+        "x": 28617.955078125,
+        "y": 2027.46337890625,
+        "width": 176.7111053466797,
+        "height": 540.0888671875
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9229",
+      "name": "Header",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80012",
+      "bounds": {
+        "x": 28617.955078125,
+        "y": 2027.46337890625,
+        "width": 176.7111053466797,
+        "height": 110.37777709960938
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;8689:87973",
+      "name": "Avatar",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9229",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2046.1300048828125,
+        "width": 34.844444274902344,
+        "height": 34.844444274902344
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;8689:87973;3537:28457",
+      "name": "Container for scale",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80012;8689:87973",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2046.1300048828125,
+        "width": 34.844444274902344,
+        "height": 34.844444274902344
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;8689:87973;2653:6802",
+      "name": "Container",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80012;8689:87973;3537:28457",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2046.1300048828125,
+        "width": 34.844444274902344,
+        "height": 34.844444274902344
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;8689:87973;2653:6808",
+      "name": "Mask",
+      "type": "GROUP",
+      "parent": "I296:19724;8174:38994;8156:80012;8689:87973;2653:6802",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2046.1300048828125,
+        "width": 34.844444274902344,
+        "height": 34.844444274902344
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;8689:87973;2653:6809",
+      "name": ".background form",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80012;8689:87973;2653:6808",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2046.1300048828125,
+        "width": 34.844444274902344,
+        "height": 34.844444274902344
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;8689:87973;2653:6809;2640:18600",
+      "name": "Ellipse",
+      "type": "ELLIPSE",
+      "parent": "I296:19724;8174:38994;8156:80012;8689:87973;2653:6809",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2046.1300048828125,
+        "width": 34.844444274902344,
+        "height": 34.844444274902344
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;8689:87973;2653:6810",
+      "name": "🖼️ Choose Image",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "I296:19724;8174:38994;8156:80012;8689:87973;2653:6802",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2046.1300048828125,
+        "width": 34.8447265625,
+        "height": 34.8447265625
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;8689:87973;2653:6811",
+      "name": "Mask",
+      "type": "GROUP",
+      "parent": "I296:19724;8174:38994;8156:80012;8689:87973;2653:6810",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2046.1300048828125,
+        "width": 34.844444274902344,
+        "height": 34.844444274902344
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;8689:87973;2653:6812",
+      "name": "Avatar Form",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80012;8689:87973;2653:6811",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2046.1300048828125,
+        "width": 34.844444274902344,
+        "height": 34.844444274902344
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;8689:87973;2653:6812;2640:18600",
+      "name": "Ellipse",
+      "type": "ELLIPSE",
+      "parent": "I296:19724;8174:38994;8156:80012;8689:87973;2653:6812",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2046.1300048828125,
+        "width": 34.844444274902344,
+        "height": 34.844444274902344
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;8684:96182",
+      "name": "Frame 2147227013",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9229",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2090.929931640625,
+        "width": 148.08888244628906,
+        "height": 28.244443893432617
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9444",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80012;8684:96182",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2090.929931640625,
+        "width": 148.08888244628906,
+        "height": 15
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;8684:96139",
+      "name": "Subtitle",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80012;8684:96182",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2107.17431640625,
+        "width": 148.08888244628906,
+        "height": 12
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9231",
+      "name": "Container",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80012",
+      "bounds": {
+        "x": 28617.955078125,
+        "y": 2137.841064453125,
+        "width": 176.7111053466797,
+        "height": 340.111083984375
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9232",
+      "name": "Frame 2131329777",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9231",
+      "bounds": {
+        "x": 28627.91015625,
+        "y": 2137.841064453125,
+        "width": 156.79998779296875,
+        "height": 330.155517578125
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9518",
+      "name": "Cell",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9232",
+      "bounds": {
+        "x": 28627.91015625,
+        "y": 2137.841064453125,
+        "width": 156.79998779296875,
+        "height": 32.355552673339844
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9518;3168:31358",
+      "name": "Content",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9518",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2142.81884765625,
+        "width": 139.3777618408203,
+        "height": 22.39999771118164
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9518;3168:31361",
+      "name": "Before",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9518;3168:31358",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2142.81884765625,
+        "width": 14.933332443237305,
+        "height": 22.39999771118164
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9518;3168:31361;3168:30755",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9518;3168:31361",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2146.55224609375,
+        "width": 14.933332443237305,
+        "height": 14.933332443237305
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9518;3168:31361;3168:30755;3320:86796",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9518;3168:31361;3168:30755",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2146.55224609375,
+        "width": 14.933332443237305,
+        "height": 14.933332443237305
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9518;3168:31361;3168:30755;3320:86796;2013:75",
+      "name": "Clipboard",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9518;3168:31361;3168:30755;3320:86796",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2146.55224609375,
+        "width": 14.933332443237305,
+        "height": 14.933332443237305
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9518;3168:31361;3168:30755;3320:86796;2013:75;3801:167814",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9518;3168:31361;3168:30755;3320:86796;2013:75",
+      "bounds": {
+        "x": 28638.48828125,
+        "y": 2149.042236328125,
+        "width": 11.19999885559082,
+        "height": 11.198918342590332
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9518;3168:31361;3168:30755;3320:86796;2013:75;3801:167815",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9518;3168:31361;3168:30755;3320:86796;2013:75",
+      "bounds": {
+        "x": 28641.599609375,
+        "y": 2155.263427734375,
+        "width": 4.977777481079102,
+        "height": 0
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9518;3168:31361;3168:30755;3320:86796;2013:75;3801:167816",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9518;3168:31361;3168:30755;3320:86796;2013:75",
+      "bounds": {
+        "x": 28640.9765625,
+        "y": 2153.085693359375,
+        "width": 6.222221851348877,
+        "height": 0
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9518;3168:31361;3168:30755;3320:86796;2013:75;3801:167817",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9518;3168:31361;3168:30755;3320:86796;2013:75",
+      "bounds": {
+        "x": 28642.220703125,
+        "y": 2157.441162109375,
+        "width": 3.733333110809326,
+        "height": 0
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9518;3168:31361;3168:30755;3320:86796;2013:75;3801:167818",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9518;3168:31361;3168:30755;3320:86796;2013:75",
+      "bounds": {
+        "x": 28641.599609375,
+        "y": 2147.796630859375,
+        "width": 4.977777481079102,
+        "height": 2.488888740539551
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9518;3168:31362",
+      "name": "Middle",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9518;3168:31358",
+      "bounds": {
+        "x": 28659.021484375,
+        "y": 2148.018798828125,
+        "width": 116.97776794433594,
+        "height": 12
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9518;3168:31363",
+      "name": "Title ",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9518;3168:31362",
+      "bounds": {
+        "x": 28659.021484375,
+        "y": 2148.018798828125,
+        "width": 116.97776794433594,
+        "height": 12
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9518;3168:31365",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9518;3168:31363",
+      "bounds": {
+        "x": 28659.021484375,
+        "y": 2148.018798828125,
+        "width": 97,
+        "height": 12
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9542",
+      "name": "Cell",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9232",
+      "bounds": {
+        "x": 28627.91015625,
+        "y": 2175.17431640625,
+        "width": 156.79998779296875,
+        "height": 32.355552673339844
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9542;3236:94422",
+      "name": "Content",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9542",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2180.152099609375,
+        "width": 139.3777618408203,
+        "height": 22.39999771118164
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9542;3236:94425",
+      "name": "Before",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9542;3236:94422",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2180.152099609375,
+        "width": 14.933332443237305,
+        "height": 22.39999771118164
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9542;3236:94425;3168:30755",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9542;3236:94425",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2183.885498046875,
+        "width": 14.933332443237305,
+        "height": 14.933332443237305
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9542;3236:94425;3168:30755;3320:86796",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9542;3236:94425;3168:30755",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2183.885498046875,
+        "width": 14.933332443237305,
+        "height": 14.933332443237305
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9542;3236:94425;3168:30755;3320:86796;2013:75",
+      "name": "settings",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9542;3236:94425;3168:30755;3320:86796",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2183.885498046875,
+        "width": 14.933332443237305,
+        "height": 14.933332443237305
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9542;3236:94425;3168:30755;3320:86796;2013:75;3542:107",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9542;3236:94425;3168:30755;3320:86796;2013:75",
+      "bounds": {
+        "x": 28637.900390625,
+        "y": 2184.5078125,
+        "width": 12.374287605285645,
+        "height": 13.690000534057617
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9542;3236:94426",
+      "name": "Middle",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9542;3236:94422",
+      "bounds": {
+        "x": 28659.021484375,
+        "y": 2185.35205078125,
+        "width": 116.9777603149414,
+        "height": 12
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9542;3236:94427",
+      "name": "Title ",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9542;3236:94426",
+      "bounds": {
+        "x": 28659.021484375,
+        "y": 2185.35205078125,
+        "width": 116.9777603149414,
+        "height": 12
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9542;3236:94429",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9542;3236:94427",
+      "bounds": {
+        "x": 28659.021484375,
+        "y": 2185.35205078125,
+        "width": 46,
+        "height": 12
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9239",
+      "name": "Line ",
+      "type": "LINE",
+      "parent": "I296:19724;8174:38994;8156:80012",
+      "bounds": {
+        "x": 28617.955078125,
+        "y": 2477.9521484375,
+        "width": 176.7111053466797,
+        "height": 0
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9240",
+      "name": "Container",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80012",
+      "bounds": {
+        "x": 28617.955078125,
+        "y": 2477.9521484375,
+        "width": 176.7111053466797,
+        "height": 89.59999084472656
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9470",
+      "name": "Cell",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9240",
+      "bounds": {
+        "x": 28627.91015625,
+        "y": 2487.90771484375,
+        "width": 156.79998779296875,
+        "height": 32.355552673339844
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9470;3168:31358",
+      "name": "Content",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9470",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2492.885498046875,
+        "width": 139.3777618408203,
+        "height": 22.39999771118164
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9470;3168:31361",
+      "name": ".before",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9470;3168:31358",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2492.885498046875,
+        "width": 14.933332443237305,
+        "height": 22.39999771118164
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9470;3168:31361;3168:30755",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9470;3168:31361",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2496.618896484375,
+        "width": 14.933332443237305,
+        "height": 14.933332443237305
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9470;3168:31361;3168:30755;2013:75",
+      "name": "file",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9470;3168:31361;3168:30755",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2496.618896484375,
+        "width": 14.933332443237305,
+        "height": 14.933332443237305
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9470;3168:31361;3168:30755;2013:75;71:651",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9470;3168:31361;3168:30755;2013:75",
+      "bounds": {
+        "x": 28639.109375,
+        "y": 2497.86328125,
+        "width": 9.955554008483887,
+        "height": 12.444464683532715
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9470;3168:31362",
+      "name": "Middle",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9470;3168:31358",
+      "bounds": {
+        "x": 28659.021484375,
+        "y": 2498.08544921875,
+        "width": 116.97776794433594,
+        "height": 12
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9470;3168:31363",
+      "name": "Title ",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9470;3168:31362",
+      "bounds": {
+        "x": 28659.021484375,
+        "y": 2498.08544921875,
+        "width": 116.97776794433594,
+        "height": 12
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9470;3168:31365",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9470;3168:31363",
+      "bounds": {
+        "x": 28659.021484375,
+        "y": 2498.08544921875,
+        "width": 62,
+        "height": 12
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;8199:48338",
+      "name": "Cell",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9240",
+      "bounds": {
+        "x": 28627.91015625,
+        "y": 2525.240966796875,
+        "width": 156.79998779296875,
+        "height": 32.355552673339844
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;8199:48338;3168:31358",
+      "name": "Content",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80012;8199:48338",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2530.21875,
+        "width": 139.3777618408203,
+        "height": 22.39999771118164
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;8199:48338;3168:31361",
+      "name": ".before",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80012;8199:48338;3168:31358",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2530.21875,
+        "width": 14.933332443237305,
+        "height": 22.39999771118164
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;8199:48338;3168:31361;3168:30755",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80012;8199:48338;3168:31361",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2533.9521484375,
+        "width": 14.933332443237305,
+        "height": 14.933332443237305
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;8199:48338;3168:31361;3168:30755;2013:75",
+      "name": "bot_master",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80012;8199:48338;3168:31361;3168:30755",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2533.9521484375,
+        "width": 14.933332443237305,
+        "height": 14.933332443237305
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;8199:48338;3168:31361;3168:30755;2013:75;71:558",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:19724;8174:38994;8156:80012;8199:48338;3168:31361;3168:30755;2013:75",
+      "bounds": {
+        "x": 28637.087890625,
+        "y": 2534.674560546875,
+        "width": 13.999999046325684,
+        "height": 13.488387107849121
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;8199:48338;3168:31362",
+      "name": "Middle",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80012;8199:48338;3168:31358",
+      "bounds": {
+        "x": 28659.021484375,
+        "y": 2535.418701171875,
+        "width": 116.97776794433594,
+        "height": 12
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;8199:48338;3168:31363",
+      "name": "Title ",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80012;8199:48338;3168:31362",
+      "bounds": {
+        "x": 28659.021484375,
+        "y": 2535.418701171875,
+        "width": 116.97776794433594,
+        "height": 12
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;8199:48338;3168:31365",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80012;8199:48338;3168:31363",
+      "bounds": {
+        "x": 28659.021484375,
+        "y": 2535.418701171875,
+        "width": 49,
+        "height": 12
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80013",
+      "name": "Content area",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994",
+      "bounds": {
+        "x": 28795.91015625,
+        "y": 2027.46337890625,
+        "width": 698.13330078125,
+        "height": 540.0888671875
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014",
+      "name": "Drawer content",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80013",
+      "bounds": {
+        "x": 28795.91015625,
+        "y": 2027.46337890625,
+        "width": 378.31109619140625,
+        "height": 540.0888671875
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8379:85446",
+      "name": "Drawer content header",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014",
+      "bounds": {
+        "x": 28795.91015625,
+        "y": 2027.46337890625,
+        "width": 378.31109619140625,
+        "height": 55.33333206176758
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8379:85446;8379:85372",
+      "name": "Frame 2131330135",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80014;8379:85446",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2057.330078125,
+        "width": 318.5777587890625,
+        "height": 18
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8379:85446;8379:85373",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8379:85446;8379:85372",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2057.330078125,
+        "width": 318.5777587890625,
+        "height": 18
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;7892:8711",
+      "name": "Frame 2131330058",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80014",
+      "bounds": {
+        "x": 28795.91015625,
+        "y": 2082.796630859375,
+        "width": 378.31109619140625,
+        "height": 484.7555236816406
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227",
+      "name": "Options",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;7892:8711",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2092.752197265625,
+        "width": 318.5777587890625,
+        "height": 427.24444580078125
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7890:179306",
+      "name": "Notification",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2092.752197265625,
+        "width": 318.5777587890625,
+        "height": 57.911109924316406
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7890:179306;9539:104348",
+      "name": "Body",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7890:179306",
+      "bounds": {
+        "x": 28835.732421875,
+        "y": 2102.707763671875,
+        "width": 298.6666564941406,
+        "height": 38
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7890:179306;9544:73591",
+      "name": ".swap icon",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7890:179306;9539:104348",
+      "bounds": {
+        "x": 28835.732421875,
+        "y": 2102.707763671875,
+        "width": 14.933332443237305,
+        "height": 14.933332443237305
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7890:179306;9544:73591;2013:75",
+      "name": "check_round_fill",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7890:179306;9544:73591",
+      "bounds": {
+        "x": 28835.732421875,
+        "y": 2102.707763671875,
+        "width": 14.933332443237305,
+        "height": 14.933332443237305
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7890:179306;9544:73591;2013:75;71:274",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7890:179306;9544:73591;2013:75",
+      "bounds": {
+        "x": 28836.9765625,
+        "y": 2103.9521484375,
+        "width": 12.444443702697754,
+        "height": 12.444443702697754
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7890:179306;9539:104350",
+      "name": "Description",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7890:179306;9539:104348",
+      "bounds": {
+        "x": 28858.1328125,
+        "y": 2102.707763671875,
+        "width": 276.26666259765625,
+        "height": 38
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;3299:92590",
+      "name": "Content",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2170.574462890625,
+        "width": 318.5777587890625,
+        "height": 349.4222106933594
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;3299:90522",
+      "name": "Header Container",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;3299:92590",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2170.574462890625,
+        "width": 318.5777587890625,
+        "height": 164.77777099609375
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;3299:90523",
+      "name": "Title Container",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;3299:90522",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2170.574462890625,
+        "width": 318.5777587890625,
+        "height": 15
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;3299:90524",
+      "name": "Title Wrapper",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;3299:90523",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2170.574462890625,
+        "width": 45,
+        "height": 15
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;3299:90525",
+      "name": "↪️ Title",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;3299:90524",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2170.574462890625,
+        "width": 45,
+        "height": 15
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361255",
+      "name": "Access Token Container",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;3299:90522",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2200.5078125,
+        "width": 318.5777587890625,
+        "height": 82.57777404785156
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256",
+      "name": "Form Field Name",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361255",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2200.5078125,
+        "width": 283.7333068847656,
+        "height": 82.57777404785156
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33194",
+      "name": "Subhead",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2200.5078125,
+        "width": 283.7333068847656,
+        "height": 13.244443893432617
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33194;2983:11977",
+      "name": "Subhead",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33194",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2201.752197265625,
+        "width": 61,
+        "height": 12
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33195",
+      "name": "1-st filled",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2218.72998046875,
+        "width": 283.7333068847656,
+        "height": 27.377777099609375
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33196",
+      "name": "1st Filled",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33195",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2218.72998046875,
+        "width": 283.7333068847656,
+        "height": 27.377777099609375
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33196;3476:14511",
+      "name": ".container field",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33196",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2218.72998046875,
+        "width": 283.7333068847656,
+        "height": 27.377777099609375
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33196;3476:14511;3031:29542",
+      "name": "Container",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33196;3476:14511",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2218.72998046875,
+        "width": 283.7333068847656,
+        "height": 27.377777099609375
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33196;3476:14511;3031:31034",
+      "name": "Middle",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33196;3476:14511;3031:29542",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2218.72998046875,
+        "width": 283.7333068847656,
+        "height": 27.377777099609375
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33196;3476:14511;3031:31034;3038:11515",
+      "name": "Text",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33196;3476:14511;3031:31034",
+      "bounds": {
+        "x": 28833.244140625,
+        "y": 2225.9189453125,
+        "width": 248.8888702392578,
+        "height": 13
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33196;3476:14511;3031:31034;3038:11516",
+      "name": "Text Filed",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33196;3476:14511;3031:31034;3038:11515",
+      "bounds": {
+        "x": 28833.244140625,
+        "y": 2225.9189453125,
+        "width": 248.8888702392578,
+        "height": 13
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33196;3476:14511;3031:31034;3038:11518",
+      "name": "After Icon",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33196;3476:14511;3031:31034",
+      "bounds": {
+        "x": 29087.111328125,
+        "y": 2224.9521484375,
+        "width": 14.933332443237305,
+        "height": 14.933332443237305
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33196;3476:14511;3031:31034;3038:11518;3801:168073",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33196;3476:14511;3031:31034;3038:11518",
+      "bounds": {
+        "x": 29088.35546875,
+        "y": 2226.81884765625,
+        "width": 10.736119270324707,
+        "height": 6.222221851348877
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33196;3476:14511;3031:31034;3038:11518;3801:168074",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33196;3476:14511;3031:31034;3038:11518",
+      "bounds": {
+        "x": 29090.0234375,
+        "y": 2231.796630859375,
+        "width": 10.777164459228516,
+        "height": 6.222221851348877
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33198",
+      "name": "Caption Container",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2251.085693359375,
+        "width": 283.7333068847656,
+        "height": 32
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33199",
+      "name": "Caption Default",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33198",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2251.085693359375,
+        "width": 283.7333068847656,
+        "height": 32
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361257",
+      "name": "Container",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361255",
+      "bounds": {
+        "x": 29116.9765625,
+        "y": 2200.5078125,
+        "width": 27.377777099609375,
+        "height": 44.79999542236328
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361258",
+      "name": "Button",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361257",
+      "bounds": {
+        "x": 29116.9765625,
+        "y": 2217.929931640625,
+        "width": 27.377777099609375,
+        "height": 27.377777099609375
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361258;2514:1721",
+      "name": "Before",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361258",
+      "bounds": {
+        "x": 29123.19921875,
+        "y": 2224.152099609375,
+        "width": 14.933332443237305,
+        "height": 14.933332443237305
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361258;2514:1721;2102:1646",
+      "name": "Swap Icon",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361258;2514:1721",
+      "bounds": {
+        "x": 29123.19921875,
+        "y": 2224.152099609375,
+        "width": 14.933332443237305,
+        "height": 14.933332443237305
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361258;2514:1721;2102:1646;2013:75",
+      "name": "Copy",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361258;2514:1721;2102:1646",
+      "bounds": {
+        "x": 29123.19921875,
+        "y": 2224.152099609375,
+        "width": 14.933332443237305,
+        "height": 14.933332443237305
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361258;2514:1721;2102:1646;2013:75;6606:365325",
+      "name": "copy_outline_28",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361258;2514:1721;2102:1646;2013:75",
+      "bounds": {
+        "x": 29123.19921875,
+        "y": 2224.152099609375,
+        "width": 14.933332443237305,
+        "height": 14.933332443237305
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361258;2514:1721;2102:1646;2013:75;6606:365325;94:5662",
+      "name": "↳ Icon Color",
+      "type": "VECTOR",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361258;2514:1721;2102:1646;2013:75;6606:365325",
+      "bounds": {
+        "x": 29124.798828125,
+        "y": 2225.21875,
+        "width": 11.19999885559082,
+        "height": 12.2666654586792
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7881:218599",
+      "name": "Container",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;3299:90522",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2298.018798828125,
+        "width": 318.5777587890625,
+        "height": 37.33333206176758
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7881:218599;7881:213316",
+      "name": "Text Container",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7881:218599",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2298.018798828125,
+        "width": 283.7333068847656,
+        "height": 35.488887786865234
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7881:218599;7881:213317",
+      "name": "Row Container",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7881:218599;7881:213316",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2298.018798828125,
+        "width": 147,
+        "height": 13
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7881:218599;7881:213318",
+      "name": "Input Text",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7881:218599;7881:213317",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2298.018798828125,
+        "width": 147,
+        "height": 13
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7881:218599;7881:213320",
+      "name": "Caption Default",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7881:218599;7881:213316",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2313.507568359375,
+        "width": 283.7333068847656,
+        "height": 20
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7881:218599;7881:213325",
+      "name": "Container",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7881:218599",
+      "bounds": {
+        "x": 29116.9765625,
+        "y": 2298.018798828125,
+        "width": 27.377777099609375,
+        "height": 37.33333206176758
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7881:218599;7881:213321",
+      "name": ".switch",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7881:218599;7881:213325",
+      "bounds": {
+        "x": 29116.9765625,
+        "y": 2307.974365234375,
+        "width": 27.377777099609375,
+        "height": 17.422222137451172
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7881:218599;7881:213321;2083:109191",
+      "name": "Knob",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7881:218599;7881:213321",
+      "bounds": {
+        "x": 29128.798828125,
+        "y": 2309.841064453125,
+        "width": 13.688888549804688,
+        "height": 13.688888549804688
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;3299:90531",
+      "name": "Mini App Container",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;3299:92590",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2355.263427734375,
+        "width": 318.5777587890625,
+        "height": 164.7333221435547
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;3299:90532",
+      "name": "Mini App Title Container",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;3299:90531",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2355.263427734375,
+        "width": 318.5777587890625,
+        "height": 15
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;3299:90533",
+      "name": "Mini App Title Wrapper",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;3299:90532",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2355.263427734375,
+        "width": 111,
+        "height": 15
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;3299:90534",
+      "name": "↪️ Title",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;3299:90533",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2355.263427734375,
+        "width": 111,
+        "height": 15
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252",
+      "name": "Form Field Name",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;3299:90531",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2385.19677734375,
+        "width": 318.5777587890625,
+        "height": 60.57777404785156
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252;3031:33194",
+      "name": "Subhead",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2385.19677734375,
+        "width": 318.5777587890625,
+        "height": 13.244443893432617
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252;3031:33194;2983:11977",
+      "name": "Subhead",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252;3031:33194",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2386.441162109375,
+        "width": 67,
+        "height": 12
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252;3031:33195",
+      "name": "1-st filled",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2403.4189453125,
+        "width": 318.5777587890625,
+        "height": 27.377777099609375
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252;3031:33196",
+      "name": "1st Filled",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252;3031:33195",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2403.4189453125,
+        "width": 318.5777587890625,
+        "height": 27.377777099609375
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252;3031:33196;3476:14511",
+      "name": ".container field",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252;3031:33196",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2403.4189453125,
+        "width": 318.5777587890625,
+        "height": 27.377777099609375
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252;3031:33196;3476:14511;3031:29542",
+      "name": "Container",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252;3031:33196;3476:14511",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2403.4189453125,
+        "width": 318.5777587890625,
+        "height": 27.377777099609375
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252;3031:33196;3476:14511;3031:31034",
+      "name": "Middle",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252;3031:33196;3476:14511;3031:29542",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2403.4189453125,
+        "width": 318.5777587890625,
+        "height": 27.377777099609375
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252;3031:33196;3476:14511;3031:31034;3038:11515",
+      "name": "Text",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252;3031:33196;3476:14511;3031:31034",
+      "bounds": {
+        "x": 28833.244140625,
+        "y": 2410.60791015625,
+        "width": 303.6444396972656,
+        "height": 13
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252;3031:33196;3476:14511;3031:31034;3038:11516",
+      "name": "Text Filed",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252;3031:33196;3476:14511;3031:31034;3038:11515",
+      "bounds": {
+        "x": 28833.244140625,
+        "y": 2410.60791015625,
+        "width": 303.6444396972656,
+        "height": 13
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252;3031:33198",
+      "name": "Caption Container",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2435.774658203125,
+        "width": 318.5777587890625,
+        "height": 10
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252;3031:33199",
+      "name": "Caption Default",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252;3031:33198",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2435.774658203125,
+        "width": 318.5777587890625,
+        "height": 10
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7892:168337",
+      "name": "Button Selection Instructions",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;3299:90531",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2460.707763671875,
+        "width": 318.5777587890625,
+        "height": 59.28888702392578
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7892:168338",
+      "name": "Subhead",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7892:168337",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2460.707763671875,
+        "width": 194,
+        "height": 12
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7892:168339",
+      "name": "Button Options Container",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7892:168337",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2477.685546875,
+        "width": 318.5777587890625,
+        "height": 42.31110763549805
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176320",
+      "name": "WebApp Button",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7892:168339",
+      "bounds": {
+        "x": 28861.244140625,
+        "y": 2487.64111328125,
+        "width": 27.377777099609375,
+        "height": 22.39999771118164
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176320;8668:63679",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176320",
+      "bounds": {
+        "x": 28866.22265625,
+        "y": 2490.1298828125,
+        "width": 17.422222137451172,
+        "height": 17.422222137451172
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176320;8668:63679;3254:31",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176320;8668:63679",
+      "bounds": {
+        "x": 28868.03125,
+        "y": 2491.546875,
+        "width": 14.160487174987793,
+        "height": 14.184332847595215
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176300",
+      "name": "WebApp Button",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7892:168339",
+      "bounds": {
+        "x": 28896.087890625,
+        "y": 2487.64111328125,
+        "width": 72.79999542236328,
+        "height": 22.39999771118164
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176300;8668:63675",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176300",
+      "bounds": {
+        "x": 28901.06640625,
+        "y": 2490.1298828125,
+        "width": 17.422222137451172,
+        "height": 17.422222137451172
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176300;8668:63675;3254:31",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176300;8668:63675",
+      "bounds": {
+        "x": 28902.875,
+        "y": 2491.546875,
+        "width": 14.160487174987793,
+        "height": 14.184332847595215
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176300;8668:63676",
+      "name": "Open",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176300",
+      "bounds": {
+        "x": 28920.9765625,
+        "y": 2492.618896484375,
+        "width": 41.68888473510742,
+        "height": 12.444441795349121
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176312",
+      "name": "WebApp Button",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7892:168339",
+      "bounds": {
+        "x": 28976.35546875,
+        "y": 2487.64111328125,
+        "width": 59.73332977294922,
+        "height": 22.39999771118164
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176312;8668:63675",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176312",
+      "bounds": {
+        "x": 28981.333984375,
+        "y": 2490.1298828125,
+        "width": 17.422222137451172,
+        "height": 17.422222137451172
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176312;8668:63675;3254:31",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176312;8668:63675",
+      "bounds": {
+        "x": 28983.142578125,
+        "y": 2491.546875,
+        "width": 14.160487174987793,
+        "height": 14.184332847595215
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176312;8668:63676",
+      "name": "Open",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176312",
+      "bounds": {
+        "x": 29001.244140625,
+        "y": 2492.618896484375,
+        "width": 28.622222900390625,
+        "height": 12.44444465637207
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176316",
+      "name": "WebApp Button",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7892:168339",
+      "bounds": {
+        "x": 29043.5546875,
+        "y": 2487.64111328125,
+        "width": 65.33332824707031,
+        "height": 22.39999771118164
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176316;8668:63675",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176316",
+      "bounds": {
+        "x": 29048.533203125,
+        "y": 2490.1298828125,
+        "width": 17.422222137451172,
+        "height": 17.422222137451172
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176316;8668:63675;3254:31",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176316;8668:63675",
+      "bounds": {
+        "x": 29050.341796875,
+        "y": 2491.546875,
+        "width": 14.160487174987793,
+        "height": 14.184332847595215
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176316;8668:63676",
+      "name": "Open",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176316",
+      "bounds": {
+        "x": 29068.443359375,
+        "y": 2492.618896484375,
+        "width": 34.22222137451172,
+        "height": 12.444443702697754
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;7892:8713",
+      "name": "Frame 2131330062",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80014",
+      "bounds": {
+        "x": 28795.91015625,
+        "y": 2490.307861328125,
+        "width": 378,
+        "height": 77.15554809570312
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;7896:6861",
+      "name": "Rectangle 36474",
+      "type": "RECTANGLE",
+      "parent": "I296:19724;8174:38994;8156:80014;7892:8713",
+      "bounds": {
+        "x": 28795.91015625,
+        "y": 2490.307861328125,
+        "width": 378,
+        "height": 19.911109924316406
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;7892:8714",
+      "name": "Frame 2131330059",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80014;7892:8713",
+      "bounds": {
+        "x": 28795.91015625,
+        "y": 2510.218994140625,
+        "width": 378,
+        "height": 57.244441986083984
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8262:100165",
+      "name": "Button Group",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;7892:8714",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2510.218994140625,
+        "width": 318.26666259765625,
+        "height": 27.377777099609375
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8262:100165;2580:8006",
+      "name": "1st ROW",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;8262:100165",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2510.218994140625,
+        "width": 318.26666259765625,
+        "height": 27.377777099609375
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8262:100165;2580:8006;2580:6891",
+      "name": "1st Button",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80014;8262:100165;2580:8006",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2510.218994140625,
+        "width": 318.26666259765625,
+        "height": 27.377777099609375
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8262:100165;2580:8006;2580:6891;2699:138486",
+      "name": "Middle",
+      "type": "FRAME",
+      "parent": "I296:19724;8174:38994;8156:80014;8262:100165;2580:8006;2580:6891",
+      "bounds": {
+        "x": 28959.91015625,
+        "y": 2516.78564453125,
+        "width": 50,
+        "height": 14.244443893432617
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8262:100165;2580:8006;2580:6891;2699:138487",
+      "name": "Label",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8262:100165;2580:8006;2580:6891;2699:138486",
+      "bounds": {
+        "x": 28959.91015625,
+        "y": 2517.0966796875,
+        "width": 50,
+        "height": 13
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346",
+      "name": "Preview",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80013",
+      "bounds": {
+        "x": 29174.220703125,
+        "y": 2027.46337890625,
+        "width": 319.82220458984375,
+        "height": 540.0888671875
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346;8258:84770",
+      "name": "Mockup",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8159:36346",
+      "bounds": {
+        "x": 29234.576171875,
+        "y": 2089.685546875,
+        "width": 199.11109924316406,
+        "height": 415.6444091796875
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346;8258:84770;7960:26346",
+      "name": "iPhone",
+      "type": "GROUP",
+      "parent": "I296:19724;8174:38994;8159:36346;8258:84770",
+      "bounds": {
+        "x": 29235.0234375,
+        "y": 2089.685546875,
+        "width": 199.10968017578125,
+        "height": 415.6444091796875
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346;8258:84770;7960:26309",
+      "name": "Base",
+      "type": "GROUP",
+      "parent": "I296:19724;8174:38994;8159:36346;8258:84770;7960:26346",
+      "bounds": {
+        "x": 29237.51171875,
+        "y": 2090.929931640625,
+        "width": 194.13331604003906,
+        "height": 413.155517578125
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13819",
+      "name": "Rectangle 36465",
+      "type": "RECTANGLE",
+      "parent": "I296:19724;8174:38994;8159:36346;8258:84770;7960:26309",
+      "bounds": {
+        "x": 29241.2421875,
+        "y": 2094.663330078125,
+        "width": 186.66665649414062,
+        "height": 405.6888732910156
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13820",
+      "name": "Rectangle 36461",
+      "type": "RECTANGLE",
+      "parent": "I296:19724;8174:38994;8159:36346;8258:84770;7960:26309",
+      "bounds": {
+        "x": 29238.755859375,
+        "y": 2092.17431640625,
+        "width": 191.64443969726562,
+        "height": 410.6666564941406
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13821",
+      "name": "Rectangle 36465",
+      "type": "RECTANGLE",
+      "parent": "I296:19724;8174:38994;8159:36346;8258:84770;7960:26309",
+      "bounds": {
+        "x": 29237.51171875,
+        "y": 2090.929931640625,
+        "width": 194.13331604003906,
+        "height": 413.155517578125
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346;8258:84770;7960:26071",
+      "name": "Dots",
+      "type": "GROUP",
+      "parent": "I296:19724;8174:38994;8159:36346;8258:84770;7960:26346",
+      "bounds": {
+        "x": 29236.265625,
+        "y": 2089.685546875,
+        "width": 196.6217041015625,
+        "height": 415.6444091796875
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13822",
+      "name": "Rectangle 78",
+      "type": "RECTANGLE",
+      "parent": "I296:19724;8174:38994;8159:36346;8258:84770;7960:26071",
+      "bounds": {
+        "x": 29430.3984375,
+        "y": 2131.37451171875,
+        "width": 2.488888740539551,
+        "height": 2.488888740539551
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13823",
+      "name": "Rectangle 36467",
+      "type": "RECTANGLE",
+      "parent": "I296:19724;8174:38994;8159:36346;8258:84770;7960:26071",
+      "bounds": {
+        "x": 29388.087890625,
+        "y": 2089.685546875,
+        "width": 2.488888740539551,
+        "height": 2.488888740539551
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13824",
+      "name": "Rectangle 36468",
+      "type": "RECTANGLE",
+      "parent": "I296:19724;8174:38994;8159:36346;8258:84770;7960:26071",
+      "bounds": {
+        "x": 29278.171875,
+        "y": 2502.841064453125,
+        "width": 2.488888740539551,
+        "height": 2.488888740539551
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13825",
+      "name": "Rectangle 36469",
+      "type": "RECTANGLE",
+      "parent": "I296:19724;8174:38994;8159:36346;8258:84770;7960:26071",
+      "bounds": {
+        "x": 29430.3984375,
+        "y": 2470.485595703125,
+        "width": 2.488888740539551,
+        "height": 2.488888740539551
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13826",
+      "name": "Rectangle 36470",
+      "type": "RECTANGLE",
+      "parent": "I296:19724;8174:38994;8159:36346;8258:84770;7960:26071",
+      "bounds": {
+        "x": 29236.265625,
+        "y": 2470.485595703125,
+        "width": 2.488888740539551,
+        "height": 2.488888740539551
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13827",
+      "name": "Rectangle 36466",
+      "type": "RECTANGLE",
+      "parent": "I296:19724;8174:38994;8159:36346;8258:84770;7960:26071",
+      "bounds": {
+        "x": 29236.265625,
+        "y": 2131.37451171875,
+        "width": 2.488888740539551,
+        "height": 2.488888740539551
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346;8258:84770;7960:26135",
+      "name": "Buttons",
+      "type": "GROUP",
+      "parent": "I296:19724;8174:38994;8159:36346;8258:84770;7960:26346",
+      "bounds": {
+        "x": 29235.0234375,
+        "y": 2176.796630859375,
+        "width": 199.10968017578125,
+        "height": 107.02218627929688
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13828",
+      "name": "Group 7",
+      "type": "GROUP",
+      "parent": "I296:19724;8174:38994;8159:36346;8258:84770;7960:26135",
+      "bounds": {
+        "x": 29235.0234375,
+        "y": 2176.796630859375,
+        "width": 1.2444443702697754,
+        "height": 15.120832443237305
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13829",
+      "name": "Rectangle 72",
+      "type": "RECTANGLE",
+      "parent": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13828",
+      "bounds": {
+        "x": 29235.0234375,
+        "y": 2176.984130859375,
+        "width": 1.2444443702697754,
+        "height": 14.933332443237305
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13830",
+      "name": "Rectangle 36472",
+      "type": "RECTANGLE",
+      "parent": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13828",
+      "bounds": {
+        "x": 29235.0234375,
+        "y": 2176.796630859375,
+        "width": 1.2444443702697754,
+        "height": 2.488889694213867
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13831",
+      "name": "Rectangle 36473",
+      "type": "RECTANGLE",
+      "parent": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13828",
+      "bounds": {
+        "x": 29235.0234375,
+        "y": 2189.428466796875,
+        "width": 1.2444443702697754,
+        "height": 2.488889694213867
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13832",
+      "name": "Group 4",
+      "type": "GROUP",
+      "parent": "I296:19724;8174:38994;8159:36346;8258:84770;7960:26135",
+      "bounds": {
+        "x": 29235.0234375,
+        "y": 2214.1298828125,
+        "width": 1.2444443702697754,
+        "height": 29.866615295410156
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13833",
+      "name": "Rectangle 72",
+      "type": "RECTANGLE",
+      "parent": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13832",
+      "bounds": {
+        "x": 29235.0234375,
+        "y": 2214.1298828125,
+        "width": 1.2444443702697754,
+        "height": 29.77927017211914
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13834",
+      "name": "Rectangle 36472",
+      "type": "RECTANGLE",
+      "parent": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13832",
+      "bounds": {
+        "x": 29235.0234375,
+        "y": 2214.1298828125,
+        "width": 1.2444443702697754,
+        "height": 2.488888740539551
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13835",
+      "name": "Rectangle 36473",
+      "type": "RECTANGLE",
+      "parent": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13832",
+      "bounds": {
+        "x": 29235.0234375,
+        "y": 2241.514892578125,
+        "width": 1.2444443702697754,
+        "height": 2.4816064834594727
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13836",
+      "name": "Group 6",
+      "type": "GROUP",
+      "parent": "I296:19724;8174:38994;8159:36346;8258:84770;7960:26135",
+      "bounds": {
+        "x": 29432.888671875,
+        "y": 2223.46337890625,
+        "width": 1.2444443702697754,
+        "height": 48.533329010009766
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13837",
+      "name": "Rectangle 72",
+      "type": "RECTANGLE",
+      "parent": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13836",
+      "bounds": {
+        "x": 29432.888671875,
+        "y": 2223.46337890625,
+        "width": 1.2444443702697754,
+        "height": 48.533329010009766
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13838",
+      "name": "Rectangle 36472",
+      "type": "RECTANGLE",
+      "parent": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13836",
+      "bounds": {
+        "x": 29432.888671875,
+        "y": 2223.46337890625,
+        "width": 1.2444443702697754,
+        "height": 2.4888863563537598
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13839",
+      "name": "Rectangle 36473",
+      "type": "RECTANGLE",
+      "parent": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13836",
+      "bounds": {
+        "x": 29432.888671875,
+        "y": 2269.5078125,
+        "width": 1.2444443702697754,
+        "height": 2.4888863563537598
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13840",
+      "name": "Group 5",
+      "type": "GROUP",
+      "parent": "I296:19724;8174:38994;8159:36346;8258:84770;7960:26135",
+      "bounds": {
+        "x": 29235.0234375,
+        "y": 2253.9521484375,
+        "width": 1.2444443702697754,
+        "height": 29.866668701171875
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13841",
+      "name": "Rectangle 72",
+      "type": "RECTANGLE",
+      "parent": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13840",
+      "bounds": {
+        "x": 29235.0234375,
+        "y": 2253.9521484375,
+        "width": 1.2444443702697754,
+        "height": 29.86666488647461
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13842",
+      "name": "Rectangle 36472",
+      "type": "RECTANGLE",
+      "parent": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13840",
+      "bounds": {
+        "x": 29235.0234375,
+        "y": 2253.9521484375,
+        "width": 1.2444443702697754,
+        "height": 2.4888925552368164
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13843",
+      "name": "Rectangle 36473",
+      "type": "RECTANGLE",
+      "parent": "I296:19724;8174:38994;8159:36346;8258:84770;7511:13840",
+      "bounds": {
+        "x": 29235.0234375,
+        "y": 2281.329833984375,
+        "width": 1.2444443702697754,
+        "height": 2.4888925552368164
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8159:36346;8258:84770;7960:26289",
+      "name": "Add Content Here (402x874px)",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8159:36346;8258:84770",
+      "bounds": {
+        "x": 29241.2421875,
+        "y": 2094.663330078125,
+        "width": 186.66665649414062,
+        "height": 405.6888732910156
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80017",
+      "name": "Button",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994",
+      "bounds": {
+        "x": 29456.62109375,
+        "y": 2032.441162109375,
+        "width": 32.355552673339844,
+        "height": 32.355552673339844
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80017;2514:2266",
+      "name": "Before",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80017",
+      "bounds": {
+        "x": 29464.087890625,
+        "y": 2039.9078369140625,
+        "width": 17.422222137451172,
+        "height": 17.422222137451172
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80017;2514:2266;2510:2643",
+      "name": "Swap Icon",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80017;2514:2266",
+      "bounds": {
+        "x": 29464.087890625,
+        "y": 2039.9078369140625,
+        "width": 17.422222137451172,
+        "height": 17.422222137451172
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80017;2514:2266;2510:2643;2013:77",
+      "name": "close_outline_28",
+      "type": "INSTANCE",
+      "parent": "I296:19724;8174:38994;8156:80017;2514:2266;2510:2643",
+      "bounds": {
+        "x": 29464.087890625,
+        "y": 2039.9078369140625,
+        "width": 17.422222137451172,
+        "height": 17.422222137451172
+      }
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80017;2514:2266;2510:2643;2013:77;190:77",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:19724;8174:38994;8156:80017;2514:2266;2510:2643;2013:77",
+      "bounds": {
+        "x": 29468.255859375,
+        "y": 2044.075439453125,
+        "width": 9.664487838745117,
+        "height": 9.664487838745117
+      }
+    }
+  ],
+  "imageHashes": [
+    "9b72bb7dfbcc52e4f5bd4436db51fc7423d96a8e",
+    "17b298a8cedd8855e66359f7fbfb7c5c8bcb8404",
+    "ce040a0ce143638644de4a600af9708bffaace3a"
+  ],
+  "notes": [],
+  "visualTexts": [
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9444",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80012;8684:96182",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2090.929931640625,
+        "width": 148.08888244628906,
+        "height": 15
+      },
+      "text": "Кофейня",
+      "fontName": {
+        "family": "VK Sans Display",
+        "style": "DemiBold"
+      },
+      "fontSize": 11.822221755981445,
+      "segments": [
+        {
+          "characters": "Кофейня",
+          "start": 0,
+          "end": 7,
+          "fontSize": 11.822221755981445,
+          "fontName": {
+            "family": "VK Sans Display",
+            "style": "DemiBold"
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/3235:51"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;8684:96139",
+      "name": "Subtitle",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80012;8684:96182",
+      "bounds": {
+        "x": 28636.62109375,
+        "y": 2107.17431640625,
+        "width": 148.08888244628906,
+        "height": 12
+      },
+      "text": "@id00000000000_bot",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 8.711111068725586,
+      "segments": [
+        {
+          "characters": "@id00000000000_bot",
+          "start": 0,
+          "end": 18,
+          "fontSize": 8.711111068725586,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.3450980484485626,
+                "g": 0.38823530077934265,
+                "b": 0.43529412150382996
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:daf69504f7d2f564cd6df5b735a0ee3389207baf/3204:1334"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9518;3168:31365",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9518;3168:31363",
+      "bounds": {
+        "x": 28659.021484375,
+        "y": 2148.018798828125,
+        "width": 97,
+        "height": 12
+      },
+      "text": "Основная информация",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 8.711111068725586,
+      "segments": [
+        {
+          "characters": "Основная информация",
+          "start": 0,
+          "end": 19,
+          "fontSize": 8.711111068725586,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/3235:51"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9542;3236:94429",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9542;3236:94427",
+      "bounds": {
+        "x": 28659.021484375,
+        "y": 2185.35205078125,
+        "width": 46,
+        "height": 12
+      },
+      "text": "Настройки",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 8.711111068725586,
+      "segments": [
+        {
+          "characters": "Настройки",
+          "start": 0,
+          "end": 9,
+          "fontSize": 8.711111068725586,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/3235:51"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;7892:9470;3168:31365",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80012;7892:9470;3168:31363",
+      "bounds": {
+        "x": 28659.021484375,
+        "y": 2498.08544921875,
+        "width": 62,
+        "height": 12
+      },
+      "text": "Документация",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 8.711111068725586,
+      "segments": [
+        {
+          "characters": "Документация",
+          "start": 0,
+          "end": 12,
+          "fontSize": 8.711111068725586,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/3235:51"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80012;8199:48338;3168:31365",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80012;8199:48338;3168:31363",
+      "bounds": {
+        "x": 28659.021484375,
+        "y": 2535.418701171875,
+        "width": 49,
+        "height": 12
+      },
+      "text": "Поддержка",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 8.711111068725586,
+      "segments": [
+        {
+          "characters": "Поддержка",
+          "start": 0,
+          "end": 9,
+          "fontSize": 8.711111068725586,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/3235:51"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8379:85446;8379:85373",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8379:85446;8379:85372",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2057.330078125,
+        "width": 318.5777587890625,
+        "height": 18
+      },
+      "text": "Настройки",
+      "fontName": {
+        "family": "VK Sans Display",
+        "style": "DemiBold"
+      },
+      "fontSize": 14.311110496520996,
+      "segments": [
+        {
+          "characters": "Настройки",
+          "start": 0,
+          "end": 9,
+          "fontSize": 14.311110496520996,
+          "fontName": {
+            "family": "VK Sans Display",
+            "style": "DemiBold"
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/3235:51"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7890:179306;9539:104350",
+      "name": "Description",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7890:179306;9539:104348",
+      "bounds": {
+        "x": 28858.1328125,
+        "y": 2102.707763671875,
+        "width": 276.26666259765625,
+        "height": 38
+      },
+      "text": "Информация опубликована в мессенджере МАКС.\nИзменение информации потребует повторной модерации",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 9.955554962158203,
+      "segments": [
+        {
+          "characters": "Информация опубликована в мессенджере МАКС.\nИзменение информации потребует повторной модерации",
+          "start": 0,
+          "end": 94,
+          "fontSize": 9.955554962158203,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/3235:51"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;3299:90525",
+      "name": "↪️ Title",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;3299:90524",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2170.574462890625,
+        "width": 45,
+        "height": 15
+      },
+      "text": "Чат-бот",
+      "fontName": {
+        "family": "VK Sans Display",
+        "style": "DemiBold"
+      },
+      "fontSize": 11.822221755981445,
+      "segments": [
+        {
+          "characters": "Чат-бот",
+          "start": 0,
+          "end": 7,
+          "fontSize": 11.822221755981445,
+          "fontName": {
+            "family": "VK Sans Display",
+            "style": "DemiBold"
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:075c4c23ab76de3d017507c7a561beca4f70e5ac/10030:220"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33194;2983:11977",
+      "name": "Subhead",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33194",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2201.752197265625,
+        "width": 61,
+        "height": 12
+      },
+      "text": "Токен доступа",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 8.711111068725586,
+      "segments": [
+        {
+          "characters": "Токен доступа",
+          "start": 0,
+          "end": 13,
+          "fontSize": 8.711111068725586,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.3450980484485626,
+                "g": 0.38823530077934265,
+                "b": 0.43529412150382996
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:bb8d65021fc46b572ec774bfe77e9a93851e699b/9909:226"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33196;3476:14511;3031:31034;3038:11516",
+      "name": "Text Filed",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33196;3476:14511;3031:31034;3038:11515",
+      "bounds": {
+        "x": 28833.244140625,
+        "y": 2225.9189453125,
+        "width": 248.8888702392578,
+        "height": 13
+      },
+      "text": "eyJ•••••••••••••••••••••••••••••••••••••••••••••••••••CJ9",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 9.955554962158203,
+      "segments": [
+        {
+          "characters": "eyJ•••••••••••••••••••••••••••••••••••••••••••••••••••CJ9",
+          "start": 0,
+          "end": 57,
+          "fontSize": 9.955554962158203,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/3235:51"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33199",
+      "name": "Caption Default",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:361256;3031:33198",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2251.085693359375,
+        "width": 283.7333068847656,
+        "height": 32
+      },
+      "text": "Используйте токен для настройки логики чат-бота и подключения интеграций",
+      "fontName": null,
+      "fontSize": 13,
+      "segments": [
+        {
+          "characters": "Используйте токен для настройки логики чат-бота и подключения ",
+          "start": 0,
+          "end": 62,
+          "fontSize": 13,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.5176470875740051,
+                "g": 0.5529412031173706,
+                "b": 0.5960784554481506
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:f6930f7296862961aa71c5c4fd7e45301143363c/9909:259"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:0621cda1a7c94dd9f2592f422306a6b36da7ec11,41616:37",
+          "hyperlink": null
+        },
+        {
+          "characters": "интеграций",
+          "start": 62,
+          "end": 72,
+          "fontSize": 13,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.14901961386203766,
+                "g": 0.5333333611488342,
+                "b": 0.9215686321258545
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:7db1e48bf3489ec9f6729877be583235aa94275f/3204:1459"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:0621cda1a7c94dd9f2592f422306a6b36da7ec11,41616:37",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7881:218599;7881:213318",
+      "name": "Input Text",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7881:218599;7881:213317",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2298.018798828125,
+        "width": 147,
+        "height": 13
+      },
+      "text": "Добавление в групповые чаты",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 9.955554962158203,
+      "segments": [
+        {
+          "characters": "Добавление в групповые чаты",
+          "start": 0,
+          "end": 27,
+          "fontSize": 9.955554962158203,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/3235:51"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7881:218599;7881:213320",
+      "name": "Caption Default",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7881:218599;7881:213316",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2313.507568359375,
+        "width": 283.7333068847656,
+        "height": 20
+      },
+      "text": "Если включено, бот сможет участвовать в групповых чатах и взаимодействовать с их участниками",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 8.088888168334961,
+      "segments": [
+        {
+          "characters": "Если включено, бот сможет участвовать в групповых чатах и взаимодействовать с их участниками",
+          "start": 0,
+          "end": 92,
+          "fontSize": 8.088888168334961,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.5176470875740051,
+                "g": 0.5529412031173706,
+                "b": 0.5960784554481506
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:f6930f7296862961aa71c5c4fd7e45301143363c/9909:259"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;3299:90534",
+      "name": "↪️ Title",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;3299:90533",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2355.263427734375,
+        "width": 111,
+        "height": 15
+      },
+      "text": "Мини-приложение",
+      "fontName": {
+        "family": "VK Sans Display",
+        "style": "DemiBold"
+      },
+      "fontSize": 11.822221755981445,
+      "segments": [
+        {
+          "characters": "Мини-приложение",
+          "start": 0,
+          "end": 15,
+          "fontSize": 11.822221755981445,
+          "fontName": {
+            "family": "VK Sans Display",
+            "style": "DemiBold"
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:075c4c23ab76de3d017507c7a561beca4f70e5ac/10030:220"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252;3031:33194;2983:11977",
+      "name": "Subhead",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252;3031:33194",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2386.441162109375,
+        "width": 67,
+        "height": 12
+      },
+      "text": "Введите ссылку",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 8.711111068725586,
+      "segments": [
+        {
+          "characters": "Введите ссылку",
+          "start": 0,
+          "end": 14,
+          "fontSize": 8.711111068725586,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.3450980484485626,
+                "g": 0.38823530077934265,
+                "b": 0.43529412150382996
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:bb8d65021fc46b572ec774bfe77e9a93851e699b/9909:226"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252;3031:33196;3476:14511;3031:31034;3038:11516",
+      "name": "Text Filed",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252;3031:33196;3476:14511;3031:31034;3038:11515",
+      "bounds": {
+        "x": 28833.244140625,
+        "y": 2410.60791015625,
+        "width": 303.6444396972656,
+        "height": 13
+      },
+      "text": "https://mycoffee.ru",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 9.955554962158203,
+      "segments": [
+        {
+          "characters": "https://mycoffee.ru",
+          "start": 0,
+          "end": 19,
+          "fontSize": 9.955554962158203,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2dbbbe42f01c51fcd4dee112c7826e8836da567a/3235:51"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252;3031:33199",
+      "name": "Caption Default",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;6606:372252;3031:33198",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2435.774658203125,
+        "width": 318.5777587890625,
+        "height": 10
+      },
+      "text": "Укажите ссылку на мини-приложение, которое вы хотите подключить к боту",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 8.088888168334961,
+      "segments": [
+        {
+          "characters": "Укажите ссылку на мини-приложение, которое вы хотите подключить к боту",
+          "start": 0,
+          "end": 70,
+          "fontSize": 8.088888168334961,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.5176470875740051,
+                "g": 0.5529412031173706,
+                "b": 0.5960784554481506
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:f6930f7296862961aa71c5c4fd7e45301143363c/9909:259"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7892:168338",
+      "name": "Subhead",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7892:168337",
+      "bounds": {
+        "x": 28825.77734375,
+        "y": 2460.707763671875,
+        "width": 194,
+        "height": 12
+      },
+      "text": "Выберите кнопку открытия мини-приложения",
+      "fontName": null,
+      "fontSize": 8.711111068725586,
+      "segments": [
+        {
+          "characters": "Выберите кнопку открытия мини-приложения",
+          "start": 0,
+          "end": 40,
+          "fontSize": 8.711111068725586,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.3450980484485626,
+                "g": 0.38823530077934265,
+                "b": 0.43529412150382996
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:bb8d65021fc46b572ec774bfe77e9a93851e699b/9909:226"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176300;8668:63676",
+      "name": "Open",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176300",
+      "bounds": {
+        "x": 28920.9765625,
+        "y": 2492.618896484375,
+        "width": 41.68888473510742,
+        "height": 12.444441795349121
+      },
+      "text": "Открыть",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 9.955554962158203,
+      "segments": [
+        {
+          "characters": "Открыть",
+          "start": 0,
+          "end": 7,
+          "fontSize": 9.955554962158203,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:4e62bae077411f4304788aeac9dc972382e0ab71/3204:1464"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176312;8668:63676",
+      "name": "Open",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176312",
+      "bounds": {
+        "x": 29001.244140625,
+        "y": 2492.618896484375,
+        "width": 28.622222900390625,
+        "height": 12.44444465637207
+      },
+      "text": "Старт",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 9.955554962158203,
+      "segments": [
+        {
+          "characters": "Старт",
+          "start": 0,
+          "end": 5,
+          "fontSize": 9.955554962158203,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.5176470875740051,
+                "g": 0.5529412031173706,
+                "b": 0.5960784554481506
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:d1111407eec76a422d3c84c7210450bd84257bb3/3204:1335"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176316;8668:63676",
+      "name": "Open",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8258:86227;7892:176316",
+      "bounds": {
+        "x": 29068.443359375,
+        "y": 2492.618896484375,
+        "width": 34.22222137451172,
+        "height": 12.444443702697754
+      },
+      "text": "Играть",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Medium"
+      },
+      "fontSize": 9.955554962158203,
+      "segments": [
+        {
+          "characters": "Играть",
+          "start": 0,
+          "end": 6,
+          "fontSize": 9.955554962158203,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.5176470875740051,
+                "g": 0.5529412031173706,
+                "b": 0.5960784554481506
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:d1111407eec76a422d3c84c7210450bd84257bb3/3204:1335"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:19724;8174:38994;8156:80014;8262:100165;2580:8006;2580:6891;2699:138487",
+      "name": "Label",
+      "type": "TEXT",
+      "parent": "I296:19724;8174:38994;8156:80014;8262:100165;2580:8006;2580:6891;2699:138486",
+      "bounds": {
+        "x": 28959.91015625,
+        "y": 2517.0966796875,
+        "width": 50,
+        "height": 13
+      },
+      "text": "Сохранить",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 9.955554962158203,
+      "segments": [
+        {
+          "characters": "Сохранить",
+          "start": 0,
+          "end": 9,
+          "fontSize": 9.955554962158203,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:945c7372d32f523c86aa40a4a949d2a0fbb47256/3235:60"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    }
+  ],
+  "pngScale": 2,
+  "pngFile": "04-Продвижение-бизнеса/05-Мини-приложение/002-Экран/screen.png",
+  "previewFile": "04-Продвижение-бизнеса/05-Мини-приложение/002-Экран/preview.png",
+  "svgFile": "04-Продвижение-бизнеса/05-Мини-приложение/002-Экран/screen.svg",
+  "documentFile": "04-Продвижение-бизнеса/05-Мини-приложение/002-Экран/figma.json",
+  "images": [
+    {
+      "hash": "9b72bb7dfbcc52e4f5bd4436db51fc7423d96a8e",
+      "file": "04-Продвижение-бизнеса/05-Мини-приложение/002-Экран/images/289b0308073512a9169d5c6b1b9b571e20da932990c6af9ca27b0c6952e1b9b6.jpg"
+    },
+    {
+      "hash": "17b298a8cedd8855e66359f7fbfb7c5c8bcb8404",
+      "file": "04-Продвижение-бизнеса/05-Мини-приложение/002-Экран/images/6c78c8889f6a9a4c24db0f2c7621b0e4918b42b2c8baba71a523c113ad443157.png"
+    },
+    {
+      "hash": "ce040a0ce143638644de4a600af9708bffaace3a",
+      "file": "04-Продвижение-бизнеса/05-Мини-приложение/002-Экран/images/03beb2c7069c4dd4e4a6a45dd84c95e0c24ccf910fcfb4088d10a3988fcb9dd6.png"
+    }
+  ]
+}

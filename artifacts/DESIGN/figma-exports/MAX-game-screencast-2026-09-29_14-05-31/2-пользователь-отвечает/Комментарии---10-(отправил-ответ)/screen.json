@@ -1,0 +1,4314 @@
+{
+  "id": "2299:91854",
+  "name": "Комментарии - 10 (отправил ответ)",
+  "type": "FRAME",
+  "parent": "2299:91754",
+  "bounds": {
+    "x": 35583,
+    "y": -1618,
+    "width": 360,
+    "height": 947
+  },
+  "visible": true,
+  "fontSize": 0,
+  "hasImage": false,
+  "task": "blogger.comments",
+  "confidence": "high",
+  "reviewed": false,
+  "include": true,
+  "group": "2299:91754",
+  "groupName": "2 пользователь отвечает",
+  "containerPath": [
+    {
+      "id": "2299:91754",
+      "name": "2 пользователь отвечает",
+      "type": "SECTION"
+    }
+  ],
+  "sectionPath": [
+    {
+      "id": "2299:91754",
+      "name": "2 пользователь отвечает",
+      "type": "SECTION"
+    }
+  ],
+  "sequence": {
+    "series": "Комментарии",
+    "number": 10,
+    "description": "отправил ответ"
+  },
+  "detection": "structure",
+  "evidence": [
+    {
+      "task": "blogger.comments",
+      "source": "frame-name",
+      "id": "2299:91854",
+      "text": "Комментарии - 10 (отправил ответ)",
+      "weight": 100
+    }
+  ],
+  "ancestors": [
+    {
+      "id": "2299:91754",
+      "name": "2 пользователь отвечает",
+      "type": "SECTION"
+    }
+  ],
+  "nearbyHeadings": [],
+  "contextRegion": null,
+  "warnings": [],
+  "order": 112,
+  "fingerprint": "[\"Комментарии - 10 (отправил ответ)\",{\"x\":35583,\"y\":-1618,\"width\":360,\"height\":947},\"FRAME\",[[\"2299:91754\",\"2 пользователь отвечает\",\"SECTION\"],[\"1:8\",\"Page 8\",\"PAGE\"]],\"content-v1\",68429245,633337767,666]",
+  "manualTask": false,
+  "title": "Комментарии - 10 (отправил ответ)",
+  "exportStatus": "ok",
+  "texts": [
+    {
+      "id": "I2299:91857;13724:18952;13724:3887;2522:12269",
+      "name": "9:41",
+      "type": "TEXT",
+      "parent": "I2299:91857;13724:18952;13724:3887",
+      "bounds": {
+        "x": 35603,
+        "y": -1604,
+        "width": 28,
+        "height": 20
+      },
+      "text": "9:41",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "9:41",
+          "start": 0,
+          "end": 4,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0470588244497776,
+                "g": 0.05098039284348488,
+                "b": 0.054901961237192154
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/2210:106"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:91857;13724:18952;14027:16172",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I2299:91857;13724:18952;14027:16171",
+      "bounds": {
+        "x": 35707,
+        "y": -1549,
+        "width": 112,
+        "height": 22
+      },
+      "text": "Комментарии",
+      "fontName": {
+        "family": "Roboto",
+        "style": "SemiBold",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 600
+        }
+      },
+      "fontSize": 17,
+      "segments": [
+        {
+          "characters": "Комментарии",
+          "start": 0,
+          "end": 11,
+          "fontSize": 17,
+          "fontName": {
+            "family": "Roboto",
+            "style": "SemiBold",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 600
+            }
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0470588244497776,
+                "g": 0.05098039284348488,
+                "b": 0.054901961237192154
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/2210:106"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:d98b33758544f532b3ba4a35c17bbb31b10cb143,19702:68",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:91858;2957:41056",
+      "name": "Pinned Marker",
+      "type": "TEXT",
+      "parent": "I2299:91858;2957:41055",
+      "bounds": {
+        "x": 35595,
+        "y": -1501,
+        "width": 336,
+        "height": 18
+      },
+      "text": "Закреплённый пост",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Закреплённый пост",
+          "start": 0,
+          "end": 17,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.05882352963089943,
+                "g": 0.5568627715110779,
+                "b": 0.7607843279838562
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:00d0021c4ab481edbfb34a09eb148d4087dfee7a/16315:3"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:468def3409bab87c81223f929468dce254fadc31,19702:19",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:91858;2957:41057;2957:40999;2957:40915",
+      "name": "Quantity",
+      "type": "TEXT",
+      "parent": "I2299:91858;2957:41057;2957:40999",
+      "bounds": {
+        "x": 35621,
+        "y": -1481,
+        "width": 310,
+        "height": 20
+      },
+      "text": "🌀 Слухи о затянутых сериях 5 сезона «Очень странных дел» не подтвердились!  Росс Даффер раскрыл хронометраж первых эпизодов: «The Crawl» — 1:08 (секрет) — 0:54 «The Turnbow Trap» — 1:06 «Sorcerer» — 1:23  Финал будет плотным и без затяжки 👀",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 15,
+      "segments": [
+        {
+          "characters": "🌀 Слухи о затянутых сериях 5 сезона «Очень странных дел» не подтвердились!  Росс Даффер раскрыл хронометраж первых эпизодов: «The Crawl» — 1:08 (секрет) — 0:54 «The Turnbow Trap» — 1:06 «Sorcerer» — 1:23  Финал будет плотным и без затяжки 👀",
+          "start": 0,
+          "end": 242,
+          "fontSize": 15,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0470588244497776,
+                "g": 0.05098039284348488,
+                "b": 0.054901961237192154
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cf6b18567885b37c1761da76badd09837b059c3b/24134:189"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:ae0081ae4c8f77e49e306e1a984e149fb1fed317,13678:271",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:91860;1927:64293;1650:19963",
+      "name": "Time",
+      "type": "TEXT",
+      "parent": "I2299:91860;1927:64293;1650:19962",
+      "bounds": {
+        "x": 35735,
+        "y": -1572.000244140625,
+        "width": 56,
+        "height": 18
+      },
+      "text": "Сегодня",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Сегодня",
+          "start": 0,
+          "end": 7,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:e4732f707bda1caa385560bfc71becb0dbf98642/2210:111"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:766e8584f544767132a37a9291f7c239219025cf,16251:3",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:91883",
+      "name": "Message",
+      "type": "TEXT",
+      "parent": "2299:91882",
+      "bounds": {
+        "x": 35637,
+        "y": -1341.000244140625,
+        "width": 271,
+        "height": 286
+      },
+      "text": "🌀 Слухи о затянутых сериях 5 сезона «Очень странных дел» не подтвердились!  Росс Даффер раскрыл хронометраж первых эпизодов: «The Crawl» — 1:08 (секрет) — 0:54 «The Turnbow Trap» — 1:06 «Sorcerer» — 1:23  Финал будет плотным и без затяжки 👀",
+      "fontName": null,
+      "fontSize": 17,
+      "segments": [
+        {
+          "characters": "🌀 Слухи о затянутых сериях 5 сезона «Очень странных дел» не подтвердились!",
+          "start": 0,
+          "end": 75,
+          "fontSize": 17,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Bold",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 700
+            }
+          },
+          "fontWeight": 700,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0470588244497776,
+                "g": 0.05098039284348488,
+                "b": 0.054901961237192154
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:1f136e26c3b1b3086899bb4537514d78fc51cd58/24622:168"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:563886baf5c374e6c9b3e780d53eed6c9e05c6fb,22472:20",
+          "hyperlink": null
+        },
+        {
+          "characters": "  Росс Даффер раскрыл хронометраж первых эпизодов: «The Crawl» — 1:08 (секрет) — 0:54 «The Turnbow Trap» — 1:06 «Sorcerer» — 1:23  Финал будет плотным и без затяжки 👀",
+          "start": 75,
+          "end": 242,
+          "fontSize": 17,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0470588244497776,
+                "g": 0.05098039284348488,
+                "b": 0.054901961237192154
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:1f136e26c3b1b3086899bb4537514d78fc51cd58/24622:168"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:9026a440985843c1fa80945d0d85fb85ab8b4908,22472:23",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:91885;20595:32404;15592:66376",
+      "name": "Counter",
+      "type": "TEXT",
+      "parent": "I2299:91885;20595:32404;15592:66375",
+      "bounds": {
+        "x": 35673,
+        "y": -1040.000244140625,
+        "width": 25,
+        "height": 18
+      },
+      "text": "196",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "196",
+          "start": 0,
+          "end": 3,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.05882352963089943,
+                "g": 0.5568627715110779,
+                "b": 0.7607843279838562
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:d654f134388d3a79360f6d0f75853d371ad817c9/16016:4530"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:766e8584f544767132a37a9291f7c239219025cf,16251:3",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:91885;20595:32405;15592:66376",
+      "name": "Counter",
+      "type": "TEXT",
+      "parent": "I2299:91885;20595:32405;15592:66375",
+      "bounds": {
+        "x": 35748,
+        "y": -1040.000244140625,
+        "width": 17,
+        "height": 18
+      },
+      "text": "32",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "32",
+          "start": 0,
+          "end": 2,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.05882352963089943,
+                "g": 0.5568627715110779,
+                "b": 0.7607843279838562
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:d654f134388d3a79360f6d0f75853d371ad817c9/16016:4530"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:766e8584f544767132a37a9291f7c239219025cf,16251:3",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:91897",
+      "name": "Views",
+      "type": "TEXT",
+      "parent": "2299:91894",
+      "bounds": {
+        "x": 35849,
+        "y": -1025.000244140625,
+        "width": 23,
+        "height": 16
+      },
+      "text": "1,2K",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 11,
+      "segments": [
+        {
+          "characters": "1,2K",
+          "start": 0,
+          "end": 4,
+          "fontSize": 11,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.5199999809265137,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0470588244497776,
+                "g": 0.05098039284348488,
+                "b": 0.054901961237192154
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:92ad778cd0310ba7e3f82260c1da3cf0e7d7b89b/24622:171"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:dda28cd260073e1e9ee8b3d7ff74ff89cd68667e,20196:9",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:91898",
+      "name": "Dot",
+      "type": "TEXT",
+      "parent": "2299:91894",
+      "bounds": {
+        "x": 35874,
+        "y": -1025.000244140625,
+        "width": 3,
+        "height": 16
+      },
+      "text": "·",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 11,
+      "segments": [
+        {
+          "characters": "·",
+          "start": 0,
+          "end": 1,
+          "fontSize": 11,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.5199999809265137,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0470588244497776,
+                "g": 0.05098039284348488,
+                "b": 0.054901961237192154
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:92ad778cd0310ba7e3f82260c1da3cf0e7d7b89b/24622:171"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:dda28cd260073e1e9ee8b3d7ff74ff89cd68667e,20196:9",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:91902",
+      "name": "Time",
+      "type": "TEXT",
+      "parent": "2299:91888",
+      "bounds": {
+        "x": 35879,
+        "y": -1025.000244140625,
+        "width": 29,
+        "height": 16
+      },
+      "text": "13:00",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 11,
+      "segments": [
+        {
+          "characters": "13:00",
+          "start": 0,
+          "end": 5,
+          "fontSize": 11,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.5199999809265137,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0470588244497776,
+                "g": 0.05098039284348488,
+                "b": 0.054901961237192154
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:92ad778cd0310ba7e3f82260c1da3cf0e7d7b89b/24622:171"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:dda28cd260073e1e9ee8b3d7ff74ff89cd68667e,20196:9",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:91904;1927:64293;1650:19963",
+      "name": "Time",
+      "type": "TEXT",
+      "parent": "I2299:91904;1927:64293;1650:19962",
+      "bounds": {
+        "x": 35695,
+        "y": -992.0001220703125,
+        "width": 136,
+        "height": 18
+      },
+      "text": "Начало обсуждения",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Начало обсуждения",
+          "start": 0,
+          "end": 17,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:e4732f707bda1caa385560bfc71becb0dbf98642/2210:111"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:766e8584f544767132a37a9291f7c239219025cf,16251:3",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:91905;1927:64293;1650:19963",
+      "name": "Time",
+      "type": "TEXT",
+      "parent": "I2299:91905;1927:64293;1650:19962",
+      "bounds": {
+        "x": 35735,
+        "y": -964.0001220703125,
+        "width": 56,
+        "height": 18
+      },
+      "text": "Сегодня",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Сегодня",
+          "start": 0,
+          "end": 7,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:e4732f707bda1caa385560bfc71becb0dbf98642/2210:111"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:766e8584f544767132a37a9291f7c239219025cf,16251:3",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:91913;14262:39487",
+      "name": "Author",
+      "type": "TEXT",
+      "parent": "I2299:91913;14262:39486",
+      "bounds": {
+        "x": 35637,
+        "y": -927.0001220703125,
+        "width": 104,
+        "height": 18
+      },
+      "text": "Андрей Неелов",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Андрей Неелов",
+          "start": 0,
+          "end": 13,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.05882352963089943,
+                "g": 0.5568627715110779,
+                "b": 0.7607843279838562
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:8b0a4777005b21a098093409fd2629375815575c/16016:4390"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:6bd96de6cc09ae229f31e57ca76cfc0e6e496020,16251:6",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:91913;14262:39504",
+      "name": "Author",
+      "type": "TEXT",
+      "parent": "I2299:91913;14262:39503",
+      "bounds": {
+        "x": 35637,
+        "y": -927.0001220703125,
+        "width": 104,
+        "height": 18
+      },
+      "text": "Андрей Неелов",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Андрей Неелов",
+          "start": 0,
+          "end": 13,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.05882352963089943,
+                "g": 0.5568627715110779,
+                "b": 0.7607843279838562
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:8b0a4777005b21a098093409fd2629375815575c/16016:4390"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:6bd96de6cc09ae229f31e57ca76cfc0e6e496020,16251:6",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:91913;14262:39856",
+      "name": "Author",
+      "type": "TEXT",
+      "parent": "I2299:91913;14262:39855",
+      "bounds": {
+        "x": 35637,
+        "y": -927.0001220703125,
+        "width": 104,
+        "height": 18
+      },
+      "text": "Андрей Неелов",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Андрей Неелов",
+          "start": 0,
+          "end": 13,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.05882352963089943,
+                "g": 0.5568627715110779,
+                "b": 0.7607843279838562
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:8b0a4777005b21a098093409fd2629375815575c/16016:4390"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:6bd96de6cc09ae229f31e57ca76cfc0e6e496020,16251:6",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:91913;14262:39546",
+      "name": "Author",
+      "type": "TEXT",
+      "parent": "I2299:91913;14262:39545",
+      "bounds": {
+        "x": 35637,
+        "y": -909.0001220703125,
+        "width": 271,
+        "height": 18
+      },
+      "text": "Андрей Неелов",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Андрей Неелов",
+          "start": 0,
+          "end": 13,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.05882352963089943,
+                "g": 0.5568627715110779,
+                "b": 0.7607843279838562
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:8b0a4777005b21a098093409fd2629375815575c/16016:4390"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:6bd96de6cc09ae229f31e57ca76cfc0e6e496020,16251:6",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:91917",
+      "name": "Message",
+      "type": "TEXT",
+      "parent": "2299:91916",
+      "bounds": {
+        "x": 35637,
+        "y": -905.0001220703125,
+        "width": 229,
+        "height": 24
+      },
+      "text": "Когда запланирован выход?",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 17,
+      "segments": [
+        {
+          "characters": "Когда запланирован выход?",
+          "start": 0,
+          "end": 25,
+          "fontSize": 17,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0470588244497776,
+                "g": 0.05098039284348488,
+                "b": 0.054901961237192154
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:1f136e26c3b1b3086899bb4537514d78fc51cd58/24622:168"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:9f7b1c40b1e87f292b62a07eaa68d5eba0ee5168,16251:1",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:91925",
+      "name": "Time",
+      "type": "TEXT",
+      "parent": "2299:91920",
+      "bounds": {
+        "x": 35663,
+        "y": -897,
+        "width": 29,
+        "height": 16
+      },
+      "text": "15:41",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 11,
+      "segments": [
+        {
+          "characters": "15:41",
+          "start": 0,
+          "end": 5,
+          "fontSize": 11,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [],
+          "textStyleId": "S:dda28cd260073e1e9ee8b3d7ff74ff89cd68667e,20196:9",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:91935",
+      "name": "Time",
+      "type": "TEXT",
+      "parent": "2299:91926",
+      "bounds": {
+        "x": 35879,
+        "y": -893.0001220703125,
+        "width": 29,
+        "height": 16
+      },
+      "text": "15:41",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 11,
+      "segments": [
+        {
+          "characters": "15:41",
+          "start": 0,
+          "end": 5,
+          "fontSize": 11,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.5199999809265137,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0470588244497776,
+                "g": 0.05098039284348488,
+                "b": 0.054901961237192154
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:92ad778cd0310ba7e3f82260c1da3cf0e7d7b89b/24622:171"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:dda28cd260073e1e9ee8b3d7ff74ff89cd68667e,20196:9",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:91942;20133:122718;14287:41821;14287:41122",
+      "name": "Reply User",
+      "type": "TEXT",
+      "parent": "I2299:91942;20133:122718;14287:41821;14287:41121",
+      "bounds": {
+        "x": 35664,
+        "y": -857,
+        "width": 91,
+        "height": 14
+      },
+      "text": "Андрей Неелов",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 12,
+      "segments": [
+        {
+          "characters": "Андрей Неелов",
+          "start": 0,
+          "end": 13,
+          "fontSize": 12,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.7200000286102295,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.019607843831181526,
+                "g": 0.16862745583057404,
+                "b": 0.23529411852359772
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:f4341a466b7d7d1a20617987b9d0327141123d7f/16016:4398"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:029def88b721fc7b9597c56bf8eb1f66935e3219,16252:0",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:91942;20133:122718;14287:41821;14287:41124",
+      "name": "Reply Message",
+      "type": "TEXT",
+      "parent": "I2299:91942;20133:122718;14287:41821;14287:41120",
+      "bounds": {
+        "x": 35664,
+        "y": -843,
+        "width": 192,
+        "height": 18
+      },
+      "text": "Когда запланирован выход?",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Когда запланирован выход?",
+          "start": 0,
+          "end": 25,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.5199999809265137,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.019607843831181526,
+                "g": 0.16862745583057404,
+                "b": 0.23529411852359772
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:34f0627845dc3b0fdd510717899bae4473d033ad/16016:4400"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:3afc0066cf0e82d8e1650893cb370c5dafdeaf79,16251:2",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:91942;20133:122720",
+      "name": "Message",
+      "type": "TEXT",
+      "parent": "I2299:91942;20133:122719",
+      "bounds": {
+        "x": 35656,
+        "y": -817,
+        "width": 271,
+        "height": 44
+      },
+      "text": "На начало января следующего года",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 17,
+      "segments": [
+        {
+          "characters": "На начало января следующего года",
+          "start": 0,
+          "end": 32,
+          "fontSize": 17,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0470588244497776,
+                "g": 0.05098039284348488,
+                "b": 0.054901961237192154
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:1f136e26c3b1b3086899bb4537514d78fc51cd58/24622:168"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:9f7b1c40b1e87f292b62a07eaa68d5eba0ee5168,16251:1",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:91942;20242:23844",
+      "name": "Time",
+      "type": "TEXT",
+      "parent": "I2299:91942;20242:23835",
+      "bounds": {
+        "x": 35664,
+        "y": -788.9998779296875,
+        "width": 29,
+        "height": 16
+      },
+      "text": "15:42",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 11,
+      "segments": [
+        {
+          "characters": "15:42",
+          "start": 0,
+          "end": 5,
+          "fontSize": 11,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [],
+          "textStyleId": "S:dda28cd260073e1e9ee8b3d7ff74ff89cd68667e,20196:9",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:91942;20242:23829",
+      "name": "Time",
+      "type": "TEXT",
+      "parent": "I2299:91942;20242:23820",
+      "bounds": {
+        "x": 35880,
+        "y": -771,
+        "width": 29,
+        "height": 16
+      },
+      "text": "15:42",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 11,
+      "segments": [
+        {
+          "characters": "15:42",
+          "start": 0,
+          "end": 5,
+          "fontSize": 11,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.05882352963089943,
+                "g": 0.5568627715110779,
+                "b": 0.7607843279838562
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:b5fcce65e2f62cf8db2a9ed8429c28e616e05a12/2090:2267"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:dda28cd260073e1e9ee8b3d7ff74ff89cd68667e,20196:9",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:91943;697:67258;529:16570",
+      "name": "Placeholder",
+      "type": "TEXT",
+      "parent": "I2299:91943;697:67258;529:16569",
+      "bounds": {
+        "x": 35629,
+        "y": -729,
+        "width": 302,
+        "height": 20
+      },
+      "text": "Комментарий",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 16,
+      "segments": [
+        {
+          "characters": "Комментарий",
+          "start": 0,
+          "end": 11,
+          "fontSize": 16,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.4000000059604645,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0470588244497776,
+                "g": 0.05098039284348488,
+                "b": 0.054901961237192154
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:0634c9d8093de782fd5e99ff7f7d9bcf45119872/2210:109"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:429dc21f9c6afe0ddc3cdd17548898b19505754b,16252:9",
+          "hyperlink": null
+        }
+      ]
+    }
+  ],
+  "layers": [
+    {
+      "id": "2299:91854",
+      "name": "Комментарии - 10 (отправил ответ)",
+      "type": "FRAME",
+      "parent": "2299:91754",
+      "bounds": {
+        "x": 35583,
+        "y": -1618,
+        "width": 360,
+        "height": 947
+      }
+    },
+    {
+      "id": "2299:91855",
+      "name": "Chat Background",
+      "type": "INSTANCE",
+      "parent": "2299:91854",
+      "bounds": {
+        "x": 35583,
+        "y": -1618,
+        "width": 360,
+        "height": 947
+      }
+    },
+    {
+      "id": "I2299:91855;7855:67359",
+      "name": "Pattern Dark",
+      "type": "RECTANGLE",
+      "parent": "2299:91855",
+      "bounds": {
+        "x": 35583,
+        "y": -1618,
+        "width": 360,
+        "height": 947
+      }
+    },
+    {
+      "id": "2299:91856",
+      "name": "Comment TopBar Android",
+      "type": "FRAME",
+      "parent": "2299:91854",
+      "bounds": {
+        "x": 35583,
+        "y": -1618,
+        "width": 360,
+        "height": 164
+      }
+    },
+    {
+      "id": "2299:91857",
+      "name": "TopBar Android",
+      "type": "INSTANCE",
+      "parent": "2299:91856",
+      "bounds": {
+        "x": 35583,
+        "y": -1618,
+        "width": 360,
+        "height": 112
+      }
+    },
+    {
+      "id": "I2299:91857;13724:18952",
+      "name": "TopBar Android Inside",
+      "type": "INSTANCE",
+      "parent": "2299:91857",
+      "bounds": {
+        "x": 35583,
+        "y": -1618,
+        "width": 360,
+        "height": 112.00003051757812
+      }
+    },
+    {
+      "id": "I2299:91857;13724:18952;13724:3887",
+      "name": "Status Bar",
+      "type": "INSTANCE",
+      "parent": "I2299:91857;13724:18952",
+      "bounds": {
+        "x": 35583,
+        "y": -1618,
+        "width": 360,
+        "height": 48.000030517578125
+      }
+    },
+    {
+      "id": "I2299:91857;13724:18952;13724:3887;2522:12269",
+      "name": "9:41",
+      "type": "TEXT",
+      "parent": "I2299:91857;13724:18952;13724:3887",
+      "bounds": {
+        "x": 35603,
+        "y": -1604,
+        "width": 28,
+        "height": 20
+      }
+    },
+    {
+      "id": "I2299:91857;13724:18952;13724:3887;2522:12270",
+      "name": "System Status",
+      "type": "FRAME",
+      "parent": "I2299:91857;13724:18952;13724:3887",
+      "bounds": {
+        "x": 35871,
+        "y": -1606,
+        "width": 52.00006103515625,
+        "height": 24.000030517578125
+      }
+    },
+    {
+      "id": "I2299:91857;13724:18952;13724:3887;2522:12271",
+      "name": "Wifi",
+      "type": "FRAME",
+      "parent": "I2299:91857;13724:18952;13724:3887;2522:12270",
+      "bounds": {
+        "x": 35871,
+        "y": -1602,
+        "width": 18.666690826416016,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I2299:91857;13724:18952;13724:3887;2522:12272",
+      "name": "wifi",
+      "type": "VECTOR",
+      "parent": "I2299:91857;13724:18952;13724:3887;2522:12271",
+      "bounds": {
+        "x": 35873,
+        "y": -1600,
+        "width": 14.666685104370117,
+        "height": 11.333348274230957
+      }
+    },
+    {
+      "id": "I2299:91857;13724:18952;13724:3887;2522:12273",
+      "name": "Data",
+      "type": "FRAME",
+      "parent": "I2299:91857;13724:18952;13724:3887;2522:12270",
+      "bounds": {
+        "x": 35891.66796875,
+        "y": -1602,
+        "width": 16.00002098083496,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I2299:91857;13724:18952;13724:3887;2522:12274",
+      "name": "data",
+      "type": "VECTOR",
+      "parent": "I2299:91857;13724:18952;13724:3887;2522:12273",
+      "bounds": {
+        "x": 35890.609375,
+        "y": -1599.7252197265625,
+        "width": 12.391877174377441,
+        "height": 12.391878128051758
+      }
+    },
+    {
+      "id": "I2299:91857;13724:18952;13724:3887;2522:12275",
+      "name": "Battery",
+      "type": "FRAME",
+      "parent": "I2299:91857;13724:18952;13724:3887;2522:12270",
+      "bounds": {
+        "x": 35909.66796875,
+        "y": -1602,
+        "width": 13.33335018157959,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I2299:91857;13724:18952;13724:3887;2522:12276",
+      "name": "Union",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "I2299:91857;13724:18952;13724:3887;2522:12275",
+      "bounds": {
+        "x": 35912.3359375,
+        "y": -1600.6666259765625,
+        "width": 8,
+        "height": 13.3330078125
+      }
+    },
+    {
+      "id": "I2299:91857;13724:18952;13724:3887;2522:12277",
+      "name": "stroke",
+      "type": "VECTOR",
+      "parent": "I2299:91857;13724:18952;13724:3887;2522:12276",
+      "bounds": {
+        "x": 35912.3359375,
+        "y": -1600.6666259765625,
+        "width": 8.00001049041748,
+        "height": 13.33335018157959
+      }
+    },
+    {
+      "id": "I2299:91857;13724:18952;13724:3887;2522:12278",
+      "name": "fill",
+      "type": "RECTANGLE",
+      "parent": "I2299:91857;13724:18952;13724:3887;2522:12276",
+      "bounds": {
+        "x": 35913.00390625,
+        "y": -1599.333251953125,
+        "width": 6.666675090789795,
+        "height": 12.000015258789062
+      }
+    },
+    {
+      "id": "I2299:91857;13724:18952;14027:16169",
+      "name": "Header Android Inside",
+      "type": "FRAME",
+      "parent": "I2299:91857;13724:18952",
+      "bounds": {
+        "x": 35583,
+        "y": -1570,
+        "width": 360,
+        "height": 64
+      }
+    },
+    {
+      "id": "I2299:91857;13724:18952;14027:16170",
+      "name": "Middle",
+      "type": "FRAME",
+      "parent": "I2299:91857;13724:18952;14027:16169",
+      "bounds": {
+        "x": 35591,
+        "y": -1560,
+        "width": 344,
+        "height": 44
+      }
+    },
+    {
+      "id": "I2299:91857;13724:18952;14027:16171",
+      "name": "Title",
+      "type": "FRAME",
+      "parent": "I2299:91857;13724:18952;14027:16170",
+      "bounds": {
+        "x": 35623,
+        "y": -1549,
+        "width": 280,
+        "height": 22
+      }
+    },
+    {
+      "id": "I2299:91857;13724:18952;14027:16172",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "I2299:91857;13724:18952;14027:16171",
+      "bounds": {
+        "x": 35707,
+        "y": -1549,
+        "width": 112,
+        "height": 22
+      }
+    },
+    {
+      "id": "I2299:91857;13724:18952;14027:16175",
+      "name": "Left Action",
+      "type": "INSTANCE",
+      "parent": "I2299:91857;13724:18952;14027:16169",
+      "bounds": {
+        "x": 35583,
+        "y": -1561.99951171875,
+        "width": 48,
+        "height": 47.9990234375
+      }
+    },
+    {
+      "id": "I2299:91857;13724:18952;14027:16175;13702:14516",
+      "name": "back_android_24",
+      "type": "INSTANCE",
+      "parent": "I2299:91857;13724:18952;14027:16175",
+      "bounds": {
+        "x": 35595,
+        "y": -1549.99951171875,
+        "width": 24,
+        "height": 23.999025344848633
+      }
+    },
+    {
+      "id": "I2299:91857;13724:18952;14027:16175;13702:14516;452:9",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:91857;13724:18952;14027:16175;13702:14516",
+      "bounds": {
+        "x": 35599.4140625,
+        "y": -1545.592041015625,
+        "width": 15.585786819458008,
+        "height": 15.18502140045166
+      }
+    },
+    {
+      "id": "2299:91858",
+      "name": ".Pinned Message",
+      "type": "INSTANCE",
+      "parent": "2299:91856",
+      "bounds": {
+        "x": 35583,
+        "y": -1506,
+        "width": 360,
+        "height": 52
+      }
+    },
+    {
+      "id": "I2299:91858;2957:41055",
+      "name": "Content",
+      "type": "FRAME",
+      "parent": "2299:91858",
+      "bounds": {
+        "x": 35595,
+        "y": -1501,
+        "width": 336,
+        "height": 42
+      }
+    },
+    {
+      "id": "I2299:91858;2957:41056",
+      "name": "Pinned Marker",
+      "type": "TEXT",
+      "parent": "I2299:91858;2957:41055",
+      "bounds": {
+        "x": 35595,
+        "y": -1501,
+        "width": 336,
+        "height": 18
+      }
+    },
+    {
+      "id": "I2299:91858;2957:41057",
+      "name": "Message",
+      "type": "INSTANCE",
+      "parent": "I2299:91858;2957:41055",
+      "bounds": {
+        "x": 35595,
+        "y": -1481,
+        "width": 336,
+        "height": 20
+      }
+    },
+    {
+      "id": "I2299:91858;2957:41057;2957:40999",
+      "name": "Media",
+      "type": "INSTANCE",
+      "parent": "I2299:91858;2957:41057",
+      "bounds": {
+        "x": 35595,
+        "y": -1481,
+        "width": 336,
+        "height": 20
+      }
+    },
+    {
+      "id": "I2299:91858;2957:41057;2957:40999;2957:40913",
+      "name": "Photo Group",
+      "type": "FRAME",
+      "parent": "I2299:91858;2957:41057;2957:40999",
+      "bounds": {
+        "x": 35595,
+        "y": -1481,
+        "width": 20,
+        "height": 20
+      }
+    },
+    {
+      "id": "I2299:91858;2957:41057;2957:40999;2957:40914",
+      "name": "Ph1",
+      "type": "FRAME",
+      "parent": "I2299:91858;2957:41057;2957:40999;2957:40913",
+      "bounds": {
+        "x": 35595,
+        "y": -1481,
+        "width": 20,
+        "height": 20
+      }
+    },
+    {
+      "id": "I2299:91858;2957:41057;2957:40999;2957:40915",
+      "name": "Quantity",
+      "type": "TEXT",
+      "parent": "I2299:91858;2957:41057;2957:40999",
+      "bounds": {
+        "x": 35621,
+        "y": -1481,
+        "width": 310,
+        "height": 20
+      }
+    },
+    {
+      "id": "I2299:91858;21751:41789",
+      "name": "Divider",
+      "type": "FRAME",
+      "parent": "2299:91858",
+      "bounds": {
+        "x": 35583,
+        "y": -1454.25,
+        "width": 360,
+        "height": 0
+      }
+    },
+    {
+      "id": "2299:91859",
+      "name": "chat-content",
+      "type": "FRAME",
+      "parent": "2299:91854",
+      "bounds": {
+        "x": 35583,
+        "y": -1454,
+        "width": 360,
+        "height": 711
+      }
+    },
+    {
+      "id": "2299:91860",
+      "name": "System Capsule",
+      "type": "INSTANCE",
+      "parent": "2299:91859",
+      "bounds": {
+        "x": 35583,
+        "y": -1577.000244140625,
+        "width": 360,
+        "height": 28
+      }
+    },
+    {
+      "id": "I2299:91860;1927:64293",
+      "name": "Date",
+      "type": "INSTANCE",
+      "parent": "2299:91860",
+      "bounds": {
+        "x": 35729,
+        "y": -1573.000244140625,
+        "width": 68,
+        "height": 20
+      }
+    },
+    {
+      "id": "I2299:91860;1927:64293;1650:19962",
+      "name": "Time Frame",
+      "type": "FRAME",
+      "parent": "I2299:91860;1927:64293",
+      "bounds": {
+        "x": 35735,
+        "y": -1572.000244140625,
+        "width": 56,
+        "height": 18
+      }
+    },
+    {
+      "id": "I2299:91860;1927:64293;1650:19963",
+      "name": "Time",
+      "type": "TEXT",
+      "parent": "I2299:91860;1927:64293;1650:19962",
+      "bounds": {
+        "x": 35735,
+        "y": -1572.000244140625,
+        "width": 56,
+        "height": 18
+      }
+    },
+    {
+      "id": "2299:91861",
+      "name": "Bubble Channel / Media Up",
+      "type": "FRAME",
+      "parent": "2299:91859",
+      "bounds": {
+        "x": 35583,
+        "y": -1541.000244140625,
+        "width": 360,
+        "height": 536.0001220703125
+      }
+    },
+    {
+      "id": "2299:91864",
+      "name": "Avatar",
+      "type": "FRAME",
+      "parent": "2299:91861",
+      "bounds": {
+        "x": 35589,
+        "y": -1541.000244140625,
+        "width": 38,
+        "height": 536.0001220703125
+      }
+    },
+    {
+      "id": "2299:91866",
+      "name": "Avatar",
+      "type": "INSTANCE",
+      "parent": "2299:91864",
+      "bounds": {
+        "x": 35589,
+        "y": -1039.0001220703125,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "I2299:91866;14686:46523",
+      "name": "Image",
+      "type": "ELLIPSE",
+      "parent": "2299:91866",
+      "bounds": {
+        "x": 35589,
+        "y": -1039.0001220703125,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "2299:91867",
+      "name": "Bubble",
+      "type": "FRAME",
+      "parent": "2299:91861",
+      "bounds": {
+        "x": 35627,
+        "y": -1541.000244140625,
+        "width": 291,
+        "height": 536.0001220703125
+      }
+    },
+    {
+      "id": "2299:91870",
+      "name": "Media Wrapper",
+      "type": "FRAME",
+      "parent": "2299:91867",
+      "bounds": {
+        "x": 35627,
+        "y": -1541.000244140625,
+        "width": 291,
+        "height": 194
+      }
+    },
+    {
+      "id": "2299:91871",
+      "name": "Media Type",
+      "type": "INSTANCE",
+      "parent": "2299:91870",
+      "bounds": {
+        "x": 35627,
+        "y": -1540.000244140625,
+        "width": 289,
+        "height": 192
+      }
+    },
+    {
+      "id": "2299:91872",
+      "name": "Media",
+      "type": "FRAME",
+      "parent": "2299:91870",
+      "bounds": {
+        "x": 35627,
+        "y": -1541.000244140625,
+        "width": 291,
+        "height": 194
+      }
+    },
+    {
+      "id": "2299:91873",
+      "name": "Media",
+      "type": "INSTANCE",
+      "parent": "2299:91872",
+      "bounds": {
+        "x": 35627,
+        "y": -1541.000244140625,
+        "width": 291,
+        "height": 194
+      }
+    },
+    {
+      "id": "2299:91874",
+      "name": "Media Background",
+      "type": "FRAME",
+      "parent": "2299:91870",
+      "bounds": {
+        "x": 35627,
+        "y": -1541.000244140625,
+        "width": 291,
+        "height": 194
+      }
+    },
+    {
+      "id": "2299:91875",
+      "name": "Image",
+      "type": "FRAME",
+      "parent": "2299:91874",
+      "bounds": {
+        "x": 35627,
+        "y": -1541.000244140625,
+        "width": 291,
+        "height": 194
+      }
+    },
+    {
+      "id": "2299:91876",
+      "name": "Blur",
+      "type": "FRAME",
+      "parent": "2299:91874",
+      "bounds": {
+        "x": 35627,
+        "y": -1541.000244140625,
+        "width": 291,
+        "height": 194
+      }
+    },
+    {
+      "id": "2299:91877",
+      "name": "Form",
+      "type": "FRAME",
+      "parent": "2299:91870",
+      "bounds": {
+        "x": 35628,
+        "y": -1540.000244140625,
+        "width": 289,
+        "height": 192
+      }
+    },
+    {
+      "id": "2299:91882",
+      "name": "Message Wrapper",
+      "type": "FRAME",
+      "parent": "2299:91867",
+      "bounds": {
+        "x": 35627,
+        "y": -1347.000244140625,
+        "width": 291,
+        "height": 342.0000915527344
+      }
+    },
+    {
+      "id": "2299:91883",
+      "name": "Message",
+      "type": "TEXT",
+      "parent": "2299:91882",
+      "bounds": {
+        "x": 35637,
+        "y": -1341.000244140625,
+        "width": 271,
+        "height": 286
+      }
+    },
+    {
+      "id": "2299:91884",
+      "name": "Reactions Wrapper",
+      "type": "FRAME",
+      "parent": "2299:91882",
+      "bounds": {
+        "x": 35637,
+        "y": -1055.000244140625,
+        "width": 138,
+        "height": 42
+      }
+    },
+    {
+      "id": "2299:91885",
+      "name": ".Reaction Stack / Incoming Channel Inside",
+      "type": "INSTANCE",
+      "parent": "2299:91884",
+      "bounds": {
+        "x": 35637,
+        "y": -1047.000244140625,
+        "width": 138,
+        "height": 32
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32404",
+      "name": "Reaction",
+      "type": "INSTANCE",
+      "parent": "2299:91885",
+      "bounds": {
+        "x": 35637,
+        "y": -1047.000244140625,
+        "width": 71,
+        "height": 32
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32404;15873:23106",
+      "name": "Reaction",
+      "type": "INSTANCE",
+      "parent": "I2299:91885;20595:32404",
+      "bounds": {
+        "x": 35645,
+        "y": -1043.000244140625,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32404;15873:23106;5669:387",
+      "name": "Image",
+      "type": "FRAME",
+      "parent": "I2299:91885;20595:32404;15873:23106",
+      "bounds": {
+        "x": 35645,
+        "y": -1043.000244140625,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32404;15873:23106;5669:388",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32404;15873:23106;5669:387",
+      "bounds": {
+        "x": 35648.13671875,
+        "y": -1042.4151611328125,
+        "width": 17.72433090209961,
+        "height": 22.82997703552246
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32404;15873:23106;5669:389",
+      "name": "Layer1_0_FILL",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32404;15873:23106;5669:388",
+      "bounds": {
+        "x": 35648.13671875,
+        "y": -1042.4151611328125,
+        "width": 17.72433090209961,
+        "height": 22.8297119140625
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32404;15873:23106;5669:390",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:91885;20595:32404;15873:23106;5669:389",
+      "bounds": {
+        "x": 35649.140625,
+        "y": -1037.266357421875,
+        "width": 1.7344653606414795,
+        "height": 3.979694366455078
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32404;15873:23106;5669:391",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:91885;20595:32404;15873:23106;5669:389",
+      "bounds": {
+        "x": 35648.13671875,
+        "y": -1042.4151611328125,
+        "width": 17.72433090209961,
+        "height": 22.8297119140625
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32404;15873:23106;5669:392",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:91885;20595:32404;15873:23106;5669:388",
+      "bounds": {
+        "x": 35648.13671875,
+        "y": -1042.4146728515625,
+        "width": 17.724159240722656,
+        "height": 22.82948875427246
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32404;15873:23106;5669:393",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32404;15873:23106;5669:387",
+      "bounds": {
+        "x": 35648.875,
+        "y": -1041.3428955078125,
+        "width": 16.559581756591797,
+        "height": 21.232080459594727
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32404;15873:23106;5669:394",
+      "name": "Layer1_1_FILL",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32404;15873:23106;5669:393",
+      "bounds": {
+        "x": 35648.875,
+        "y": -1041.3428955078125,
+        "width": 16.559581756591797,
+        "height": 21.232080459594727
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32404;15873:23106;5669:395",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:91885;20595:32404;15873:23106;5669:394",
+      "bounds": {
+        "x": 35648.875,
+        "y": -1041.3428955078125,
+        "width": 16.559581756591797,
+        "height": 21.232080459594727
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32404;15873:23106;5669:396",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32404;15873:23106;5669:387",
+      "bounds": {
+        "x": 35649.45703125,
+        "y": -1036.3895263671875,
+        "width": 1.1195063591003418,
+        "height": 1.87350332736969
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32404;15873:23106;5669:397",
+      "name": "Layer1_2_FILL",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32404;15873:23106;5669:396",
+      "bounds": {
+        "x": 35649.45703125,
+        "y": -1036.3895263671875,
+        "width": 1.1195063591003418,
+        "height": 1.87350332736969
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32404;15873:23106;5669:398",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:91885;20595:32404;15873:23106;5669:397",
+      "bounds": {
+        "x": 35649.45703125,
+        "y": -1036.3895263671875,
+        "width": 1.1195063591003418,
+        "height": 1.87350332736969
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32404;15873:23106;5669:399",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32404;15873:23106;5669:387",
+      "bounds": {
+        "x": 35650.57421875,
+        "y": -1038.6864013671875,
+        "width": 13.72834587097168,
+        "height": 18.842634201049805
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32404;15873:23106;5669:400",
+      "name": "Layer1_3_FILL",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32404;15873:23106;5669:399",
+      "bounds": {
+        "x": 35650.57421875,
+        "y": -1038.6864013671875,
+        "width": 13.72834587097168,
+        "height": 18.842634201049805
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32404;15873:23106;5669:401",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:91885;20595:32404;15873:23106;5669:400",
+      "bounds": {
+        "x": 35650.57421875,
+        "y": -1038.6864013671875,
+        "width": 13.72834587097168,
+        "height": 18.842634201049805
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32404;15873:23106;5669:402",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:91885;20595:32404;15873:23106;5669:400",
+      "bounds": {
+        "x": 35663.0546875,
+        "y": -1029.8846435546875,
+        "width": 0.08063792437314987,
+        "height": 0.18881960213184357
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32404;15873:23106;5669:403",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32404;15873:23106;5669:387",
+      "bounds": {
+        "x": 35653.49609375,
+        "y": -1031.79443359375,
+        "width": 7.239616394042969,
+        "height": 11.60649299621582
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32404;15873:23106;5669:404",
+      "name": "Layer1_4_FILL",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32404;15873:23106;5669:403",
+      "bounds": {
+        "x": 35653.49609375,
+        "y": -1031.79443359375,
+        "width": 7.239616394042969,
+        "height": 11.60649299621582
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32404;15873:23106;5669:405",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:91885;20595:32404;15873:23106;5669:404",
+      "bounds": {
+        "x": 35653.49609375,
+        "y": -1031.79443359375,
+        "width": 7.239616394042969,
+        "height": 11.60649299621582
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32404;15873:23106;5669:406",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32404;15873:23106;5669:387",
+      "bounds": {
+        "x": 35648.31640625,
+        "y": -1042.0087890625,
+        "width": 17.325143814086914,
+        "height": 22.231651306152344
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32404;15873:23106;5669:407",
+      "name": "Layer1_5_FILL",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32404;15873:23106;5669:406",
+      "bounds": {
+        "x": 35648.31640625,
+        "y": -1042.0087890625,
+        "width": 17.325143814086914,
+        "height": 22.231651306152344
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32404;15873:23106;5669:408",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:91885;20595:32404;15873:23106;5669:407",
+      "bounds": {
+        "x": 35648.31640625,
+        "y": -1042.0087890625,
+        "width": 17.325143814086914,
+        "height": 22.231651306152344
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32404;15873:23106;5669:409",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32404;15873:23106;5669:387",
+      "bounds": {
+        "x": 35648.31640625,
+        "y": -1042.03076171875,
+        "width": 17.325794219970703,
+        "height": 22.232810974121094
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32404;15873:23106;5669:410",
+      "name": "Layer1_6_FILL",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32404;15873:23106;5669:409",
+      "bounds": {
+        "x": 35648.31640625,
+        "y": -1042.03076171875,
+        "width": 17.325794219970703,
+        "height": 22.232810974121094
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32404;15873:23106;5669:411",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:91885;20595:32404;15873:23106;5669:410",
+      "bounds": {
+        "x": 35648.31640625,
+        "y": -1042.03076171875,
+        "width": 17.325794219970703,
+        "height": 22.232810974121094
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32404;15592:66375",
+      "name": "Counter",
+      "type": "FRAME",
+      "parent": "I2299:91885;20595:32404",
+      "bounds": {
+        "x": 35673,
+        "y": -1043.000244140625,
+        "width": 31,
+        "height": 24
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32404;15592:66376",
+      "name": "Counter",
+      "type": "TEXT",
+      "parent": "I2299:91885;20595:32404;15592:66375",
+      "bounds": {
+        "x": 35673,
+        "y": -1040.000244140625,
+        "width": 25,
+        "height": 18
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405",
+      "name": "Reaction",
+      "type": "INSTANCE",
+      "parent": "2299:91885",
+      "bounds": {
+        "x": 35712,
+        "y": -1047.000244140625,
+        "width": 63,
+        "height": 32
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106",
+      "name": "Reaction",
+      "type": "INSTANCE",
+      "parent": "I2299:91885;20595:32405",
+      "bounds": {
+        "x": 35720,
+        "y": -1043.000244140625,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:413",
+      "name": "Image",
+      "type": "FRAME",
+      "parent": "I2299:91885;20595:32405;15873:23106",
+      "bounds": {
+        "x": 35720,
+        "y": -1043.000244140625,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:414",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:413",
+      "bounds": {
+        "x": 35721.35546875,
+        "y": -1041.572998046875,
+        "width": 21.282955169677734,
+        "height": 21.16088104248047
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:415",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:414",
+      "bounds": {
+        "x": 35721.35546875,
+        "y": -1041.572998046875,
+        "width": 21.282955169677734,
+        "height": 21.16088104248047
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:416",
+      "name": "Layer0_0_MEMBER_0_FILL",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:415",
+      "bounds": {
+        "x": 35721.35546875,
+        "y": -1041.572998046875,
+        "width": 21.282955169677734,
+        "height": 21.16088104248047
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:417",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:416",
+      "bounds": {
+        "x": 35721.35546875,
+        "y": -1041.572998046875,
+        "width": 21.282955169677734,
+        "height": 21.16088104248047
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:418",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:413",
+      "bounds": {
+        "x": 35723.06640625,
+        "y": -1039.272216796875,
+        "width": 17.948772430419922,
+        "height": 17.819759368896484
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:419",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:418",
+      "bounds": {
+        "x": 35723.06640625,
+        "y": -1039.272216796875,
+        "width": 17.948772430419922,
+        "height": 17.819759368896484
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:420",
+      "name": "Layer0_0_MEMBER_1_FILL",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:419",
+      "bounds": {
+        "x": 35723.06640625,
+        "y": -1039.272216796875,
+        "width": 17.948772430419922,
+        "height": 17.819759368896484
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:421",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:420",
+      "bounds": {
+        "x": 35723.06640625,
+        "y": -1039.272216796875,
+        "width": 17.948772430419922,
+        "height": 17.819759368896484
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:422",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:413",
+      "bounds": {
+        "x": 35722.6796875,
+        "y": -1040.1834716796875,
+        "width": 18.830753326416016,
+        "height": 18.311172485351562
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:423",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:422",
+      "bounds": {
+        "x": 35722.6796875,
+        "y": -1040.1834716796875,
+        "width": 18.830753326416016,
+        "height": 18.311172485351562
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:424",
+      "name": "Layer0_0_MEMBER_2_FILL",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:423",
+      "bounds": {
+        "x": 35722.6796875,
+        "y": -1040.1834716796875,
+        "width": 18.830753326416016,
+        "height": 18.311172485351562
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:425",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:424",
+      "bounds": {
+        "x": 35722.6796875,
+        "y": -1040.1834716796875,
+        "width": 18.830753326416016,
+        "height": 18.311172485351562
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:426",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:413",
+      "bounds": {
+        "x": 35722.6328125,
+        "y": -1040.18115234375,
+        "width": 18.87213706970215,
+        "height": 15.084844589233398
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:427",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:426",
+      "bounds": {
+        "x": 35722.6328125,
+        "y": -1040.18115234375,
+        "width": 18.87213706970215,
+        "height": 15.084844589233398
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:428",
+      "name": "Layer0_0_MEMBER_3_FILL",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:427",
+      "bounds": {
+        "x": 35722.6328125,
+        "y": -1040.18115234375,
+        "width": 18.87213706970215,
+        "height": 15.084844589233398
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:429",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:428",
+      "bounds": {
+        "x": 35722.6328125,
+        "y": -1040.18115234375,
+        "width": 18.87213706970215,
+        "height": 15.084844589233398
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:430",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:413",
+      "bounds": {
+        "x": 35738.1171875,
+        "y": -1039.623779296875,
+        "width": 1.2140607833862305,
+        "height": 0.5578129291534424
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:431",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:430",
+      "bounds": {
+        "x": 35738.1171875,
+        "y": -1039.623779296875,
+        "width": 1.2140607833862305,
+        "height": 0.5578129291534424
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:432",
+      "name": "Layer0_0_MEMBER_4_1_STROKES",
+      "type": "VECTOR",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:431",
+      "bounds": {
+        "x": 35738.1171875,
+        "y": -1039.623779296875,
+        "width": 1.2140607833862305,
+        "height": 0.5578129291534424
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:433",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:413",
+      "bounds": {
+        "x": 35722.8984375,
+        "y": -1034.268310546875,
+        "width": 18.375,
+        "height": 11.211708068847656
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:434",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:433",
+      "bounds": {
+        "x": 35722.8984375,
+        "y": -1034.268310546875,
+        "width": 18.375,
+        "height": 11.211708068847656
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:435",
+      "name": "Layer0_0_MEMBER_5_FILL",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:434",
+      "bounds": {
+        "x": 35722.8984375,
+        "y": -1034.268310546875,
+        "width": 18.375,
+        "height": 11.211708068847656
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:436",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:435",
+      "bounds": {
+        "x": 35722.8984375,
+        "y": -1034.268310546875,
+        "width": 18.375,
+        "height": 11.211708068847656
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:437",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:413",
+      "bounds": {
+        "x": 35722.6640625,
+        "y": -1040.18115234375,
+        "width": 18.840696334838867,
+        "height": 8.460391998291016
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:438",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:437",
+      "bounds": {
+        "x": 35722.6640625,
+        "y": -1040.18115234375,
+        "width": 18.840696334838867,
+        "height": 8.460391998291016
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:439",
+      "name": "Layer0_0_MEMBER_6_FILL",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:438",
+      "bounds": {
+        "x": 35722.6640625,
+        "y": -1040.18115234375,
+        "width": 18.840696334838867,
+        "height": 8.460391998291016
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:440",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:439",
+      "bounds": {
+        "x": 35722.6640625,
+        "y": -1040.18115234375,
+        "width": 18.840696334838867,
+        "height": 8.460391998291016
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:441",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:413",
+      "bounds": {
+        "x": 35732.08203125,
+        "y": -1040.1834716796875,
+        "width": 9.429417610168457,
+        "height": 8.875692367553711
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:442",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:441",
+      "bounds": {
+        "x": 35732.08203125,
+        "y": -1040.1834716796875,
+        "width": 9.429417610168457,
+        "height": 8.875692367553711
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:443",
+      "name": "Layer0_0_MEMBER_7_FILL",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:442",
+      "bounds": {
+        "x": 35732.08203125,
+        "y": -1040.1834716796875,
+        "width": 9.429417610168457,
+        "height": 8.875692367553711
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:444",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:443",
+      "bounds": {
+        "x": 35732.08203125,
+        "y": -1040.1834716796875,
+        "width": 9.429417610168457,
+        "height": 8.875692367553711
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:445",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:413",
+      "bounds": {
+        "x": 35722.65261363983,
+        "y": -1040.1834716796875,
+        "width": 9.429417610168457,
+        "height": 8.875692367553711
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:446",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:445",
+      "bounds": {
+        "x": 35722.65261363983,
+        "y": -1040.1834716796875,
+        "width": 9.429417610168457,
+        "height": 8.875692367553711
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:447",
+      "name": "Layer0_0_MEMBER_8_FILL",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:446",
+      "bounds": {
+        "x": 35722.65261363983,
+        "y": -1040.1834716796875,
+        "width": 9.429417610168457,
+        "height": 8.875692367553711
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:448",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:447",
+      "bounds": {
+        "x": 35722.65261363983,
+        "y": -1040.1834716796875,
+        "width": 9.429417610168457,
+        "height": 8.875692367553711
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:449",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:413",
+      "bounds": {
+        "x": 35721.35546875,
+        "y": -1041.58837890625,
+        "width": 21.286476135253906,
+        "height": 21.171531677246094
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:450",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:449",
+      "bounds": {
+        "x": 35721.35546875,
+        "y": -1041.58837890625,
+        "width": 21.286476135253906,
+        "height": 21.171531677246094
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:451",
+      "name": "Layer0_0_MEMBER_9_FILL",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:450",
+      "bounds": {
+        "x": 35721.35546875,
+        "y": -1041.58837890625,
+        "width": 21.286476135253906,
+        "height": 21.171531677246094
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:452",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:451",
+      "bounds": {
+        "x": 35721.35546875,
+        "y": -1041.58837890625,
+        "width": 21.286476135253906,
+        "height": 21.171531677246094
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:453",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:413",
+      "bounds": {
+        "x": 35721.37109375,
+        "y": -1041.5125732421875,
+        "width": 21.253883361816406,
+        "height": 21.10047149658203
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:454",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:453",
+      "bounds": {
+        "x": 35721.37109375,
+        "y": -1041.5125732421875,
+        "width": 21.253883361816406,
+        "height": 21.10047149658203
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15873:23106;5669:455",
+      "name": "Layer0_0_MEMBER_10_MEMBER_0_1_STROKES",
+      "type": "VECTOR",
+      "parent": "I2299:91885;20595:32405;15873:23106;5669:454",
+      "bounds": {
+        "x": 35721.37109375,
+        "y": -1041.5125732421875,
+        "width": 21.253883361816406,
+        "height": 21.10047149658203
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15592:66375",
+      "name": "Counter",
+      "type": "FRAME",
+      "parent": "I2299:91885;20595:32405",
+      "bounds": {
+        "x": 35748,
+        "y": -1043.000244140625,
+        "width": 23,
+        "height": 24
+      }
+    },
+    {
+      "id": "I2299:91885;20595:32405;15592:66376",
+      "name": "Counter",
+      "type": "TEXT",
+      "parent": "I2299:91885;20595:32405;15592:66375",
+      "bounds": {
+        "x": 35748,
+        "y": -1040.000244140625,
+        "width": 17,
+        "height": 18
+      }
+    },
+    {
+      "id": "2299:91886",
+      "name": "Time Wrapper",
+      "type": "FRAME",
+      "parent": "2299:91882",
+      "bounds": {
+        "x": 35637,
+        "y": -1013.000244140625,
+        "width": 271,
+        "height": 0.00009999999747378752
+      }
+    },
+    {
+      "id": "2299:91888",
+      "name": "Time Wrapper",
+      "type": "FRAME",
+      "parent": "2299:91886",
+      "bounds": {
+        "x": 35835,
+        "y": -1025.000244140625,
+        "width": 73,
+        "height": 16
+      }
+    },
+    {
+      "id": "2299:91894",
+      "name": "Views",
+      "type": "FRAME",
+      "parent": "2299:91888",
+      "bounds": {
+        "x": 35835,
+        "y": -1025.000244140625,
+        "width": 42,
+        "height": 16
+      }
+    },
+    {
+      "id": "2299:91895",
+      "name": "View Icon",
+      "type": "FRAME",
+      "parent": "2299:91894",
+      "bounds": {
+        "x": 35835,
+        "y": -1025.000244140625,
+        "width": 12,
+        "height": 16
+      }
+    },
+    {
+      "id": "2299:91896",
+      "name": "View Icon",
+      "type": "INSTANCE",
+      "parent": "2299:91895",
+      "bounds": {
+        "x": 35835,
+        "y": -1023.000244140625,
+        "width": 12,
+        "height": 12
+      }
+    },
+    {
+      "id": "I2299:91896;71:224",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "2299:91896",
+      "bounds": {
+        "x": 35835,
+        "y": -1021.237548828125,
+        "width": 12.0029296875,
+        "height": 8.474609375
+      }
+    },
+    {
+      "id": "2299:91897",
+      "name": "Views",
+      "type": "TEXT",
+      "parent": "2299:91894",
+      "bounds": {
+        "x": 35849,
+        "y": -1025.000244140625,
+        "width": 23,
+        "height": 16
+      }
+    },
+    {
+      "id": "2299:91898",
+      "name": "Dot",
+      "type": "TEXT",
+      "parent": "2299:91894",
+      "bounds": {
+        "x": 35874,
+        "y": -1025.000244140625,
+        "width": 3,
+        "height": 16
+      }
+    },
+    {
+      "id": "2299:91902",
+      "name": "Time",
+      "type": "TEXT",
+      "parent": "2299:91888",
+      "bounds": {
+        "x": 35879,
+        "y": -1025.000244140625,
+        "width": 29,
+        "height": 16
+      }
+    },
+    {
+      "id": "2299:91903",
+      "name": "Frame 2087329244",
+      "type": "FRAME",
+      "parent": "2299:91859",
+      "bounds": {
+        "x": 35583,
+        "y": -997.0001220703125,
+        "width": 360,
+        "height": 56
+      }
+    },
+    {
+      "id": "2299:91904",
+      "name": "System Capsule",
+      "type": "INSTANCE",
+      "parent": "2299:91903",
+      "bounds": {
+        "x": 35583,
+        "y": -997.0001220703125,
+        "width": 360,
+        "height": 28
+      }
+    },
+    {
+      "id": "I2299:91904;1927:64293",
+      "name": "Date",
+      "type": "INSTANCE",
+      "parent": "2299:91904",
+      "bounds": {
+        "x": 35689,
+        "y": -993.0001220703125,
+        "width": 148,
+        "height": 20
+      }
+    },
+    {
+      "id": "I2299:91904;1927:64293;1650:19962",
+      "name": "Time Frame",
+      "type": "FRAME",
+      "parent": "I2299:91904;1927:64293",
+      "bounds": {
+        "x": 35695,
+        "y": -992.0001220703125,
+        "width": 136,
+        "height": 18
+      }
+    },
+    {
+      "id": "I2299:91904;1927:64293;1650:19963",
+      "name": "Time",
+      "type": "TEXT",
+      "parent": "I2299:91904;1927:64293;1650:19962",
+      "bounds": {
+        "x": 35695,
+        "y": -992.0001220703125,
+        "width": 136,
+        "height": 18
+      }
+    },
+    {
+      "id": "2299:91905",
+      "name": "System Capsule",
+      "type": "INSTANCE",
+      "parent": "2299:91903",
+      "bounds": {
+        "x": 35583,
+        "y": -969.0001220703125,
+        "width": 360,
+        "height": 28
+      }
+    },
+    {
+      "id": "I2299:91905;1927:64293",
+      "name": "Date",
+      "type": "INSTANCE",
+      "parent": "2299:91905",
+      "bounds": {
+        "x": 35729,
+        "y": -965.0001220703125,
+        "width": 68,
+        "height": 20
+      }
+    },
+    {
+      "id": "I2299:91905;1927:64293;1650:19962",
+      "name": "Time Frame",
+      "type": "FRAME",
+      "parent": "I2299:91905;1927:64293",
+      "bounds": {
+        "x": 35735,
+        "y": -964.0001220703125,
+        "width": 56,
+        "height": 18
+      }
+    },
+    {
+      "id": "I2299:91905;1927:64293;1650:19963",
+      "name": "Time",
+      "type": "TEXT",
+      "parent": "I2299:91905;1927:64293;1650:19962",
+      "bounds": {
+        "x": 35735,
+        "y": -964.0001220703125,
+        "width": 56,
+        "height": 18
+      }
+    },
+    {
+      "id": "2299:91906",
+      "name": "Bubble Group / Text",
+      "type": "FRAME",
+      "parent": "2299:91859",
+      "bounds": {
+        "x": 35583,
+        "y": -933.0001220703125,
+        "width": 360,
+        "height": 60.000099182128906
+      }
+    },
+    {
+      "id": "2299:91909",
+      "name": "Avatar",
+      "type": "FRAME",
+      "parent": "2299:91906",
+      "bounds": {
+        "x": 35589,
+        "y": -933.0001220703125,
+        "width": 38,
+        "height": 60.000099182128906
+      }
+    },
+    {
+      "id": "2299:91911",
+      "name": "Avatar",
+      "type": "INSTANCE",
+      "parent": "2299:91909",
+      "bounds": {
+        "x": 35589,
+        "y": -907,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "I2299:91911;14686:46523",
+      "name": "Image",
+      "type": "ELLIPSE",
+      "parent": "2299:91911",
+      "bounds": {
+        "x": 35589,
+        "y": -907,
+        "width": 32,
+        "height": 32
+      }
+    },
+    {
+      "id": "2299:91912",
+      "name": "Bubble",
+      "type": "FRAME",
+      "parent": "2299:91906",
+      "bounds": {
+        "x": 35627,
+        "y": -933.0001220703125,
+        "width": 291,
+        "height": 60.000099182128906
+      }
+    },
+    {
+      "id": "2299:91913",
+      "name": "Author Name",
+      "type": "INSTANCE",
+      "parent": "2299:91912",
+      "bounds": {
+        "x": 35637,
+        "y": -927.0001220703125,
+        "width": 271,
+        "height": 20
+      }
+    },
+    {
+      "id": "I2299:91913;14262:39485",
+      "name": "Size",
+      "type": "FRAME",
+      "parent": "2299:91913",
+      "bounds": {
+        "x": 35637,
+        "y": -927.0001220703125,
+        "width": 104,
+        "height": 18
+      }
+    },
+    {
+      "id": "I2299:91913;14262:39486",
+      "name": "Author Wrapper",
+      "type": "FRAME",
+      "parent": "I2299:91913;14262:39485",
+      "bounds": {
+        "x": 35637,
+        "y": -927.0001220703125,
+        "width": 104,
+        "height": 18
+      }
+    },
+    {
+      "id": "I2299:91913;14262:39487",
+      "name": "Author",
+      "type": "TEXT",
+      "parent": "I2299:91913;14262:39486",
+      "bounds": {
+        "x": 35637,
+        "y": -927.0001220703125,
+        "width": 104,
+        "height": 18
+      }
+    },
+    {
+      "id": "I2299:91913;14262:39490",
+      "name": "Content",
+      "type": "FRAME",
+      "parent": "2299:91913",
+      "bounds": {
+        "x": 35637,
+        "y": -927.0001220703125,
+        "width": 271,
+        "height": 18
+      }
+    },
+    {
+      "id": "I2299:91913;14262:39501",
+      "name": "After",
+      "type": "FRAME",
+      "parent": "I2299:91913;14262:39490",
+      "bounds": {
+        "x": 35637,
+        "y": -927.0001220703125,
+        "width": 271,
+        "height": 18
+      }
+    },
+    {
+      "id": "I2299:91913;14262:39502",
+      "name": "Hug Author",
+      "type": "FRAME",
+      "parent": "I2299:91913;14262:39501",
+      "bounds": {
+        "x": 35637,
+        "y": -927.0001220703125,
+        "width": 104,
+        "height": 18
+      }
+    },
+    {
+      "id": "I2299:91913;14262:39503",
+      "name": "Author Wrapper",
+      "type": "FRAME",
+      "parent": "I2299:91913;14262:39502",
+      "bounds": {
+        "x": 35637,
+        "y": -927.0001220703125,
+        "width": 104,
+        "height": 18
+      }
+    },
+    {
+      "id": "I2299:91913;14262:39504",
+      "name": "Author",
+      "type": "TEXT",
+      "parent": "I2299:91913;14262:39503",
+      "bounds": {
+        "x": 35637,
+        "y": -927.0001220703125,
+        "width": 104,
+        "height": 18
+      }
+    },
+    {
+      "id": "I2299:91913;14262:39507",
+      "name": "Size",
+      "type": "FRAME",
+      "parent": "I2299:91913;14262:39501",
+      "bounds": {
+        "x": 35741,
+        "y": -927.0001220703125,
+        "width": 0,
+        "height": 0.00009999999747378752
+      }
+    },
+    {
+      "id": "I2299:91913;14262:39854",
+      "name": "Fill Author",
+      "type": "FRAME",
+      "parent": "I2299:91913;14262:39501",
+      "bounds": {
+        "x": 35637,
+        "y": -927.0001220703125,
+        "width": 271,
+        "height": 18
+      }
+    },
+    {
+      "id": "I2299:91913;14262:39855",
+      "name": "Author Wrapper",
+      "type": "FRAME",
+      "parent": "I2299:91913;14262:39854",
+      "bounds": {
+        "x": 35637,
+        "y": -927.0001220703125,
+        "width": 271,
+        "height": 18
+      }
+    },
+    {
+      "id": "I2299:91913;14262:39856",
+      "name": "Author",
+      "type": "TEXT",
+      "parent": "I2299:91913;14262:39855",
+      "bounds": {
+        "x": 35637,
+        "y": -927.0001220703125,
+        "width": 104,
+        "height": 18
+      }
+    },
+    {
+      "id": "I2299:91913;14262:39544",
+      "name": "Srink Author",
+      "type": "FRAME",
+      "parent": "I2299:91913;14262:39490",
+      "bounds": {
+        "x": 35637,
+        "y": -909.0001220703125,
+        "width": 271,
+        "height": 18
+      }
+    },
+    {
+      "id": "I2299:91913;14262:39545",
+      "name": "Author Wrapper",
+      "type": "FRAME",
+      "parent": "I2299:91913;14262:39544",
+      "bounds": {
+        "x": 35637,
+        "y": -909.0001220703125,
+        "width": 271,
+        "height": 18
+      }
+    },
+    {
+      "id": "I2299:91913;14262:39546",
+      "name": "Author",
+      "type": "TEXT",
+      "parent": "I2299:91913;14262:39545",
+      "bounds": {
+        "x": 35637,
+        "y": -909.0001220703125,
+        "width": 271,
+        "height": 18
+      }
+    },
+    {
+      "id": "2299:91916",
+      "name": "Message Wrapper",
+      "type": "FRAME",
+      "parent": "2299:91912",
+      "bounds": {
+        "x": 35637,
+        "y": -907.0001220703125,
+        "width": 271,
+        "height": 26.000099182128906
+      }
+    },
+    {
+      "id": "2299:91917",
+      "name": "Message",
+      "type": "TEXT",
+      "parent": "2299:91916",
+      "bounds": {
+        "x": 35637,
+        "y": -905.0001220703125,
+        "width": 229,
+        "height": 24
+      }
+    },
+    {
+      "id": "2299:91918",
+      "name": "Time Size",
+      "type": "FRAME",
+      "parent": "2299:91916",
+      "bounds": {
+        "x": 35637,
+        "y": -881.0001220703125,
+        "width": 55,
+        "height": 0.00009999999747378752
+      }
+    },
+    {
+      "id": "2299:91919",
+      "name": "Correct",
+      "type": "FRAME",
+      "parent": "2299:91918",
+      "bounds": {
+        "x": 35645,
+        "y": -881.0001220703125,
+        "width": 0,
+        "height": 14
+      }
+    },
+    {
+      "id": "2299:91920",
+      "name": "Time Wrapper",
+      "type": "FRAME",
+      "parent": "2299:91918",
+      "bounds": {
+        "x": 35645,
+        "y": -881.0001220703125,
+        "width": 47,
+        "height": 0.00009999999747378752
+      }
+    },
+    {
+      "id": "2299:91921",
+      "name": "Pinned",
+      "type": "FRAME",
+      "parent": "2299:91920",
+      "bounds": {
+        "x": 35645,
+        "y": -882,
+        "width": 16,
+        "height": 1
+      }
+    },
+    {
+      "id": "2299:91925",
+      "name": "Time",
+      "type": "TEXT",
+      "parent": "2299:91920",
+      "bounds": {
+        "x": 35663,
+        "y": -897,
+        "width": 29,
+        "height": 16
+      }
+    },
+    {
+      "id": "2299:91926",
+      "name": "Time Wrapper",
+      "type": "FRAME",
+      "parent": "2299:91916",
+      "bounds": {
+        "x": 35879,
+        "y": -893.0001220703125,
+        "width": 29,
+        "height": 16
+      }
+    },
+    {
+      "id": "2299:91935",
+      "name": "Time",
+      "type": "TEXT",
+      "parent": "2299:91926",
+      "bounds": {
+        "x": 35879,
+        "y": -893.0001220703125,
+        "width": 29,
+        "height": 16
+      }
+    },
+    {
+      "id": "2299:91936",
+      "name": "Background",
+      "type": "FRAME",
+      "parent": "2299:91912",
+      "bounds": {
+        "x": 35627,
+        "y": -933.0001220703125,
+        "width": 291,
+        "height": 60
+      }
+    },
+    {
+      "id": "2299:91937",
+      "name": "Form",
+      "type": "FRAME",
+      "parent": "2299:91936",
+      "bounds": {
+        "x": 35627,
+        "y": -933.0001220703125,
+        "width": 291,
+        "height": 60
+      }
+    },
+    {
+      "id": "2299:91940",
+      "name": "Color",
+      "type": "FRAME",
+      "parent": "2299:91936",
+      "bounds": {
+        "x": 35627,
+        "y": -933.0001220703125,
+        "width": 291,
+        "height": 60
+      }
+    },
+    {
+      "id": "2299:91941",
+      "name": "Color",
+      "type": "FRAME",
+      "parent": "2299:91940",
+      "bounds": {
+        "x": 35627,
+        "y": -933.0001220703125,
+        "width": 291,
+        "height": 60
+      }
+    },
+    {
+      "id": "2299:91942",
+      "name": "Bubble Group / Text",
+      "type": "INSTANCE",
+      "parent": "2299:91859",
+      "bounds": {
+        "x": 35583,
+        "y": -865,
+        "width": 360,
+        "height": 114
+      }
+    },
+    {
+      "id": "I2299:91942;20133:122716",
+      "name": "Bubble",
+      "type": "FRAME",
+      "parent": "2299:91942",
+      "bounds": {
+        "x": 35646,
+        "y": -865,
+        "width": 291,
+        "height": 114
+      }
+    },
+    {
+      "id": "I2299:91942;20133:122717",
+      "name": "Iteraction Wrapper",
+      "type": "FRAME",
+      "parent": "I2299:91942;20133:122716",
+      "bounds": {
+        "x": 35656,
+        "y": -857,
+        "width": 200,
+        "height": 40
+      }
+    },
+    {
+      "id": "I2299:91942;20133:122718",
+      "name": ".Interaction Outgoing Inside",
+      "type": "INSTANCE",
+      "parent": "I2299:91942;20133:122717",
+      "bounds": {
+        "x": 35656,
+        "y": -857,
+        "width": 200,
+        "height": 32
+      }
+    },
+    {
+      "id": "I2299:91942;20133:122718;14287:41821",
+      "name": "Reply Outgoing",
+      "type": "INSTANCE",
+      "parent": "I2299:91942;20133:122718",
+      "bounds": {
+        "x": 35656,
+        "y": -857,
+        "width": 200,
+        "height": 32
+      }
+    },
+    {
+      "id": "I2299:91942;20133:122718;14287:41821;14287:41118",
+      "name": "Line ",
+      "type": "FRAME",
+      "parent": "I2299:91942;20133:122718;14287:41821",
+      "bounds": {
+        "x": 35656,
+        "y": -857,
+        "width": 4,
+        "height": 32
+      }
+    },
+    {
+      "id": "I2299:91942;20133:122718;14287:41821;14287:41119",
+      "name": "Line",
+      "type": "RECTANGLE",
+      "parent": "I2299:91942;20133:122718;14287:41821;14287:41118",
+      "bounds": {
+        "x": 35656,
+        "y": -857,
+        "width": 2,
+        "height": 32
+      }
+    },
+    {
+      "id": "I2299:91942;20133:122718;14287:41821;14287:41120",
+      "name": "Reply Wrapper",
+      "type": "FRAME",
+      "parent": "I2299:91942;20133:122718;14287:41821",
+      "bounds": {
+        "x": 35664,
+        "y": -857,
+        "width": 192,
+        "height": 32
+      }
+    },
+    {
+      "id": "I2299:91942;20133:122718;14287:41821;14287:41121",
+      "name": "Reply User",
+      "type": "FRAME",
+      "parent": "I2299:91942;20133:122718;14287:41821;14287:41120",
+      "bounds": {
+        "x": 35664,
+        "y": -857,
+        "width": 91,
+        "height": 14
+      }
+    },
+    {
+      "id": "I2299:91942;20133:122718;14287:41821;14287:41122",
+      "name": "Reply User",
+      "type": "TEXT",
+      "parent": "I2299:91942;20133:122718;14287:41821;14287:41121",
+      "bounds": {
+        "x": 35664,
+        "y": -857,
+        "width": 91,
+        "height": 14
+      }
+    },
+    {
+      "id": "I2299:91942;20133:122718;14287:41821;14287:41124",
+      "name": "Reply Message",
+      "type": "TEXT",
+      "parent": "I2299:91942;20133:122718;14287:41821;14287:41120",
+      "bounds": {
+        "x": 35664,
+        "y": -843,
+        "width": 192,
+        "height": 18
+      }
+    },
+    {
+      "id": "I2299:91942;20133:122719",
+      "name": "Message Wrapper",
+      "type": "FRAME",
+      "parent": "I2299:91942;20133:122716",
+      "bounds": {
+        "x": 35656,
+        "y": -817,
+        "width": 271,
+        "height": 58
+      }
+    },
+    {
+      "id": "I2299:91942;20133:122720",
+      "name": "Message",
+      "type": "TEXT",
+      "parent": "I2299:91942;20133:122719",
+      "bounds": {
+        "x": 35656,
+        "y": -817,
+        "width": 271,
+        "height": 44
+      }
+    },
+    {
+      "id": "I2299:91942;20133:122721",
+      "name": "Time Size",
+      "type": "FRAME",
+      "parent": "I2299:91942;20133:122719",
+      "bounds": {
+        "x": 35656,
+        "y": -773,
+        "width": 55,
+        "height": 14
+      }
+    },
+    {
+      "id": "I2299:91942;20133:122722",
+      "name": "Correct",
+      "type": "FRAME",
+      "parent": "I2299:91942;20133:122721",
+      "bounds": {
+        "x": 35664,
+        "y": -773,
+        "width": 0,
+        "height": 14
+      }
+    },
+    {
+      "id": "I2299:91942;20242:23835",
+      "name": "Time Wrapper",
+      "type": "FRAME",
+      "parent": "I2299:91942;20133:122721",
+      "bounds": {
+        "x": 35664,
+        "y": -773,
+        "width": 47,
+        "height": 0.00009999999747378752
+      }
+    },
+    {
+      "id": "I2299:91942;20242:23844",
+      "name": "Time",
+      "type": "TEXT",
+      "parent": "I2299:91942;20242:23835",
+      "bounds": {
+        "x": 35664,
+        "y": -788.9998779296875,
+        "width": 29,
+        "height": 16
+      }
+    },
+    {
+      "id": "I2299:91942;20242:23866",
+      "name": "Status",
+      "type": "FRAME",
+      "parent": "I2299:91942;20242:23835",
+      "bounds": {
+        "x": 35695,
+        "y": -788.9998779296875,
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "id": "I2299:91942;20242:23820",
+      "name": "Time Wrapper",
+      "type": "FRAME",
+      "parent": "I2299:91942;20133:122719",
+      "bounds": {
+        "x": 35880,
+        "y": -771,
+        "width": 47,
+        "height": 16
+      }
+    },
+    {
+      "id": "I2299:91942;20242:23829",
+      "name": "Time",
+      "type": "TEXT",
+      "parent": "I2299:91942;20242:23820",
+      "bounds": {
+        "x": 35880,
+        "y": -771,
+        "width": 29,
+        "height": 16
+      }
+    },
+    {
+      "id": "I2299:91942;20242:23830",
+      "name": "Status",
+      "type": "INSTANCE",
+      "parent": "I2299:91942;20242:23820",
+      "bounds": {
+        "x": 35911,
+        "y": -771,
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "id": "I2299:91942;20242:23830;21462:97484",
+      "name": "Status",
+      "type": "INSTANCE",
+      "parent": "I2299:91942;20242:23830",
+      "bounds": {
+        "x": 35911,
+        "y": -771,
+        "width": 16,
+        "height": 16
+      }
+    },
+    {
+      "id": "I2299:91942;20242:23830;21462:97484;1774:169",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:91942;20242:23830;21462:97484",
+      "bounds": {
+        "x": 35912.078125,
+        "y": -767.4500732421875,
+        "width": 14.794827461242676,
+        "height": 8.550122261047363
+      }
+    },
+    {
+      "id": "I2299:91942;20133:122733",
+      "name": "Background",
+      "type": "FRAME",
+      "parent": "I2299:91942;20133:122716",
+      "bounds": {
+        "x": 35646,
+        "y": -865,
+        "width": 291,
+        "height": 114
+      }
+    },
+    {
+      "id": "I2299:91942;20133:122734",
+      "name": "Form",
+      "type": "FRAME",
+      "parent": "I2299:91942;20133:122733",
+      "bounds": {
+        "x": 35646,
+        "y": -865,
+        "width": 291,
+        "height": 114
+      }
+    },
+    {
+      "id": "I2299:91942;20133:122737",
+      "name": "Color",
+      "type": "FRAME",
+      "parent": "I2299:91942;20133:122733",
+      "bounds": {
+        "x": 35646,
+        "y": -865,
+        "width": 291,
+        "height": 114
+      }
+    },
+    {
+      "id": "I2299:91942;20133:122738",
+      "name": "Color",
+      "type": "FRAME",
+      "parent": "I2299:91942;20133:122737",
+      "bounds": {
+        "x": 35646,
+        "y": -865,
+        "width": 291,
+        "height": 114
+      }
+    },
+    {
+      "id": "2299:91943",
+      "name": "Writebar Android",
+      "type": "INSTANCE",
+      "parent": "2299:91854",
+      "bounds": {
+        "x": 35583,
+        "y": -743,
+        "width": 360,
+        "height": 72
+      }
+    },
+    {
+      "id": "I2299:91943;697:67258",
+      "name": "Input Bar Android",
+      "type": "INSTANCE",
+      "parent": "2299:91943",
+      "bounds": {
+        "x": 35583,
+        "y": -743,
+        "width": 360,
+        "height": 48
+      }
+    },
+    {
+      "id": "I2299:91943;697:67258;529:17294",
+      "name": "Message Input",
+      "type": "FRAME",
+      "parent": "I2299:91943;697:67258",
+      "bounds": {
+        "x": 35591,
+        "y": -737,
+        "width": 344,
+        "height": 36
+      }
+    },
+    {
+      "id": "I2299:91943;697:67258;529:16568",
+      "name": "Keyboard Switch",
+      "type": "INSTANCE",
+      "parent": "I2299:91943;697:67258;529:17294",
+      "bounds": {
+        "x": 35595,
+        "y": -733,
+        "width": 28,
+        "height": 28
+      }
+    },
+    {
+      "id": "I2299:91943;697:67258;529:16568;450:17721",
+      "name": "Emoji",
+      "type": "INSTANCE",
+      "parent": "I2299:91943;697:67258;529:16568",
+      "bounds": {
+        "x": 35595,
+        "y": -733,
+        "width": 28,
+        "height": 28
+      }
+    },
+    {
+      "id": "I2299:91943;697:67258;529:16568;450:17721;3254:25",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:91943;697:67258;529:16568;450:17721",
+      "bounds": {
+        "x": 35597.50390625,
+        "y": -730.9168090820312,
+        "width": 22.993270874023438,
+        "height": 23.833599090576172
+      }
+    },
+    {
+      "id": "I2299:91943;697:67258;529:16569",
+      "name": "Input",
+      "type": "FRAME",
+      "parent": "I2299:91943;697:67258;529:17294",
+      "bounds": {
+        "x": 35629,
+        "y": -733,
+        "width": 302,
+        "height": 28
+      }
+    },
+    {
+      "id": "I2299:91943;697:67258;529:16570",
+      "name": "Placeholder",
+      "type": "TEXT",
+      "parent": "I2299:91943;697:67258;529:16569",
+      "bounds": {
+        "x": 35629,
+        "y": -729,
+        "width": 302,
+        "height": 20
+      }
+    },
+    {
+      "id": "I2299:91943;697:68622",
+      "name": "Home Indicator",
+      "type": "INSTANCE",
+      "parent": "2299:91943",
+      "bounds": {
+        "x": 35583,
+        "y": -695,
+        "width": 360,
+        "height": 24
+      }
+    },
+    {
+      "id": "I2299:91943;697:68622;2081:3447",
+      "name": "Home Indicator",
+      "type": "FRAME",
+      "parent": "I2299:91943;697:68622",
+      "bounds": {
+        "x": 35583,
+        "y": -695,
+        "width": 360,
+        "height": 24
+      }
+    },
+    {
+      "id": "I2299:91943;697:68622;2081:3448",
+      "name": "handle",
+      "type": "RECTANGLE",
+      "parent": "I2299:91943;697:68622;2081:3447",
+      "bounds": {
+        "x": 35709,
+        "y": -685,
+        "width": 108,
+        "height": 4
+      }
+    }
+  ],
+  "imageHashes": [
+    "64667cca87f0413eb83c575465b0d010a67054fa",
+    "d5240a3573b28844d7cdb33776aab1e978c64d30",
+    "23cd710ed08fd41ae826825ad7cf73460fcbbcb2",
+    "ef095b8e661958cb73d2e473d76d505a781310b3",
+    "b29ccfb41474f2b3ff1cb7b0c1f4ccc8dc11e175",
+    "23f885fb0b457644d2355a15e03978186b68f4f4"
+  ],
+  "notes": [],
+  "pngScale": 1,
+  "pngFile": "2-пользователь-отвечает/Комментарии---10-(отправил-ответ)/screen.png",
+  "previewFile": "2-пользователь-отвечает/Комментарии---10-(отправил-ответ)/preview.png",
+  "svgFile": "2-пользователь-отвечает/Комментарии---10-(отправил-ответ)/screen.svg",
+  "documentFile": "2-пользователь-отвечает/Комментарии---10-(отправил-ответ)/figma.json",
+  "images": [
+    {
+      "hash": "64667cca87f0413eb83c575465b0d010a67054fa",
+      "file": "2-пользователь-отвечает/Комментарии---10-(отправил-ответ)/images/9900abdeaafcd1e6f4f52e4d8bb1f56f090cb73d97b7d4f6cf8515c1ba0e2846.png"
+    },
+    {
+      "hash": "d5240a3573b28844d7cdb33776aab1e978c64d30",
+      "file": "2-пользователь-отвечает/Комментарии---10-(отправил-ответ)/images/1061629334a645c2655f05498c1472c19287eb8ff1f7f98b3c9ef18b08af6aaf.png"
+    },
+    {
+      "hash": "23cd710ed08fd41ae826825ad7cf73460fcbbcb2",
+      "file": "2-пользователь-отвечает/Комментарии---10-(отправил-ответ)/images/641c5c316f25481061a6081d6142d8448af2fedc54b4e6f4260ab2434f7a1eac.png"
+    },
+    {
+      "hash": "ef095b8e661958cb73d2e473d76d505a781310b3",
+      "file": "2-пользователь-отвечает/Комментарии---10-(отправил-ответ)/images/cdc07e640f3689e8fb4d1b04f5d9407617174d3ed511feb6b120621ab857d56e.png"
+    },
+    {
+      "hash": "b29ccfb41474f2b3ff1cb7b0c1f4ccc8dc11e175",
+      "file": "2-пользователь-отвечает/Комментарии---10-(отправил-ответ)/images/572c638d05083029e381e716a28a6f81fa93edf61c5f4510754b23565df927cc.png"
+    },
+    {
+      "hash": "23f885fb0b457644d2355a15e03978186b68f4f4",
+      "file": "2-пользователь-отвечает/Комментарии---10-(отправил-ответ)/images/7748e96e6cb750f42277c6e18552896a145c064bba73795e4db6c9b97873c030.png"
+    }
+  ]
+}

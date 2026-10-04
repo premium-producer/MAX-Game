@@ -1,0 +1,16 @@
+✔ right wall preserves full 4096x1280 DOM composition and single GPU packing (2.2627ms)
+✔ interactive field is physically lower and shifted right by two thirds of its width, without stretching (0.1787ms)
+✔ trusted input accounts for stamp rows and releases on cancellation (0.2439ms)
+✔ full gesture lifecycle reaches game; disconnect and timeout release input (0.3792ms)
+✔ optical panels exactly follow both gameplay layouts and stay on the flat wall (0.1467ms)
+✔ one global moving composition survives layout switches without duplicating or resizing spheres (0.2635ms)
+✔ tile culling retains panel edges and finite shadow reach in both layouts (0.4632ms)
+✔ refraction stays within the 64-native-pixel tile halo at every supported scale (0.1034ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 20.1895

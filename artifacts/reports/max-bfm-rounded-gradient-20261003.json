@@ -1,0 +1,34 @@
+{
+  "files": [
+    {
+      "file": "index.html",
+      "sha256": "109bf3b99015f6ad103c956f1cc71091ee1238b9c36a9c9ed29d63b9b3aa79df",
+      "runtimeHttpMatch": true
+    },
+    {
+      "file": "bfm.css",
+      "sha256": "7a9d292c32cf8d2d6a822d189ae3ef22ab0b6f6d5bf9c944cd1532c71a0dbd9b",
+      "runtimeHttpMatch": true
+    },
+    {
+      "file": "app.js",
+      "sha256": "3760f376c75408cb3a310a77f50d1c36ff8565b7f758130bfc2d735bc7472318",
+      "runtimeHttpMatch": true
+    }
+  ],
+  "change": "one CSS clip-path:border-box on gradient-clip",
+  "browser": {
+    "before": {
+      "clipPath": "none",
+      "radius": "32px"
+    },
+    "after": {
+      "clipPath": "border-box",
+      "radius": "32px",
+      "count": 5
+    },
+    "screenshot": "max-bfm-rounded-gradient-20261003.jpg"
+  },
+  "transientReproduced": false,
+  "limits": "One reload and DOM inspection; screenshot at narrow pane; original 1s transition still requires user review"
+}

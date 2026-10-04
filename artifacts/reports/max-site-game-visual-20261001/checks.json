@@ -1,0 +1,143 @@
+{
+  "status": "PASS technical; visual pending user",
+  "filesChecked": 25,
+  "runtimeBytes": 6358254.0,
+  "checks": [
+    "node --check app.mjs",
+    "7 CPU tests with --test-isolation=none",
+    "duplicate guard",
+    "isolated build",
+    "source/runtime SHA 25/25",
+    "HTTP SHA current HTML and CSS"
+  ],
+  "http": "frost-card15 verified on localhost:8770",
+  "visualReview": "pending user screenshot",
+  "browserOpened": false,
+  "files": [
+    {
+      "file": "app.mjs",
+      "sha256": "54a775d78cf672efe9598877726d983219e1b61f464febf649eb8e56327e5637",
+      "bytes": 15203
+    },
+    {
+      "file": "assets.mjs",
+      "sha256": "bed32d2d28d7f2ff8c33e83d3e0cd34f3ba0a9e6d4d90e60c6d5ce1e701fd8fb",
+      "bytes": 605
+    },
+    {
+      "file": "brandbook-card.css",
+      "sha256": "eb46646f3635ee64768ffc6799689df9bc41ad32da38db54832dfde71dab50d4",
+      "bytes": 3897
+    },
+    {
+      "file": "index.html",
+      "sha256": "a13969959b547a5636193fffda4740a49bbbe03cf03d0dd981b2660b8fe99a0e",
+      "bytes": 544
+    },
+    {
+      "file": "kit/assets/devices/phone-body-2-72e6dd0539b7.png",
+      "sha256": "72e6dd0539b7d89ba79c00f5824bd706cf2e4cb67043afc40a7f0c37bac9a22b",
+      "bytes": 111963
+    },
+    {
+      "file": "kit/assets/fonts/maxsans-bold-03cab9afd04f.woff2",
+      "sha256": "03cab9afd04f51d97764ea0ab07e72f2d2093fc1db1f40592b9e614a1f9bc12e",
+      "bytes": 18644
+    },
+    {
+      "file": "kit/assets/fonts/maxsans-demibold-51bcd46e1f6c.woff2",
+      "sha256": "51bcd46e1f6c266064260f97122e4d7a4c75b6c29da630467e9e32d2a84c7288",
+      "bytes": 18544
+    },
+    {
+      "file": "kit/assets/fonts/maxsans-light-ed2e14670858.woff2",
+      "sha256": "ed2e1467085820118519ff103f2716d3d74fb8afabb1ab8eab7e439035459e1f",
+      "bytes": 18472
+    },
+    {
+      "file": "kit/assets/fonts/maxsans-medium-9997b7b8dee3.woff2",
+      "sha256": "9997b7b8dee3f31cf725e8552de7491d9ad7e801bcb0f01e75a4a982887f8b84",
+      "bytes": 18672
+    },
+    {
+      "file": "kit/assets/fonts/maxsans-regular-d913167fd343.woff2",
+      "sha256": "d913167fd3434fea0cb5306b1199bb0a07d03f09e4f80c9ada865069f437ef38",
+      "bytes": 18632
+    },
+    {
+      "file": "kit/assets/illustrations/channel-dd592617e1a9.webp",
+      "sha256": "dd592617e1a9d1c26843503f3eb15eadaf00fe0128b916b436794ef5bb426624",
+      "bytes": 265882
+    },
+    {
+      "file": "kit/assets/illustrations/create-public-channel-poster-d56c62347820.png",
+      "sha256": "d56c623478206dcfa49de13ca8115269c1818b89f41b9d68af0b051a9fd67b6e",
+      "bytes": 35429
+    },
+    {
+      "file": "kit/assets/illustrations/digitalid-page-main-b4e4620dd76c.png",
+      "sha256": "b4e4620dd76c53c23aab1c4acc589bfdd32d6eabc0b1062050a897f5b0c372de",
+      "bytes": 424481
+    },
+    {
+      "file": "kit/assets/illustrations/tool-comments-d82f0200b511.webp",
+      "sha256": "d82f0200b511862cb23769afb9c7599ffe8e93ba2faf24d8b826ee7e485695b3",
+      "bytes": 16870
+    },
+    {
+      "file": "kit/assets/illustrations/tool-stat-fffd50dd6ad8.webp",
+      "sha256": "fffd50dd6ad828a899839f4d48fb303d068dbbf11629697c312895fab0b77192",
+      "bytes": 35352
+    },
+    {
+      "file": "kit/assets/logos/max-white-2d4939e3cf89.svg",
+      "sha256": "2d4939e3cf89a5eb61114d8efac7b9f67b03737f1226853f177d931e3b354dbd",
+      "bytes": 20145
+    },
+    {
+      "file": "kit/assets/videos/create-public-channel-970090fe8bd5.mp4",
+      "sha256": "970090fe8bd590e4baee90016241d1a448af3a2f7c6b8f81212f97305d4fadad",
+      "bytes": 5274581
+    },
+    {
+      "file": "kit/tokens/site.css",
+      "sha256": "5f2ffa86ab31e883c1fb2ae01a619989be56aa4f3bdab7b50677f792ebf6292a",
+      "bytes": 1051
+    },
+    {
+      "file": "model.mjs",
+      "sha256": "db44d1cd63eaee695df29963ea30139e2e909edce712ed82b5526a6dd0dbe2ba",
+      "bytes": 2525
+    },
+    {
+      "file": "original/journey-links.mjs",
+      "sha256": "20a0ca2e5b6ce80ace2ffdb5bc70c2b5d8564576cc4722cf139396609016eb9d",
+      "bytes": 9193
+    },
+    {
+      "file": "original/journey-motion.mjs",
+      "sha256": "4ae14afb2c359b9244b4998e41dd9bc11b413941994d3ba33a28a823a00bc13c",
+      "bytes": 10670
+    },
+    {
+      "file": "provenance.json",
+      "sha256": "a0a783064d8627ee5d9a73a2ed17e8553722810729244f3e074cc738c69b4395",
+      "bytes": 9619
+    },
+    {
+      "file": "site-effects.css",
+      "sha256": "511d687e7316d8c0cb4ec867545f3e24346a9f5b700e64a4b84423f0017fa2de",
+      "bytes": 2242
+    },
+    {
+      "file": "site-reveal-motion.mjs",
+      "sha256": "53f2764d411e9c684d8b872bb7d9bdd477e57027cc6716345055357afb288e33",
+      "bytes": 2968
+    },
+    {
+      "file": "style.css",
+      "sha256": "d992851cb317220205eea4327ea6c241f25653d766defcf0a2cd680df8232723",
+      "bytes": 22070
+    }
+  ]
+}

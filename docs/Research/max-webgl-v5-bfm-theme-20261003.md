@@ -1,0 +1,61 @@
+# MAX v5: BFM оформление на исходном WebGL
+
+## Инерция ряда и телефона — 03.10.2026
+
+Выбран готовый механизм `maath@0.10.8` (MIT, точная версия в npm lock), `easing.damp`: [официальный репозиторий/документация](https://github.com/pmndrs/maath), [исторический исходник](https://github.com/pmndrs/maath/blob/90317077d86b6aca9a5a5708bd15007b4c89c7c9/packages/maath/src/easing.ts). Использует SmoothDamp, хранит скорость и принимает delta; библиотека действительно выполняет фильтрацию X/Y v5 вместо новой собственной формулы. Адаптер сохраняет интерфейс MotionValue и единственный существующий clock, другие визуализации не переключаются. Токены: ряд smoothTime≈0.31с, телефон≈0.14с; это время отклика, не длительность tween. Позиции DOM, WebGL, ввода и оптических масок получают существующий подготовленный кадр.
+
+Реальный опыт: [issue33](https://github.com/pmndrs/maath/issues/33) — произвольная tween easing приводит к телепортации; оставляем библиотечную decay функцию. [issue32](https://github.com/pmndrs/maath/issues/32) — maxSpeed по осям не гарантирует векторную границу; используем Infinity, ограничения скорости не заявляем. Установленный ESM easing исполняется напрямую; package требует Three>=0.134, фактически остаётся0.185.1. При epsilon библиотека не сбрасывает сохранённую скорость: адаптер обнуляет её после достижения цели, reduced motion тоже очищает. Нулевой dt не продвигает время. Справка следует видимым координатам телефона, без второго фильтра и без clamp к краям. Реальный GPU/ощущение инерции требуют пользовательского отзыва; CPU не доказывает художественную плавность.
+
+Integrity npm: `sha512-tRvbDF0Pgqz+9XUa4jjfgAQ8/aPKmQdWXilFu2tMy4GWj4NOsx99HlULO4IeREfbO3a0sA145DZYyvXPkybm0g==`. Пакет npm маркирован MIT, отдельного LICENSE/авторского notice не содержит; исторические LICENSE/README refs недоступны (404), GitHub API rate limited. Уведомление MIT и ссылка на происхождение включаются в комплект; современный copyright2026 другого переименованного репозитория не приписывается версии0.10.8.
+
+## Уточнение после пользовательского кадра: радиальная заливка, без старого блика
+
+Пользователь отклонил старые оптические эффекты и подпись внутри плитки. Диагностика кода установила проигрыш v5 CSS старому селектору с двумя атрибутами, а referenceRole всё ещё добавлял белый световой вклад и halo. V5 теперь использует сильнее ограниченный visual selector и отдельный рисунок плитки из двух исходных BFM CSS слоёв; backend и движение не меняются.
+
+Готовый механизм: native Canvas2D CanvasGradient → Three.js CanvasTexture/MeshBasicMaterial, версия0.185.1 MIT, существующий cache/dispose. [Three CanvasTexture](https://threejs.org/docs/pages/CanvasTexture.html), [native createRadialGradient и его координатная модель](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/createRadialGradient), [описанный опыт применения Canvas2D gradient как текстуры](https://discourse.threejs.org/t/apply-colormap-to-a-mesh/47670). Градиент/alpha clip выполняет браузер, отображение — Three; не создаётся новый shader gradient/solver. Цвета #404dff/#6c18ff/#ad00ff/#00caff перенесены из фактической BFM CSS по прямому требованию повторить эту версию; не объявляются новой канонической палитрой MAX. Ротация не входит в эту коррекцию. Canvas рисуется только при подготовке размерного cache entry, без per-frame upload. GPU результат по-прежнему требует пользовательского кадра; источники не доказывают совпадение реализации.
+
+Поручение: создать отдельную пятую версию на первой WebGL-визуализации, сохранив текущий BFM дизайн. Первая короткая итерация — отдельная сборка, общий backend и GPU оформление. Это не перенос BFM DOM renderer целиком.
+
+## Подтверждённая основа
+
+- Three.js **0.185.1**, MIT: закреплённая зависимость artifacts/max-game/package.json. [Репозиторий](https://github.com/mrdoob/three.js/tree/r185), [ShaderMaterial: официальный исходник с документацией](https://raw.githubusercontent.com/mrdoob/three.js/r185/src/materials/ShaderMaterial.js). WebGLRenderer действительно исполняет материал на GPU; uniforms обновляются между кадрами. Используются существующие WebGLRenderer, ShaderMaterial, SVGLoader и CanvasTexture, без нового движка движения.
+- [Color management, r185](https://github.com/mrdoob/three.js/blob/r185/manual/en/color-management.html) и [описанный опыт разработчиков, issue23614](https://github.com/mrdoob/three.js/issues/23614): входные/выходные преобразования цвета нельзя смешивать. Это обоснование сохранения действующего цветового тракта, а не доказательство совпадения текущего кадра с референсом. Обновление Three.js и изменение tone mapping в этом шаге исключены.
+- Фактическая проектная интеграция: journey-guided-main.js → SharedRevealJourney → общий SessionPort; journey-webgl-ui.mjs → webgl-field.js. Видимые иконки/подписи/устройства рисуются WebGL; DOM остаётся измерением и доступностью. Существующий referenceRole предоставляет GPU оформление градиентных скруглённых плиток и фиолетовой справки независимо от reference motion.
+
+## Решение и границы
+
+V5 включает визуальный флаг webgl-bfm-v5, но **не включает referenceVisual**, поэтому не выбирает ReferenceRevealJourney или reference frame solver. Движение остаётся исходным GuidedReveal по прямому запросу пользователя. Это сохранение существующего кода, не подтверждение его надёжности готовой библиотекой и не новый самописный механизм.
+
+Отдельный scoped builder не обновляет предыдущие runtime bundles. Локальное хранилище v5 изолировано; серверный SessionPort сохраняется, общий session ID выбирается явно query параметром. Фон использует common-map GPU background и текущую stand mask, не локальную реплику шейдера.
+
+Остаются: точное физическое размещение/масштаб в LiDAR, панель рандомизации градиентов BFM, GPU проверка текущей сборки и пользовательская приёмка. Статический gradient profile этого шага не выдаётся за перенесённый WAAPI контроллер. Нет гарантий FPS и отсутствия всех старых дефектов.
+
+[Фактическая проверка интеграции](../../artifacts/reports/max-webgl-v5-20261003.md).
+
+
+## Фиолетовые связи с уменьшенным свечением — 03.10.2026
+
+По следующему запросу пользователя профиль v5 задаёт градиент #471AFF → #9500FF через готовые vertex colors Three.js 0.185.1 (MIT): LineSegmentsGeometry.setColors для широких линий и BufferAttribute color для обычных. Интерполяцию выполняет существующий материал; новый shader или механизм движения не добавлен. Источники: [LineGeometry/setColors](https://threejs.org/docs/pages/LineGeometry.html), [LineMaterial](https://threejs.org/docs/pages/LineMaterial.html), [описанный опыт применения setColors и ограничения AA/bloom/производительности](https://discourse.threejs.org/t/improving-performance-and-anti-aliasing-on-a-background-animation-line2/11826). Исторический пример форума использует старый THREE.VertexColors, текущий r185 — vertexColors:true; совместимость сверена с установленным LineSegmentsGeometry.
+
+NormalBlending вместо additive, intensity0.7, particleOpacity0.18 и pulseStrength0 применены только через v5 style. Это уменьшает световой вклад обоих слоёв и исключает белую вспышку частиц. Ошибочные связи сохраняют красную индикацию. Скорость, маршруты и количество частиц остаются существующими. Документация и CPU проверки не доказывают художественный результат или FPS; необходим пользовательский кадр. [Проверка интеграции](../../artifacts/reports/max-webgl-v5-purple-links-20261003.md).
+
+
+## Смещённые силуэты Frost при letterbox — 03.10.2026
+
+Пользовательский кадр показывает тёмные копии плиток ниже foreground. Фактическая цепочка: v5.css центрирует iframe #ambient с aspect4096/1280; GameBackgroundFrost получает parent.document, но считает origin(0,0) и scale по parent.innerWidth. Поэтому viewport-координаты родителя попадают в локальный framebuffer iframe без вычитания его смещения. Подложка зоны имеет тот же дефект. Это ошибка сопряжения координат, а не повод заменить готовый рендер новым механизмом.
+
+Готовая основа — CSSOM View getBoundingClientRect и HTML window.frameElement; [официальный стандарт CSSOM View](https://drafts.csswg.org/cssom-view/#dom-element-getboundingclientrect), [MDN getBoundingClientRect](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect), [MDN frameElement](https://developer.mozilla.org/en-US/docs/Web/API/Window/frameElement). Это browser API без добавленной зависимости/лицензии. [Описанный пользовательский случай смешения iframe и parent viewport](https://stackoverflow.com/questions/53056796/getboundingclientrect-from-within-iframe) подтверждает класс ограничения, не результат нашей интеграции. План: существующий Frost получает frameElement, subtract iframe.left/top и scale по iframe.width; без frameElement прежний полноэкранный путь сохранён. Только same-origin, текущий iframe без border и CSS rotation; произвольные rotated/perspective frames не входят. Проверить CPU-пример вертикального/горизонтального letterbox, resize/DPR и движение published controls. Визуальную приёмку выполняет пользователь.
+
+
+## Тонкий корпус и подсветка телефона — 03.10.2026
+
+Запрос: уменьшить видимые поля, добавить лёгкую кромку и мягкий свет позади телефона. Применяется только v5 phone, PC не меняется. Готовый механизм — native Canvas2D roundRect/stroke/shadowBlur → существующий Three CanvasTexture/MeshBasicMaterial (0.185.1, MIT), тот же cache/dispose и motion owner. [MDN shadowBlur](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/shadowBlur) описывает встроенное размытие и ограничение: не масштабируется transformation matrix, поэтому raster scale учитывается явно. [Three CanvasTexture](https://threejs.org/docs/pages/CanvasTexture.html), [описанный опыт glow текстуры и альтернативы](https://discourse.threejs.org/t/how-to-add-glowing-shadow-effect-on-texture-image/59918): дополнительные framebuffer/bloom возможны, но здесь ограниченный статический контур; новый postprocessing/шейдер не нужен. Native API без дополнительной лицензируемой зависимости; готовую текстуру исполняет Three. Ограничения: световой рисунок статический, intensity не физические единицы, padding предотвращает видимый жёсткий crop, внешний вид требует пользовательской оценки. Переходы/декодирование/GPU upload остаются существующими; readiness опирается на явный marker корпуса, а не наличие ShaderMaterial.uniforms.size.
+
+
+## Ряд вокруг перенесённого телефона — 03.10.2026
+
+Пользователь: обе стороны должны следовать за телефоном, после действия сохранять его положение и восстанавливать общий Y/зазор около400px. Найдено: revealPhoneLayout смещает только affected nodes справа; focusCurrent повторно центрирует камеру после snapshot; resetStepLayout удаляет manualPhones. Существующая модель spring/Three motion сохраняется по прямому требованию использовать первую WebGL механику, новый solver не разрабатывается.
+
+Раскладку в v5 выполняет готовый браузерный CSS Flexbox: row/nowrap, align-items:center, gap400px, flex:none для плиток и устройства разных размеров. [Официальный CSS Flexbox](https://www.w3.org/TR/css-flexbox-1/), [MDN alignment/gap](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Flexible_box_layout/Aligning_items), [реальные ограничения flex sizing — flexbugs](https://github.com/philipwalton/flexbugs) (MIT, справочные случаи, код не переносится). Не используем shrink, padding или процентный basis в измерительном ряду. Механизм размещения исполняет браузер; адаптер считывает offsetLeft/offsetTop и передаёт относительные цели существующему renderer. Невидимый измерительный ряд не содержит текст/ввод/paint, перестраивается только при смене состава/активного узла/размеров. Phone anchor — временное presentation состояние текущего run, без записи в backend; restart/menu очищают anchor. Ручной drag иконки временен до действия; фото/справка/правила остаются прежними. При ручной позиции телефона камера не перецентрируется после ответа. Зазор между краями плиток/устройства, не между центрами и не popup; декоративное парение может слегка менять видимое расстояние.
+
+Ограничения: CSS Flexbox конкретного runtime без браузера не проверен, CPU проверяет контракт адаптера на измерениях; визуальная приёмка остаётся пользовательской. Конечные цели не являются доказательством отсутствия всех пересечений на пути; не заявляем новый collision solver.

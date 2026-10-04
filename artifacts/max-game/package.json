@@ -1,0 +1,30 @@
+{
+  "name": "max-space-game",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test --test-isolation=none test/*.test.mjs",
+    "start": "node ../../apps/max-game/start.mjs",
+    "check:local": "node scripts/check-local.mjs",
+    "check:assets": "node scripts/check-audio.mjs && node scripts/check-earth-contours.mjs"
+  },
+  "dependencies": {
+    "@annotorious/annotorious": "3.9.3",
+    "@dagrejs/graphlib": "2.2.4",
+    "@verrou/core": "0.5.2",
+    "ajv": "8.20.0",
+    "atomically": "2.1.1",
+    "fast-json-patch": "3.1.1",
+    "idb": "8.0.3",
+    "maath": "0.10.8",
+    "three": "0.185.1",
+    "xstate": "5.20.2"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "fake-indexeddb": "6.2.4",
+    "sharp": "0.35.5"
+  }
+}

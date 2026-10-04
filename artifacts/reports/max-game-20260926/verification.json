@@ -1,0 +1,51 @@
+{
+  "date": "2026-09-26",
+  "gameTests": {
+    "passed": 78,
+    "failed": 0,
+    "log": "game-tests.txt"
+  },
+  "serviceTests": {
+    "passed": 21,
+    "failed": 0,
+    "log": "service-tests.txt"
+  },
+  "syntaxChecked": 52,
+  "pythonAstChecked": [
+    "build_max_game.py",
+    "build_master_portable.py",
+    "build_service.py"
+  ],
+  "jsonParsed": 24,
+  "upstreamFilesChecked": 190,
+  "upstreamChanged": [],
+  "pureRulesEqualAfterNewlineNormalization": {
+    "game-state.mjs": true,
+    "mission-game.mjs": true,
+    "mission-evaluation.mjs": true,
+    "screen-connectivity.mjs": true,
+    "route-layout.mjs": true
+  },
+  "runtimeFilesChecked": 168,
+  "runtimeBytes": 13205205,
+  "runtimeHashErrors": [],
+  "documentLinkErrors": [],
+  "browser": {
+    "url": "http://localhost:8785/",
+    "scope": "one short tab: CTA, onboarding, mission map, first mission; no full gameplay completion",
+    "consoleWarnErrorsAfterFinalBuild": 0,
+    "consoleSinceUTC": "2026-09-26T16:00:00Z",
+    "visual": "MAX logo, purple 3D Earth, inventory and route visible; proportional letterboxing",
+    "targetTouchAcceptance": "pending",
+    "gpuLoadTest": "not run"
+  },
+  "master": {
+    "fixtureModesPassed": [
+      "dev",
+      "run"
+    ],
+    "liveMasterRestarted": false,
+    "fullPortableBuilderIncludesGame": true,
+    "fullPortableArchiveRebuilt": false
+  }
+}

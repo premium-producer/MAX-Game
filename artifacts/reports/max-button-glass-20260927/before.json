@@ -1,0 +1,724 @@
+{
+  "mode": "run",
+  "instances": [
+    {
+      "id": "ribbon-up",
+      "status": "running",
+      "generation": "51759cde-2adc-4bde-a5c8-7f3061e5d62c",
+      "frame": 191846,
+      "error": null,
+      "settings": {
+        "noise": {
+          "filledMin": 0.65,
+          "filledMax": 1,
+          "emptyMin": 0,
+          "emptyMax": 0.4,
+          "scale": 2.8,
+          "speed": 0.18,
+          "octaves": 3,
+          "persistence": 0.5,
+          "size": 1,
+          "brightness": 0.9,
+          "glow": 0.55,
+          "seed": 42
+        },
+        "flow": {
+          "density": 34,
+          "hfov": 75,
+          "blur": 2.4,
+          "depth": 1,
+          "rows": 8,
+          "gap": 0.18,
+          "mask": "auto",
+          "source": "auto",
+          "view": "composite",
+          "maskStrength": 1,
+          "breath": 0.18
+        },
+        "fluid": {
+          "autoEmit": true,
+          "emitForce": 1.1,
+          "emitLight": 1.2,
+          "emitSpread": 0.7,
+          "transitionLength": 1.8,
+          "birthSize": 0,
+          "radius": 0.09,
+          "force": 22,
+          "ink": 1.4,
+          "curl": 24,
+          "velocityDecay": 0.35,
+          "dyeDecay": 0.48,
+          "speed": 1,
+          "resolution": 48,
+          "iterations": 20
+        },
+        "vortex": {
+          "enabled": true,
+          "speed": 0.28,
+          "strength": 1.1,
+          "scale": 1.35,
+          "travel": 0.24,
+          "spread": 0.72,
+          "exposure": 1.5,
+          "white": 0.35,
+          "size": 0.8,
+          "detail": 0.22,
+          "response": 0.4,
+          "quality": 8
+        },
+        "underlay": {
+          "look": "reference-v2",
+          "dark": "#000b38",
+          "middle": "#0037ac",
+          "light": "#007cff",
+          "brightness": 0.42,
+          "scale": 1.6,
+          "speed": 0.18,
+          "contrast": 1.1
+        },
+        "composition": {
+          "tags": 60,
+          "textPopulation": "catalog-v1",
+          "products": 1,
+          "speed": 1,
+          "scale": 1,
+          "depth": 1,
+          "trail": 0.22,
+          "focusBlur": 0.15,
+          "lines": 0.45,
+          "particles": 72,
+          "particleDynamics": 0.8,
+          "particleSpeed": 1,
+          "particleLarge": 0.25,
+          "particleOpacity": 0.9
+        },
+        "color": {
+          "strength": 1,
+          "redBalance": 0
+        },
+        "neon": {
+          "look": "reference-v2",
+          "bloom": 0.65,
+          "radius": 5,
+          "redAccent": 0.2,
+          "knee": 1.8,
+          "roundness": 0.38
+        },
+        "blue": {
+          "saturation": 1,
+          "fluidSaturation": 0.1,
+          "opacity": 1,
+          "backgroundOpacity": 0.44
+        },
+        "energy": 0.7,
+        "quality": 1,
+        "surface": "up",
+        "highlights": {
+          "threshold": 0.22,
+          "width": 0.46,
+          "gain": 1.5,
+          "cyan": 0.8
+        },
+        "cellDepth": {
+          "driver": "fluid-v1",
+          "focus": "near-v1",
+          "focusRange": 0.18,
+          "amount": 1,
+          "nearZ": 8.4,
+          "farZ": 24,
+          "blur": 3,
+          "threshold": 0.02,
+          "fade": 0.65,
+          "fluidLift": 1.5
+        },
+        "lighting": {
+          "radius": 0.9,
+          "softness": 0.65,
+          "gain": 1.6,
+          "spill": 0.03
+        }
+      },
+      "renderSize": [
+        10240,
+        512
+      ]
+    },
+    {
+      "id": "video-wall-left",
+      "status": "running",
+      "generation": "f6ca81b7-b857-4979-af20-9e0bad9090da",
+      "frame": 197712,
+      "error": null,
+      "settings": {
+        "motion": {
+          "speed": 0.35,
+          "attraction": 2.2,
+          "radius": 0.23,
+          "grid": 0.75
+        },
+        "owners": [
+          {
+            "ownerId": "visitor-01",
+            "sessionId": "vk-c120bbda-193e-4ac9-90f5-3de07dfebd0b",
+            "label": "Посетитель 1",
+            "present": false,
+            "x": 0.28,
+            "y": 0.58,
+            "homeX": 0.28,
+            "homeY": 0.56,
+            "packet": {
+              "sourceInstanceId": "ribbon-up",
+              "revision": 5,
+              "receivedAt": 1790334451163,
+              "tags": [
+                {
+                  "id": "technology-03",
+                  "label": "криптография",
+                  "style": "red"
+                },
+                {
+                  "id": "science-02",
+                  "label": "космос",
+                  "style": "red"
+                },
+                {
+                  "id": "science-01",
+                  "label": "наука",
+                  "style": "blue"
+                },
+                {
+                  "id": "world-04",
+                  "label": "котики",
+                  "style": "red"
+                },
+                {
+                  "id": "music-01",
+                  "label": "музыка",
+                  "style": "red"
+                },
+                {
+                  "id": "technology-02",
+                  "label": "киберзащита",
+                  "style": "red"
+                }
+              ],
+              "assets": [
+                "earth",
+                "galaxy",
+                "ribbon:ribbon"
+              ]
+            }
+          },
+          {
+            "ownerId": "visitor-02",
+            "sessionId": "test-02",
+            "label": "Посетитель 2",
+            "present": true,
+            "x": 0.73,
+            "y": 0.56,
+            "homeX": 0.72,
+            "homeY": 0.56,
+            "packet": {
+              "sourceInstanceId": "ribbon-up",
+              "revision": 5,
+              "receivedAt": 1790258271835,
+              "tags": [
+                {
+                  "id": "technology-03",
+                  "label": "криптография",
+                  "style": "red"
+                },
+                {
+                  "id": "science-02",
+                  "label": "космос",
+                  "style": "red"
+                },
+                {
+                  "id": "science-01",
+                  "label": "наука",
+                  "style": "blue"
+                },
+                {
+                  "id": "world-04",
+                  "label": "котики",
+                  "style": "red"
+                },
+                {
+                  "id": "music-01",
+                  "label": "музыка",
+                  "style": "red"
+                },
+                {
+                  "id": "technology-02",
+                  "label": "киберзащита",
+                  "style": "red"
+                },
+                {
+                  "id": "technology-10",
+                  "label": "цифровые технологии",
+                  "style": "blue"
+                },
+                {
+                  "id": "world-01",
+                  "label": "путешествия",
+                  "style": "red"
+                },
+                {
+                  "id": "world-02",
+                  "label": "природа",
+                  "style": "blue"
+                },
+                {
+                  "id": "world-08",
+                  "label": "еда",
+                  "style": "red"
+                },
+                {
+                  "id": "culture-01",
+                  "label": "кино",
+                  "style": "blue"
+                },
+                {
+                  "id": "world-03",
+                  "label": "животные",
+                  "style": "blue"
+                },
+                {
+                  "id": "science-03",
+                  "label": "Астрономия",
+                  "style": "blue"
+                },
+                {
+                  "id": "science-04",
+                  "label": "Физика",
+                  "style": "blue"
+                },
+                {
+                  "id": "science-05",
+                  "label": "Биология",
+                  "style": "blue"
+                },
+                {
+                  "id": "science-06",
+                  "label": "Химия",
+                  "style": "blue"
+                },
+                {
+                  "id": "science-07",
+                  "label": "Математика",
+                  "style": "blue"
+                },
+                {
+                  "id": "science-08",
+                  "label": "Океан",
+                  "style": "blue"
+                },
+                {
+                  "id": "science-09",
+                  "label": "Эксперименты",
+                  "style": "blue"
+                },
+                {
+                  "id": "science-10",
+                  "label": "Открытия",
+                  "style": "blue"
+                },
+                {
+                  "id": "music-02",
+                  "label": "Концерты",
+                  "style": "red"
+                },
+                {
+                  "id": "music-03",
+                  "label": "Джаз",
+                  "style": "red"
+                },
+                {
+                  "id": "music-04",
+                  "label": "Электроника",
+                  "style": "red"
+                },
+                {
+                  "id": "music-05",
+                  "label": "Рок",
+                  "style": "red"
+                },
+                {
+                  "id": "music-06",
+                  "label": "Вокал",
+                  "style": "red"
+                },
+                {
+                  "id": "music-07",
+                  "label": "Инструменты",
+                  "style": "red"
+                },
+                {
+                  "id": "music-08",
+                  "label": "Оркестр",
+                  "style": "red"
+                },
+                {
+                  "id": "music-09",
+                  "label": "Ритм",
+                  "style": "red"
+                },
+                {
+                  "id": "music-10",
+                  "label": "Плейлисты",
+                  "style": "red"
+                },
+                {
+                  "id": "technology-01",
+                  "label": "Технологии",
+                  "style": "blue"
+                },
+                {
+                  "id": "technology-04",
+                  "label": "Роботы",
+                  "style": "blue"
+                },
+                {
+                  "id": "technology-05",
+                  "label": "Искусственный интеллект",
+                  "style": "blue"
+                },
+                {
+                  "id": "technology-06",
+                  "label": "Программирование",
+                  "style": "blue"
+                },
+                {
+                  "id": "technology-07",
+                  "label": "Гаджеты",
+                  "style": "blue"
+                },
+                {
+                  "id": "technology-08",
+                  "label": "Инженерия",
+                  "style": "blue"
+                },
+                {
+                  "id": "technology-09",
+                  "label": "Изобретения",
+                  "style": "blue"
+                },
+                {
+                  "id": "culture-02",
+                  "label": "Сериалы",
+                  "style": "red"
+                },
+                {
+                  "id": "culture-03",
+                  "label": "Шоу",
+                  "style": "red"
+                },
+                {
+                  "id": "culture-04",
+                  "label": "Комедия",
+                  "style": "red"
+                },
+                {
+                  "id": "culture-05",
+                  "label": "Анимация",
+                  "style": "red"
+                },
+                {
+                  "id": "culture-06",
+                  "label": "Искусство",
+                  "style": "red"
+                },
+                {
+                  "id": "culture-07",
+                  "label": "Дизайн",
+                  "style": "red"
+                },
+                {
+                  "id": "culture-08",
+                  "label": "Архитектура",
+                  "style": "red"
+                },
+                {
+                  "id": "culture-09",
+                  "label": "История",
+                  "style": "red"
+                },
+                {
+                  "id": "culture-10",
+                  "label": "Литература",
+                  "style": "red"
+                },
+                {
+                  "id": "world-05",
+                  "label": "Горы",
+                  "style": "blue"
+                },
+                {
+                  "id": "world-06",
+                  "label": "Лес",
+                  "style": "blue"
+                },
+                {
+                  "id": "world-07",
+                  "label": "Города",
+                  "style": "blue"
+                },
+                {
+                  "id": "world-09",
+                  "label": "Кулинария",
+                  "style": "blue"
+                },
+                {
+                  "id": "world-10",
+                  "label": "Культура стран",
+                  "style": "blue"
+                },
+                {
+                  "id": "active-01",
+                  "label": "Спорт",
+                  "style": "red"
+                },
+                {
+                  "id": "active-02",
+                  "label": "Баскетбол",
+                  "style": "red"
+                },
+                {
+                  "id": "active-03",
+                  "label": "Футбол",
+                  "style": "red"
+                },
+                {
+                  "id": "active-04",
+                  "label": "Бег",
+                  "style": "red"
+                },
+                {
+                  "id": "active-05",
+                  "label": "Велосипеды",
+                  "style": "red"
+                },
+                {
+                  "id": "active-06",
+                  "label": "Танцы",
+                  "style": "red"
+                },
+                {
+                  "id": "active-07",
+                  "label": "Игры",
+                  "style": "red"
+                },
+                {
+                  "id": "active-08",
+                  "label": "Киберспорт",
+                  "style": "red"
+                },
+                {
+                  "id": "active-09",
+                  "label": "Приключения",
+                  "style": "red"
+                },
+                {
+                  "id": "active-10",
+                  "label": "Мастерство",
+                  "style": "red"
+                }
+              ],
+              "assets": [
+                "nebula",
+                "jupiter",
+                "ribbon:ribbon"
+              ]
+            }
+          }
+        ],
+        "cluster": {
+          "headGap": 0.04,
+          "bodyHeight": 0.48,
+          "follow": 4.8,
+          "gap": 0.014,
+          "lookAhead": 0.65,
+          "avoidance": 0.8,
+          "returnSpeed": 1,
+          "links": 0.3,
+          "tagCount": 8
+        }
+      },
+      "renderSize": [
+        3072,
+        1280
+      ]
+    },
+    {
+      "id": "vk-stella",
+      "status": "running",
+      "generation": "df93d79a-44df-42c2-af36-984cccac7663",
+      "frame": 198207,
+      "error": null,
+      "settings": {
+        "spin": 0.16
+      },
+      "renderSize": [
+        1080,
+        1920
+      ]
+    },
+    {
+      "id": "vk-arch",
+      "status": "running",
+      "generation": "eb678e4e-0e1c-4347-96f0-f0eb49d2b1de",
+      "frame": 212184,
+      "error": null,
+      "settings": {
+        "noise": {
+          "filledMin": 0.65,
+          "filledMax": 1,
+          "emptyMin": 0,
+          "emptyMax": 0.4,
+          "scale": 2.8,
+          "speed": 0.18,
+          "octaves": 3,
+          "persistence": 0.5,
+          "size": 1,
+          "brightness": 0.9,
+          "glow": 0.55,
+          "seed": 42
+        },
+        "flow": {
+          "density": 34,
+          "hfov": 75,
+          "blur": 2.4,
+          "depth": 1,
+          "rows": 8,
+          "gap": 0.18,
+          "mask": "auto",
+          "source": "auto",
+          "view": "composite",
+          "maskStrength": 1,
+          "breath": 0.18
+        },
+        "fluid": {
+          "autoEmit": true,
+          "emitForce": 1.1,
+          "emitLight": 1.2,
+          "emitSpread": 0.7,
+          "transitionLength": 1.8,
+          "birthSize": 0,
+          "radius": 0.09,
+          "force": 22,
+          "ink": 1.4,
+          "curl": 24,
+          "velocityDecay": 0.35,
+          "dyeDecay": 0.48,
+          "speed": 1,
+          "resolution": 48,
+          "iterations": 20
+        },
+        "vortex": {
+          "enabled": true,
+          "speed": 0.28,
+          "strength": 1.1,
+          "scale": 1.35,
+          "travel": 0.24,
+          "spread": 0.72,
+          "exposure": 1.5,
+          "white": 0.35,
+          "size": 0.8,
+          "detail": 0.22,
+          "response": 0.4,
+          "quality": 8
+        },
+        "underlay": {
+          "look": "reference-v2",
+          "dark": "#000b38",
+          "middle": "#0037ac",
+          "light": "#007cff",
+          "brightness": 0.42,
+          "scale": 1.6,
+          "speed": 0.18,
+          "contrast": 1.1
+        },
+        "composition": {
+          "tags": 60,
+          "textPopulation": "catalog-v1",
+          "products": 1,
+          "speed": 1,
+          "scale": 1,
+          "depth": 1,
+          "trail": 0.22,
+          "focusBlur": 0.15,
+          "lines": 0.45,
+          "particles": 72,
+          "particleDynamics": 0.8,
+          "particleSpeed": 1,
+          "particleLarge": 0.25,
+          "particleOpacity": 0.9
+        },
+        "color": {
+          "strength": 1,
+          "redBalance": 0
+        },
+        "neon": {
+          "look": "reference-v2",
+          "bloom": 0.65,
+          "radius": 5,
+          "redAccent": 0.2,
+          "knee": 1.8,
+          "roundness": 0.38
+        },
+        "blue": {
+          "saturation": 1,
+          "fluidSaturation": 0.1,
+          "opacity": 1,
+          "backgroundOpacity": 0.44
+        },
+        "energy": 0.7,
+        "quality": 1,
+        "surface": "up",
+        "highlights": {
+          "threshold": 0.22,
+          "width": 0.46,
+          "gain": 1.5,
+          "cyan": 0.8
+        },
+        "cellDepth": {
+          "driver": "fluid-v1",
+          "focus": "near-v1",
+          "focusRange": 0.18,
+          "amount": 1,
+          "nearZ": 8.4,
+          "farZ": 24,
+          "blur": 3,
+          "threshold": 0.02,
+          "fade": 0.65,
+          "fluidLift": 1.5
+        },
+        "lighting": {
+          "radius": 0.9,
+          "softness": 0.65,
+          "gain": 1.6,
+          "spill": 0.03
+        }
+      },
+      "renderSize": [
+        6656,
+        512
+      ]
+    },
+    {
+      "id": "max-wall-right",
+      "status": "running",
+      "generation": "b4915901-b99c-4188-8bd7-f33362a6d780",
+      "frame": 8048,
+      "error": null,
+      "settings": {
+        "spin": 0.16,
+        "layoutMode": "single"
+      },
+      "renderSize": [
+        4096,
+        1280
+      ]
+    }
+  ]
+}

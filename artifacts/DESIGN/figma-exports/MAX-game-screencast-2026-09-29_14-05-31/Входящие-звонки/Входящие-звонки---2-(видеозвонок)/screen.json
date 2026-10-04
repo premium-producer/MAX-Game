@@ -1,0 +1,1054 @@
+{
+  "id": "2299:85778",
+  "name": "Входящие звонки - 2 (видеозвонок)",
+  "type": "FRAME",
+  "parent": "2299:85777",
+  "bounds": {
+    "x": 20334,
+    "y": 321,
+    "width": 360,
+    "height": 800
+  },
+  "visible": true,
+  "fontSize": 0,
+  "hasImage": false,
+  "task": "communication.call",
+  "confidence": "high",
+  "reviewed": false,
+  "include": true,
+  "group": "2299:85777",
+  "groupName": "Входящие звонки",
+  "containerPath": [
+    {
+      "id": "2299:85777",
+      "name": "Входящие звонки",
+      "type": "SECTION"
+    }
+  ],
+  "sectionPath": [
+    {
+      "id": "2299:85777",
+      "name": "Входящие звонки",
+      "type": "SECTION"
+    }
+  ],
+  "sequence": {
+    "series": "Входящие звонки",
+    "number": 2,
+    "description": "видеозвонок"
+  },
+  "detection": "structure",
+  "evidence": [
+    {
+      "task": "communication.call",
+      "source": "frame-name",
+      "id": "2299:85778",
+      "text": "Входящие звонки - 2 (видеозвонок)",
+      "weight": 100
+    },
+    {
+      "task": "communication.call",
+      "source": "ancestor",
+      "id": "2299:85777",
+      "text": "Входящие звонки",
+      "weight": 99
+    }
+  ],
+  "ancestors": [
+    {
+      "id": "2299:85777",
+      "name": "Входящие звонки",
+      "type": "SECTION"
+    }
+  ],
+  "nearbyHeadings": [],
+  "contextRegion": null,
+  "warnings": [
+    "Слой «.Recording for Call Bottom» (I2299:85793;6277:2559): недоступно componentProperties. in get_componentProperties: Component set for node has existing errors"
+  ],
+  "order": 48,
+  "fingerprint": "[\"Входящие звонки - 2 (видеозвонок)\",{\"x\":20334,\"y\":321,\"width\":360,\"height\":800},\"FRAME\",[[\"2299:85777\",\"Входящие звонки\",\"SECTION\"],[\"1:8\",\"Page 8\",\"PAGE\"]],\"content-v1\",1021324601,469992781,143]",
+  "readWarnings": [
+    {
+      "nodeId": "I2299:85793;6277:2559",
+      "nodeName": ".Recording for Call Bottom",
+      "property": "componentProperties",
+      "message": "in get_componentProperties: Component set for node has existing errors"
+    }
+  ],
+  "manualTask": false,
+  "title": "Входящие звонки - 2 (видеозвонок)",
+  "exportStatus": "ok",
+  "texts": [
+    {
+      "id": "2299:85784",
+      "name": "Закрыть",
+      "type": "TEXT",
+      "parent": "2299:85782",
+      "bounds": {
+        "x": 20369,
+        "y": 1037,
+        "width": 58,
+        "height": 18
+      },
+      "text": "Закрыть",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Закрыть",
+          "start": 0,
+          "end": 7,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:e90797c2e243ebd462e1946b5c699aec972290e3,19702:15",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:85787",
+      "name": "Ответить с аудио",
+      "type": "TEXT",
+      "parent": "2299:85785",
+      "bounds": {
+        "x": 20483,
+        "y": 1037,
+        "width": 62,
+        "height": 36
+      },
+      "text": "Ответить\nс аудио",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Ответить\nс аудио",
+          "start": 0,
+          "end": 16,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:e90797c2e243ebd462e1946b5c699aec972290e3,19702:15",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:85790",
+      "name": "Ответить с видео",
+      "type": "TEXT",
+      "parent": "2299:85788",
+      "bounds": {
+        "x": 20599,
+        "y": 1037,
+        "width": 62,
+        "height": 36
+      },
+      "text": "Ответить с видео",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Ответить с видео",
+          "start": 0,
+          "end": 16,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:e90797c2e243ebd462e1946b5c699aec972290e3,19702:15",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:85793;6277:2547;1915:1645;1851:136",
+      "name": "Time",
+      "type": "TEXT",
+      "parent": "I2299:85793;6277:2547;1915:1645",
+      "bounds": {
+        "x": 20358,
+        "y": 341,
+        "width": 29,
+        "height": 20
+      },
+      "text": "9:30",
+      "fontName": null,
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "9:30",
+          "start": 0,
+          "end": 4,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:85798",
+      "name": "Павел Селезнев",
+      "type": "TEXT",
+      "parent": "2299:85797",
+      "bounds": {
+        "x": 20334,
+        "y": 463,
+        "width": 360,
+        "height": 32
+      },
+      "text": "Павел Селезнев",
+      "fontName": {
+        "family": "Roboto",
+        "style": "SemiBold",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 600
+        }
+      },
+      "fontSize": 28,
+      "segments": [
+        {
+          "characters": "Павел Селезнев",
+          "start": 0,
+          "end": 14,
+          "fontSize": 28,
+          "fontName": {
+            "family": "Roboto",
+            "style": "SemiBold",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 600
+            }
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.800000011920929,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:0af30f4380fce519624c68d2dc55e4467590684a/4263:365"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:d5428d8903c74f4ecb67c4ef3ac420ddc0286a2a,3684:80",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:85800",
+      "name": "Входящий аудиозвонок MAX",
+      "type": "TEXT",
+      "parent": "2299:85799",
+      "bounds": {
+        "x": 20417.5,
+        "y": 507,
+        "width": 193,
+        "height": 18
+      },
+      "text": "Входящий аудиозвонок MAX",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Входящий аудиозвонок MAX",
+          "start": 0,
+          "end": 24,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.6399999856948853,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:4c4633b73f04062295f5cba9c91128e605821b9c/4264:386"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:e90797c2e243ebd462e1946b5c699aec972290e3,19702:15",
+          "hyperlink": null
+        }
+      ]
+    }
+  ],
+  "layers": [
+    {
+      "id": "2299:85778",
+      "name": "Входящие звонки - 2 (видеозвонок)",
+      "type": "FRAME",
+      "parent": "2299:85777",
+      "bounds": {
+        "x": 20334,
+        "y": 321,
+        "width": 360,
+        "height": 800
+      }
+    },
+    {
+      "id": "2299:85779",
+      "name": "User",
+      "type": "RECTANGLE",
+      "parent": "2299:85778",
+      "bounds": {
+        "x": 20334,
+        "y": 321,
+        "width": 360,
+        "height": 800
+      }
+    },
+    {
+      "id": "2299:85780",
+      "name": "Frame 2131327322",
+      "type": "FRAME",
+      "parent": "2299:85778",
+      "bounds": {
+        "x": 20334,
+        "y": 867,
+        "width": 360,
+        "height": 254
+      }
+    },
+    {
+      "id": "2299:85781",
+      "name": "Frame 2131327262",
+      "type": "FRAME",
+      "parent": "2299:85780",
+      "bounds": {
+        "x": 20346,
+        "y": 953,
+        "width": 336,
+        "height": 132
+      }
+    },
+    {
+      "id": "2299:85782",
+      "name": "Frame 2131327261",
+      "type": "FRAME",
+      "parent": "2299:85781",
+      "bounds": {
+        "x": 20348,
+        "y": 965,
+        "width": 100,
+        "height": 90
+      }
+    },
+    {
+      "id": "2299:85783",
+      "name": ".End call for Call Bottom",
+      "type": "INSTANCE",
+      "parent": "2299:85782",
+      "bounds": {
+        "x": 20366,
+        "y": 965,
+        "width": 64,
+        "height": 64
+      }
+    },
+    {
+      "id": "I2299:85783;4200:2376",
+      "name": "Button",
+      "type": "FRAME",
+      "parent": "2299:85783",
+      "bounds": {
+        "x": 20366,
+        "y": 965,
+        "width": 64,
+        "height": 64
+      }
+    },
+    {
+      "id": "I2299:85783;4200:2377",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "I2299:85783;4200:2376",
+      "bounds": {
+        "x": 20382,
+        "y": 981,
+        "width": 31.999998092651367,
+        "height": 31.999998092651367
+      }
+    },
+    {
+      "id": "I2299:85783;4200:2377;71:72",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:85783;4200:2377",
+      "bounds": {
+        "x": 20384.666015625,
+        "y": 991,
+        "width": 26.666667938232422,
+        "height": 12.000000953674316
+      }
+    },
+    {
+      "id": "2299:85784",
+      "name": "Закрыть",
+      "type": "TEXT",
+      "parent": "2299:85782",
+      "bounds": {
+        "x": 20369,
+        "y": 1037,
+        "width": 58,
+        "height": 18
+      }
+    },
+    {
+      "id": "2299:85785",
+      "name": "Frame 2131327263",
+      "type": "FRAME",
+      "parent": "2299:85781",
+      "bounds": {
+        "x": 20464,
+        "y": 965,
+        "width": 100,
+        "height": 108
+      }
+    },
+    {
+      "id": "2299:85786",
+      "name": ".End call for Call Bottom",
+      "type": "INSTANCE",
+      "parent": "2299:85785",
+      "bounds": {
+        "x": 20482,
+        "y": 965,
+        "width": 64,
+        "height": 64
+      }
+    },
+    {
+      "id": "I2299:85786;4200:2376",
+      "name": "Button",
+      "type": "FRAME",
+      "parent": "2299:85786",
+      "bounds": {
+        "x": 20482,
+        "y": 965,
+        "width": 64,
+        "height": 64
+      }
+    },
+    {
+      "id": "I2299:85786;4200:2377",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "I2299:85786;4200:2376",
+      "bounds": {
+        "x": 20498,
+        "y": 981,
+        "width": 31.999998092651367,
+        "height": 31.999998092651367
+      }
+    },
+    {
+      "id": "I2299:85786;4200:2377;14:15",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:85786;4200:2377",
+      "bounds": {
+        "x": 20503.080078125,
+        "y": 983.6666870117188,
+        "width": 24.000001907348633,
+        "height": 26.666662216186523
+      }
+    },
+    {
+      "id": "2299:85787",
+      "name": "Ответить с аудио",
+      "type": "TEXT",
+      "parent": "2299:85785",
+      "bounds": {
+        "x": 20483,
+        "y": 1037,
+        "width": 62,
+        "height": 36
+      }
+    },
+    {
+      "id": "2299:85788",
+      "name": "Frame 2131327260",
+      "type": "FRAME",
+      "parent": "2299:85781",
+      "bounds": {
+        "x": 20580,
+        "y": 965,
+        "width": 100,
+        "height": 108
+      }
+    },
+    {
+      "id": "2299:85789",
+      "name": ".End call for Call Bottom",
+      "type": "INSTANCE",
+      "parent": "2299:85788",
+      "bounds": {
+        "x": 20598,
+        "y": 965,
+        "width": 64,
+        "height": 64
+      }
+    },
+    {
+      "id": "I2299:85789;4200:2376",
+      "name": "Button",
+      "type": "FRAME",
+      "parent": "2299:85789",
+      "bounds": {
+        "x": 20598,
+        "y": 965,
+        "width": 64,
+        "height": 64
+      }
+    },
+    {
+      "id": "I2299:85789;4200:2377",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "I2299:85789;4200:2376",
+      "bounds": {
+        "x": 20614,
+        "y": 981,
+        "width": 31.999998092651367,
+        "height": 31.999998092651367
+      }
+    },
+    {
+      "id": "I2299:85789;4200:2377;71:86",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:85789;4200:2377",
+      "bounds": {
+        "x": 20616.666015625,
+        "y": 987.0044555664062,
+        "width": 26.666667938232422,
+        "height": 20.00020980834961
+      }
+    },
+    {
+      "id": "2299:85790",
+      "name": "Ответить с видео",
+      "type": "TEXT",
+      "parent": "2299:85788",
+      "bounds": {
+        "x": 20599,
+        "y": 1037,
+        "width": 62,
+        "height": 36
+      }
+    },
+    {
+      "id": "2299:85791",
+      "name": "📎 Home Indicator",
+      "type": "INSTANCE",
+      "parent": "2299:85780",
+      "bounds": {
+        "x": 20334,
+        "y": 1097,
+        "width": 360,
+        "height": 24
+      }
+    },
+    {
+      "id": "I2299:85791;1350:1201",
+      "name": "Home Indicator",
+      "type": "VECTOR",
+      "parent": "2299:85791",
+      "bounds": {
+        "x": 20462,
+        "y": 1109,
+        "width": 104,
+        "height": 0
+      }
+    },
+    {
+      "id": "2299:85792",
+      "name": "Frame 2131327324",
+      "type": "FRAME",
+      "parent": "2299:85778",
+      "bounds": {
+        "x": 20334,
+        "y": 319,
+        "width": 360,
+        "height": 280
+      }
+    },
+    {
+      "id": "2299:85793",
+      "name": "Call Header",
+      "type": "INSTANCE",
+      "parent": "2299:85792",
+      "bounds": {
+        "x": 20334,
+        "y": 319,
+        "width": 360,
+        "height": 60
+      }
+    },
+    {
+      "id": "I2299:85793;6277:2547",
+      "name": "Status Bar",
+      "type": "INSTANCE",
+      "parent": "2299:85793",
+      "bounds": {
+        "x": 20334,
+        "y": 319,
+        "width": 360,
+        "height": 52
+      }
+    },
+    {
+      "id": "I2299:85793;6277:2547;1915:1645",
+      "name": "Bar",
+      "type": "INSTANCE",
+      "parent": "I2299:85793;6277:2547",
+      "bounds": {
+        "x": 20334,
+        "y": 319,
+        "width": 360,
+        "height": 52
+      }
+    },
+    {
+      "id": "I2299:85793;6277:2547;1915:1645;1851:136",
+      "name": "Time",
+      "type": "TEXT",
+      "parent": "I2299:85793;6277:2547;1915:1645",
+      "bounds": {
+        "x": 20358,
+        "y": 341,
+        "width": 29,
+        "height": 20
+      }
+    },
+    {
+      "id": "I2299:85793;6277:2547;1915:1645;3399:3829",
+      "name": "Spacer",
+      "type": "FRAME",
+      "parent": "I2299:85793;6277:2547;1915:1645",
+      "bounds": {
+        "x": 20387,
+        "y": 329,
+        "width": 237,
+        "height": 32
+      }
+    },
+    {
+      "id": "I2299:85793;6277:2547;1915:1645;1851:137",
+      "name": "Levels",
+      "type": "FRAME",
+      "parent": "I2299:85793;6277:2547;1915:1645",
+      "bounds": {
+        "x": 20624,
+        "y": 344,
+        "width": 46,
+        "height": 17
+      }
+    },
+    {
+      "id": "I2299:85793;6277:2547;1915:1645;1851:138",
+      "name": "Wifi",
+      "type": "GROUP",
+      "parent": "I2299:85793;6277:2547;1915:1645;1851:137",
+      "bounds": {
+        "x": 20624,
+        "y": 344,
+        "width": 17,
+        "height": 17
+      }
+    },
+    {
+      "id": "I2299:85793;6277:2547;1915:1645;1851:141",
+      "name": "Path",
+      "type": "VECTOR",
+      "parent": "I2299:85793;6277:2547;1915:1645;1851:138",
+      "bounds": {
+        "x": 20624,
+        "y": 344,
+        "width": 17,
+        "height": 17
+      }
+    },
+    {
+      "id": "I2299:85793;6277:2547;1915:1645;1851:142",
+      "name": "Path",
+      "type": "VECTOR",
+      "parent": "I2299:85793;6277:2547;1915:1645;1851:138",
+      "bounds": {
+        "x": 20624,
+        "y": 345.4166564941406,
+        "width": 17,
+        "height": 14.166666984558105
+      }
+    },
+    {
+      "id": "I2299:85793;6277:2547;1915:1645;1851:143",
+      "name": "Signal",
+      "type": "GROUP",
+      "parent": "I2299:85793;6277:2547;1915:1645;1851:137",
+      "bounds": {
+        "x": 20640,
+        "y": 344,
+        "width": 17,
+        "height": 17
+      }
+    },
+    {
+      "id": "I2299:85793;6277:2547;1915:1645;1851:144",
+      "name": "Path",
+      "type": "VECTOR",
+      "parent": "I2299:85793;6277:2547;1915:1645;1851:143",
+      "bounds": {
+        "x": 20640,
+        "y": 344,
+        "width": 17,
+        "height": 17
+      }
+    },
+    {
+      "id": "I2299:85793;6277:2547;1915:1645;1851:145",
+      "name": "Path",
+      "type": "VECTOR",
+      "parent": "I2299:85793;6277:2547;1915:1645;1851:143",
+      "bounds": {
+        "x": 20641.416015625,
+        "y": 345.4166564941406,
+        "width": 14.166666984558105,
+        "height": 14.166666984558105
+      }
+    },
+    {
+      "id": "I2299:85793;6277:2547;1915:1645;1851:146",
+      "name": "Battery",
+      "type": "FRAME",
+      "parent": "I2299:85793;6277:2547;1915:1645;1851:137",
+      "bounds": {
+        "x": 20662,
+        "y": 345,
+        "width": 8,
+        "height": 15
+      }
+    },
+    {
+      "id": "I2299:85793;6277:2547;1915:1645;1851:147",
+      "name": "Base",
+      "type": "VECTOR",
+      "parent": "I2299:85793;6277:2547;1915:1645;1851:146",
+      "bounds": {
+        "x": 20662,
+        "y": 345,
+        "width": 8,
+        "height": 15
+      }
+    },
+    {
+      "id": "I2299:85793;6277:2547;1915:1645;1851:148",
+      "name": "Charge",
+      "type": "VECTOR",
+      "parent": "I2299:85793;6277:2547;1915:1645;1851:146",
+      "bounds": {
+        "x": 20662,
+        "y": 353,
+        "width": 8,
+        "height": 7
+      }
+    },
+    {
+      "id": "2299:85794",
+      "name": "Frame 2131327323",
+      "type": "FRAME",
+      "parent": "2299:85792",
+      "bounds": {
+        "x": 20334,
+        "y": 383,
+        "width": 360,
+        "height": 142
+      }
+    },
+    {
+      "id": "2299:85795",
+      "name": "Avatar / Default",
+      "type": "INSTANCE",
+      "parent": "2299:85794",
+      "bounds": {
+        "x": 20482,
+        "y": 383,
+        "width": 64,
+        "height": 64
+      }
+    },
+    {
+      "id": "I2299:85795;744:2052",
+      "name": "Avatar",
+      "type": "FRAME",
+      "parent": "2299:85795",
+      "bounds": {
+        "x": 20482,
+        "y": 383,
+        "width": 64,
+        "height": 64
+      }
+    },
+    {
+      "id": "2299:85796",
+      "name": "Frame 2131327320",
+      "type": "FRAME",
+      "parent": "2299:85794",
+      "bounds": {
+        "x": 20334,
+        "y": 463,
+        "width": 360,
+        "height": 62
+      }
+    },
+    {
+      "id": "2299:85797",
+      "name": "Frame 2131327321",
+      "type": "FRAME",
+      "parent": "2299:85796",
+      "bounds": {
+        "x": 20334,
+        "y": 463,
+        "width": 360,
+        "height": 32
+      }
+    },
+    {
+      "id": "2299:85798",
+      "name": "Павел Селезнев",
+      "type": "TEXT",
+      "parent": "2299:85797",
+      "bounds": {
+        "x": 20334,
+        "y": 463,
+        "width": 360,
+        "height": 32
+      }
+    },
+    {
+      "id": "2299:85799",
+      "name": "Frame 2087328597",
+      "type": "FRAME",
+      "parent": "2299:85796",
+      "bounds": {
+        "x": 20334,
+        "y": 507,
+        "width": 360,
+        "height": 18
+      }
+    },
+    {
+      "id": "2299:85800",
+      "name": "Входящий аудиозвонок MAX",
+      "type": "TEXT",
+      "parent": "2299:85799",
+      "bounds": {
+        "x": 20417.5,
+        "y": 507,
+        "width": 193,
+        "height": 18
+      }
+    },
+    {
+      "id": "2299:85801",
+      "name": "call_received",
+      "type": "INSTANCE",
+      "parent": "2299:85778",
+      "bounds": {
+        "x": 20393.833984375,
+        "y": 345,
+        "width": 12,
+        "height": 12
+      }
+    },
+    {
+      "id": "I2299:85801;429:131144",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "2299:85801",
+      "bounds": {
+        "x": 20396.083984375,
+        "y": 347.25,
+        "width": 7.5,
+        "height": 7.5
+      }
+    }
+  ],
+  "imageHashes": [
+    "b4576bdd65bb68dbf2fca5231a110f24997ee7ab"
+  ],
+  "notes": [],
+  "pngScale": 1,
+  "pngFile": "Входящие-звонки/Входящие-звонки---2-(видеозвонок)/screen.png",
+  "previewFile": "Входящие-звонки/Входящие-звонки---2-(видеозвонок)/preview.png",
+  "svgFile": "Входящие-звонки/Входящие-звонки---2-(видеозвонок)/screen.svg",
+  "documentFile": "Входящие-звонки/Входящие-звонки---2-(видеозвонок)/figma.json",
+  "images": [
+    {
+      "hash": "b4576bdd65bb68dbf2fca5231a110f24997ee7ab",
+      "file": "Входящие-звонки/Входящие-звонки---2-(видеозвонок)/images/ecba25404026027ba2f4abea64bb9e987472a8a7d869b4a42595469d2826dea4.jpg"
+    }
+  ]
+}

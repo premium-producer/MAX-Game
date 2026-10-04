@@ -1,0 +1,7 @@
+[hidden]{display:none!important}
+.local-faq-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .28s ease}
+.local-faq-panel[data-open="true"]{grid-template-rows:1fr}
+.local-faq-inner{overflow:hidden;min-height:0}
+.tools{touch-action:pan-x pan-y;cursor:grab}.tools_dragging{cursor:grabbing;user-select:none}
+:focus-visible{outline:2px solid #fff;outline-offset:4px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

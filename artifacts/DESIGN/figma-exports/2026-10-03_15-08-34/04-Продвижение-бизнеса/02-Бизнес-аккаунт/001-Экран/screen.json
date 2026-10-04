@@ -1,0 +1,3215 @@
+{
+  "id": "296:16657",
+  "name": "Экран 1",
+  "title": "001-Экран",
+  "bounds": {
+    "x": 22148.70703125,
+    "y": 1279,
+    "width": 962.5848388671875,
+    "height": 561.5078125
+  },
+  "task": "unassigned",
+  "include": true,
+  "reviewed": false,
+  "confidence": "structure",
+  "group": "296:16647",
+  "groupName": "Продвижение бизнеса / Бизнес-аккаунт",
+  "containerPath": [
+    {
+      "id": "296:16452",
+      "name": "04-Продвижение бизнеса"
+    },
+    {
+      "id": "296:16647",
+      "name": "02-Бизнес-аккаунт"
+    }
+  ],
+  "ancestors": [],
+  "nearbyHeadings": [],
+  "evidence": [
+    {
+      "source": "autolayout",
+      "text": "Порядок children; названия фреймов не используются"
+    }
+  ],
+  "warnings": [],
+  "detection": "structure",
+  "order": 75,
+  "content": {
+    "kind": "screen",
+    "missionOrder": 4,
+    "missionNodeId": "296:16452",
+    "iconOrder": 2,
+    "iconNodeId": "296:16647",
+    "iconText": "Бизнес-аккаунт",
+    "iconTexts": [
+      {
+        "id": "296:16651",
+        "order": 1,
+        "text": "Бизнес-аккаунт",
+        "fontName": {
+          "family": "Inter",
+          "style": "Regular",
+          "variationSettings": {
+            "slnt": 0,
+            "wght": 400
+          }
+        },
+        "fontSize": 55,
+        "segments": [
+          {
+            "characters": "Бизнес-аккаунт",
+            "start": 0,
+            "end": 14,
+            "fontSize": 55,
+            "fontName": {
+              "family": "Inter",
+              "style": "Regular",
+              "variationSettings": {
+                "slnt": 0,
+                "wght": 400
+              }
+            },
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 0.07999999821186066,
+                  "g": 0.05999999865889549,
+                  "b": 0.11999999731779099
+                },
+                "boundVariables": {}
+              }
+            ],
+            "hyperlink": null
+          }
+        ],
+        "bounds": {
+          "x": 22759.5,
+          "y": 572,
+          "width": 424,
+          "height": 134
+        }
+      }
+    ],
+    "screenOrder": 1,
+    "screenNodeId": "296:16653",
+    "visualNodeId": "296:16657",
+    "helpNodeId": "296:16738"
+  },
+  "instruction": {
+    "blocks": [
+      {
+        "id": "296:16739",
+        "order": 1,
+        "text": "Войдем на платформу MAX для бизнеса и пройдем верификацию",
+        "fontName": {
+          "family": "Inter",
+          "style": "Regular",
+          "variationSettings": {
+            "slnt": 0,
+            "wght": 400
+          }
+        },
+        "fontSize": 32,
+        "segments": [
+          {
+            "characters": "Войдем на платформу MAX для бизнеса и пройдем верификацию",
+            "start": 0,
+            "end": 57,
+            "fontSize": 32,
+            "fontName": {
+              "family": "Inter",
+              "style": "Regular",
+              "variationSettings": {
+                "slnt": 0,
+                "wght": 400
+              }
+            },
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 0.07999999821186066,
+                  "g": 0.05999999865889549,
+                  "b": 0.11999999731779099
+                },
+                "boundVariables": {}
+              }
+            ],
+            "hyperlink": null
+          }
+        ],
+        "bounds": {
+          "x": 23254,
+          "y": 1467.75390625,
+          "width": 547,
+          "height": 78
+        }
+      }
+    ],
+    "text": "Войдем на платформу MAX для бизнеса и пройдем верификацию"
+  },
+  "watchNodeId": "296:16653",
+  "contextNodeIds": [
+    "296:16648",
+    "296:16453"
+  ],
+  "sequenceParents": [
+    "296:16652",
+    "296:16647",
+    "296:16454",
+    "296:16452"
+  ],
+  "fingerprint": "[\"[\\\"ДОБАВЛЕНО · Вход на платформу\\\",{\\\"x\\\":22038,\\\"y\\\":1100,\\\"width\\\":1867,\\\"height\\\":813.5078125},\\\"FRAME\\\",[[\\\"296:16652\\\",\\\"задание миссии\\\",\\\"FRAME\\\"],[\\\"296:16647\\\",\\\"иконка_задание · Бизнес-аккаунт\\\",\\\"FRAME\\\"],[\\\"296:16454\\\",\\\"Миссия · возможности слева направо\\\",\\\"FRAME\\\"],[\\\"296:16452\\\",\\\"Продвижение бизнеса\\\",\\\"FRAME\\\"],[\\\"296:13218\\\",\\\"MAX аудит миссий\\\",\\\"FRAME\\\"],[\\\"296:13217\\\",\\\"DEV 2\\\",\\\"PAGE\\\"]],\\\"content-v1\\\",3336906700,3897676756,143]\",[\"[\\\"игровая иконка\\\",{\\\"x\\\":22715.5,\\\"y\\\":376,\\\"width\\\":512,\\\"height\\\":374},\\\"FRAME\\\",[[\\\"296:16647\\\",\\\"иконка_задание · Бизнес-аккаунт\\\",\\\"FRAME\\\"],[\\\"296:16454\\\",\\\"Миссия · возможности слева направо\\\",\\\"FRAME\\\"],[\\\"296:16452\\\",\\\"Продвижение бизнеса\\\",\\\"FRAME\\\"],[\\\"296:13218\\\",\\\"MAX аудит миссий\\\",\\\"FRAME\\\"],[\\\"296:13217\\\",\\\"DEV 2\\\",\\\"PAGE\\\"]],\\\"content-v1\\\",2337087922,1492416828,4]\",\"[\\\"Продвижение бизнеса\\\",{\\\"x\\\":21276,\\\"y\\\":206,\\\"width\\\":1600,\\\"height\\\":77},\\\"TEXT\\\",[[\\\"296:16452\\\",\\\"Продвижение бизнеса\\\",\\\"FRAME\\\"],[\\\"296:13218\\\",\\\"MAX аудит миссий\\\",\\\"FRAME\\\"],[\\\"296:13217\\\",\\\"DEV 2\\\",\\\"PAGE\\\"]],\\\"content-v1\\\",3411646121,1499354171,1]\"],[[\"296:16652\",[\"296:16653\",\"296:16740\",\"296:16935\",\"296:17130\",\"296:17144\"]],[\"296:16647\",[\"296:16648\",\"296:16652\"]],[\"296:16454\",[\"296:16455\",\"296:16647\",\"296:17342\",\"296:18549\",\"296:19486\"]],[\"296:16452\",[\"296:16453\",\"296:16454\"]]]]",
+  "exportStatus": "ok",
+  "texts": [
+    {
+      "id": "296:16664",
+      "name": "text",
+      "type": "TEXT",
+      "parent": "296:16663",
+      "bounds": {
+        "x": 22248.97265625,
+        "y": 1412.6923828125,
+        "width": 284,
+        "height": 96
+      },
+      "text": "Максимум\nдля бизнеса",
+      "fontName": {
+        "family": "Max Sans",
+        "style": "Medium"
+      },
+      "fontSize": 48.129241943359375,
+      "segments": [
+        {
+          "characters": "Максимум\n",
+          "start": 0,
+          "end": 9,
+          "fontSize": 48.129241943359375,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "GRADIENT_LINEAR",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "gradientStops": [
+                {
+                  "color": {
+                    "r": 0.3543945252895355,
+                    "g": 0.5480762124061584,
+                    "b": 1,
+                    "a": 1
+                  },
+                  "position": 0,
+                  "boundVariables": {
+                    "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:33bc16684edbe258ee3b43b5d247d3ab6097e7b6/2502:23"
+                    }
+                  }
+                },
+                {
+                  "color": {
+                    "r": 0.2645019590854645,
+                    "g": 0.8406420350074768,
+                    "b": 1,
+                    "a": 1
+                  },
+                  "position": 0.3499999940395355,
+                  "boundVariables": {
+                    "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:228cb0d65624e0b551cbd1132599823fe57690b2/2502:24"
+                    }
+                  }
+                },
+                {
+                  "color": {
+                    "r": 0.5623047351837158,
+                    "g": 0.24589844048023224,
+                    "b": 1,
+                    "a": 1
+                  },
+                  "position": 1,
+                  "boundVariables": {
+                    "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:e139999bb7614d34eeb2c840f445bdafdc6ea9cc/2502:20"
+                    }
+                  }
+                }
+              ],
+              "gradientTransform": [
+                [
+                  1.0772122144699097,
+                  -0.0012451790971681476,
+                  0.1748271882534027
+                ],
+                [
+                  -0.07767682522535324,
+                  0.2134537547826767,
+                  0.5022103190422058
+                ]
+              ]
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        },
+        {
+          "characters": "для бизнеса",
+          "start": 9,
+          "end": 20,
+          "fontSize": 48.129241943359375,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:28e74dd739b09ecde6206f6ab3247330df6192ae/1344:114"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:16665",
+      "name": "Готовые решения для роста продаж, автоматизации поддержки и общения  с клиентами в мессенджере MAX",
+      "type": "TEXT",
+      "parent": "296:16662",
+      "bounds": {
+        "x": 22248.97265625,
+        "y": 1530.0831298828125,
+        "width": 437.8424072265625,
+        "height": 78
+      },
+      "text": "Готовые решения для роста продаж, автоматизации поддержки и общения  с клиентами в мессенджере MAX",
+      "fontName": {
+        "family": "VK Sans Display",
+        "style": "Regular"
+      },
+      "fontSize": 18.71692657470703,
+      "segments": [
+        {
+          "characters": "Готовые решения для роста продаж, автоматизации поддержки и общения  с клиентами в мессенджере MAX",
+          "start": 0,
+          "end": 98,
+          "fontSize": 18.71692657470703,
+          "fontName": {
+            "family": "VK Sans Display",
+            "style": "Regular"
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.7646647095680237,
+                "g": 0.7646647095680237,
+                "b": 0.7646647095680237
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:5a365234c970fbcb40128c9c8d2a9e782c7ee625/1344:120"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:16668;313:15777",
+      "name": "iPhone",
+      "type": "TEXT",
+      "parent": "296:16668",
+      "bounds": {
+        "x": 22265.015625,
+        "y": 1661.2554931640625,
+        "width": 95,
+        "height": 22
+      },
+      "text": "Подключить",
+      "fontName": {
+        "family": "Max Sans",
+        "style": "Medium"
+      },
+      "fontSize": 16.043079376220703,
+      "segments": [
+        {
+          "characters": "Подключить",
+          "start": 0,
+          "end": 10,
+          "fontSize": 16.043079376220703,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:8863bf28d257d953c35a588aa8b5ae009b4e9cb2/1344:110"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:16669;313:15777",
+      "name": "iPhone",
+      "type": "TEXT",
+      "parent": "296:16669",
+      "bounds": {
+        "x": 22402.796875,
+        "y": 1661.2554931640625,
+        "width": 94,
+        "height": 22
+      },
+      "text": "Инструкция",
+      "fontName": {
+        "family": "Max Sans",
+        "style": "Medium"
+      },
+      "fontSize": 16.043079376220703,
+      "segments": [
+        {
+          "characters": "Инструкция",
+          "start": 0,
+          "end": 10,
+          "fontSize": 16.043079376220703,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:8863bf28d257d953c35a588aa8b5ae009b4e9cb2/1344:110"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:16681;2016:23926",
+      "name": "9:41",
+      "type": "TEXT",
+      "parent": "296:16681",
+      "bounds": {
+        "x": 22754.86328125,
+        "y": 1430.3909912109375,
+        "width": 25,
+        "height": 14
+      },
+      "text": "17:43",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 9.728067398071289,
+      "segments": [
+        {
+          "characters": "17:43",
+          "start": 0,
+          "end": 5,
+          "fontSize": 9.728067398071289,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:925464cf5d4d5e28530ec95986e98bc9e3d56988/481:245"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:16699",
+      "name": "Чат-боты",
+      "type": "TEXT",
+      "parent": "296:16697",
+      "bounds": {
+        "x": 22921.330078125,
+        "y": 1594.8759765625,
+        "width": 57,
+        "height": 16
+      },
+      "text": "Чат-боты",
+      "fontName": {
+        "family": "Max Sans",
+        "style": "DemiBold"
+      },
+      "fontSize": 12.263701438903809,
+      "segments": [
+        {
+          "characters": "Чат-боты",
+          "start": 0,
+          "end": 8,
+          "fontSize": 12.263701438903809,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "DemiBold"
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:16706",
+      "name": "Интеграция",
+      "type": "TEXT",
+      "parent": "296:16704",
+      "bounds": {
+        "x": 22755.689453125,
+        "y": 1759.7548828125,
+        "width": 74,
+        "height": 16
+      },
+      "text": "Интеграция",
+      "fontName": {
+        "family": "Max Sans",
+        "style": "DemiBold"
+      },
+      "fontSize": 12.263701438903809,
+      "segments": [
+        {
+          "characters": "Интеграция",
+          "start": 0,
+          "end": 10,
+          "fontSize": 12.263701438903809,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "DemiBold"
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:16713",
+      "name": "Мини-приложения",
+      "type": "TEXT",
+      "parent": "296:16711",
+      "bounds": {
+        "x": 22891.94921875,
+        "y": 1759.7548828125,
+        "width": 115,
+        "height": 16
+      },
+      "text": "Мини-приложения",
+      "fontName": {
+        "family": "Max Sans",
+        "style": "DemiBold"
+      },
+      "fontSize": 12.263701438903809,
+      "segments": [
+        {
+          "characters": "Мини-приложения",
+          "start": 0,
+          "end": 15,
+          "fontSize": 12.263701438903809,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "DemiBold"
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:16721",
+      "name": "Каналы",
+      "type": "TEXT",
+      "parent": "296:16719",
+      "bounds": {
+        "x": 22769.314453125,
+        "y": 1594.8759765625,
+        "width": 47,
+        "height": 16
+      },
+      "text": "Каналы",
+      "fontName": {
+        "family": "Max Sans",
+        "style": "DemiBold"
+      },
+      "fontSize": 12.263701438903809,
+      "segments": [
+        {
+          "characters": "Каналы",
+          "start": 0,
+          "end": 6,
+          "fontSize": 12.263701438903809,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "DemiBold"
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:16727",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "296:16726",
+      "bounds": {
+        "x": 22888.0234375,
+        "y": 1320.4447021484375,
+        "width": 137,
+        "height": 19
+      },
+      "text": "Войти на платформу",
+      "fontName": {
+        "family": "Max Sans",
+        "style": "Medium"
+      },
+      "fontSize": 13.369234085083008,
+      "segments": [
+        {
+          "characters": "Войти на платформу",
+          "start": 0,
+          "end": 18,
+          "fontSize": 13.369234085083008,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "GRADIENT_LINEAR",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "gradientStops": [
+                {
+                  "color": {
+                    "r": 0.3543945252895355,
+                    "g": 0.5480762124061584,
+                    "b": 1,
+                    "a": 1
+                  },
+                  "position": 0,
+                  "boundVariables": {
+                    "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:33bc16684edbe258ee3b43b5d247d3ab6097e7b6/2502:23"
+                    }
+                  }
+                },
+                {
+                  "color": {
+                    "r": 0.2645019590854645,
+                    "g": 0.8406420350074768,
+                    "b": 1,
+                    "a": 1
+                  },
+                  "position": 0.3499999940395355,
+                  "boundVariables": {
+                    "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:228cb0d65624e0b551cbd1132599823fe57690b2/2502:24"
+                    }
+                  }
+                },
+                {
+                  "color": {
+                    "r": 0.5623047351837158,
+                    "g": 0.24589844048023224,
+                    "b": 1,
+                    "a": 1
+                  },
+                  "position": 1,
+                  "boundVariables": {
+                    "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:e139999bb7614d34eeb2c840f445bdafdc6ea9cc/2502:20"
+                    }
+                  }
+                }
+              ],
+              "gradientTransform": [
+                [
+                  0.9056235551834106,
+                  0.09835318475961685,
+                  -1.7361112547575885e-14
+                ],
+                [
+                  -0.1729200929403305,
+                  0.17216075956821442,
+                  0.5
+                ]
+              ]
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:16729;583:6123",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "296:16729",
+      "bounds": {
+        "x": 22445.74609375,
+        "y": 1320.44482421875,
+        "width": 82,
+        "height": 19
+      },
+      "text": "Для бизнеса",
+      "fontName": {
+        "family": "Max Sans",
+        "style": "Medium"
+      },
+      "fontSize": 13.369234085083008,
+      "segments": [
+        {
+          "characters": "Для бизнеса",
+          "start": 0,
+          "end": 11,
+          "fontSize": 13.369234085083008,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:f8ae9c4fbe3349a95e8d0a194674c1f48a8ba0d7/5750:85"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:16730;583:6123",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "296:16730",
+      "bounds": {
+        "x": 22559.83203125,
+        "y": 1320.44482421875,
+        "width": 138,
+        "height": 19
+      },
+      "text": "Скачать приложение",
+      "fontName": {
+        "family": "Max Sans",
+        "style": "Medium"
+      },
+      "fontSize": 13.369234085083008,
+      "segments": [
+        {
+          "characters": "Скачать приложение",
+          "start": 0,
+          "end": 18,
+          "fontSize": 13.369234085083008,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.7098039388656616,
+                "g": 0.7098039388656616,
+                "b": 0.7098039388656616
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2e41ce3f9042b36a64fbb8a588481175d5dc8eef/1344:119"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:16731;583:6123",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "296:16731",
+      "bounds": {
+        "x": 22729.91796875,
+        "y": 1320.44482421875,
+        "width": 85,
+        "height": 19
+      },
+      "text": "Цифровой ID",
+      "fontName": {
+        "family": "Max Sans",
+        "style": "Medium"
+      },
+      "fontSize": 13.369234085083008,
+      "segments": [
+        {
+          "characters": "Цифровой ID",
+          "start": 0,
+          "end": 11,
+          "fontSize": 13.369234085083008,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.7098039388656616,
+                "g": 0.7098039388656616,
+                "b": 0.7098039388656616
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2e41ce3f9042b36a64fbb8a588481175d5dc8eef/1344:119"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "296:16739",
+      "order": 1,
+      "text": "Войдем на платформу MAX для бизнеса и пройдем верификацию",
+      "fontName": {
+        "family": "Inter",
+        "style": "Regular",
+        "variationSettings": {
+          "slnt": 0,
+          "wght": 400
+        }
+      },
+      "fontSize": 32,
+      "segments": [
+        {
+          "characters": "Войдем на платформу MAX для бизнеса и пройдем верификацию",
+          "start": 0,
+          "end": 57,
+          "fontSize": 32,
+          "fontName": {
+            "family": "Inter",
+            "style": "Regular",
+            "variationSettings": {
+              "slnt": 0,
+              "wght": 400
+            }
+          },
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.07999999821186066,
+                "g": 0.05999999865889549,
+                "b": 0.11999999731779099
+              },
+              "boundVariables": {}
+            }
+          ],
+          "hyperlink": null
+        }
+      ],
+      "bounds": {
+        "x": 23254,
+        "y": 1467.75390625,
+        "width": 547,
+        "height": 78
+      },
+      "contentRole": "instruction"
+    }
+  ],
+  "layers": [
+    {
+      "id": "296:16657",
+      "name": "Вход на платформу",
+      "type": "FRAME",
+      "parent": "296:16654",
+      "bounds": {
+        "x": 22148.70703125,
+        "y": 1279,
+        "width": 962.5848388671875,
+        "height": 561.5078125
+      }
+    },
+    {
+      "id": "296:16658",
+      "name": "Hero Seaction",
+      "type": "FRAME",
+      "parent": "296:16657",
+      "bounds": {
+        "x": 22148.70703125,
+        "y": 1279,
+        "width": 962.5848388671875,
+        "height": 561.5078125
+      }
+    },
+    {
+      "id": "296:16659",
+      "name": "Blur",
+      "type": "INSTANCE",
+      "parent": "296:16658",
+      "bounds": {
+        "x": 22616.626953125,
+        "y": 1477.5330810546875,
+        "width": 401.0769958496094,
+        "height": 401.0769958496094
+      }
+    },
+    {
+      "id": "I296:16659;1:484",
+      "name": "Ellipse 4",
+      "type": "ELLIPSE",
+      "parent": "296:16659",
+      "bounds": {
+        "x": 22616.626953125,
+        "y": 1578.2637939453125,
+        "width": 200.5384979248047,
+        "height": 200.5384979248047
+      }
+    },
+    {
+      "id": "I296:16659;1:485",
+      "name": "Ellipse 3",
+      "type": "ELLIPSE",
+      "parent": "296:16659",
+      "bounds": {
+        "x": 22717.357421875,
+        "y": 1677.99462890625,
+        "width": 200.5384979248047,
+        "height": 200.5384979248047
+      }
+    },
+    {
+      "id": "I296:16659;1:486",
+      "name": "Ellipse 2",
+      "type": "ELLIPSE",
+      "parent": "296:16659",
+      "bounds": {
+        "x": 22817.087890625,
+        "y": 1578.2637939453125,
+        "width": 200.5384979248047,
+        "height": 200.5384979248047
+      }
+    },
+    {
+      "id": "I296:16659;1:487",
+      "name": "Ellipse 1",
+      "type": "ELLIPSE",
+      "parent": "296:16659",
+      "bounds": {
+        "x": 22720.03125,
+        "y": 1477.5330810546875,
+        "width": 200.5384979248047,
+        "height": 200.5384979248047
+      }
+    },
+    {
+      "id": "296:16660",
+      "name": "Content",
+      "type": "FRAME",
+      "parent": "296:16658",
+      "bounds": {
+        "x": 22248.97265625,
+        "y": 1412.6923828125,
+        "width": 762.0463256835938,
+        "height": 614.3162841796875
+      }
+    },
+    {
+      "id": "296:16661",
+      "name": "Text and Buttons",
+      "type": "FRAME",
+      "parent": "296:16660",
+      "bounds": {
+        "x": 22248.97265625,
+        "y": 1412.6923828125,
+        "width": 437.8424072265625,
+        "height": 280.953857421875
+      }
+    },
+    {
+      "id": "296:16662",
+      "name": "Frame 2095585038",
+      "type": "FRAME",
+      "parent": "296:16661",
+      "bounds": {
+        "x": 22248.97265625,
+        "y": 1412.6923828125,
+        "width": 437.8424072265625,
+        "height": 195.39077758789062
+      }
+    },
+    {
+      "id": "296:16663",
+      "name": "Frame 2095585044",
+      "type": "FRAME",
+      "parent": "296:16662",
+      "bounds": {
+        "x": 22248.97265625,
+        "y": 1412.6923828125,
+        "width": 437.8424072265625,
+        "height": 96
+      }
+    },
+    {
+      "id": "296:16664",
+      "name": "text",
+      "type": "TEXT",
+      "parent": "296:16663",
+      "bounds": {
+        "x": 22248.97265625,
+        "y": 1412.6923828125,
+        "width": 284,
+        "height": 96
+      }
+    },
+    {
+      "id": "296:16665",
+      "name": "Готовые решения для роста продаж, автоматизации поддержки и общения  с клиентами в мессенджере MAX",
+      "type": "TEXT",
+      "parent": "296:16662",
+      "bounds": {
+        "x": 22248.97265625,
+        "y": 1530.0831298828125,
+        "width": 437.8424072265625,
+        "height": 78
+      }
+    },
+    {
+      "id": "296:16666",
+      "name": "Frame 2095585040",
+      "type": "FRAME",
+      "parent": "296:16661",
+      "bounds": {
+        "x": 22248.97265625,
+        "y": 1650.86474609375,
+        "width": 437.8424072265625,
+        "height": 42.78154754638672
+      }
+    },
+    {
+      "id": "296:16667",
+      "name": "Frame 2095585048",
+      "type": "FRAME",
+      "parent": "296:16666",
+      "bounds": {
+        "x": 22248.97265625,
+        "y": 1650.86474609375,
+        "width": 263.8677062988281,
+        "height": 42.78154754638672
+      }
+    },
+    {
+      "id": "296:16668",
+      "name": "Button",
+      "type": "INSTANCE",
+      "parent": "296:16667",
+      "bounds": {
+        "x": 22248.97265625,
+        "y": 1650.86474609375,
+        "width": 127.0861587524414,
+        "height": 42.78154754638672
+      }
+    },
+    {
+      "id": "I296:16668;313:15777",
+      "name": "iPhone",
+      "type": "TEXT",
+      "parent": "296:16668",
+      "bounds": {
+        "x": 22265.015625,
+        "y": 1661.2554931640625,
+        "width": 95,
+        "height": 22
+      }
+    },
+    {
+      "id": "296:16669",
+      "name": "Button",
+      "type": "INSTANCE",
+      "parent": "296:16667",
+      "bounds": {
+        "x": 22386.75390625,
+        "y": 1650.86474609375,
+        "width": 126.0861587524414,
+        "height": 42.78154754638672
+      }
+    },
+    {
+      "id": "I296:16669;313:15777",
+      "name": "iPhone",
+      "type": "TEXT",
+      "parent": "296:16669",
+      "bounds": {
+        "x": 22402.796875,
+        "y": 1661.2554931640625,
+        "width": 94,
+        "height": 22
+      }
+    },
+    {
+      "id": "296:16670",
+      "name": "Graphics",
+      "type": "FRAME",
+      "parent": "296:16660",
+      "bounds": {
+        "x": 22702.857421875,
+        "y": 1412.6923828125,
+        "width": 308.16082763671875,
+        "height": 614.3162841796875
+      }
+    },
+    {
+      "id": "296:16671",
+      "name": "Phone",
+      "type": "FRAME",
+      "parent": "296:16670",
+      "bounds": {
+        "x": 22733.609375,
+        "y": 1412.693359375,
+        "width": 277.40087890625,
+        "height": 588.2689819335938
+      }
+    },
+    {
+      "id": "296:16672",
+      "name": "Body",
+      "type": "GROUP",
+      "parent": "296:16671",
+      "bounds": {
+        "x": 22732.939453125,
+        "y": 1413.3612060546875,
+        "width": 275.40625,
+        "height": 586.2412109375
+      }
+    },
+    {
+      "id": "296:16673",
+      "name": "Subtract",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "296:16672",
+      "bounds": {
+        "x": 22732.939453125,
+        "y": 1413.3612060546875,
+        "width": 275.40625,
+        "height": 586.2412109375
+      }
+    },
+    {
+      "id": "296:16674",
+      "name": "Outline Stroke",
+      "type": "VECTOR",
+      "parent": "296:16673",
+      "bounds": {
+        "x": 22732.939453125,
+        "y": 1413.3616943359375,
+        "width": 275.4062194824219,
+        "height": 586.2409057617188
+      }
+    },
+    {
+      "id": "296:16675",
+      "name": "Screen Outside",
+      "type": "VECTOR",
+      "parent": "296:16672",
+      "bounds": {
+        "x": 22736.283203125,
+        "y": 1416.0360107421875,
+        "width": 268.7215881347656,
+        "height": 580.8931884765625
+      }
+    },
+    {
+      "id": "296:16676",
+      "name": "Screen Black",
+      "type": "VECTOR",
+      "parent": "296:16672",
+      "bounds": {
+        "x": 22740.962890625,
+        "y": 1420.0467529296875,
+        "width": 260.7000732421875,
+        "height": 572.8716430664062
+      }
+    },
+    {
+      "id": "296:16677",
+      "name": "Mask",
+      "type": "VECTOR",
+      "parent": "296:16672",
+      "bounds": {
+        "x": 22743.63671875,
+        "y": 1422.720703125,
+        "width": 255.3523712158203,
+        "height": 567.5239868164062
+      }
+    },
+    {
+      "id": "296:16678",
+      "name": "Ellipse 8856",
+      "type": "ELLIPSE",
+      "parent": "296:16672",
+      "bounds": {
+        "x": 22696.17578125,
+        "y": 1351.86376953125,
+        "width": 349.60546875,
+        "height": 485.3031921386719
+      }
+    },
+    {
+      "id": "296:16679",
+      "name": "Screen",
+      "type": "GROUP",
+      "parent": "296:16672",
+      "bounds": {
+        "x": 22740.966796875,
+        "y": 1420.7142333984375,
+        "width": 260.7000732421875,
+        "height": 33.3533935546875
+      }
+    },
+    {
+      "id": "296:16681",
+      "name": "Status Bar",
+      "type": "INSTANCE",
+      "parent": "296:16679",
+      "bounds": {
+        "x": 22740.966796875,
+        "y": 1420.7142333984375,
+        "width": 260.7000732421875,
+        "height": 33.3533935546875
+      }
+    },
+    {
+      "id": "I296:16681;2016:23926",
+      "name": "9:41",
+      "type": "TEXT",
+      "parent": "296:16681",
+      "bounds": {
+        "x": 22754.86328125,
+        "y": 1430.3909912109375,
+        "width": 25,
+        "height": 14
+      }
+    },
+    {
+      "id": "I296:16681;2016:23927",
+      "name": "System Status",
+      "type": "FRAME",
+      "parent": "296:16681",
+      "bounds": {
+        "x": 22951.63671875,
+        "y": 1429.0526123046875,
+        "width": 36.13286209106445,
+        "height": 16.676708221435547
+      }
+    },
+    {
+      "id": "I296:16681;2016:23928",
+      "name": "Wifi",
+      "type": "FRAME",
+      "parent": "I296:16681;2016:23927",
+      "bounds": {
+        "x": 22951.63671875,
+        "y": 1431.83203125,
+        "width": 12.970772743225098,
+        "height": 11.117805480957031
+      }
+    },
+    {
+      "id": "I296:16681;2016:23929",
+      "name": "wifi",
+      "type": "VECTOR",
+      "parent": "I296:16681;2016:23928",
+      "bounds": {
+        "x": 22953.02734375,
+        "y": 1433.2218017578125,
+        "width": 10.19132137298584,
+        "height": 7.875112533569336
+      }
+    },
+    {
+      "id": "I296:16681;2016:23930",
+      "name": "Data",
+      "type": "FRAME",
+      "parent": "I296:16681;2016:23927",
+      "bounds": {
+        "x": 22965.998046875,
+        "y": 1431.83203125,
+        "width": 11.117805480957031,
+        "height": 11.117805480957031
+      }
+    },
+    {
+      "id": "I296:16681;2016:23931",
+      "name": "data",
+      "type": "VECTOR",
+      "parent": "I296:16681;2016:23930",
+      "bounds": {
+        "x": 22965.263671875,
+        "y": 1433.4127197265625,
+        "width": 8.610644340515137,
+        "height": 8.610644340515137
+      }
+    },
+    {
+      "id": "I296:16681;2016:23932",
+      "name": "Battery",
+      "type": "FRAME",
+      "parent": "I296:16681;2016:23927",
+      "bounds": {
+        "x": 22978.50390625,
+        "y": 1431.83203125,
+        "width": 9.264837265014648,
+        "height": 11.117805480957031
+      }
+    },
+    {
+      "id": "I296:16681;2016:23933",
+      "name": "Union",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "I296:16681;2016:23932",
+      "bounds": {
+        "x": 22980.357421875,
+        "y": 1432.758544921875,
+        "width": 5.55859375,
+        "height": 9.2646484375
+      }
+    },
+    {
+      "id": "I296:16681;2016:23934",
+      "name": "stroke",
+      "type": "VECTOR",
+      "parent": "I296:16681;2016:23933",
+      "bounds": {
+        "x": 22980.357421875,
+        "y": 1432.758544921875,
+        "width": 5.558902740478516,
+        "height": 9.264837265014648
+      }
+    },
+    {
+      "id": "I296:16681;2016:23935",
+      "name": "fill",
+      "type": "RECTANGLE",
+      "parent": "I296:16681;2016:23933",
+      "bounds": {
+        "x": 22980.8203125,
+        "y": 1433.68505859375,
+        "width": 4.632418632507324,
+        "height": 8.338354110717773
+      }
+    },
+    {
+      "id": "296:16682",
+      "name": "Components",
+      "type": "GROUP",
+      "parent": "296:16671",
+      "bounds": {
+        "x": 22732.939453125,
+        "y": 1416.19775390625,
+        "width": 278.0801086425781,
+        "height": 583.4041748046875
+      }
+    },
+    {
+      "id": "296:16683",
+      "name": "Top Speaker",
+      "type": "RECTANGLE",
+      "parent": "296:16682",
+      "bounds": {
+        "x": 22818.703125,
+        "y": 1416.19775390625,
+        "width": 104.90020751953125,
+        "height": 2.1263556480407715
+      }
+    },
+    {
+      "id": "296:16684",
+      "name": "Front Camera",
+      "type": "GROUP",
+      "parent": "296:16682",
+      "bounds": {
+        "x": 22863.9609375,
+        "y": 1428.7357177734375,
+        "width": 13.369234085083008,
+        "height": 13.369234085083008
+      }
+    },
+    {
+      "id": "296:16685",
+      "name": "Stroke",
+      "type": "ELLIPSE",
+      "parent": "296:16684",
+      "bounds": {
+        "x": 22863.9609375,
+        "y": 1428.73583984375,
+        "width": 13.369234085083008,
+        "height": 13.369234085083008
+      }
+    },
+    {
+      "id": "296:16686",
+      "name": "Lens",
+      "type": "VECTOR",
+      "parent": "296:16684",
+      "bounds": {
+        "x": 22866.634765625,
+        "y": 1431.40966796875,
+        "width": 8.021608352661133,
+        "height": 8.021607398986816
+      }
+    },
+    {
+      "id": "296:16687",
+      "name": "Light",
+      "type": "VECTOR",
+      "parent": "296:16684",
+      "bounds": {
+        "x": 22870.310546875,
+        "y": 1432.7465819868726,
+        "width": 2.6738469386946235,
+        "height": 2.6738467660265997
+      }
+    },
+    {
+      "id": "296:16688",
+      "name": "Buttons",
+      "type": "GROUP",
+      "parent": "296:16682",
+      "bounds": {
+        "x": 23008.345703125,
+        "y": 1504.2728271484375,
+        "width": 2.67384672164917,
+        "height": 155.08314514160156
+      }
+    },
+    {
+      "id": "296:16689",
+      "name": "+ - Button",
+      "type": "VECTOR",
+      "parent": "296:16688",
+      "bounds": {
+        "x": 23008.345703125,
+        "y": 1504.27294921875,
+        "width": 2.67384672164917,
+        "height": 70.85694122314453
+      }
+    },
+    {
+      "id": "296:16690",
+      "name": "Power Button",
+      "type": "VECTOR",
+      "parent": "296:16688",
+      "bounds": {
+        "x": 23008.345703125,
+        "y": 1621.9222412109375,
+        "width": 2.67384672164917,
+        "height": 37.43385314941406
+      }
+    },
+    {
+      "id": "296:16691",
+      "name": "Antennas",
+      "type": "GROUP",
+      "parent": "296:16682",
+      "bounds": {
+        "x": 22732.939453125,
+        "y": 1464.3939208984375,
+        "width": 275.4812316894531,
+        "height": 535.2080078125
+      }
+    },
+    {
+      "id": "296:16692",
+      "name": "Bottom Right",
+      "type": "RECTANGLE",
+      "parent": "296:16691",
+      "bounds": {
+        "x": 22965.564453125,
+        "y": 1996.92822265625,
+        "width": 5.34769344329834,
+        "height": 2.67384672164917
+      }
+    },
+    {
+      "id": "296:16693",
+      "name": "Bottom Left",
+      "type": "RECTANGLE",
+      "parent": "296:16691",
+      "bounds": {
+        "x": 22769.037109375,
+        "y": 1996.92822265625,
+        "width": 5.34769344329834,
+        "height": 2.67384672164917
+      }
+    },
+    {
+      "id": "296:16694",
+      "name": "Right",
+      "type": "RECTANGLE",
+      "parent": "296:16691",
+      "bounds": {
+        "x": 23004.16796875,
+        "y": 1464.39404296875,
+        "width": 4.252711296081543,
+        "height": 6.3790669441223145
+      }
+    },
+    {
+      "id": "296:16695",
+      "name": "Left",
+      "type": "RECTANGLE",
+      "parent": "296:16691",
+      "bounds": {
+        "x": 22732.939453125,
+        "y": 1464.39404296875,
+        "width": 4.7252349853515625,
+        "height": 6.3790669441223145
+      }
+    },
+    {
+      "id": "296:16696",
+      "name": "Frame 2147222642",
+      "type": "FRAME",
+      "parent": "296:16671",
+      "bounds": {
+        "x": 22719.57421875,
+        "y": 1469.5135498046875,
+        "width": 302.504638671875,
+        "height": 318.8562316894531
+      }
+    },
+    {
+      "id": "296:16697",
+      "name": "Group 2087330753",
+      "type": "GROUP",
+      "parent": "296:16696",
+      "bounds": {
+        "x": 22876.283203125,
+        "y": 1469.513427734375,
+        "width": 145.80178833007812,
+        "height": 153.9775848388672
+      }
+    },
+    {
+      "id": "296:16698",
+      "name": "Rectangle 376716235",
+      "type": "RECTANGLE",
+      "parent": "296:16697",
+      "bounds": {
+        "x": 22876.283203125,
+        "y": 1469.5133056640625,
+        "width": 145.80178833007812,
+        "height": 153.9775848388672
+      }
+    },
+    {
+      "id": "296:16699",
+      "name": "Чат-боты",
+      "type": "TEXT",
+      "parent": "296:16697",
+      "bounds": {
+        "x": 22921.330078125,
+        "y": 1594.8759765625,
+        "width": 57,
+        "height": 16
+      }
+    },
+    {
+      "id": "296:16700",
+      "name": "Group 2087330754",
+      "type": "GROUP",
+      "parent": "296:16697",
+      "bounds": {
+        "x": 22886.505859375,
+        "y": 1479.732666015625,
+        "width": 125.36228942871094,
+        "height": 104.92276763916016
+      }
+    },
+    {
+      "id": "296:16701",
+      "name": "Rectangle 376716236",
+      "type": "RECTANGLE",
+      "parent": "296:16700",
+      "bounds": {
+        "x": 22886.505859375,
+        "y": 1479.732666015625,
+        "width": 125.36228942871094,
+        "height": 104.92276763916016
+      }
+    },
+    {
+      "id": "296:16702",
+      "name": "Ellipse 8856",
+      "type": "ELLIPSE",
+      "parent": "296:16700",
+      "bounds": {
+        "x": 22922.61328125,
+        "y": 1505.62255859375,
+        "width": 53.142704010009766,
+        "height": 53.142704010009766
+      }
+    },
+    {
+      "id": "296:16703",
+      "name": "36/fill/color/chat-bots",
+      "type": "INSTANCE",
+      "parent": "296:16700",
+      "bounds": {
+        "x": 22921.93359375,
+        "y": 1504.9410400390625,
+        "width": 54.505340576171875,
+        "height": 54.505340576171875
+      }
+    },
+    {
+      "id": "I296:16703;384:22552",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:16703",
+      "bounds": {
+        "x": 22926.484375,
+        "y": 1506.5792236328125,
+        "width": 45.40337371826172,
+        "height": 48.390438079833984
+      }
+    },
+    {
+      "id": "296:16704",
+      "name": "Group 2087330755",
+      "type": "GROUP",
+      "parent": "296:16696",
+      "bounds": {
+        "x": 22719.58203125,
+        "y": 1634.392333984375,
+        "width": 145.80178833007812,
+        "height": 153.9775848388672
+      }
+    },
+    {
+      "id": "296:16705",
+      "name": "Rectangle 376716235",
+      "type": "RECTANGLE",
+      "parent": "296:16704",
+      "bounds": {
+        "x": 22719.58203125,
+        "y": 1634.3922119140625,
+        "width": 145.80178833007812,
+        "height": 153.9775848388672
+      }
+    },
+    {
+      "id": "296:16706",
+      "name": "Интеграция",
+      "type": "TEXT",
+      "parent": "296:16704",
+      "bounds": {
+        "x": 22755.689453125,
+        "y": 1759.7548828125,
+        "width": 74,
+        "height": 16
+      }
+    },
+    {
+      "id": "296:16707",
+      "name": "Group 2087330754",
+      "type": "GROUP",
+      "parent": "296:16704",
+      "bounds": {
+        "x": 22729.798828125,
+        "y": 1644.61181640625,
+        "width": 125.36228942871094,
+        "height": 104.92276763916016
+      }
+    },
+    {
+      "id": "296:16708",
+      "name": "Rectangle 376716236",
+      "type": "RECTANGLE",
+      "parent": "296:16707",
+      "bounds": {
+        "x": 22729.798828125,
+        "y": 1644.61181640625,
+        "width": 125.36228942871094,
+        "height": 104.92276763916016
+      }
+    },
+    {
+      "id": "296:16709",
+      "name": "Ellipse 8856",
+      "type": "ELLIPSE",
+      "parent": "296:16707",
+      "bounds": {
+        "x": 22765.90625,
+        "y": 1670.5015869140625,
+        "width": 53.142704010009766,
+        "height": 53.142704010009766
+      }
+    },
+    {
+      "id": "296:16710",
+      "name": "Product",
+      "type": "INSTANCE",
+      "parent": "296:16707",
+      "bounds": {
+        "x": 22765.2265625,
+        "y": 1670.488525390625,
+        "width": 54.505340576171875,
+        "height": 54.505340576171875
+      }
+    },
+    {
+      "id": "I296:16710;71:955",
+      "name": "Color_50",
+      "type": "VECTOR",
+      "parent": "296:16710",
+      "bounds": {
+        "x": 22793.994140625,
+        "y": 1673.5166015625,
+        "width": 22.71055793762207,
+        "height": 22.71055793762207
+      }
+    },
+    {
+      "id": "I296:16710;71:956",
+      "name": "Color_100",
+      "type": "VECTOR",
+      "parent": "296:16710",
+      "bounds": {
+        "x": 22769.76953125,
+        "y": 1675.0306396484375,
+        "width": 45.42111587524414,
+        "height": 45.42111587524414
+      }
+    },
+    {
+      "id": "296:16711",
+      "name": "Group 2087330756",
+      "type": "GROUP",
+      "parent": "296:16696",
+      "bounds": {
+        "x": 22876.283203125,
+        "y": 1634.392333984375,
+        "width": 145.80178833007812,
+        "height": 153.9775848388672
+      }
+    },
+    {
+      "id": "296:16712",
+      "name": "Rectangle 376716235",
+      "type": "RECTANGLE",
+      "parent": "296:16711",
+      "bounds": {
+        "x": 22876.283203125,
+        "y": 1634.3922119140625,
+        "width": 145.80178833007812,
+        "height": 153.9775848388672
+      }
+    },
+    {
+      "id": "296:16713",
+      "name": "Мини-приложения",
+      "type": "TEXT",
+      "parent": "296:16711",
+      "bounds": {
+        "x": 22891.94921875,
+        "y": 1759.7548828125,
+        "width": 115,
+        "height": 16
+      }
+    },
+    {
+      "id": "296:16714",
+      "name": "Group 2087330754",
+      "type": "GROUP",
+      "parent": "296:16711",
+      "bounds": {
+        "x": 22886.505859375,
+        "y": 1644.61181640625,
+        "width": 125.36228942871094,
+        "height": 104.92276763916016
+      }
+    },
+    {
+      "id": "296:16715",
+      "name": "Rectangle 376716236",
+      "type": "RECTANGLE",
+      "parent": "296:16714",
+      "bounds": {
+        "x": 22886.505859375,
+        "y": 1644.61181640625,
+        "width": 125.36228942871094,
+        "height": 104.92276763916016
+      }
+    },
+    {
+      "id": "296:16716",
+      "name": "Ellipse 8856",
+      "type": "ELLIPSE",
+      "parent": "296:16714",
+      "bounds": {
+        "x": 22922.61328125,
+        "y": 1670.5015869140625,
+        "width": 53.142704010009766,
+        "height": 53.142704010009766
+      }
+    },
+    {
+      "id": "296:16717",
+      "name": "layers-three-01",
+      "type": "FRAME",
+      "parent": "296:16714",
+      "bounds": {
+        "x": 22921.93359375,
+        "y": 1669.820068359375,
+        "width": 54.50533676147461,
+        "height": 54.50533676147461
+      }
+    },
+    {
+      "id": "296:16718",
+      "name": "Solid",
+      "type": "VECTOR",
+      "parent": "296:16717",
+      "bounds": {
+        "x": 22924.20703125,
+        "y": 1672.2255859375,
+        "width": 49.9642219543457,
+        "height": 49.69517135620117
+      }
+    },
+    {
+      "id": "296:16719",
+      "name": "Group 2087330754",
+      "type": "GROUP",
+      "parent": "296:16696",
+      "bounds": {
+        "x": 22719.58203125,
+        "y": 1469.513427734375,
+        "width": 145.80178833007812,
+        "height": 153.9775848388672
+      }
+    },
+    {
+      "id": "296:16720",
+      "name": "Rectangle 376716235",
+      "type": "RECTANGLE",
+      "parent": "296:16719",
+      "bounds": {
+        "x": 22719.58203125,
+        "y": 1469.5133056640625,
+        "width": 145.80178833007812,
+        "height": 153.9775848388672
+      }
+    },
+    {
+      "id": "296:16721",
+      "name": "Каналы",
+      "type": "TEXT",
+      "parent": "296:16719",
+      "bounds": {
+        "x": 22769.314453125,
+        "y": 1594.8759765625,
+        "width": 47,
+        "height": 16
+      }
+    },
+    {
+      "id": "296:16722",
+      "name": "Group 2087330754",
+      "type": "GROUP",
+      "parent": "296:16719",
+      "bounds": {
+        "x": 22729.798828125,
+        "y": 1479.732666015625,
+        "width": 125.36228942871094,
+        "height": 104.92276763916016
+      }
+    },
+    {
+      "id": "296:16723",
+      "name": "Rectangle 376716236",
+      "type": "RECTANGLE",
+      "parent": "296:16722",
+      "bounds": {
+        "x": 22729.798828125,
+        "y": 1479.732666015625,
+        "width": 125.36228942871094,
+        "height": 104.92276763916016
+      }
+    },
+    {
+      "id": "296:16724",
+      "name": "Ellipse 8856",
+      "type": "ELLIPSE",
+      "parent": "296:16722",
+      "bounds": {
+        "x": 22765.90625,
+        "y": 1505.62255859375,
+        "width": 53.142704010009766,
+        "height": 53.142704010009766
+      }
+    },
+    {
+      "id": "296:16725",
+      "name": "Swap Icon",
+      "type": "INSTANCE",
+      "parent": "296:16722",
+      "bounds": {
+        "x": 22764.083984375,
+        "y": 1505.1368408203125,
+        "width": 54.50533676147461,
+        "height": 54.50533676147461
+      }
+    },
+    {
+      "id": "I296:16725;2013:81",
+      "name": "megaphone_fill_24",
+      "type": "INSTANCE",
+      "parent": "296:16725",
+      "bounds": {
+        "x": 22764.083984375,
+        "y": 1505.1368408203125,
+        "width": 54.50533676147461,
+        "height": 54.50533676147461
+      }
+    },
+    {
+      "id": "I296:16725;2013:81;377:403",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:16725;2013:81",
+      "bounds": {
+        "x": 22768.626953125,
+        "y": 1510.814453125,
+        "width": 43.1497802734375,
+        "height": 44.28562545776367
+      }
+    },
+    {
+      "id": "296:16726",
+      "name": "Header",
+      "type": "FRAME",
+      "parent": "296:16658",
+      "bounds": {
+        "x": 22208.865234375,
+        "y": 1300.3907470703125,
+        "width": 842.26171875,
+        "height": 58.82462692260742
+      }
+    },
+    {
+      "id": "296:16727",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "296:16726",
+      "bounds": {
+        "x": 22888.0234375,
+        "y": 1320.4447021484375,
+        "width": 137,
+        "height": 19
+      }
+    },
+    {
+      "id": "296:16728",
+      "name": "Frame 2095585053",
+      "type": "FRAME",
+      "parent": "296:16726",
+      "bounds": {
+        "x": 22429.703125,
+        "y": 1309.7493896484375,
+        "width": 401.25848388671875,
+        "height": 40.39077377319336
+      }
+    },
+    {
+      "id": "296:16729",
+      "name": "Top Menu Items",
+      "type": "INSTANCE",
+      "parent": "296:16728",
+      "bounds": {
+        "x": 22429.703125,
+        "y": 1309.7493896484375,
+        "width": 114.0861587524414,
+        "height": 40.39077377319336
+      }
+    },
+    {
+      "id": "I296:16729;583:6123",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "296:16729",
+      "bounds": {
+        "x": 22445.74609375,
+        "y": 1320.44482421875,
+        "width": 82,
+        "height": 19
+      }
+    },
+    {
+      "id": "296:16730",
+      "name": "Top Menu Items",
+      "type": "INSTANCE",
+      "parent": "296:16728",
+      "bounds": {
+        "x": 22543.7890625,
+        "y": 1309.7493896484375,
+        "width": 170.08615112304688,
+        "height": 40.39077377319336
+      }
+    },
+    {
+      "id": "I296:16730;583:6123",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "296:16730",
+      "bounds": {
+        "x": 22559.83203125,
+        "y": 1320.44482421875,
+        "width": 138,
+        "height": 19
+      }
+    },
+    {
+      "id": "296:16731",
+      "name": "Top Menu Items",
+      "type": "INSTANCE",
+      "parent": "296:16728",
+      "bounds": {
+        "x": 22713.875,
+        "y": 1309.7493896484375,
+        "width": 117.0861587524414,
+        "height": 40.39077377319336
+      }
+    },
+    {
+      "id": "I296:16731;583:6123",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "296:16731",
+      "bounds": {
+        "x": 22729.91796875,
+        "y": 1320.44482421875,
+        "width": 85,
+        "height": 19
+      }
+    },
+    {
+      "id": "296:16732",
+      "name": "Frame 2095585069",
+      "type": "FRAME",
+      "parent": "296:16726",
+      "bounds": {
+        "x": 22235.60546875,
+        "y": 1315.7655029296875,
+        "width": 146.29185485839844,
+        "height": 28.07539176940918
+      }
+    },
+    {
+      "id": "296:16734",
+      "name": "Component 1",
+      "type": "INSTANCE",
+      "parent": "296:16732",
+      "bounds": {
+        "x": 22235.60546875,
+        "y": 1315.7655029296875,
+        "width": 105.3935546875,
+        "height": 28.07539176940918
+      }
+    },
+    {
+      "id": "I296:16734;1946:6216",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "296:16734",
+      "bounds": {
+        "x": 22270.6328125,
+        "y": 1321.61669921875,
+        "width": 70.36669158935547,
+        "height": 16.328691482543945
+      }
+    },
+    {
+      "id": "I296:16734;1946:6324",
+      "name": "Icon",
+      "type": "FRAME",
+      "parent": "296:16734",
+      "bounds": {
+        "x": 22235.591796875,
+        "y": 1315.7659912109375,
+        "width": 28.07539176940918,
+        "height": 28.07539176940918
+      }
+    },
+    {
+      "id": "I296:16734;1946:6325",
+      "name": "Subtract",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "I296:16734;1946:6324",
+      "bounds": {
+        "x": 22235.591796875,
+        "y": 1315.838623046875,
+        "width": 28.043039321899414,
+        "height": 27.93561553955078
+      }
+    },
+    {
+      "id": "I296:16734;1946:6326",
+      "name": "Icon",
+      "type": "VECTOR",
+      "parent": "I296:16734;1946:6325",
+      "bounds": {
+        "x": 22235.591796875,
+        "y": 1315.8385009765625,
+        "width": 28.043142318725586,
+        "height": 27.935693740844727
+      }
+    },
+    {
+      "id": "I296:16734;1946:6327",
+      "name": "Icon",
+      "type": "VECTOR",
+      "parent": "I296:16734;1946:6325",
+      "bounds": {
+        "x": 22242.4410751846,
+        "y": 1322.371826171875,
+        "width": 14.559072101634229,
+        "height": 14.864193892012281
+      }
+    },
+    {
+      "id": "296:16735",
+      "name": "Frame 2095585069",
+      "type": "FRAME",
+      "parent": "296:16732",
+      "bounds": {
+        "x": 22350.357421875,
+        "y": 1315.7655029296875,
+        "width": 31.539833068847656,
+        "height": 28.075389862060547
+      }
+    },
+    {
+      "id": "296:16737",
+      "name": "Cursor",
+      "type": "INSTANCE",
+      "parent": "296:16658",
+      "bounds": {
+        "x": 23001.66015625,
+        "y": 1337.8245849609375,
+        "width": 58.15616226196289,
+        "height": 68.73001098632812
+      }
+    },
+    {
+      "id": "I296:16737;7311:31358",
+      "name": "pointing",
+      "type": "GROUP",
+      "parent": "296:16737",
+      "bounds": {
+        "x": 23017.521484375,
+        "y": 1358.1861572265625,
+        "width": 26.434572219848633,
+        "height": 28.0068359375
+      }
+    },
+    {
+      "id": "I296:16737;7311:31359",
+      "name": "Shape",
+      "type": "VECTOR",
+      "parent": "I296:16737;7311:31358",
+      "bounds": {
+        "x": 23018.177734375,
+        "y": 1358.822509765625,
+        "width": 25.12411880493164,
+        "height": 26.715621948242188
+      }
+    },
+    {
+      "id": "I296:16737;7311:31360",
+      "name": "Shape",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "I296:16737;7311:31358",
+      "bounds": {
+        "x": 23017.521484375,
+        "y": 1358.1861572265625,
+        "width": 26.434572219848633,
+        "height": 28.0068359375
+      }
+    },
+    {
+      "id": "I296:16737;7311:31361",
+      "name": "Path",
+      "type": "VECTOR",
+      "parent": "I296:16737;7311:31360",
+      "bounds": {
+        "x": 23018.83203125,
+        "y": 1359.47705078125,
+        "width": 23.8144474029541,
+        "height": 25.407323837280273
+      }
+    },
+    {
+      "id": "I296:16737;7311:31362",
+      "name": "Path",
+      "type": "VECTOR",
+      "parent": "I296:16737;7311:31360",
+      "bounds": {
+        "x": 23017.521484375,
+        "y": 1358.18603515625,
+        "width": 26.434356689453125,
+        "height": 28.007301330566406
+      }
+    },
+    {
+      "id": "I296:16737;7311:31363",
+      "name": "Shape",
+      "type": "VECTOR",
+      "parent": "I296:16737;7311:31358",
+      "bounds": {
+        "x": 23036.736328125,
+        "y": 1373.853271484375,
+        "width": 1.7452000379562378,
+        "height": 7.329501152038574
+      }
+    },
+    {
+      "id": "I296:16737;7311:31364",
+      "name": "Shape",
+      "type": "VECTOR",
+      "parent": "I296:16737;7311:31358",
+      "bounds": {
+        "x": 23033.244140625,
+        "y": 1373.853271484375,
+        "width": 1.7452000379562378,
+        "height": 7.329501152038574
+      }
+    },
+    {
+      "id": "I296:16737;7311:31365",
+      "name": "Shape",
+      "type": "VECTOR",
+      "parent": "I296:16737;7311:31358",
+      "bounds": {
+        "x": 23029.75390625,
+        "y": 1373.853271484375,
+        "width": 1.7452000379562378,
+        "height": 7.329501152038574
+      }
+    }
+  ],
+  "imageHashes": [],
+  "notes": [],
+  "visualTexts": [
+    {
+      "id": "296:16664",
+      "name": "text",
+      "type": "TEXT",
+      "parent": "296:16663",
+      "bounds": {
+        "x": 22248.97265625,
+        "y": 1412.6923828125,
+        "width": 284,
+        "height": 96
+      },
+      "text": "Максимум\nдля бизнеса",
+      "fontName": {
+        "family": "Max Sans",
+        "style": "Medium"
+      },
+      "fontSize": 48.129241943359375,
+      "segments": [
+        {
+          "characters": "Максимум\n",
+          "start": 0,
+          "end": 9,
+          "fontSize": 48.129241943359375,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "GRADIENT_LINEAR",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "gradientStops": [
+                {
+                  "color": {
+                    "r": 0.3543945252895355,
+                    "g": 0.5480762124061584,
+                    "b": 1,
+                    "a": 1
+                  },
+                  "position": 0,
+                  "boundVariables": {
+                    "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:33bc16684edbe258ee3b43b5d247d3ab6097e7b6/2502:23"
+                    }
+                  }
+                },
+                {
+                  "color": {
+                    "r": 0.2645019590854645,
+                    "g": 0.8406420350074768,
+                    "b": 1,
+                    "a": 1
+                  },
+                  "position": 0.3499999940395355,
+                  "boundVariables": {
+                    "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:228cb0d65624e0b551cbd1132599823fe57690b2/2502:24"
+                    }
+                  }
+                },
+                {
+                  "color": {
+                    "r": 0.5623047351837158,
+                    "g": 0.24589844048023224,
+                    "b": 1,
+                    "a": 1
+                  },
+                  "position": 1,
+                  "boundVariables": {
+                    "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:e139999bb7614d34eeb2c840f445bdafdc6ea9cc/2502:20"
+                    }
+                  }
+                }
+              ],
+              "gradientTransform": [
+                [
+                  1.0772122144699097,
+                  -0.0012451790971681476,
+                  0.1748271882534027
+                ],
+                [
+                  -0.07767682522535324,
+                  0.2134537547826767,
+                  0.5022103190422058
+                ]
+              ]
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        },
+        {
+          "characters": "для бизнеса",
+          "start": 9,
+          "end": 20,
+          "fontSize": 48.129241943359375,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:28e74dd739b09ecde6206f6ab3247330df6192ae/1344:114"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:16665",
+      "name": "Готовые решения для роста продаж, автоматизации поддержки и общения  с клиентами в мессенджере MAX",
+      "type": "TEXT",
+      "parent": "296:16662",
+      "bounds": {
+        "x": 22248.97265625,
+        "y": 1530.0831298828125,
+        "width": 437.8424072265625,
+        "height": 78
+      },
+      "text": "Готовые решения для роста продаж, автоматизации поддержки и общения  с клиентами в мессенджере MAX",
+      "fontName": {
+        "family": "VK Sans Display",
+        "style": "Regular"
+      },
+      "fontSize": 18.71692657470703,
+      "segments": [
+        {
+          "characters": "Готовые решения для роста продаж, автоматизации поддержки и общения  с клиентами в мессенджере MAX",
+          "start": 0,
+          "end": 98,
+          "fontSize": 18.71692657470703,
+          "fontName": {
+            "family": "VK Sans Display",
+            "style": "Regular"
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.7646647095680237,
+                "g": 0.7646647095680237,
+                "b": 0.7646647095680237
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:5a365234c970fbcb40128c9c8d2a9e782c7ee625/1344:120"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:16668;313:15777",
+      "name": "iPhone",
+      "type": "TEXT",
+      "parent": "296:16668",
+      "bounds": {
+        "x": 22265.015625,
+        "y": 1661.2554931640625,
+        "width": 95,
+        "height": 22
+      },
+      "text": "Подключить",
+      "fontName": {
+        "family": "Max Sans",
+        "style": "Medium"
+      },
+      "fontSize": 16.043079376220703,
+      "segments": [
+        {
+          "characters": "Подключить",
+          "start": 0,
+          "end": 10,
+          "fontSize": 16.043079376220703,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:8863bf28d257d953c35a588aa8b5ae009b4e9cb2/1344:110"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:16669;313:15777",
+      "name": "iPhone",
+      "type": "TEXT",
+      "parent": "296:16669",
+      "bounds": {
+        "x": 22402.796875,
+        "y": 1661.2554931640625,
+        "width": 94,
+        "height": 22
+      },
+      "text": "Инструкция",
+      "fontName": {
+        "family": "Max Sans",
+        "style": "Medium"
+      },
+      "fontSize": 16.043079376220703,
+      "segments": [
+        {
+          "characters": "Инструкция",
+          "start": 0,
+          "end": 10,
+          "fontSize": 16.043079376220703,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:8863bf28d257d953c35a588aa8b5ae009b4e9cb2/1344:110"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:16681;2016:23926",
+      "name": "9:41",
+      "type": "TEXT",
+      "parent": "296:16681",
+      "bounds": {
+        "x": 22754.86328125,
+        "y": 1430.3909912109375,
+        "width": 25,
+        "height": 14
+      },
+      "text": "17:43",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 9.728067398071289,
+      "segments": [
+        {
+          "characters": "17:43",
+          "start": 0,
+          "end": 5,
+          "fontSize": 9.728067398071289,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:925464cf5d4d5e28530ec95986e98bc9e3d56988/481:245"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:16699",
+      "name": "Чат-боты",
+      "type": "TEXT",
+      "parent": "296:16697",
+      "bounds": {
+        "x": 22921.330078125,
+        "y": 1594.8759765625,
+        "width": 57,
+        "height": 16
+      },
+      "text": "Чат-боты",
+      "fontName": {
+        "family": "Max Sans",
+        "style": "DemiBold"
+      },
+      "fontSize": 12.263701438903809,
+      "segments": [
+        {
+          "characters": "Чат-боты",
+          "start": 0,
+          "end": 8,
+          "fontSize": 12.263701438903809,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "DemiBold"
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:16706",
+      "name": "Интеграция",
+      "type": "TEXT",
+      "parent": "296:16704",
+      "bounds": {
+        "x": 22755.689453125,
+        "y": 1759.7548828125,
+        "width": 74,
+        "height": 16
+      },
+      "text": "Интеграция",
+      "fontName": {
+        "family": "Max Sans",
+        "style": "DemiBold"
+      },
+      "fontSize": 12.263701438903809,
+      "segments": [
+        {
+          "characters": "Интеграция",
+          "start": 0,
+          "end": 10,
+          "fontSize": 12.263701438903809,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "DemiBold"
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:16713",
+      "name": "Мини-приложения",
+      "type": "TEXT",
+      "parent": "296:16711",
+      "bounds": {
+        "x": 22891.94921875,
+        "y": 1759.7548828125,
+        "width": 115,
+        "height": 16
+      },
+      "text": "Мини-приложения",
+      "fontName": {
+        "family": "Max Sans",
+        "style": "DemiBold"
+      },
+      "fontSize": 12.263701438903809,
+      "segments": [
+        {
+          "characters": "Мини-приложения",
+          "start": 0,
+          "end": 15,
+          "fontSize": 12.263701438903809,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "DemiBold"
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:16721",
+      "name": "Каналы",
+      "type": "TEXT",
+      "parent": "296:16719",
+      "bounds": {
+        "x": 22769.314453125,
+        "y": 1594.8759765625,
+        "width": 47,
+        "height": 16
+      },
+      "text": "Каналы",
+      "fontName": {
+        "family": "Max Sans",
+        "style": "DemiBold"
+      },
+      "fontSize": 12.263701438903809,
+      "segments": [
+        {
+          "characters": "Каналы",
+          "start": 0,
+          "end": 6,
+          "fontSize": 12.263701438903809,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "DemiBold"
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {}
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "296:16727",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "296:16726",
+      "bounds": {
+        "x": 22888.0234375,
+        "y": 1320.4447021484375,
+        "width": 137,
+        "height": 19
+      },
+      "text": "Войти на платформу",
+      "fontName": {
+        "family": "Max Sans",
+        "style": "Medium"
+      },
+      "fontSize": 13.369234085083008,
+      "segments": [
+        {
+          "characters": "Войти на платформу",
+          "start": 0,
+          "end": 18,
+          "fontSize": 13.369234085083008,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "GRADIENT_LINEAR",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "gradientStops": [
+                {
+                  "color": {
+                    "r": 0.3543945252895355,
+                    "g": 0.5480762124061584,
+                    "b": 1,
+                    "a": 1
+                  },
+                  "position": 0,
+                  "boundVariables": {
+                    "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:33bc16684edbe258ee3b43b5d247d3ab6097e7b6/2502:23"
+                    }
+                  }
+                },
+                {
+                  "color": {
+                    "r": 0.2645019590854645,
+                    "g": 0.8406420350074768,
+                    "b": 1,
+                    "a": 1
+                  },
+                  "position": 0.3499999940395355,
+                  "boundVariables": {
+                    "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:228cb0d65624e0b551cbd1132599823fe57690b2/2502:24"
+                    }
+                  }
+                },
+                {
+                  "color": {
+                    "r": 0.5623047351837158,
+                    "g": 0.24589844048023224,
+                    "b": 1,
+                    "a": 1
+                  },
+                  "position": 1,
+                  "boundVariables": {
+                    "color": {
+                      "type": "VARIABLE_ALIAS",
+                      "id": "VariableID:e139999bb7614d34eeb2c840f445bdafdc6ea9cc/2502:20"
+                    }
+                  }
+                }
+              ],
+              "gradientTransform": [
+                [
+                  0.9056235551834106,
+                  0.09835318475961685,
+                  -1.7361112547575885e-14
+                ],
+                [
+                  -0.1729200929403305,
+                  0.17216075956821442,
+                  0.5
+                ]
+              ]
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:16729;583:6123",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "296:16729",
+      "bounds": {
+        "x": 22445.74609375,
+        "y": 1320.44482421875,
+        "width": 82,
+        "height": 19
+      },
+      "text": "Для бизнеса",
+      "fontName": {
+        "family": "Max Sans",
+        "style": "Medium"
+      },
+      "fontSize": 13.369234085083008,
+      "segments": [
+        {
+          "characters": "Для бизнеса",
+          "start": 0,
+          "end": 11,
+          "fontSize": 13.369234085083008,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:f8ae9c4fbe3349a95e8d0a194674c1f48a8ba0d7/5750:85"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:16730;583:6123",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "296:16730",
+      "bounds": {
+        "x": 22559.83203125,
+        "y": 1320.44482421875,
+        "width": 138,
+        "height": 19
+      },
+      "text": "Скачать приложение",
+      "fontName": {
+        "family": "Max Sans",
+        "style": "Medium"
+      },
+      "fontSize": 13.369234085083008,
+      "segments": [
+        {
+          "characters": "Скачать приложение",
+          "start": 0,
+          "end": 18,
+          "fontSize": 13.369234085083008,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.7098039388656616,
+                "g": 0.7098039388656616,
+                "b": 0.7098039388656616
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2e41ce3f9042b36a64fbb8a588481175d5dc8eef/1344:119"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:16731;583:6123",
+      "name": "Title",
+      "type": "TEXT",
+      "parent": "296:16731",
+      "bounds": {
+        "x": 22729.91796875,
+        "y": 1320.44482421875,
+        "width": 85,
+        "height": 19
+      },
+      "text": "Цифровой ID",
+      "fontName": {
+        "family": "Max Sans",
+        "style": "Medium"
+      },
+      "fontSize": 13.369234085083008,
+      "segments": [
+        {
+          "characters": "Цифровой ID",
+          "start": 0,
+          "end": 11,
+          "fontSize": 13.369234085083008,
+          "fontName": {
+            "family": "Max Sans",
+            "style": "Medium"
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.7098039388656616,
+                "g": 0.7098039388656616,
+                "b": 0.7098039388656616
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:2e41ce3f9042b36a64fbb8a588481175d5dc8eef/1344:119"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    }
+  ],
+  "pngScale": 1,
+  "pngFile": "04-Продвижение-бизнеса/02-Бизнес-аккаунт/001-Экран/screen.png",
+  "previewFile": "04-Продвижение-бизнеса/02-Бизнес-аккаунт/001-Экран/preview.png",
+  "svgFile": "04-Продвижение-бизнеса/02-Бизнес-аккаунт/001-Экран/screen.svg",
+  "documentFile": "04-Продвижение-бизнеса/02-Бизнес-аккаунт/001-Экран/figma.json",
+  "images": []
+}

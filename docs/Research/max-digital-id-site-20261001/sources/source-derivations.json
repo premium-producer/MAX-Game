@@ -1,0 +1,34 @@
+{
+  "page": {
+    "file": "digital-id.html",
+    "sourceUrl": "https://go.max.ru/digitalId",
+    "sha256": "707c650eaab3e48bff1b1c5bc8aae4fc4bc44f735688da7c03aa3e0e22f572ad"
+  },
+  "interactionSource": {
+    "file": "page-original.js",
+    "sourceUrl": "https://go.max.ru/_app/immutable/nodes/16.ByVUzQ6k.js",
+    "sha256": "781a8ebbf5dd7ca9b4cdfc8ec7e6f23c61a4ebdc8250d2c7070988787a909c2d"
+  },
+  "derived": [
+    {
+      "file": "faq-source.json",
+      "basis": "Four original HTML templates R2/P2/X2/C2 from public page bundle",
+      "sha256": "c0d0f63beb65e97cda3811f7e66bc45fe409cc3363cf95988a4a9a62a5d574db"
+    },
+    {
+      "file": "digital-id-qr.svg",
+      "basis": "First original QR SVG template in public page bundle",
+      "sha256": "80ff953a7e361759905ab3eca28b1b7c499b3b66e358b86ef4a17381014fc127"
+    },
+    {
+      "file": "modal-source.html",
+      "basis": "Original modal template L2 with original QR image reference",
+      "sha256": "8f586ceb9797c4c771e99ffa2580be2f792ae78163e12471f3d9db2480a4d44c"
+    },
+    {
+      "file": "create-poster-from-video.png",
+      "basis": "First frame of original /s/video/digitalId-page-create.mp4, extracted with ffmpeg; source poster URL returns404",
+      "sha256": "91ca631f8e383bf511e96d1c4b5e9c1ebb566f2742f9070b4cae6ffbc7cb496c"
+    }
+  ]
+}

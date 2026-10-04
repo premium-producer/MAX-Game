@@ -1,0 +1,1097 @@
+{
+  "id": "2299:74603",
+  "name": "Публикация историй - 4 (история открыта + загрузка)",
+  "type": "FRAME",
+  "parent": "2299:74308",
+  "bounds": {
+    "x": 7765,
+    "y": 5003,
+    "width": 360,
+    "height": 800
+  },
+  "visible": true,
+  "fontSize": 0,
+  "hasImage": false,
+  "task": "communication.story",
+  "confidence": "high",
+  "reviewed": false,
+  "include": true,
+  "group": "2299:74308",
+  "groupName": "Публикация историй",
+  "containerPath": [
+    {
+      "id": "2299:74308",
+      "name": "Публикация историй",
+      "type": "SECTION"
+    }
+  ],
+  "sectionPath": [
+    {
+      "id": "2299:74308",
+      "name": "Публикация историй",
+      "type": "SECTION"
+    }
+  ],
+  "sequence": {
+    "series": "Публикация историй",
+    "number": 4,
+    "description": "история открыта + загрузка"
+  },
+  "detection": "structure",
+  "evidence": [
+    {
+      "task": "communication.story",
+      "source": "frame-name",
+      "id": "2299:74603",
+      "text": "Публикация историй - 4 (история открыта + загрузка)",
+      "weight": 100
+    },
+    {
+      "task": "communication.story",
+      "source": "ancestor",
+      "id": "2299:74308",
+      "text": "Публикация историй",
+      "weight": 99
+    }
+  ],
+  "ancestors": [
+    {
+      "id": "2299:74308",
+      "name": "Публикация историй",
+      "type": "SECTION"
+    }
+  ],
+  "nearbyHeadings": [],
+  "contextRegion": null,
+  "warnings": [],
+  "order": 32,
+  "fingerprint": "[\"Публикация историй - 4 (история открыта + загрузка)\",{\"x\":7765,\"y\":5003,\"width\":360,\"height\":800},\"FRAME\",[[\"2299:74308\",\"Публикация историй\",\"SECTION\"],[\"1:8\",\"Page 8\",\"PAGE\"]],\"content-v1\",3822333594,2612633260,99]",
+  "manualTask": false,
+  "title": "Публикация историй - 4 (история открыта + загрузка)",
+  "exportStatus": "ok",
+  "texts": [
+    {
+      "id": "I2299:74608;1705:27353;6609:34120;6135:35532",
+      "name": "Contact Name",
+      "type": "TEXT",
+      "parent": "I2299:74608;1705:27353;6609:34120;12893:54998",
+      "bounds": {
+        "x": 7829,
+        "y": 5079,
+        "width": 142,
+        "height": 20
+      },
+      "text": "Ваша история",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 16,
+      "segments": [
+        {
+          "characters": "Ваша история",
+          "start": 0,
+          "end": 12,
+          "fontSize": 16,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:e4732f707bda1caa385560bfc71becb0dbf98642/6856:3929"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:b54f78cdc1ebec93a8d8419f3a73d9f449e3b22f,13678:263",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:74608;1705:27353;6609:34120;6135:35536",
+      "name": "Message",
+      "type": "TEXT",
+      "parent": "I2299:74608;1705:27353;6609:34120;6135:35530",
+      "bounds": {
+        "x": 7829,
+        "y": 5101,
+        "width": 142,
+        "height": 20
+      },
+      "text": "Загрузка…",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 15,
+      "segments": [
+        {
+          "characters": "Загрузка…",
+          "start": 0,
+          "end": 9,
+          "fontSize": 15,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.800000011920929,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:0af30f4380fce519624c68d2dc55e4467590684a/6856:3925"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:ae0081ae4c8f77e49e306e1a984e149fb1fed317,13678:271",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I2299:74611;2522:12269",
+      "name": "9:41",
+      "type": "TEXT",
+      "parent": "2299:74611",
+      "bounds": {
+        "x": 7785,
+        "y": 5017,
+        "width": 36,
+        "height": 20
+      },
+      "text": "12:00",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "12:00",
+          "start": 0,
+          "end": 5,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.800000011920929,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/2210:106"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    }
+  ],
+  "layers": [
+    {
+      "id": "2299:74603",
+      "name": "Публикация историй - 4 (история открыта + загрузка)",
+      "type": "FRAME",
+      "parent": "2299:74308",
+      "bounds": {
+        "x": 7765,
+        "y": 5003,
+        "width": 360,
+        "height": 800
+      }
+    },
+    {
+      "id": "2299:74604",
+      "name": "content",
+      "type": "FRAME",
+      "parent": "2299:74603",
+      "bounds": {
+        "x": 7765,
+        "y": 5051,
+        "width": 360,
+        "height": 672
+      }
+    },
+    {
+      "id": "2299:74605",
+      "name": "image",
+      "type": "RECTANGLE",
+      "parent": "2299:74604",
+      "bounds": {
+        "x": 7765,
+        "y": 5051,
+        "width": 360,
+        "height": 672
+      }
+    },
+    {
+      "id": "2299:74606",
+      "name": "texl layer",
+      "type": "RECTANGLE",
+      "parent": "2299:74604",
+      "bounds": {
+        "x": 7771,
+        "y": 5552,
+        "width": 348.3333435058594,
+        "height": 110.33334350585938
+      }
+    },
+    {
+      "id": "2299:74607",
+      "name": "fade",
+      "type": "RECTANGLE",
+      "parent": "2299:74604",
+      "bounds": {
+        "x": 7765,
+        "y": 5051,
+        "width": 360,
+        "height": 112
+      }
+    },
+    {
+      "id": "2299:74608",
+      "name": ".Story Header",
+      "type": "INSTANCE",
+      "parent": "2299:74604",
+      "bounds": {
+        "x": 7765,
+        "y": 5051,
+        "width": 360,
+        "height": 92
+      }
+    },
+    {
+      "id": "I2299:74608;2776:89107",
+      "name": "Progress Wrapper",
+      "type": "FRAME",
+      "parent": "2299:74608",
+      "bounds": {
+        "x": 7765,
+        "y": 5063,
+        "width": 360,
+        "height": 4
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27487",
+      "name": ".Progress",
+      "type": "INSTANCE",
+      "parent": "I2299:74608;2776:89107",
+      "bounds": {
+        "x": 7777,
+        "y": 5063,
+        "width": 336,
+        "height": 4
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27487;1705:27454",
+      "name": ".Segment",
+      "type": "INSTANCE",
+      "parent": "I2299:74608;1705:27487",
+      "bounds": {
+        "x": 7777,
+        "y": 5063,
+        "width": 81,
+        "height": 4
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27487;1705:27454;1705:27438",
+      "name": "progress",
+      "type": "RECTANGLE",
+      "parent": "I2299:74608;1705:27487;1705:27454",
+      "bounds": {
+        "x": 7777,
+        "y": 5063,
+        "width": 81,
+        "height": 4
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27487;1705:27457",
+      "name": ".Segment",
+      "type": "INSTANCE",
+      "parent": "I2299:74608;1705:27487",
+      "bounds": {
+        "x": 7862,
+        "y": 5063,
+        "width": 81,
+        "height": 4
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27487;1705:27457;1705:27438",
+      "name": "progress",
+      "type": "RECTANGLE",
+      "parent": "I2299:74608;1705:27487;1705:27457",
+      "bounds": {
+        "x": 7862,
+        "y": 5063,
+        "width": 81,
+        "height": 4
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27487;1705:27460",
+      "name": ".Segment",
+      "type": "INSTANCE",
+      "parent": "I2299:74608;1705:27487",
+      "bounds": {
+        "x": 7947,
+        "y": 5063,
+        "width": 81,
+        "height": 4
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27487;1705:27460;1705:27438",
+      "name": "progress",
+      "type": "RECTANGLE",
+      "parent": "I2299:74608;1705:27487;1705:27460",
+      "bounds": {
+        "x": 7947,
+        "y": 5063,
+        "width": 81,
+        "height": 4
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27487;1705:27463",
+      "name": ".Segment",
+      "type": "INSTANCE",
+      "parent": "I2299:74608;1705:27487",
+      "bounds": {
+        "x": 8032,
+        "y": 5063,
+        "width": 81,
+        "height": 4
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27584",
+      "name": "Person + Buttons",
+      "type": "FRAME",
+      "parent": "2299:74608",
+      "bounds": {
+        "x": 7765,
+        "y": 5069,
+        "width": 360,
+        "height": 62
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27353",
+      "name": "Cell Search",
+      "type": "INSTANCE",
+      "parent": "I2299:74608;1705:27584",
+      "bounds": {
+        "x": 7765,
+        "y": 5069,
+        "width": 218,
+        "height": 62
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27353;6609:34120",
+      "name": "Simple",
+      "type": "INSTANCE",
+      "parent": "I2299:74608;1705:27353",
+      "bounds": {
+        "x": 7765,
+        "y": 5069,
+        "width": 218,
+        "height": 62
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27353;6609:34120;6135:35529",
+      "name": "Avatar",
+      "type": "INSTANCE",
+      "parent": "I2299:74608;1705:27353;6609:34120",
+      "bounds": {
+        "x": 7777,
+        "y": 5080,
+        "width": 40,
+        "height": 40
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27353;6609:34120;6135:35529;2109:2438",
+      "name": "Container for Scale",
+      "type": "FRAME",
+      "parent": "I2299:74608;1705:27353;6609:34120;6135:35529",
+      "bounds": {
+        "x": 7777,
+        "y": 5080,
+        "width": 40,
+        "height": 40
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27353;6609:34120;6135:35529;2109:2439",
+      "name": "Content",
+      "type": "FRAME",
+      "parent": "I2299:74608;1705:27353;6609:34120;6135:35529;2109:2438",
+      "bounds": {
+        "x": 7777,
+        "y": 5080,
+        "width": 40,
+        "height": 40
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27353;6609:34120;6135:35529;2109:2444",
+      "name": "👨🏻‍🦰 Choose Image",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "I2299:74608;1705:27353;6609:34120;6135:35529;2109:2439",
+      "bounds": {
+        "x": 7777,
+        "y": 5080,
+        "width": 40,
+        "height": 40
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27353;6609:34120;6135:35529;2109:2445",
+      "name": "Group 1",
+      "type": "GROUP",
+      "parent": "I2299:74608;1705:27353;6609:34120;6135:35529;2109:2444",
+      "bounds": {
+        "x": 7777,
+        "y": 5080,
+        "width": 40,
+        "height": 40
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27353;6609:34120;6135:35529;2109:2446",
+      "name": "Choose Form",
+      "type": "INSTANCE",
+      "parent": "I2299:74608;1705:27353;6609:34120;6135:35529;2109:2445",
+      "bounds": {
+        "x": 7777,
+        "y": 5080,
+        "width": 40,
+        "height": 40
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27353;6609:34120;6135:35529;2109:2446;2109:2030",
+      "name": "Ellipse 1",
+      "type": "ELLIPSE",
+      "parent": "I2299:74608;1705:27353;6609:34120;6135:35529;2109:2446",
+      "bounds": {
+        "x": 7777,
+        "y": 5080,
+        "width": 40,
+        "height": 40
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27353;6609:34120;6135:35530",
+      "name": "Middle",
+      "type": "FRAME",
+      "parent": "I2299:74608;1705:27353;6609:34120",
+      "bounds": {
+        "x": 7829,
+        "y": 5079,
+        "width": 142,
+        "height": 42
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27353;6609:34120;12893:54998",
+      "name": "Name",
+      "type": "FRAME",
+      "parent": "I2299:74608;1705:27353;6609:34120;6135:35530",
+      "bounds": {
+        "x": 7829,
+        "y": 5079,
+        "width": 142,
+        "height": 20
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27353;6609:34120;6135:35532",
+      "name": "Contact Name",
+      "type": "TEXT",
+      "parent": "I2299:74608;1705:27353;6609:34120;12893:54998",
+      "bounds": {
+        "x": 7829,
+        "y": 5079,
+        "width": 142,
+        "height": 20
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27353;6609:34120;6135:35536",
+      "name": "Message",
+      "type": "TEXT",
+      "parent": "I2299:74608;1705:27353;6609:34120;6135:35530",
+      "bounds": {
+        "x": 7829,
+        "y": 5101,
+        "width": 142,
+        "height": 20
+      }
+    },
+    {
+      "id": "I2299:74608;1719:29389",
+      "name": "Buttons",
+      "type": "FRAME",
+      "parent": "I2299:74608;1705:27584",
+      "bounds": {
+        "x": 7983,
+        "y": 5078,
+        "width": 142,
+        "height": 44
+      }
+    },
+    {
+      "id": "I2299:74608;1719:29317",
+      "name": "Button Icon Overlay",
+      "type": "INSTANCE",
+      "parent": "I2299:74608;1719:29389",
+      "bounds": {
+        "x": 7983,
+        "y": 5078,
+        "width": 44,
+        "height": 44
+      }
+    },
+    {
+      "id": "I2299:74608;1719:29317;14499:6916",
+      "name": "Swap Icon",
+      "type": "INSTANCE",
+      "parent": "I2299:74608;1719:29317",
+      "bounds": {
+        "x": 7991,
+        "y": 5086,
+        "width": 28,
+        "height": 28
+      }
+    },
+    {
+      "id": "I2299:74608;1719:29317;14499:6916;14340:92879",
+      "name": "Wrapper",
+      "type": "FRAME",
+      "parent": "I2299:74608;1719:29317;14499:6916",
+      "bounds": {
+        "x": 7991,
+        "y": 5086,
+        "width": 28,
+        "height": 28
+      }
+    },
+    {
+      "id": "I2299:74608;1719:29317;14499:6916;8448:75851",
+      "name": "icon",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "I2299:74608;1719:29317;14499:6916;14340:92879",
+      "bounds": {
+        "x": 8003.25,
+        "y": 5091.25,
+        "width": 3.5,
+        "height": 17.5
+      }
+    },
+    {
+      "id": "I2299:74608;1719:29317;14499:6916;147:9239",
+      "name": "dots_vertical",
+      "type": "INSTANCE",
+      "parent": "I2299:74608;1719:29317;14499:6916;8448:75851",
+      "bounds": {
+        "x": 7991,
+        "y": 5086,
+        "width": 28,
+        "height": 28
+      }
+    },
+    {
+      "id": "I2299:74608;1719:29317;14499:6916;147:9239;71:630",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:74608;1719:29317;14499:6916;147:9239",
+      "bounds": {
+        "x": 8003.25,
+        "y": 5091.25,
+        "width": 3.5,
+        "height": 17.5
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27355",
+      "name": "Button Icon Overlay",
+      "type": "INSTANCE",
+      "parent": "I2299:74608;1719:29389",
+      "bounds": {
+        "x": 8031,
+        "y": 5078,
+        "width": 44,
+        "height": 44
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27355;14499:6916",
+      "name": "Swap Icon",
+      "type": "INSTANCE",
+      "parent": "I2299:74608;1705:27355",
+      "bounds": {
+        "x": 8039,
+        "y": 5086,
+        "width": 28,
+        "height": 28
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27355;14499:6916;14340:92879",
+      "name": "Wrapper",
+      "type": "FRAME",
+      "parent": "I2299:74608;1705:27355;14499:6916",
+      "bounds": {
+        "x": 8039,
+        "y": 5086,
+        "width": 28,
+        "height": 28
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27355;14499:6916;8448:75851",
+      "name": "icon",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "I2299:74608;1705:27355;14499:6916;14340:92879",
+      "bounds": {
+        "x": 8041.3330078125,
+        "y": 5088.916015625,
+        "width": 22.1669921875,
+        "height": 22.7513370513916
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27355;14499:6916;147:9239",
+      "name": "megaphone_20",
+      "type": "INSTANCE",
+      "parent": "I2299:74608;1705:27355;14499:6916;8448:75851",
+      "bounds": {
+        "x": 8039,
+        "y": 5086,
+        "width": 28,
+        "height": 28
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27355;14499:6916;147:9239;4499:543",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:74608;1705:27355;14499:6916;147:9239",
+      "bounds": {
+        "x": 8041.33349609375,
+        "y": 5088.916015625,
+        "width": 22.1666316986084,
+        "height": 22.751300811767578
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27354",
+      "name": "Button Icon Overlay",
+      "type": "INSTANCE",
+      "parent": "I2299:74608;1719:29389",
+      "bounds": {
+        "x": 8079,
+        "y": 5078,
+        "width": 44,
+        "height": 44
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27354;14499:6916",
+      "name": "Swap Icon",
+      "type": "INSTANCE",
+      "parent": "I2299:74608;1705:27354",
+      "bounds": {
+        "x": 8087,
+        "y": 5086,
+        "width": 28,
+        "height": 28
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27354;14499:6916;14340:92879",
+      "name": "Wrapper",
+      "type": "FRAME",
+      "parent": "I2299:74608;1705:27354;14499:6916",
+      "bounds": {
+        "x": 8087,
+        "y": 5086,
+        "width": 28,
+        "height": 28
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27354;14499:6916;8448:75851",
+      "name": "icon",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "I2299:74608;1705:27354;14499:6916;14340:92879",
+      "bounds": {
+        "x": 8092,
+        "y": 5090.9970703125,
+        "width": 17.999923706054688,
+        "height": 18.00018310546875
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27354;14499:6916;147:9239",
+      "name": ".cross_28",
+      "type": "INSTANCE",
+      "parent": "I2299:74608;1705:27354;14499:6916;8448:75851",
+      "bounds": {
+        "x": 8087,
+        "y": 5086,
+        "width": 28,
+        "height": 28
+      }
+    },
+    {
+      "id": "I2299:74608;1705:27354;14499:6916;147:9239;2363:106058",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:74608;1705:27354;14499:6916;147:9239",
+      "bounds": {
+        "x": 8092,
+        "y": 5090.9970703125,
+        "width": 18,
+        "height": 18
+      }
+    },
+    {
+      "id": "2299:74609",
+      "name": "Frame 1",
+      "type": "FRAME",
+      "parent": "2299:74603",
+      "bounds": {
+        "x": 7765,
+        "y": 5779,
+        "width": 360,
+        "height": 24
+      }
+    },
+    {
+      "id": "2299:74610",
+      "name": ".Home Indicator",
+      "type": "INSTANCE",
+      "parent": "2299:74609",
+      "bounds": {
+        "x": 7765,
+        "y": 5779,
+        "width": 360,
+        "height": 24
+      }
+    },
+    {
+      "id": "I2299:74610;2081:3447",
+      "name": "Home Indicator",
+      "type": "FRAME",
+      "parent": "2299:74610",
+      "bounds": {
+        "x": 7765,
+        "y": 5779,
+        "width": 360,
+        "height": 24
+      }
+    },
+    {
+      "id": "I2299:74610;2081:3448",
+      "name": "handle",
+      "type": "RECTANGLE",
+      "parent": "I2299:74610;2081:3447",
+      "bounds": {
+        "x": 7891,
+        "y": 5789,
+        "width": 108,
+        "height": 4
+      }
+    },
+    {
+      "id": "2299:74611",
+      "name": "Status Bar",
+      "type": "INSTANCE",
+      "parent": "2299:74603",
+      "bounds": {
+        "x": 7765,
+        "y": 5003,
+        "width": 360,
+        "height": 48.000030517578125
+      }
+    },
+    {
+      "id": "I2299:74611;2522:12269",
+      "name": "9:41",
+      "type": "TEXT",
+      "parent": "2299:74611",
+      "bounds": {
+        "x": 7785,
+        "y": 5017,
+        "width": 36,
+        "height": 20
+      }
+    },
+    {
+      "id": "I2299:74611;2522:12270",
+      "name": "System Status",
+      "type": "FRAME",
+      "parent": "2299:74611",
+      "bounds": {
+        "x": 8053,
+        "y": 5015,
+        "width": 52.00006103515625,
+        "height": 24.000030517578125
+      }
+    },
+    {
+      "id": "I2299:74611;2522:12271",
+      "name": "Wifi",
+      "type": "FRAME",
+      "parent": "I2299:74611;2522:12270",
+      "bounds": {
+        "x": 8053,
+        "y": 5019,
+        "width": 18.666690826416016,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I2299:74611;2522:12272",
+      "name": "wifi",
+      "type": "VECTOR",
+      "parent": "I2299:74611;2522:12271",
+      "bounds": {
+        "x": 8055,
+        "y": 5021,
+        "width": 14.666685104370117,
+        "height": 11.333348274230957
+      }
+    },
+    {
+      "id": "I2299:74611;2522:12273",
+      "name": "Data",
+      "type": "FRAME",
+      "parent": "I2299:74611;2522:12270",
+      "bounds": {
+        "x": 8073.66650390625,
+        "y": 5019,
+        "width": 16.00002098083496,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I2299:74611;2522:12274",
+      "name": "data",
+      "type": "VECTOR",
+      "parent": "I2299:74611;2522:12273",
+      "bounds": {
+        "x": 8072.60888671875,
+        "y": 5021.27490234375,
+        "width": 12.391877174377441,
+        "height": 12.391878128051758
+      }
+    },
+    {
+      "id": "I2299:74611;2522:12275",
+      "name": "Battery",
+      "type": "FRAME",
+      "parent": "I2299:74611;2522:12270",
+      "bounds": {
+        "x": 8091.66650390625,
+        "y": 5019,
+        "width": 13.33335018157959,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I2299:74611;2522:12276",
+      "name": "Union",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "I2299:74611;2522:12275",
+      "bounds": {
+        "x": 8094.3330078125,
+        "y": 5020.33349609375,
+        "width": 8,
+        "height": 13.3330078125
+      }
+    },
+    {
+      "id": "I2299:74611;2522:12277",
+      "name": "stroke",
+      "type": "VECTOR",
+      "parent": "I2299:74611;2522:12276",
+      "bounds": {
+        "x": 8094.3330078125,
+        "y": 5020.33349609375,
+        "width": 8.00001049041748,
+        "height": 13.33335018157959
+      }
+    },
+    {
+      "id": "I2299:74611;2522:12278",
+      "name": "fill",
+      "type": "RECTANGLE",
+      "parent": "I2299:74611;2522:12276",
+      "bounds": {
+        "x": 8095,
+        "y": 5021.6669921875,
+        "width": 6.666675090789795,
+        "height": 12.000015258789062
+      }
+    },
+    {
+      "id": "2299:74612",
+      "name": "Progress Indicator Determinated",
+      "type": "INSTANCE",
+      "parent": "2299:74603",
+      "bounds": {
+        "x": 7919,
+        "y": 5725,
+        "width": 52,
+        "height": 52
+      }
+    },
+    {
+      "id": "I2299:74612;17723:46294",
+      "name": "Background",
+      "type": "ELLIPSE",
+      "parent": "2299:74612",
+      "bounds": {
+        "x": 7919,
+        "y": 5725,
+        "width": 52,
+        "height": 52
+      }
+    },
+    {
+      "id": "I2299:74612;17673:22876",
+      "name": "Progress",
+      "type": "ELLIPSE",
+      "parent": "2299:74612",
+      "bounds": {
+        "x": 7923,
+        "y": 5729,
+        "width": 44,
+        "height": 44
+      }
+    },
+    {
+      "id": "I2299:74612;17673:22877",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "2299:74612",
+      "bounds": {
+        "x": 7933,
+        "y": 5739,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "I2299:74612;17673:22877;71:987",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:74612;17673:22877",
+      "bounds": {
+        "x": 7938.34326171875,
+        "y": 5744.34326171875,
+        "width": 13.313325881958008,
+        "height": 13.313325881958008
+      }
+    }
+  ],
+  "imageHashes": [
+    "b71583a396568048be5ff60c6472b02dd8ccbf92",
+    "27f76aa5b38e84065400760d676ed5b4d3c4e0ba",
+    "63902932f4ab0e5a6ec921a1c7c5053e58037654"
+  ],
+  "notes": [],
+  "pngScale": 1,
+  "pngFile": "Публикация-историй/Публикация-историй---4-(история-открыта-+-загрузка)/screen.png",
+  "previewFile": "Публикация-историй/Публикация-историй---4-(история-открыта-+-загрузка)/preview.png",
+  "svgFile": "Публикация-историй/Публикация-историй---4-(история-открыта-+-загрузка)/screen.svg",
+  "documentFile": "Публикация-историй/Публикация-историй---4-(история-открыта-+-загрузка)/figma.json",
+  "images": [
+    {
+      "hash": "b71583a396568048be5ff60c6472b02dd8ccbf92",
+      "file": "Публикация-историй/Публикация-историй---4-(история-открыта-+-загрузка)/images/85fe031e51c8f8fbb40617133972056d7e3d476774d4c351675ce06a186f5620.png"
+    },
+    {
+      "hash": "27f76aa5b38e84065400760d676ed5b4d3c4e0ba",
+      "file": "Публикация-историй/Публикация-историй---4-(история-открыта-+-загрузка)/images/02a86796f0a24a1a1f63eb75595ceb21ef70b5e8945b11de9244634568e9b7ab.png"
+    },
+    {
+      "hash": "63902932f4ab0e5a6ec921a1c7c5053e58037654",
+      "file": "Публикация-историй/Публикация-историй---4-(история-открыта-+-загрузка)/images/23b6585600ed201c42c9d62b9775474863f087accc720dd2c236d5dc7946d404.png"
+    }
+  ]
+}

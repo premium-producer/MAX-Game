@@ -1,0 +1,718 @@
+{
+  "id": "I296:19403;115:2338",
+  "name": "Экран 1",
+  "title": "001-Экран",
+  "bounds": {
+    "x": 26798.775390625,
+    "y": 6391.2412109375,
+    "width": 280.6435852050781,
+    "height": 60.359397888183594
+  },
+  "task": "unassigned",
+  "include": true,
+  "reviewed": false,
+  "confidence": "structure",
+  "group": "296:19376",
+  "groupName": "Миссия 19 / Здравствуйте! Чтобы задать вопрос по заказу, нажмите одну из кнопок ниже.\n09:41\n09:41\nВопрос по заказу\nУзнать статус доставки\nОтменить заказ",
+  "containerPath": [
+    {
+      "id": "296:19369",
+      "name": "19-Миссия 19"
+    },
+    {
+      "id": "296:19376",
+      "name": "01-Здравствуйте! Чтобы задать вопрос по заказу, нажмите одну из кнопок ниже.\n09:41\n09:41\nВопрос по заказу\nУзнать статус доставки\nОтменить заказ"
+    }
+  ],
+  "ancestors": [],
+  "nearbyHeadings": [],
+  "evidence": [
+    {
+      "source": "autolayout",
+      "text": "Порядок children; названия фреймов не используются"
+    }
+  ],
+  "warnings": [],
+  "detection": "structure",
+  "order": 115,
+  "content": {
+    "kind": "screen",
+    "missionOrder": 19,
+    "missionNodeId": "296:19369",
+    "iconOrder": 1,
+    "iconNodeId": "296:19376",
+    "iconText": "Здравствуйте! Чтобы задать вопрос по заказу, нажмите одну из кнопок ниже.\n09:41\n09:41\nВопрос по заказу\nУзнать статус доставки\nОтменить заказ",
+    "iconTexts": [
+      {
+        "id": "296:19381",
+        "order": 1,
+        "text": "Здравствуйте! Чтобы задать вопрос по заказу, нажмите одну из кнопок ниже.",
+        "fontName": {
+          "family": "Roboto",
+          "style": "Regular",
+          "variationSettings": {
+            "wdth": 100,
+            "wght": 400
+          }
+        },
+        "fontSize": 16.063220977783203,
+        "segments": [
+          {
+            "characters": "Здравствуйте! Чтобы задать вопрос по заказу, нажмите одну из кнопок ниже.",
+            "start": 0,
+            "end": 73,
+            "fontSize": 16.063220977783203,
+            "fontName": {
+              "family": "Roboto",
+              "style": "Regular",
+              "variationSettings": {
+                "wdth": 100,
+                "wght": 400
+              }
+            },
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 0.8799999952316284,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+                },
+                "boundVariables": {
+                  "color": {
+                    "type": "VARIABLE_ALIAS",
+                    "id": "VariableID:bebf5b43cc235c14ac1b37faa6d40bcff331d9f4/2090:2196"
+                  }
+                }
+              }
+            ],
+            "hyperlink": null
+          }
+        ],
+        "bounds": {
+          "x": 26759.0625,
+          "y": 6016.81298828125,
+          "width": 171,
+          "height": 84
+        }
+      },
+      {
+        "id": "296:19388",
+        "order": 2,
+        "text": "09:41",
+        "fontName": {
+          "family": "Roboto",
+          "style": "Regular",
+          "variationSettings": {
+            "wdth": 100,
+            "wght": 400
+          }
+        },
+        "fontSize": 10.393850326538086,
+        "segments": [
+          {
+            "characters": "09:41",
+            "start": 0,
+            "end": 5,
+            "fontSize": 10.393850326538086,
+            "fontName": {
+              "family": "Roboto",
+              "style": "Regular",
+              "variationSettings": {
+                "wdth": 100,
+                "wght": 400
+              }
+            },
+            "fills": [],
+            "hyperlink": null
+          }
+        ],
+        "bounds": {
+          "x": 26767.005859375,
+          "y": 6099.81298828125,
+          "width": 28.346864700317383,
+          "height": 1
+        }
+      },
+      {
+        "id": "296:19393",
+        "order": 3,
+        "text": "09:41",
+        "fontName": {
+          "family": "Roboto",
+          "style": "Regular",
+          "variationSettings": {
+            "wdth": 100,
+            "wght": 400
+          }
+        },
+        "fontSize": 10.393850326538086,
+        "segments": [
+          {
+            "characters": "09:41",
+            "start": 0,
+            "end": 5,
+            "fontSize": 10.393850326538086,
+            "fontName": {
+              "family": "Roboto",
+              "style": "Regular",
+              "variationSettings": {
+                "wdth": 100,
+                "wght": 400
+              }
+            },
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 0.5,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+                },
+                "boundVariables": {
+                  "color": {
+                    "type": "VARIABLE_ALIAS",
+                    "id": "VariableID:05943adfd4099699cb951236abd66b30e6a5792b/2090:2198"
+                  }
+                }
+              }
+            ],
+            "hyperlink": null
+          }
+        ],
+        "bounds": {
+          "x": 26987.736328125,
+          "y": 6089.47314453125,
+          "width": 28,
+          "height": 15.118326187133789
+        }
+      },
+      {
+        "id": "I296:19399;20977:20262;20977:18865;20930:57852",
+        "order": 4,
+        "text": "Вопрос по заказу",
+        "fontName": {
+          "family": "Roboto",
+          "style": "Medium",
+          "variationSettings": {
+            "wdth": 100,
+            "wght": 500
+          }
+        },
+        "fontSize": 15.118326187133789,
+        "segments": [
+          {
+            "characters": "Вопрос по заказу",
+            "start": 0,
+            "end": 16,
+            "fontSize": 15.118326187133789,
+            "fontName": {
+              "family": "Roboto",
+              "style": "Medium",
+              "variationSettings": {
+                "wdth": 100,
+                "wght": 500
+              }
+            },
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+                },
+                "boundVariables": {
+                  "color": {
+                    "type": "VARIABLE_ALIAS",
+                    "id": "VariableID:e4732f707bda1caa385560bfc71becb0dbf98642/2210:111"
+                  }
+                }
+              }
+            ],
+            "hyperlink": null
+          }
+        ],
+        "bounds": {
+          "x": 26765.1171875,
+          "y": 6119.03271484375,
+          "width": 244.7279052734375,
+          "height": 19
+        }
+      },
+      {
+        "id": "I296:19399;20977:20263;20977:18865;20930:57852",
+        "order": 5,
+        "text": "Узнать статус доставки",
+        "fontName": {
+          "family": "Roboto",
+          "style": "Medium",
+          "variationSettings": {
+            "wdth": 100,
+            "wght": 500
+          }
+        },
+        "fontSize": 15.118326187133789,
+        "segments": [
+          {
+            "characters": "Узнать статус доставки",
+            "start": 0,
+            "end": 22,
+            "fontSize": 15.118326187133789,
+            "fontName": {
+              "family": "Roboto",
+              "style": "Medium",
+              "variationSettings": {
+                "wdth": 100,
+                "wght": 500
+              }
+            },
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+                },
+                "boundVariables": {
+                  "color": {
+                    "type": "VARIABLE_ALIAS",
+                    "id": "VariableID:e4732f707bda1caa385560bfc71becb0dbf98642/2210:111"
+                  }
+                }
+              }
+            ],
+            "hyperlink": null
+          }
+        ],
+        "bounds": {
+          "x": 26765.1171875,
+          "y": 6158.71826171875,
+          "width": 244.7279052734375,
+          "height": 19
+        }
+      },
+      {
+        "id": "I296:19399;20977:20264;20977:18865;20930:57852",
+        "order": 6,
+        "text": "Отменить заказ",
+        "fontName": {
+          "family": "Roboto",
+          "style": "Medium",
+          "variationSettings": {
+            "wdth": 100,
+            "wght": 500
+          }
+        },
+        "fontSize": 15.118326187133789,
+        "segments": [
+          {
+            "characters": "Отменить заказ",
+            "start": 0,
+            "end": 14,
+            "fontSize": 15.118326187133789,
+            "fontName": {
+              "family": "Roboto",
+              "style": "Medium",
+              "variationSettings": {
+                "wdth": 100,
+                "wght": 500
+              }
+            },
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+                },
+                "boundVariables": {
+                  "color": {
+                    "type": "VARIABLE_ALIAS",
+                    "id": "VariableID:e4732f707bda1caa385560bfc71becb0dbf98642/2210:111"
+                  }
+                }
+              }
+            ],
+            "hyperlink": null
+          }
+        ],
+        "bounds": {
+          "x": 26765.1171875,
+          "y": 6198.40380859375,
+          "width": 244.7279052734375,
+          "height": 19
+        }
+      }
+    ],
+    "screenOrder": 1,
+    "screenNodeId": "296:19403",
+    "visualNodeId": "I296:19403;115:2338",
+    "helpNodeId": null
+  },
+  "instruction": {
+    "blocks": [],
+    "text": ""
+  },
+  "watchNodeId": "296:19403",
+  "contextNodeIds": [
+    "296:19377"
+  ],
+  "sequenceParents": [
+    "296:19402",
+    "296:19376",
+    "296:19373",
+    "296:19369"
+  ],
+  "fingerprint": "[\"[\\\"Bubble P2P Text\\\",{\\\"x\\\":26749.998046875,\\\"y\\\":6391.2412109375,\\\"width\\\":335.2073669433594,\\\"height\\\":60.35939407348633},\\\"INSTANCE\\\",[[\\\"296:19402\\\",\\\"Out — Text — One\\\",\\\"FRAME\\\"],[\\\"296:19376\\\",\\\"Content\\\",\\\"FRAME\\\"],[\\\"296:19373\\\",\\\"Bubble Bot / Text\\\",\\\"FRAME\\\"],[\\\"296:19369\\\",\\\"Frame 2087329043\\\",\\\"FRAME\\\"],[\\\"296:19365\\\",\\\"Запрос подписи\\\",\\\"FRAME\\\"],[\\\"296:19278\\\",\\\"экран\\\",\\\"FRAME\\\"],[\\\"296:19275\\\",\\\"экран задания · ПК\\\",\\\"FRAME\\\"],[\\\"296:19274\\\",\\\"Чат-бот для приема заказов · 03 · Новый заказ · Чат-бот для приема заказов\\\",\\\"FRAME\\\"],[\\\"296:18554\\\",\\\"задание миссии\\\",\\\"FRAME\\\"],[\\\"296:18549\\\",\\\"иконка_задание · Чат-бот для приема заказов\\\",\\\"FRAME\\\"],[\\\"296:16454\\\",\\\"Миссия · возможности слева направо\\\",\\\"FRAME\\\"],[\\\"296:16452\\\",\\\"Продвижение бизнеса\\\",\\\"FRAME\\\"],[\\\"296:13218\\\",\\\"MAX аудит миссий\\\",\\\"FRAME\\\"],[\\\"296:13217\\\",\\\"DEV 2\\\",\\\"PAGE\\\"]],\\\"content-v1\\\",2434871567,3969475909,28]\",[\"[\\\"1\\\",{\\\"x\\\":26749.998046875,\\\"y\\\":6009.25341796875,\\\"width\\\":274.9645690917969,\\\"height\\\":217.5482940673828},\\\"FRAME\\\",[[\\\"296:19376\\\",\\\"Content\\\",\\\"FRAME\\\"],[\\\"296:19373\\\",\\\"Bubble Bot / Text\\\",\\\"FRAME\\\"],[\\\"296:19369\\\",\\\"Frame 2087329043\\\",\\\"FRAME\\\"],[\\\"296:19365\\\",\\\"Запрос подписи\\\",\\\"FRAME\\\"],[\\\"296:19278\\\",\\\"экран\\\",\\\"FRAME\\\"],[\\\"296:19275\\\",\\\"экран задания · ПК\\\",\\\"FRAME\\\"],[\\\"296:19274\\\",\\\"Чат-бот для приема заказов · 03 · Новый заказ · Чат-бот для приема заказов\\\",\\\"FRAME\\\"],[\\\"296:18554\\\",\\\"задание миссии\\\",\\\"FRAME\\\"],[\\\"296:18549\\\",\\\"иконка_задание · Чат-бот для приема заказов\\\",\\\"FRAME\\\"],[\\\"296:16454\\\",\\\"Миссия · возможности слева направо\\\",\\\"FRAME\\\"],[\\\"296:16452\\\",\\\"Продвижение бизнеса\\\",\\\"FRAME\\\"],[\\\"296:13218\\\",\\\"MAX аудит миссий\\\",\\\"FRAME\\\"],[\\\"296:13217\\\",\\\"DEV 2\\\",\\\"PAGE\\\"]],\\\"content-v1\\\",1891300712,1139852674,153]\"],[[\"296:19402\",[\"296:19403\"]],[\"296:19376\",[\"296:19377\",\"296:19400\",\"296:19401\",\"296:19402\",\"296:19404\"]],[\"296:19373\",[\"296:19376\"]],[\"296:19369\",[\"296:19370\",\"296:19373\"]]]]",
+  "exportStatus": "ok",
+  "texts": [
+    {
+      "id": "I296:19403;203:42072;113:11438",
+      "name": "Time",
+      "type": "TEXT",
+      "parent": "I296:19403;203:42072;113:11435",
+      "bounds": {
+        "x": 27023.83984375,
+        "y": 6432.91748046875,
+        "width": 28.932329177856445,
+        "height": 13.501753807067871
+      },
+      "text": "02:16",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Regular"
+      },
+      "fontSize": 10.6085205078125,
+      "segments": [
+        {
+          "characters": "02:16",
+          "start": 0,
+          "end": 5,
+          "fontSize": 10.6085205078125,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Regular"
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.6399999856948853,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:e2c2c2989a67f5dbcc9bb88737dc61bf4076b7f8/8763:20"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    },
+    {
+      "id": "I296:19403;115:2341",
+      "name": "Text",
+      "type": "TEXT",
+      "parent": "I296:19403;115:2340",
+      "bounds": {
+        "x": 26808.09765625,
+        "y": 6398.95654296875,
+        "width": 262,
+        "height": 43
+      },
+      "text": "Можно поменять дату доставки на 05.11?",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Regular"
+      },
+      "fontSize": 16.394987106323242,
+      "segments": [
+        {
+          "characters": "Можно поменять дату доставки на 05.11?",
+          "start": 0,
+          "end": 38,
+          "fontSize": 16.394987106323242,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Regular"
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.8799999952316284,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:c6378756f0c5c32994f8fcca9f78e14d47d57a42/7825:769"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ],
+      "contentRole": "visual"
+    }
+  ],
+  "layers": [
+    {
+      "id": "I296:19403;115:2338",
+      "name": "Bubble",
+      "type": "FRAME",
+      "parent": "I296:19403;3164:10771",
+      "bounds": {
+        "x": 26798.775390625,
+        "y": 6391.2412109375,
+        "width": 280.6435852050781,
+        "height": 60.359397888183594
+      }
+    },
+    {
+      "id": "I296:19403;203:42072",
+      "name": "Time",
+      "type": "INSTANCE",
+      "parent": "I296:19403;115:2338",
+      "bounds": {
+        "x": 27023.83984375,
+        "y": 6431.953125,
+        "width": 46.291725158691406,
+        "height": 15.430575370788574
+      }
+    },
+    {
+      "id": "I296:19403;203:42072;113:11435",
+      "name": "Text Frame",
+      "type": "FRAME",
+      "parent": "I296:19403;203:42072",
+      "bounds": {
+        "x": 27023.83984375,
+        "y": 6432.91748046875,
+        "width": 28.932329177856445,
+        "height": 13.501753807067871
+      }
+    },
+    {
+      "id": "I296:19403;203:42072;113:11438",
+      "name": "Time",
+      "type": "TEXT",
+      "parent": "I296:19403;203:42072;113:11435",
+      "bounds": {
+        "x": 27023.83984375,
+        "y": 6432.91748046875,
+        "width": 28.932329177856445,
+        "height": 13.501753807067871
+      }
+    },
+    {
+      "id": "I296:19403;203:42072;115:2327",
+      "name": "View Status",
+      "type": "INSTANCE",
+      "parent": "I296:19403;203:42072",
+      "bounds": {
+        "x": 27054.701171875,
+        "y": 6431.953125,
+        "width": 15.430575370788574,
+        "height": 15.430575370788574
+      }
+    },
+    {
+      "id": "I296:19403;203:42072;115:2327;5371:58600",
+      "name": "delivered_16",
+      "type": "INSTANCE",
+      "parent": "I296:19403;203:42072;115:2327",
+      "bounds": {
+        "x": 27054.986328125,
+        "y": 6432.23779296875,
+        "width": 15.430575370788574,
+        "height": 15.430575370788574
+      }
+    },
+    {
+      "id": "I296:19403;203:42072;115:2327;5371:58600;1774:163",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I296:19403;203:42072;115:2327;5371:58600",
+      "bounds": {
+        "x": 27056.02734375,
+        "y": 6435.6611328125,
+        "width": 10.7581205368042,
+        "height": 8.24571418762207
+      }
+    },
+    {
+      "id": "I296:19403;115:2340",
+      "name": "Text Frame",
+      "type": "FRAME",
+      "parent": "I296:19403;115:2338",
+      "bounds": {
+        "x": 26798.775390625,
+        "y": 6398.95654296875,
+        "width": 333.3664245605469,
+        "height": 43
+      }
+    },
+    {
+      "id": "I296:19403;115:2341",
+      "name": "Text",
+      "type": "TEXT",
+      "parent": "I296:19403;115:2340",
+      "bounds": {
+        "x": 26808.09765625,
+        "y": 6398.95654296875,
+        "width": 262,
+        "height": 43
+      }
+    }
+  ],
+  "imageHashes": [],
+  "notes": [],
+  "visualTexts": [
+    {
+      "id": "I296:19403;203:42072;113:11438",
+      "name": "Time",
+      "type": "TEXT",
+      "parent": "I296:19403;203:42072;113:11435",
+      "bounds": {
+        "x": 27023.83984375,
+        "y": 6432.91748046875,
+        "width": 28.932329177856445,
+        "height": 13.501753807067871
+      },
+      "text": "02:16",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Regular"
+      },
+      "fontSize": 10.6085205078125,
+      "segments": [
+        {
+          "characters": "02:16",
+          "start": 0,
+          "end": 5,
+          "fontSize": 10.6085205078125,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Regular"
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.6399999856948853,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:e2c2c2989a67f5dbcc9bb88737dc61bf4076b7f8/8763:20"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "I296:19403;115:2341",
+      "name": "Text",
+      "type": "TEXT",
+      "parent": "I296:19403;115:2340",
+      "bounds": {
+        "x": 26808.09765625,
+        "y": 6398.95654296875,
+        "width": 262,
+        "height": 43
+      },
+      "text": "Можно поменять дату доставки на 05.11?",
+      "fontName": {
+        "family": "SF Pro Text",
+        "style": "Regular"
+      },
+      "fontSize": 16.394987106323242,
+      "segments": [
+        {
+          "characters": "Можно поменять дату доставки на 05.11?",
+          "start": 0,
+          "end": 38,
+          "fontSize": 16.394987106323242,
+          "fontName": {
+            "family": "SF Pro Text",
+            "style": "Regular"
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.8799999952316284,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:c6378756f0c5c32994f8fcca9f78e14d47d57a42/7825:769"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    }
+  ],
+  "pngScale": 1,
+  "pngFile": "19-Миссия-19/01-Здравствуйте!-Чтобы-задать-вопрос-по-заказу,-нажмите-одну-из-кнопок-ниже.-09-41-09-41-В/001-Экран/screen.png",
+  "previewFile": "19-Миссия-19/01-Здравствуйте!-Чтобы-задать-вопрос-по-заказу,-нажмите-одну-из-кнопок-ниже.-09-41-09-41-В/001-Экран/preview.png",
+  "svgFile": "19-Миссия-19/01-Здравствуйте!-Чтобы-задать-вопрос-по-заказу,-нажмите-одну-из-кнопок-ниже.-09-41-09-41-В/001-Экран/screen.svg",
+  "documentFile": "19-Миссия-19/01-Здравствуйте!-Чтобы-задать-вопрос-по-заказу,-нажмите-одну-из-кнопок-ниже.-09-41-09-41-В/001-Экран/figma.json",
+  "images": []
+}

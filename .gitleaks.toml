@@ -1,0 +1,20 @@
+title = "MAX export: default detection with narrowly scoped design metadata exceptions"
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Installed dependencies and disposable local workspace are not published"
+paths = ['''(^|/)node_modules/''', '''(^|/)artifacts/workspace/''']
+
+[[rules]]
+id = "generic-api-key"
+[[rules.allowlists]]
+description = "Figma node/component hashes and manifest SHA digests, not credentials"
+condition = "AND"
+paths = ['''(^|/)(figma\.json|export\.json(?:\.[a-f0-9-]+\.tmp)?|.*manifest\.json|build\.json|source\.json|.*apply-result\.json|max-review\.json)$''']
+regexTarget = "secret"
+regexes = ['''^[a-fA-F0-9]{10,64}$''']
+[[rules.allowlists]]
+description = "Figma document and selection identifiers are public resource identifiers"
+regexTarget = "match"
+regexes = ['''(?i)^(file_?Key|selectionKey)["']?\s*:\s*["'][a-zA-Z0-9:_/-]+["']$''']

@@ -1,0 +1,25 @@
+{
+  "name": "x-sputnik-web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "sync-assets": "node scripts/sync-assets.mjs",
+    "build": "node scripts/build.mjs",
+    "build:refresh": "node scripts/sync-assets.mjs && node scripts/build.mjs",
+    "portable:check": "node scripts/check-portable.mjs",
+    "copy:check": "node scripts/check-copy.mjs",
+    "audio:check": "node scripts/check-audio.mjs",
+    "dev": "node server.mjs",
+    "start": "node server.mjs --open",
+    "test": "node --test --test-isolation=none test/*.test.mjs",
+    "check": "node --check server.mjs && node --check scripts/sync-assets.mjs && node --check scripts/build.mjs && node --check scripts/check-portable.mjs && node --check scripts/check-audio.mjs && node --check scripts/check-copy.mjs && node --check src/route-layout.mjs && node --check src/route-view.mjs && node --check src/screen-connectivity.mjs && node --check src/connection-projection.mjs && node --check src/mission-evaluation.mjs && node --check src/mission-system.mjs && node --check src/editor-mission-system.js && node --check src/mission-menu-reveal.mjs && node --check src/asset-preparation.mjs && node --check src/gpu-preparation.mjs && node --check src/loading-screen.mjs && node --check src/main.js && node --check src/editor-content.mjs && node --check src/project-editor-client.mjs && node --check src/objects-main.js && node --check src/wording-editor-main.js && node --check src/editor-main.js && node --check src/earth-editor-main.js && node --check src/editor-project-save.mjs && node --check src/editor-state.mjs && node --check src/editor-validation.mjs && node --check src/editor-storage.mjs && node --check src/webgl-field.js && node --check src/game-state.mjs && node --check src/mission-game.mjs && node --check src/mission-config.mjs && node --check src/mission-errors.mjs && node --check src/mission-feedback.mjs && node --check src/ui-shell-config.mjs && node --check src/typography.mjs && node --check src/wording.mjs && node --check src/audio/audio-manifest.mjs && node --check src/audio/audio-state.mjs && node --check src/audio/audio-engine.mjs && node --check src/audio/audio-director.mjs && node --check src/audio/audio-app-adapter.mjs && node scripts/check-copy.mjs && node scripts/check-audio.mjs && node --check src/surface-map.mjs && node --check src/placement-policy.mjs && node --check src/production-controls.mjs && node --check src/earth-contours.mjs && node scripts/check-earth-contours.mjs",
+    "contours:check": "node scripts/check-earth-contours.mjs"
+  },
+  "dependencies": {
+    "three": "^0.185.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  }
+}

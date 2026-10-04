@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="theme-color" content="#0f1217" />
+    <title data-boot-copy="app.title">Космос на связи</title>
+    <link rel="stylesheet" href="./src/styles.css?v=en-single-logo-227" />
+  </head>
+  <body>
+    <section id="boot-screen" class="boot-screen" aria-labelledby="boot-title" aria-busy="true">
+      <div class="boot-card">
+        <span class="boot-brand" aria-hidden="true" data-boot-copy="app.header.title">КОСМОС НА СВЯЗИ</span>
+        <h1 id="boot-title" data-boot-copy="loading.title">ЗАГРУЗКА ИГРЫ</h1>
+        <p data-loading-status role="status" data-boot-copy="loading.config">Подготовка миссий</p>
+        <progress data-boot-aria="loading.progress" aria-label="Загрузка игры"></progress>
+        <p data-loading-error hidden data-boot-copy="loading.error">Не удалось загрузить игру
+Проверь соединение и попробуй ещё раз</p>
+        <span data-loading-count aria-hidden="true"></span>
+        <button type="button" class="outline-button" hidden data-boot-copy="loading.retry">ПОВТОРИТЬ</button>
+      </div>
+    </section>
+    <main id="app" aria-live="polite">
+      <div id="stage" class="stage" data-earth-mask="full" inert>
+        <div id="world-layer" class="world-layer"></div>
+        <div id="ui-shell" class="ui-shell ui-shell--cta">
+          <div class="shell-backdrop" aria-hidden="true"></div>
+          <div id="shell-frame" class="shell-frame" aria-hidden="true"></div>
+          <header id="shell-header" class="shell-header">
+            <img alt="" class="brand-logo" />
+            <div class="header-title ui-copy-heading"></div>
+            <div class="header-actions">
+              <button class="audio-toggle debug-exit" type="button" data-debug-only hidden data-game-action="debug-off">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v9M7 5.8a8 8 0 1 0 10 0" /></svg>
+              </button>
+              <nav class="connection-modes" data-debug-only hidden data-connection-modes></nav>
+              <button class="audio-toggle placement-toggle" type="button" data-debug-only hidden data-placement-toggle data-placement-mode="drag">
+                <svg class="placement-toggle__tap" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M9 12V5a2 2 0 0 1 4 0v6l1-1a2 2 0 0 1 3 1h1a2 2 0 0 1 2 2v3c0 3-2 5-5 5h-2c-2 0-3-1-4-2l-4-5a1.7 1.7 0 0 1 2.5-2L9 14"/>
+                  <path d="M5 5H3M6 2 5 1M16 4h2"/>
+                </svg>
+                <svg class="placement-toggle__drag" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 12V5a1.5 1.5 0 0 1 3 0v6-8a1.5 1.5 0 0 1 3 0v8-7a1.5 1.5 0 0 1 3 0v8-5a1.5 1.5 0 0 1 3 0v8c0 4-2 6-6 6h-1c-2 0-4-1-5-3l-3-5a1.5 1.5 0 0 1 2.5-1L7 14"/>
+                  <path d="M2 5v3M22 5v3"/>
+                </svg>
+              </button>
+              <button class="outline-button ui-copy-button" type="button" data-game-action="back"></button>
+              <div class="language-switcher" role="group" data-active-language="ru">
+                <button type="button" data-language="ru" lang="ru" aria-pressed="true">RU</button>
+                <button type="button" data-language="en" lang="en" aria-pressed="false">EN</button>
+              </div>
+              <button class="audio-toggle debug-complete-all" type="button" data-debug-only hidden data-game-action="debug-complete-all">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6" /></svg>
+              </button>
+              <button class="audio-toggle debug-unlock-all" type="button" role="switch" data-debug-only hidden data-game-action="debug-toggle-unlock" aria-checked="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path class="lock-shackle" d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+              </button>
+              <button class="audio-toggle" type="button" role="switch" data-debug-only hidden data-audio-toggle aria-checked="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path class="audio-toggle__speaker" d="M4 9h4l5-4v14l-5-4H4z" />
+                  <path class="audio-toggle__waves" d="M16 8.4c1.1 1 1.1 6.2 0 7.2M18.7 5.8c2.5 2.4 2.5 10 0 12.4" />
+                  <path class="audio-toggle__slash" d="M4.5 4.5 19.5 19.5" />
+                </svg>
+              </button>
+            </div>
+          </header>
+          <aside id="shell-inventory" class="shell-inventory">
+            <h2 class="ui-copy-heading"></h2>
+            <div class="tap-tools" data-tap-tools hidden>
+              <div class="tap-altitude" data-tap-altitude hidden>
+                <output data-tap-altitude-label></output>
+                <div class="tap-button-row">
+                  <button type="button" data-node-action="lower"></button>
+                  <button type="button" data-node-action="raise"></button>
+                </div>
+              </div>
+            </div>
+            <div class="inventory-scroll-area">
+              <div id="shell-inventory-list" class="inventory-list" data-inventory tabindex="0"></div>
+            </div>
+          </aside>
+          <footer id="shell-footer" class="shell-footer"><div id="shell-footer-content" class="shell-footer-content"></div></footer>
+        </div>
+        <div id="mission-layer" class="mission-layer" hidden></div>
+        <div id="loading" class="loading ui-copy-badge"></div>
+      </div>
+      <aside id="debug" class="debug" hidden>
+        <span id="debug-state"></span>
+        <button type="button" data-debug="previous">←</button>
+        <button type="button" data-debug="next">→</button>
+        <button type="button" data-debug="fullscreen"></button>
+      </aside>
+    </main>
+    <script type="module" src="./app.js?v=en-single-logo-227"></script>
+  </body>
+</html>

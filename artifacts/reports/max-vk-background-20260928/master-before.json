@@ -1,0 +1,1676 @@
+{
+  "mode": "run",
+  "instances": [
+    {
+      "id": "ribbon-up",
+      "appId": "ribbon",
+      "enabled": true,
+      "revision": 9,
+      "settings": {
+        "noise": {
+          "filledMin": 0.65,
+          "filledMax": 1,
+          "emptyMin": 0,
+          "emptyMax": 0.4,
+          "scale": 2.8,
+          "speed": 0.18,
+          "octaves": 3,
+          "persistence": 0.5,
+          "size": 1,
+          "brightness": 0.9,
+          "glow": 0.55,
+          "seed": 42
+        },
+        "flow": {
+          "density": 34,
+          "hfov": 75,
+          "blur": 2.4,
+          "depth": 1,
+          "rows": 8,
+          "gap": 0.18,
+          "mask": "auto",
+          "source": "auto",
+          "view": "composite",
+          "maskStrength": 1,
+          "breath": 0.18
+        },
+        "fluid": {
+          "autoEmit": true,
+          "emitForce": 1.1,
+          "emitLight": 1.2,
+          "emitSpread": 0.7,
+          "transitionLength": 1.8,
+          "birthSize": 0,
+          "radius": 0.09,
+          "force": 22,
+          "ink": 1.4,
+          "curl": 24,
+          "velocityDecay": 0.35,
+          "dyeDecay": 0.48,
+          "speed": 1,
+          "resolution": 48,
+          "iterations": 20
+        },
+        "vortex": {
+          "enabled": true,
+          "speed": 0.28,
+          "strength": 1.1,
+          "scale": 1.35,
+          "travel": 0.24,
+          "spread": 0.72,
+          "exposure": 1.5,
+          "white": 0.35,
+          "size": 0.8,
+          "detail": 0.22,
+          "response": 0.4,
+          "quality": 8
+        },
+        "underlay": {
+          "look": "reference-v2",
+          "dark": "#000b38",
+          "middle": "#0037ac",
+          "light": "#007cff",
+          "brightness": 0.42,
+          "scale": 1.6,
+          "speed": 0.18,
+          "contrast": 1.1
+        },
+        "composition": {
+          "tags": 60,
+          "textPopulation": "catalog-v1",
+          "products": 1,
+          "speed": 1,
+          "scale": 1,
+          "depth": 1,
+          "trail": 0.22,
+          "focusBlur": 0.15,
+          "lines": 0.45,
+          "particles": 72,
+          "particleDynamics": 0.8,
+          "particleSpeed": 1,
+          "particleLarge": 0.25,
+          "particleOpacity": 0.9
+        },
+        "color": {
+          "strength": 1,
+          "redBalance": 0
+        },
+        "neon": {
+          "look": "reference-v2",
+          "bloom": 0.65,
+          "radius": 5,
+          "redAccent": 0.2,
+          "knee": 1.8,
+          "roundness": 0.38
+        },
+        "blue": {
+          "saturation": 1,
+          "fluidSaturation": 0.1,
+          "opacity": 1,
+          "backgroundOpacity": 0.44
+        },
+        "energy": 0.7,
+        "quality": 1,
+        "surface": "up",
+        "highlights": {
+          "threshold": 0.22,
+          "width": 0.46,
+          "gain": 1.5,
+          "cyan": 0.8
+        },
+        "cellDepth": {
+          "driver": "fluid-v1",
+          "focus": "near-v1",
+          "focusRange": 0.18,
+          "amount": 1,
+          "nearZ": 8.4,
+          "farZ": 24,
+          "blur": 3,
+          "threshold": 0.02,
+          "fade": 0.65,
+          "fluidLift": 1.5
+        },
+        "lighting": {
+          "radius": 0.9,
+          "softness": 0.65,
+          "gain": 1.6,
+          "spill": 0.03
+        }
+      },
+      "clock": {
+        "time": 257.019,
+        "epoch": 1790178247691,
+        "playing": true,
+        "rate": 1
+      },
+      "outputs": {
+        "spout": true,
+        "ndi": false
+      },
+      "renderProfile": {
+        "width": 10240,
+        "height": 512,
+        "aspectWidth": 10240,
+        "aspectHeight": 512,
+        "lockAspect": true,
+        "minShortSide": 512
+      },
+      "renderLayout": {
+        "version": 1,
+        "width": 10240,
+        "height": 512,
+        "tiled": true,
+        "columns": 6,
+        "rows": 1,
+        "halo": 64,
+        "tiles": [
+          {
+            "id": "r0c0",
+            "rect": [
+              0,
+              0,
+              1920,
+              512
+            ],
+            "renderRect": [
+              0,
+              0,
+              2048,
+              512
+            ],
+            "crop": [
+              0,
+              0,
+              1920,
+              512
+            ],
+            "uv": [
+              0,
+              0,
+              0.1875,
+              1
+            ],
+            "transportSize": [
+              1920,
+              512
+            ]
+          },
+          {
+            "id": "r0c1",
+            "rect": [
+              1920,
+              0,
+              1920,
+              512
+            ],
+            "renderRect": [
+              1856,
+              0,
+              2048,
+              512
+            ],
+            "crop": [
+              64,
+              0,
+              1920,
+              512
+            ],
+            "uv": [
+              0.1875,
+              0,
+              0.1875,
+              1
+            ],
+            "transportSize": [
+              1920,
+              512
+            ]
+          },
+          {
+            "id": "r0c2",
+            "rect": [
+              3840,
+              0,
+              1920,
+              512
+            ],
+            "renderRect": [
+              3776,
+              0,
+              2048,
+              512
+            ],
+            "crop": [
+              64,
+              0,
+              1920,
+              512
+            ],
+            "uv": [
+              0.375,
+              0,
+              0.1875,
+              1
+            ],
+            "transportSize": [
+              1920,
+              512
+            ]
+          },
+          {
+            "id": "r0c3",
+            "rect": [
+              5760,
+              0,
+              1920,
+              512
+            ],
+            "renderRect": [
+              5696,
+              0,
+              2048,
+              512
+            ],
+            "crop": [
+              64,
+              0,
+              1920,
+              512
+            ],
+            "uv": [
+              0.5625,
+              0,
+              0.1875,
+              1
+            ],
+            "transportSize": [
+              1920,
+              512
+            ]
+          },
+          {
+            "id": "r0c4",
+            "rect": [
+              7680,
+              0,
+              1920,
+              512
+            ],
+            "renderRect": [
+              7616,
+              0,
+              2048,
+              512
+            ],
+            "crop": [
+              64,
+              0,
+              1920,
+              512
+            ],
+            "uv": [
+              0.75,
+              0,
+              0.1875,
+              1
+            ],
+            "transportSize": [
+              1920,
+              512
+            ]
+          },
+          {
+            "id": "r0c5",
+            "rect": [
+              9600,
+              0,
+              640,
+              512
+            ],
+            "renderRect": [
+              8192,
+              0,
+              2048,
+              512
+            ],
+            "crop": [
+              1408,
+              0,
+              640,
+              512
+            ],
+            "uv": [
+              0.9375,
+              0,
+              0.0625,
+              1
+            ],
+            "transportSize": [
+              640,
+              512
+            ]
+          }
+        ],
+        "preview": [
+          1920,
+          96
+        ]
+      },
+      "programPlan": {
+        "version": 1,
+        "logicalSize": [
+          10240,
+          512
+        ],
+        "transportSize": [
+          5120,
+          1026
+        ],
+        "regions": [
+          {
+            "logicalRect": [
+              0,
+              0,
+              5120,
+              512
+            ],
+            "packedRect": [
+              0,
+              2,
+              5120,
+              512
+            ]
+          },
+          {
+            "logicalRect": [
+              5120,
+              0,
+              5120,
+              512
+            ],
+            "packedRect": [
+              0,
+              514,
+              5120,
+              512
+            ]
+          }
+        ],
+        "frameStampRect": [
+          0,
+          0,
+          64,
+          2
+        ],
+        "format": "BGRA8",
+        "colorSpace": "sRGB",
+        "targetFps": 60,
+        "renderScale": 1
+      },
+      "previewSize": [
+        1920,
+        96
+      ],
+      "tileFrameId": 1187085,
+      "quality": {
+        "minimum": 512,
+        "target": [
+          10240,
+          512
+        ],
+        "legacy": false,
+        "status": "meets-minimum"
+      },
+      "nativeOutputs": {
+        "spout": {
+          "state": "sending",
+          "available": true,
+          "enabled": true,
+          "name": "VK-003229b1-ribbon-up-program",
+          "error": null,
+          "frames": 1187057,
+          "dropped": 0,
+          "size": [
+            5120,
+            1026
+          ],
+          "connections": null,
+          "discovery": "registered",
+          "fps": 33.95077138152209,
+          "frameId": 1187084
+        },
+        "ndi": {
+          "state": "disabled",
+          "available": false,
+          "enabled": false,
+          "name": "",
+          "error": null,
+          "frames": 0,
+          "dropped": 0,
+          "size": null,
+          "connections": null
+        }
+      },
+      "generation": "ca07b5d8-e4e7-4346-ba7d-8b7136448470",
+      "sceneTime": 412635.51999999996,
+      "status": "running",
+      "error": null,
+      "frame": 1187085,
+      "timing": {
+        "targetFps": 60,
+        "fps": 34.24992660722521,
+        "frameMs": 27.320000000191587,
+        "maxFrameMs": 52.600000001490116
+      },
+      "renderSize": [
+        10240,
+        512
+      ],
+      "frameLayout": null,
+      "codeRevision": "mukp7umi",
+      "clients": 1
+    },
+    {
+      "id": "video-wall-left",
+      "appId": "video-wall",
+      "enabled": true,
+      "revision": 19,
+      "settings": {
+        "motion": {
+          "speed": 0.35,
+          "attraction": 2.2,
+          "radius": 0.23,
+          "grid": 0.75
+        },
+        "owners": [
+          {
+            "ownerId": "visitor-01",
+            "sessionId": "vk-c120bbda-193e-4ac9-90f5-3de07dfebd0b",
+            "label": "Посетитель 1",
+            "present": false,
+            "x": 0.28,
+            "y": 0.58,
+            "homeX": 0.28,
+            "homeY": 0.56,
+            "packet": {
+              "sourceInstanceId": "ribbon-up",
+              "revision": 5,
+              "receivedAt": 1790334451163,
+              "tags": [
+                {
+                  "id": "technology-03",
+                  "label": "криптография",
+                  "style": "red"
+                },
+                {
+                  "id": "science-02",
+                  "label": "космос",
+                  "style": "red"
+                },
+                {
+                  "id": "science-01",
+                  "label": "наука",
+                  "style": "blue"
+                },
+                {
+                  "id": "world-04",
+                  "label": "котики",
+                  "style": "red"
+                },
+                {
+                  "id": "music-01",
+                  "label": "музыка",
+                  "style": "red"
+                },
+                {
+                  "id": "technology-02",
+                  "label": "киберзащита",
+                  "style": "red"
+                }
+              ],
+              "assets": [
+                "earth",
+                "galaxy",
+                "ribbon:ribbon"
+              ]
+            }
+          },
+          {
+            "ownerId": "visitor-02",
+            "sessionId": "test-02",
+            "label": "Посетитель 2",
+            "present": true,
+            "x": 0.73,
+            "y": 0.56,
+            "homeX": 0.72,
+            "homeY": 0.56,
+            "packet": {
+              "sourceInstanceId": "ribbon-up",
+              "revision": 5,
+              "receivedAt": 1790258271835,
+              "tags": [
+                {
+                  "id": "technology-03",
+                  "label": "криптография",
+                  "style": "red"
+                },
+                {
+                  "id": "science-02",
+                  "label": "космос",
+                  "style": "red"
+                },
+                {
+                  "id": "science-01",
+                  "label": "наука",
+                  "style": "blue"
+                },
+                {
+                  "id": "world-04",
+                  "label": "котики",
+                  "style": "red"
+                },
+                {
+                  "id": "music-01",
+                  "label": "музыка",
+                  "style": "red"
+                },
+                {
+                  "id": "technology-02",
+                  "label": "киберзащита",
+                  "style": "red"
+                },
+                {
+                  "id": "technology-10",
+                  "label": "цифровые технологии",
+                  "style": "blue"
+                },
+                {
+                  "id": "world-01",
+                  "label": "путешествия",
+                  "style": "red"
+                },
+                {
+                  "id": "world-02",
+                  "label": "природа",
+                  "style": "blue"
+                },
+                {
+                  "id": "world-08",
+                  "label": "еда",
+                  "style": "red"
+                },
+                {
+                  "id": "culture-01",
+                  "label": "кино",
+                  "style": "blue"
+                },
+                {
+                  "id": "world-03",
+                  "label": "животные",
+                  "style": "blue"
+                },
+                {
+                  "id": "science-03",
+                  "label": "Астрономия",
+                  "style": "blue"
+                },
+                {
+                  "id": "science-04",
+                  "label": "Физика",
+                  "style": "blue"
+                },
+                {
+                  "id": "science-05",
+                  "label": "Биология",
+                  "style": "blue"
+                },
+                {
+                  "id": "science-06",
+                  "label": "Химия",
+                  "style": "blue"
+                },
+                {
+                  "id": "science-07",
+                  "label": "Математика",
+                  "style": "blue"
+                },
+                {
+                  "id": "science-08",
+                  "label": "Океан",
+                  "style": "blue"
+                },
+                {
+                  "id": "science-09",
+                  "label": "Эксперименты",
+                  "style": "blue"
+                },
+                {
+                  "id": "science-10",
+                  "label": "Открытия",
+                  "style": "blue"
+                },
+                {
+                  "id": "music-02",
+                  "label": "Концерты",
+                  "style": "red"
+                },
+                {
+                  "id": "music-03",
+                  "label": "Джаз",
+                  "style": "red"
+                },
+                {
+                  "id": "music-04",
+                  "label": "Электроника",
+                  "style": "red"
+                },
+                {
+                  "id": "music-05",
+                  "label": "Рок",
+                  "style": "red"
+                },
+                {
+                  "id": "music-06",
+                  "label": "Вокал",
+                  "style": "red"
+                },
+                {
+                  "id": "music-07",
+                  "label": "Инструменты",
+                  "style": "red"
+                },
+                {
+                  "id": "music-08",
+                  "label": "Оркестр",
+                  "style": "red"
+                },
+                {
+                  "id": "music-09",
+                  "label": "Ритм",
+                  "style": "red"
+                },
+                {
+                  "id": "music-10",
+                  "label": "Плейлисты",
+                  "style": "red"
+                },
+                {
+                  "id": "technology-01",
+                  "label": "Технологии",
+                  "style": "blue"
+                },
+                {
+                  "id": "technology-04",
+                  "label": "Роботы",
+                  "style": "blue"
+                },
+                {
+                  "id": "technology-05",
+                  "label": "Искусственный интеллект",
+                  "style": "blue"
+                },
+                {
+                  "id": "technology-06",
+                  "label": "Программирование",
+                  "style": "blue"
+                },
+                {
+                  "id": "technology-07",
+                  "label": "Гаджеты",
+                  "style": "blue"
+                },
+                {
+                  "id": "technology-08",
+                  "label": "Инженерия",
+                  "style": "blue"
+                },
+                {
+                  "id": "technology-09",
+                  "label": "Изобретения",
+                  "style": "blue"
+                },
+                {
+                  "id": "culture-02",
+                  "label": "Сериалы",
+                  "style": "red"
+                },
+                {
+                  "id": "culture-03",
+                  "label": "Шоу",
+                  "style": "red"
+                },
+                {
+                  "id": "culture-04",
+                  "label": "Комедия",
+                  "style": "red"
+                },
+                {
+                  "id": "culture-05",
+                  "label": "Анимация",
+                  "style": "red"
+                },
+                {
+                  "id": "culture-06",
+                  "label": "Искусство",
+                  "style": "red"
+                },
+                {
+                  "id": "culture-07",
+                  "label": "Дизайн",
+                  "style": "red"
+                },
+                {
+                  "id": "culture-08",
+                  "label": "Архитектура",
+                  "style": "red"
+                },
+                {
+                  "id": "culture-09",
+                  "label": "История",
+                  "style": "red"
+                },
+                {
+                  "id": "culture-10",
+                  "label": "Литература",
+                  "style": "red"
+                },
+                {
+                  "id": "world-05",
+                  "label": "Горы",
+                  "style": "blue"
+                },
+                {
+                  "id": "world-06",
+                  "label": "Лес",
+                  "style": "blue"
+                },
+                {
+                  "id": "world-07",
+                  "label": "Города",
+                  "style": "blue"
+                },
+                {
+                  "id": "world-09",
+                  "label": "Кулинария",
+                  "style": "blue"
+                },
+                {
+                  "id": "world-10",
+                  "label": "Культура стран",
+                  "style": "blue"
+                },
+                {
+                  "id": "active-01",
+                  "label": "Спорт",
+                  "style": "red"
+                },
+                {
+                  "id": "active-02",
+                  "label": "Баскетбол",
+                  "style": "red"
+                },
+                {
+                  "id": "active-03",
+                  "label": "Футбол",
+                  "style": "red"
+                },
+                {
+                  "id": "active-04",
+                  "label": "Бег",
+                  "style": "red"
+                },
+                {
+                  "id": "active-05",
+                  "label": "Велосипеды",
+                  "style": "red"
+                },
+                {
+                  "id": "active-06",
+                  "label": "Танцы",
+                  "style": "red"
+                },
+                {
+                  "id": "active-07",
+                  "label": "Игры",
+                  "style": "red"
+                },
+                {
+                  "id": "active-08",
+                  "label": "Киберспорт",
+                  "style": "red"
+                },
+                {
+                  "id": "active-09",
+                  "label": "Приключения",
+                  "style": "red"
+                },
+                {
+                  "id": "active-10",
+                  "label": "Мастерство",
+                  "style": "red"
+                }
+              ],
+              "assets": [
+                "nebula",
+                "jupiter",
+                "ribbon:ribbon"
+              ]
+            }
+          }
+        ],
+        "cluster": {
+          "headGap": 0.04,
+          "bodyHeight": 0.48,
+          "follow": 4.8,
+          "gap": 0.014,
+          "lookAhead": 0.65,
+          "avoidance": 0.8,
+          "returnSpeed": 1,
+          "links": 0.3,
+          "tagCount": 8
+        }
+      },
+      "clock": {
+        "time": 0,
+        "epoch": 1790258104740,
+        "playing": true,
+        "rate": 1
+      },
+      "renderProfile": {
+        "width": 3072,
+        "height": 1280,
+        "aspectWidth": 3072,
+        "aspectHeight": 1280,
+        "lockAspect": true,
+        "minShortSide": 1080
+      },
+      "outputs": {
+        "spout": true,
+        "ndi": false
+      },
+      "renderLayout": {
+        "version": 1,
+        "width": 3072,
+        "height": 1280,
+        "tiled": true,
+        "columns": 1,
+        "rows": 1,
+        "halo": 64,
+        "tiles": [
+          {
+            "id": "main",
+            "rect": [
+              0,
+              0,
+              3072,
+              1280
+            ],
+            "renderRect": [
+              0,
+              0,
+              3200,
+              1280
+            ],
+            "crop": [
+              0,
+              0,
+              3072,
+              1280
+            ],
+            "uv": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "transportSize": [
+              3072,
+              1280
+            ]
+          }
+        ],
+        "preview": [
+          3072,
+          1280
+        ]
+      },
+      "programPlan": {
+        "version": 1,
+        "logicalSize": [
+          3072,
+          1280
+        ],
+        "transportSize": [
+          3072,
+          1282
+        ],
+        "regions": [
+          {
+            "logicalRect": [
+              0,
+              0,
+              3072,
+              1280
+            ],
+            "packedRect": [
+              0,
+              2,
+              3072,
+              1280
+            ]
+          }
+        ],
+        "frameStampRect": [
+          0,
+          0,
+          64,
+          2
+        ],
+        "format": "BGRA8",
+        "colorSpace": "sRGB",
+        "targetFps": 60,
+        "renderScale": 1
+      },
+      "previewSize": [
+        1920,
+        800
+      ],
+      "tileFrameId": 1206145,
+      "quality": {
+        "minimum": 1080,
+        "target": [
+          3072,
+          1280
+        ],
+        "legacy": false,
+        "status": "meets-minimum"
+      },
+      "nativeOutputs": {
+        "spout": {
+          "state": "sending",
+          "available": true,
+          "enabled": true,
+          "name": "VK-003229b1-video-wall-left-program",
+          "error": null,
+          "frames": 1206091,
+          "dropped": 0,
+          "size": [
+            3072,
+            1282
+          ],
+          "connections": null,
+          "discovery": "registered",
+          "fps": 33.63983710245204,
+          "frameId": 1206145
+        },
+        "ndi": {
+          "state": "disabled",
+          "available": false,
+          "enabled": false,
+          "name": "",
+          "error": null,
+          "frames": 0,
+          "dropped": 0,
+          "size": null,
+          "connections": null
+        }
+      },
+      "generation": "9095629b-c7c2-4909-afdd-44cdbd693a5f",
+      "sceneTime": 332521.452,
+      "status": "running",
+      "error": null,
+      "frame": 1206145,
+      "timing": {
+        "targetFps": 60,
+        "fps": 33.39226085250921,
+        "frameMs": 28.25,
+        "maxFrameMs": 61.399999998509884
+      },
+      "renderSize": [
+        3072,
+        1280
+      ],
+      "frameLayout": null,
+      "codeRevision": "mukp7un1",
+      "clients": 1
+    },
+    {
+      "id": "vk-stella",
+      "appId": "stella",
+      "enabled": true,
+      "revision": 1,
+      "settings": {
+        "spin": 0.16
+      },
+      "clock": {
+        "time": 0,
+        "epoch": 1790261108409,
+        "playing": true,
+        "rate": 1
+      },
+      "renderProfile": {
+        "width": 1080,
+        "height": 1920,
+        "aspectWidth": 1080,
+        "aspectHeight": 1920,
+        "lockAspect": true,
+        "minShortSide": 1080
+      },
+      "outputs": {
+        "spout": true,
+        "ndi": false
+      },
+      "renderLayout": {
+        "version": 1,
+        "width": 1080,
+        "height": 1920,
+        "tiled": false,
+        "columns": 1,
+        "rows": 1,
+        "halo": 0,
+        "tiles": [
+          {
+            "id": "main",
+            "rect": [
+              0,
+              0,
+              1080,
+              1920
+            ],
+            "renderRect": [
+              0,
+              0,
+              1080,
+              1920
+            ],
+            "crop": [
+              0,
+              0,
+              1080,
+              1920
+            ],
+            "uv": [
+              0,
+              0,
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      "programPlan": {
+        "version": 1,
+        "logicalSize": [
+          1080,
+          1920
+        ],
+        "transportSize": [
+          1080,
+          1922
+        ],
+        "regions": [
+          {
+            "logicalRect": [
+              0,
+              0,
+              1080,
+              1920
+            ],
+            "packedRect": [
+              0,
+              2,
+              1080,
+              1920
+            ]
+          }
+        ],
+        "frameStampRect": [
+          0,
+          0,
+          64,
+          2
+        ],
+        "format": "BGRA8",
+        "colorSpace": "sRGB",
+        "targetFps": 60,
+        "renderScale": 1
+      },
+      "previewSize": [
+        608,
+        1080
+      ],
+      "tileFrameId": null,
+      "quality": {
+        "minimum": 1080,
+        "target": [
+          1080,
+          1920
+        ],
+        "legacy": false,
+        "status": "meets-minimum"
+      },
+      "nativeOutputs": {
+        "spout": {
+          "state": "sending",
+          "available": true,
+          "enabled": true,
+          "name": "VK-003229b1-vk-stella-program",
+          "error": null,
+          "frames": 685275,
+          "dropped": 14,
+          "size": [
+            1080,
+            1922
+          ],
+          "connections": null,
+          "discovery": "registered",
+          "fps": 37.70298717787113,
+          "frameId": 685330
+        },
+        "ndi": {
+          "state": "disabled",
+          "available": false,
+          "enabled": false,
+          "name": "",
+          "error": null,
+          "frames": 0,
+          "dropped": 0,
+          "size": null,
+          "connections": null
+        }
+      },
+      "generation": "7463fa83-93cd-49b5-9520-2fe6d1efb4dd",
+      "sceneTime": 329517.783,
+      "status": "running",
+      "error": null,
+      "frame": 685330,
+      "timing": {
+        "targetFps": 60,
+        "fps": 37.70215299142393,
+        "frameMs": 22.93684210549844,
+        "maxFrameMs": 62.30000000074506
+      },
+      "renderSize": [
+        1080,
+        1920
+      ],
+      "frameLayout": null,
+      "codeRevision": "mukvat35",
+      "clients": 1
+    },
+    {
+      "id": "vk-arch",
+      "appId": "arch",
+      "enabled": true,
+      "revision": 3,
+      "settings": {
+        "noise": {
+          "filledMin": 0.65,
+          "filledMax": 1,
+          "emptyMin": 0,
+          "emptyMax": 0.4,
+          "scale": 2.8,
+          "speed": 0.18,
+          "octaves": 3,
+          "persistence": 0.5,
+          "size": 1,
+          "brightness": 0.9,
+          "glow": 0.55,
+          "seed": 42
+        },
+        "flow": {
+          "density": 34,
+          "hfov": 75,
+          "blur": 2.4,
+          "depth": 1,
+          "rows": 8,
+          "gap": 0.18,
+          "mask": "auto",
+          "source": "auto",
+          "view": "composite",
+          "maskStrength": 1,
+          "breath": 0.18
+        },
+        "fluid": {
+          "autoEmit": true,
+          "emitForce": 1.1,
+          "emitLight": 1.2,
+          "emitSpread": 0.7,
+          "transitionLength": 1.8,
+          "birthSize": 0,
+          "radius": 0.09,
+          "force": 22,
+          "ink": 1.4,
+          "curl": 24,
+          "velocityDecay": 0.35,
+          "dyeDecay": 0.48,
+          "speed": 1,
+          "resolution": 48,
+          "iterations": 20
+        },
+        "vortex": {
+          "enabled": true,
+          "speed": 0.28,
+          "strength": 1.1,
+          "scale": 1.35,
+          "travel": 0.24,
+          "spread": 0.72,
+          "exposure": 1.5,
+          "white": 0.35,
+          "size": 0.8,
+          "detail": 0.22,
+          "response": 0.4,
+          "quality": 8
+        },
+        "underlay": {
+          "look": "reference-v2",
+          "dark": "#000b38",
+          "middle": "#0037ac",
+          "light": "#007cff",
+          "brightness": 0.42,
+          "scale": 1.6,
+          "speed": 0.18,
+          "contrast": 1.1
+        },
+        "composition": {
+          "tags": 60,
+          "textPopulation": "catalog-v1",
+          "products": 1,
+          "speed": 1,
+          "scale": 1,
+          "depth": 1,
+          "trail": 0.22,
+          "focusBlur": 0.15,
+          "lines": 0.45,
+          "particles": 72,
+          "particleDynamics": 0.8,
+          "particleSpeed": 1,
+          "particleLarge": 0.25,
+          "particleOpacity": 0.9
+        },
+        "color": {
+          "strength": 1,
+          "redBalance": 0
+        },
+        "neon": {
+          "look": "reference-v2",
+          "bloom": 0.65,
+          "radius": 5,
+          "redAccent": 0.2,
+          "knee": 1.8,
+          "roundness": 0.38
+        },
+        "blue": {
+          "saturation": 1,
+          "fluidSaturation": 0.1,
+          "opacity": 1,
+          "backgroundOpacity": 0.44
+        },
+        "energy": 0.7,
+        "quality": 1,
+        "surface": "up",
+        "highlights": {
+          "threshold": 0.22,
+          "width": 0.46,
+          "gain": 1.5,
+          "cyan": 0.8
+        },
+        "cellDepth": {
+          "driver": "fluid-v1",
+          "focus": "near-v1",
+          "focusRange": 0.18,
+          "amount": 1,
+          "nearZ": 8.4,
+          "farZ": 24,
+          "blur": 3,
+          "threshold": 0.02,
+          "fade": 0.65,
+          "fluidLift": 1.5
+        },
+        "lighting": {
+          "radius": 0.9,
+          "softness": 0.65,
+          "gain": 1.6,
+          "spill": 0.03
+        }
+      },
+      "clock": {
+        "time": 0,
+        "epoch": 1790261108409,
+        "playing": true,
+        "rate": 1
+      },
+      "renderProfile": {
+        "width": 6656,
+        "height": 512,
+        "aspectWidth": 6656,
+        "aspectHeight": 512,
+        "lockAspect": true,
+        "minShortSide": 512
+      },
+      "outputs": {
+        "spout": true,
+        "ndi": false
+      },
+      "background": {
+        "blue": "#0077FF",
+        "deepBlue": "#0040FF",
+        "purple": "#471AFF",
+        "violet": "#9500FF",
+        "transitionX": 0.75,
+        "transitionWidth": 1.8,
+        "purpleAmount": 1
+      },
+      "renderLayout": {
+        "version": 1,
+        "width": 6656,
+        "height": 512,
+        "tiled": false,
+        "columns": 1,
+        "rows": 1,
+        "halo": 0,
+        "tiles": [
+          {
+            "id": "main",
+            "rect": [
+              0,
+              0,
+              6656,
+              512
+            ],
+            "renderRect": [
+              0,
+              0,
+              6656,
+              512
+            ],
+            "crop": [
+              0,
+              0,
+              6656,
+              512
+            ],
+            "uv": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "transportSize": [
+              6656,
+              512
+            ]
+          }
+        ],
+        "preview": [
+          6656,
+          512
+        ]
+      },
+      "programPlan": {
+        "version": 1,
+        "logicalSize": [
+          6656,
+          512
+        ],
+        "transportSize": [
+          6656,
+          514
+        ],
+        "regions": [
+          {
+            "logicalRect": [
+              0,
+              0,
+              6656,
+              512
+            ],
+            "packedRect": [
+              0,
+              2,
+              6656,
+              512
+            ]
+          }
+        ],
+        "frameStampRect": [
+          0,
+          0,
+          64,
+          2
+        ],
+        "format": "BGRA8",
+        "colorSpace": "sRGB",
+        "targetFps": 60,
+        "renderScale": 1
+      },
+      "previewSize": [
+        1920,
+        148
+      ],
+      "tileFrameId": 1264077,
+      "quality": {
+        "minimum": 512,
+        "target": [
+          6656,
+          512
+        ],
+        "legacy": false,
+        "status": "meets-minimum"
+      },
+      "nativeOutputs": {
+        "spout": {
+          "state": "sending",
+          "available": true,
+          "enabled": true,
+          "name": "VK-003229b1-vk-arch-program",
+          "error": null,
+          "frames": 1264040,
+          "dropped": 0,
+          "size": [
+            6656,
+            514
+          ],
+          "connections": null,
+          "discovery": "registered",
+          "fps": 37.484779017144874,
+          "frameId": 1264076
+        },
+        "ndi": {
+          "state": "disabled",
+          "available": false,
+          "enabled": false,
+          "name": "",
+          "error": null,
+          "frames": 0,
+          "dropped": 0,
+          "size": null,
+          "connections": null
+        }
+      },
+      "generation": "f15bfc02-4840-4863-9a04-0a61ecbf544e",
+      "sceneTime": 329517.783,
+      "status": "running",
+      "error": null,
+      "frame": 1264077,
+      "timing": {
+        "targetFps": 60,
+        "fps": 39.69041476480495,
+        "frameMs": 22.150000000186264,
+        "maxFrameMs": 60.19999999925494
+      },
+      "renderSize": [
+        6656,
+        512
+      ],
+      "frameLayout": null,
+      "codeRevision": "mukp7unk",
+      "clients": 1
+    },
+    {
+      "id": "max-wall-right",
+      "appId": "max-wall",
+      "enabled": true,
+      "revision": 15,
+      "settings": {
+        "spin": 0.16,
+        "layoutMode": "single"
+      },
+      "clock": {
+        "time": 0,
+        "epoch": 1790262401743,
+        "playing": true,
+        "rate": 1
+      },
+      "renderProfile": {
+        "width": 4096,
+        "height": 1280,
+        "aspectWidth": 4096,
+        "aspectHeight": 1280,
+        "lockAspect": true,
+        "minShortSide": 1080
+      },
+      "outputs": {
+        "spout": true,
+        "ndi": false
+      },
+      "renderLayout": {
+        "version": 1,
+        "width": 4096,
+        "height": 1280,
+        "tiled": false,
+        "columns": 1,
+        "rows": 1,
+        "halo": 0,
+        "tiles": [
+          {
+            "id": "main",
+            "rect": [
+              0,
+              0,
+              4096,
+              1280
+            ],
+            "renderRect": [
+              0,
+              0,
+              4096,
+              1280
+            ],
+            "crop": [
+              0,
+              0,
+              4096,
+              1280
+            ],
+            "uv": [
+              0,
+              0,
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      "programPlan": {
+        "version": 1,
+        "logicalSize": [
+          4096,
+          1280
+        ],
+        "transportSize": [
+          4096,
+          1282
+        ],
+        "regions": [
+          {
+            "logicalRect": [
+              0,
+              0,
+              4096,
+              1280
+            ],
+            "packedRect": [
+              0,
+              2,
+              4096,
+              1280
+            ]
+          }
+        ],
+        "frameStampRect": [
+          0,
+          0,
+          64,
+          2
+        ],
+        "format": "BGRA8",
+        "colorSpace": "sRGB",
+        "targetFps": 60,
+        "renderScale": 1
+      },
+      "previewSize": [
+        1920,
+        600
+      ],
+      "tileFrameId": null,
+      "quality": {
+        "minimum": 1080,
+        "target": [
+          4096,
+          1280
+        ],
+        "legacy": false,
+        "status": "meets-minimum"
+      },
+      "nativeOutputs": {
+        "spout": {
+          "state": "sending",
+          "available": true,
+          "enabled": true,
+          "name": "VK-003229b1-max-wall-right-program",
+          "error": null,
+          "frames": 12504,
+          "dropped": 8285,
+          "size": [
+            4096,
+            1282
+          ],
+          "connections": null,
+          "discovery": "registered",
+          "fps": 16.848735423110664,
+          "frameId": 12513
+        },
+        "ndi": {
+          "state": "disabled",
+          "available": false,
+          "enabled": false,
+          "name": "",
+          "error": null,
+          "frames": 0,
+          "dropped": 0,
+          "size": null,
+          "connections": null
+        }
+      },
+      "generation": "f5506ebe-faf9-4a36-888c-611d00931c6b",
+      "sceneTime": 328224.449,
+      "status": "running",
+      "error": null,
+      "frame": 12513,
+      "timing": {
+        "targetFps": 60,
+        "fps": 16.850034691272782,
+        "frameMs": 58.899999999605555,
+        "maxFrameMs": 87.89999999850988
+      },
+      "renderSize": [
+        4096,
+        1280
+      ],
+      "frameLayout": null,
+      "codeRevision": "mul2zey5",
+      "clients": 2
+    }
+  ]
+}

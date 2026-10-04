@@ -1,0 +1,53 @@
+{
+  "status": "model-estimate-not-as-built",
+  "geometrySha256": "a9f1d3bb957af843902a439c08f8c0318a4465fb8ae2a624d0e4cf2fa7edf182",
+  "modelSha256": "8c62d4e355f45b06178ca3ee7aa0e784a1eac3a7bbf3bfcde3eb0981184c637a",
+  "logicalRightSize": [
+    4096,
+    1280
+  ],
+  "gameZone": {
+    "left": 2264,
+    "top": 192,
+    "width": 1760,
+    "height": 1024
+  },
+  "flatLocalX": [
+    2192.024658203125,
+    4096.0
+  ],
+  "flatWidthMetres": 3.864561975002289,
+  "screenHeightMetres": 2.5251093804836273,
+  "gameWidthMetres": 3.5723304428853564,
+  "gameHeightMetres": 2.0200875043869018,
+  "gameTopHeightMetres": 2.6344536647200583,
+  "gameBottomHeightMetres": 0.6143661603331565,
+  "gameCentreRightX": 3144,
+  "gameCentreRearX": 6216,
+  "millimetresPerPixelX": 2.0297332061848614,
+  "millimetresPerPixelY": 1.9727417035028338,
+  "mountingEstimates": [
+    {
+      "case": "100mm-above-game",
+      "sensorHeightMetres": 2.7344536647200584,
+      "farthestCornerMetres": 2.7722116125124456,
+      "raySpacingAtCornerMm": 12.096055050090852,
+      "angleToUpperCornerDegrees": 86.79559157209597,
+      "assumption": "Optical origin centered horizontally; clearance is illustrative, not approved."
+    },
+    {
+      "case": "100mm-above-screen",
+      "sensorHeightMetres": 3.1132200717926026,
+      "farthestCornerMetres": 3.0715886881396646,
+      "raySpacingAtCornerMm": 13.402333968762612,
+      "angleToUpperCornerDegrees": 74.99506550853654,
+      "assumption": "Optical origin centered horizontally; clearance is illustrative, not approved."
+    }
+  ],
+  "planeTiltDriftAt2mMm": {
+    "1": 34.91012985643517,
+    "0.2": 6.9813453631925
+  },
+  "distanceSamplesPerSecond": 43240,
+  "distancePayloadBytesPerSecond": 129720
+}

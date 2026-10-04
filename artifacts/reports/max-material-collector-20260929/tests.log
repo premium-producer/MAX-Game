@@ -1,0 +1,25 @@
+✔ unnamed screens use heading above; same-level next heading resets the context (1.9524ms)
+✔ named section and selected container collect phones, not the whole board (0.2581ms)
+✔ headings in sibling containers do not bleed into the selected section (0.1142ms)
+✔ nested phone components deduplicated; hidden and raster screen handled (0.1033ms)
+✔ unusual selected screen is supported and overlapping selection has no duplicate (0.0783ms)
+✔ tall presentation board is not mistaken for a phone containing all other phones (0.0733ms)
+✔ photo prerequisite does not claim hotel/benefit task coverage (0.4462ms)
+✔ conflicting explicit name and parent is flagged; unknown remains unknown (0.1254ms)
+✔ local semantic heading can override a stale container name, with conflict visible (0.1506ms)
+✔ lower handsfree row inherits the heading above a large unnamed backdrop (0.1965ms)
+✔ reading order is row-major despite slight vertical drift; manual assignments preserved (0.3828ms)
+✔ runtime scan/export is read-only, pinned to source page, returns text and REST structure (20.614ms)
+✔ runtime export errors produce partial bundle, never false complete (15.4023ms)
+✔ runtime cancellation after pending export preserves partial bundle (1.2096ms)
+✔ runtime rejects changed frame geometry and invalid scan (14.0121ms)
+✔ unpacker emits safe folders, original bytes and escaped HTML, refuses overwrite (3.6971ms)
+✔ UI scan, group assignment and export messages share the runtime contract (1.9283ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 70.9337

@@ -1,0 +1,10 @@
+{
+  "name": "MAX — сборщик материалов клиента",
+  "id": "max-material-collector-local",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "ui.html",
+  "editorType": ["figma"],
+  "documentAccess": "dynamic-page",
+  "networkAccess": { "allowedDomains": ["http://localhost:47831"], "reasoning": "Последовательное сохранение материалов MAX на локальном сервере с проверкой файлов и продолжением после сбоя." }
+}

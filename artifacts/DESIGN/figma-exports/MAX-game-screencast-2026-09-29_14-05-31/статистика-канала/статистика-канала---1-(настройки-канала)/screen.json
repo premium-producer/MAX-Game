@@ -1,0 +1,116 @@
+{
+  "id": "2299:91497",
+  "name": "статистика канала - 1 (настройки канала)",
+  "type": "FRAME",
+  "parent": "2299:91496",
+  "bounds": {
+    "x": 30264,
+    "y": 657,
+    "width": 963,
+    "height": 2089
+  },
+  "visible": true,
+  "fontSize": 0,
+  "hasImage": false,
+  "task": "blogger.statistics",
+  "confidence": "high",
+  "reviewed": false,
+  "include": true,
+  "group": "2299:91496",
+  "groupName": "статистика канала",
+  "containerPath": [
+    {
+      "id": "2299:91496",
+      "name": "статистика канала",
+      "type": "SECTION"
+    }
+  ],
+  "sectionPath": [
+    {
+      "id": "2299:91496",
+      "name": "статистика канала",
+      "type": "SECTION"
+    }
+  ],
+  "sequence": {
+    "series": "статистика канала",
+    "number": 1,
+    "description": "настройки канала"
+  },
+  "detection": "structure",
+  "evidence": [
+    {
+      "task": "blogger.statistics",
+      "source": "frame-name",
+      "id": "2299:91497",
+      "text": "статистика канала - 1 (настройки канала)",
+      "weight": 100
+    },
+    {
+      "task": "blogger.statistics",
+      "source": "ancestor",
+      "id": "2299:91496",
+      "text": "статистика канала",
+      "weight": 99
+    }
+  ],
+  "ancestors": [
+    {
+      "id": "2299:91496",
+      "name": "статистика канала",
+      "type": "SECTION"
+    }
+  ],
+  "nearbyHeadings": [],
+  "contextRegion": null,
+  "warnings": [],
+  "order": 96,
+  "fingerprint": "[\"статистика канала - 1 (настройки канала)\",{\"x\":30264,\"y\":657,\"width\":963,\"height\":2089},\"FRAME\",[[\"2299:91496\",\"статистика канала\",\"SECTION\"],[\"1:8\",\"Page 8\",\"PAGE\"]],\"content-v1\",1207752365,501294893,2]",
+  "manualTask": false,
+  "title": "статистика канала - 1 (настройки канала)",
+  "exportStatus": "ok",
+  "texts": [],
+  "layers": [
+    {
+      "id": "2299:91497",
+      "name": "статистика канала - 1 (настройки канала)",
+      "type": "FRAME",
+      "parent": "2299:91496",
+      "bounds": {
+        "x": 30264,
+        "y": 657,
+        "width": 963,
+        "height": 2089
+      }
+    },
+    {
+      "id": "2299:91498",
+      "name": "IMG_20260928_113329 2",
+      "type": "RECTANGLE",
+      "parent": "2299:91497",
+      "bounds": {
+        "x": 30264,
+        "y": 657,
+        "width": 963,
+        "height": 2089
+      }
+    }
+  ],
+  "imageHashes": [
+    "52261331ca18c3ac4566bfa4b3aa711b783789c5"
+  ],
+  "notes": [
+    "Нет текстовых слоёв: содержимое может быть растром/кривыми; потребуется визуальная проверка этой группы."
+  ],
+  "pngScale": 1,
+  "pngFile": "статистика-канала/статистика-канала---1-(настройки-канала)/screen.png",
+  "previewFile": "статистика-канала/статистика-канала---1-(настройки-канала)/preview.png",
+  "svgFile": "статистика-канала/статистика-канала---1-(настройки-канала)/screen.svg",
+  "documentFile": "статистика-канала/статистика-канала---1-(настройки-канала)/figma.json",
+  "images": [
+    {
+      "hash": "52261331ca18c3ac4566bfa4b3aa711b783789c5",
+      "file": "статистика-канала/статистика-канала---1-(настройки-канала)/images/a35114bc797b6ea46cd881b8e35fcd237de2a96f95a989b8da454c5ae0364331.jpg"
+    }
+  ]
+}

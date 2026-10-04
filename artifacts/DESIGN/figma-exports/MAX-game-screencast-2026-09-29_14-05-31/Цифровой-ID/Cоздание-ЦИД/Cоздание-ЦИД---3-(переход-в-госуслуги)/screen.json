@@ -1,0 +1,410 @@
+{
+  "id": "2299:85973",
+  "name": "Cоздание ЦИД - 3 (переход в госуслуги)",
+  "type": "FRAME",
+  "parent": "2299:85913",
+  "bounds": {
+    "x": 21086,
+    "y": 3341,
+    "width": 360,
+    "height": 800
+  },
+  "visible": true,
+  "fontSize": 0,
+  "hasImage": false,
+  "task": "unassigned",
+  "confidence": "none",
+  "reviewed": false,
+  "include": true,
+  "group": "2299:85913",
+  "groupName": "Цифровой ID / Cоздание ЦИД",
+  "containerPath": [
+    {
+      "id": "2299:85912",
+      "name": "Цифровой ID",
+      "type": "SECTION"
+    },
+    {
+      "id": "2299:85913",
+      "name": "Cоздание ЦИД",
+      "type": "SECTION"
+    }
+  ],
+  "sectionPath": [
+    {
+      "id": "2299:85912",
+      "name": "Цифровой ID",
+      "type": "SECTION"
+    },
+    {
+      "id": "2299:85913",
+      "name": "Cоздание ЦИД",
+      "type": "SECTION"
+    }
+  ],
+  "sequence": {
+    "series": "Cоздание ЦИД",
+    "number": 3,
+    "description": "переход в госуслуги"
+  },
+  "detection": "structure",
+  "evidence": [],
+  "ancestors": [
+    {
+      "id": "2299:85913",
+      "name": "Cоздание ЦИД",
+      "type": "SECTION"
+    },
+    {
+      "id": "2299:85912",
+      "name": "Цифровой ID",
+      "type": "SECTION"
+    }
+  ],
+  "nearbyHeadings": [],
+  "contextRegion": null,
+  "warnings": [
+    "Задание не указано в названиях — назначьте при необходимости"
+  ],
+  "order": 59,
+  "fingerprint": "[\"Cоздание ЦИД - 3 (переход в госуслуги)\",{\"x\":21086,\"y\":3341,\"width\":360,\"height\":800},\"FRAME\",[[\"2299:85913\",\"Cоздание ЦИД\",\"SECTION\"],[\"2299:85912\",\"Цифровой ID\",\"SECTION\"],[\"1:8\",\"Page 8\",\"PAGE\"]],\"content-v1\",2406020166,960011754,22]",
+  "manualTask": false,
+  "title": "Cоздание ЦИД - 3 (переход в госуслуги)",
+  "exportStatus": "ok",
+  "texts": [
+    {
+      "id": "I2299:85974;4:10095",
+      "name": "9:41",
+      "type": "TEXT",
+      "parent": "2299:85974",
+      "bounds": {
+        "x": 21106,
+        "y": 3355,
+        "width": 28,
+        "height": 20
+      },
+      "text": "9:41",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Medium",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 500
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "9:41",
+          "start": 0,
+          "end": 4,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 0.0235294122248888,
+                "g": 0.027450980618596077,
+                "b": 0.0313725508749485
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    }
+  ],
+  "layers": [
+    {
+      "id": "2299:85973",
+      "name": "Cоздание ЦИД - 3 (переход в госуслуги)",
+      "type": "FRAME",
+      "parent": "2299:85913",
+      "bounds": {
+        "x": 21086,
+        "y": 3341,
+        "width": 360,
+        "height": 800
+      }
+    },
+    {
+      "id": "2299:85974",
+      "name": ".Status Bar/Android/Default",
+      "type": "INSTANCE",
+      "parent": "2299:85973",
+      "bounds": {
+        "x": 21086,
+        "y": 3341,
+        "width": 360,
+        "height": 48.000030517578125
+      }
+    },
+    {
+      "id": "I2299:85974;4:10095",
+      "name": "9:41",
+      "type": "TEXT",
+      "parent": "2299:85974",
+      "bounds": {
+        "x": 21106,
+        "y": 3355,
+        "width": 28,
+        "height": 20
+      }
+    },
+    {
+      "id": "I2299:85974;4:10096",
+      "name": "System Status",
+      "type": "FRAME",
+      "parent": "2299:85974",
+      "bounds": {
+        "x": 21374,
+        "y": 3353,
+        "width": 52.00006103515625,
+        "height": 24.000030517578125
+      }
+    },
+    {
+      "id": "I2299:85974;4:10097",
+      "name": "Wifi",
+      "type": "FRAME",
+      "parent": "I2299:85974;4:10096",
+      "bounds": {
+        "x": 21374,
+        "y": 3357,
+        "width": 18.666690826416016,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I2299:85974;4:10098",
+      "name": "wifi",
+      "type": "VECTOR",
+      "parent": "I2299:85974;4:10097",
+      "bounds": {
+        "x": 21376,
+        "y": 3359,
+        "width": 14.666685104370117,
+        "height": 11.333348274230957
+      }
+    },
+    {
+      "id": "I2299:85974;4:10099",
+      "name": "Data",
+      "type": "FRAME",
+      "parent": "I2299:85974;4:10096",
+      "bounds": {
+        "x": 21394.666015625,
+        "y": 3357,
+        "width": 16.00002098083496,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I2299:85974;4:10100",
+      "name": "data",
+      "type": "VECTOR",
+      "parent": "I2299:85974;4:10099",
+      "bounds": {
+        "x": 21393.609375,
+        "y": 3359.274658203125,
+        "width": 12.391877174377441,
+        "height": 12.391878128051758
+      }
+    },
+    {
+      "id": "I2299:85974;4:10101",
+      "name": "Battery",
+      "type": "FRAME",
+      "parent": "I2299:85974;4:10096",
+      "bounds": {
+        "x": 21412.666015625,
+        "y": 3357,
+        "width": 13.33335018157959,
+        "height": 16.00002098083496
+      }
+    },
+    {
+      "id": "I2299:85974;4:10102",
+      "name": "Union",
+      "type": "BOOLEAN_OPERATION",
+      "parent": "I2299:85974;4:10101",
+      "bounds": {
+        "x": 21415.33203125,
+        "y": 3358.333251953125,
+        "width": 8,
+        "height": 13.3330078125
+      }
+    },
+    {
+      "id": "I2299:85974;4:10103",
+      "name": "stroke",
+      "type": "VECTOR",
+      "parent": "I2299:85974;4:10102",
+      "bounds": {
+        "x": 21415.33203125,
+        "y": 3358.333251953125,
+        "width": 8.00001049041748,
+        "height": 13.33335018157959
+      }
+    },
+    {
+      "id": "I2299:85974;4:10104",
+      "name": "fill",
+      "type": "RECTANGLE",
+      "parent": "I2299:85974;4:10102",
+      "bounds": {
+        "x": 21415.998046875,
+        "y": 3359.666748046875,
+        "width": 6.666675090789795,
+        "height": 12.000015258789062
+      }
+    },
+    {
+      "id": "2299:85975",
+      "name": "gosuslugi.ru 2",
+      "type": "FRAME",
+      "parent": "2299:85973",
+      "bounds": {
+        "x": 21186,
+        "y": 3661,
+        "width": 160,
+        "height": 160
+      }
+    },
+    {
+      "id": "2299:85976",
+      "name": "Group",
+      "type": "GROUP",
+      "parent": "2299:85975",
+      "bounds": {
+        "x": 21193.111328125,
+        "y": 3661,
+        "width": 145.77755737304688,
+        "height": 160
+      }
+    },
+    {
+      "id": "2299:85977",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "2299:85976",
+      "bounds": {
+        "x": 21193.130859375,
+        "y": 3741.79296875,
+        "width": 122.63243103027344,
+        "height": 28.645328521728516
+      }
+    },
+    {
+      "id": "2299:85978",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "2299:85976",
+      "bounds": {
+        "x": 21193.111328125,
+        "y": 3711.8642578125,
+        "width": 56.30126190185547,
+        "height": 21.767108917236328
+      }
+    },
+    {
+      "id": "2299:85979",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "2299:85976",
+      "bounds": {
+        "x": 21198.111328125,
+        "y": 3661,
+        "width": 140.77853393554688,
+        "height": 160
+      }
+    },
+    {
+      "id": "2299:85980",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "2299:85976",
+      "bounds": {
+        "x": 21234.3515625,
+        "y": 3742.4736328125,
+        "width": 18.883554458618164,
+        "height": 20.405332565307617
+      }
+    },
+    {
+      "id": "2299:85981",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "2299:85973",
+      "bounds": {
+        "x": 21246,
+        "y": 3997,
+        "width": 40,
+        "height": 40
+      }
+    },
+    {
+      "id": "I2299:85981;71:999",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "2299:85981",
+      "bounds": {
+        "x": 21246,
+        "y": 3997,
+        "width": 40.001617431640625,
+        "height": 29.41669464111328
+      }
+    },
+    {
+      "id": "2299:85982",
+      "name": "📎 Home Indicator",
+      "type": "INSTANCE",
+      "parent": "2299:85973",
+      "bounds": {
+        "x": 21086,
+        "y": 4117,
+        "width": 360,
+        "height": 24
+      }
+    },
+    {
+      "id": "I2299:85982;1350:1201",
+      "name": "Home Indicator",
+      "type": "VECTOR",
+      "parent": "2299:85982",
+      "bounds": {
+        "x": 21214,
+        "y": 4129,
+        "width": 104,
+        "height": 0
+      }
+    }
+  ],
+  "imageHashes": [],
+  "notes": [],
+  "pngScale": 1,
+  "pngFile": "Цифровой-ID/Cоздание-ЦИД/Cоздание-ЦИД---3-(переход-в-госуслуги)/screen.png",
+  "previewFile": "Цифровой-ID/Cоздание-ЦИД/Cоздание-ЦИД---3-(переход-в-госуслуги)/preview.png",
+  "svgFile": "Цифровой-ID/Cоздание-ЦИД/Cоздание-ЦИД---3-(переход-в-госуслуги)/screen.svg",
+  "documentFile": "Цифровой-ID/Cоздание-ЦИД/Cоздание-ЦИД---3-(переход-в-госуслуги)/figma.json",
+  "images": []
+}

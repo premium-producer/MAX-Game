@@ -1,0 +1,340 @@
+{
+  "files": {
+    "app.py": "05edfe62d717aa9419c874579183ffc7deedb571134dd9bfc3ff51ea5d14064f",
+    "index.html": "156b9b9a86cdc137b90eaca8580b0c9270503f624e56395bcc25eaa489ca4fc7",
+    "readiness.html": "7139e6e3b41be5963dbb3300b4522206f83ffb69742ecaab10d00d620e93e809",
+    "registry.py": "0a27e465f2ad4a6f0189e455d144323c392d28bb26f2b1d2e74832f65a7005ab",
+    "surface-lab-client.mjs": "1cf5e67e0cc0208ced157f5cb9d0ff5fd880dc09319c0117bc426deda372eb43",
+    "surface-lab.css": "c2e1d0b09325490d4f8aa49875a85c6bc083b6fbe5cf8d036fd6c91a6a75b063",
+    "surface-lab.html": "de8cacb5320b40d7a0fb625080884d8c6e78cd967d6f9ea2bb1df8fd454ae555",
+    "surface-lab.js": "7f4a5f0a3ea6a661efd72aebad5c8d8722d9697c29d737a8e945b6a39b227f2b",
+    "surface_api.py": "7ed55434467f51ee79f31c2f5905a792fa8310c816a4fb04e511a62ad40feacd",
+    "surface_models.py": "b929ea096cb539fe2fcaa50be172ca1423b480abc1d0ffc81326a2c2794cd226",
+    "surface_store.py": "6c21d761f4a75c73c98e231e0c0bc3d7a0925becb91ea505d77e41684ad5e2e6",
+    "surface_workflows.py": "df622b0fa2ff1ad2706117f31a2ede9534948357bfb1cb35683287a416d8afd6"
+  },
+  "baseline": {
+    "app.py": "4ff9afa8aa2a3979bcadbc19011a486c4dc60eff6e84ca979ea38455b4f1f875",
+    "index.html": "96b71585d5f7e22d73782bd1cd425222e63db75b3a497ab7519ae6e62c12bd85",
+    "readiness.html": "eca6c80c3769bc8f6b112d56931a866a0959be7833931736cfaf68f89be87193",
+    "registry.py": "7af9cf27675b2a88ad659155b98b1679a9d9d00eda4c3c8389639daedd12ab00",
+    "surface-lab-client.mjs": null,
+    "surface-lab.css": null,
+    "surface-lab.html": null,
+    "surface-lab.js": null,
+    "surface_api.py": null,
+    "surface_models.py": null,
+    "surface_store.py": null,
+    "surface_workflows.py": null
+  },
+  "lifecycle": [
+    {
+      "action": "stop",
+      "returncode": 0,
+      "stdout": "{\"status\": \"stopped\", \"pid\": 124444, \"port\": 8782, \"databasesRetained\": true}\n",
+      "stderr": ""
+    },
+    {
+      "action": "start",
+      "returncode": 0,
+      "stdout": "{\"status\": \"ready\", \"pid\": 144076, \"port\": 8782, \"bootId\": \"f5bc465a-0e2d-4e16-9078-3a7aaed0e06f\", \"instanceKey\": \"dataset-v1:8693404f4d7a5f9d48e36df24316eb8cf3c6e914520b8baeee0aa65a800fa515\"}\n",
+      "stderr": ""
+    },
+    {
+      "action": "check",
+      "returncode": 0,
+      "stdout": "{\"status\": \"ready\", \"pid\": 144076, \"port\": 8782, \"bootId\": \"f5bc465a-0e2d-4e16-9078-3a7aaed0e06f\", \"instanceKey\": \"dataset-v1:8693404f4d7a5f9d48e36df24316eb8cf3c6e914520b8baeee0aa65a800fa515\"}\n",
+      "stderr": ""
+    }
+  ],
+  "beforeHealth": {
+    "service": "stand-local-master",
+    "ready": true,
+    "bootId": "985eb297-a783-4afe-9287-4878b6141e32",
+    "questions": [
+      {
+        "text": "Что вам интереснее?",
+        "options": [
+          "Спорт",
+          "Кино",
+          "Технологии"
+        ]
+      },
+      {
+        "text": "Какой формат предпочитаете?",
+        "options": [
+          "Короткие видео",
+          "Большие истории",
+          "Прямой эфир"
+        ]
+      },
+      {
+        "text": "Какое настроение выберем?",
+        "options": [
+          "Энергичное",
+          "Спокойное",
+          "Неожиданное"
+        ]
+      }
+    ],
+    "applicationVersion": "local-master-v1",
+    "processId": 124444,
+    "instanceKey": "dataset-v1:8693404f4d7a5f9d48e36df24316eb8cf3c6e914520b8baeee0aa65a800fa515",
+    "datasetIdentity": {
+      "schemaVersion": 1,
+      "datasetId": "f8d34aac-7d1e-40d9-9abd-b2bcd880f2ea",
+      "restoreEpoch": "6a1f5038-9128-4f96-9e83-b97ddc362645",
+      "instanceKey": "dataset-v1:8693404f4d7a5f9d48e36df24316eb8cf3c6e914520b8baeee0aa65a800fa515"
+    },
+    "stellaVkProtocol": "stella-vk-v1",
+    "stellaVkArcProtocol": "arc-tags-v1",
+    "discoveryCycleProtocol": "discovery-cycle-v1",
+    "stellaVkEarlyPlanProtocol": "stella-early-plan-v1",
+    "localResultProtocol": "local-result-v1",
+    "maxProtocol": "technical-max-v1",
+    "maxQuizProtocol": "stella-max-v1"
+  },
+  "beforeCanonical": {
+    "ready": true,
+    "processId": 124196,
+    "mode": "canonical-local-v1",
+    "catalog": "missions-reviewed-20261003-abe878cfed89"
+  },
+  "backup": "F:\\project\\VK_DigitalProducts_Stand\\artifacts\\workspace\\backups\\integration-wave7-20261004-161810",
+  "integrity": {
+    "master.sqlite": "ok",
+    "registry.sqlite": "ok",
+    "canonical-max/max.sqlite": "ok"
+  },
+  "backupSha": {
+    "master.sqlite": "3b3d7601085341f19b6b1f239a08c83379457d50468f909ecc4eb4472990cf59",
+    "registry.sqlite": "ff4607d9e47e597ee162626fef8e0f934958a0c4843fc78ef32fcab7656bdada",
+    "canonical-max/max.sqlite": "ba38f83c8f12716510912384f586c4dedb85b430a98e90e8b7ced8ede5a9b97e"
+  },
+  "afterHealth": {
+    "service": "stand-local-master",
+    "ready": true,
+    "bootId": "f5bc465a-0e2d-4e16-9078-3a7aaed0e06f",
+    "questions": [
+      {
+        "text": "Что вам интереснее?",
+        "options": [
+          "Спорт",
+          "Кино",
+          "Технологии"
+        ]
+      },
+      {
+        "text": "Какой формат предпочитаете?",
+        "options": [
+          "Короткие видео",
+          "Большие истории",
+          "Прямой эфир"
+        ]
+      },
+      {
+        "text": "Какое настроение выберем?",
+        "options": [
+          "Энергичное",
+          "Спокойное",
+          "Неожиданное"
+        ]
+      }
+    ],
+    "applicationVersion": "local-master-v1",
+    "processId": 144076,
+    "instanceKey": "dataset-v1:8693404f4d7a5f9d48e36df24316eb8cf3c6e914520b8baeee0aa65a800fa515",
+    "datasetIdentity": {
+      "schemaVersion": 1,
+      "datasetId": "f8d34aac-7d1e-40d9-9abd-b2bcd880f2ea",
+      "restoreEpoch": "6a1f5038-9128-4f96-9e83-b97ddc362645",
+      "instanceKey": "dataset-v1:8693404f4d7a5f9d48e36df24316eb8cf3c6e914520b8baeee0aa65a800fa515"
+    },
+    "stellaVkProtocol": "stella-vk-v1",
+    "stellaVkArcProtocol": "arc-tags-v1",
+    "discoveryCycleProtocol": "discovery-cycle-v1",
+    "stellaVkEarlyPlanProtocol": "stella-early-plan-v1",
+    "localResultProtocol": "local-result-v1",
+    "maxProtocol": "technical-max-v1",
+    "maxQuizProtocol": "stella-max-v1"
+  },
+  "afterCanonical": {
+    "ready": true,
+    "processId": 144224,
+    "mode": "canonical-local-v1",
+    "catalog": "missions-reviewed-20261003-abe878cfed89"
+  },
+  "preservedRows": {
+    "sessions": 20,
+    "admissions": 20,
+    "stations": 1,
+    "content_packages": 16,
+    "execution_states": 23,
+    "wall_entries": 9,
+    "wall_item_arrivals": 0,
+    "max_world": 1,
+    "max_assignments": 2,
+    "max_command_receipts": 7
+  },
+  "preservedCanonicalRows": {
+    "max_sessions": 0,
+    "max_import_archives": 0,
+    "max_import_targets": 0,
+    "max_assignments": 0,
+    "max_slots": 1,
+    "max_assignment_lifecycle": 0,
+    "max_assignment_commands": 0
+  },
+  "readiness": {
+    "protocol": "local-readiness-v1",
+    "instanceKey": "dataset-v1:8693404f4d7a5f9d48e36df24316eb8cf3c6e914520b8baeee0aa65a800fa515",
+    "bootId": "f5bc465a-0e2d-4e16-9078-3a7aaed0e06f",
+    "checkedAtMs": 1791119894888,
+    "checks": [
+      {
+        "id": "vkConfiguration",
+        "status": "ready",
+        "details": {
+          "schemaVersion": 1,
+          "bundleSha256": "51be109b05cc7e30d0a20c796ae8c302e119a90deb7526208cd7bddcd2687ab5",
+          "pins": [
+            {
+              "component": "mediaPolicy",
+              "id": "fixture-variable-package",
+              "version": "1",
+              "sha256": "fbd9f0a1676aa0d39f45cd440796356d5e433d3da6c2ad3731dae1f3ca86bc91"
+            },
+            {
+              "component": "catalog",
+              "id": "stella-vk-placeholder-catalog",
+              "version": "1",
+              "sha256": "81b472e3b5d770942fac35bd3a8f9e607d28e22ab37e19e6756597723a3081bd"
+            },
+            {
+              "component": "entityPolicy",
+              "id": "vk-content-entities",
+              "version": "1",
+              "sha256": "78db4673543e16dc2d315a8c192049f4b7320cb24baf0d5900c922a7ffffa5b5"
+            },
+            {
+              "component": "quiz",
+              "id": "stella-vk",
+              "version": "stella-vk-20261003-9d801d1ec85c",
+              "sha256": "b6fc49bdf917fe38dc88cd6dde07f3afbc7bafc0f087cff0df060ee750c097b1"
+            },
+            {
+              "component": "arc",
+              "id": "arc-tags-orbit",
+              "version": "1",
+              "sha256": "04aefcad9e94f04d7af351009f32991cab8088afce7d2216adf17ab0269196ab"
+            }
+          ],
+          "readiness": "CONFIG_VALIDATED_ONLY"
+        }
+      },
+      {
+        "id": "legacyConfiguration",
+        "status": "ready",
+        "details": {
+          "schemaVersion": 1,
+          "bundleSha256": "aeac3b236a7d727b4e4cbd1971546afa07279dc7b556f157402dca9ea20bb839",
+          "pins": [
+            {
+              "component": "mediaPolicy",
+              "id": "fixture-variable-package",
+              "version": "1",
+              "sha256": "fbd9f0a1676aa0d39f45cd440796356d5e433d3da6c2ad3731dae1f3ca86bc91"
+            },
+            {
+              "component": "catalog",
+              "id": "fixture-catalog",
+              "version": "1",
+              "sha256": "dbdd75f205dcfee9dddb1909b3f81e9e59c22428b95bac343847fe099e4b80a4"
+            },
+            {
+              "component": "quiz",
+              "id": "technical-vk",
+              "version": "technical-quiz-3-v1",
+              "sha256": "eb1e1afce06c355139ebbefd102b43afc7ff6e1c89549c3320b82fae735c161a"
+            }
+          ],
+          "readiness": "CONFIG_VALIDATED_ONLY"
+        }
+      },
+      {
+        "id": "executionProfiles",
+        "status": "ready",
+        "details": {
+          "profiles": [
+            {
+              "id": "fixture-flow-compact",
+              "version": "2"
+            },
+            {
+              "id": "fixture-flow-calm",
+              "version": "2"
+            },
+            {
+              "id": "fixture-discovery-compact",
+              "version": "2"
+            }
+          ]
+        }
+      },
+      {
+        "id": "maxConfiguration",
+        "status": "ready",
+        "details": {
+          "mode": "canonical-local-v1",
+          "catalog": "missions-reviewed-20261003-abe878cfed89",
+          "touchWaitMs": 60000,
+          "quizIdleMs": 20000,
+          "missionCount": 4,
+          "launchRevision": "1",
+          "evidence": "CONFIG_AND_LOCAL_HEALTH_ONLY"
+        }
+      }
+    ],
+    "readOnly": true,
+    "physicalOutput": {
+      "ready": false,
+      "reason": "Общий владелец физических выходов и GPU/Spout-проверка ещё не подключены."
+    },
+    "limits": [
+      "Проверка конфигурации не подтверждает кадр на экране.",
+      "Media/video и generation в техническом исполнителе остаются placeholder.",
+      "Повтор существующего запроса использует сохранённый snapshot; новые настройки его не заменяют."
+    ]
+  },
+  "staticChecks": {
+    "surface-lab.html": "SHA/cache PASS",
+    "surface-lab.js": "SHA/cache PASS",
+    "surface-lab-client.mjs": "SHA/cache PASS",
+    "surface-lab.css": "SHA/cache PASS",
+    "readiness.html": "SHA/cache PASS"
+  },
+  "surfaceLab": {
+    "acceptedSequence": 0,
+    "arch": null,
+    "compositionRevision": 0,
+    "deviceId": "technical-arch-ribbon",
+    "mode": "running",
+    "output": {
+      "generation": 0,
+      "hostBootId": null,
+      "hostId": null,
+      "phase": "detached",
+      "readyMasterBootId": null,
+      "effectivePhase": "detached"
+    },
+    "presentedCompositionRevision": null,
+    "protocol": "surface-lab-v1",
+    "revision": 0,
+    "ribbonEntries": [],
+    "technicalOnly": true,
+    "instanceKey": "dataset-v1:8693404f4d7a5f9d48e36df24316eb8cf3c6e914520b8baeee0aa65a800fa515",
+    "masterBootId": "f5bc465a-0e2d-4e16-9078-3a7aaed0e06f",
+    "evidence": "TECHNICAL_DOM_ONLY"
+  },
+  "status": "applied-and-verified"
+}

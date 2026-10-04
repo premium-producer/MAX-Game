@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "audio.schema.json",
+  "title": "X-SPUTNIK audio runtime manifest",
+  "type": "object",
+  "required": ["schemaVersion", "settings", "buses", "assets", "events"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "settings": {
+      "type": "object",
+      "required": ["storageKey", "loopFadeMs", "stopFadeMs", "maxLateStartMs"],
+      "properties": {
+        "storageKey": { "type": "string", "minLength": 1 },
+        "loopFadeMs": { "type": "number", "minimum": 0 },
+        "stopFadeMs": { "type": "number", "minimum": 0 },
+        "maxLateStartMs": { "type": "number", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "buses": {
+      "type": "object",
+      "required": ["master", "music", "ui", "gameplay", "signal"],
+      "additionalProperties": {
+        "type": "object",
+        "required": ["gain"],
+        "properties": { "gain": { "type": "number", "minimum": 0, "maximum": 1 } },
+        "additionalProperties": false
+      }
+    },
+    "assets": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "url", "preloadGroup"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "url": { "type": "string", "pattern": "^\\./audio/[a-z0-9-]+\\.(wav|webm|ogg)$" },
+          "preloadGroup": { "enum": ["boot", "onboarding", "mission-select", "mission-play", "end"] }
+        },
+        "additionalProperties": false
+      }
+    },
+    "events": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "assets", "kind", "bus", "screens", "instancePolicy"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9_.-]+$" },
+          "assets": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "kind": { "enum": ["one-shot", "loop"] },
+          "bus": { "enum": ["music", "ui", "gameplay", "signal"] },
+          "gain": { "type": "number", "minimum": 0, "maximum": 1 },
+          "screens": { "type": "array", "minItems": 1, "items": { "enum": ["CTA", "ONBOARDING", "MISSION_SELECT", "MISSION_PLAY", "END"] } },
+          "cooldownMs": { "type": "number", "minimum": 0 },
+          "blockOneShotsMs": { "type": "number", "minimum": 0 },
+          "exclusive": { "type": "boolean" },
+          "lateStartPolicy": { "enum": ["play", "drop"] },
+          "maxInstances": { "type": "integer", "minimum": 1 },
+          "instancePolicy": { "enum": ["single-global", "one-global-layer-for-color", "restart-single-voice", "allow-tail-across-transition"] }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

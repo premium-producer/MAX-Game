@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LumiCells — reference tuning</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23050632'/%3E%3Crect x='6' y='6' width='8' height='8' rx='2' fill='%23f21239'/%3E%3Crect x='18' y='6' width='8' height='8' rx='2' fill='%23c43db2'/%3E%3Crect x='6' y='18' width='8' height='8' rx='2' fill='%23e0267a'/%3E%3Crect x='18' y='18' width='8' height='8' rx='2' fill='%230476ff'/%3E%3C/svg%3E"
+    />
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+      }
+      html,
+      body {
+        margin: 0;
+        background: #0b0b12;
+      }
+      .row {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+      }
+      #host {
+        position: relative;
+        background: #000032;
+        flex: none;
+      }
+      #ref {
+        display: block;
+        flex: none;
+        image-rendering: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row">
+      <div id="host"></div>
+      <!-- The design mock is not versioned: drop it at examples/tune/reference.png locally. -->
+      <img id="ref" src="./tune/reference.png" alt="Reference" onerror="this.remove()" />
+    </div>
+    <script type="module" src="./tune/main.ts"></script>
+  </body>
+</html>

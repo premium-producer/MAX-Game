@@ -1,0 +1,29 @@
+/* Third WebGL presentation. Coordinates come from the 3591×1113 SVGs. */
+html[data-visual=reference][data-reveal=true][data-service=false] #circles .object:not(.guided-palm),
+html[data-visual=reference][data-reveal=true][data-service=false] #circles .object.guided-palm{width:120px;height:200px;gap:0}
+html[data-visual=reference][data-reveal=true][data-service=false] #circles .object .tile,
+html[data-visual=reference][data-reveal=true][data-service=false] #circles .object.route-first .tile{width:120px;height:120px;border-radius:32px;flex-shrink:0}
+html[data-visual=reference][data-reveal=true][data-service=false] #circles .object .tile>.glyph{position:absolute;left:28px;top:28px;width:64px;height:64px}
+html[data-visual=reference][data-reveal=true][data-service=false] #circles .object .tile>.reference-glyph{left:0;top:0;width:120px;height:120px}
+html[data-visual=reference][data-reveal=true][data-service=false] #circles .object:not(.guided-palm) .object-label{position:absolute;left:-50px;right:auto;top:132px;bottom:auto;width:220px;max-width:220px;font-size:24px;font-weight:400;line-height:1.16;display:block;text-align:center}
+html[data-visual=reference][data-reveal=true][data-service=false] #circles .object:not(.guided-palm) .object-label small{display:block;font-size:19px;line-height:1.2;margin-top:8px;color:#b5a3d7}
+html[data-visual=reference][data-reveal=true][data-service=false] #circles [data-node-state=future] .tile{opacity:1}
+html[data-visual=reference][data-reveal=true][data-service=false] #circles .guided-palm .object-label{position:absolute;left:-355px;top:148px;width:830px;max-width:830px;font-size:64px;line-height:1.12;text-align:center}
+html[data-visual=reference][data-reveal=true][data-service=false] #circles .guided-palm .object-label small{font-size:24px;margin-top:42px;color:#b5a3d7}
+html[data-visual=reference][data-reveal=true][data-service=false] #circles .route-phone .demo-app{width:var(--reference-device-width)!important;height:var(--reference-device-height)!important;transform:scale(var(--reference-device-scale));transform-origin:top left;border-radius:32px}
+html[data-visual=reference][data-reveal=true][data-service=false] #circles .task-dialog:not(.guided-choice) .instruction{width:660px;padding:64px 72px;border-radius:80px}
+html[data-visual=reference][data-reveal=true][data-service=false] #circles [data-reference-device=pc] .task-dialog .instruction{width:600px;padding:48px}
+html[data-visual=reference][data-reveal=true][data-service=false] #circles .task-dialog .instruction h2{font-size:42px;font-weight:500;line-height:1.1}
+html[data-visual=reference][data-reveal=true][data-service=false] #circles .task-dialog .instruction p{font-size:30px;line-height:1.15}
+html[data-visual=reference][data-reveal=true][data-service=false] #circles .task-dialog .eyebrow{font-size:20px;line-height:1.2;letter-spacing:0;color:#c0afd9}
+html[data-visual=reference][data-reveal=true][data-service=false] #circles .task-dialog .instruction-copy{gap:20px}
+html[data-visual=reference][data-reveal=true][data-service=false] #circles .guided-nav{top:0;opacity:.65}
+html[data-visual=reference][data-reveal=true][data-service=false] #circles .guided-nav .pill{min-height:44px;padding:6px 16px;font-size:22px}
+html[data-visual=reference][data-reveal=true][data-service=false] #circles .guided-restart{width:44px;height:44px}
+html[data-visual=reference][data-reveal=true][data-service=false] #circles .guided-restart .glyph{width:24px;height:24px}
+html[data-visual=reference][data-reveal=true][data-service=false] #circles .reference-brand-left{position:absolute;left:132px;top:134px;width:660px;pointer-events:none}
+html[data-visual=reference][data-reveal=true][data-service=false] #circles .reference-brand-left img{display:block;width:280px;height:88px;object-fit:contain}
+html[data-visual=reference][data-reveal=true][data-service=false] #circles .reference-brand-left p{font-size:44px;margin:34px 0 0;line-height:1.15}
+html[data-visual=reference][data-reveal=true][data-service=false] #circles .reference-brand-left strong{display:block;font-size:44px;line-height:1.08;font-weight:500;color:#00bfff;width:640px}
+html[data-visual=reference][data-reveal=true][data-service=false] #circles .reference-brand-right{position:absolute;left:3069px;top:91px;width:390px;height:174px;display:flex;align-items:center;justify-content:center;pointer-events:none}
+html[data-visual=reference][data-reveal=true][data-service=false] #circles .reference-brand-right img{width:280px;height:88px;object-fit:contain}

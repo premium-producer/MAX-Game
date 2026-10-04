@@ -1,0 +1,38 @@
+<!doctype html><html lang="ru"><meta charset="utf-8">
+<style>
+*{box-sizing:border-box}body{font:13px Inter,Arial,sans-serif;margin:0;padding:24px;background:var(--figma-color-bg,#fff);color:var(--figma-color-text,#222)}h1{font-size:21px;margin:0 0 8px}p{line-height:1.5;color:var(--figma-color-text-secondary,#666)}label{display:block;margin:16px 0 6px;font-weight:600}select{width:100%;padding:10px;border:1px solid var(--figma-color-border,#ddd);border-radius:7px;background:var(--figma-color-bg-secondary,#fafafa);color:inherit}button{border:0;padding:12px 16px;border-radius:8px;cursor:pointer}button:disabled{opacity:.5;cursor:default}#run{background:#6341ed;color:white;flex:1}footer{display:flex;gap:10px;margin-top:14px}progress{width:100%;height:7px;accent-color:#6341ed}#status{min-height:36px;margin:14px 0 6px}.pair{display:flex;gap:16px}.pair>div{flex:1}.note{font-size:11px}
+</style>
+<h1>MAX · Скриншоты</h1><p>84 готовых кадра клиентской версии.<br>Секции → миссии → состояния и задания.</p>
+<label for="mission">Миссия</label><select id="mission"><option value="all">Все разделы</option><option value="common">Старт и навигация</option><option value="blogger">Стать блогером</option><option value="id">Цифровой ID</option><option value="communication">Общение на максимум</option><option value="business">Продвижение бизнеса</option><option value="final">Финал</option></select>
+<label for="set">Набор экранов</label><select id="set"><option value="all">Все снятые экраны</option><option value="core">5 основных состояний каждой миссии</option><option value="tasks">Задания и их результаты</option><option value="picker">Выбор иконок</option><option value="brief">Справки MAX</option><option value="complete">Завершение миссий</option></select>
+<div class="pair"><div><label for="width">Размер изображений</label><select id="width"><option value="native">Исходный размер</option><option value="640">Ширина 640 px</option><option value="1280">Ширина 1280 px</option></select></div><div><label for="columns">Экранов в ряду</label><select id="columns"><option>5</option><option>4</option><option>3</option></select></div></div>
+<p class="note">Пропорции и полный кадр сохраняются. Бизнес снят по ветке «Канал». Импорт размещается на текущей странице, справа от существующих объектов.</p>
+<div id="status" role="status" aria-live="polite"></div><progress id="progress" value="0" max="84"></progress>
+<footer><button id="run">Разложить в Figma</button><button id="stop" disabled>Стоп</button></footer>
+<script>
+/* __CORE__ */
+const DATA=/* __DATA__ */;
+const $=id=>document.getElementById(id),post=m=>parent.postMessage({pluginMessage:m},'*');
+const options=()=>({mission:$('mission').value,set:$('set').value,width:$('width').value,columns:$('columns').value});
+let active=null;
+function controls(busy){for(const id of ['mission','set','width','columns','run'])$(id).disabled=busy;$('stop').disabled=!busy;}
+function update(){const n=selectScreens(DATA,options()).length;$('status').textContent='Выбрано '+n+' из 84 изображений';$('run').disabled=!n;}
+for(const id of ['mission','set','width','columns'])$(id).addEventListener('change',update);
+$('run').onclick=()=>{active=String(Date.now());controls(true);$('progress').value=0;$('status').textContent='Размещаю секции на текущей странице…';post({type:'start',id:active,options:options()});};
+$('stop').onclick=()=>{post({type:'cancel'});};
+window.onmessage=event=>{
+  const m=event.data?.pluginMessage;if(!m)return;
+  if(m.type==='need-image'&&m.id===active){
+    const item=DATA.find(s=>s.file===m.file);if(!item){post({type:'cancel'});return;}
+    $('status').textContent=(m.index+1)+' / '+m.total+' · '+item.title;
+    $('progress').max=m.total;$('progress').value=m.index;
+    const raw=atob(item.base64),bytes=new Uint8Array(raw.length);for(let i=0;i<raw.length;i++)bytes[i]=raw.charCodeAt(i);
+    post({type:'image',id:active,index:m.index,file:m.file,bytes});
+  }else if(m.type==='done'){
+    active=null;controls(false);update();$('progress').value=m.count;
+    $('status').textContent=(m.cancelled?'Остановлено. Сохранено ':'Готово. Размещено ')+m.count+' изображений.';
+  }else if(m.type==='error'){
+    active=null;controls(false);update();$('status').textContent='Ошибка: '+m.message+'. Уже создано: '+m.count;
+  }
+};update();
+</script></html>

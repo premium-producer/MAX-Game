@@ -1,0 +1,23 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {migrateFlowDocument,validateFlowDocument} from '../src/asset-audit/flow-document.mjs';
+import {readEditorDocument,findFlowScreen,newInteraction,deleteInteraction,importEditorDocument,recoveryConfirmation} from '../src/asset-audit/editor-model.mjs';
+const hash='a'.repeat(64);
+const source=(id,outcome)=>({screenId:id,assetId:'asset-'+id,asset:{width:100,height:200,sha256:hash},instruction:'Help',automaticMs:null,actions:[{actionId:id+'.go',label:'Next',placement:'hotspot',rect:[2,3,20,25],outcome}]});
+const catalog={contentRevision:'test',missions:[{missionId:'m',tasks:[{taskId:'t',startScreenId:'a',screens:[source('a',{kind:'navigate',screenId:'b'}),source('b',{kind:'complete-task'})]}]}]};
+const legacy={schemaVersion:2,contentRevision:'test',records:[],screens:[]};
+const fixture=()=>migrateFlowDocument(legacy,catalog);
+test('recovery warning distinguishes full replacement, stale revision and legacy patch',()=>{
+ const d=fixture(),before=structuredClone(d);
+ assert.match(recoveryConfirmation(d,'old','new'),/другой или неизвестной версии/);
+ assert.match(recoveryConfirmation(d,undefined,'new'),/другой или неизвестной версии/);
+ const same=recoveryConfirmation(d,'same','same');assert.doesNotMatch(same,/другой или неизвестной версии/);assert.match(same,/заменит весь текущий черновик/);
+ const old=recoveryConfirmation(legacy,'same','same');assert.match(old,/старого редактора v1\/v2/);assert.match(old,/добавленные зоны и кнопки v3 сохранятся/);
+ assert.match(same,/Отмена ничего не изменяет/);assert.deepEqual(d,before);
+});
+test('v3 export and server envelope roundtrip strips metadata only',()=>{const value=fixture();assert.deepEqual(readEditorDocument({...value,revision:'etag',exportedAt:'now'},catalog),value);assert.throws(()=>readEditorDocument({...value,unexpected:1},catalog));});
+test('zone, button, timer coexist with independent target and enabled state',()=>{const d=fixture(),t=d.tasks[0],s=t.screens[0];s.interactions.push(newInteraction('hotspot',s,t,'zone',[4,5,6,7]));s.interactions.push(newInteraction('button',s,t,'button'));s.interactions.push(newInteraction('timer',s,t,'timer'));const timer=s.interactions.at(-1);assert.equal(timer.delayMs,500);assert.equal(timer.enabled,false);assert.throws(()=>newInteraction('timer',s,t,'timer2'));s.interactions[1].target={kind:'complete-task'};assert.equal(validateFlowDocument(d,catalog).tasks[0].screens[0].interactions.length,4);});
+test('final changes new defaults only; explicit routes remain',()=>{const d=fixture(),t=d.tasks[0],s=t.screens[0];s.final=true;const b=newInteraction('button',s,t,'b');assert.deepEqual(b.target,{kind:'complete-task'});assert.deepEqual(s.interactions[0].target,{kind:'screen',screenId:'b'});});
+test('delete last source representation leaves tombstone and import restores it',()=>{const d=fixture(),s=d.tasks[0].screens[0];deleteInteraction(s,'a.go');assert.deepEqual(s.deletedSourceActionIds,['a.go']);validateFlowDocument(d,catalog);const record={screenId:'a',assetId:'asset-a',assetSha256:hash,actionId:'a.go',label:'Next',placement:'hotspot',rect:[10,20,5,6],reviewed:true,updatedAt:'2026-10-04'};const restored=importEditorDocument(d,{...legacy,records:[record]},catalog);assert.deepEqual(findFlowScreen(restored,'a').deletedSourceActionIds,[]);assert.deepEqual(findFlowScreen(restored,'a').interactions[0].rect,[10,20,5,6]);});
+test('legacy import retains added v3 interactions and only patches explicit records',()=>{const d=fixture(),t=d.tasks[0],s=t.screens[0];s.interactions.push(newInteraction('button',s,t,'custom'));s.help={mode:'override',text:'Edited help'};const record={screenId:'a',assetId:'asset-a',assetSha256:hash,actionId:'a.go',label:'Next',placement:'below-screen',reviewed:true,updatedAt:'2026-10-04'};const merged=importEditorDocument(d,{...legacy,records:[record]},catalog);const result=findFlowScreen(merged,'a');assert.equal(result.interactions.length,2);assert.equal(result.interactions[1].interactionId,'custom');assert.equal(result.help.text,'Edited help');assert.equal(result.interactions[0].kind,'button');assert.equal(s.interactions[0].kind,'hotspot');});
+test('full v3 import preserves explicit deletions, button labels, help and disabled interactions',()=>{const d=fixture(),s=d.tasks[0].screens[0],t=d.tasks[0];deleteInteraction(s,'a.go');s.interactions.push({...newInteraction('button',s,t,'custom'),enabled:false,label:'My label'});t.helpText='Task help';d.missions[0].helpText='Mission help';assert.deepEqual(importEditorDocument(fixture(),{...d,exportedAt:'now'},catalog),d);});

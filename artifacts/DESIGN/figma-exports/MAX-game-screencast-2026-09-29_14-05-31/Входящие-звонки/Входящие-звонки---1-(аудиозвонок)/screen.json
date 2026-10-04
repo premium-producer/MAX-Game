@@ -1,0 +1,982 @@
+{
+  "id": "2299:85802",
+  "name": "Входящие звонки - 1 (аудиозвонок)",
+  "type": "FRAME",
+  "parent": "2299:85777",
+  "bounds": {
+    "x": 19854,
+    "y": 321,
+    "width": 360,
+    "height": 800
+  },
+  "visible": true,
+  "fontSize": 0,
+  "hasImage": false,
+  "task": "communication.call",
+  "confidence": "high",
+  "reviewed": false,
+  "include": true,
+  "group": "2299:85777",
+  "groupName": "Входящие звонки",
+  "containerPath": [
+    {
+      "id": "2299:85777",
+      "name": "Входящие звонки",
+      "type": "SECTION"
+    }
+  ],
+  "sectionPath": [
+    {
+      "id": "2299:85777",
+      "name": "Входящие звонки",
+      "type": "SECTION"
+    }
+  ],
+  "sequence": {
+    "series": "Входящие звонки",
+    "number": 1,
+    "description": "аудиозвонок"
+  },
+  "detection": "structure",
+  "evidence": [
+    {
+      "task": "communication.call",
+      "source": "frame-name",
+      "id": "2299:85802",
+      "text": "Входящие звонки - 1 (аудиозвонок)",
+      "weight": 100
+    },
+    {
+      "task": "communication.call",
+      "source": "ancestor",
+      "id": "2299:85777",
+      "text": "Входящие звонки",
+      "weight": 99
+    }
+  ],
+  "ancestors": [
+    {
+      "id": "2299:85777",
+      "name": "Входящие звонки",
+      "type": "SECTION"
+    }
+  ],
+  "nearbyHeadings": [],
+  "contextRegion": null,
+  "warnings": [
+    "Слой «.Recording for Call Bottom» (I2299:85804;6277:2559): недоступно componentProperties. in get_componentProperties: Component set for node has existing errors"
+  ],
+  "order": 47,
+  "fingerprint": "[\"Входящие звонки - 1 (аудиозвонок)\",{\"x\":19854,\"y\":321,\"width\":360,\"height\":800},\"FRAME\",[[\"2299:85777\",\"Входящие звонки\",\"SECTION\"],[\"1:8\",\"Page 8\",\"PAGE\"]],\"content-v1\",1726010456,2956208126,139]",
+  "readWarnings": [
+    {
+      "nodeId": "I2299:85804;6277:2559",
+      "nodeName": ".Recording for Call Bottom",
+      "property": "componentProperties",
+      "message": "in get_componentProperties: Component set for node has existing errors"
+    }
+  ],
+  "manualTask": false,
+  "title": "Входящие звонки - 1 (аудиозвонок)",
+  "exportStatus": "ok",
+  "texts": [
+    {
+      "id": "I2299:85804;6277:2547;1915:1645;1851:136",
+      "name": "Time",
+      "type": "TEXT",
+      "parent": "I2299:85804;6277:2547;1915:1645",
+      "bounds": {
+        "x": 19878,
+        "y": 343,
+        "width": 29,
+        "height": 20
+      },
+      "text": "9:30",
+      "fontName": null,
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "9:30",
+          "start": 0,
+          "end": 4,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Medium",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 500
+            }
+          },
+          "fontWeight": 500,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 1,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:cd21b6ebab8da973d6e4997cb886b9e813f73cfa/4263:107"
+                }
+              }
+            }
+          ],
+          "textStyleId": "",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:85808",
+      "name": "Павел Селезнев",
+      "type": "TEXT",
+      "parent": "2299:85807",
+      "bounds": {
+        "x": 19854,
+        "y": 441,
+        "width": 360,
+        "height": 32
+      },
+      "text": "Павел Селезнев",
+      "fontName": {
+        "family": "Roboto",
+        "style": "SemiBold",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 600
+        }
+      },
+      "fontSize": 28,
+      "segments": [
+        {
+          "characters": "Павел Селезнев",
+          "start": 0,
+          "end": 14,
+          "fontSize": 28,
+          "fontName": {
+            "family": "Roboto",
+            "style": "SemiBold",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 600
+            }
+          },
+          "fontWeight": 600,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.800000011920929,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:0af30f4380fce519624c68d2dc55e4467590684a/4263:365"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:d5428d8903c74f4ecb67c4ef3ac420ddc0286a2a,3684:80",
+          "hyperlink": null
+        }
+      ]
+    },
+    {
+      "id": "2299:85810",
+      "name": "Входящий аудиозвонок MAX",
+      "type": "TEXT",
+      "parent": "2299:85809",
+      "bounds": {
+        "x": 19937.5,
+        "y": 485,
+        "width": 193,
+        "height": 18
+      },
+      "text": "Входящий аудиозвонок MAX",
+      "fontName": {
+        "family": "Roboto",
+        "style": "Regular",
+        "variationSettings": {
+          "wdth": 100,
+          "wght": 400
+        }
+      },
+      "fontSize": 14,
+      "segments": [
+        {
+          "characters": "Входящий аудиозвонок MAX",
+          "start": 0,
+          "end": 24,
+          "fontSize": 14,
+          "fontName": {
+            "family": "Roboto",
+            "style": "Regular",
+            "variationSettings": {
+              "wdth": 100,
+              "wght": 400
+            }
+          },
+          "fontWeight": 400,
+          "fills": [
+            {
+              "type": "SOLID",
+              "visible": true,
+              "opacity": 0.6399999856948853,
+              "blendMode": "NORMAL",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              },
+              "boundVariables": {
+                "color": {
+                  "type": "VARIABLE_ALIAS",
+                  "id": "VariableID:4c4633b73f04062295f5cba9c91128e605821b9c/4264:386"
+                }
+              }
+            }
+          ],
+          "textStyleId": "S:e90797c2e243ebd462e1946b5c699aec972290e3,19702:15",
+          "hyperlink": null
+        }
+      ]
+    }
+  ],
+  "layers": [
+    {
+      "id": "2299:85802",
+      "name": "Входящие звонки - 1 (аудиозвонок)",
+      "type": "FRAME",
+      "parent": "2299:85777",
+      "bounds": {
+        "x": 19854,
+        "y": 321,
+        "width": 360,
+        "height": 800
+      }
+    },
+    {
+      "id": "2299:85803",
+      "name": "Call background",
+      "type": "INSTANCE",
+      "parent": "2299:85802",
+      "bounds": {
+        "x": 19854,
+        "y": 321,
+        "width": 360,
+        "height": 800
+      }
+    },
+    {
+      "id": "I2299:85803;6277:4282",
+      "name": "3",
+      "type": "ELLIPSE",
+      "parent": "2299:85803",
+      "bounds": {
+        "x": 19794,
+        "y": 481,
+        "width": 480,
+        "height": 480
+      }
+    },
+    {
+      "id": "I2299:85803;6277:4283",
+      "name": "2",
+      "type": "GROUP",
+      "parent": "2299:85803",
+      "bounds": {
+        "x": 19854,
+        "y": 541,
+        "width": 360.0005187988281,
+        "height": 360.00006103515625
+      }
+    },
+    {
+      "id": "I2299:85803;6277:4284",
+      "name": "Ellipse 4",
+      "type": "ELLIPSE",
+      "parent": "I2299:85803;6277:4283",
+      "bounds": {
+        "x": 19854,
+        "y": 631.0035400390625,
+        "width": 179.99856567382812,
+        "height": 179.9986114501953
+      }
+    },
+    {
+      "id": "I2299:85803;6277:4285",
+      "name": "Ellipse 3",
+      "type": "ELLIPSE",
+      "parent": "I2299:85803;6277:4283",
+      "bounds": {
+        "x": 19944.001953125,
+        "y": 721.00146484375,
+        "width": 179.99856567382812,
+        "height": 179.9986114501953
+      }
+    },
+    {
+      "id": "I2299:85803;6277:4286",
+      "name": "Ellipse 2",
+      "type": "ELLIPSE",
+      "parent": "I2299:85803;6277:4283",
+      "bounds": {
+        "x": 20034.001953125,
+        "y": 631.004150390625,
+        "width": 179.99856567382812,
+        "height": 179.9986114501953
+      }
+    },
+    {
+      "id": "I2299:85803;6277:4287",
+      "name": "Ellipse 1",
+      "type": "ELLIPSE",
+      "parent": "I2299:85803;6277:4283",
+      "bounds": {
+        "x": 19943.99609375,
+        "y": 541,
+        "width": 179.99856567382812,
+        "height": 179.9986114501953
+      }
+    },
+    {
+      "id": "I2299:85803;6277:4288",
+      "name": "1",
+      "type": "GROUP",
+      "parent": "2299:85803",
+      "bounds": {
+        "x": 19935,
+        "y": 621,
+        "width": 200,
+        "height": 200
+      }
+    },
+    {
+      "id": "I2299:85803;6277:4289",
+      "name": "Ellipse 2431",
+      "type": "ELLIPSE",
+      "parent": "I2299:85803;6277:4288",
+      "bounds": {
+        "x": 19975,
+        "y": 621,
+        "width": 160,
+        "height": 160
+      }
+    },
+    {
+      "id": "I2299:85803;6277:4290",
+      "name": "Ellipse 2430",
+      "type": "ELLIPSE",
+      "parent": "I2299:85803;6277:4288",
+      "bounds": {
+        "x": 19935,
+        "y": 661,
+        "width": 160,
+        "height": 160
+      }
+    },
+    {
+      "id": "2299:85804",
+      "name": "Call Header",
+      "type": "INSTANCE",
+      "parent": "2299:85802",
+      "bounds": {
+        "x": 19854,
+        "y": 321,
+        "width": 360,
+        "height": 124
+      }
+    },
+    {
+      "id": "I2299:85804;6277:2547",
+      "name": "Status Bar",
+      "type": "INSTANCE",
+      "parent": "2299:85804",
+      "bounds": {
+        "x": 19854,
+        "y": 321,
+        "width": 360,
+        "height": 52
+      }
+    },
+    {
+      "id": "I2299:85804;6277:2547;1915:1645",
+      "name": "Bar",
+      "type": "INSTANCE",
+      "parent": "I2299:85804;6277:2547",
+      "bounds": {
+        "x": 19854,
+        "y": 321,
+        "width": 360,
+        "height": 52
+      }
+    },
+    {
+      "id": "I2299:85804;6277:2547;1915:1645;1851:136",
+      "name": "Time",
+      "type": "TEXT",
+      "parent": "I2299:85804;6277:2547;1915:1645",
+      "bounds": {
+        "x": 19878,
+        "y": 343,
+        "width": 29,
+        "height": 20
+      }
+    },
+    {
+      "id": "I2299:85804;6277:2547;1915:1645;3399:3829",
+      "name": "Spacer",
+      "type": "FRAME",
+      "parent": "I2299:85804;6277:2547;1915:1645",
+      "bounds": {
+        "x": 19907,
+        "y": 331,
+        "width": 237,
+        "height": 32
+      }
+    },
+    {
+      "id": "I2299:85804;6277:2547;1915:1645;1851:137",
+      "name": "Levels",
+      "type": "FRAME",
+      "parent": "I2299:85804;6277:2547;1915:1645",
+      "bounds": {
+        "x": 20144,
+        "y": 346,
+        "width": 46,
+        "height": 17
+      }
+    },
+    {
+      "id": "I2299:85804;6277:2547;1915:1645;1851:138",
+      "name": "Wifi",
+      "type": "GROUP",
+      "parent": "I2299:85804;6277:2547;1915:1645;1851:137",
+      "bounds": {
+        "x": 20144,
+        "y": 346,
+        "width": 17,
+        "height": 17
+      }
+    },
+    {
+      "id": "I2299:85804;6277:2547;1915:1645;1851:141",
+      "name": "Path",
+      "type": "VECTOR",
+      "parent": "I2299:85804;6277:2547;1915:1645;1851:138",
+      "bounds": {
+        "x": 20144,
+        "y": 346,
+        "width": 17,
+        "height": 17
+      }
+    },
+    {
+      "id": "I2299:85804;6277:2547;1915:1645;1851:142",
+      "name": "Path",
+      "type": "VECTOR",
+      "parent": "I2299:85804;6277:2547;1915:1645;1851:138",
+      "bounds": {
+        "x": 20144,
+        "y": 347.4166564941406,
+        "width": 17,
+        "height": 14.166666984558105
+      }
+    },
+    {
+      "id": "I2299:85804;6277:2547;1915:1645;1851:143",
+      "name": "Signal",
+      "type": "GROUP",
+      "parent": "I2299:85804;6277:2547;1915:1645;1851:137",
+      "bounds": {
+        "x": 20160,
+        "y": 346,
+        "width": 17,
+        "height": 17
+      }
+    },
+    {
+      "id": "I2299:85804;6277:2547;1915:1645;1851:144",
+      "name": "Path",
+      "type": "VECTOR",
+      "parent": "I2299:85804;6277:2547;1915:1645;1851:143",
+      "bounds": {
+        "x": 20160,
+        "y": 346,
+        "width": 17,
+        "height": 17
+      }
+    },
+    {
+      "id": "I2299:85804;6277:2547;1915:1645;1851:145",
+      "name": "Path",
+      "type": "VECTOR",
+      "parent": "I2299:85804;6277:2547;1915:1645;1851:143",
+      "bounds": {
+        "x": 20161.416015625,
+        "y": 347.4166564941406,
+        "width": 14.166666984558105,
+        "height": 14.166666984558105
+      }
+    },
+    {
+      "id": "I2299:85804;6277:2547;1915:1645;1851:146",
+      "name": "Battery",
+      "type": "FRAME",
+      "parent": "I2299:85804;6277:2547;1915:1645;1851:137",
+      "bounds": {
+        "x": 20182,
+        "y": 347,
+        "width": 8,
+        "height": 15
+      }
+    },
+    {
+      "id": "I2299:85804;6277:2547;1915:1645;1851:147",
+      "name": "Base",
+      "type": "VECTOR",
+      "parent": "I2299:85804;6277:2547;1915:1645;1851:146",
+      "bounds": {
+        "x": 20182,
+        "y": 347,
+        "width": 8,
+        "height": 15
+      }
+    },
+    {
+      "id": "I2299:85804;6277:2547;1915:1645;1851:148",
+      "name": "Charge",
+      "type": "VECTOR",
+      "parent": "I2299:85804;6277:2547;1915:1645;1851:146",
+      "bounds": {
+        "x": 20182,
+        "y": 355,
+        "width": 8,
+        "height": 7
+      }
+    },
+    {
+      "id": "I2299:85804;6277:2548",
+      "name": "newHead",
+      "type": "FRAME",
+      "parent": "2299:85804",
+      "bounds": {
+        "x": 19854,
+        "y": 373,
+        "width": 360,
+        "height": 64
+      }
+    },
+    {
+      "id": "I2299:85804;6277:2549",
+      "name": "Frame 2087329124",
+      "type": "FRAME",
+      "parent": "I2299:85804;6277:2548",
+      "bounds": {
+        "x": 19866,
+        "y": 385,
+        "width": 336,
+        "height": 40
+      }
+    },
+    {
+      "id": "I2299:85804;6277:2550",
+      "name": ".Button",
+      "type": "INSTANCE",
+      "parent": "I2299:85804;6277:2549",
+      "bounds": {
+        "x": 19866,
+        "y": 385,
+        "width": 40,
+        "height": 40
+      }
+    },
+    {
+      "id": "I2299:85804;6277:2550;1:4669",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "I2299:85804;6277:2550",
+      "bounds": {
+        "x": 19874,
+        "y": 393,
+        "width": 24,
+        "height": 24
+      }
+    },
+    {
+      "id": "I2299:85804;6277:2550;1:4669;348:954",
+      "name": "Icon 24",
+      "type": "FRAME",
+      "parent": "I2299:85804;6277:2550;1:4669",
+      "bounds": {
+        "x": 19874,
+        "y": 392.99993896484375,
+        "width": 24,
+        "height": 24.000099182128906
+      }
+    },
+    {
+      "id": "I2299:85804;6277:2550;1:4669;348:955",
+      "name": "After",
+      "type": "FRAME",
+      "parent": "I2299:85804;6277:2550;1:4669;348:954",
+      "bounds": {
+        "x": 19874,
+        "y": 392.99993896484375,
+        "width": 24,
+        "height": 0
+      }
+    },
+    {
+      "id": "I2299:85804;6277:2550;1:4669;348:956",
+      "name": "Null",
+      "type": "FRAME",
+      "parent": "I2299:85804;6277:2550;1:4669;348:955",
+      "bounds": {
+        "x": 19874,
+        "y": 392.99993896484375,
+        "width": 0.00009999999747378752,
+        "height": 0.00009999999747378752
+      }
+    },
+    {
+      "id": "I2299:85804;6277:2550;1:4669;348:957",
+      "name": "Null size",
+      "type": "FRAME",
+      "parent": "I2299:85804;6277:2550;1:4669;348:955",
+      "bounds": {
+        "x": 19874,
+        "y": 73.00003051757812,
+        "width": 0,
+        "height": 120
+      }
+    },
+    {
+      "id": "I2299:85804;6277:2550;1:4669;348:988",
+      "name": "Before",
+      "type": "FRAME",
+      "parent": "I2299:85804;6277:2550;1:4669;348:954",
+      "bounds": {
+        "x": 19874,
+        "y": 392.99993896484375,
+        "width": 24,
+        "height": 0.00009999999747378752
+      }
+    },
+    {
+      "id": "I2299:85804;6277:2550;1:4669;348:989",
+      "name": "Null",
+      "type": "FRAME",
+      "parent": "I2299:85804;6277:2550;1:4669;348:988",
+      "bounds": {
+        "x": 19874,
+        "y": 392.99993896484375,
+        "width": 0.00009999999747378752,
+        "height": 0.00009999999747378752
+      }
+    },
+    {
+      "id": "I2299:85804;6277:2550;1:4669;348:990",
+      "name": "Null",
+      "type": "FRAME",
+      "parent": "I2299:85804;6277:2550;1:4669;348:988",
+      "bounds": {
+        "x": 19897,
+        "y": 392.99993896484375,
+        "width": 1,
+        "height": 0.00009999999747378752
+      }
+    },
+    {
+      "id": "I2299:85804;6277:2550;1:4669;348:958",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "I2299:85804;6277:2550;1:4669;348:954",
+      "bounds": {
+        "x": 19874,
+        "y": 393.0005187988281,
+        "width": 24,
+        "height": 23.999025344848633
+      }
+    },
+    {
+      "id": "I2299:85804;6277:2550;1:4669;348:958;71:314",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:85804;6277:2550;1:4669;348:958",
+      "bounds": {
+        "x": 19877,
+        "y": 396.00048828125,
+        "width": 18.0003719329834,
+        "height": 18.000057220458984
+      }
+    },
+    {
+      "id": "2299:85805",
+      "name": "call",
+      "type": "INSTANCE",
+      "parent": "2299:85802",
+      "bounds": {
+        "x": 19918,
+        "y": 347,
+        "width": 12,
+        "height": 12
+      }
+    },
+    {
+      "id": "I2299:85805;429:131171",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "2299:85805",
+      "bounds": {
+        "x": 19919.5,
+        "y": 348.5,
+        "width": 9,
+        "height": 9
+      }
+    },
+    {
+      "id": "2299:85806",
+      "name": "Frame 2131327321",
+      "type": "FRAME",
+      "parent": "2299:85802",
+      "bounds": {
+        "x": 19854,
+        "y": 441,
+        "width": 360,
+        "height": 62
+      }
+    },
+    {
+      "id": "2299:85807",
+      "name": "Frame 2131327321",
+      "type": "FRAME",
+      "parent": "2299:85806",
+      "bounds": {
+        "x": 19854,
+        "y": 441,
+        "width": 360,
+        "height": 32
+      }
+    },
+    {
+      "id": "2299:85808",
+      "name": "Павел Селезнев",
+      "type": "TEXT",
+      "parent": "2299:85807",
+      "bounds": {
+        "x": 19854,
+        "y": 441,
+        "width": 360,
+        "height": 32
+      }
+    },
+    {
+      "id": "2299:85809",
+      "name": "Frame 2087328597",
+      "type": "FRAME",
+      "parent": "2299:85806",
+      "bounds": {
+        "x": 19854,
+        "y": 485,
+        "width": 360,
+        "height": 18
+      }
+    },
+    {
+      "id": "2299:85810",
+      "name": "Входящий аудиозвонок MAX",
+      "type": "TEXT",
+      "parent": "2299:85809",
+      "bounds": {
+        "x": 19937.5,
+        "y": 485,
+        "width": 193,
+        "height": 18
+      }
+    },
+    {
+      "id": "2299:85811",
+      "name": "Avatar / Default",
+      "type": "INSTANCE",
+      "parent": "2299:85802",
+      "bounds": {
+        "x": 19934,
+        "y": 621,
+        "width": 200,
+        "height": 200
+      }
+    },
+    {
+      "id": "I2299:85811;744:2052",
+      "name": "Avatar",
+      "type": "FRAME",
+      "parent": "2299:85811",
+      "bounds": {
+        "x": 19934,
+        "y": 621,
+        "width": 200,
+        "height": 200
+      }
+    },
+    {
+      "id": "2299:85812",
+      "name": "Frame 2131327358",
+      "type": "FRAME",
+      "parent": "2299:85802",
+      "bounds": {
+        "x": 19854,
+        "y": 973,
+        "width": 360,
+        "height": 64
+      }
+    },
+    {
+      "id": "2299:85813",
+      "name": ".End call for Call Bottom",
+      "type": "INSTANCE",
+      "parent": "2299:85812",
+      "bounds": {
+        "x": 19926,
+        "y": 973,
+        "width": 64,
+        "height": 64
+      }
+    },
+    {
+      "id": "I2299:85813;4200:2376",
+      "name": "Button",
+      "type": "FRAME",
+      "parent": "2299:85813",
+      "bounds": {
+        "x": 19926,
+        "y": 973,
+        "width": 64,
+        "height": 64
+      }
+    },
+    {
+      "id": "I2299:85813;4200:2377",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "I2299:85813;4200:2376",
+      "bounds": {
+        "x": 19942,
+        "y": 989,
+        "width": 31.999998092651367,
+        "height": 31.999998092651367
+      }
+    },
+    {
+      "id": "I2299:85813;4200:2377;71:72",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:85813;4200:2377",
+      "bounds": {
+        "x": 19944.666015625,
+        "y": 999,
+        "width": 26.666667938232422,
+        "height": 12.000000953674316
+      }
+    },
+    {
+      "id": "2299:85814",
+      "name": ".End call for Call Bottom",
+      "type": "INSTANCE",
+      "parent": "2299:85812",
+      "bounds": {
+        "x": 20078,
+        "y": 973,
+        "width": 64,
+        "height": 64
+      }
+    },
+    {
+      "id": "I2299:85814;4200:2376",
+      "name": "Button",
+      "type": "FRAME",
+      "parent": "2299:85814",
+      "bounds": {
+        "x": 20078,
+        "y": 973,
+        "width": 64,
+        "height": 64
+      }
+    },
+    {
+      "id": "I2299:85814;4200:2377",
+      "name": "Icon",
+      "type": "INSTANCE",
+      "parent": "I2299:85814;4200:2376",
+      "bounds": {
+        "x": 20094,
+        "y": 989,
+        "width": 31.999998092651367,
+        "height": 31.999998092651367
+      }
+    },
+    {
+      "id": "I2299:85814;4200:2377;14:15",
+      "name": "Vector",
+      "type": "VECTOR",
+      "parent": "I2299:85814;4200:2377",
+      "bounds": {
+        "x": 20099.080078125,
+        "y": 991.6666870117188,
+        "width": 24.000001907348633,
+        "height": 26.666662216186523
+      }
+    },
+    {
+      "id": "2299:85815",
+      "name": "📎 Home Indicator",
+      "type": "INSTANCE",
+      "parent": "2299:85802",
+      "bounds": {
+        "x": 19854,
+        "y": 1097,
+        "width": 360,
+        "height": 24
+      }
+    },
+    {
+      "id": "I2299:85815;1350:1201",
+      "name": "Home Indicator",
+      "type": "VECTOR",
+      "parent": "2299:85815",
+      "bounds": {
+        "x": 19982,
+        "y": 1109,
+        "width": 104,
+        "height": 0
+      }
+    }
+  ],
+  "imageHashes": [
+    "b4576bdd65bb68dbf2fca5231a110f24997ee7ab"
+  ],
+  "notes": [],
+  "pngScale": 1,
+  "pngFile": "Входящие-звонки/Входящие-звонки---1-(аудиозвонок)/screen.png",
+  "previewFile": "Входящие-звонки/Входящие-звонки---1-(аудиозвонок)/preview.png",
+  "svgFile": "Входящие-звонки/Входящие-звонки---1-(аудиозвонок)/screen.svg",
+  "documentFile": "Входящие-звонки/Входящие-звонки---1-(аудиозвонок)/figma.json",
+  "images": [
+    {
+      "hash": "b4576bdd65bb68dbf2fca5231a110f24997ee7ab",
+      "file": "Входящие-звонки/Входящие-звонки---1-(аудиозвонок)/images/ecba25404026027ba2f4abea64bb9e987472a8a7d869b4a42595469d2826dea4.jpg"
+    }
+  ]
+}
