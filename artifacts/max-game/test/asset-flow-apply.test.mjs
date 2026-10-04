@@ -1,3 +1,4 @@
+import {applyReviewedAssets} from '../scripts/apply-reviewed-assets.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -18,7 +19,7 @@ test('original export is protected from publication with ambiguous overlapping t
  assert.throws(()=>applyAssetFlow(base,input),/Перекрывающиеся зоны/);
 });
 test('approved runtime equals compiled source; corrections never rewrite original document',()=>{
- const before=JSON.stringify(input),compiled=applyAssetFlow(base,input,{rectCorrections});
+ const before=JSON.stringify(input),compiled=applyReviewedAssets(applyAssetFlow(base,input,{rectCorrections}));
  assert.deepEqual(compiled.catalog,V5_MISSION_CATALOG);assert.equal(JSON.stringify(input),before);
  const stale=structuredClone(input);stale.tasks.find(t=>t.taskId==='digital-id.create-id').screens.find(s=>s.screenId==='digital-id.create-id.quick').interactions[0].rect[0]++;
  assert.throws(()=>applyAssetFlow(base,stale,{rectCorrections}),/CORRECTION_STALE/);

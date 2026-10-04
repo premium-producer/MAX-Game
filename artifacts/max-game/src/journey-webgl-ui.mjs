@@ -19,6 +19,7 @@ import {paintBfmTile,createBfmGradientMap} from './journey-bfm-tile-paint.mjs';
 import {paintBfmPhone,BFM_PHONE_LIGHT_PAD} from './journey-bfm-device-paint.mjs';
 import {enableV5Inertia,V5_INERTIA,V5MotionValue,v5InstructionTop} from './journey-v5-inertia.mjs';
 import {yieldToBrowser,withTimeout} from './asset-preparation.mjs';
+import {v5DeviceRasterScale} from './journey-v5-startup-assets.mjs';
 
 // DOM is a layout/accessibility tree only. Every visible primitive is rendered by
 // the existing game's WebGL context; text textures are rebuilt only on UI changes.
@@ -100,7 +101,7 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startu
  const referenceTrace=referenceVisual&&new URLSearchParams(location.search).get('motion-debug')==='1'?new ReferenceStartTrace():null;
  const sizeSnapHosts=new Set();
  let finished=[];
- let dirty=true,disposed=false,time=0,order=0,materials=[],geometry=[],used=new Set();
+ let dirty=true,disposed=false,time=0,order=0,materials=[],geometry=[],used=new Set(),devicePixelScale=1;
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
  publishGlassFrame(document,[]);
  const rect=el=>{const a=arena.getBoundingClientRect(),r=el.getBoundingClientRect(),scale=a.width/getSize().width;return{x:(r.left-a.left)/scale,y:(r.top-a.top)/scale,w:r.width/scale,h:r.height/scale};};
@@ -115,6 +116,10 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startu
   cache.set(key,tex);return tex;
  }
  const idTextureKey=src=>`${new URL(src,document.baseURI).href}:360:800:2:0:false`;
+ function reportResidency(){
+  let pixels=0;for(const tex of cache.values())pixels+=(tex.image?.width||0)*(tex.image?.height||0);
+  root.dataset.resourceResidency=JSON.stringify({textures:cache.size,pixels,rgbaBytes:pixels*4,startupPinned:startupTextureKeys.size,decodedShellImages:startup?.assets.images.size??0});
+ }
  function add(mesh,parent,x,y,w,h){mesh.position.set(x+w/2,y+h/2,0);mesh.scale.set(w,h,1);mesh.renderOrder=order++;mesh.frustumCulled=false;parent.add(mesh);return mesh;}
  function basic(map,opacity=1){const m=new THREE.MeshBasicMaterial({map,transparent:true,opacity,depthTest:false,depthWrite:false,toneMapped:false,side:THREE.DoubleSide});materials.push(m);return m;}
  function surface(el,r,parent,origin,opacity){
@@ -198,8 +203,9 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startu
   if(!source.complete||!source.naturalWidth){el.addEventListener('load',()=>{if(el.isConnected){const owner=el.closest(movingSelector);if(owner)pendingParts.add(owner);else pendingParts.add(el);partsDirty=true;}},{once:true});return;}
   // Rasterize vector phone screens directly at a bounded high resolution, never via a 360px PNG.
   const idScreen=el.matches('.id-screen-image'),rasterW=idScreen?360:cachePixels(r.w),rasterH=idScreen?800:cachePixels(r.h);
-  const scale=el.matches('.id-screen-image,.task-media-image')?Math.min(2048/Math.max(rasterW,rasterH),Math.max(2,1600/rasterH)):2;
   const rounded=el.matches('.task-media-image'),pad=rounded?16:0,radius=rounded?parseFloat(getComputedStyle(el).borderTopLeftRadius)||0:0;
+  const deviceImage=el.matches('.id-screen-image,.task-media-image');
+  const scale=bfmVisual&&deviceImage?v5DeviceRasterScale(rasterW,rasterH,devicePixelScale,pad):deviceImage?Math.min(2048/Math.max(rasterW,rasterH),Math.max(2,1600/rasterH)):2;
   const shadow=rounded&&!!el.closest('.story-task');
   const map=texture(`${el.src}:${rasterW}:${rasterH}:${scale}:${radius}:${shadow}`,c=>{
    if(rounded){const fit=Math.min(r.w/source.naturalWidth,r.h/source.naturalHeight),w=source.naturalWidth*fit,h=source.naturalHeight*fit,x=pad+(r.w-w)/2,y=pad+(r.h-h)/2;
@@ -208,6 +214,7 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startu
     c.save();c.clip();c.drawImage(source,x,y,w,h);c.restore();}
    else c.drawImage(source,0,0,rasterW,rasterH);
   },rasterW+pad*2,rasterH+pad*2,scale);
+  if(bfmVisual&&deviceImage){map.generateMipmaps=false;map.minFilter=THREE.LinearFilter;}
   const mesh=add(new THREE.Mesh(plane,basic(map,opacity)),parent,r.x-origin.x-pad,r.y-origin.y-pad,r.w+pad*2,r.h+pad*2);mesh.scale.y=-(r.h+pad*2);
   if(el.matches('.route-brand'))mesh.userData.logoSize={w:r.w,h:r.h};
  }
@@ -307,8 +314,9 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startu
   const active=new Map();for(const {el,motion}of groups.values())if(motion){const host=el.closest('.journey-zone');if(!active.has(host))active.set(host,new Set());active.get(host).add(motionId(el));}motions.prune(active);
   scene.traverse(mesh=>{if(mesh.material)mesh.layers.set(mesh.material.userData.el?.closest('.context-popup,.picker,.field-success')?1:0);});
   for(const m of materials)if(m.userData.baseOpacity===undefined){m.userData.baseOpacity=m.uniforms?.alpha?.value??m.opacity;m.userData.fade=1;}
-  const liveTextures=new Set(materials.map(m=>m.map));for(const [key,tex]of cache)if(!liveTextures.has(tex)&&!warmPhoneKeys.has(key)&&!startupTextureKeys.has(key)){tex.dispose();cache.delete(key);}
+  const liveTextures=new Set(materials.flatMap(m=>[m.map,m.alphaMap]));for(const [key,tex]of cache)if(!liveTextures.has(tex)&&!warmPhoneKeys.has(key)&&!startupTextureKeys.has(key)){tex.dispose();cache.delete(key);}
   root.dataset.sceneRetained=String(retained.size);root.dataset.sceneGroups=String(groups.size);
+  reportResidency();
   retained.clear();previousGroups.clear();
   dirty=false;
  }
@@ -322,12 +330,14 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startu
   materials=materials.filter(m=>{if(stale(m.userData.el)){retiredMaterials.push(m);return false;}return true;});
   for(const el of parts)visit(el);
   for(const m of materials)if(m.userData.baseOpacity===undefined){m.userData.baseOpacity=m.uniforms?.alpha?.value??m.opacity;m.userData.fade=1;}
-  const liveTextures=new Set(materials.map(m=>m.map));
+  const liveTextures=new Set(materials.flatMap(m=>[m.map,m.alphaMap]));
   for(const [key,tex]of cache)if(!liveTextures.has(tex)&&!warmPhoneKeys.has(key)&&!startupTextureKeys.has(key)){tex.dispose();cache.delete(key);}
+  reportResidency();
   previousGroups.clear();
  }
  return {
   async prepareGPU(renderer){
+   devicePixelScale=renderer.domElement.width/Math.max(1,getSize().width);
    await contextGlass.prepareGPU(renderer);await introBurst.prepareGPU(renderer,camera);introBurst.attach(scene);
    if(!bfmVisual||!startup)return;
    const warmHost=document.createElement('section');warmHost.className=startup.host.className;warmHost.inert=true;warmHost.setAttribute('aria-hidden','true');
@@ -665,6 +675,7 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startu
   },
   render(renderer){
    if(disposed)return;
+   devicePixelScale=renderer.domElement.width/Math.max(1,getSize().width);
    // At most one next-step upload per frame, before that screen is needed.
    for(const [key,tex]of warmPhoneUploads){
     warmPhoneUploads.delete(key);

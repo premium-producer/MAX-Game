@@ -1,3 +1,4 @@
+import {buildVideoFinale,buildGameServer} from './build-video-finale.mjs';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -42,6 +43,8 @@ files.set('config/client-missions.json',await fs.readFile(path.join(source,'publ
 // Canonical brand asset; keep the original symbol bytes in every portable build.
 files.set('brand/assets/logos/max-symbol-white.svg',await fs.readFile(path.join(project,'artifacts/DESIGN/BRANDS/MAX/assets/logos/max-symbol-white.svg')));
 for(const name of ['index.html','start.mjs','Start.bat','README.md'])files.set(name,await fs.readFile(path.join(source,name)));
+files.set('start.mjs',(await buildGameServer(source)).outputFiles[0].contents);
+for(const [name,bytes] of (await buildVideoFinale(source)).files)files.set('webgl-v5/'+name,bytes);
 // Two actual entry pages share assets; the client edition has isolated progress.
 const entry=(await fs.readFile(path.join(source,'index.html'),'utf8'));
 files.set('client/index.html',Buffer.from(entry.replace('<html lang="ru">','<html lang="ru" data-edition="client">').replace('<head>','<head><base href="../">').replace('<title>MAX — Открой возможности</title>','<title>MAX — Версия клиента</title>')));

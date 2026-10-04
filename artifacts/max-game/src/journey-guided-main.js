@@ -1,3 +1,5 @@
+import {mountV5Finale} from './journey-v5-finale.mjs';
+import {mountV5Audio} from './journey-v5-audio.mjs';
 import {showV5Recovery,applyRecoveryChoice} from './journey-v5-recovery.mjs';
 import {V5_MOTION} from './journey-v5-motion-profile.mjs';
 import {startupErrorText} from './startup-error.mjs';
@@ -28,7 +30,9 @@ import {zonesForLayout} from './circle-model.mjs';
 import {RevealJourney,REVEAL_STORAGE,REVEAL_TIMING,REVEAL_MOTION,revealTracePresence,revealTimerLabel} from './journey-guided-reveal.mjs';
 import {MISSION_CATALOG as PREVIOUS_MISSION_CATALOG} from './content/mission-catalog.mjs';
 import {V5_MISSION_CATALOG,createV5MissionSessionApplication} from './journey-v5-backend.mjs';
-import {v5IconTile,v5IconImage,v5IconUrls} from './journey-v5-icons.mjs';
+import {createV5AutomaticCatalog,V5AutoplayPresentation,v5AutoplayUrl,v5MissionMenuEntries} from './journey-v5-autoplay.mjs';
+import {createMemoryPersistencePort} from '../vendor/backend-figma-v2/src/application/memory-persistence.mjs';
+import {v5IconTile,v5IconImage,v5IconUrls,v5CompletionBadge} from './journey-v5-icons.mjs';
 import {createMissionSessionApplication} from './application/mission-session.mjs';
 import {createServerSessionPort} from './application/server-session-port.mjs';
 import {createBrowserPersistence} from './application/browser-persistence.mjs';
@@ -43,7 +47,7 @@ import {V5RevealJourney,createV5RouteMeasure} from './journey-v5-route-layout.mj
 import {V5MotionValue,V5_INERTIA,v5InstructionTop,v5InstructionLeft,v5IconWorldPoint} from './journey-v5-inertia.mjs';
 import {createV5Tools} from './journey-v5-tools.mjs';
 import {V5_CLIENT_SCENE,createV5ClientPresentation} from './journey-v5-client.mjs';
-import {V5StartupAssets,v5StartupPlan,v5StartupScreen} from './journey-v5-startup-assets.mjs';
+import {V5StartupAssets,v5StartupPlan} from './journey-v5-startup-assets.mjs';
 import {V5MissionContinuation,continueV5Mission} from './journey-v5-mission-continuation.mjs';
 
 const arena=document.querySelector('#arena'),root=document.querySelector('#circles'),loading=document.querySelector('#loading');
@@ -52,7 +56,10 @@ const revealMode=document.documentElement.dataset.reveal==='true',inlinePhone=re
 const referenceVisual=document.documentElement.dataset.visual==='reference';
 const bfmVisual=document.documentElement.dataset.visual==='webgl-bfm-v5';
 const client1080=bfmVisual&&document.documentElement.dataset.presentation==='client-1080';
-const MISSION_CATALOG=bfmVisual?V5_MISSION_CATALOG:PREVIOUS_MISSION_CATALOG;
+let automaticMission=bfmVisual&&!service&&params.get('backend')!=='server'&&Object.hasOwn(V5_MISSION_CATALOG.missions,params.get('autoplay'))?params.get('autoplay'):null;
+let MISSION_CATALOG=bfmVisual?(automaticMission?createV5AutomaticCatalog(V5_MISSION_CATALOG):V5_MISSION_CATALOG):PREVIOUS_MISSION_CATALOG;
+let automaticPresentation=automaticMission?new V5AutoplayPresentation():null;
+let automaticStarted=false;
 const v5RouteMeasure=bfmVisual?createV5RouteMeasure(arena):null;
 const v5LinkPaint=Object.freeze({gradient:['#471AFF','#9500FF'],intensity:.7,particleOpacity:.18,pulseStrength:0,additive:false});
 const routeLinkStyle=bfmVisual?{...JOURNEY_LINK_STYLE,...v5LinkPaint}:JOURNEY_LINK_STYLE;
@@ -61,9 +68,9 @@ if((referenceVisual||bfmVisual)&&!params.has('backend'))params.set('backend','lo
 const referenceTile=referenceVisual?REFERENCE_UI.tile:GUIDED_ICON_SIZE;
 const sharedBackend=revealMode&&['local','server'].includes(params.get('backend'));
 let sharedSession,v5Tools,clientPresentation,missionContinuation,continuationContext;
-const localRecovery=bfmVisual&&sharedBackend&&!service&&params.get('backend')==='local';
+let localRecovery=bfmVisual&&sharedBackend&&!service&&!automaticMission&&params.get('backend')==='local';
 let recoveryBlocked=localRecovery,recoveryChoice=null,windowFocused=document.hasFocus();
-const inputActive=()=>!recoveryBlocked&&!document.hidden&&!servicePaused&&(!localRecovery||windowFocused);
+const inputActive=()=>!recoveryBlocked&&!videoFinale?.active&&!document.hidden&&!servicePaused&&(!(localRecovery||automaticMission)||windowFocused);
 let startupAssets,startupPlan;
 const adjustableIcons=revealMode&&!service;
 const host=document.createElement('section');host.className='circle journey-zone guided-zone';host.dataset.zone='0';root.append(host);
@@ -78,10 +85,12 @@ let phoneLoadingAge=0;
 const reviewMission=new URLSearchParams(location.search).get('review');
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const button=(label,attr='',cls='')=>`<button class="pill ${cls}" ${attr}>${esc(label)}</button>`;
+const palmCopy=bfmVisual?'Открой возможности':'Приложи ладонь, чтобы открыть возможности';
+const palmHint=bfmVisual?'':'Удерживай 0,8 секунды';
 const palm='<svg class="glyph" viewBox="0 0 64 64" aria-hidden="true"><path d="M16 33V17c0-6 7-6 7 0v14-21c0-6 7-6 7 0v20-24c0-6 7-6 7 0v24-19c0-6 7-6 7 0v23l4-8c3-6 10-2 7 4l-9 22c-3 7-8 11-16 11-8 0-13-4-17-10L5 39c-4-6 2-10 6-6l5 5Z"/></svg>';
 let size={width:1600,height:1000},controller,content,catalog,field,assets,foreground,ambient,view='';
-let focusTarget=0,history=false,gesture=null,screenEpoch=0,answerPending=false,popupPage=0,popupToken='',palmVisible=false,shownRevision=-1,pendingResume=null,navigating=false,resetPrompt=false;
-let servicePaused=false;
+let focusTarget=0,history=false,gesture=null,pageDisposed=false,screenEpoch=0,answerPending=false,popupPage=0,popupToken='',palmVisible=false,shownRevision=-1,pendingResume=null,navigating=false,resetPrompt=false;
+let servicePaused=false,gameAudio=null,videoFinale=null;
 const createController=value=>sharedBackend?(bfmVisual?new V5RevealJourney(content,sharedSession,v5RouteMeasure):new (referenceVisual?ReferenceRevealJourney:SharedRevealJourney)(content,sharedSession)):new (revealMode?RevealJourney:inlinePhone?GuidedLineJourney:GuidedJourney)(content,value);
 const edgePorts=new Map();
 const changed=()=>{document.documentElement.dataset.glassRevision=String(Number(document.documentElement.dataset.glassRevision||0)+1);};
@@ -134,7 +143,8 @@ function nodeMarkup(o){
  return `<button class="object ${isMax?'route-first':''}" data-object="${o.step}" data-planning="true" data-caption-visible="${!revealMode||controller.captionVisible(o)}" aria-label="${esc(fullLabel)}"><span class="tile glass-control">${isMax?`<span class="route-intro-plus">${icon('plus')}</span><img class="route-brand" draggable="false" src="./brand/assets/logos/max-symbol-white.svg" alt="MAX">`:icon(sharedBackend?step.iconId:o.step==='business-tool'?'sector':o.step)}</span><span class="object-label icon-caption">${esc(label)}<small data-node-status></small></span></button>`;
 }
 function referenceNodeMarkup(step,key,label,visible=true,status=''){
- return `<button class="object ${step==='open-max'?'route-first':''}" data-object="${step}" data-planning="true" data-caption-visible="${visible}" aria-label="${esc(label)}">${bfmVisual?v5IconTile(MISSION_CATALOG,step):`<span class="tile glass-control">${referenceIcons[key]||icon(key)}</span>`}<span class="object-label icon-caption">${esc(label)}<small data-node-status>${esc(status)}</small></span></button>`;
+ const checked=bfmVisual&&status==='Выполнено';
+ return `<button class="object ${step==='open-max'?'route-first':''}" data-object="${step}" data-planning="true" data-caption-visible="${visible}" aria-label="${esc(label)}">${bfmVisual?v5IconTile(MISSION_CATALOG,step,256,'tile glass-control',checked):`<span class="tile glass-control">${referenceIcons[key]||icon(key)}</span>`}<span class="object-label icon-caption">${esc(label)}<small data-node-status>${esc(checked?'':status)}</small></span></button>`;
 }
 function resultMarkup(result,qr,presentation){
  result??={};
@@ -142,9 +152,10 @@ function resultMarkup(result,qr,presentation){
 }
 function feedback(text){foreground?.showTapFeedback(host,{x:host.clientWidth/2,y:host.clientHeight*.65},text);}
 function render(preserveTransition=false){
+ const videoComplete=videoFinale?.update({automatic:automaticMission,phase:controller.phase,runId:controller.snapshot?.state.runId,menu:controller.session.screen!=='field'});
  if(referenceVisual){const title=root.querySelector('[data-reference-mission]');if(title)title.textContent=controller.mission?.title||'Открой возможности MAX';}
  const s=controller.session,newView=s.screen==='field'?`field:${s.mission}${sharedBackend?`:${controller.snapshot.state.runId}`:''}`:`${s.screen}:${resetPrompt}`;
- if(sharedBackend&&controller.snapshot&&!startupAssets){void warmSharedAssets([controller.snapshot.view.missing?null:controller.snapshot.view.device?.asset,...controller.snapshot.view.prepareNext]);}
+ if(sharedBackend&&controller.snapshot){void warmSharedAssets([controller.snapshot.view.missing?null:controller.snapshot.view.device?.asset,...controller.snapshot.view.prepareNext]);}
  if(revealMode&&!sharedBackend&&foreground){
   const current=s.screen==='field'?controller.current:null,idStage=s.screen==='field'&&s.mission==='digital-id'&&(!current||isIdTask(current.step))?Math.min(current?.stage??0,ID_IMAGES.length-1):null;
   foreground.prewarmPhoneImages(idStage===null?[]:ID_IMAGES.slice(idStage,idStage+2));
@@ -153,7 +164,7 @@ function render(preserveTransition=false){
   if(!preserveTransition)foreground?.cancelTransitions();view=newView;edgePorts.clear();host.replaceChildren();palmVisible=false;palmPresence.value=0;gesture=null;phoneStep='';phoneToken='';phonePending='';phonePresence.value=0;
   host.dataset.screen=s.screen;host.dataset.routePhase='playing';host.dataset.activeTask='';host.dataset.bigWindow='true';host.dataset.popupPresence='1';host.dataset.uiPresence??='1';
   if(s.screen!=='field'){
-   host.innerHTML=`<header class="zone-header"><div><h1>Открой возможности MAX</h1><p>Выбери миссию</p></div>${resetPrompt?'':button('Обнулить миссии','data-reset-progress')}</header>${resetPrompt?`<section class="guided-reset-panel reset-popup" role="dialog" aria-label="Обнулить миссии?"><h2>Обнулить миссии?</h2><p>Задания, ответы и положения иконок этой версии игры будут сброшены.</p>${button('Да, обнулить','data-confirm-reset-progress')}${button('Отмена','data-cancel-reset-progress','primary')}</section>`:`<div class="mission-choices">${content.missions.map(m=>`<button class="mission-card glass-control" data-mission="${m.id}">${bfmVisual?v5IconTile(MISSION_CATALOG,m.id,96,'medallion'):`<span class="medallion">${icon(m.id)}</span>`}<span><strong>${esc(m.title)}</strong><small>${esc(m.description)}</small>${client1080?'':sharedBackend?`<small class="media-coverage ${m.missing.length?'media-incomplete':'media-complete'}">${m.missing.length?'Есть заглушки':'Без заглушек'}</small>`:coverageMarkup(m)}</span><span class="card-state">${s.completed.includes(m.id)?'✓':'↗'}</span></button>`).join('')}</div>`}`;
+   host.innerHTML=`<header class="zone-header"><div><h1>Открой возможности MAX</h1><p>Выбери миссию</p></div>${resetPrompt?'':button('Обнулить миссии','data-reset-progress')}</header>${resetPrompt?`<section class="guided-reset-panel reset-popup" role="dialog" aria-label="Обнулить миссии?"><h2>Обнулить миссии?</h2><p>Задания, ответы и положения иконок этой версии игры будут сброшены.</p>${button('Да, обнулить','data-confirm-reset-progress')}${button('Отмена','data-cancel-reset-progress','primary')}</section>`:`<div class="mission-choices">${v5MissionMenuEntries(content.missions,{automaticCopies:bfmVisual&&!service&&!automaticMission&&params.get('backend')==='local'}).map(m=>`<button class="mission-card glass-control" ${m.automatic?'data-auto-mission':'data-mission'}="${m.id}">${bfmVisual?v5IconTile(MISSION_CATALOG,m.id,96,'medallion'):`<span class="medallion">${icon(m.id)}</span>`}<span><strong>${esc(m.title)}</strong><small>${esc(m.description)}</small>${client1080?'':sharedBackend?`<small class="media-coverage ${m.missing.length?'media-incomplete':'media-complete'}">${m.missing.length?'Есть заглушки':'Без заглушек'}</small>`:coverageMarkup(m)}</span><span class="card-state">${m.automatic?'▶':s.completed.includes(m.id)?'✓':'↗'}</span></button>`).join('')}</div>`}`;
   }else{
    host.innerHTML=`<div class="playfield guided-field"></div><nav class="guided-nav">${revealMode?`${button(revealTimerLabel(controller.secondsLeft),'data-menu data-mission-timer aria-label="Вернуться к миссиям"')}<button class="pill guided-restart" data-restart-mission aria-label="Начать миссию заново">${bfmVisual?v5IconImage(MISSION_CATALOG,'restart'):`<svg class="glyph" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M50 18V7l-7 7A24 24 0 1 0 56 36h-8a16 16 0 1 1-10-15l-9 9h27V18Z"/></svg>`}</button>`:`${button('← К миссиям','data-menu')}${button('К текущему шагу','data-focus')}`}</nav><p class="guided-caption" role="status"></p>`;
    focusCurrent(true);
@@ -178,21 +189,28 @@ function render(preserveTransition=false){
   else if(controller.phase!=='start'&&cta){cta.parentElement.remove();foreground?.invalidate();}
   host.dataset.ctaVisible=String(controller.phase==='start');
   palmVisible=['palm','holding',...(revealMode?['burst']:[])].includes(controller.phase);
+  if(palmVisible)warmMissionEntry(controller.session.mission);
+  const automaticLabel=document.querySelector('[data-autoplay-label]');if(automaticLabel)automaticLabel.hidden=palmVisible;
   if(palmVisible&&!host.querySelector('[data-palm]')){
-   fieldEl.insertAdjacentHTML('beforeend',`<button class="object guided-palm" data-route-next="guided-palm" data-palm data-planning="true" aria-label="Приложи ладонь, чтобы открыть возможности. Удерживай 0,8 секунды">${bfmVisual?v5IconTile(MISSION_CATALOG,'scan',160):`<span class="tile glass-control">${palm}</span>`}<span class="object-label icon-caption">Приложи ладонь, чтобы открыть возможности<small>Удерживай 0,8 секунды</small></span></button>`);foreground?.invalidate();
+   fieldEl.insertAdjacentHTML('beforeend',`<button class="object guided-palm" data-route-next="guided-palm" data-palm data-planning="true" aria-label="${palmCopy}${palmHint?`. ${palmHint}`:''}">${bfmVisual?v5IconTile(MISSION_CATALOG,'scan',160):`<span class="tile glass-control">${palm}</span>`}<span class="object-label icon-caption">${palmCopy}<small>${palmHint}</small></span></button>`);foreground?.invalidate();
   }
   const palmLabel=host.querySelector('[data-palm] .object-label');
-  if(palmLabel&&revealMode){const revealing=controller.phase==='burst',label=revealing?'Открываем возможности':'Приложи ладонь, чтобы открыть возможности',small=revealing?'':'Удерживай 0,8 секунды';
+  if(palmLabel&&revealMode){const revealing=controller.phase==='burst',label=bfmVisual?palmCopy:revealing?'Открываем возможности':palmCopy,small=revealing?'':palmHint;
    if(palmLabel.firstChild.textContent!==label){palmLabel.firstChild.textContent=label;palmLabel.querySelector('small').textContent=small;foreground?.refreshPart(palmLabel);}
   }
   for(const o of controller.nodes){const el=host.querySelector(`[data-object="${o.step}"]`);if(!el)continue;const small=el.querySelector('[data-node-status]');
    if(revealMode)el.dataset.nodeState=o===controller.current?'active':o.done?'done':'future';
    const text=o.step==='open-max'?'':o===controller.current&&['paused','branch-paused'].includes(controller.phase)?'Продолжить задание':o.done?'Выполнено':revealMode&&o!==controller.current?'Следующий шаг':'';
-   if(small.textContent!==text){small.textContent=text;foreground?.refreshPart(el);}
+   const checked=bfmVisual&&text==='Выполнено',status=checked?'':text,badge=el.querySelector('.v5-completion-check');
+   let changed=false;
+   if(checked&&!badge){el.querySelector('.tile').insertAdjacentHTML('beforeend',v5CompletionBadge());el.setAttribute('aria-description','Выполнено');changed=true;}
+   else if(!checked&&badge){badge.remove();el.removeAttribute('aria-description');changed=true;}
+   if(small.textContent!==status){small.textContent=status;changed=true;}
+   if(changed)foreground?.refreshPart(el);
   }
   const caption=host.querySelector('.guided-caption'),text=s.mission==='digital-id'&&controller.nodes.some(o=>(sharedBackend?o.step==='digital-id.create-id':o.step==='create-id')&&o.done)?'Один ID — разные возможности':history?'Перетаскивай пустое поле, чтобы просмотреть путь':'';
   if(caption.textContent!==text){caption.textContent=text;foreground?.refreshPart(caption);}
-  if(controller.phase==='complete'&&!host.querySelector('.field-success')){
+  if(controller.phase==='complete'&&!videoComplete&&!host.querySelector('.field-success')){
    const qr=sharedBackend?controller.snapshot.view.qr&&{...controller.snapshot.view.qr,image:sharedAssetUrl(controller.snapshot.view.qr.asset)}:controller.mission.qr;
    host.insertAdjacentHTML('beforeend',resultMarkup(sharedBackend?controller.snapshot.view.result:{title:'Миссия выполнена',text:controller.mission.result},qr,controller.mission.presentation));foreground?.invalidate();
   }
@@ -379,6 +397,8 @@ function syncPopup(){
  }
 }
 function tick(delta){
+ syncGameAudio();
+ if(videoFinale?.active)return;
  if(bfmVisual){root.dataset.presentationPaused=String(document.hidden||servicePaused);if(document.hidden||servicePaused)delta=0;}
  v5Tools?.update({phase:controller?.phase,revision:controller?.snapshot?.state.revision,task:controller?.session.task,backend:`${params.get('backend')} · ${MISSION_CATALOG.contentRevision}`});
  ambient?.tick?.(delta,{active:!document.hidden&&!servicePaused,reduced:reduced.matches});
@@ -401,7 +421,7 @@ function tick(delta){
   const pending=pendingResume;pendingResume=null;if(pending.epoch===screenEpoch&&controller.resume(pending.step)){popupPage=0;if(controller.phase==='reveal')focusCurrent();render();}
  }
  const before=controller.phase,revision=controller.revision;
- const active=!document.hidden&&!servicePaused;
+ const active=automaticMission?inputActive():!document.hidden&&!servicePaused;
  if(referenceVisual||bfmVisual)root.dataset.presentationPaused=String(!active);
  const phoneReady=!inlinePhone||phoneContentReady();
  const phoneTarget=bfmVisual?controller.deviceVisibilityTarget:revealMode?Number(controller.phoneVisible&&controller.phase!=='phone-exit'):1;
@@ -413,6 +433,18 @@ function tick(delta){
  // Preparing the next device screen runs alongside the route; only a scene
  // transition may block semantic progress. Readiness gates the phone itself.
  const referenceReady=phoneReady&&(controller.phase==='phone-exit'?phonePresence.value<.015:phonePresence.value>.97);
+ if(automaticPresentation){
+  const snapshot=sharedSession.snapshot,key=displayPhoneKey();
+  const ready=active&&!gesture&&!answerPending&&!sharedSession.busy&&!controller.startup&&!controller.handoff
+   &&['task','result'].includes(controller.phase)&&snapshot.state.status===controller.phase
+   &&phoneReady&&phonePresence.at(1,.005,.05)&&!!controller.phone&&phoneX.at(controller.phone.x)&&phoneY.at(controller.phone.y)
+   &&!waitingPhone?.querySelector('.phone-media-error')&&!waitingPhone?.dataset.gpuUploadError
+   &&waitingPhone?.dataset.sceneVersion===key&&waitingPhone?.dataset.mediaReadyKey===key&&waitingPhone?.dataset.gpuReadyKey===key
+   &&!foreground?.contentBusy(host)&&!foreground?.busy(host,true);
+  automaticPresentation.update(snapshot,delta,{ready,active});
+  if(active&&controller.phase==='palm'&&palmPresence.value>.97&&!sharedSession.busy&&!foreground?.busy(host,true))beginPalmContact(`autoplay.${snapshot.state.runId}`);
+  if(automaticStarted&&snapshot.state.status==='menu'){automaticStarted=false;void switchMissionProfile();return;}
+ }
  controller.tick(delta,{active,deviceShown:phonePresence.at(1,.005,.05)&&!!controller.phone&&phoneX.at(controller.phone.x)&&phoneY.at(controller.phone.y),deviceHidden:phonePresence.at(0,.005,.05),deviceReady:phoneReady&&(!bfmVisual||waitingPhone?.dataset.gpuReadyKey===displayPhoneKey()),dragging:!!gesture,busy:bfmVisual&&(controller.handoff||controller.startup)?foreground?.contentBusy(host):foreground?.busy(host,bfmVisual||!revealMode),reduced:reduced.matches,settled:referenceVisual?referenceReady:camera.at(focusTarget,.1,.5)&&settled});
  if(bfmVisual&&(controller.paths||controller.startup))updateTargets();
  if(revealMode&&controller.expired){controller.expired=false;navigate();return;}
@@ -433,8 +465,23 @@ function tick(delta){
  const o=controller.session.task===controller.current?.step?controller.current:null;
  if(!sharedBackend&&idPlayback.tick(0,o,delta,active&&controller.phase==='task'&&!foreground?.busy(host)&&!answerPending))answer(0,controller.token());
 }
+function syncGameAudio(){
+ if(!gameAudio||!controller)return;
+ const visible=controller.session.screen==='field'&&!navigating&&!missionContinuation?.active;
+ gameAudio.sync({run:visible?controller.snapshot?.state.runId:'menu',
+  stage:visible?(controller.startup?'startup:'+controller.startup.stage:controller.handoff?'handoff:'+controller.handoff.stage:''):'',
+  screen:visible&&controller.phase==='task'&&phoneContentReady()?displayPhoneKey():'',
+  nodes:visible?controller.nodes.filter(n=>controller.presence(n)>.1).map(n=>n.step):[],
+  holding:visible&&(controller.phase==='holding'||['node','phone'].includes(gesture?.kind)),
+  active:!videoFinale?.active&&!document.hidden&&!servicePaused&&windowFocused});
+}
+// Every accepted contact (pointer, keyboard, demo) starts the same prepared scan effect.
+function beginPalmContact(id,scan=host.querySelector('[data-palm]')){
+ if(!scan||!controller.down(id))return false;
+ render();foreground?.startPalmScan(host,scan.querySelector('.tile'));syncGameAudio();return true;
+}
 function answer(choice,token){
- if(sharedBackend){if(answerPending||sharedSession.busy||foreground?.contentBusy(host)||controller.phase!=='task')return;answerPending=true;Promise.resolve(controller.answer(choice,token)).catch(error=>feedback(error.message)).finally(()=>{answerPending=false;});return;}
+ if(sharedBackend){if(answerPending||sharedSession.busy||foreground?.contentBusy(host)||controller.phase!=='task')return;answerPending=true;const epoch=screenEpoch;Promise.resolve(controller.answer(choice,token)).catch(error=>{if(epoch===screenEpoch)feedback(error.message);}).finally(()=>{if(epoch===screenEpoch)answerPending=false;});return;}
  if(answerPending||foreground?.busy(host)){feedback('Завершаем переход');return;}
  if(controller.phase!=='task')return;
  answerPending=true;const epoch=screenEpoch;
@@ -443,8 +490,16 @@ function answer(choice,token){
   popupPage=0;render();
  });
 }
+function warmMissionEntry(id){
+ if(!bfmVisual||!id)return;
+ const mission=MISSION_CATALOG.missions[id],task=MISSION_CATALOG.tasks[mission?.taskIds[0]],first=task?.screens[task.startScreenId];
+ if(!first)return;
+ const screens=[first,...first.actions.filter(a=>a.outcome.kind==='navigate').slice(0,2).map(a=>task.screens[a.outcome.screenId])];
+ void warmSharedAssets(screens.filter(s=>s&&!s.missing).map(s=>MISSION_CATALOG.assets[s.assetId]));
+}
 function navigate(id,restart=false){
  if(navigating)return;
+ warmMissionEntry(id);
  cancelGesture();const epoch=++screenEpoch;answerPending=false;pendingResume=null;foreground?.cancelContent(host);navigating=true;
  const commit=()=>{if(epoch!==screenEpoch)return;resetPrompt=false;if(restart){controller.restart();view='';}else{if(sharedBackend&&id)controller.select(id);else{controller.menu();if(id)controller.select(id);}}popupPage=0;popupToken='';render(true);navigating=false;};
  if(sharedBackend&&restart){
@@ -479,6 +534,7 @@ function close(){
 }
 root.addEventListener('click',e=>{
  const b=e.target.closest('button');if(!b||b.disabled||b.dataset.suppressClick==='true'){if(b)delete b.dataset.suppressClick;return;}
+ if(!navigating&&!b.hasAttribute('data-palm')&&!b.hasAttribute('data-object')&&!answerPending&&!foreground?.contentBusy(host))gameAudio?.click();
  if(!b.classList.contains('media-hotspot'))foreground?.highlightTile(b);
  if(b.hasAttribute('data-media-page')){void turnMediaPage(b,foreground,host);return;}
  if(b.hasAttribute('data-reset-progress')){changeResetPrompt(true);return;}
@@ -490,7 +546,8 @@ root.addEventListener('click',e=>{
   cancelGesture();screenEpoch++;answerPending=false;pendingResume=null;foreground?.cancelContent(host);
   if(missionContinuation.start()){navigating=true;host.inert=true;}return;
  }
- if(b.dataset.mission){navigate(b.dataset.mission);return;}
+ if(b.dataset.autoMission){void switchMissionProfile(b.dataset.autoMission);return;}
+ if(b.dataset.mission){if(automaticMission)void switchMissionProfile(null,b.dataset.mission);else navigate(b.dataset.mission);return;}
  if(b.hasAttribute('data-restart-mission')){if(!navigating)navigate(controller.session.mission,true);return;}
  if(b.hasAttribute('data-menu')){navigate();return;}
  if(navigating){feedback('Переходим к выбранному экрану');return;}
@@ -510,7 +567,7 @@ root.addEventListener('click',e=>{
 });
 
 function cancelGesture(){
- const g=gesture;gesture=null;controller?.cancelContact();
+ const g=gesture;gesture=null;controller?.cancelContact();gameAudio?.release({cue:!!g?.moved&&['node','phone'].includes(g.kind)});
  if(g){if(bfmVisual&&g.kind==='node')foreground?.releaseCapturedObject(host,g.node.step);delete g.el.dataset.dragging;if(g.el.hasPointerCapture?.(g.id))g.el.releasePointerCapture(g.id);}
  if(sharedBackend&&g?.moved&&g.kind==='node')void controller.persistLayout();save();
 }
@@ -518,11 +575,11 @@ root.addEventListener('pointerdown',e=>{
  if(e.button!==0||gesture||!controller||controller.session.screen!=='field')return;
  const scan=e.target.closest('[data-palm]');
  if(scan){const r=scan.querySelector('.tile').getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)return;
-  if(controller.down(e.pointerId)){gesture={id:e.pointerId,kind:'palm',el:scan};scan.setPointerCapture(e.pointerId);render();foreground?.startPalmScan(host,scan.querySelector('.tile'));}return;}
+  if(beginPalmContact(e.pointerId,scan)){gesture={id:e.pointerId,kind:'palm',el:scan};scan.setPointerCapture(e.pointerId);}return;}
  if(bfmVisual&&controller.startup)return;
  const phoneNode=inlinePhone&&e.target.closest('.route-phone');
  if(inlinePhone&&phoneNode&&!e.target.closest('[data-answer],[data-phone-resume],[data-branch],[data-media-page]')){
-  gesture={id:e.pointerId,kind:'phone',el:phoneNode,point:{x:e.clientX,y:e.clientY},start:bfmVisual?{x:phoneX.value,y:phoneY.value}:{...controller.phone},moved:false};phoneNode.setPointerCapture(e.pointerId);return;
+  gesture={id:e.pointerId,kind:'phone',el:phoneNode,point:{x:e.clientX,y:e.clientY},start:bfmVisual?{x:phoneX.value,y:phoneY.value}:{...controller.phone},moved:false};phoneNode.setPointerCapture(e.pointerId);gameAudio?.grab('phone');return;
  }
  if((!inlinePhone&&(controller.session.task||host.querySelector('.task-dialog')))||foreground?.busy(host))return;
  const el=e.target.closest('[data-object]'),blank=!e.target.closest('button,.field-success,.guided-nav,.instruction');if(!el&&!blank)return;
@@ -532,6 +589,7 @@ root.addEventListener('pointerdown',e=>{
   if(bfmVisual){const offset=foreground?.captureObject(host,o.step);if(!offset){gesture=null;return;}gesture.start=v5IconWorldPoint(offset,controller.pose(o));}
   else{const r=bounds(el.querySelector('.tile')),h=bounds(host);gesture.start={x:r.x+r.w/2-h.x+camera.value-(revealMode&&controller.spread?controller.phoneLayout.offsets[o.step]||0:0),y:r.y+r.h/2-h.y-(revealMode?host.clientHeight/2:100+fieldDimensions().h*routeRow())};}
  }
+ if(o)gameAudio?.grab('node');
  gesture.el.setPointerCapture(e.pointerId);
 });
 root.addEventListener('pointermove',e=>{
@@ -558,11 +616,11 @@ function release(e){
 root.addEventListener('pointerup',release);
 root.addEventListener('pointercancel',cancelGesture);root.addEventListener('lostpointercapture',e=>{if(gesture?.id===e.pointerId)cancelGesture();});
 // Keyboard parity is a real hold too, not an instant scan shortcut.
-root.addEventListener('keydown',e=>{if(e.target.closest('[data-palm]')&&[' ','Enter'].includes(e.key)){e.preventDefault();if(!e.repeat&&controller.down('keyboard')){render();foreground?.startPalmScan(host,e.target.closest('[data-palm]').querySelector('.tile'));}}});
+root.addEventListener('keydown',e=>{if(e.target.closest('[data-palm]')&&[' ','Enter'].includes(e.key)){e.preventDefault();if(!e.repeat)beginPalmContact('keyboard',e.target.closest('[data-palm]'));}});
 root.addEventListener('keyup',e=>{if([' ','Enter'].includes(e.key))(sharedBackend?controller.up('keyboard'):controller.cancelContact('keyboard'));});
-window.addEventListener('blur',()=>{windowFocused=false;cancelGesture();sharedSession?.owner(false);});window.addEventListener('focus',()=>{windowFocused=true;if(inputActive())sharedSession?.owner(true);});document.addEventListener('visibilitychange',()=>{cancelGesture();sharedSession?.owner(inputActive());});
+window.addEventListener('blur',()=>{windowFocused=false;gameAudio?.setActive(false);cancelGesture();sharedSession?.owner(false);});window.addEventListener('focus',()=>{windowFocused=true;if(inputActive())sharedSession?.owner(true);});document.addEventListener('visibilitychange',()=>{gameAudio?.setActive(inputActive());cancelGesture();sharedSession?.owner(inputActive());});
 window.addEventListener('max-service-pointer-cancel',cancelGesture);
-window.addEventListener('keydown',e=>{if(recoveryBlocked)return;if(e.key==='Escape'){if(resetPrompt){changeResetPrompt(false);return;}cancelGesture();close();}});
+window.addEventListener('keydown',e=>{if(recoveryBlocked||videoFinale?.active)return;if(e.key==='Escape'){if(resetPrompt){changeResetPrompt(false);return;}cancelGesture();close();}});
 document.addEventListener('dragstart',e=>e.preventDefault(),true);
 installTaskDismiss({root:document,enabled:()=>!revealMode,getOpen:()=>{const popup=host.querySelector('.task-dialog');return popup?[{popup,panels:[...popup.querySelectorAll('.instruction,.demo-app,.close'),...(inlinePhone?[host.querySelector('.route-phone')].filter(Boolean):[])]}]:[];},close});
 
@@ -625,34 +683,12 @@ function fit({viewportOnly=false}={}){
 window.addEventListener('resize',()=>fit({viewportOnly:client1080}));
 window.addEventListener('message',e=>{
  if(!service||e.source!==parent||e.origin!==location.origin||e.data?.type!=='max-service-state')return;
- servicePaused=e.data.playing===false;sharedSession?.owner(inputActive());
+ servicePaused=e.data.playing===false;gameAudio?.setActive(inputActive());sharedSession?.owner(inputActive());
  if(servicePaused)cancelGesture();
  field?.setServicePaused(servicePaused);ambient?.pause(servicePaused);
  document.documentElement.dataset.servicePaused=String(servicePaused);
 });
-async function boot(){
- document.documentElement.dataset.service=String(service);document.documentElement.dataset.layout='single';
- if(client1080)clientPresentation=createV5ClientPresentation();
- else if(bfmVisual&&!service)v5Tools=createV5Tools({arena,params,onViewport:()=>fit({viewportOnly:true})});
- const [loaded,shell,client,contours]=await Promise.all([loadMissionCatalog('./config/client-webgl.json'),loadUiShellConfig(),fetch('./config/client-missions.json').then(r=>r.json()),loadEarthContours()]);
- content=sharedBackend?sharedRevealContent(MISSION_CATALOG):clientContent(client);
- if(sharedBackend){
-  const profile=params.get('backend');let port;
-  if(profile==='server'){let csrf;port=createServerSessionPort({getAuthHeaders:async()=>{if(!csrf){const r=await fetch('/api/state');if(!r.ok)throw Error('Stand Service недоступен');csrf=(await r.json()).csrf;if(!csrf)throw Error('Нет авторизации Stand Service');}return {'X-VK-Token':csrf};}});}
-  else {
-   const key=`${WEBGL_SHARED_KEY}${bfmVisual?':v5':''}${client1080?':client1080':''}:${MISSION_CATALOG.contentRevision}`;
-   const persistence=bfmVisual?createIndexedDBPersistence({legacyStorage:localStorage,key}):createBrowserPersistence({storage:localStorage,key});
-   port=(bfmVisual?createV5MissionSessionApplication:createMissionSessionApplication)({catalog:MISSION_CATALOG,persistence});
-  }
-  sharedSession=createWebGLSession({port,catalog:MISSION_CATALOG,initialOwnerActive:!localRecovery,sessionId:params.get('session')||(bfmVisual?'webgl-v5':'site-shared'),profile,onSnapshot:snapshot=>{if(!controller)return;controller.accept(snapshot);if(foreground&&!navigating){if((controller.phase==='burst'||bfmVisual&&controller.startup&&controller.snapshot.state.scanned)&&gesture?.kind==='palm')cancelGesture();if(!gesture)focusCurrent();render();}},onError:error=>{console.error('MAX backend',error);if(foreground)feedback('Нет связи с backend. Экран сохранён.');}});
-  await sharedSession.start();
-  if(localRecovery)recoveryChoice=await showV5Recovery({snapshot:sharedSession.snapshot,catalog:MISSION_CATALOG,document,onChoose:choice=>applyRecoveryChoice(sharedSession,choice)});
-  document.documentElement.dataset.sessionStorage=profile==='server'?'server':bfmVisual?'indexeddb':'localStorage';
- }
- let saved;if(!sharedBackend&&!reviewMission)try{saved=localStorage.getItem(storage);}catch{}
- controller=createController(saved);
- if(recoveryChoice==='continue'&&controller.phase==='paused')controller.resume(controller.activeId);
- if(controller.session.screen==='cta')controller.session.screen='missions';
+function configureV5Controller(){
  if(bfmVisual&&sharedBackend){
   controller.previewPhoneAnchor=()=>({x:deviceCenter()+camera.value,y:0});
   controller.previewDevice=()=>{const task=MISSION_CATALOG.tasks[controller.steps[0]?.id],screen=task?.screens[task.startScreenId];return {kind:screen?.deviceKind,asset:MISSION_CATALOG.assets[screen?.assetId]};};
@@ -678,6 +714,98 @@ async function boot(){
    error:error=>{console.error('MAX next mission',error);revealNext();feedback('Не удалось перейти к следующей миссии. Попробуй ещё раз.');}
   });
  }
+}
+function openSharedSession(sessionCatalog,automaticId,presentation,ownerActive=false){
+  const profile=params.get('backend');let port,persistence;
+  if(profile==='server'){let csrf;port=createServerSessionPort({getAuthHeaders:async()=>{if(!csrf){const r=await fetch('/api/state');if(!r.ok)throw Error('Stand Service недоступен');csrf=(await r.json()).csrf;if(!csrf)throw Error('Нет авторизации Stand Service');}return {'X-VK-Token':csrf};}});}
+  else {
+   const key=`${WEBGL_SHARED_KEY}${bfmVisual?':v5':''}${client1080?':client1080':''}:${sessionCatalog.contentRevision}`;
+   persistence=automaticId?createMemoryPersistencePort():bfmVisual?createIndexedDBPersistence({legacyStorage:localStorage,key}):createBrowserPersistence({storage:localStorage,key});
+   port=(bfmVisual?createV5MissionSessionApplication:createMissionSessionApplication)({catalog:sessionCatalog,persistence});
+  }
+  const session=createWebGLSession({port,catalog:sessionCatalog,initialOwnerActive:ownerActive,canPoll:snapshot=>!presentation||presentation.allows(snapshot),sessionId:automaticId?`webgl-v5.autoplay.${automaticId}`:params.get('session')||(bfmVisual?'webgl-v5':'site-shared'),profile,onSnapshot:snapshot=>{if(sharedSession!==session||!controller)return;controller.accept(snapshot);if(foreground&&!navigating){if((controller.phase==='burst'||bfmVisual&&controller.startup&&controller.snapshot.state.scanned)&&gesture?.kind==='palm')cancelGesture();if(!gesture)focusCurrent();render();}},onError:error=>{if(sharedSession!==session)return;console.error('MAX backend',error);if(foreground)feedback('Нет связи с backend. Экран сохранён.');}});
+  if(persistence?.close){const close=session.close;session.close=async()=>{try{await close();}finally{await persistence.close();}};}
+  return session;
+}
+function syncAutomaticLabel(){
+ let label=document.querySelector('[data-autoplay-label]');
+ if(!automaticMission){label?.remove();return;}
+ if(!label){label=document.createElement('div');label.className='guided-review-label';label.dataset.autoplayLabel='';document.body.append(label);}
+ label.hidden=palmVisible;label.textContent='Автопрохождение · 0,5 секунды на экран';
+}
+async function switchMissionProfile(missionId=null,manualMissionId=null){
+ if(pageDisposed||navigating||!bfmVisual||service||params.get('backend')!=='local')return;
+ warmMissionEntry(missionId||manualMissionId);
+ const previous=sharedSession,epoch=++screenEpoch;let next;
+ cancelGesture();navigating=true;host.inert=true;answerPending=false;pendingResume=null;phonePending='';
+ missionContinuation?.cancel();foreground?.cancelContent(host);
+ try{
+  await previous.owner(false);
+  if(pageDisposed||epoch!==screenEpoch)return;
+  const nextCatalog=missionId?createV5AutomaticCatalog(V5_MISSION_CATALOG):V5_MISSION_CATALOG;
+  const nextPresentation=missionId?new V5AutoplayPresentation():null;
+  next=openSharedSession(nextCatalog,missionId,nextPresentation,false);
+  await next.start();
+  if(pageDisposed||epoch!==screenEpoch)return;
+  const selectedMission=missionId||manualMissionId;
+  const result=await next.command(selectedMission?'SELECT_MISSION':'RETURN_MENU',selectedMission?{missionId:selectedMission}:{});
+  if(!result?.reply.ok)throw Error(result?.reply.code??'SESSION_SWITCH_FAILED');
+  if(pageDisposed||epoch!==screenEpoch)return;
+  const active=inputActive();if(!await next.owner(active))throw Error('SESSION_OWNER_UNAVAILABLE');
+  if(pageDisposed||epoch!==screenEpoch)return;
+  if(inputActive()!==active&&!await next.owner(inputActive()))throw Error('SESSION_OWNER_UNAVAILABLE');
+  if(pageDisposed||epoch!==screenEpoch)return;
+  await previous.close();
+  if(pageDisposed||epoch!==screenEpoch)return;
+  sharedSession=next;MISSION_CATALOG=nextCatalog;automaticMission=missionId;automaticPresentation=nextPresentation;automaticStarted=!!missionId;
+  localRecovery=!missionId;recoveryBlocked=false;recoveryChoice=null;
+  content=sharedRevealContent(MISSION_CATALOG);controller=createController();configureV5Controller();
+  foreground?.cancelTransitions();view='';resetPrompt=false;history=false;popupPage=0;popupToken='';
+  phoneStep='';phoneToken='';phonePending='';phoneLoadingAge=0;
+  for(const motion of [camera,phoneX,phoneY,phonePresence,palmPresence]){motion.value=0;motion.velocity=0;}
+  host.dataset.uiPresence='1';host.inert=false;controller.configure(host.clientWidth,host.clientHeight,adjustableIcons?referenceTile:240);
+  window.history.replaceState(null,'',v5AutoplayUrl(location.href,missionId));
+  document.documentElement.dataset.sessionStorage=missionId?'memory-autoplay':'indexeddb';
+  document.documentElement.dataset.missionMode=missionId?'automatic':'manual';
+  focusCurrent(true);render(true);syncAutomaticLabel();syncScene();
+  if(inputActive()!==active&&!await next.owner(inputActive()))throw Error('SESSION_OWNER_UNAVAILABLE');
+  navigating=false;
+ }catch(error){
+  if(pageDisposed||epoch!==screenEpoch)return;
+  navigating=false;host.inert=false;host.dataset.uiPresence='1';await sharedSession.owner(inputActive());
+  if(pageDisposed||epoch!==screenEpoch)return;
+  console.error('MAX session switch',error);feedback('Не удалось переключить миссию. Попробуй ещё раз.');
+ }finally{
+  if(next&&next!==sharedSession)await next.close();
+ }
+}
+async function boot(){
+ document.documentElement.dataset.gameInstance=crypto.randomUUID();
+ if(bfmVisual&&!service)gameAudio=mountV5Audio();
+ if(bfmVisual&&!service&&params.get('backend')==='local')videoFinale=mountV5Finale({
+  isMuted:()=>gameAudio?.muted??false,
+  onActive:active=>{host.inert=active;gameAudio?.setActive(!active&&!pageDisposed&&inputActive());field?.setServicePaused(active||servicePaused||pageDisposed);ambient?.pause(active||servicePaused||pageDisposed);document.documentElement.dataset.videoFinale=String(active);},
+  onExit:()=>navigate()
+ });
+ document.documentElement.dataset.service=String(service);document.documentElement.dataset.layout='single';
+ if(client1080)clientPresentation=createV5ClientPresentation();
+ else if(bfmVisual&&!service)v5Tools=createV5Tools({arena,params,onViewport:()=>fit({viewportOnly:true})});
+ const [loaded,shell,client,contours]=await Promise.all([loadMissionCatalog('./config/client-webgl.json'),loadUiShellConfig(),fetch('./config/client-missions.json').then(r=>r.json()),loadEarthContours()]);
+ if(pageDisposed)return;
+ content=sharedBackend?sharedRevealContent(MISSION_CATALOG):clientContent(client);
+ if(sharedBackend){
+  sharedSession=openSharedSession(MISSION_CATALOG,automaticMission,automaticPresentation,!localRecovery);
+  await sharedSession.start();
+  if(pageDisposed){await sharedSession.close();return;}
+  if(localRecovery)recoveryChoice=await showV5Recovery({snapshot:sharedSession.snapshot,catalog:MISSION_CATALOG,document,onChoose:choice=>applyRecoveryChoice(sharedSession,choice)});
+  if(pageDisposed)return;
+  document.documentElement.dataset.sessionStorage=automaticMission?'memory-autoplay':sharedSession.profile==='server'?'server':bfmVisual?'indexeddb':'localStorage';
+ }
+ let saved;if(!sharedBackend&&!reviewMission)try{saved=localStorage.getItem(storage);}catch{}
+ controller=createController(saved);
+ if(recoveryChoice==='continue'&&controller.phase==='paused')controller.resume(controller.activeId);
+ if(controller.session.screen==='cta')controller.session.screen='missions';
+ configureV5Controller();
 
  if(revealMode){const geometry=sceneSize();controller.configure(geometry.width-48,geometry.height-48,adjustableIcons?referenceTile:240);}
  if(!sharedBackend&&reviewMission&&controller.select(reviewMission)){
@@ -695,18 +823,30 @@ async function boot(){
   startupAssets=new V5StartupAssets(document.baseURI);
  }
  await Promise.all([startupAssets?startupAssets.load(startupPlan.urls,(done,total)=>{loading.textContent=`Загрузка ресурсов MAX: ${done} / ${total}`;}):sharedBackend?warmSharedAssets(Object.values(MISSION_CATALOG.tasks).flatMap(t=>Object.values(t.screens).slice(0,2).filter(s=>!s.missing).map(s=>MISSION_CATALOG.assets[s.assetId])).filter(Boolean)):preloadTaskMedia(),prepareFonts(document.fonts),...(!startupAssets?[...((referenceVisual||bfmVisual)?['./brand/assets/logos/max-primary-white.svg']:[]),'./brand/assets/logos/max-symbol-white.svg',...(sharedBackend?[]:ID_IMAGES),...content.missions.flatMap(m=>m.qr?[m.qr.image]:[])].map(src=>{const image=new Image();image.src=src;return image.decode();}):[]),assets.load(collectAssetSources(catalog,ITEM_TYPES,contours,shell.rendering.earth.russiaContour,true))]);
+ if(pageDisposed)return;
  field=await createWebGLField({container:document.querySelector('#world'),planar:true,hideNodes:true,preparedAssets:assets,contourCatalog:contours,startPaused:true,placements:[],network:{states:{},links:[]},itemTypes:ITEM_TYPES,endpoints:{},selectedItem:null,maxDrawingBufferPixels:MAX_DRAWING_BUFFER_PIXELS,earthStyle:shell.rendering.earth,nodeIconBackdropStyle:shell.rendering.nodeIconBackdrop,signalLinkStyle:{...shell.rendering.signalLinks,...routeLinkStyle},onPlace:()=>{},onMove:()=>{},onRemove:()=>{}});
+ if(pageDisposed){field.dispose();return;}
  foreground=createJourneyWebGLUI({root,arena,getSize:()=>size,onFrame:tick,gradients:clientPresentation?.gradients??v5Tools?.gradients,onMotion:()=>{changed();syncScene();},startup:startupAssets?{
-  assets:startupAssets,host,frames:[v5SplashWarmup(),v5SplashWarmup(360),...startupPlan.screens.flatMap(row=>[v5StartupScreen(row),v5StartupScreen(row,true)])],
+  assets:startupAssets,host,frames:[v5SplashWarmup(),v5SplashWarmup(360)],
   icons:content.missions.flatMap(m=>m.steps.flatMap(step=>['','Следующий шаг','Выполнено','Продолжить задание'].map(status=>referenceNodeMarkup(step.id,step.iconId,step.label,true,status)))).concat(referenceNodeMarkup('open-max','open-max','Открыть MAX')),
-  palm:`<button class="object guided-palm" data-route-next="guided-palm" data-palm>${bfmVisual?v5IconTile(MISSION_CATALOG,'scan',160):`<span class="tile glass-control">${palm}</span>`}<span class="object-label icon-caption">Приложи ладонь, чтобы открыть возможности<small>Удерживай 0,8 секунды</small></span></button>`,
-  palmBurst:`<button class="object guided-palm" data-route-next="guided-palm" data-palm>${bfmVisual?v5IconTile(MISSION_CATALOG,'scan',160):`<span class="tile glass-control">${palm}</span>`}<span class="object-label icon-caption">Открываем возможности<small></small></span></button>`,
-  finals:content.missions.flatMap(m=>[{html:resultMarkup({title:'Миссия выполнена',text:m.result},m.qr,m.presentation)},{html:resultMarkup({title:'Миссия просмотрена с пропусками',text:'Часть обязательных экранов ещё не предоставлена. Пропущенные задания не засчитаны.'},m.qr,m.presentation)}]),
+  palm:`<button class="object guided-palm" data-route-next="guided-palm" data-palm>${bfmVisual?v5IconTile(MISSION_CATALOG,'scan',160):`<span class="tile glass-control">${palm}</span>`}<span class="object-label icon-caption">${palmCopy}<small>${palmHint}</small></span></button>`,
+  palmBurst:`<button class="object guided-palm" data-route-next="guided-palm" data-palm>${bfmVisual?v5IconTile(MISSION_CATALOG,'scan',160):`<span class="tile glass-control">${palm}</span>`}<span class="object-label icon-caption">${bfmVisual?palmCopy:'Открываем возможности'}<small></small></span></button>`,
+  finals:[],
   progress:(done,total)=>{loading.textContent=`Подготовка графики MAX: ${done} / ${total}`;}
  }:null});field.setScreenForeground(foreground);field.setScreenConnections(true);field.setTapControls({enabled:false});await field.prepareGPU();
+ if(pageDisposed)return;
  if(startupAssets)for(const image of root.querySelectorAll('img'))if(startupAssets.takeImage(image))foreground.refreshPart(image.closest('.route-phone')||image);
  if(localRecovery){recoveryBlocked=false;const active=inputActive(),snapshot=await sharedSession.owner(active);if(!snapshot){recoveryBlocked=true;throw Error('SESSION_UNAVAILABLE');}if(inputActive()!==active&&!await sharedSession.owner(inputActive())){recoveryBlocked=true;throw Error('SESSION_UNAVAILABLE');}}
+ if(pageDisposed)return;
  fit();syncScene();field.start();field.setServicePaused(servicePaused);loading.hidden=true;root.inert=false;document.documentElement.dataset.assetPreparation=startupAssets?'ready':'legacy';document.documentElement.dataset.gameReady='true';
+ if(automaticMission){
+  warmMissionEntry(automaticMission);syncAutomaticLabel();
+  await sharedSession.owner(inputActive());
+  if(pageDisposed)return;
+  const result=await sharedSession.command('SELECT_MISSION',{missionId:automaticMission});
+  if(!result?.reply.ok)throw Error('AUTOPLAY_START_FAILED');
+  automaticStarted=true;
+ }
 }
-boot().catch(e=>{console.error(e);startupAssets?.dispose();document.documentElement.dataset.assetPreparation='failed';loading.textContent=startupErrorText(e);document.body.append(loading);Object.assign(loading.style,{position:'fixed',inset:'0',zIndex:'10000',padding:'32px',whiteSpace:'pre-line',fontSize:'clamp(16px,2vw,28px)',lineHeight:'1.5',background:'#10091e',overflow:'auto',transform:'none'});});
-window.addEventListener('pagehide',()=>{missionContinuation?.cancel();cancelGesture();save();sharedSession?.close();field?.dispose();foreground?.dispose();assets?.dispose();startupAssets?.dispose();ambient?.dispose();v5Tools?.dispose();clientPresentation?.dispose();},{once:true});
+boot().catch(e=>{if(pageDisposed)return;console.error(e);startupAssets?.dispose();document.documentElement.dataset.assetPreparation='failed';loading.textContent=startupErrorText(e);document.body.append(loading);Object.assign(loading.style,{position:'fixed',inset:'0',zIndex:'10000',padding:'32px',whiteSpace:'pre-line',fontSize:'clamp(16px,2vw,28px)',lineHeight:'1.5',background:'#10091e',overflow:'auto',transform:'none'});});
+window.addEventListener('pagehide',()=>{pageDisposed=true;screenEpoch++;videoFinale?.dispose();gameAudio?.dispose();missionContinuation?.cancel();cancelGesture();save();sharedSession?.close();field?.dispose();foreground?.dispose();assets?.dispose();startupAssets?.dispose();ambient?.dispose();v5Tools?.dispose();clientPresentation?.dispose();},{once:true});

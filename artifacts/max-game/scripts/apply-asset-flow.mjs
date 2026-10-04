@@ -1,3 +1,4 @@
+import {applyReviewedAssets} from './apply-reviewed-assets.mjs';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -74,7 +75,7 @@ if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.ur
  const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../src/reviewed-content');
  const input=JSON.parse(await fs.readFile(path.join(root,'flow.json'),'utf8'));
  const rectCorrections=JSON.parse(await fs.readFile(path.join(root,'flow-corrections.json'),'utf8'));
- const {catalog,metadata}=applyAssetFlow(base,input,{rectCorrections});
+ const {catalog,metadata}=applyReviewedAssets(applyAssetFlow(base,input,{rectCorrections}));
  await fs.writeFile(path.join(root,'mission-catalog.json'),JSON.stringify(catalog,null,2)+'\n');
  await fs.writeFile(path.join(root,'annotation-source.json'),JSON.stringify(metadata,null,2)+'\n');
  console.log(JSON.stringify(metadata));

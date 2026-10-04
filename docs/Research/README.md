@@ -1,5 +1,16 @@
 # Исследования MAX
 
+- [Циклический видеофинал автомиссий](max-video-finale-20261004.md)
+
+
+- [Звуки MAX v5: Howler и пользовательский пакет](max-game-sfx-20261004.md)
+
+- [Один запуск MAX и ограниченная подготовка ресурсов](max-single-load-20261004.md)
+
+- [Значок завершения: существующий SVGLoader](max-completion-check-20261004.md)
+
+- [Автоматические копии миссий MAX: существующий backend, Graphlib и видимое время](max-autoplay-copies-20261004.md)
+
 Источники и ограничения сохранены в каждом исследовании. Начните с MAX client 1080, iOS memory, annotation gameplay и flow editor.
 
 - [lumicells-20260930](lumicells-20260930/README.md)

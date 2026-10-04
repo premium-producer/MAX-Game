@@ -68,3 +68,15 @@ html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .r
 .v5-recovery button[value=menu]{background:transparent}
 .v5-recovery button:disabled{opacity:.5;cursor:wait}
 .v5-recovery button:focus-visible{outline:3px solid #00bfff;outline-offset:3px}
+
+.v5-audio-control{position:fixed;right:16px;bottom:14px;z-index:10000;border:1px solid #ffffff55;border-radius:999px;padding:8px 14px;background:#170b38d9;color:white;font:14px sans-serif;cursor:pointer}.v5-audio-control:focus-visible{outline:2px solid #91dfff;outline-offset:3px}
+
+/* Fullscreen video is native media, outside the WebGL UI raster. */
+.v5-finale-option{position:fixed;left:16px;bottom:16px;z-index:10010;display:flex;gap:10px;align-items:center;background:#160c30e8;color:white;padding:12px 16px;border-radius:18px;font:16px sans-serif}
+.v5-finale-option[hidden]{display:none}.v5-finale-option input{width:20px;height:20px;accent-color:#8544ff}
+.v5-finale{position:fixed;inset:0;background:#000;color:white;z-index:20000;font:16px sans-serif}
+.v5-finale-player{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.v5-finale-player .video-js{position:absolute!important;inset:60px 0 62px;width:100%;height:calc(100% - 122px)}
+.v5-finale-player video{object-fit:contain}.v5-finale button,.v5-finale select{font:inherit;color:white;background:#37215c;border:1px solid #9270cc;border-radius:14px;padding:10px 14px;cursor:pointer}
+.v5-finale-exit{position:absolute;right:16px;top:12px;z-index:2}.v5-finale-tools{position:absolute;bottom:12px;left:16px;right:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}.v5-finale-tools select{min-width:0;max-width:48vw}.v5-finale-tools span{font-size:14px}
+html[data-video-finale="true"] .v5-audio-control{display:none}

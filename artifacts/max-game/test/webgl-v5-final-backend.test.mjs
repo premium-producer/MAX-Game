@@ -10,13 +10,13 @@ import {v5StartupPlan,v5StartupScreen} from '../src/journey-v5-startup-assets.mj
 import {v5IconAsset,v5IconTile,v5IconUrls} from '../src/journey-v5-icons.mjs';
 import {MISSION_CATALOG as old} from '../src/content/mission-catalog.mjs';
 
-test('v5 imports final catalog/core; previous edition remains separate; all final assets prepare',async()=>{
+test('v5 imports final catalog/core; previous edition remains separate; final screens enumerate without eager preparation',async()=>{
  const metadata=JSON.parse(await fs.readFile(new URL('../src/reviewed-content/annotation-source.json',import.meta.url),'utf8'));
  assert.equal(catalog.contentRevision,metadata.revision);
  assert.equal(metadata.flowSchemaVersion,3);
  assert.equal(Object.keys(old.missions).length,6);
  const content=sharedRevealContent(catalog),plan=v5StartupPlan(catalog,v5IconUrls());
- assert.equal(content.missions.length,4);assert.equal(plan.screens.length,70);assert.equal(plan.urls.length,89);
+ assert.equal(content.missions.length,4);assert.equal(plan.screens.length,70);assert.deepEqual(plan.urls,[...new Set(v5IconUrls())]);assert.equal(plan.contentUrls.length,71);
  for(const row of plan.screens){assert.ok(row.asset);assert.match(v5StartupScreen(row).markup,/task-media-image/);}
  const ids=[...Object.keys(catalog.tasks),...Object.keys(catalog.missions),...Object.keys(catalog.uiIcons),'unassigned-new-task'];
  for(const id of ids){

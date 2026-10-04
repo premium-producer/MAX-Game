@@ -11,8 +11,8 @@ const screens=Object.values(catalog.tasks).flatMap(task=>Object.values(task.scre
 const deviceOf=screen=>({kind:screen.deviceKind,asset:catalog.assets[screen.assetId],actions:screen.actions});
 const deviceFor=id=>deviceOf(screens.find(screen=>screen.screenId===id));
 
-test('all 84 catalog screens preserve full image aspect independently of external controls',()=>{
- assert.equal(screens.length,84);
+test('all 70 reviewed catalog screens preserve full image aspect independently of external controls',()=>{
+ assert.equal(screens.length,70);
  const {height,insetX,insetY}=V5_DEVICE_FRAME;
  for(const screen of screens){
   const device=deviceOf(screen),metrics=v5DeviceMetrics(device);

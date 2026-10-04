@@ -1,5 +1,27 @@
 # VK Digital Products — общий бэклог
 
+MAX 04.10: сгенерированная витрина кофе применяется также к активному business.store.result; пользователь видит фотографии в прохождении. Маршруты и кнопка завершения сохранены. [Результат](../artifacts/reports/max-store-game-20261004.md).
+
+
+MAX 04.10: новый растровый вариант business.store.ready с фотографиями кофе; replacement поддерживает отключённый экран с проверкой provenance. Текущий маршрут без экрана4 сохранён. [Проверка и промпт](../artifacts/reports/max-store-screen-4-20261004.md).
+
+
+MAX 04.10: business.platform.verification заменён на пользовательский SVG880×550 в общей V5. Asset-only override после компиляции, оригинальная разметка/ID/revision сохранены, hotspot масштабирован. [Результат](../artifacts/reports/max-business-screen-3-20261004.md).
+
+
+MAX 04.10: optional video finale автомиссий реализован локально; бесконечный цикл 11 роликов, next mission исключён. Приёмка пользователя и перенос мастером OPEN. [Контракт](../apps/max-game/docs/VIDEO_FINALE.md).
+
+
+04.10.2026 — MAX v5 получил пользовательский набор SFX через Howler 2.2.4 с единым lifecycle, первой активацией и mute. [Звуковой контракт](../apps/max-game/docs/AUDIO_V5.md). Локальный кандидат, художественная приёмка OPEN, мастер/F/серверы не изменены.
+
+04.10.2026 — MAX-Game local v5: повторная полная подготовка при смене mission profile убрана; renderer сохраняется, контент загружается через существующий current/prepareNext, GPU screen residency освобождается. [Контракт загрузки](../apps/max-game/docs/ASSET_LOADING.md). Локальный кандидат; F и серверы не обновлены, пользовательская приёмка OPEN.
+
+04.10.2026 — **MAX PALM:** только «Открой возможности», без секунд/дополнительной приписки на экране ладони; общий запуск прежних струй для мыши, клавиатуры и автопрохождения.32CPU/syntax/build/HTTP и IAB PASS; приёмка OPEN. [Отчёт](../artifacts/reports/max-palm-hold-20261004.md).
+
+04.10.2026 — MAX V5-COMPLETION-CHECK локально реализован, приёмка OPEN. [Проверка](../artifacts/reports/max-completion-check-20261004.md).
+
+04.10.2026 — MAX AUTO-COPIES: локально реализованы четыре автокарточки,500мс,изолированная память. CPU/IAB/SHA PASS; пользовательская приёмка и перенос в мастер OPEN. [Отчёт](../artifacts/reports/max-autoplay-copies-20261004.md).
+
 04.10.2026 — **WAVE08 G1 принят в F; приёмка пользователя OPEN.** Обновлённая серверная Стелла, художественный single-VK renderer; MAX no-op после SHA/build аудита.19files,3DB backup/integrity, прежние данные сохранены. IAB8850 полный цикл19/18элементов, QR/Discovery/пауза/reload/cancel; независимый review исправил cancel/loading и legacy completed gate. [Отчёт](../artifacts/reports/parallel-wave8-integration-20261004.md). G2–G4, физический вывод и production media открыты; следующая итерация после отзыва. Компонентные worktrees не изменены.
 
 04.10.2026 — Следующая интеграционная волна [WAVE-08 в F](F:/project/VK_DigitalProducts_Stand/docs/WAVE_08_INTEGRATION_PLAN.md) спланирована: независимые Stella/visual/MAX кандидаты, root business ownership; текущие компонентные задачи не дублируются. Статусы только F/TODO; реализация этой волны ещё не начата.

@@ -1,3 +1,4 @@
+import {applyReviewedAssets} from '../scripts/apply-reviewed-assets.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -19,7 +20,7 @@ const findScreen=(c,id)=>screensOf(c).find(s=>s.screenId===id);
 test('v5 generated catalog and application default use the exact reviewed content',async()=>{
  const flow=JSON.parse(fs.readFileSync(new URL('../src/reviewed-content/flow.json',import.meta.url),'utf8'));
  const rectCorrections=JSON.parse(fs.readFileSync(new URL('../src/reviewed-content/flow-corrections.json',import.meta.url),'utf8'));
- assert.deepEqual(V5_MISSION_CATALOG,applyAssetFlow(base,flow,{rectCorrections}).catalog);
+ assert.deepEqual(V5_MISSION_CATALOG,applyReviewedAssets(applyAssetFlow(base,flow,{rectCorrections})).catalog);
  assert.ok(Object.isFrozen(V5_MISSION_CATALOG));
  const app=createV5MissionSessionApplication({persistence:createMemoryPersistencePort(),now:()=>1000});
  try{

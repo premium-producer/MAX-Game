@@ -2,23 +2,43 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {runInNewContext} from 'node:vm';
-import {ImageLoader,LoadingManager,Mesh,PlaneGeometry,MeshBasicMaterial,Scene} from 'three';
+import {ImageLoader,LoadingManager,Mesh,PlaneGeometry,MeshBasicMaterial,Scene,Texture,LinearFilter} from 'three';
 import {MISSION_CATALOG} from '../src/content/mission-catalog.mjs';
 import {v5DeviceMetrics} from '../src/journey-v5-device-morph.mjs';
-import {V5StartupAssets,v5StartupPlan,v5StartupScreen} from '../src/journey-v5-startup-assets.mjs';
+import {V5StartupAssets,v5StartupPlan,v5StartupScreen,v5DeviceRasterScale} from '../src/journey-v5-startup-assets.mjs';
+import {V5_MISSION_CATALOG} from '../src/journey-v5-backend.mjs';
 
-test('startup covers every usable screen of all six missions, branches, QR; missing stays missing',()=>{
+test('catalog enumeration keeps all screens and QR without making them startup dependencies',()=>{
  const plan=v5StartupPlan(MISSION_CATALOG);
  assert.equal(Object.keys(MISSION_CATALOG.missions).length,6);
  assert.equal(plan.screens.length,65);assert.equal(plan.screens.filter(r=>r.screen.missing).length,8);
  const assets=new Set(plan.screens.filter(r=>r.asset).map(r=>r.asset.assetId));assert.equal(assets.size,57);
  for(const mission of Object.values(MISSION_CATALOG.missions))for(const id of mission.taskIds){
   assert.ok(plan.screens.some(row=>row.task.taskId===id));
-  for(const s of Object.values(MISSION_CATALOG.tasks[id].screens))if(!s.missing)assert.ok(plan.urls.includes('./'+MISSION_CATALOG.assets[s.assetId].path));
+  for(const s of Object.values(MISSION_CATALOG.tasks[id].screens))if(!s.missing)assert.ok(plan.contentUrls.includes('./'+MISSION_CATALOG.assets[s.assetId].path));
  }
- assert.ok(plan.urls.includes('./'+MISSION_CATALOG.assets['official.max-qr'].path));
- const old=new Set(Object.values(MISSION_CATALOG.tasks).flatMap(t=>Object.values(t.screens).slice(0,2).filter(s=>!s.missing).map(s=>'./'+MISSION_CATALOG.assets[s.assetId].path)));
- assert.ok(plan.urls.filter(url=>!old.has(url)).length>10,'more than first two frames really covered');
+ assert.ok(plan.contentUrls.includes('./'+MISSION_CATALOG.assets['official.max-qr'].path));
+ assert.deepEqual(plan.urls,[],'no task screenshot is decoded and pinned at startup');
+});
+
+test('reviewed v5 startup retains only explicitly requested shell resources',()=>{
+ const extra=['./logo.svg','./glyph.svg','./logo.svg'];
+ const plan=v5StartupPlan(V5_MISSION_CATALOG,extra);
+ assert.equal(plan.screens.length,70);assert.ok(plan.contentUrls.length>50);
+ assert.deepEqual(plan.urls,['./logo.svg','./glyph.svg']);
+ assert.ok(plan.contentUrls.every(url=>!plan.urls.includes(url)));
+});
+
+test('device raster follows drawing-buffer density and never exceeds 2048 including padding',()=>{
+ for(const [width,height]of [[360,776],[1900,776],[12000,776],[360,12000]])for(const density of [.15,.5,1,2,4]){
+  const scale=v5DeviceRasterScale(width,height,density,16);
+  assert.ok(scale<=density&&scale<=2);
+  const w=Math.ceil((width+32)*scale),h=Math.ceil((height+32)*scale);
+  assert.ok(w<=2048&&h<=2048,`${w} x ${h}`);
+  assert.ok(w*h*4<=16*1024*1024,'one screen is at most 16 MiB RGBA without mipmaps');
+ }
+ assert.equal(v5DeviceRasterScale(360,776,.5,16),.5);
+ assert.equal(v5DeviceRasterScale(360,776,2,16),2);
 });
 
 test('startup markup retains device, annotations and source copy without advancing state',()=>{
@@ -84,7 +104,7 @@ test('actual renderer draws repeated SVG states from one decoded source without 
  const code=await readFile(new URL('../src/journey-webgl-ui.mjs',import.meta.url),'utf8');
  const fn=code.slice(code.indexOf(' function image('),code.indexOf(' function cancelPlacement('));
  const draws=[],scene=new Scene(),plane=new PlaneGeometry(1,1);
- const context={startup:{assets},cachePixels:v=>v,THREE:{Mesh},plane,
+ const context={startup:{assets},cachePixels:v=>v,bfmVisual:true,devicePixelScale:1,v5DeviceRasterScale,THREE:{Mesh},plane,
   texture:(key,draw)=>{draw({drawImage:(...args)=>draws.push(args)});return null;},
   basic:()=>new MeshBasicMaterial(),add:(mesh,parent)=>{parent.add(mesh);return mesh;}};
  const paint=runInNewContext(fn+';image',context);
@@ -110,3 +130,32 @@ test('load failure blocks ready; late decode after disposal cannot populate cach
  const next=assets.load(['good.png']);await new Promise(resolve=>setTimeout(resolve,0));assets.dispose();release();
  await assert.rejects(next,/cancelled/);assert.equal(assets.images.size,0);
 }));
+
+test('actual screenshot painter uses bounded pixels and non-mipmapped sampling',async()=>{
+ const code=await readFile(new URL('../src/journey-webgl-ui.mjs',import.meta.url),'utf8');
+ const fn=code.slice(code.indexOf(' function image('),code.indexOf(' function cancelPlacement('));
+ const map=new Texture(),scene=new Scene(),plane=new PlaneGeometry(1,1);let painted;
+ const ctx={drawImage(){},beginPath(){},roundRect(){},save(){},clip(){},restore(){}};
+ const context={startup:null,cachePixels:v=>v,bfmVisual:true,devicePixelScale:.5,v5DeviceRasterScale,THREE:{Mesh,LinearFilter},plane,
+  getComputedStyle:()=>({borderTopLeftRadius:'16'}),
+  texture:(key,draw,w,h,scale)=>{painted={w,h,scale};draw(ctx);return map;},
+  basic:tex=>new MeshBasicMaterial({map:tex}),add:(mesh,parent)=>{parent.add(mesh);return mesh;}};
+ const paint=runInNewContext(fn+';image',context);
+ const source={src:'http://localhost/task.svg',complete:true,naturalWidth:1080,naturalHeight:2160,dataset:{gpuDecoded:'true'},
+  closest:selector=>selector==='.route-phone'?{}:null,matches:selector=>selector.includes('.task-media-image')};
+ paint(source,{x:0,y:0,w:388,h:776},scene,{x:0,y:0},1);
+ assert.deepEqual(painted,{w:420,h:808,scale:.5});
+ assert.equal(map.generateMipmaps,false);assert.equal(map.minFilter,LinearFilter);
+ assert.equal(scene.children.length,1);assert.equal(scene.children[0].material.map,map);
+ scene.children[0].material.dispose();plane.dispose();map.dispose();
+});
+
+test('renderer eviction preserves live clipping masks and disposes a departed screen texture',async()=>{
+ const code=await readFile(new URL('../src/journey-webgl-ui.mjs',import.meta.url),'utf8');
+ const eviction=code.match(/const liveTextures=new Set\(materials\.flatMap[^\n]+/)[0];
+ const current=new Texture(),mask=new Texture(),departed=new Texture(),pinned=new Texture();
+ const cache=new Map([['current',current],['mask',mask],['departed',departed],['shell',pinned]]),disposed=[];
+ for(const [key,texture]of cache)texture.addEventListener('dispose',()=>disposed.push(key));
+ runInNewContext(eviction,{materials:[{map:current,alphaMap:mask}],cache,warmPhoneKeys:new Set(),startupTextureKeys:new Set(['shell'])});
+ assert.deepEqual([...cache.keys()],['current','mask','shell']);assert.deepEqual(disposed,['departed']);
+});
