@@ -1,0 +1,72 @@
+{
+  "id": "MAX-CLIENT-FEEDBACK-20261007-R3",
+  "status": "BUILT_LOCAL_NOT_INSTALLED",
+  "tests": {
+    "startup": 12,
+    "ui": 18,
+    "handoff": 4,
+    "projectTargeted": 142,
+    "totalTargetedCpu": 176,
+    "browser": "NOT_RUN_USER_PROHIBITION"
+  },
+  "profiles": {
+    "stand": {
+      "appSha256": "8720f8d341047760ca6d36f78206d118a7def09fa4bd38e3af68cbc820910f89",
+      "appBytes": 1930634,
+      "baselineAppSha256": "c5e0cdbac632519c5f71454a6d2edfd26baaada5575299dbb0db6be0837256a0",
+      "changedFiles": [
+        "src/journey-guided-main.js",
+        "src/journey-shared-ui.mjs",
+        "src/journey-v5-route-layout.mjs",
+        "src/journey-v5-ui-copy.mjs",
+        "src/journey-webgl-ui.mjs",
+        "src/reviewed-content/annotation-source.json",
+        "src/reviewed-content/asset-replacements.json",
+        "src/reviewed-content/mission-catalog.json"
+      ],
+      "sourceSha256": {
+        "src/journey-guided-main.js": "ccc743faa283fd42a365c8d8d0181ad9d59ebf75d2db3d2fd97271d11d0a83d5",
+        "src/journey-shared-ui.mjs": "5dbbbe30af1166895c55862fa04cdd521a60b39f8b5849fc0371a78760c0f378",
+        "src/journey-v5-route-layout.mjs": "feeb7d484118bd6e1e7bad49dcdd023196c23aef64e4c72d130af41c67c10e2a",
+        "src/journey-v5-ui-copy.mjs": "24286d10336e76e1cc8623d0e5aaefa410df25bd79a28a51d38f74c64549789b",
+        "src/journey-webgl-ui.mjs": "40f74cd3145e2435a5cd1e7b3ab8d8f2e866d287e177471142a9c7b70ccfcc11",
+        "src/reviewed-content/annotation-source.json": "fd2eb791dc7c261509688ce7fda38288125f119ed8dc5e35dc99c21187cacfb5",
+        "src/reviewed-content/asset-replacements.json": "ea9ed49a7eb4ca3f8b876ad2aa2695943fc73ce8259ca792d984a3adfbeaba5c",
+        "src/reviewed-content/mission-catalog.json": "35fffc4ef764c0f39ac6d938b212e0c87485a55f3cc9788f18248993c094542e"
+      },
+      "previousAppSha256": "0a5f70a3f2918cacce65a920c2fb567a88ea33a0f0fb17db5148f24749682263"
+    },
+    "client": {
+      "appSha256": "39ae35db8dfb5d9e1805fa84ddd661ef5b3a8baf378549b2556760e98de57058",
+      "appBytes": 2059562,
+      "baselineAppSha256": "ace063dab2c0e168778a95ee09634285b03bece54b2c94008b59a2f549883c5c",
+      "changedFiles": [
+        "src/journey-guided-main.js",
+        "src/journey-shared-ui.mjs",
+        "src/journey-v5-route-layout.mjs",
+        "src/journey-v5-ui-copy.mjs",
+        "src/journey-webgl-ui.mjs",
+        "src/reviewed-content/annotation-source.json",
+        "src/reviewed-content/asset-replacements.json",
+        "src/reviewed-content/mission-catalog.json"
+      ],
+      "sourceSha256": {
+        "src/journey-guided-main.js": "24bf3b7064da9de28d38d27ef708677d33c8e84211e6a2f7d5bf06ef701f6fcf",
+        "src/journey-shared-ui.mjs": "e76633082eaa1f01c957e1b2dcb617a7a833d4e0e1ac9927bd2bf4ee76088a34",
+        "src/journey-v5-route-layout.mjs": "feeb7d484118bd6e1e7bad49dcdd023196c23aef64e4c72d130af41c67c10e2a",
+        "src/journey-v5-ui-copy.mjs": "24286d10336e76e1cc8623d0e5aaefa410df25bd79a28a51d38f74c64549789b",
+        "src/journey-webgl-ui.mjs": "6da2565adabd796b20b41218e9b57d834251ae921c0096d78c4a02114949755e",
+        "src/reviewed-content/annotation-source.json": "fd2eb791dc7c261509688ce7fda38288125f119ed8dc5e35dc99c21187cacfb5",
+        "src/reviewed-content/asset-replacements.json": "ea9ed49a7eb4ca3f8b876ad2aa2695943fc73ce8259ca792d984a3adfbeaba5c",
+        "src/reviewed-content/mission-catalog.json": "35fffc4ef764c0f39ac6d938b212e0c87485a55f3cc9788f18248993c094542e"
+      },
+      "previousAppSha256": "4f077036d3f96e1635f94443c06886f9a0a7a24da6ff8d313642d99441d76c74"
+    }
+  },
+  "standInstalledAppSha256": "c5e0cdbac632519c5f71454a6d2edfd26baaada5575299dbb0db6be0837256a0",
+  "previousReleaseId": "MAX-CLIENT-FEEDBACK-20261007-R2",
+  "acceptance": "USER_VISUAL_REVIEW_PENDING",
+  "requestLocalDate": "2026-10-07",
+  "previousInstallationObservation": "At 2026-10-06T19:43Z MASTER proxy returned 502; no MAX stop or application took place. Awaiting owner approval; later stand state not rechecked in this publication.",
+  "installationNote": "Local client feedback build only; no stand installation, service restart or publication performed."
+}

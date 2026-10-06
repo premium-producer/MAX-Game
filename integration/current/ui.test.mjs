@@ -5,7 +5,7 @@ import vm from 'node:vm';
 const flush=()=>new Promise(r=>setImmediate(r));
 for(const profile of ['client','stand']){
  const dir=new URL(`./code/${profile}/src/`,import.meta.url);
- const {v5Text,v5CopyMarkup,syncV5InstructionVisibility,V5_COPY_STYLES}=await import(new URL('journey-v5-ui-copy.mjs',dir));
+ const {v5Text,v5CopyMarkup,v5ButtonMarkup,syncV5InstructionVisibility,V5_COPY_STYLES}=await import(new URL('journey-v5-ui-copy.mjs',dir));
  const {sharedTaskMarkup}=await import(new URL('journey-shared-ui.mjs',dir));
  const {V5RevealJourney}=await import(new URL('journey-v5-route-layout.mjs',dir));
  const {sharedRevealContent}=await import(new URL('journey-shared-reveal.mjs',dir));
@@ -17,12 +17,23 @@ for(const profile of ['client','stand']){
  const {createMemoryPersistencePort}=await import(new URL('../vendor/backend-figma-v2/src/application/memory-persistence.mjs',dir));
  test(`${profile}: UI terminology is idempotent, nonbreaking and escaped`,()=>{
   for(const text of ['ID','Цифровой ID','Цифрового ID','Создать Цифровой ID','Цифровым ID','Цифровой\u00a0ID']){
-   const normal=v5Text(text);assert.ok(normal.includes('Цифровой\u00a0ID'));assert.equal(v5Text(normal),normal);assert.ok(!normal.includes('Цифровой Цифровой'));
+   const normal=v5Text(text),expected=text==='ID'?'Цифровой\u00a0ID':text.replace(/\s+ID/u,'\u00a0ID');assert.equal(normal,expected);assert.equal(v5Text(normal),normal);assert.ok(!normal.includes('Цифровой Цифровой'));
   }
+  assert.equal(v5CopyMarkup('Заселиться с Цифровым ID'),'Заселиться с <span class="v5-copy-nowrap">Цифровым\u00a0ID</span>');
   assert.equal(v5Text('screenID _ID XID3'),'screenID _ID XID3');
   assert.equal(v5CopyMarkup('<img onerror="evil"> ID'), '&lt;img onerror=&quot;evil&quot;&gt; <span class="v5-copy-nowrap">Цифровой\u00a0ID</span>');
-  assert.ok(v5CopyMarkup('Голосовое / видео-сообщение').includes('<span class="v5-copy-nowrap">видео-сообщение</span>'));
+  assert.equal(v5CopyMarkup('Голосовое / видео-сообщение'),'Голосовое / видеосообщение');
   assert.match(V5_COPY_STYLES,/white-space:nowrap/);assert.match(V5_COPY_STYLES,/width:min\(760px,calc/);assert.match(V5_COPY_STYLES,/\[hidden\]\{display:none!important/);
+ });
+ test(`${profile}: protected ID phrase remains inside one button text flow and requested breaks stay presentation-only`,()=>{
+  assert.equal(v5ButtonMarkup('Заселиться с Цифровым ID'),'<span class="v5-button-label">Заселиться с <span class="v5-copy-nowrap">Цифровым\u00a0ID</span></span>');
+  const instruction='А теперь отправим сообщение! Выберем формат: голосовое сообщение или видеосообщение';
+  const completion='Вы познакомились с возможностями общения в MAX.';
+  const body=v5CopyMarkup(instruction),result=v5CopyMarkup(completion);
+  assert.match(body,/сообщение! <br>Выберем/);assert.equal(body.replace(/<[^>]+>/gu,''),instruction);
+  assert.match(result,/возможностями <br><span class="v5-copy-nowrap">общения в MAX\.<\/span>/);assert.equal(result.replace(/<[^>]+>/gu,''),completion);
+  const s={state:{status:'task',screenId:'hotel.check-in'},view:{instruction:{text:''},actions:[{actionId:'hotel.check-in',placement:'below',label:'Заселиться с Цифровым ID'}]}};
+  const before=structuredClone(s);assert.match(sharedTaskMarkup(s),/data-answer="hotel.check-in"[^>]*><span class="v5-button-label">Заселиться с /);assert.deepEqual(s,before);
  });
  const snapshot=text=>({state:{status:'task',screenId:'screen.1'},view:{instruction:{text},device:{kind:'phone',asset:{path:'assets/a.svg',width:400,height:800}},actions:[{actionId:'hot',placement:'hotspot',rect:[100,200,100,50],label:'ID'},{actionId:'button',placement:'below',label:'ID',disabled:true}]}});
  test(`${profile}: empty body hides only help, result and controls remain`,()=>{
@@ -34,11 +45,12 @@ for(const profile of ['client','stand']){
  test(`${profile}: retained popup text → empty → text invalidates GPU owner and cancels stale resize`,async()=>{
   const source=(await fs.readFile(new URL('journey-guided-main.js',dir),'utf8')).replaceAll('\r\n','\n');
   const start=source.indexOf(' const commit=()=>{',source.indexOf('function syncPopup()'))+' const commit=()=>{'.length;
-  const end=source.indexOf('\n };\n if(old)',start);assert.ok(start>0&&end>start);
+  const end=source.indexOf('\n };\n if(old',start);assert.ok(start>0&&end>start);
   const calls=[],copy={scrollHeight:120,replaceWith(){}},phone={replaceWith(){}},instruction={hidden:false,style:{},querySelector:()=>copy,getBoundingClientRect:()=>({height:190})};
   const mounted={dataset:{task:'task'},querySelector:sel=>sel==='.instruction'?instruction:sel==='.instruction-copy'?copy:phone};
   let freshInstruction={hidden:true};const fresh={querySelector:sel=>sel==='.instruction'?freshInstruction:{}};
-  const context={controller:{session:{task:'task'}},preview:null,displayTask:'task',token:'new',popupToken:'old',inlinePhone:true,
+  const controller={session:{task:'task',screen:'field'}};
+  const context={controller,owner:controller,screenEpoch:0,epoch:0,popupContentToken:()=> 'new',preview:null,displayTask:'task',token:'new',popupToken:'old',inlinePhone:true,
    document:{createElement:()=>({content:{firstElementChild:fresh},set innerHTML(v){}})},popupMarkup:()=>'',host:{dataset:{},querySelector:()=>mounted},
    getComputedStyle:()=>({top:'100',paddingTop:'20',paddingBottom:'20'}),arena:{getBoundingClientRect:()=>({width:3200})},size:{width:3200},
    syncV5InstructionVisibility,referenceVisual:false,bfmVisual:true,v5InstructionTop:h=>String(h),changed:()=>calls.push(['changed']),
@@ -46,7 +58,7 @@ for(const profile of ['client','stand']){
   const run=()=>vm.runInNewContext(`(()=>{${source.slice(start,end)}})()`,context);
   run();assert.equal(instruction.hidden,true);assert.ok(calls.some(([a,el])=>a==='refresh'&&el===mounted));assert.ok(calls.some(([a])=>a==='cancel'));assert.ok(!calls.some(([a])=>a==='resize'));
   calls.length=0;freshInstruction={hidden:false};run();assert.equal(instruction.hidden,false);assert.equal(instruction.style.height,'160px');assert.ok(calls.some(([a,el])=>a==='refresh'&&el===mounted));assert.ok(calls.some(([a])=>a==='cancel'));
-  calls.length=0;run();assert.ok(calls.some(([a])=>a==='resize'));assert.ok(calls.some(([a])=>a==='parts'));
+  calls.length=0;run();assert.ok(calls.some(([a])=>a==='resize'));assert.ok(calls.some(([a,el])=>a==='refresh'&&el===mounted));
  });
  async function fixture(mission){
   let now=1000,c;const app=createApp({persistence:createMemoryPersistencePort(),now:()=>now});

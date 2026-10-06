@@ -1,0 +1,84 @@
+{
+  "id": "MAX-CLIENT-FEEDBACK-20261007-R1",
+  "status": "BUILT_LOCAL_NOT_INSTALLED",
+  "tests": {
+    "startup": 12,
+    "ui": 16,
+    "handoff": 4,
+    "browser": "NOT_RUN_USER_PROHIBITION",
+    "clientPresentation": 34,
+    "reviewedContent": 31
+  },
+  "profiles": {
+    "stand": {
+      "appSha256": "b7c44ef6673b0371c927256759db53386bc529e13a485ea95c7354c11b45f6ad",
+      "appBytes": 1924732,
+      "baselineAppSha256": "c5e0cdbac632519c5f71454a6d2edfd26baaada5575299dbb0db6be0837256a0",
+      "changedFiles": [
+        "src/application/mission-session.mjs",
+        "src/journey-guided-main.js",
+        "src/journey-v5-route-layout.mjs",
+        "src/journey-v5-ui-copy.mjs",
+        "src/journey-webgl-ui.mjs",
+        "src/reviewed-content/annotation-source.json",
+        "src/reviewed-content/asset-replacements.json",
+        "src/reviewed-content/mission-catalog.json",
+        "src/reviewed-content/presentation-overrides.json",
+        "vendor/backend-figma-v2/manifest.json",
+        "vendor/backend-figma-v2/src/application/mission-session.mjs"
+      ],
+      "sourceSha256": {
+        "src/journey-guided-main.js": "bd6cb4e6577bfc908c033636cc724d1cfbf7239ef2f2cfad422aaf56c04ffebb",
+        "src/journey-v5-route-layout.mjs": "c252997aae68c621bbbeac663abac4657d391a115b34f35168ca87655afa5f84",
+        "src/journey-v5-ui-copy.mjs": "dc0ab3264ca96bf93ed32cf8c03eea99e3caeb097e9cf0bd82a19e6208f7b1b5",
+        "src/journey-webgl-ui.mjs": "27724368a504add715bcb4f186d3cce04eea8effacf82b755eeb6ff0ddb2bb65",
+        "src/application/mission-session.mjs": "a2f2dc45859e91b7ebb6ccc3d8de7214125ac668543e83f1a7c5ba92b100421c",
+        "src/reviewed-content/annotation-source.json": "5b7bf953f528d338f56dd35d740f44f7b1696c84ff628ed17080322644dfe57a",
+        "src/reviewed-content/asset-replacements.json": "1baa93d1071aef0a57b0eb27e3d924454f77b3a0036ad2ca237392e8ea3ea762",
+        "src/reviewed-content/mission-catalog.json": "84d87a3511babe245815616309d0243c0f54fa006c7d604ad0fd1a925e4d7556",
+        "src/reviewed-content/presentation-overrides.json": "d52fe034208edb5156e63afd019290202b69f02c262be95e82cc3dac7d67f3a6",
+        "vendor/backend-figma-v2/manifest.json": "91952f5034e3f53fa6b47b659c71add34d24cd65c6fbbab2c08601f282776830",
+        "vendor/backend-figma-v2/src/application/mission-session.mjs": "8cbfb455503b3b378be558960e4826ab393ba85b0f51cb165c2a1de24ea8e690"
+      },
+      "previousAppSha256": "1eb4fa93076257f2eae21871db1669c9dc1a826e27d88334470e18294e6c57f8"
+    },
+    "client": {
+      "appSha256": "cbc3885f162ec5cc38328aa86df8e7e496e6deb9e49f27e20d2be73b173a55c5",
+      "appBytes": 2053545,
+      "baselineAppSha256": "ace063dab2c0e168778a95ee09634285b03bece54b2c94008b59a2f549883c5c",
+      "changedFiles": [
+        "src/application/mission-session.mjs",
+        "src/journey-guided-main.js",
+        "src/journey-v5-route-layout.mjs",
+        "src/journey-v5-ui-copy.mjs",
+        "src/journey-webgl-ui.mjs",
+        "src/reviewed-content/annotation-source.json",
+        "src/reviewed-content/asset-replacements.json",
+        "src/reviewed-content/mission-catalog.json",
+        "src/reviewed-content/presentation-overrides.json",
+        "vendor/backend-figma-v2/manifest.json",
+        "vendor/backend-figma-v2/src/application/mission-session.mjs"
+      ],
+      "sourceSha256": {
+        "src/journey-guided-main.js": "a3b2626df823575882396c2f77e8c090b6c1c6c357ca90ad5a61c94507917651",
+        "src/journey-v5-route-layout.mjs": "e91ddbe90b0ea726f8b638c34636bd9a2b7d7c108706277d129a9d8f983c69f2",
+        "src/journey-v5-ui-copy.mjs": "dc0ab3264ca96bf93ed32cf8c03eea99e3caeb097e9cf0bd82a19e6208f7b1b5",
+        "src/journey-webgl-ui.mjs": "de4cf674d20799aff187619b6c87d247ab2eae6f19bcc5f576ad0912f38b620b",
+        "src/application/mission-session.mjs": "4d7dacf87cb46775d7637186afde5d1d3751acaa9b01d4b186943c3bccb47c3f",
+        "src/reviewed-content/annotation-source.json": "5b7bf953f528d338f56dd35d740f44f7b1696c84ff628ed17080322644dfe57a",
+        "src/reviewed-content/asset-replacements.json": "1baa93d1071aef0a57b0eb27e3d924454f77b3a0036ad2ca237392e8ea3ea762",
+        "src/reviewed-content/mission-catalog.json": "84d87a3511babe245815616309d0243c0f54fa006c7d604ad0fd1a925e4d7556",
+        "src/reviewed-content/presentation-overrides.json": "d52fe034208edb5156e63afd019290202b69f02c262be95e82cc3dac7d67f3a6",
+        "vendor/backend-figma-v2/manifest.json": "91952f5034e3f53fa6b47b659c71add34d24cd65c6fbbab2c08601f282776830",
+        "vendor/backend-figma-v2/src/application/mission-session.mjs": "8cbfb455503b3b378be558960e4826ab393ba85b0f51cb165c2a1de24ea8e690"
+      },
+      "previousAppSha256": "fe9aef1cb5c77a726fad30352a8e2b4e04f0badd1cb90a24123f95a35a161104"
+    }
+  },
+  "standInstalledAppSha256": "c5e0cdbac632519c5f71454a6d2edfd26baaada5575299dbb0db6be0837256a0",
+  "previousReleaseId": "MAX-STARTUP-VISIBLE-GATE-20261006-R1",
+  "acceptance": "USER_VISUAL_REVIEW_PENDING",
+  "requestLocalDate": "2026-10-07",
+  "previousInstallationObservation": "At 2026-10-06T19:43Z MASTER proxy returned 502; no MAX stop or application took place. Awaiting owner approval; later stand state not rechecked in this publication.",
+  "installationNote": "Local client feedback build only; no stand installation, service restart or publication performed."
+}

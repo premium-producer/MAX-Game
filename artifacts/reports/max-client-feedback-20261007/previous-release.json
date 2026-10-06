@@ -1,0 +1,40 @@
+{
+  "id": "MAX-STARTUP-VISIBLE-GATE-20261006-R1",
+  "status": "BUILT_STAGED_NOT_INSTALLED",
+  "tests": {
+    "startup": 12,
+    "ui": 16,
+    "handoff": 4,
+    "browser": "NOT_RUN_USER_PROHIBITION"
+  },
+  "profiles": {
+    "stand": {
+      "appSha256": "1eb4fa93076257f2eae21871db1669c9dc1a826e27d88334470e18294e6c57f8",
+      "appBytes": 1922530,
+      "baselineAppSha256": "c5e0cdbac632519c5f71454a6d2edfd26baaada5575299dbb0db6be0837256a0",
+      "changedFiles": [
+        "src/journey-guided-main.js",
+        "src/journey-v5-route-layout.mjs"
+      ],
+      "sourceSha256": {
+        "src/journey-guided-main.js": "f43bc8495c4b0dc94bc1cdb7a895871c8c5026a86da6486c7e4584eab4ec931b",
+        "src/journey-v5-route-layout.mjs": "1b2872cddc10311caa609f823febf9cf749d480614e3a0e887a6d3700125df25"
+      }
+    },
+    "client": {
+      "appSha256": "fe9aef1cb5c77a726fad30352a8e2b4e04f0badd1cb90a24123f95a35a161104",
+      "appBytes": 2051778,
+      "baselineAppSha256": "ace063dab2c0e168778a95ee09634285b03bece54b2c94008b59a2f549883c5c",
+      "changedFiles": [
+        "src/journey-guided-main.js",
+        "src/journey-v5-route-layout.mjs"
+      ],
+      "sourceSha256": {
+        "src/journey-guided-main.js": "7d22c6de826ed8db498d9dc3f113c155ffb48e81b7e44eea3d3a86eab40fb735",
+        "src/journey-v5-route-layout.mjs": "f21407d247a1a953f18f7569133330602920bf0fbf715bab72a4e2802a854dca"
+      }
+    }
+  },
+  "standInstalledAppSha256": "c5e0cdbac632519c5f71454a6d2edfd26baaada5575299dbb0db6be0837256a0",
+  "installationBlocker": "At 2026-10-06T19:43Z MASTER proxy returned 502; no MAX stop or application took place. Awaiting owner approval; later stand state not rechecked in this publication."
+}

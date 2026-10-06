@@ -1,0 +1,42 @@
+✔ stand: blogger actual renderer gate releases startup at 30/60/120 Hz (1501.9025ms)
+✔ stand: digital-id actual renderer gate releases startup at 30/60/120 Hz (835.0986ms)
+✔ stand: communication actual renderer gate releases startup at 30/60/120 Hz (673.841ms)
+✔ stand: business actual renderer gate releases startup at 30/60/120 Hz (572.944ms)
+✔ stand: handoff requires newly admitted motion without future groups (41.813ms)
+✔ stand: admitted transparent icon, phone, busy, pause and media remain blocking (15.0024ms)
+✔ client: blogger actual renderer gate releases startup at 30/60/120 Hz (521.6026ms)
+✔ client: digital-id actual renderer gate releases startup at 30/60/120 Hz (562.8916ms)
+✔ client: communication actual renderer gate releases startup at 30/60/120 Hz (571.0829ms)
+✔ client: business actual renderer gate releases startup at 30/60/120 Hz (595.0302ms)
+✔ client: handoff requires newly admitted motion without future groups (41.0055ms)
+✔ client: admitted transparent icon, phone, busy, pause and media remain blocking (15.7895ms)
+✔ ordered task handoff 30Hz: links, device, packing, readiness, pause (162.444ms)
+✔ ordered task handoff 60Hz: links, device, packing, readiness, pause (88.5632ms)
+✔ ordered task handoff 120Hz: links, device, packing, readiness, pause (90.1408ms)
+✔ restart during every handoff stage discards old display and never starts the next task (344.8507ms)
+✔ client: UI terminology is idempotent, nonbreaking and escaped (4.8862ms)
+✔ client: protected ID phrase remains inside one button text flow and requested breaks stay presentation-only (2.5667ms)
+✔ client: empty body hides only help, result and controls remain (76.2332ms)
+✔ client: retained popup text → empty → text invalidates GPU owner and cancels stale resize (133.6427ms)
+✔ client: blogger future icons hidden, layout/node IDs retained, restart clears visibility (63.6311ms)
+✔ client: digital-id future icons hidden, layout/node IDs retained, restart clears visibility (17.5298ms)
+✔ client: communication future icons hidden, layout/node IDs retained, restart clears visibility (22.9225ms)
+✔ client: business future icons hidden, layout/node IDs retained, restart clears visibility (42.9685ms)
+✔ client: next icon appears only after device exit and completion icon remains (116.4207ms)
+✔ stand: UI terminology is idempotent, nonbreaking and escaped (1.2098ms)
+✔ stand: protected ID phrase remains inside one button text flow and requested breaks stay presentation-only (1.4595ms)
+✔ stand: empty body hides only help, result and controls remain (16.7222ms)
+✔ stand: retained popup text → empty → text invalidates GPU owner and cancels stale resize (13.1218ms)
+✔ stand: blogger future icons hidden, layout/node IDs retained, restart clears visibility (37.6518ms)
+✔ stand: digital-id future icons hidden, layout/node IDs retained, restart clears visibility (19.9177ms)
+✔ stand: communication future icons hidden, layout/node IDs retained, restart clears visibility (40.487ms)
+✔ stand: business future icons hidden, layout/node IDs retained, restart clears visibility (21.9211ms)
+✔ stand: next icon appears only after device exit and completion icon remains (47.9333ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 34
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6519.096

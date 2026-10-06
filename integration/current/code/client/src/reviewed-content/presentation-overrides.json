@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "contentRevision": "missions-reviewed-20261003-abe878cfed89",
+  "tasks": {
+    "communication.message": {
+      "expectedTitle": "Голосовое / видео-сообщение",
+      "title": "Голосовое / видеосообщение"
+    }
+  },
+  "screens": {
+    "business.bot.filled": {
+      "taskId": "business.bot",
+      "expectedInstruction": "",
+      "instruction": "Заполним данные о чат-боте – логотип, название и выберем задачи, которые он будет решать"
+    },
+    "digital-id.hotel.present": {
+      "taskId": "digital-id.hotel",
+      "actions": {
+        "digital-id.hotel.present.action-1": {
+          "expectedLabel": "Заселиться через ID",
+          "label": "Заселиться с Цифровым ID"
+        }
+      }
+    },
+    "blogger.comments.post": {
+      "taskId": "blogger.comments",
+      "actions": {
+        "blogger.comments.post.action-1": {
+          "rect": [
+            8,
+            677,
+            289,
+            42
+          ]
+        }
+      }
+    },
+    "blogger.comments.input": {
+      "taskId": "blogger.comments",
+      "actions": {
+        "blogger.comments.input.action-1": {
+          "rect": [
+            1,
+            469,
+            358,
+            46
+          ]
+        }
+      }
+    },
+    "blogger.comments.reply": {
+      "taskId": "blogger.comments",
+      "actions": {
+        "blogger.comments.reply.action-1": {
+          "rect": [
+            306,
+            469,
+            50,
+            47
+          ]
+        }
+      }
+    },
+    "communication.message.voice-start": {
+      "taskId": "communication.message",
+      "expectedInstruction": "А теперь отправим сообщение! Выберем формат: голосовое сообщение или видеосообщение",
+      "instruction": "Отправим голосовое сообщение!"
+    },
+    "communication.message.voice-stop": {
+      "taskId": "communication.message",
+      "expectedInstruction": "Остановите запись, когда сообщение готово",
+      "instruction": "Приступим к записи"
+    },
+    "business.channel.publish": {
+      "taskId": "business.channel",
+      "expectedInstruction": "",
+      "instruction": "Канал создан – продолжаем делиться новостями вашего бизнеса"
+    },
+    "communication.message.voice-sent": {
+      "taskId": "communication.message",
+      "expectedInstruction": "Задание выполнено. Открываем следующую возможность.",
+      "instruction": "Голосовое сообщение отправлено!"
+    },
+    "communication.message.video-preview": {
+      "taskId": "communication.message",
+      "expectedInstruction": "Отправим голосовое сообщение в диалог",
+      "instruction": "Отправим видеосообщение в диалог"
+    }
+  },
+  "missions": {
+    "digital-id": {
+      "expectedCompletionText": "Цифровой ID создан. Заселение в отель, подтверждение льготы и возраста — все ситуации пройдены.",
+      "completionText": "Цифровой ID создан – с помощью сервиса вы заселились в отель, подтвердили льготу и возраст. Поздравляем с прохождением миссии!",
+      "qr": {
+        "assetId": "official.digital-id-qr",
+        "url": "https://max.ru/",
+        "label": "Узнать больше о возможностях MAX"
+      }
+    }
+  }
+}

@@ -1,0 +1,556 @@
+{
+  "status": "LOCAL_CLIENT_FEEDBACK_DELTA_NOT_INSTALLED",
+  "files": [
+    {
+      "role": "MASTER",
+      "target": "app/canonical-max/artifacts/max-game/src/application/mission-session.mjs",
+      "sha256": "005b35a32bb5cddeebaaaea6d18c91931f63b16d703138e4c7605bc76fcb2a17",
+      "bytes": 21328,
+      "task": "max-client-feedback-20261007",
+      "scope": "Local MAX-specific delta; requires verified stand base; not installed",
+      "previousVerificationUtc": "2026-10-06T16:15:58.0944236Z",
+      "verificationLocalDate": "2026-10-07"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/control/business-gateway.mjs",
+      "sha256": "08efc3fdb50729b2dd1a8878a948a50d1ef212d31f46f466ca3125eb9dc2a30d",
+      "bytes": 20077,
+      "verificationUtc": "2026-10-06T01:44:51.985682+00:00",
+      "task": "max-control-panel-20261006",
+      "scope": "Latest verified MAX-specific source slice; not a current global MASTER release"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/control/fleet.mjs",
+      "sha256": "300979027d6099d0a7d1852def0bb48fa7d3373b82d8f9c4f985b35928e8a836",
+      "bytes": 13913,
+      "verificationUtc": "2026-10-06T12:34:29.6055717Z",
+      "task": "max-selected-autoplay-20261006",
+      "scope": "Latest verified MAX-specific source slice; not a current global MASTER release"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/control/local-master-request.mjs",
+      "sha256": "04bc1d8ced24bc38c405abea7d09561816ab15231810588251143a63a4eb6bee",
+      "bytes": 1476,
+      "verificationUtc": "2026-10-06T01:44:51.985682+00:00",
+      "task": "max-control-panel-20261006",
+      "scope": "Latest verified MAX-specific source slice; not a current global MASTER release"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/control/max-gateway.mjs",
+      "sha256": "72d91be8efe7245bf17437de8fd7908799a25baab4f71d74518d026ba4f1c45f",
+      "bytes": 19919,
+      "verificationUtc": "2026-10-06T12:34:29.6055717Z",
+      "task": "max-selected-autoplay-20261006",
+      "scope": "Latest verified MAX-specific source slice; not a current global MASTER release"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/control/max-lidar-control.mjs",
+      "sha256": "3e6087909e9c6648bb64e2d2f5a6d4878f2b376799102d6905a63e61f74209bf",
+      "bytes": 3494,
+      "verificationUtc": "2026-10-06T08:24:57.8960809Z",
+      "task": "max-lidar-20261006",
+      "scope": "Latest verified MAX-specific source slice; not a current global MASTER release"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/control/presentation-master-request.mjs",
+      "sha256": "1b4f1eb74a458c864dd86ca9eabcda6e41735649fa6d342b39c83f509661c7e5",
+      "bytes": 1152,
+      "verificationUtc": "2026-10-06T11:43:57.5292772Z",
+      "task": "max-lidar-live-input-20261006",
+      "scope": "Latest verified MAX-specific source slice; not a current global MASTER release"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/control/public/app.js",
+      "sha256": "d07a4bf640ae328da4a0dc275c8e2707de6f7e54e4e7fb8e2bfa3910b047a36b",
+      "bytes": 6770,
+      "verificationUtc": "2026-10-06T12:34:29.6055717Z",
+      "task": "max-selected-autoplay-20261006",
+      "scope": "Latest verified MAX-specific source slice; not a current global MASTER release"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/control/public/assets-editor.mjs",
+      "sha256": "670d65e17afe7e4fe51017b44eb41d92b86dcaebab1bfc90963e96969c8f8b96",
+      "bytes": 12058,
+      "verificationUtc": "2026-10-06T03:56:06.829425+00:00",
+      "task": "max-device-cycle-20261006",
+      "scope": "Latest verified MAX-specific source slice; not a current global MASTER release"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/control/public/index.html",
+      "sha256": "edef3fbbd23dc8734b44678cd04510d6aa7564c9483f4941f85e030181a8c687",
+      "bytes": 17265,
+      "verificationUtc": "2026-10-06T12:34:29.6055717Z",
+      "task": "max-selected-autoplay-20261006",
+      "scope": "Latest verified MAX-specific source slice; not a current global MASTER release"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/control/public/max-lidar-panel.mjs",
+      "sha256": "d13fc7e860656fa9671ec31687d0b4d5f5510f2f387481202a3ad95996fd644f",
+      "bytes": 9009,
+      "verificationUtc": "2026-10-06T08:24:57.8960809Z",
+      "task": "max-lidar-20261006",
+      "scope": "Latest verified MAX-specific source slice; not a current global MASTER release"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/control/public/presentation-control.mjs",
+      "sha256": "88f6e2fdb8477f9fce3ce9c72785d00c6837f3448029935b6753249d32452cc8",
+      "bytes": 10117,
+      "verificationUtc": "2026-10-06T01:44:51.985682+00:00",
+      "task": "max-control-panel-20261006",
+      "scope": "Latest verified MAX-specific source slice; not a current global MASTER release"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/control/public/selected-autoplay.mjs",
+      "sha256": "e71bd0416e3d6682d9f5dc98d3af12814d864b1b0d16426d9090277e5ba14170",
+      "bytes": 6862,
+      "verificationUtc": "2026-10-06T12:34:29.6055717Z",
+      "task": "max-selected-autoplay-20261006",
+      "scope": "Latest verified MAX-specific source slice; not a current global MASTER release"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/control/public/style.css",
+      "sha256": "26cf157ec2926727bf5f66a552c573d2278783717c09c40db9bbf4ab24a82aaa",
+      "bytes": 935,
+      "verificationUtc": "2026-10-06T08:24:57.8960809Z",
+      "task": "max-lidar-20261006",
+      "scope": "Latest verified MAX-specific source slice; not a current global MASTER release"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/master-backend/max_canonical_store.py",
+      "sha256": "98a6da1c1bac0a74b85979b40cca333c60cad3aa4b1fef97860ac185f06a6989",
+      "bytes": 11357,
+      "verificationUtc": "2026-10-06T04:56:56.420719+00:00",
+      "task": "stella-max-activation-20261006",
+      "scope": "Latest verified MAX-specific source slice; not a current global MASTER release"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/master-backend/max_canonical_workflows.py",
+      "sha256": "0d9d218dde7cdb92bae958dcb979cfb529a929dc802e4380cdde4626a1eef417",
+      "bytes": 11159,
+      "verificationUtc": "2026-10-06T01:44:51.985682+00:00",
+      "task": "max-control-panel-20261006",
+      "scope": "Latest verified MAX-specific source slice; not a current global MASTER release"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/master-backend/max_launch_store.py",
+      "sha256": "08cb3d3a41ae663b1be281c94136155fa0cf8c7461204b36f043314f140fdb61",
+      "bytes": 18154,
+      "verificationUtc": "2026-10-06T04:56:56.420719+00:00",
+      "task": "stella-max-activation-20261006",
+      "scope": "Latest verified MAX-specific source slice; not a current global MASTER release"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/master-backend/max_launch_workflows.py",
+      "sha256": "130a3d7dfe37d703d604464823cd5da0414b786bbb7e1ad61497e98054489350",
+      "bytes": 15775,
+      "verificationUtc": "2026-10-06T01:44:51.985682+00:00",
+      "task": "max-control-panel-20261006",
+      "scope": "Latest verified MAX-specific source slice; not a current global MASTER release"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/master-backend/max_models.py",
+      "sha256": "1b4e8d6c8350753412a181909e055c8009ab3884300efc657182de71ca1cba6c",
+      "bytes": 5502,
+      "verificationUtc": "2026-10-06T04:56:56.420719+00:00",
+      "task": "stella-max-activation-20261006",
+      "scope": "Latest verified MAX-specific source slice; not a current global MASTER release"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/master-backend/max_presentation_api.py",
+      "sha256": "8ff19c783e6dcb28ffc05cd36a7d95cb2ecb3d2fc8f4e3aa79e315099a4c85b9",
+      "bytes": 4822,
+      "verificationUtc": "2026-10-06T12:34:29.6055717Z",
+      "task": "max-selected-autoplay-20261006",
+      "scope": "Latest verified MAX-specific source slice; not a current global MASTER release"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/master-backend/max_presentation_assets.py",
+      "sha256": "543e032ee3942863cb2af3f41c4eb2f567b20f2836ad3fac27fb939bbe43c0d6",
+      "bytes": 3848,
+      "verificationUtc": "2026-10-06T03:56:06.829425+00:00",
+      "task": "max-device-cycle-20261006",
+      "scope": "Latest verified MAX-specific source slice; not a current global MASTER release"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/master-backend/max_presentation_store.py",
+      "sha256": "7f14088a1eb0e103f2659e12d5b8fb9950eab06c5ca47cf7123a8666be1e982c",
+      "bytes": 14513,
+      "verificationUtc": "2026-10-06T12:34:29.6055717Z",
+      "task": "max-selected-autoplay-20261006",
+      "scope": "Latest verified MAX-specific source slice; not a current global MASTER release"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/master-backend/max_show_api.py",
+      "sha256": "9714c56a116f2c72b264ea7973c6b47dae5c4c2c0414c26c9d294cc4577fd262",
+      "bytes": 1515,
+      "verificationUtc": "2026-10-05T04:49:45.173043+00:00",
+      "task": "max-show-device-20261005",
+      "scope": "Latest verified MAX-specific source slice; not a current global MASTER release"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/master-backend/max_show_store.py",
+      "sha256": "53f1f3093a92074a151b0c56fd2f401d4bf5b245d3c77e77aba91d35a8107e8e",
+      "bytes": 4123,
+      "verificationUtc": "2026-10-06T01:44:51.985682+00:00",
+      "task": "max-control-panel-20261006",
+      "scope": "Latest verified MAX-specific source slice; not a current global MASTER release"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/master-backend/max_show_workflows.py",
+      "sha256": "207980cad88b4f0d89b8c4a234fd0b5ba497216b1220a45d3edd2c5644adbea9",
+      "bytes": 5818,
+      "verificationUtc": "2026-10-06T01:44:51.985682+00:00",
+      "task": "max-control-panel-20261006",
+      "scope": "Latest verified MAX-specific source slice; not a current global MASTER release"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/master-backend/max_store.py",
+      "sha256": "5fccd8ea3aa4730cddac201d0acaa5cf52366b3da170e91c91e764e72773ab10",
+      "bytes": 12751,
+      "verificationUtc": "2026-10-06T01:44:51.985682+00:00",
+      "task": "max-control-panel-20261006",
+      "scope": "Latest verified MAX-specific source slice; not a current global MASTER release"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/master-backend/max_workflows.py",
+      "sha256": "f1bb41610f04a7c1890087b11034dee63f3942f22f5e53a63ef17ee893b929ec",
+      "bytes": 7904,
+      "verificationUtc": "2026-10-06T01:44:51.985682+00:00",
+      "task": "max-control-panel-20261006",
+      "scope": "Latest verified MAX-specific source slice; not a current global MASTER release"
+    },
+    {
+      "role": "MAX_RIGHT",
+      "target": "app/control/render-idle-client.mjs",
+      "sha256": "7b9271e60aa12d43e44cdea8080df6b7266aa735adfde68e15507faf394720c3",
+      "bytes": 5129,
+      "verificationUtc": "2026-10-06T11:44:25.6900573Z",
+      "task": "max-lidar-live-input-20261006",
+      "scope": "Latest verified MAX deployment source in local records"
+    },
+    {
+      "role": "MAX_RIGHT",
+      "target": "app/host.mjs",
+      "sha256": "cfc368b8e48ff4a93dd57ab5cc9bef5a8c87e60977b3dba34911c9e50ed39758",
+      "bytes": 8258,
+      "verificationUtc": "1791275111.4580967",
+      "task": "max-lidar-20261006",
+      "scope": "Latest verified MAX deployment source in local records"
+    },
+    {
+      "role": "MAX_RIGHT",
+      "target": "app/max-adapter/local-server.mjs",
+      "sha256": "fbf6de70697af776040cead1d50dea25d315915a511a3ec4ec083cb430446064",
+      "bytes": 36033,
+      "verificationUtc": "2026-10-06T13:39:37.9328746Z",
+      "task": "max-lidar-hold-diagnosis-20261006",
+      "scope": "Latest verified MAX deployment source in local records"
+    },
+    {
+      "role": "MAX_RIGHT",
+      "target": "app/max-adapter/presentation-policy.mjs",
+      "sha256": "a11dc5bc7ddefa77d9dbfa722758fbfab6882c49fa09906c51a08eb380e5c16d",
+      "bytes": 1253,
+      "verificationUtc": "2026-10-06T01:44:51.441156+00:00",
+      "task": "max-control-panel-20261006",
+      "scope": "Latest verified MAX deployment source in local records"
+    },
+    {
+      "role": "MAX_RIGHT",
+      "target": "app/max-lidar/adapter/control.mjs",
+      "sha256": "21b39af1c5a61152b320d654250beaf7253e9acdbfaa1ca335ec4fdb84ef4d43",
+      "bytes": 9083,
+      "verificationUtc": "2026-10-06T16:51:16.0260382Z",
+      "task": "max-lidar-topmost-20261006",
+      "scope": "Latest verified MAX deployment source in local records"
+    },
+    {
+      "role": "MAX_RIGHT",
+      "target": "app/max-lidar/adapter/hokuyo-osc.mjs",
+      "sha256": "4bcc2fc90a8423d07ea0af75d967f933f8ad756cf75397c2970615c8e4e9c474",
+      "bytes": 4467,
+      "verificationUtc": "2026-10-06T16:51:16.0260382Z",
+      "task": "max-lidar-topmost-20261006",
+      "scope": "Latest verified MAX deployment source in local records"
+    },
+    {
+      "role": "MAX_RIGHT",
+      "target": "app/max-lidar/adapter/package-lock.json",
+      "sha256": "78af8d075d5d86460c726f14248a80410723ec48819b18f4a0dfa5ce582c0361",
+      "bytes": 13375,
+      "verificationUtc": "1791275111.4580967",
+      "task": "max-lidar-20261006",
+      "scope": "Latest verified MAX deployment source in local records"
+    },
+    {
+      "role": "MAX_RIGHT",
+      "target": "app/max-lidar/adapter/package.json",
+      "sha256": "a0d9ee0dca1467295ac189e48680724f77e87e4220c47604c1e2c9ee8c9f5c2f",
+      "bytes": 47,
+      "verificationUtc": "1791275111.4580967",
+      "task": "max-lidar-20261006",
+      "scope": "Latest verified MAX deployment source in local records"
+    },
+    {
+      "role": "MAX_RIGHT",
+      "target": "app/max-lidar/calibration/PERSPECTIVE-TRANSFORM-LICENSE.txt",
+      "sha256": "3279ee32c40fb6e23f24fe29032d0a6d977fdfbb43e21e3a3fccb98ff9f2be7d",
+      "bytes": 1080,
+      "verificationUtc": "1791275111.4580967",
+      "task": "max-lidar-20261006",
+      "scope": "Latest verified MAX deployment source in local records"
+    },
+    {
+      "role": "MAX_RIGHT",
+      "target": "app/max-lidar/calibration/calibration.mjs",
+      "sha256": "dc854512eb2eaf9d01b37b28bb268d27a0f60fda0594e9e0ae2bc9811cdac521",
+      "bytes": 11048,
+      "verificationUtc": "1791275111.4580967",
+      "task": "max-lidar-20261006",
+      "scope": "Latest verified MAX deployment source in local records"
+    },
+    {
+      "role": "MAX_RIGHT",
+      "target": "app/max-lidar/calibration/package-lock.json",
+      "sha256": "90a9623290a1e3a7b42ee251d582cf61f0ea70dc909353610b4439577a2af00a",
+      "bytes": 601,
+      "verificationUtc": "1791275111.4580967",
+      "task": "max-lidar-20261006",
+      "scope": "Latest verified MAX deployment source in local records"
+    },
+    {
+      "role": "MAX_RIGHT",
+      "target": "app/max-lidar/calibration/package.json",
+      "sha256": "67b023678549b0f425ef96c51bd48e5cad03a59ff41daff20de98891fc1b3f1d",
+      "bytes": 234,
+      "verificationUtc": "1791275111.4580967",
+      "task": "max-lidar-20261006",
+      "scope": "Latest verified MAX deployment source in local records"
+    },
+    {
+      "role": "MAX_RIGHT",
+      "target": "app/max-lidar/compact-protocol.json",
+      "sha256": "65afe4fc380d418941b4d0ca8339ac904adef3e45b2e056f5f38c7eee5f58513",
+      "bytes": 793,
+      "verificationUtc": "2026-10-06T16:27:00.0584854Z",
+      "task": "max-lidar-compact-20261006",
+      "scope": "Latest verified MAX deployment source in local records"
+    },
+    {
+      "role": "MAX_RIGHT",
+      "target": "app/max-lidar/topmost-selection.json",
+      "sha256": "ec8f4cc79b9692b84c884bac1df5cd515aa89e8993c307ec28181926073656ef",
+      "bytes": 1173,
+      "verificationUtc": "2026-10-06T16:51:16.0260382Z",
+      "task": "max-lidar-topmost-20261006",
+      "scope": "Latest verified MAX deployment source in local records"
+    },
+    {
+      "role": "MAX_RIGHT",
+      "target": "app/max-ui/managed-presented.mjs",
+      "sha256": "5c25ecd1ccf1795808b780325002cac2e8ad8aa279192ef6a840c558e93d7e56",
+      "bytes": 1222,
+      "verificationUtc": "2026-10-06T11:44:25.6900573Z",
+      "task": "max-lidar-live-input-20261006",
+      "scope": "Latest verified MAX deployment source in local records"
+    },
+    {
+      "role": "MAX_RIGHT",
+      "target": "app/max-ui/max-mobile/host.mjs",
+      "sha256": "207f6f756601ece3374d3deae2f07e5104e21c48527d756cfec8a92316aba7da",
+      "bytes": 10887,
+      "verificationUtc": "2026-10-06T11:44:25.6900573Z",
+      "task": "max-lidar-live-input-20261006",
+      "scope": "Latest verified MAX deployment source in local records"
+    },
+    {
+      "role": "MAX_RIGHT",
+      "target": "app/max-ui/max-mobile/index.html",
+      "sha256": "c3a6e105b74987fb415eea2c23a3b1ae65d011520f0b1d7483866593dc40ba3c",
+      "bytes": 459,
+      "verificationUtc": "2026-10-05T14:40:06.940406+00:00",
+      "task": "max-mobile-control-20261005",
+      "scope": "Latest verified MAX deployment source in local records"
+    },
+    {
+      "role": "MAX_RIGHT",
+      "target": "app/max-ui/max-mobile/presentation.mjs",
+      "sha256": "39f0c0e437e6c96a114e2cc5ff5ccf2c0e1091f67257cdbdb0e88517c84e7726",
+      "bytes": 4449,
+      "verificationUtc": "2026-10-06T01:44:51.441156+00:00",
+      "task": "max-control-panel-20261006",
+      "scope": "Latest verified MAX deployment source in local records"
+    },
+    {
+      "role": "MAX_RIGHT",
+      "target": "app/render/asset-server.mjs",
+      "sha256": "f8c3950f50715d0ced8df6f7dbf17217691977609f44ec8913f716b95acc9f5a",
+      "bytes": 3636,
+      "verificationUtc": "1791275111.4580967",
+      "task": "max-lidar-20261006",
+      "scope": "Latest verified MAX deployment source in local records"
+    },
+    {
+      "role": "MAX_RIGHT",
+      "target": "app/render/max-game-frame-evidence.mjs",
+      "sha256": "b55cc7690d2c15da734d04ebe3a377c2cc936bf7d76f2cde7add440ee2b4b6b6",
+      "bytes": 1096,
+      "verificationUtc": "2026-10-06T11:44:25.6900573Z",
+      "task": "max-lidar-live-input-20261006",
+      "scope": "Latest verified MAX deployment source in local records"
+    },
+    {
+      "role": "MAX_RIGHT",
+      "target": "app/render/output-host.mjs",
+      "sha256": "903746f45e0bb5af27404207b8d9e116ba77cf6e8b04cd663abfbc69d7f64f6d",
+      "bytes": 22294,
+      "verificationUtc": "2026-10-06T13:39:37.9328746Z",
+      "task": "max-lidar-hold-diagnosis-20261006",
+      "scope": "Latest verified MAX deployment source in local records"
+    },
+    {
+      "role": "MAX_RIGHT",
+      "target": "app/render/public/max-show-overlay.js",
+      "sha256": "fad2a1559ccf0cb3fbe0395394b40de02854bb3f404954d166f8c3c7ca2ba5ca",
+      "bytes": 5415,
+      "verificationUtc": "2026-10-06T11:44:25.6900573Z",
+      "task": "max-lidar-live-input-20261006",
+      "scope": "Latest verified MAX deployment source in local records"
+    },
+    {
+      "role": "MAX_RIGHT",
+      "target": "app/render/public/native-external.js",
+      "sha256": "f45fe0a37065706048b5e418f9f8d07f897c8d15bf95a135f136a1292698ccbf",
+      "bytes": 7182,
+      "verificationUtc": "2026-10-06T11:44:25.6900573Z",
+      "task": "max-lidar-live-input-20261006",
+      "scope": "Latest verified MAX deployment source in local records"
+    },
+    {
+      "role": "MAX_RIGHT",
+      "target": "app/render/role-adapter/electron-role-main.mjs",
+      "sha256": "c1dd4f85f225081e056f0246cc01f0b9fb8fd158cd177b903d9d87d8cb2ffd56",
+      "bytes": 4407,
+      "verificationUtc": "1791275111.4580967",
+      "task": "max-lidar-20261006",
+      "scope": "Latest verified MAX deployment source in local records"
+    },
+    {
+      "role": "MAX_RIGHT",
+      "target": "app/render/role-adapter/native-role.mjs",
+      "sha256": "c275d82d0aa919f10dec5263b4632f762d59793003a98abd6d4ee768e3b27b13",
+      "bytes": 3711,
+      "verificationUtc": "2026-10-06T11:44:25.6900573Z",
+      "task": "max-lidar-live-input-20261006",
+      "scope": "Latest verified MAX deployment source in local records"
+    },
+    {
+      "role": "MAX_RIGHT",
+      "target": "app/render/role-adapter/start-role-renderer.mjs",
+      "sha256": "50994a6505c5dc0ce6f003994f68ca7e05642c84c12b63ca371a02d3a1e87d25",
+      "bytes": 5775,
+      "verificationUtc": "2026-10-06T11:44:25.6900573Z",
+      "task": "max-lidar-live-input-20261006",
+      "scope": "Latest verified MAX deployment source in local records"
+    },
+    {
+      "role": "MAX_RIGHT",
+      "target": "app/role-application.mjs",
+      "sha256": "06111f8de8ce48634fc041297213f9f6a4430bb49df228e3411bdeedb0045919",
+      "bytes": 3785,
+      "verificationUtc": "2026-10-06T11:44:25.6900573Z",
+      "task": "max-lidar-live-input-20261006",
+      "scope": "Latest verified MAX deployment source in local records"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/canonical-max/artifacts/max-game/src/content/mission-catalog.mjs",
+      "sha256": "1d35fa42bba15b2854be47bad69ae6a1dcb4ded57b0fe819a476bf9da7bb58bc",
+      "bytes": 347,
+      "verificationLocalDate": "2026-10-07",
+      "task": "max-client-feedback-20261007",
+      "scope": "Local MAX-specific delta; requires verified stand base; not installed"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/canonical-max/artifacts/max-game/src/reviewed-content/annotation-source.json",
+      "sha256": "af8529a094bc7b6eec28b10ef055dd71d4f72b7cf01a643a7dd7192f936c3c6b",
+      "bytes": 19882,
+      "verificationLocalDate": "2026-10-07",
+      "task": "max-client-feedback-20261007-r5",
+      "scope": "Local MAX-specific delta; requires verified stand base; not installed"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/canonical-max/artifacts/max-game/src/reviewed-content/asset-replacements.json",
+      "sha256": "a63bf9e5e5e1a73e2da11376830891c15560f4033216f3644a75d1c92148c273",
+      "bytes": 13384,
+      "verificationLocalDate": "2026-10-07",
+      "task": "max-client-feedback-20261007-r4",
+      "scope": "Local MAX-specific delta; requires verified stand base; not installed"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/canonical-max/artifacts/max-game/src/reviewed-content/mission-catalog.json",
+      "sha256": "9e05e2ab91535d77eedf5b659e533c12daf99bf1af7a2083c91589309b20c3f4",
+      "bytes": 332360,
+      "verificationLocalDate": "2026-10-07",
+      "task": "max-client-feedback-20261007-r5",
+      "scope": "Local MAX-specific delta; requires verified stand base; not installed"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/canonical-max/artifacts/max-game/src/reviewed-content/presentation-overrides.json",
+      "sha256": "517dcd4e2225235bca3106658b16a72fa6d5e0b058f6fa576bdd1f9fc8794356",
+      "bytes": 3196,
+      "verificationLocalDate": "2026-10-07",
+      "task": "max-client-feedback-20261007-r5",
+      "scope": "Local MAX-specific delta; requires verified stand base; not installed"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/configs/max-presentation-assets.json",
+      "sha256": "9ff11ac9320035c4d9367df8292d6ceb6ae57e5378376c3d4f26d95f187e6190",
+      "bytes": 30131,
+      "verificationLocalDate": "2026-10-07",
+      "task": "max-client-feedback-20261007-r5",
+      "scope": "Local MAX-specific delta; requires verified stand base; not installed"
+    }
+  ],
+  "excluded": [
+    "credentials",
+    "private configs",
+    "calibration/settings",
+    "live databases",
+    "real logs/packets",
+    "server annotation drafts",
+    "runtime binaries"
+  ],
+  "MASTER": "MAX integration companion sources, not a full or globally current MASTER installation; integrate against current contracts."
+}
