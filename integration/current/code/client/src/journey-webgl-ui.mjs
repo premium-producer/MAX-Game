@@ -9,7 +9,7 @@ import {networkBackTarget,networkBackLimits,constrainBackMotion} from './journey
 import {INTERACTION_BAND} from './circle-model.mjs';
 import {JourneyTransition} from './journey-transition.mjs';
 import {RouteReconnect} from './journey-reconnect.mjs';
-import {PopupFocus,InstructionMotion,TaskContentTransition} from './journey-popup-motion.mjs';
+import {PopupFocus,InstructionMotion,TaskContentTransition,joinTaskContentCommit} from './journey-popup-motion.mjs';
 import {V5DeviceMorph} from './journey-v5-device-morph.mjs';
 import {objectContextPresence,glassControlPresence,taskContentPresence,readGlassControls,publishGlassFrame,clearGlassFrame} from '../../service/public/max-panel-optics.js';
 import {scenePose,projectBounds} from './journey-scene-pose.mjs';
@@ -77,6 +77,16 @@ gl_FragColor=sRGBTransferEOTF(gl_FragColor);
 const surfaceSelector='.cta-orb,.tile,.badge,.medallion,.pill,.mission-card,.instruction,.reset-popup,.field-success,.demo-app,.phone-camera,.phone-home,.app-progress i';
 const movingSelector='button,.attract-icons>.tile,.context-popup,.field-success,.task-dialog .instruction,.route-phone,[data-task-content]';
 
+// Range rectangles describe CSS line boxes; the painted glyphs can extend past
+// them. Include both measurements so long Cyrillic headings are never cropped.
+export function webglTextRasterBounds(metrics,width,height){
+ const left=-Math.max(0,metrics.actualBoundingBoxLeft??0)-4;
+ const right=Math.max(width,metrics.width,metrics.actualBoundingBoxRight??0)+4;
+ const top=-Math.max(height/2,metrics.actualBoundingBoxAscent??0)-4;
+ const bottom=Math.max(height/2,metrics.actualBoundingBoxDescent??0)+4;
+ return {left,top,width:right-left,height:bottom-top};
+}
+
 export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startup=null,gradients=null}){
  const referenceVisual=document.documentElement.dataset.visual==='reference';
  const bfmVisual=document.documentElement.dataset.visual==='webgl-bfm-v5';
@@ -85,6 +95,7 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startu
  const introBurst=new JourneyIntroBurst();
  const plane=new THREE.PlaneGeometry(1,1),svgLoader=new SVGLoader();
  const cache=new Map(),births=new WeakMap(),flights=new Map(),rotatingMaps=new Map();let groups=new Map();
+ const textMeasure=document.createElement('canvas').getContext('2d');
  const warmPhoneImages=new Map(),warmPhoneUploads=new Map();let warmPhoneKeys=new Set();
  const uploadedPhoneTextures=new WeakSet(),failedPhoneTextures=new WeakSet();
  const startupTextureKeys=new Set(),startupProgramPins=[];let captureStartup=false;
@@ -155,15 +166,19 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startu
   if(!node.textContent.trim())return;const style=getComputedStyle(node.parentElement),a=arena.getBoundingClientRect(),scale=a.width/getSize().width;
   const range=document.createRange(),lines=[];let line;
   // Browser line wrapping remains the authoritative geometry, including Cyrillic.
-  for(let j=0;j<node.length;j++){range.setStart(node,j);range.setEnd(node,j+1);const r=range.getBoundingClientRect();if(!r.width&&!r.height)continue;
+  for(let j=0;j<node.length;j++){range.setStart(node,j);range.setEnd(node,j+1);const r=range.getBoundingClientRect();if(!r.width&&!r.height||!r.width&&/\s/u.test(node.textContent[j]))continue;
    if(!line||Math.abs(line.top-r.top)>2*scale){line={top:r.top,left:r.left,right:r.right,height:r.height,text:''};lines.push(line);}
    line.text+=node.textContent[j];line.right=Math.max(line.right,r.right);
   }
-  for(const l of lines){const w=cachePixels((l.right-l.left)/scale+8),h=cachePixels(l.height/scale+8),font=`${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+  for(const l of lines){const font=`${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+   textMeasure.font=font;textMeasure.textBaseline='middle';if('letterSpacing'in textMeasure)textMeasure.letterSpacing=style.letterSpacing;
+   const raster=webglTextRasterBounds(textMeasure.measureText(l.text),(l.right-l.left)/scale,l.height/scale);
+   const w=cachePixels(raster.width),h=cachePixels(raster.height);
    const key=JSON.stringify([l.text,font,style.color,style.letterSpacing,w,h]);
-   const map=texture(key,c=>{c.font=font;c.fillStyle=style.color;c.textBaseline='middle';if('letterSpacing'in c)c.letterSpacing=style.letterSpacing;c.fillText(l.text,4,h/2);},w,h);
+   const map=texture(key,c=>{c.font=font;c.fillStyle=style.color;c.textBaseline='middle';if('letterSpacing'in c)c.letterSpacing=style.letterSpacing;c.fillText(l.text,-raster.left,-raster.top);},w,h);
    // Orthographic Y grows down; flip plane UV to keep canvas text upright.
-   const mesh=add(new THREE.Mesh(plane,basic(map,opacity)),parent,(l.left-a.left)/scale-origin.x-4,(l.top-a.top)/scale-origin.y-4,w,h);mesh.scale.y=-h;
+   const mesh=add(new THREE.Mesh(plane,basic(map,opacity)),parent,(l.left-a.left)/scale-origin.x+raster.left,(l.top-a.top+l.height/2)/scale-origin.y+raster.top,w,h);mesh.scale.y=-h;
+   mesh.userData.textRun=l.text;
   }
  }
  function vector(el,r,parent,origin,opacity){
@@ -236,6 +251,7 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startu
   return false;
  }
  function visit(el,parent=scene,origin={x:0,y:0},opacity=1){
+  if(el.closest('[hidden]'))return;
   if(retained.has(el))return;
   const firstMaterial=materials.length;
   const cs=getComputedStyle(el);if(cs.display==='none'||cs.visibility==='hidden')return;
@@ -280,8 +296,8 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startu
   const changedParts=[...pendingParts].filter(el=>el.isConnected);
   pendingParts.clear();partsDirty=false;
   previousGroups=new Map(groups);
-  const affected=el=>changedParts.some(part=>part===el||part.contains(el)||el.contains(part));
-  retained=new Set([...groups].filter(([el,item])=>el.isConnected&&!affected(el)&&item.version===(el.dataset.sceneVersion||'')).map(([el])=>el));
+  const affected=el=>changedParts.some(part=>part===el||part.contains(el)||el.contains(part)&&!(el.matches('.instruction-copy')&&el.closest('.journey-zone')?.dataset.instructionHeaderStable==='true'&&part.hasAttribute('data-instruction-body')));
+  retained=new Set([...groups].filter(([el,item])=>el.isConnected&&!el.closest('[hidden]')&&!affected(el)&&item.version===(el.dataset.sceneVersion||'')).map(([el])=>el));
   for(const [el]of groups)if(!retained.has(el))el.style.removeProperty('transform');
   for(const el of root.querySelectorAll('[data-orbit-index],[data-object],[data-route-next]'))if(!retained.has(el))el.style.removeProperty('transform');
   for(const host of root.children){
@@ -298,6 +314,10 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startu
   retiredMaterials.push(...materials.filter(m=>!liveMaterials.has(m)));materials=materials.filter(m=>liveMaterials.has(m));
   groups=new Map([...groups].filter(([el])=>retained.has(el)));used=new Set();
   for(const el of root.children)visit(el);
+  // A retained copy owner stops the root walk. Its newly swapped body is a
+  // separate moving owner and must still be seeded on a coincident full rebuild.
+  for(const part of changedParts)if(part.hasAttribute('data-instruction-body')&&!groups.has(part))visit(part);
+
   for(const host of sizeSnapHosts)for(const item of groups.values())if(item.el.closest('.journey-zone')===host&&item.el.hasAttribute('data-object')&&item.motion&&!item.motion.intro){
    item.motion.size.value=item.layout.size;item.motion.size.velocity=0;
    item.motion.radius.value=item.layout.radius;item.motion.radius.velocity=0;
@@ -423,12 +443,23 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startu
   },
   busy(host,includeContent=true){return !!motions.zones.get(host)?.get('open-max')?.intro||transitions.get(host)?.busy===true||includeContent&&contentTransitions.get(host)?.busy===true;},
   contentBusy(host){return contentTransitions.get(host)?.busy===true;},
+  instructionReady(instruction){
+   const copy=instruction?.querySelector('.instruction-copy'),body=copy?.querySelector('p'),item=groups.get(body)||groups.get(copy);
+   if(!instruction?.isConnected||instruction.closest('[hidden]')||!body?.textContent.trim()||!item?.group.parent)return false;
+   return item.group.children.some(mesh=>mesh.userData.textRun?.trim()&&mesh.material?.map&&mesh.material.userData.baseOpacity>0&&mesh.material.opacity>.001&&(mesh.material.userData.el===body||body.contains(mesh.material.userData.el)));
+  },
   canInterrupt(host){const t=transitions.get(host);return !t?.busy||t.local===true;},
   cancelContent,
+  joinContentTransition(host,commit){
+   const motion=contentTransitions.get(host);
+   return joinTaskContentCommit(motion,()=>{host.dataset.contentPresence='0';host.dataset.contentPhase=motion.phase;onMotion();commit();});
+  },
   transitionContent(host,commit,options){
    let motion=contentTransitions.get(host);
    if(!motion){motion=bfmVisual?new V5DeviceMorph():new TaskContentTransition();contentTransitions.set(host,motion);}
-   return motion.start(commit,reduced.matches,options);
+   const accepted=motion.start(()=>{host.dataset.contentPresence='0';host.dataset.contentPhase=motion.phase;onMotion();commit();},reduced.matches,options);
+   if(accepted&&!motion.busy){host.dataset.contentPresence=String(motion.value);host.dataset.contentPhase=motion.phase;}
+   return accepted;
   },
   cancelInstruction(el){instructionMotions.delete(el);},
   resizeInstruction(el,before){
@@ -582,7 +613,9 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startu
      moving=true;
     }else if(el.matches('[data-task-content]')){
      const host=el.closest('.journey-zone'),p=Number(host.dataset.contentPresence??1);
-     dy=reduced.matches?0:(host.dataset.contentPhase==='out'?-5:7)*(1-p);
+     const copy=el.matches('.instruction-copy'),body=el.hasAttribute('data-instruction-body');
+     const stable=copy&&host.dataset.instructionHeaderStable==='true'||body&&(host.dataset.instructionBodyStable==='true'||host.dataset.instructionHeaderStable!=='true');
+     dy=reduced.matches||stable?0:(host.dataset.contentPhase==='out'?-5:7)*(1-p);
     }else if(el.matches('.field-success')){
      const p=reduced.matches?1:Math.min(1,age/.42),ease=p*p*(3-2*p)*(el.matches('.route-ready')?Number(el.closest('.journey-zone').dataset.popupPresence??1):1);
      el.dataset.popupReveal=String(ease);
@@ -599,6 +632,10 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startu
     const transform=`translate(${dx}px,${dy}px) scale(${s})`;
     if(el.style.transform!==transform){el.style.transform=transform;moving=true;}
     const r=visual||rect(el);group.position.set(r.x,r.y,0);group.scale.set(r.w/base.w,r.h/base.h,1);
+    // The copy box can flex-shrink while its shell is resizing, but its text
+    // children keep their font metrics. Follow the box's position, never stretch
+    // retained glyphs from that temporary height to the settled card height.
+    if(el.matches('.task-dialog .instruction-copy'))group.scale.set(1,1,1);
     if(el.matches('.task-dialog .instruction')){
      // Resize the SDF surface itself, never scale its text, radius or halo.
      group.scale.set(1,1,1);
@@ -632,14 +669,16 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startu
     }
     if(m.uniforms?.scanProgress)m.uniforms.scanProgress.value=Number(el.closest('[data-palm]')?.dataset.progress||0);
     const retained=host?.dataset.uiRetained&&el.closest('[data-object]')?.dataset.object===host.dataset.uiRetained;
-    let presence=retained?1:Number(host?.dataset.uiPresence??1);
+    let presence=el?.closest('[hidden]')?0:retained?1:Number(host?.dataset.uiPresence??1);
     if(el?.closest('.context-popup,.picker'))presence*=Number(host?.dataset.popupPresence??1);
     const routePhone=el?.closest('.route-phone');
     // Nested content/button groups are scene siblings, so inherit the world
     // phone's presence explicitly. Its own surface already uses that fade.
     if(routePhone&&el.closest(movingSelector)!==routePhone)presence*=Number(routePhone.dataset.pathPresence??1);
     presence*=objectContextPresence(el);
-    presence*=taskContentPresence(el);
+    const instructionCopy=el?.closest('.instruction-copy'),instructionBody=el?.closest('[data-instruction-body]');
+    const retainedInstruction=instructionCopy&&(instructionBody?host?.dataset.instructionBodyStable==='true':host?.dataset.instructionHeaderStable==='true');
+    presence*=retainedInstruction?1:taskContentPresence(el);
     presence*=Number(el?.closest('.field-success')?.dataset.popupReveal??1);
     if(el?.closest('.phone-loading'))presence*=.78+.22*Math.sin(time*4);
     const motion=groups.get(el?.closest('[data-orbit-index],[data-object],[data-route-next]'))?.motion;
@@ -688,7 +727,7 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startu
      queueMicrotask(()=>{if(!image.isConnected)return;const message=document.createElement('p');message.className='phone-media-error';message.textContent='Кадр задания не загрузился. Перезапустите миссию.';image.replaceWith(message);pendingParts.add(phone);partsDirty=true;onMotion();});
     }
    }
-   const panes=[...root.querySelectorAll('.context-popup .instruction,.context-popup .demo-app,.field-success')].map(el=>({...rect(el),radius:parseFloat(getComputedStyle(el).borderTopLeftRadius),opacity:glassControlPresence(el,document)}));
+   const panes=[...root.querySelectorAll('.context-popup .instruction,.context-popup .demo-app,.field-success')].filter(el=>!el.closest('[hidden]')).map(el=>({...rect(el),radius:parseFloat(getComputedStyle(el).borderTopLeftRadius),opacity:glassControlPresence(el,document)}));
    contextGlass.render(renderer,scene,camera,panes,getSize());
    for(const phone of root.querySelectorAll('.route-phone[data-media-ready-key]')){
     const key=phone.dataset.sceneVersion;

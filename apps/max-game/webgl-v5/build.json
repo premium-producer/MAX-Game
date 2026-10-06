@@ -5,7 +5,56 @@
   "controller": "SharedRevealJourney",
   "scope": "BFM visual theme on original WebGL; original layout and motion; shared mission backend; isolated local v5 profile",
   "files": {
-    "app.js": "fe9aef1cb5c77a726fad30352a8e2b4e04f0badd1cb90a24123f95a35a161104",
+    "app.js": "ddf0718b9a10cbe86e3e551f9d2440c08ab0f4256d011bf7b73f792505978213",
+    "finale-player.js": "b0f4447d81a654806b931b7d3ff21cfd6e47d416385879d3def656a7868231a0",
+    "finale-player.css": "076c48366e8a186bf243d5937f32a97410045612629b6fdbabc389abb6ce5cb9",
+    "finale-videos/01.mp4": "79f61184e97006b1314bcdd97a0ed256bcc937c4f84c3043da9a04271ea891d7",
+    "finale-videos/02.mp4": "0e70443cfe011ebaa9d84f44f505a65636c7507dfd4b3d07fb690c95c183e984",
+    "finale-videos/03.mp4": "8030bf9869f1f11510fa8cf7a0a9e3d8b80a5a978065a2fe7195ca8f4a196731",
+    "finale-videos/04.mp4": "9d0b5a1494b26e88bb25bb9ea7ddead825c18f0cd5c8427fd0043f41fc00b18a",
+    "finale-videos/05.mp4": "4d99f0cef0b920f3f1620b4bb617c9df4b7ed0ad2f84d43f2054f9085b9e4eac",
+    "finale-videos/06.mp4": "6cb2e6f12acf126b64fee3bb135dc629b163cf8c06cf12f4bdd3f4a10d1ece0a",
+    "finale-videos/07.mp4": "52472b5d3ef9018cb187285fa199c89a72420fa0eff1a58f6fd9a72d22ef0972",
+    "finale-videos/08.mp4": "0a5a2f606b629023a73b8d779afe188b888d9c2e6388ed9d64968e4bf472c40c",
+    "finale-videos/09.mp4": "85e4685476a11ddbad9c9417192e7530f04ac7b321a9624c5ae1f9922588b414",
+    "finale-videos/10.mp4": "a21b7435148913f2a7aafaa714473401f6afb7be492021d5c2b75eca4a84f958",
+    "finale-videos/11.mp4": "680ff622c07389ab76255b55d2871e94c12ea7b48db13836230748ea20429f1d",
+    "finale-videos/manifest.json": "2b6c8a7321b5cbabad51a220c0ca510af5cbbe07ab19b3e2f21cfd0d4a65f81c",
+    "licenses/video.js.txt": "25be5c0d5db286add77f5e4d21886800cf38296f50c71fc2d582a2223312b23c",
+    "licenses/videojs-playlist.txt": "41d953499fec0b2745322ddc0ff7ab6f6f3da175c2b4803fe4634517b229f7ff",
+    "licenses/range-parser.txt": "f655e6291356ec0de7a8f0e69f294961a2cea86678ec94588be1e6a492e278ab",
+    "audio/game_ambience_loop.mp3": "801afd8d8ac9125b6ee85ee64c91f536cb1127c9d5e79c9df3f1aea8401aae2f",
+    "audio/game_ambience_loop.ogg": "105c0f7e7ce99f298ca553ee1f21518839223834809c68aa40e2f755100f14a6",
+    "audio/game_button_click_1.mp3": "bb568917cc429a313c468f421d54177f0978be8917af986e49626b7aa7992750",
+    "audio/game_button_click_1.ogg": "6b6d4b3f63a94203194de946fa0e1a8c00689ee97f0f068ce8fb60895c21ae13",
+    "audio/game_button_click_2.mp3": "fe0f4ccbbce42be49f165bca2a4b6706520b14191fa96fdd8e543daec2179b9e",
+    "audio/game_button_click_2.ogg": "e9b5a07f034842ab3501eaa0b231c316e48430cfdb9c6846a91ff7a519f23a5a",
+    "audio/game_button_click_3.mp3": "77f620cdc440cba8b2c498e33eff08c3f1b37a0fcb3e9180f0ef644ed442ff95",
+    "audio/game_button_click_3.ogg": "a4cef6a472510193b8a883dc169cb51bf95773315c99bab64c0980d6475475e6",
+    "audio/game_enengy_stream_1.mp3": "603654503a7f738b2af99525cd68fa04f295798021e99fc2ea55e0955bab3414",
+    "audio/game_enengy_stream_1.ogg": "1843f0596f6a673ab436b26ed661dbdb0fd6af953af4061e369e9efe795017ef",
+    "audio/game_enengy_stream_2.mp3": "3efdc1a9ddf96b2c1e0ae8977679dc65a27c83b33818e4d7b27291ba59378930",
+    "audio/game_enengy_stream_2.ogg": "5e0dd254b8518d931748d9e53f65f4fb1e0ca9447334e08545a6fbec903c26d6",
+    "audio/game_icons_deselect.mp3": "0ca75f721b60ba722f8f88d40787b780478d9bd34ae1cabd748a15890f93a5fb",
+    "audio/game_icons_deselect.ogg": "eac450eabe50e4d4adb6b77efc98e5413daf170236a143bc6dcf80676dde6737",
+    "audio/game_icon_grab_1.mp3": "376011df9f68bdd44ccfdfeba4f38c4d577af38b1d6ad8786166881f0a8ac9af",
+    "audio/game_icon_grab_1.ogg": "81835535a21a5467d4ddfcf41d641738d4392ca495d7b5ed8231232a3c06ef43",
+    "audio/game_icon_grab_2.mp3": "c5dc9fdc65e62d46712cd96d0735c51942d43cbac519edbff0acddbdfd44d3f0",
+    "audio/game_icon_grab_2.ogg": "62383e959b123eb0a6a0dbb7de735a5b0603c8508a6207a55e0ef1a1388d598b",
+    "audio/game_icon_hold_loop.mp3": "50ee8e5ff1e4c0535ea78f6ace3aab0c63593719d0c7de17095241a761c199f7",
+    "audio/game_icon_hold_loop.ogg": "1463ab23e2ee465c2fe02e95f4fbaaa140b0dfabe6411ad78a6f451ddab8bce5",
+    "audio/game_icon_pop.mp3": "be220e1226fc3499c55a36f09ec733cd70a9ab089892186a1ea1fd6d8c5177bb",
+    "audio/game_icon_pop.ogg": "7528c00225890a83e007b7afbef2622023afe7c211ac281c75ffadb26297e678",
+    "audio/game_phonescreen_activate.mp3": "c8f2d1a3e4e7622e8d3ef12a15bdbe155d8c006bf643e8343b92cfc830462531",
+    "audio/game_phonescreen_activate.ogg": "7c34f4aa25f2aa462d6b4f88a80defa0c4dac19979b5f2f99d73e49e19643ea1",
+    "audio/game_phonescreen_reactivate.mp3": "96e82fe16b12adf67e07a90cf879c9c1b5ebb42ce5b8f408504182ab92af5d15",
+    "audio/game_phonescreen_reactivate.ogg": "a8e45b20ac1fbfad55961a5d525bf47541f93f6ef7188a4e735d90c2373a66b6",
+    "audio/game_phone_grab_1.mp3": "a87ef5bf01e670ef462b1abbc57dbad8b550d5905c98cce11401514c0da5f5e8",
+    "audio/game_phone_grab_1.ogg": "83121cdbc3cf49efe0f8a2392a024bad9fab1a762391cf7c0cd6e1620a3bcc7f",
+    "audio/game_transition_handscreen.mp3": "3c11db007cff482409e7bf99f24f8d7c0ebd549bddada2b69f489d80c1fd96ac",
+    "audio/game_transition_handscreen.ogg": "a9a5d40b2d703028e9d9b6e2c71b8914503e49514978f2c23970a3d0faddce22",
+    "audio/game_transition_icons.mp3": "5b08846bed2e2860953b770fb548a8b14b04d0868ae946bc5d0ea61f58d42d6a",
+    "audio/game_transition_icons.ogg": "29d393d92c07c3fa9ed92e98f9f5572628a51e02bf5e61d2a7adb363db0e8e09",
     "icon-glyphs/max-icon.missing.svg": "f6452c177b13da9909da20250f17f990eb69a99af836d00181dff61ed2b091ac",
     "icon-glyphs/max-icon.bot.svg": "1ba8b5c60fe4715e391b2ecf04e1ac7a9250fd6b59c5de120c9f7695ff7f9972",
     "icon-glyphs/max-icon.story.svg": "ef88690df29271cecf04f478cdfede9ecec9e699fef7da814e19fc91c8dac3d5",
@@ -26,12 +75,12 @@
     "icon-glyphs/max-icon.restart.svg": "94bb33e300e67b4229dccfd9562e1eaf227339e8ce9f7112d23dfd8d6bb1d690",
     "icon-glyphs/manifest.json": "b0b0ec92cede8bb03d947f0e59a4e0d496c3a621ee2882ad0704b978122e1fa4",
     "backend-source.json": "71d2429e0d7dd50dda88bf7101c907c2e93978a9878639431cb99b0e2f61dbfe",
-    "annotation-source.json": "58733e65bc4d72d39011e38130c9853cc9fd475663225cfdee668e723d5245ad",
+    "annotation-source.json": "b48786a30ca872537820e41d4950b408068e8ab61c81562ab607aa4cd73734b6",
     "index.html": "70f6f92c97c05be0f8897bf83912a37077ce022179d2ef07860c9a1cd61a8bf1",
     "client.html": "811dac6ecf8ff2b8a53512d0a033599be06faa494196d34f786b7fb739d888a3",
     "client.css": "3b7a1816c2ef2a91a456a705d482124c56835ef09e9a716c37117da7da33afb8",
-    "v5.css": "e21723bf6ad884fa0560dcb519e8ed63e8bb7023751bfacc26ae857af8c05291",
-    "third-party-notices.html": "38fe9b0ae2cd82328ec6d3b2661cd66ac833770a180edb136a03be600f7fdc56",
+    "v5.css": "9ee86922fb83f76274ed9ecc94c9d38b7a5683e58e5250a803a9faf77a62a523",
+    "third-party-notices.html": "b38ba0977ab49e21791268e53203c97f664464dfde8f49bf89356c832dd88d9d",
     "journey.css": "84043200dca1248646a296eda2477ff464cd4a091aa25f348aa7a1ba180c8721",
     "journey-guided.css": "a03281b011ccfc772db966a831c54664fbdf6d893a1c5c7a0438d713f3c31350",
     "journey-guided-line.css": "dd227fa968c1826603f10a527777fce1d4cb462b67d394522430637b91900d45",
@@ -42,7 +91,7 @@
     "src/journey-v5-motion-profile.mjs": "40ca1ed5d496f8ab541720a072382017fa7aacc79fda4f30b8ffb4768cf1569d",
     "src/startup-error.mjs": "77a7cfcf1f0d35d5cc16594da5426bf9aa6b22988616ef0bc6cb600e818369a8",
     "src/journey-v5-splash.mjs": "46b514f69c8d5b2f603e19cf719f15599d58f8274b740014c4cea78e1c2851c3",
-    "src/journey-v5-ui-copy.mjs": "056a1ccaee13266567dced2c17f233c2cefdfb63c1b114982afad52af76240ae",
+    "src/journey-v5-ui-copy.mjs": "24286d10336e76e1cc8623d0e5aaefa410df25bd79a28a51d38f74c64549789b",
     "src/journey-media-assets.mjs": "af09178daad853e8a2f001bc2bf4fb096e4e5f82d865f78d921431bbd0a893c6",
     "src/journey-id.mjs": "ee643e6f5f9287fde59c0b1675ececdee8ff13cbccb5ce62d9a939bd562ceb6c",
     "src/journey-media.mjs": "cad0196e19ec8e6722c183fdc24b15f0a1ae7a404629cc6321a2ae59f6e2a501",
@@ -179,7 +228,7 @@
     "src/circle-model.mjs": "30655cc53189c50931a983f2871834ced41a78a5c0a5bc1d46ff4af41cf9dfae",
     "src/journey-transition.mjs": "d51fc3d2dd69df7d38fb788199223706d2d99dd6c99831f13b1e8cb85c70c765",
     "src/journey-reconnect.mjs": "9ed6d0d4cbbe0cfef6a996111fe553e6c36fa8c48a8aad7cb6ae2f7b439ca8ea",
-    "src/journey-popup-motion.mjs": "23f197488bf2073b05ba4e40e1b7977e4792162f9147cdcb3c07d36a06ae9849",
+    "src/journey-popup-motion.mjs": "10408fa4d4263987c8aa966685fad6ae4bce296f692ef20b2572be7a09a9d01f",
     "node_modules/maath/dist/isNativeReflectConstruct-5594d075.esm.js": "96ff18e334b190915d274942ad0bc1d31b08c8df6ff9703f55b3103b2365720c",
     "node_modules/maath/dist/matrix-baa530bf.esm.js": "242a21f92b9c9d617a57f32c44bb68cb7be827dd7ec9485aa9e527cef45e94e4",
     "node_modules/maath/dist/triangle-b62b9067.esm.js": "3172f5474cd8a09ad4042a82866eb61a68c7f7ba6ce57eb5cb9d1cf1b58d5bfd",
@@ -198,13 +247,13 @@
     "src/journey-reference-frame.mjs": "db191fbc43b3f448826fe0720079d71e54d6929828c52a20b29efb305ac34191",
     "src/journey-bfm-tile-paint.mjs": "d0258b98f5c415140364869fc62ef69fbcb16dedda98b0db4bbec7680d4c453c",
     "src/journey-bfm-device-paint.mjs": "fb9ceb220a852430989bd028164fb459c1a7f5ac924a73c7b80f6bd5aa5f6bf8",
-    "src/journey-webgl-ui.mjs": "7f06df8e907f16cee571a7b6142355b35c842d3514b133316f0177bfada23ec5",
+    "src/journey-webgl-ui.mjs": "95687eff152aaae422116f7e8386c58a8f0e8c5dbc62939a35d4e38fece3ffcc",
     "src/journey-dismiss.mjs": "b13edf920b9137318f407d1ca65a4504f1bc0481642d7d1fd003213562496704",
     "src/contracts/task-catalog.mjs": "88e419d6c730c85ea045c02a997b3860119a2c77613755a427305c6688dce566",
     "src/content/channel-catalog.mjs": "a1d15a212c2adacd4c5c2a0953f6924e64326dac6f56064c102860601e9a7395",
     "src/content/mission-assets.mjs": "12e6c7bc84f28dc79f94d557e558af761d3e2e9e4d494cd93620229166685b36",
     "src/content/mission-catalog.mjs": "c2449d339c2b556dc65f16d658b8cdb6be6a95c1464152fcf26b713b247f940c",
-    "src/reviewed-content/mission-catalog.json": "328688c4bff0a6fd0306571a78fd1e8b5d278d3b85d20724900df737bf377409",
+    "src/reviewed-content/mission-catalog.json": "f6e86c2059d5c39ed5eaef46eed03dce289a351a5fee35736fb97ab746a3edce",
     "vendor/backend-figma-v2/src/contracts/mission-command.mjs": "93c50413347e88b629107ae058e46e396c92265a0422d3a456a0d7ed0258ee1b",
     "vendor/backend-figma-v2/src/content/mission-catalog.mjs": "6fb84633ae2d2246f9d552d19f809a24399146483e64948138e01d00dca2f6fc",
     "vendor/backend-figma-v2/src/contracts/task-catalog.mjs": "88e419d6c730c85ea045c02a997b3860119a2c77613755a427305c6688dce566",
@@ -212,7 +261,7 @@
     "vendor/backend-figma-v2/src/core/game-core.mjs": "5812e6a6a2ea454c2e9c59eaff90fcf1c3369b92ab40ea6538d1a0c7c3a57c56",
     "vendor/backend-figma-v2/src/core/mission-core.mjs": "ed84ddb30e9876156b1067acd0810811b9796bc49c9de0e8cc8167c54fdc7af1",
     "vendor/backend-figma-v2/src/contracts/mission-catalog.mjs": "f907db1540a36099ce26a27b5f1bd48b666bcf4da515d0fa1c72cd0452c9f660",
-    "vendor/backend-figma-v2/src/application/mission-session.mjs": "c094a2dfdba27a6c6410731d17b5e66a1741b8cb8feecf396c11c767e4debde7",
+    "vendor/backend-figma-v2/src/application/mission-session.mjs": "8cbfb455503b3b378be558960e4826ab393ba85b0f51cb165c2a1de24ea8e690",
     "src/journey-v5-backend.mjs": "74e38dd5f07e7a5bac099bf8a550b3d58d581f42493486d5f14af4bd0fa4820f",
     "public/webgl-v5/icon-glyphs/manifest.json": "b0b0ec92cede8bb03d947f0e59a4e0d496c3a621ee2882ad0704b978122e1fa4",
     "src/journey-v5-icons.mjs": "760ecf48bac213abe1075cc9ba5c00132b8ac5decee1b1dab55756ccbe012b33",
@@ -221,19 +270,19 @@
     "src/core/game-core.mjs": "5812e6a6a2ea454c2e9c59eaff90fcf1c3369b92ab40ea6538d1a0c7c3a57c56",
     "src/core/mission-core.mjs": "bd3bd66b6a38f432244fb006c208e816f61c229907f3d1d2004c482c82f2ea2e",
     "src/contracts/mission-catalog.mjs": "f907db1540a36099ce26a27b5f1bd48b666bcf4da515d0fa1c72cd0452c9f660",
-    "src/application/mission-session.mjs": "a9b5a99cc03a8b7ec92609bdfa3d626c32abeb22d6b260132a5ae56d36c341c9",
+    "src/application/mission-session.mjs": "4d7dacf87cb46775d7637186afde5d1d3751acaa9b01d4b186943c3bccb47c3f",
     "src/application/server-session-port.mjs": "e0f286e9c7ba19560e8304e1584b5f5905a8debefdf60e067d41591ffcc773cc",
     "src/application/browser-persistence.mjs": "a898d8e77202770c14bc383aca6b49efac44220ebe8950898342b285c0fd0640",
     "node_modules/idb/build/index.js": "b6720d6ed812254ba61009ea6b3de8bbf46a4fb5c2d5b65385c7525d18f4c80b",
     "src/application/indexeddb-persistence.mjs": "f76d8372f621df97e5541dd23cd98cbc3df191d27ea788a5d5155942cb3c5167",
     "src/application/webgl-session.mjs": "59280818b1a873690811b9758e0be414fbe7fe0af62bc2d404d1260806d065bc",
     "src/journey-shared-reveal.mjs": "7f6eb010679152d5bd580bae011f26c835246af8638a5b5edc1f47560ba802b7",
-    "src/journey-shared-ui.mjs": "c75df33174b410115c0f789b0075d7c253eaff420a9bc91776a66cd9872dc84f",
+    "src/journey-shared-ui.mjs": "16322d054e9bd08941cc6e9b2f283b8df249e30fbe5a38077c3429acf6b146c5",
     "src/journey-icon-scale.mjs": "35dff320f5bb918b136ff7a501b71d21630b90eae2a02175c9da2771d9a0a1e3",
     "src/journey-reference-presentation.mjs": "771b9dce0d9e450f629263a90d5c718eb660319fd88065fd122c39868950fccc",
     "src/journey-reference-icons.mjs": "ae411d44934ed8d611df884aa852a66b01d0cd288cfe744b9d11f89149ec86c5",
     "src/journey-v5-path.mjs": "4842bb60a1a7c8b9c58bc74faee492378a07d78678a392be1ac1fcbd08965b6c",
-    "src/journey-v5-route-layout.mjs": "f21407d247a1a953f18f7569133330602920bf0fbf715bab72a4e2802a854dca",
+    "src/journey-v5-route-layout.mjs": "b0bbcbad0ed9cbca67a3983f97051096d18de2e809a463a6e3ad0a9c617dca94",
     "src/bfm-gradient-controller.mjs": "efa4f1525a9abe44a74b38ca45996b82fe6483a0c54d9a4ac79b33bcc8edece9",
     "src/bfm-play-area.mjs": "3a474d5aa8f1482d3a65d28fd266c4b14248643157c163015c706bedfb782117",
     "src/bfm-pixel-map.mjs": "0fe3140feccf63b675caee194eed984209be7ed7654a1a58709e7605df847802",
@@ -241,9 +290,59 @@
     "src/journey-v5-client.mjs": "f7df624e1857bbeec534b9a76e68d9300708f1c0ef914811ba30c51bd31b5284",
     "src/journey-v5-startup-assets.mjs": "c0c95fcff66ff1784c615be69977222878608d69fff826f5c5e071577cd4e9b7",
     "src/journey-v5-mission-continuation.mjs": "7b61e7f6a3a1e67393de47bf6bb759073db45ef5b134867e2115816c72f1d16b",
-    "src/journey-guided-main.js": "7d22c6de826ed8db498d9dc3f113c155ffb48e81b7e44eea3d3a86eab40fb735",
+    "src/journey-guided-main.js": "52047aa93f5dba5a38456aa7e694e2e21faa0013fac9fd6c033e1bef45785308",
+    "node_modules/global/window.js": "287b0f19145274cb2b29da8d4afa439720ef257ba765817961c8875bb7e6eda1",
+    "node_modules/global/document.js": "42a628e78fd4a7a1c698766e911be5024c526eb9814bdf7f2ea8b1aa5e83f794",
+    "node_modules/@babel/runtime/helpers/extends.js": "f2d5a784add32befebe6daa142fffff4f760dcb7b2b9a5a5afd715c1a38b778b",
+    "node_modules/is-function/index.js": "398a62588d48cbfd9e2f3b54d79c86612d1c822ba7b0796839db7bcbe84bc3ea",
+    "node_modules/@videojs/xhr/lib/interceptors.js": "d2d9c333b4e236e9b1aae266c623cdddfb15ec786a1bc04f2510f16b9a4db996",
+    "node_modules/@videojs/xhr/lib/retry.js": "a56883adf29bc16a671798f9ab3e8fb9765a60c9f05491b5527311fdb23c3406",
+    "node_modules/@videojs/xhr/lib/http-handler.js": "ad415d8252c9313eaa3a2479777d85523236f5218e687f4a3b4d208dd9138079",
+    "node_modules/@videojs/xhr/lib/index.js": "b560fb604ec17c9cb794baca9bef84769ffcfbdad1fed54f4cb250712a1c5e8f",
+    "node_modules/videojs-vtt.js/lib/vtt.js": "4b3460e731898b488b6495163a4ce6cc6aed4f3208e043a19b05178ca43169c0",
+    "node_modules/videojs-vtt.js/lib/vttcue.js": "27f7823b3c864d2815059ac680a4eaf90096fa9b3cc7332ecbfb38c32e3f2c07",
+    "node_modules/videojs-vtt.js/lib/vttregion.js": "8e761475c413d9d85bafd0b31151cebe49d3c3d0fe76d9c2fef8786fb06f1b2b",
+    "node_modules/videojs-vtt.js/lib/browser-index.js": "c7428530def8972267d952a9bf4e11701b65cdeab6c571e6a5e15968451783d8",
+    "node_modules/@babel/runtime/helpers/esm/extends.js": "94d2689b0907907fbb08bae35e63abb07b35ebec5cdfd06ec9bdd8db3f611f1c",
+    "node_modules/@videojs/vhs-utils/es/resolve-url.js": "4bddd78a88898fbb1cfc1fd56c63069b6f05ea414918255202c80d914867d54d",
+    "node_modules/@videojs/vhs-utils/es/stream.js": "1a016eadf56b65ef4c3dc07aa6a73c81c28e8a24f385e92766a465066d0944c0",
+    "node_modules/@videojs/vhs-utils/es/decode-b64-to-uint8-array.js": "817526b64fb158a00e0eb65291fe61a041266c14bb19a404c7d0c276e2aa291c",
+    "node_modules/m3u8-parser/dist/m3u8-parser.es.js": "e74e83f10b1b0d1c32e5224d3db2fdfefe9fc9667304f94f576d8f367130cc13",
+    "node_modules/@videojs/vhs-utils/es/codecs.js": "f59de6ed6e64f5f5929231b90c5df472647ce5c80fef3da173309edba1565747",
+    "node_modules/@videojs/vhs-utils/es/media-types.js": "c5c9ee27fd3242f1c328f1f3a177985dbf76793ab965660152d51cf3a8e2dcda",
+    "node_modules/@videojs/vhs-utils/es/byte-helpers.js": "19019bceba8b83bf11ee955aca6cb42b71a2ff89ea5beee1428250c2692f9a78",
+    "node_modules/@videojs/vhs-utils/es/media-groups.js": "0a4f2c7c01b09f5d3c6d8b8f65dd265ddae5937a9d588be9f6375f7cb45b2ea0",
+    "node_modules/@xmldom/xmldom/lib/conventions.js": "9ceee011f51db3a4581029a7dce1e9bf1fa5c37ad928b63c3625dda9a907fd55",
+    "node_modules/@xmldom/xmldom/lib/dom.js": "eae57ba1588b8c025a71cdbb31edd0a87a4d14c1cb00e19155b2cdba44f7548b",
+    "node_modules/@xmldom/xmldom/lib/entities.js": "332cda4081c610fdadc0266867ee5ed9f945c99d471ea7234ec61ba00cbf0e40",
+    "node_modules/@xmldom/xmldom/lib/sax.js": "b2592fbf6993b04576c7ffbd78d63cecdf6495ff1f7a43c2516a0482e69736e9",
+    "node_modules/@xmldom/xmldom/lib/dom-parser.js": "03915c54c4bf44cfee38807af253abaabb022c27652918e8a233fae2d92fe1d2",
+    "node_modules/@xmldom/xmldom/lib/index.js": "9deb4e9d6d730a51c1c2b05238f8684d01e87f72b9861ba2adcad537ffc56586",
+    "node_modules/mpd-parser/dist/mpd-parser.es.js": "65574d62154cc1d5cfa15231a583ccffecf374e36069f10e0ee9bd1720850d46",
+    "node_modules/mux.js/lib/utils/numbers.js": "466dd3c923cc82e20c13b3caa7cf1e915ca70bde533c7c1ed27d8aecf377ca63",
+    "node_modules/mux.js/lib/tools/parse-sidx.js": "717e11f9098fa1f3b8e91396fcfa74663866221e173594c4d9ae3f2b734900bf",
+    "node_modules/@videojs/vhs-utils/es/id3-helpers.js": "ec76474cb766330dc71eff233f37fc81d08dd319d03afbd2ea464125f21bec39",
+    "node_modules/@videojs/vhs-utils/es/codec-helpers.js": "4881561e8a1ff503464336f0ba7cce78396d9970c4e7bbadcca42f91b3643034",
+    "node_modules/@videojs/vhs-utils/es/opus-helpers.js": "c7b6e495532e3e412298cf5d29456461ffb0f978d63125876f57e3736ba9f78e",
+    "node_modules/@videojs/vhs-utils/es/mp4-helpers.js": "28b4e4829dcf32d908942adfabcbdbacbd6cae151806edf3c1d563a64f4e30ac",
+    "node_modules/@videojs/vhs-utils/es/ebml-helpers.js": "732af6b5dcc857d73bb22a2c71ec96b1885efcd2e03d7164c48cebc7e5afa453",
+    "node_modules/@videojs/vhs-utils/es/nal-helpers.js": "432f79368dd8850edbe31a5b3c172972a35c4087d906676dbc97962f8f7e7db1",
+    "node_modules/@videojs/vhs-utils/es/containers.js": "fe74a7d53da2d08e76fb005ad655ad9b224366102282b60af57413df24f48707",
+    "node_modules/mux.js/lib/utils/clock.js": "1f48509e1c4136d4062db67bf9505df6fe1b671e49dff6f3786b8179ad87503f",
+    "node_modules/video.js/dist/video.es.js": "855ef4f1f80f9f131eb7beaf4cae3cd57485ebb6af487c3d2d9cd53d122e0442",
+    "node_modules/videojs-playlist/dist/videojs-playlist.es.js": "38b342f4b87cdfb3f87eb404df5e8b87cb6d3130ca943c297082e05f02d4341a",
+    "src/journey-v5-finale-player.mjs": "c98db8110ef3ab98c75f631680600504f63ce446fc9744ecf0f50f5bbe4c05b7",
+    "node_modules/range-parser/index.js": "38786526d000475300728db07455aa21d1e37b0f24e48fbc4cb30136ae30b07b",
+    "start.mjs": "337498cab7e7c18eb03be627b5694c4b8cd82b5ba37cea5959c63b065768115c",
+    "scripts/apply-reviewed-assets.mjs": "25f73c1f6a0a05ecd976f49e142e8f055929b5d05cdadee0178eabdb0e09fbc0",
+    "scripts/apply-reviewed-presentation.mjs": "b340e3b0a6f5b07fff191361acaeb8511f8922ea36e4486a2512a2ad6401d1ca",
+    "scripts/prepare-reviewed-svg.mjs": "d2a90a2b1cc024488856f7ac0b446b27cf3a7e8922aafcd8b4ecca51db78a091",
+    "src/reviewed-content/presentation-overrides.json": "30f61015ff237dbbf6293f6a72dc2e92987b0d363e2995580fd57efd15a1f2e6",
+    "src/reviewed-content/asset-replacements.json": "a63bf9e5e5e1a73e2da11376830891c15560f4033216f3644a75d1c92148c273",
+    "package.json": "24d828344b1bb61dd171f8d5519401ea383a91b6716c347db2ac0059f4b96dd1",
+    "package-lock.json": "806343eeec017f9ff459aa57fee839382b6fee14494d6166587afacbf69a1fff",
     "scripts/apply-asset-annotations.mjs": "d36524e238471fc71c64ad50d12693194ff7b8461fe346df477534fbdf68d785",
-    "scripts/apply-asset-flow.mjs": "c659ae40e6db65303c60cd102bdef581ae33a24c571e2d28504e12b288313675",
+    "scripts/apply-asset-flow.mjs": "718f8b1304a0174c83b59c1db7d9912226bdc68e8f75b50435b2a1dee5dd3c75",
     "src/asset-audit/flow-document.mjs": "7f1988d1bb20951cedd4f607ca728476b62ad67ab130e8420718f258716d5519",
     "src/asset-audit/model.mjs": "e68c783e2e992bf2880f5cd77074b6a1ccc58322de48a5405fff585d696ee7be",
     "src/reviewed-content/flow.json": "06cdec0e64dd518230e8439e2092c282f24d73d4ee741005e4710318d8609b08",
@@ -261,11 +360,11 @@
     "assets/figma-20261003/296-13504.png": "7c02bea4a6b12e396e17ba60f132f73c15b3e6613f86580ed7956a3c7ce6f609",
     "assets/figma-20261003/296-13512.png": "fd749330049e2f0643ebbd9239a47ad3929b34d56121d41b9e1230a1349925a4",
     "assets/figma-20261003/296-13522.png": "fd749330049e2f0643ebbd9239a47ad3929b34d56121d41b9e1230a1349925a4",
-    "assets/figma-20261003/296-13537.png": "44b1051bb1d116a0a2cbfb93c52250abcd9aa73e025fac9a4c4f2e21e78007f9",
-    "assets/figma-20261003/296-13546.png": "2e97c4bc2cf5d3b5c3e029332edc72c8a3d7db87ff25355bb6cc50b511e876b7",
-    "assets/figma-20261003/296-13555.png": "4e8d761b767ec7d5e776c75d72cdea1c3f4853455f9fdb045ee3ecbb766c0993",
-    "assets/figma-20261003/296-13564.png": "37ff70d901fed87b89c7ef57f0e5c924f83d420a832c741140e16ff658a3e5c0",
-    "assets/figma-20261003/296-13573.png": "37ff70d901fed87b89c7ef57f0e5c924f83d420a832c741140e16ff658a3e5c0",
+    "assets/reviewed-20261007/comments-post-71b2e32b2ea8.svg": "71b2e32b2ea81672cc8f32d9a1ca06ee2f20d4052f271583283e205ccc2d4ebc",
+    "assets/reviewed-20261007/comments-input-3ac21a0a4533.svg": "3ac21a0a4533190436eaa975b92f0eb4d220cdb338a05d062fe623da9f7dbca2",
+    "assets/reviewed-20261007/comments-reply-ddb90b591051.svg": "ddb90b591051279ef2b2b81cb3b16e3e484557a61485a9b702fbb246de31b9aa",
+    "assets/reviewed-20261007/comments-sent-f75840fda3da.svg": "f75840fda3daa0173f3ed97bdcfec9046da878e9eb1be095d69752934eeb5f9d",
+    "assets/reviewed-20261007/comments-result-0007cda60a4b.svg": "0007cda60a4b35f8b0f727434b5215bdb161628694da8130090e44af107383f8",
     "assets/figma-20261003/296-13587.png": "62745764375b1089f2b5b9c4feefcfec308960b97fd40e53e8fba4a89e8019c9",
     "assets/figma-20261003/296-13597.png": "523471418755edba113178ac6ee3c90009bf53d4f9e7eea37214e32156309b1d",
     "assets/figma-20261003/296-13807.png": "636ff05cc0095b4842ea7dd4b540010ccf00975a44a60ec6f394e883b21fb6c9",
@@ -274,7 +373,7 @@
     "assets/figma-20261003/296-14904.png": "d34bf484b2d62d39dcb3d595f5d1e485199dcd8591b3e7748098125f9bbda7a7",
     "assets/figma-20261003/296-14945.png": "1771f7067973cbc6baaa07a5de31ca1d8f75f4cde45a095f3adf943b4ec1ab8b",
     "assets/figma-20261003/296-15108.png": "831f81a61dbedc73088deb690c7ddcf1b4cb60f246aec4a62f523178f804b5bd",
-    "assets/figma-20261003/296-15260.png": "06a0122d1346a203b9b2bedff01220fc60248f5ba97c72fae048da14f599c137",
+    "assets/reviewed-20261007/digital-id-home-photo-e61ae178507b.svg": "e61ae178507bf56f76a1a328ef84fbd22344e74a195d5a71cf27de54fa9e6e14",
     "assets/figma-20261003/296-15686.png": "8ace0a1367998c489b888937300ebb700d64646bbd0162686f1f50b7125224c4",
     "assets/figma-20261003/296-15696.png": "0091ac547170ffe16252212f978795d1a061c7095c9a8d8554cb34a1b2ae39af",
     "assets/figma-20261003/296-15706.png": "0091ac547170ffe16252212f978795d1a061c7095c9a8d8554cb34a1b2ae39af",
@@ -310,7 +409,7 @@
     "assets/figma-20261003/296-16433.png": "10fc2138d15923502a6d8ce3b77dc885c4c038cd52b72be3b4b95e7224abc744",
     "assets/figma-20261003/296-16657.png": "8ec1e22c39deabc9f2c411b3b63e369231526f73f5b68b4eb19f759f44660acf",
     "assets/figma-20261003/296-16744.png": "2f3a8875d7b7af13cf52ed6a82b9574813c39812142d2b2a9caa08125aef7f1f",
-    "assets/figma-20261003/296-16939.png": "3f2ffafebff146f1823d952a87f60b27cb6a0ea9d17b82a9ae1b77ae20b8846c",
+    "assets/reviewed-20261004/business-platform-verification-98d2a4483c08.svg": "98d2a4483c086caba7159b8497349f5d1b8c58f8aeebf511b842a380f0673274",
     "assets/figma-20261003/296-17134.png": "ced8b2bb401a5e39c9ea3c2e057595802e19ab7b6614fcce144a1a6dccb9fd09",
     "assets/figma-20261003/296-17148.png": "1b7c2375e4ce8bc4b82075008a8f5aee3757b2c3e2aca58ff1465709384242c3",
     "assets/figma-20261003/296-17351.png": "5db6890f2c6fff9e0e15bb29f8679a653a7cdcc3f4c6eaa6e0a62697a1d18387",
@@ -322,7 +421,7 @@
     "assets/figma-20261003/296-17863.png": "28cba128b48215ded74080c72cf4bfe33c3a55ee5d977ef7b56028e63be97750",
     "assets/figma-20261003/296-17887.png": "47f0bfa1c1d1082d0983b79bb9831dc0214e20055261ac0993756d91d2d39bbd",
     "assets/figma-20261003/296-17912.png": "8b350f1200ece39e569172fa3d4fc4a07fd95852db7e3440f2ca8ec49e3e5f5d",
-    "assets/figma-20261003/296-18120.png": "a879b4cda8fb9ce193e2a8b06030db4ff83055a442c1784bf493b7c0e1c9ecec",
+    "assets/reviewed-20261007/business-channel-posts-79f5b66ea857.svg": "79f5b66ea857f9924d2da5d0da57e4f17a50adea6409de0fba49f3bb1d224772",
     "assets/figma-20261003/296-18558.png": "5db6890f2c6fff9e0e15bb29f8679a653a7cdcc3f4c6eaa6e0a62697a1d18387",
     "assets/figma-20261003/296-18787.png": "966f3a08827ed762d26164c5fd4c23d689c29ada2d836bc3ff2412d3062541a9",
     "assets/figma-20261003/296-18799.png": "60c2dc36e76720a497b316e6be573ac13a0b481ffd0c9026efc8994350b59d5a",
@@ -332,9 +431,8 @@
     "assets/figma-20261003/296-19495.png": "5db6890f2c6fff9e0e15bb29f8679a653a7cdcc3f4c6eaa6e0a62697a1d18387",
     "assets/figma-20261003/296-19723.png": "3951bb4ab1d2ba07ebf2a6a08e20ece6873fb6d752a9bc1548332784efd158a2",
     "assets/figma-20261003/296-19730.png": "66844d5bbd5f3a6c64ad921d1469558909e29cc8e396fd0b327432aa9ab92863",
-    "assets/figma-20261003/296-19737.png": "deebd5a01109a87caf36d8c50b739eddfb42763b8372c333072c49d9a87e06b1",
-    "assets/figma-20261003/296-19936.png": "b66dbe87abdc3361f06b8c22c611a97e32fd058860e74dfa152e43ee69bbbc36",
-    "assets/presentation/max-site-qr.png": "d1e47b2e0647ecb963fd83a24fca23968f4fcd4bb72d9eb95cb1dd51966695e8",
+    "assets/reviewed-20261004/business-store-ready-298f3dc198d9.png": "298f3dc198d94e20964a17642dec15f6fdf03d3c3ed897d8b8cd008003483954",
+    "assets/reviewed-20261007/max-logo-qr-f3c691313875.svg": "f3c6913138753c69cf25c2a05fab25d492b7308afb024b043344c23431a3de91",
     "assets/max-icons/missing.svg": "0ecb676b09c0d73b512d788ca80779de74841ab5dbab7cb23d5ecff08bf31384",
     "assets/max-icons/bot.svg": "386c6b6f5c124215168098a7c6c8514f580d9ba66a1cf23f126f9c112c006939",
     "assets/max-icons/story.svg": "cffa374a8b711c8fede39f1113bbfc98ac3b7b046e5ea9c10a523238b5921bf0",
@@ -352,7 +450,8 @@
     "assets/max-icons/benefit.svg": "cb0f7bb4b04d188b5a2acceb0cc7e6715445e839ff11247697ce4a3625d289c7",
     "assets/max-icons/age.svg": "50dce53f9be72c493c2015471054cb3f472fc8288ffd20d6a07df06b9488ad30",
     "assets/max-icons/scan.svg": "fc38905740843d47acad7abb34a89fd52272cb679115ec557057777b43ebbaa1",
-    "assets/max-icons/restart.svg": "3f3ccacabd45aa9aa47212f99157553b998ed95ee30b0bc301685297f725ab23"
+    "assets/max-icons/restart.svg": "3f3ccacabd45aa9aa47212f99157553b998ed95ee30b0bc301685297f725ab23",
+    "assets/reviewed-20261007/max-logo-qr-faa6982ad913.png": "faa6982ad91341abac5aef806ed13b63dddddbb234c3a1dea144c0caa0b839f6"
   },
   "backend": {
     "revision": "missions-reviewed-20261003-abe878cfed89",
@@ -441,17 +540,437 @@
         }
       ],
       "adapter": "manual-source-actions-v1",
-      "activeInteractions": 75
+      "activeInteractions": 75,
+      "assetReplacements": [
+        {
+          "taskId": "business.platform",
+          "screenId": "business.platform.verification",
+          "previousSha256": "3f2ffafebff146f1823d952a87f60b27cb6a0ea9d17b82a9ae1b77ae20b8846c",
+          "asset": {
+            "path": "assets/reviewed-20261004/business-platform-verification-98d2a4483c08.svg",
+            "mimeType": "image/svg+xml",
+            "width": 880,
+            "height": 550,
+            "sha256": "98d2a4483c086caba7159b8497349f5d1b8c58f8aeebf511b842a380f0673274",
+            "origin": {
+              "kind": "user-supplied-replacement",
+              "sourcePath": "Frame 2087330781.svg",
+              "date": "2026-10-04"
+            }
+          }
+        },
+        {
+          "taskId": "business.store",
+          "screenId": "business.store.ready",
+          "assetId": "figma.296-19737",
+          "previousSha256": "deebd5a01109a87caf36d8c50b739eddfb42763b8372c333072c49d9a87e06b1",
+          "asset": {
+            "path": "assets/reviewed-20261004/business-store-ready-298f3dc198d9.png",
+            "mimeType": "image/png",
+            "width": 1567,
+            "height": 1004,
+            "sha256": "298f3dc198d94e20964a17642dec15f6fdf03d3c3ed897d8b8cd008003483954",
+            "origin": {
+              "kind": "generated-image-edit",
+              "date": "2026-10-04",
+              "sourcePath": "296-19737.png",
+              "tool": "built-in image_gen",
+              "note": "Fill coffee product placeholders; screen remains disabled per reviewed flow"
+            }
+          }
+        },
+        {
+          "taskId": "business.store",
+          "screenId": "business.store.result",
+          "assetId": "figma.296-19936",
+          "previousSha256": "b66dbe87abdc3361f06b8c22c611a97e32fd058860e74dfa152e43ee69bbbc36",
+          "asset": {
+            "path": "assets/reviewed-20261004/business-store-ready-298f3dc198d9.png",
+            "mimeType": "image/png",
+            "width": 1567,
+            "height": 1004,
+            "sha256": "298f3dc198d94e20964a17642dec15f6fdf03d3c3ed897d8b8cd008003483954",
+            "origin": {
+              "kind": "generated-image-edit",
+              "date": "2026-10-04",
+              "sourcePath": "296-19737.png",
+              "tool": "built-in image_gen",
+              "note": "User approved use in active gameplay storefront instead of blank original"
+            }
+          }
+        },
+        {
+          "taskId": "blogger.comments",
+          "screenId": "blogger.comments.post",
+          "assetId": "figma.296-13537",
+          "previousSha256": "44b1051bb1d116a0a2cbfb93c52250abcd9aa73e025fac9a4c4f2e21e78007f9",
+          "asset": {
+            "path": "assets/reviewed-20261007/comments-post-71b2e32b2ea8.svg",
+            "mimeType": "image/svg+xml",
+            "width": 360,
+            "height": 800,
+            "sha256": "71b2e32b2ea81672cc8f32d9a1ca06ee2f20d4052f271583283e205ccc2d4ebc",
+            "origin": {
+              "kind": "user-supplied-replacement",
+              "sourcePath": "Комментарии.svg",
+              "date": "2026-10-07",
+              "note": "Channel post before replying, one comment; real embedded photo",
+              "sourceSha256": "ba47854982bbecd7d05d344a97b7996af1f3ebaa8aca38a774797e022a5d03f5",
+              "preparation": {
+                "kind": "canvas-safe-svg",
+                "removedBlurCount": 1,
+                "convertedConicCount": 0,
+                "gradientTextureSize": null,
+                "method": "Remove only empty backdrop-blur HTML; replace approved conic HTML paints with deterministic embedded PNG, preserving all enclosing SVG geometry and other XML bytes"
+              },
+              "sourceAssetPath": "assets/reviewed-20261007/comments-post-ba47854982bb.svg"
+            }
+          }
+        },
+        {
+          "taskId": "blogger.comments",
+          "screenId": "blogger.comments.input",
+          "assetId": "figma.296-13546",
+          "previousSha256": "2e97c4bc2cf5d3b5c3e029332edc72c8a3d7db87ff25355bb6cc50b511e876b7",
+          "asset": {
+            "path": "assets/reviewed-20261007/comments-input-3ac21a0a4533.svg",
+            "mimeType": "image/svg+xml",
+            "width": 360,
+            "height": 800,
+            "sha256": "3ac21a0a4533190436eaa975b92f0eb4d220cdb338a05d062fe623da9f7dbca2",
+            "origin": {
+              "kind": "user-supplied-replacement",
+              "sourcePath": "Комментарии-3.svg",
+              "date": "2026-10-07",
+              "note": "Discussion with empty reply keyboard",
+              "sourceSha256": "f447114a7431216c481a7982dbe1d4e1faf677a8c351563eacce3a43c2c7121a",
+              "preparation": {
+                "kind": "canvas-safe-svg",
+                "removedBlurCount": 2,
+                "convertedConicCount": 0,
+                "gradientTextureSize": null,
+                "method": "Remove only empty backdrop-blur HTML; replace approved conic HTML paints with deterministic embedded PNG, preserving all enclosing SVG geometry and other XML bytes"
+              },
+              "sourceAssetPath": "assets/reviewed-20261007/comments-input-f447114a7431.svg"
+            }
+          }
+        },
+        {
+          "taskId": "blogger.comments",
+          "screenId": "blogger.comments.reply",
+          "assetId": "figma.296-13555",
+          "previousSha256": "4e8d761b767ec7d5e776c75d72cdea1c3f4853455f9fdb045ee3ecbb766c0993",
+          "asset": {
+            "path": "assets/reviewed-20261007/comments-reply-ddb90b591051.svg",
+            "mimeType": "image/svg+xml",
+            "width": 360,
+            "height": 800,
+            "sha256": "ddb90b591051279ef2b2b81cb3b16e3e484557a61485a9b702fbb246de31b9aa",
+            "origin": {
+              "kind": "user-supplied-replacement",
+              "sourcePath": "Комментарии-4.svg",
+              "date": "2026-10-07",
+              "note": "Discussion with prepared answer and send control",
+              "sourceSha256": "b90a01c771f51752e5b9db9767e765fe60df47570537e88851be7835629423ba",
+              "preparation": {
+                "kind": "canvas-safe-svg",
+                "removedBlurCount": 2,
+                "convertedConicCount": 0,
+                "gradientTextureSize": null,
+                "method": "Remove only empty backdrop-blur HTML; replace approved conic HTML paints with deterministic embedded PNG, preserving all enclosing SVG geometry and other XML bytes"
+              },
+              "sourceAssetPath": "assets/reviewed-20261007/comments-reply-b90a01c771f5.svg"
+            }
+          }
+        },
+        {
+          "taskId": "blogger.comments",
+          "screenId": "blogger.comments.sent",
+          "assetId": "figma.296-13564",
+          "previousSha256": "37ff70d901fed87b89c7ef57f0e5c924f83d420a832c741140e16ff658a3e5c0",
+          "asset": {
+            "path": "assets/reviewed-20261007/comments-sent-f75840fda3da.svg",
+            "mimeType": "image/svg+xml",
+            "width": 360,
+            "height": 800,
+            "sha256": "f75840fda3daa0173f3ed97bdcfec9046da878e9eb1be095d69752934eeb5f9d",
+            "origin": {
+              "kind": "user-supplied-replacement",
+              "sourcePath": "Комментарии-2.svg",
+              "date": "2026-10-07",
+              "note": "Discussion after sending reply; source screen remains disabled",
+              "sourceSha256": "8079de3838e84d0a855536845579341c2317ec1962ce6c7e056a5de70bc91041",
+              "preparation": {
+                "kind": "canvas-safe-svg",
+                "removedBlurCount": 2,
+                "convertedConicCount": 0,
+                "gradientTextureSize": null,
+                "method": "Remove only empty backdrop-blur HTML; replace approved conic HTML paints with deterministic embedded PNG, preserving all enclosing SVG geometry and other XML bytes"
+              },
+              "sourceAssetPath": "assets/reviewed-20261007/comments-sent-8079de3838e8.svg"
+            }
+          }
+        },
+        {
+          "taskId": "blogger.comments",
+          "screenId": "blogger.comments.result",
+          "assetId": "figma.296-13573",
+          "previousSha256": "37ff70d901fed87b89c7ef57f0e5c924f83d420a832c741140e16ff658a3e5c0",
+          "asset": {
+            "path": "assets/reviewed-20261007/comments-result-0007cda60a4b.svg",
+            "mimeType": "image/svg+xml",
+            "width": 360,
+            "height": 800,
+            "sha256": "0007cda60a4b35f8b0f727434b5215bdb161628694da8130090e44af107383f8",
+            "origin": {
+              "kind": "user-supplied-replacement",
+              "sourcePath": "Комментарии-1.svg",
+              "date": "2026-10-07",
+              "note": "Channel post after replying, two comments; real embedded photo",
+              "sourceSha256": "212b866257d08d0c2a720ed0369b1336f877d902cdb49209f1af17341369fa73",
+              "preparation": {
+                "kind": "canvas-safe-svg",
+                "removedBlurCount": 1,
+                "convertedConicCount": 0,
+                "gradientTextureSize": null,
+                "method": "Remove only empty backdrop-blur HTML; replace approved conic HTML paints with deterministic embedded PNG, preserving all enclosing SVG geometry and other XML bytes"
+              },
+              "sourceAssetPath": "assets/reviewed-20261007/comments-result-212b866257d0.svg"
+            }
+          }
+        },
+        {
+          "assetId": "official.digital-id-qr",
+          "previousSha256": null,
+          "asset": {
+            "path": "assets/reviewed-20261007/max-logo-qr-f3c691313875.svg",
+            "mimeType": "image/svg+xml",
+            "width": 250,
+            "height": 250,
+            "sha256": "f3c6913138753c69cf25c2a05fab25d492b7308afb024b043344c23431a3de91",
+            "origin": {
+              "kind": "user-supplied-replacement",
+              "sourcePath": "logo/qr91323459.svg",
+              "date": "2026-10-07",
+              "note": "Supplied completion QR with embedded central MAX logo; both SVG and PNG independently decoded as https://max.ru/",
+              "decodedUrl": "https://max.ru/"
+            }
+          }
+        },
+        {
+          "assetId": "official.digital-id-qr-png",
+          "previousSha256": null,
+          "asset": {
+            "path": "assets/reviewed-20261007/max-logo-qr-faa6982ad913.png",
+            "mimeType": "image/png",
+            "width": 625,
+            "height": 625,
+            "sha256": "faa6982ad91341abac5aef806ed13b63dddddbb234c3a1dea144c0caa0b839f6",
+            "origin": {
+              "kind": "user-supplied-replacement",
+              "sourcePath": "logo/qr91323463.png",
+              "date": "2026-10-07",
+              "note": "Supplied completion QR with embedded central MAX logo; both SVG and PNG independently decoded as https://max.ru/",
+              "decodedUrl": "https://max.ru/"
+            }
+          }
+        },
+        {
+          "taskId": "business.channel",
+          "screenId": "business.channel.result",
+          "assetId": "figma.296-18120",
+          "previousSha256": "a879b4cda8fb9ce193e2a8b06030db4ff83055a442c1784bf493b7c0e1c9ecec",
+          "asset": {
+            "path": "assets/reviewed-20261007/business-channel-posts-79f5b66ea857.svg",
+            "mimeType": "image/svg+xml",
+            "width": 1742,
+            "height": 1162,
+            "sha256": "79f5b66ea857f9924d2da5d0da57e4f17a50adea6409de0fba49f3bb1d224772",
+            "origin": {
+              "kind": "reviewed-original-svg",
+              "sourcePath": "artifacts/DESIGN/figma-exports/2026-10-03_15-19-16/04-Продвижение-бизнеса/03-Канал/010-Экран/screen.svg",
+              "sourceSha256": "c0a557bd4669c645e6be5eb4e090e861356e0fb253745d91cbeab7f11ec6d750",
+              "date": "2026-10-07",
+              "note": "Only two phone post photo areas filled from original SVG image2/image3; accepted PNG composite is preserved under the new SVG masks",
+              "basePngSha256": "a879b4cda8fb9ce193e2a8b06030db4ff83055a442c1784bf493b7c0e1c9ecec",
+              "maskPixels": [
+                40704,
+                93690
+              ]
+            }
+          }
+        },
+        {
+          "kind": "mission-qr",
+          "assetId": "official.max-qr",
+          "previousSha256": "d1e47b2e0647ecb963fd83a24fca23968f4fcd4bb72d9eb95cb1dd51966695e8",
+          "asset": {
+            "path": "assets/reviewed-20261007/max-logo-qr-f3c691313875.svg",
+            "mimeType": "image/svg+xml",
+            "width": 250,
+            "height": 250,
+            "sha256": "f3c6913138753c69cf25c2a05fab25d492b7308afb024b043344c23431a3de91",
+            "origin": {
+              "kind": "user-supplied-replacement",
+              "sourcePath": "logo/qr91323459.svg",
+              "date": "2026-10-07",
+              "note": "Supplied completion QR with embedded central MAX logo; both SVG and PNG independently decoded as https://max.ru/",
+              "decodedUrl": "https://max.ru/"
+            }
+          }
+        },
+        {
+          "assetId": "official.max-qr-png",
+          "previousSha256": null,
+          "asset": {
+            "path": "assets/reviewed-20261007/max-logo-qr-faa6982ad913.png",
+            "mimeType": "image/png",
+            "width": 625,
+            "height": 625,
+            "sha256": "faa6982ad91341abac5aef806ed13b63dddddbb234c3a1dea144c0caa0b839f6",
+            "origin": {
+              "kind": "user-supplied-replacement",
+              "sourcePath": "logo/qr91323463.png",
+              "date": "2026-10-07",
+              "note": "Supplied completion QR with embedded central MAX logo; both SVG and PNG independently decoded as https://max.ru/",
+              "decodedUrl": "https://max.ru/"
+            }
+          }
+        },
+        {
+          "taskId": "digital-id.create-id",
+          "screenId": "digital-id.create-id.ready",
+          "assetId": "figma.296-15260",
+          "previousSha256": "06a0122d1346a203b9b2bedff01220fc60248f5ba97c72fae048da14f599c137",
+          "asset": {
+            "path": "assets/reviewed-20261007/digital-id-home-photo-e61ae178507b.svg",
+            "mimeType": "image/svg+xml",
+            "width": 360,
+            "height": 800,
+            "sha256": "e61ae178507bf56f76a1a328ef84fbd22344e74a195d5a71cf27de54fa9e6e14",
+            "origin": {
+              "kind": "user-supplied-replacement",
+              "sourcePath": "Главная с фото. Нет льгот.svg",
+              "date": "2026-10-07",
+              "note": "User-supplied digital-ID ready home with portrait and no-benefits state; below-screen Continue action retained",
+              "sourceSha256": "bf065e64cda162c5c5776fbfbda067a72f147c604a6f333ca486e8c6fff21d47",
+              "preparation": {
+                "kind": "canvas-safe-svg",
+                "removedBlurCount": 1,
+                "convertedConicCount": 7,
+                "gradientTextureSize": 512,
+                "method": "Remove only empty backdrop-blur HTML; replace approved conic HTML paints with deterministic embedded PNG, preserving all enclosing SVG geometry and other XML bytes"
+              },
+              "sourceAssetPath": "assets/reviewed-20261007/digital-id-home-photo-bf065e64cda1.svg"
+            }
+          }
+        }
+      ],
+      "presentationOverrides": {
+        "schemaVersion": 1,
+        "contentRevision": "missions-reviewed-20261003-abe878cfed89",
+        "tasks": {
+          "communication.message": {
+            "expectedTitle": "Голосовое / видео-сообщение",
+            "title": "Голосовое / видеосообщение"
+          }
+        },
+        "screens": {
+          "business.bot.filled": {
+            "taskId": "business.bot",
+            "expectedInstruction": "",
+            "instruction": "Заполним данные о чат-боте – логотип, название и выберем задачи, которые он будет решать"
+          },
+          "digital-id.hotel.present": {
+            "taskId": "digital-id.hotel",
+            "actions": {
+              "digital-id.hotel.present.action-1": {
+                "expectedLabel": "Заселиться через ID",
+                "label": "Заселиться с Цифровым ID"
+              }
+            }
+          },
+          "blogger.comments.post": {
+            "taskId": "blogger.comments",
+            "actions": {
+              "blogger.comments.post.action-1": {
+                "rect": [
+                  8,
+                  677,
+                  289,
+                  42
+                ]
+              }
+            }
+          },
+          "blogger.comments.input": {
+            "taskId": "blogger.comments",
+            "actions": {
+              "blogger.comments.input.action-1": {
+                "rect": [
+                  1,
+                  469,
+                  358,
+                  46
+                ]
+              }
+            }
+          },
+          "blogger.comments.reply": {
+            "taskId": "blogger.comments",
+            "actions": {
+              "blogger.comments.reply.action-1": {
+                "rect": [
+                  306,
+                  469,
+                  50,
+                  47
+                ]
+              }
+            }
+          },
+          "communication.message.voice-start": {
+            "taskId": "communication.message",
+            "expectedInstruction": "А теперь отправим сообщение! Выберем формат: голосовое сообщение или видеосообщение",
+            "instruction": "Отправим голосовое сообщение!"
+          },
+          "communication.message.voice-stop": {
+            "taskId": "communication.message",
+            "expectedInstruction": "Остановите запись, когда сообщение готово",
+            "instruction": "Приступим к записи"
+          },
+          "business.channel.publish": {
+            "taskId": "business.channel",
+            "expectedInstruction": "",
+            "instruction": "Канал создан – продолжаем делиться новостями вашего бизнеса"
+          },
+          "communication.message.voice-sent": {
+            "taskId": "communication.message",
+            "expectedInstruction": "Задание выполнено. Открываем следующую возможность.",
+            "instruction": "Голосовое сообщение отправлено!"
+          },
+          "communication.message.video-preview": {
+            "taskId": "communication.message",
+            "expectedInstruction": "Отправим голосовое сообщение в диалог",
+            "instruction": "Отправим видеосообщение в диалог"
+          }
+        },
+        "missions": {
+          "digital-id": {
+            "expectedCompletionText": "Цифровой ID создан. Заселение в отель, подтверждение льготы и возраста — все ситуации пройдены.",
+            "completionText": "Цифровой ID создан – с помощью сервиса вы заселились в отель, подтвердили льготу и возраст. Поздравляем с прохождением миссии!",
+            "qr": {
+              "assetId": "official.digital-id-qr",
+              "url": "https://max.ru/",
+              "label": "Узнать больше о возможностях MAX"
+            }
+          }
+        }
+      }
     },
-    "manifestSha256": "3bb3ab160801e867ee1d5cba76fdc9855cd7a8493f848209d029dd5c385ef574",
+    "manifestSha256": "f0bbaf3395b4fd8191f63d4d16697eaa5f87376a17529548698147b12010394e",
     "missions": 4,
     "tasks": 15,
     "screens": 70
-  },
-  "uiPatch": {
-    "id": "MAX-STARTUP-VISIBLE-GATE-20261006-R1",
-    "baselineAppSha256": "07b84f08679a42111782e4a6fd4a127bb4fa5c2aef686454b5b4f28ffb5db6a2",
-    "installed": false,
-    "sourceRoot": "artifacts/max-game"
   }
 }

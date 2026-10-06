@@ -24,6 +24,14 @@ export class InstructionMotion {
 // Only copy/options leave; the glass shells and field remain present throughout.
 // Quintic easing has zero velocity/acceleration at the invisible content swap.
 const ease=t=>t*t*t*(t*(t*6-15)+10);
+// The phone and instruction share the renderer's existing content clock. Join
+// its invisible swap instead of publishing new copy before the old copy fades.
+export function joinTaskContentCommit(motion,commit){
+ if(!motion?.busy)return false;
+ if(motion.value===0&&['ready','in'].includes(motion.phase)){commit();return true;}
+ if(!['out','resize'].includes(motion.phase)||typeof motion.commit!=='function')return false;
+ const previous=motion.commit;motion.commit=()=>{previous();commit();};return true;
+}
 export class TaskContentTransition {
  constructor(){this.phase='idle';this.value=1;this.elapsed=0;this.commit=null;}
  get busy(){return this.phase!=='idle';}
@@ -37,7 +45,7 @@ export class TaskContentTransition {
  }
  start(commit,reduced=false){
   if(this.busy)return false;
-  if(reduced){commit();return true;}
+  if(reduced){this.value=0;try{commit();}finally{this.value=1;}return true;}
   this.phase='out';this.elapsed=0;this.commit=commit;return true;
  }
  tick(dt){

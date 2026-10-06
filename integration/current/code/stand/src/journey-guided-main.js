@@ -1,4 +1,4 @@
-import {v5CopyMarkup,installV5CopyStyles,syncV5InstructionVisibility} from './journey-v5-ui-copy.mjs';
+import {v5CopyMarkup,v5ButtonMarkup,installV5CopyStyles,syncV5InstructionVisibility} from './journey-v5-ui-copy.mjs';
 import {touchContains,touchPick,touchEligible,touchBounds} from './journey-v5-touch-area.mjs';
 import {createV5AutomaticCatalog,V5AutoplayPresentation} from './journey-v5-autoplay.mjs';
 import {synchronizeManagedAutoplay} from './journey-v5-managed-autoplay.mjs';
@@ -42,7 +42,7 @@ import {createBrowserPersistence} from './application/browser-persistence.mjs';
 import {createIndexedDBPersistence} from './application/indexeddb-persistence.mjs';
 import {createWebGLSession,WEBGL_SHARED_KEY} from './application/webgl-session.mjs';
 import {SharedRevealJourney,sharedRevealContent} from './journey-shared-reveal.mjs';
-import {sharedTaskMarkup,sharedAssetUrl,warmSharedAssets} from './journey-shared-ui.mjs';
+import {sharedTaskMarkup,sharedInstructionBody,sharedInstructionRetention,sharedAssetUrl,warmSharedAssets} from './journey-shared-ui.mjs';
 import {guidedIconGeometry,GUIDED_ICON_SIZE} from './journey-icon-scale.mjs';
 import {ReferenceRevealJourney,REFERENCE_UI} from './journey-reference-presentation.mjs';
 import {referenceIcons} from './journey-reference-icons.mjs';
@@ -94,12 +94,12 @@ let phoneLoadingAge=0;
 // An explicit, ephemeral visual-review fixture. Never reads/writes player progress.
 const reviewMission=new URLSearchParams(location.search).get('review');
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const button=(label,attr='',cls='')=>`<button class="pill ${cls}" ${attr}>${v5CopyMarkup(label)}</button>`;
+const button=(label,attr='',cls='')=>`<button class="pill ${cls}" ${attr}>${v5ButtonMarkup(label)}</button>`;
 const palmCopy=bfmVisual?'Открой возможности':'Приложи ладонь, чтобы открыть возможности';
 const palmHint=bfmVisual?'':'Удерживай 0,8 секунды';
 const palm='<svg class="glyph" viewBox="0 0 64 64" aria-hidden="true"><path d="M16 33V17c0-6 7-6 7 0v14-21c0-6 7-6 7 0v20-24c0-6 7-6 7 0v24-19c0-6 7-6 7 0v23l4-8c3-6 10-2 7 4l-9 22c-3 7-8 11-16 11-8 0-13-4-17-10L5 39c-4-6 2-10 6-6l5 5Z"/></svg>';
 let size={width:1600,height:1000},controller,content,catalog,field,assets,foreground,ambient,view='';
-let focusTarget=0,history=false,gesture=null,pageDisposed=false,screenEpoch=0,answerPending=false,popupPage=0,popupToken='',palmVisible=false,shownRevision=-1,pendingResume=null,navigating=false,resetPrompt=false;
+let focusTarget=0,history=false,gesture=null,pageDisposed=false,screenEpoch=0,answerPending=false,popupPage=0,popupToken='',popupPending=null,palmVisible=false,shownRevision=-1,pendingResume=null,navigating=false,resetPrompt=false;
 let servicePaused=false,gameAudio=null;
 const createController=value=>sharedBackend?(bfmVisual?new V5RevealJourney(content,sharedSession,v5RouteMeasure):new (referenceVisual?ReferenceRevealJourney:SharedRevealJourney)(content,sharedSession)):new (revealMode?RevealJourney:inlinePhone?GuidedLineJourney:GuidedJourney)(content,value);
 const edgePorts=new Map();
@@ -181,7 +181,7 @@ function render(preserveTransition=false){
   foreground.prewarmPhoneImages(idStage===null?[]:ID_IMAGES.slice(idStage,idStage+2));
  }
  if(newView!==view){
-  if(!preserveTransition)foreground?.cancelTransitions();view=newView;edgePorts.clear();host.replaceChildren();palmVisible=false;palmPresence.value=0;gesture=null;phoneStep='';phoneToken='';phonePending='';phonePresence.value=0;
+  if(!preserveTransition)foreground?.cancelTransitions();view=newView;edgePorts.clear();host.replaceChildren();palmVisible=false;palmPresence.value=0;gesture=null;phoneStep='';phoneToken='';phonePending='';phonePresence.value=0;popupPending=null;
   host.dataset.screen=s.screen;host.dataset.routePhase='playing';host.dataset.activeTask='';host.dataset.bigWindow='true';host.dataset.popupPresence='1';host.dataset.uiPresence??='1';
   if(s.screen!=='field'){
    host.innerHTML=`<header class="zone-header"><div><h1>Открой возможности MAX</h1><p>Выбери миссию</p></div>${resetPrompt?'':button('Обнулить миссии','data-reset-progress')}</header>${resetPrompt?`<section class="guided-reset-panel reset-popup" role="dialog" aria-label="Обнулить миссии?"><h2>Обнулить миссии?</h2><p>Задания, ответы и положения иконок этой версии игры будут сброшены.</p>${button('Да, обнулить','data-confirm-reset-progress')}${button('Отмена','data-cancel-reset-progress','primary')}</section>`:`<div class="mission-choices">${content.missions.map(m=>`<button class="mission-card glass-control" data-mission="${m.id}">${bfmVisual?v5IconTile(MISSION_CATALOG,m.id,96,'medallion'):`<span class="medallion">${icon(m.id)}</span>`}<span><strong>${v5CopyMarkup(m.title)}</strong><small>${v5CopyMarkup(m.description)}</small>${sharedBackend?`<small class="media-coverage ${m.missing.length?'media-incomplete':'media-complete'}">${m.missing.length?'Есть заглушки':'Без заглушек'}</small>`:coverageMarkup(m)}</span><span class="card-state">${s.completed.includes(m.id)?'✓':'↗'}</span></button>`).join('')}</div>`}`;
@@ -193,7 +193,8 @@ function render(preserveTransition=false){
  }
  if(s.screen==='field'){
   const fieldEl=host.querySelector('.playfield');
-  for(const o of controller.nodes)if(!fieldEl.querySelector(`[data-object="${o.step}"]`)){
+  const visibleNodes=bfmVisual?controller.visibleNodes:controller.nodes;
+  for(const o of visibleNodes)if(!fieldEl.querySelector(`[data-object="${o.step}"]`)){
    if(revealMode&&(controller.phase==='burst'||bfmVisual&&controller.startup)&&controller.presence(o)===0)continue;
    const origin=fieldEl.querySelector('[data-palm] .tile')||fieldEl.querySelector('[data-object]:last-of-type .tile');
    if(o.step!=='open-max'&&controller.phase==='reveal')foreground?.seedReveal(host,o.step,origin);
@@ -203,7 +204,7 @@ function render(preserveTransition=false){
    }
    fieldEl.insertAdjacentHTML('beforeend',nodeMarkup(o));foreground?.invalidate();
   }
-  if(revealMode)for(const el of fieldEl.querySelectorAll('[data-object]'))if(!controller.nodes.some(o=>o.step===el.dataset.object)){el.remove();foreground?.invalidate();}
+  if(revealMode)for(const el of fieldEl.querySelectorAll('[data-object]'))if(!visibleNodes.some(o=>o.step===el.dataset.object)){el.remove();foreground?.invalidate();}
   let cta=host.querySelector('[data-cta]');
   if(controller.phase==='start'&&!cta){host.insertAdjacentHTML('beforeend',`<div class="field-center guided-start"><button class="mission-cta" data-cta><span class="cta-orb glass-control">${icon('plus')}</span><span>Открыть MAX</span></button></div>`);foreground?.invalidate();}
   else if(controller.phase!=='start'&&cta){cta.parentElement.remove();foreground?.invalidate();}
@@ -263,7 +264,17 @@ function popupMarkup(displayTask=controller.session.task){
  if(inlinePhone)popup.querySelector('.demo-app')?.remove();
  return popup.outerHTML;
 }
+function syncInstructionRetention(){
+ const current=host.querySelector('.task-dialog'),taskId=controller.current?.step;
+ const title=controller.steps.find(step=>step.id===taskId)?.label,body=sharedInstructionBody(controller.displaySnapshot);
+ const key=JSON.stringify([controller.phoneContentKey,taskId,title,body]);
+ if(host.dataset.instructionRetentionToken===key)return;
+ host.dataset.instructionRetentionToken=key;
+ const retained=bfmVisual&&sharedBackend?sharedInstructionRetention(current,{taskId,title,body}):{header:false,body:false};
+ host.dataset.instructionHeaderStable=String(retained.header);host.dataset.instructionBodyStable=String(retained.body);
+}
 function syncLinePhone(){
+ syncInstructionRetention();
  const generation=bindingGeneration;
  const o=controller.current;if(!o)return;
  let shell=host.querySelector('.route-phone');
@@ -380,7 +391,12 @@ function recoverPendingPhoneMedia(){
  shell.dataset.mediaReadyKey=key;foreground?.refreshPart(shell);changed();
  console.warn('MAX phone media decode deadline',key);
 }
+function popupContentToken(displayTask){
+ const s=controller.session;
+ return sharedBackend?`${controller.phoneContentKey}:${popupPage}:${JSON.stringify([sharedInstructionBody(controller.displaySnapshot),controller.steps.find(step=>step.id===controller.current?.step)?.label])}`:revealMode?`${controller.epoch}:${s.mission}:${displayTask}:${controller.current?.stage}:${controller.current?.done}:${s.notice}:${popupPage}`:controller.token()+':'+controller.current?.done+':'+s.notice+':'+popupPage;
+}
 function syncPopup(){
+ syncInstructionRetention();
  const s=controller.session,old=host.querySelector('.task-dialog');
  // Prepare the read-only card while the phone is still settling. Keep this
  // same card when the semantic phase becomes task; only phone controls unlock.
@@ -388,20 +404,24 @@ function syncPopup(){
   ?controller.current?.step==='business-tool'?'guided-business-choice':controller.current?.step:null;
  const displayTask=s.task||preview;
  if(!displayTask){
+  popupPending=null;
   if(old&&!old.dataset.closing){old.dataset.closing='true';const epoch=screenEpoch;foreground?.cancelContent(host);answerPending=false;
    foreground.transition(host,()=>{if(epoch!==screenEpoch)return;old.remove();host.dataset.activeTask='';if(!bfmVisual||!controller.completionPoses)foreground.releaseObject(host);foreground.invalidate();changed();},{local:true,exitOnly:true,interrupt:true});
   }return;
  }
- const token=sharedBackend?`${controller.phoneContentKey}:${popupPage}`:revealMode?`${controller.epoch}:${s.mission}:${displayTask}:${controller.current?.stage}:${controller.current?.done}:${s.notice}:${popupPage}`:controller.token()+':'+controller.current?.done+':'+s.notice+':'+popupPage;
- if(old&&popupToken===token&&!old.dataset.closing)return;
+ const token=popupContentToken(displayTask),owner=controller,epoch=screenEpoch;
+ if(old&&popupToken===token&&!old.dataset.closing){popupPending=null;return;}
+ if(popupPending?.token===token&&popupPending.owner===owner&&popupPending.epoch===epoch&&popupPending.joined)return;
  const commit=()=>{
-  if(!controller.session.task&&!preview)return;
+  if(controller!==owner||screenEpoch!==epoch||controller.session.screen!=='field'||popupContentToken(displayTask)!==token||!controller.session.task&&!preview)return;
   const template=document.createElement('template');template.innerHTML=popupMarkup(displayTask);const fresh=template.content.firstElementChild;if(!fresh)return;
   const current=host.querySelector('.task-dialog');
   const oldInstruction=current?.querySelector('.instruction'),before=oldInstruction?{top:parseFloat(getComputedStyle(oldInstruction).top),height:oldInstruction.getBoundingClientRect().height/(arena.getBoundingClientRect().width/size.width)}:null;
   let mounted=fresh;const parts=[];
+  const retainHeader=bfmVisual&&host.dataset.instructionHeaderStable==='true',retainBody=retainHeader&&host.dataset.instructionBodyStable==='true';
   if(current&&current.dataset.task===displayTask){
-   mounted=current;for(const selector of ['.instruction-copy','.phone-content']){
+   mounted=current;for(const selector of [retainHeader?'.instruction-copy p':'.instruction-copy','.phone-content']){
+    if(retainBody&&selector==='.instruction-copy p')continue;
     const previous=current.querySelector(selector),next=fresh.querySelector(selector);if(previous&&next){previous.replaceWith(next);parts.push(next);}
    }
   }else if(current)current.replaceWith(fresh);else host.append(fresh);
@@ -416,11 +436,30 @@ function syncPopup(){
   instruction.style.top=bfmVisual?v5InstructionTop(instructionHeight):`clamp(20px, calc(var(--guided-device-center-y, 50%) - ${instructionHeight/2}px), calc(100% - ${instructionHeight+20}px))`;
   if(before&&!visibilityChanged)foreground?.resizeInstruction(instruction,before);
   if(visibilityChanged){foreground?.refreshPart(mounted);foreground?.invalidate();}
-  else if(parts.length)foreground?.refreshParts(parts);else foreground?.invalidate();changed();
+  else if(retainHeader)foreground?.refreshParts(parts);else if(bfmVisual)foreground?.refreshPart(mounted);else if(parts.length)foreground?.refreshParts(parts);else foreground?.invalidate();changed();
  };
- if(old){commit();}else{
+ if(old&&foreground){
+  const pending={token,owner,epoch,joined:true};popupPending=pending;
+  const apply=()=>{
+   if(popupPending!==pending)return;
+   // A superseded phone commit leaves its old screen mounted. Keep its old
+   // instruction too until the latest screen reaches the next invisible swap.
+   if(sharedBackend&&inlinePhone&&phoneToken!==displayPhoneKey()){pending.joined=false;return;}
+   popupPending=null;commit();
+  };
+  const accepted=foreground.contentBusy(host)?foreground.joinContentTransition(host,apply):foreground.transitionContent(host,apply);
+  if(!accepted)pending.joined=false;
+ }else if(old){commit();}else{
   host.dataset.popupPresence='0';if(!inlinePhone)foreground?.holdObject(host,s.task);commit();foreground?.transition(host,()=>{}, {local:true,enterOnly:true});
  }
+}
+function markInstructionPresented(){
+ if(!bfmVisual||!controller?.markInstructionPresented||controller.phase!=='task'||document.hidden||servicePaused)return;
+ if(controller.snapshot?.assignment&&controller.snapshot.assignment.lifecycle.status!=='active')return;
+ if(host.querySelector('.route-phone .phone-media-error,.route-phone .media-missing,.route-phone .phone-loading,.route-phone[data-gpu-upload-error]'))return;
+ const instruction=host.querySelector('.task-dialog .instruction');
+ if(instruction&&!instruction.hidden&&foreground?.instructionReady(instruction)===true&&popupToken===popupContentToken(controller.session.task)&&phoneToken===displayPhoneKey()&&phoneContentReady()&&
+  phonePresence.value>.97&&Number(host.dataset.popupPresence??1)>.97&&Number(host.dataset.contentPresence??1)>.97&&!foreground?.contentBusy(host))controller.markInstructionPresented();
 }
 function tick(delta){
  if(independent){independent.tick(presentationActive()?delta:0);return;}
@@ -442,10 +481,12 @@ function tick(delta){
   }
  }
  if(phonePending&&phoneToken!==phonePending&&!foreground?.contentBusy(host)){phonePending='';syncLinePhone();}
+ if(popupPending&&!popupPending.joined)syncPopup();
  recoverPendingPhoneMedia();
  if(pendingResume&&!foreground?.busy(host)){
   const pending=pendingResume;pendingResume=null;if(pending.epoch===screenEpoch&&controller.resume(pending.step)){popupPage=0;if(controller.phase==='reveal')focusCurrent();render();}
  }
+ markInstructionPresented();
  const before=controller.phase,revision=controller.revision;
  const active=presentationActive();
  if(referenceVisual||bfmVisual)root.dataset.presentationPaused=String(!active);

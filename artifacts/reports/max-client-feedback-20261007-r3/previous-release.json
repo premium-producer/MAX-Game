@@ -1,0 +1,60 @@
+{
+  "id": "MAX-CLIENT-FEEDBACK-20261007-R2",
+  "status": "BUILT_LOCAL_NOT_INSTALLED",
+  "tests": {
+    "startup": 12,
+    "ui": 18,
+    "handoff": 4,
+    "projectTargeted": 112,
+    "totalTargetedCpu": 146,
+    "browser": "NOT_RUN_USER_PROHIBITION"
+  },
+  "profiles": {
+    "stand": {
+      "appSha256": "0a5f70a3f2918cacce65a920c2fb567a88ea33a0f0fb17db5148f24749682263",
+      "appBytes": 1927026,
+      "baselineAppSha256": "c5e0cdbac632519c5f71454a6d2edfd26baaada5575299dbb0db6be0837256a0",
+      "changedFiles": [
+        "src/journey-guided-main.js",
+        "src/journey-popup-motion.mjs",
+        "src/journey-shared-ui.mjs",
+        "src/journey-v5-ui-copy.mjs",
+        "src/journey-webgl-ui.mjs"
+      ],
+      "sourceSha256": {
+        "src/journey-guided-main.js": "4ba7d11b650d9c01547e6b190a08379fcf76add53c9fcbb488f7024fb1f63547",
+        "src/journey-popup-motion.mjs": "10408fa4d4263987c8aa966685fad6ae4bce296f692ef20b2572be7a09a9d01f",
+        "src/journey-shared-ui.mjs": "112afdad1fefbd474380d0cf0b8232a2229d32f59dc41afe03fe50a3328d2283",
+        "src/journey-v5-ui-copy.mjs": "bc3c267b5a46277888a6b5046b8e06afe17b31f9e8e24b809a144edede1e5879",
+        "src/journey-webgl-ui.mjs": "4b9ce8ce666bb76446a7c3273c682b0e1c3c86e9b2cbc83a683acefc5384f277"
+      },
+      "previousAppSha256": "b7c44ef6673b0371c927256759db53386bc529e13a485ea95c7354c11b45f6ad"
+    },
+    "client": {
+      "appSha256": "4f077036d3f96e1635f94443c06886f9a0a7a24da6ff8d313642d99441d76c74",
+      "appBytes": 2055829,
+      "baselineAppSha256": "ace063dab2c0e168778a95ee09634285b03bece54b2c94008b59a2f549883c5c",
+      "changedFiles": [
+        "src/journey-guided-main.js",
+        "src/journey-popup-motion.mjs",
+        "src/journey-shared-ui.mjs",
+        "src/journey-v5-ui-copy.mjs",
+        "src/journey-webgl-ui.mjs"
+      ],
+      "sourceSha256": {
+        "src/journey-guided-main.js": "cdfebac08d7274cbd588be97772a3920cc5a4b0f769c5d4457f132416543eb3f",
+        "src/journey-popup-motion.mjs": "10408fa4d4263987c8aa966685fad6ae4bce296f692ef20b2572be7a09a9d01f",
+        "src/journey-shared-ui.mjs": "936a1bcab5d48e4e01b8bba81f82949df9cda8324123a59cbd218e3b30f27633",
+        "src/journey-v5-ui-copy.mjs": "bc3c267b5a46277888a6b5046b8e06afe17b31f9e8e24b809a144edede1e5879",
+        "src/journey-webgl-ui.mjs": "ea760ec8c5c00154695b1b8a1c100382bf720fe8f1107e961340374dcb41d940"
+      },
+      "previousAppSha256": "cbc3885f162ec5cc38328aa86df8e7e496e6deb9e49f27e20d2be73b173a55c5"
+    }
+  },
+  "standInstalledAppSha256": "c5e0cdbac632519c5f71454a6d2edfd26baaada5575299dbb0db6be0837256a0",
+  "previousReleaseId": "MAX-CLIENT-FEEDBACK-20261007-R1",
+  "acceptance": "USER_VISUAL_REVIEW_PENDING",
+  "requestLocalDate": "2026-10-07",
+  "previousInstallationObservation": "At 2026-10-06T19:43Z MASTER proxy returned 502; no MAX stop or application took place. Awaiting owner approval; later stand state not rechecked in this publication.",
+  "installationNote": "Local client feedback build only; no stand installation, service restart or publication performed."
+}

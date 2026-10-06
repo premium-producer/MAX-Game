@@ -1,4 +1,5 @@
 import {applyReviewedAssets} from './apply-reviewed-assets.mjs';
+import {assertCanvasSafeReviewedSvg} from './prepare-reviewed-svg.mjs';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -76,6 +77,11 @@ if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.ur
  const input=JSON.parse(await fs.readFile(path.join(root,'flow.json'),'utf8'));
  const rectCorrections=JSON.parse(await fs.readFile(path.join(root,'flow-corrections.json'),'utf8'));
  const {catalog,metadata}=applyReviewedAssets(applyAssetFlow(base,input,{rectCorrections}));
+ for(const asset of Object.values(catalog.assets).filter(a=>a.origin?.preparation?.kind==='canvas-safe-svg')){
+  const svg=await fs.readFile(path.resolve(root,'../../public',asset.path),'utf8');
+  assertCanvasSafeReviewedSvg(svg);
+  if(createHash('sha256').update(svg).digest('hex')!==asset.sha256)throw Error('REVIEWED_SVG_PREPARED_SHA_MISMATCH: '+asset.assetId);
+ }
  await fs.writeFile(path.join(root,'mission-catalog.json'),JSON.stringify(catalog,null,2)+'\n');
  await fs.writeFile(path.join(root,'annotation-source.json'),JSON.stringify(metadata,null,2)+'\n');
  console.log(JSON.stringify(metadata));

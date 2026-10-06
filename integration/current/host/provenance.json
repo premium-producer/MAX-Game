@@ -1,14 +1,15 @@
 {
-  "status": "SANITIZED_VERIFIED_SOURCE_SLICES",
+  "status": "LOCAL_CLIENT_FEEDBACK_DELTA_NOT_INSTALLED",
   "files": [
     {
       "role": "MASTER",
       "target": "app/canonical-max/artifacts/max-game/src/application/mission-session.mjs",
-      "sha256": "22bc79e5604428ad482088378b37b40b206913b256b477de935f5313aec58fe7",
-      "bytes": 21270,
-      "verificationUtc": "2026-10-06T16:15:58.0944236Z",
-      "task": "max-disabled-actions-20261006",
-      "scope": "Latest verified MAX-specific source slice; not a current global MASTER release"
+      "sha256": "005b35a32bb5cddeebaaaea6d18c91931f63b16d703138e4c7605bc76fcb2a17",
+      "bytes": 21328,
+      "task": "max-client-feedback-20261007",
+      "scope": "Local MAX-specific delta; requires verified stand base; not installed",
+      "previousVerificationUtc": "2026-10-06T16:15:58.0944236Z",
+      "verificationLocalDate": "2026-10-07"
     },
     {
       "role": "MASTER",
@@ -486,6 +487,60 @@
       "verificationUtc": "2026-10-06T11:44:25.6900573Z",
       "task": "max-lidar-live-input-20261006",
       "scope": "Latest verified MAX deployment source in local records"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/canonical-max/artifacts/max-game/src/content/mission-catalog.mjs",
+      "sha256": "1d35fa42bba15b2854be47bad69ae6a1dcb4ded57b0fe819a476bf9da7bb58bc",
+      "bytes": 347,
+      "verificationLocalDate": "2026-10-07",
+      "task": "max-client-feedback-20261007",
+      "scope": "Local MAX-specific delta; requires verified stand base; not installed"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/canonical-max/artifacts/max-game/src/reviewed-content/annotation-source.json",
+      "sha256": "af8529a094bc7b6eec28b10ef055dd71d4f72b7cf01a643a7dd7192f936c3c6b",
+      "bytes": 19882,
+      "verificationLocalDate": "2026-10-07",
+      "task": "max-client-feedback-20261007-r5",
+      "scope": "Local MAX-specific delta; requires verified stand base; not installed"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/canonical-max/artifacts/max-game/src/reviewed-content/asset-replacements.json",
+      "sha256": "a63bf9e5e5e1a73e2da11376830891c15560f4033216f3644a75d1c92148c273",
+      "bytes": 13384,
+      "verificationLocalDate": "2026-10-07",
+      "task": "max-client-feedback-20261007-r4",
+      "scope": "Local MAX-specific delta; requires verified stand base; not installed"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/canonical-max/artifacts/max-game/src/reviewed-content/mission-catalog.json",
+      "sha256": "f6e86c2059d5c39ed5eaef46eed03dce289a351a5fee35736fb97ab746a3edce",
+      "bytes": 332314,
+      "verificationLocalDate": "2026-10-07",
+      "task": "max-client-feedback-20261007-r6",
+      "scope": "Local MAX-specific delta; requires verified stand base; not installed"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/canonical-max/artifacts/max-game/src/reviewed-content/presentation-overrides.json",
+      "sha256": "517dcd4e2225235bca3106658b16a72fa6d5e0b058f6fa576bdd1f9fc8794356",
+      "bytes": 3196,
+      "verificationLocalDate": "2026-10-07",
+      "task": "max-client-feedback-20261007-r5",
+      "scope": "Local MAX-specific delta; requires verified stand base; not installed"
+    },
+    {
+      "role": "MASTER",
+      "target": "app/configs/max-presentation-assets.json",
+      "sha256": "2ee934eaf2968375205b9b8296fbe2d541d9105a6993cf57777d001452116cc0",
+      "bytes": 30131,
+      "verificationLocalDate": "2026-10-07",
+      "task": "max-client-feedback-20261007-r6",
+      "scope": "Local MAX-specific delta; requires verified stand base; not installed"
     }
   ],
   "excluded": [

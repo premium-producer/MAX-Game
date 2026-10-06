@@ -44,7 +44,7 @@ export function createMissionSessionApplication({catalog=MISSION_CATALOG,persist
   const view={device,instruction:screen?.instruction?{text:screen.instruction,informational:true}:null,actions:s.status==='task'&&screen.automaticMs===null?screen.actions.map(({outcome,...action})=>({...action,...(outcome.kind==='incorrect'?{disabled:true}:{})})):[],missing:screen?.missing??null,automaticMs:screen?.automaticMs??null,nodes,edges,prepareNext,
    missions:Object.values(catalog.missions).map(m=>({missionId:m.missionId,title:m.title,test:m.test,missing:[...m.missing]})),
    result:['completed','incomplete'].includes(s.status)?{complete:s.status==='completed',title:s.status==='completed'?'Миссия выполнена':'Миссия просмотрена с пропусками',text:s.status==='completed'?catalog.missions[s.missionId].completionText??'Возможности MAX изучены.':'Часть обязательных экранов ещё не предоставлена. Пропущенные задания не засчитаны.'}:null,
-   qr:['completed','incomplete'].includes(s.status)?{...catalog.missions[s.missionId].qr,asset:catalog.assets['official.max-qr']}:null,
+   qr:['completed','incomplete'].includes(s.status)?{...catalog.missions[s.missionId].qr,asset:catalog.assets[catalog.missions[s.missionId].qr.assetId]??catalog.assets['official.max-qr']}:null,
    resumeRequired:Boolean(p?.scanned),clock:viewClock,remainingMs:s.deadlineAt===null?null:Math.max(0,s.deadlineAt-serverTime)};
   return copy({schemaVersion:2,state:s,layouts:{layoutRevision:entry.record.layouts.layoutRevision,positions:entry.record.layouts.positions},view});
  }

@@ -1,0 +1,61 @@
+{
+  "scope": "CPU exact-source adapter with injected origin-clean exception; no browser/GPU verification",
+  "sourceEvidence": "https://github.com/whatwg/html/issues/10641",
+  "conclusion": "The outer initTexture try/catch cannot detect the installed Three wrapper swallowing the upload exception. Remove the empty foreignObject wrappers from imported media; do not bypass readiness.",
+  "results": [
+    {
+      "profile": "artifacts/max-game",
+      "api": "texImage2D",
+      "rejectedUploads": 1,
+      "loggedErrors": 1,
+      "recordedUploaded": true,
+      "publishedGpuReady": true,
+      "reportedGpuUploadError": null
+    },
+    {
+      "profile": "artifacts/max-game",
+      "api": "texSubImage2D",
+      "rejectedUploads": 1,
+      "loggedErrors": 1,
+      "recordedUploaded": true,
+      "publishedGpuReady": true,
+      "reportedGpuUploadError": null
+    },
+    {
+      "profile": "integration/current/code/client",
+      "api": "texImage2D",
+      "rejectedUploads": 1,
+      "loggedErrors": 1,
+      "recordedUploaded": true,
+      "publishedGpuReady": true,
+      "reportedGpuUploadError": null
+    },
+    {
+      "profile": "integration/current/code/client",
+      "api": "texSubImage2D",
+      "rejectedUploads": 1,
+      "loggedErrors": 1,
+      "recordedUploaded": true,
+      "publishedGpuReady": true,
+      "reportedGpuUploadError": null
+    },
+    {
+      "profile": "integration/current/code/stand",
+      "api": "texImage2D",
+      "rejectedUploads": 1,
+      "loggedErrors": 1,
+      "recordedUploaded": true,
+      "publishedGpuReady": true,
+      "reportedGpuUploadError": null
+    },
+    {
+      "profile": "integration/current/code/stand",
+      "api": "texSubImage2D",
+      "rejectedUploads": 1,
+      "loggedErrors": 1,
+      "recordedUploaded": true,
+      "publishedGpuReady": true,
+      "reportedGpuUploadError": null
+    }
+  ]
+}

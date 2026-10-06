@@ -1,0 +1,228 @@
+{
+  "release": "MAX-CLIENT-FEEDBACK-20261007-R5",
+  "localDate": "2026-10-07",
+  "status": "LOCAL_DELTA_NOT_INSTALLED",
+  "requiresExistingStandBase": true,
+  "lastRecordedInstalledStandAppSha256": "c5e0cdbac632519c5f71454a6d2edfd26baaada5575299dbb0db6be0837256a0",
+  "files": [
+    {
+      "role": "client",
+      "source": "apps/max-game/webgl-v5/app.js",
+      "target": "webgl-v5/app.js",
+      "sha256": "5bac1a9fe674f0b0b887d382a93b0d7d22b5f384e221e700bdef4c36c7f3962d",
+      "bytes": 2063736
+    },
+    {
+      "role": "client",
+      "source": "apps/max-game/webgl-v5/annotation-source.json",
+      "target": "webgl-v5/annotation-source.json",
+      "sha256": "af8529a094bc7b6eec28b10ef055dd71d4f72b7cf01a643a7dd7192f936c3c6b",
+      "bytes": 19882
+    },
+    {
+      "role": "client",
+      "source": "apps/max-game/webgl-v5/build.json",
+      "target": "webgl-v5/build.json",
+      "sha256": "2e716b734f64bc749c6750f5226d0cb104bf9a0ab8349d721097c647961297c9",
+      "bytes": 72452
+    },
+    {
+      "role": "MAX_RIGHT",
+      "source": "integration/current/runtime/stand/app.js",
+      "target": "app/max-game/webgl-v5/app.js",
+      "sha256": "3c57d34f85c4a8ef89696db5799d8419f70e84fba6a19dfbb034846435db8edf",
+      "bytes": 1934863
+    },
+    {
+      "role": "MAX_RIGHT",
+      "source": "apps/max-game/assets/device-custom/max-standby.svg",
+      "target": "app/max-game/assets/device-custom/max-standby.svg",
+      "sha256": "fa5827b8b264d720cdfe7637209078cfdf38a9644e39d0b67e56c6034b8c3726",
+      "bytes": 82016
+    },
+    {
+      "role": "MASTER",
+      "source": "integration/current/host/MASTER/app/configs/max-presentation-assets.json",
+      "target": "app/configs/max-presentation-assets.json",
+      "sha256": "9ff11ac9320035c4d9367df8292d6ceb6ae57e5378376c3d4f26d95f187e6190",
+      "bytes": 30131
+    },
+    {
+      "role": "MASTER",
+      "source": "integration/current/host/MASTER/app/canonical-max/artifacts/max-game/src/application/mission-session.mjs",
+      "target": "app/canonical-max/artifacts/max-game/src/application/mission-session.mjs",
+      "sha256": "005b35a32bb5cddeebaaaea6d18c91931f63b16d703138e4c7605bc76fcb2a17",
+      "bytes": 21328
+    },
+    {
+      "role": "MASTER",
+      "source": "integration/current/host/MASTER/app/canonical-max/artifacts/max-game/src/content/mission-catalog.mjs",
+      "target": "app/canonical-max/artifacts/max-game/src/content/mission-catalog.mjs",
+      "sha256": "1d35fa42bba15b2854be47bad69ae6a1dcb4ded57b0fe819a476bf9da7bb58bc",
+      "bytes": 347
+    },
+    {
+      "role": "MASTER",
+      "source": "integration/current/host/MASTER/app/canonical-max/artifacts/max-game/src/reviewed-content/mission-catalog.json",
+      "target": "app/canonical-max/artifacts/max-game/src/reviewed-content/mission-catalog.json",
+      "sha256": "9e05e2ab91535d77eedf5b659e533c12daf99bf1af7a2083c91589309b20c3f4",
+      "bytes": 332360
+    },
+    {
+      "role": "client",
+      "source": "apps/max-game/assets/reviewed-20261004/business-platform-verification-98d2a4483c08.svg",
+      "target": "assets/reviewed-20261004/business-platform-verification-98d2a4483c08.svg",
+      "sha256": "98d2a4483c086caba7159b8497349f5d1b8c58f8aeebf511b842a380f0673274",
+      "bytes": 250266
+    },
+    {
+      "role": "MAX_RIGHT",
+      "source": "apps/max-game/assets/reviewed-20261004/business-platform-verification-98d2a4483c08.svg",
+      "target": "app/max-game/assets/reviewed-20261004/business-platform-verification-98d2a4483c08.svg",
+      "sha256": "98d2a4483c086caba7159b8497349f5d1b8c58f8aeebf511b842a380f0673274",
+      "bytes": 250266
+    },
+    {
+      "role": "client",
+      "source": "apps/max-game/assets/reviewed-20261004/business-store-ready-298f3dc198d9.png",
+      "target": "assets/reviewed-20261004/business-store-ready-298f3dc198d9.png",
+      "sha256": "298f3dc198d94e20964a17642dec15f6fdf03d3c3ed897d8b8cd008003483954",
+      "bytes": 698224
+    },
+    {
+      "role": "MAX_RIGHT",
+      "source": "apps/max-game/assets/reviewed-20261004/business-store-ready-298f3dc198d9.png",
+      "target": "app/max-game/assets/reviewed-20261004/business-store-ready-298f3dc198d9.png",
+      "sha256": "298f3dc198d94e20964a17642dec15f6fdf03d3c3ed897d8b8cd008003483954",
+      "bytes": 698224
+    },
+    {
+      "role": "client",
+      "source": "apps/max-game/assets/reviewed-20261007/business-channel-posts-79f5b66ea857.svg",
+      "target": "assets/reviewed-20261007/business-channel-posts-79f5b66ea857.svg",
+      "sha256": "79f5b66ea857f9924d2da5d0da57e4f17a50adea6409de0fba49f3bb1d224772",
+      "bytes": 5448237
+    },
+    {
+      "role": "MAX_RIGHT",
+      "source": "apps/max-game/assets/reviewed-20261007/business-channel-posts-79f5b66ea857.svg",
+      "target": "app/max-game/assets/reviewed-20261007/business-channel-posts-79f5b66ea857.svg",
+      "sha256": "79f5b66ea857f9924d2da5d0da57e4f17a50adea6409de0fba49f3bb1d224772",
+      "bytes": 5448237
+    },
+    {
+      "role": "client",
+      "source": "apps/max-game/assets/reviewed-20261007/comments-input-3ac21a0a4533.svg",
+      "target": "assets/reviewed-20261007/comments-input-3ac21a0a4533.svg",
+      "sha256": "3ac21a0a4533190436eaa975b92f0eb4d220cdb338a05d062fe623da9f7dbca2",
+      "bytes": 4609135
+    },
+    {
+      "role": "MAX_RIGHT",
+      "source": "apps/max-game/assets/reviewed-20261007/comments-input-3ac21a0a4533.svg",
+      "target": "app/max-game/assets/reviewed-20261007/comments-input-3ac21a0a4533.svg",
+      "sha256": "3ac21a0a4533190436eaa975b92f0eb4d220cdb338a05d062fe623da9f7dbca2",
+      "bytes": 4609135
+    },
+    {
+      "role": "client",
+      "source": "apps/max-game/assets/reviewed-20261007/comments-post-71b2e32b2ea8.svg",
+      "target": "assets/reviewed-20261007/comments-post-71b2e32b2ea8.svg",
+      "sha256": "71b2e32b2ea81672cc8f32d9a1ca06ee2f20d4052f271583283e205ccc2d4ebc",
+      "bytes": 4826606
+    },
+    {
+      "role": "MAX_RIGHT",
+      "source": "apps/max-game/assets/reviewed-20261007/comments-post-71b2e32b2ea8.svg",
+      "target": "app/max-game/assets/reviewed-20261007/comments-post-71b2e32b2ea8.svg",
+      "sha256": "71b2e32b2ea81672cc8f32d9a1ca06ee2f20d4052f271583283e205ccc2d4ebc",
+      "bytes": 4826606
+    },
+    {
+      "role": "client",
+      "source": "apps/max-game/assets/reviewed-20261007/comments-reply-ddb90b591051.svg",
+      "target": "assets/reviewed-20261007/comments-reply-ddb90b591051.svg",
+      "sha256": "ddb90b591051279ef2b2b81cb3b16e3e484557a61485a9b702fbb246de31b9aa",
+      "bytes": 4670595
+    },
+    {
+      "role": "MAX_RIGHT",
+      "source": "apps/max-game/assets/reviewed-20261007/comments-reply-ddb90b591051.svg",
+      "target": "app/max-game/assets/reviewed-20261007/comments-reply-ddb90b591051.svg",
+      "sha256": "ddb90b591051279ef2b2b81cb3b16e3e484557a61485a9b702fbb246de31b9aa",
+      "bytes": 4670595
+    },
+    {
+      "role": "client",
+      "source": "apps/max-game/assets/reviewed-20261007/comments-result-0007cda60a4b.svg",
+      "target": "assets/reviewed-20261007/comments-result-0007cda60a4b.svg",
+      "sha256": "0007cda60a4b35f8b0f727434b5215bdb161628694da8130090e44af107383f8",
+      "bytes": 4827688
+    },
+    {
+      "role": "MAX_RIGHT",
+      "source": "apps/max-game/assets/reviewed-20261007/comments-result-0007cda60a4b.svg",
+      "target": "app/max-game/assets/reviewed-20261007/comments-result-0007cda60a4b.svg",
+      "sha256": "0007cda60a4b35f8b0f727434b5215bdb161628694da8130090e44af107383f8",
+      "bytes": 4827688
+    },
+    {
+      "role": "client",
+      "source": "apps/max-game/assets/reviewed-20261007/comments-sent-f75840fda3da.svg",
+      "target": "assets/reviewed-20261007/comments-sent-f75840fda3da.svg",
+      "sha256": "f75840fda3daa0173f3ed97bdcfec9046da878e9eb1be095d69752934eeb5f9d",
+      "bytes": 4586167
+    },
+    {
+      "role": "MAX_RIGHT",
+      "source": "apps/max-game/assets/reviewed-20261007/comments-sent-f75840fda3da.svg",
+      "target": "app/max-game/assets/reviewed-20261007/comments-sent-f75840fda3da.svg",
+      "sha256": "f75840fda3daa0173f3ed97bdcfec9046da878e9eb1be095d69752934eeb5f9d",
+      "bytes": 4586167
+    },
+    {
+      "role": "client",
+      "source": "apps/max-game/assets/reviewed-20261007/digital-id-home-photo-e61ae178507b.svg",
+      "target": "assets/reviewed-20261007/digital-id-home-photo-e61ae178507b.svg",
+      "sha256": "e61ae178507bf56f76a1a328ef84fbd22344e74a195d5a71cf27de54fa9e6e14",
+      "bytes": 2464153
+    },
+    {
+      "role": "MAX_RIGHT",
+      "source": "apps/max-game/assets/reviewed-20261007/digital-id-home-photo-e61ae178507b.svg",
+      "target": "app/max-game/assets/reviewed-20261007/digital-id-home-photo-e61ae178507b.svg",
+      "sha256": "e61ae178507bf56f76a1a328ef84fbd22344e74a195d5a71cf27de54fa9e6e14",
+      "bytes": 2464153
+    },
+    {
+      "role": "client",
+      "source": "apps/max-game/assets/reviewed-20261007/max-logo-qr-f3c691313875.svg",
+      "target": "assets/reviewed-20261007/max-logo-qr-f3c691313875.svg",
+      "sha256": "f3c6913138753c69cf25c2a05fab25d492b7308afb024b043344c23431a3de91",
+      "bytes": 379597
+    },
+    {
+      "role": "MAX_RIGHT",
+      "source": "apps/max-game/assets/reviewed-20261007/max-logo-qr-f3c691313875.svg",
+      "target": "app/max-game/assets/reviewed-20261007/max-logo-qr-f3c691313875.svg",
+      "sha256": "f3c6913138753c69cf25c2a05fab25d492b7308afb024b043344c23431a3de91",
+      "bytes": 379597
+    },
+    {
+      "role": "client",
+      "source": "apps/max-game/assets/reviewed-20261007/max-logo-qr-faa6982ad913.png",
+      "target": "assets/reviewed-20261007/max-logo-qr-faa6982ad913.png",
+      "sha256": "faa6982ad91341abac5aef806ed13b63dddddbb234c3a1dea144c0caa0b839f6",
+      "bytes": 70613
+    },
+    {
+      "role": "MAX_RIGHT",
+      "source": "apps/max-game/assets/reviewed-20261007/max-logo-qr-faa6982ad913.png",
+      "target": "app/max-game/assets/reviewed-20261007/max-logo-qr-faa6982ad913.png",
+      "sha256": "faa6982ad91341abac5aef806ed13b63dddddbb234c3a1dea144c0caa0b839f6",
+      "bytes": 70613
+    }
+  ],
+  "pinPatch": "accepted-source.patch.json",
+  "preservedFlowSha256": "06cdec0e64dd518230e8439e2092c282f24d73d4ee741005e4710318d8609b08"
+}

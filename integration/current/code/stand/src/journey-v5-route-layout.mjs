@@ -5,10 +5,26 @@ import {v5DeviceMetrics} from './journey-v5-device-morph.mjs';
 import {V5MotionValue} from './journey-v5-inertia.mjs';
 import {V5_MOTION} from './journey-v5-motion-profile.mjs';
 import {V5PathBatch} from './journey-v5-path.mjs';
+import {V5_MISSION_CATALOG} from './journey-v5-backend.mjs';
 
 export function v5MissionFinished(snapshot){
  const s=snapshot?.state;
  return ['completed','incomplete'].includes(s?.status)||s?.status==='result'&&snapshot.view.nodes.filter(n=>n.taskId).every(n=>n.completed||n.skipped);
+}
+
+const instructionText=snapshot=>String(snapshot?.view?.instruction?.text??'').trim();
+const screenKey=(snapshot,status=snapshot?.state?.status)=>`${snapshot?.state?.runId}:${snapshot?.state?.taskId}:${snapshot?.state?.screenId}:${status}`;
+// Only an authored, actually displayed task completion can replace the short
+// generic result presentation. Canonical result state/timing stays unchanged.
+export function v5RedundantCompletion(snapshot,displayed,presented){
+ const s=snapshot?.state,p=displayed?.state,body=instructionText(snapshot);
+ const task=V5_MISSION_CATALOG.tasks[s?.taskId],screen=task?.screens[s?.screenId];
+ const node=snapshot?.view?.nodes?.find(n=>n.taskId===s?.taskId);
+ const authored=!!body&&body===String(screen?.instruction??'').trim()&&screen?.actions.some(action=>action.outcome?.kind==='complete-task');
+ return s?.status==='result'&&(p?.status==='task'||p?.status==='result'&&displayed.view.preserveAuthoredCompletion===true)&&s.runId===p.runId&&s.missionId===p.missionId&&s.taskId===p.taskId&&s.screenId===p.screenId&&
+  node?.completed===true&&!node.skipped&&!snapshot.view.missing&&!displayed.view.missing&&authored&&body===instructionText(displayed)&&
+  !!snapshot.view.device?.asset?.path&&snapshot.view.device.asset.path===displayed.view.device?.asset?.path&&
+  presented?.key===screenKey(displayed,'task')&&presented.body===body;
 }
 
 // CSS Flexbox owns packing/alignment. This adapter only reads its measured centres.
@@ -17,29 +33,30 @@ export function createV5RouteMeasure(arena){
  row.setAttribute('aria-hidden','true');row.inert=true;
  Object.assign(row.style,{position:'absolute',left:'0',top:'0',visibility:'hidden',pointerEvents:'none',display:'flex',flexDirection:'row',flexWrap:'nowrap',alignItems:'center',gap:`${REVEAL_ELEMENT_GAP}px`,width:'max-content'});
  arena.append(row);let stamp='',measured;
- const measure=(nodes,active,device,nodeWidth,deviceIndex=null,gap=REVEAL_ELEMENT_GAP)=>{
-  const key=JSON.stringify([nodes.map(n=>n.step),active?.step,device.width,device.height,nodeWidth,deviceIndex,gap]);
+ return (nodes,active,device,nodeWidth)=>{
+  const key=JSON.stringify([nodes.map(n=>n.step),active.step,device.width,device.height,nodeWidth]);
   if(key===stamp)return measured;
-  row.style.gap=`${gap}px`;
   const parts=[],elements=new Map();let phone;
   const cell=(width,height)=>{
    const el=arena.ownerDocument.createElement('div');
    Object.assign(el.style,{flex:'none',width:`${width}px`,height:`${height}px`});parts.push(el);return el;
   };
-  for(let index=0;index<=nodes.length;index++){if(index===deviceIndex)phone=cell(device.width,device.height);const node=nodes[index];if(!node)continue;elements.set(node.step,cell(nodeWidth,nodeWidth));if(deviceIndex===null&&node===active)phone=cell(device.width,device.height);}
+  for(const node of nodes){elements.set(node.step,cell(nodeWidth,nodeWidth));if(node===active)phone=cell(device.width,device.height);}
   row.replaceChildren(...parts);
   if(!phone)throw Error('V5 route has no active phone slot');
   const x=phone.offsetLeft+phone.offsetWidth/2,y=phone.offsetTop+phone.offsetHeight/2;
   measured=Object.fromEntries([...elements].map(([id,el])=>[id,{x:el.offsetLeft+el.offsetWidth/2-x,y:el.offsetTop+el.offsetHeight/2-y}]));
   stamp=key;return measured;
  };
- measure.dispose=()=>row.remove();return measure;
 }
 
 // Presentation-only: confirmed answers, timer and progress remain in SessionPort.
 export class V5RevealJourney extends SharedRevealJourney{
  constructor(content,facade,measureRow){super(content,facade);this.measureRow=measureRow;}
+ markInstructionPresented(){this.presentedInstruction={key:screenKey(this.displaySnapshot),body:instructionText(this.displaySnapshot)};}
+ get phoneContentKey(){return this.displayedState?.status==='result'&&this.descriptor?.preserveAuthoredCompletion===true?this.resultPresentationKey??super.phoneContentKey:super.phoneContentKey;}
  nodeAdmitted(node){return node.step==='open-max'||node===this.current||node.done||node.skipped||(this.reached[this.session.mission]||[]).includes(node.step);}
+ get visibleNodes(){return this.nodes.filter(node=>this.nodeAdmitted(node));}
  nodePresence(node){
   this.iconPresence??=new Map();let motion=this.iconPresence.get(node.step);
   if(!motion){motion=new V5MotionValue(this.nodeAdmitted(node)?1:0);this.iconPresence.set(node.step,motion);}
@@ -89,9 +106,10 @@ export class V5RevealJourney extends SharedRevealJourney{
  get deviceLinkPresence(){return this.startup?Number(['fan','content'].includes(this.startup.stage)):this.handoff?this.handoff.link.value:1;}
  get deviceLinkReveal(){return this.startup?this.startup.fan.value:this.handoff?.stage==='link'?this.handoff.link.value:null;}
  accept(snapshot){
-  const prior=this.snapshot?.state,next=snapshot?.state;
+  const prior=this.snapshot?.state,next=snapshot?.state,displayed=this.displaySnapshot,presentationKey=this.phoneContentKey;
+  const retainCompletion=v5RedundantCompletion(snapshot,displayed,this.presentedInstruction);
   if(prior?.runId!==next?.runId||prior?.missionId!==next?.missionId||next?.status==='menu'){
-   this.iconPresence=new Map();this.phoneAnchor=null;this.phoneAnchorManual=false;this.completionPoses=null;this.presentedDevice=null;this.handoff=null;this.paths=null;this.startup=null;
+   this.iconPresence=new Map();this.phoneAnchor=null;this.phoneAnchorManual=false;this.completionPoses=null;this.presentedDevice=null;this.presentedInstruction=null;this.resultPresentationKey=null;this.handoff=null;this.paths=null;this.startup=null;
   }else if(!this.completionPoses&&v5MissionFinished(snapshot)){
    this.completionPoses=Object.fromEntries(this.nodes.map(n=>{const p=this.readCompletionPose?.(n)??this.pose(n);return [n.step,{worldX:p.worldX,worldY:p.worldY}];}));
   }
@@ -103,6 +121,8 @@ export class V5RevealJourney extends SharedRevealJourney{
   if(prior?.status==='scan'&&next?.scanned&&!this.startup)this.startStartup(snapshot.view.device);
   const advanceTask=!this.startup&&this.phoneVisible&&prior?.runId===next?.runId&&prior?.missionId===next?.missionId&&next?.status==='task'&&prior?.taskId!==next?.taskId;
   super.accept(snapshot);
+  if(retainCompletion&&this.phase==='result'){this.resultPresentationKey=presentationKey;this._displayView={...this._displayView,preserveAuthoredCompletion:true};}
+  else if(this.displayedState?.status!=='result')this.resultPresentationKey=null;
   if(advanceTask&&this._pending&&!this.handoff){
    this.handoff={stage:'unlink',link:new V5MotionValue(1),trace:new V5MotionValue(0)};
   }

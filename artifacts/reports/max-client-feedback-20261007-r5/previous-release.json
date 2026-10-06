@@ -1,0 +1,64 @@
+{
+  "id": "MAX-CLIENT-FEEDBACK-20261007-R4",
+  "status": "BUILT_LOCAL_NOT_INSTALLED",
+  "tests": {
+    "startup": 12,
+    "ui": 18,
+    "handoff": 4,
+    "projectTargeted": 163,
+    "totalTargetedCpu": 197,
+    "browser": "NOT_RUN_USER_PROHIBITION"
+  },
+  "profiles": {
+    "stand": {
+      "appSha256": "9678ec16e6b4ff65077b75b98df316154e5b2373120f79f4ae2df8ba2809ab4f",
+      "appBytes": 1934967,
+      "baselineAppSha256": "c5e0cdbac632519c5f71454a6d2edfd26baaada5575299dbb0db6be0837256a0",
+      "changedFiles": [
+        "src/journey-guided-main.js",
+        "src/journey-shared-ui.mjs",
+        "src/journey-webgl-ui.mjs",
+        "src/reviewed-content/annotation-source.json",
+        "src/reviewed-content/asset-replacements.json",
+        "src/reviewed-content/mission-catalog.json"
+      ],
+      "sourceSha256": {
+        "src/journey-guided-main.js": "879fb23c75d93f2ab65eaa701e213e3708dd86d7c545cab46ff453b6c74481c4",
+        "src/journey-shared-ui.mjs": "31e5041fa31b773038c244333e7a3eb2edfc8b111dba29967561059178ffb024",
+        "src/journey-webgl-ui.mjs": "73bb3f53e6749df055091112598da554ecaf9d8bba85692b65bb498613ccaf29",
+        "src/reviewed-content/annotation-source.json": "c081c116b0941e09c8c0141877a97a71733c54e24507fc33bf684761a5156673",
+        "src/reviewed-content/asset-replacements.json": "a63bf9e5e5e1a73e2da11376830891c15560f4033216f3644a75d1c92148c273",
+        "src/reviewed-content/mission-catalog.json": "4dedfc6e2a10dcf107f596eaf55c82703baead57f67dc5d78152e3a6d62c13b4"
+      },
+      "previousAppSha256": "8720f8d341047760ca6d36f78206d118a7def09fa4bd38e3af68cbc820910f89"
+    },
+    "client": {
+      "appSha256": "e94eb4e2bf73916d2f3fbb400dc3932161ed824b0f4fedb406ea5676a0144063",
+      "appBytes": 2063840,
+      "baselineAppSha256": "ace063dab2c0e168778a95ee09634285b03bece54b2c94008b59a2f549883c5c",
+      "changedFiles": [
+        "src/journey-guided-main.js",
+        "src/journey-shared-ui.mjs",
+        "src/journey-webgl-ui.mjs",
+        "src/reviewed-content/annotation-source.json",
+        "src/reviewed-content/asset-replacements.json",
+        "src/reviewed-content/mission-catalog.json"
+      ],
+      "sourceSha256": {
+        "src/journey-guided-main.js": "3e4abc7ba11901566a5e7d03917e368e84f9580fe2cb90ebc1c59506facf4ad1",
+        "src/journey-shared-ui.mjs": "9932934ff8d0f84e9a5559736dc68d3029153b643b8041dba16152fc468cb16a",
+        "src/journey-webgl-ui.mjs": "e4554af3648ef5358eaeebd41d21d743f4ebbd853520a4b8f0d01fc40e7a9534",
+        "src/reviewed-content/annotation-source.json": "c081c116b0941e09c8c0141877a97a71733c54e24507fc33bf684761a5156673",
+        "src/reviewed-content/asset-replacements.json": "a63bf9e5e5e1a73e2da11376830891c15560f4033216f3644a75d1c92148c273",
+        "src/reviewed-content/mission-catalog.json": "4dedfc6e2a10dcf107f596eaf55c82703baead57f67dc5d78152e3a6d62c13b4"
+      },
+      "previousAppSha256": "39ae35db8dfb5d9e1805fa84ddd661ef5b3a8baf378549b2556760e98de57058"
+    }
+  },
+  "standInstalledAppSha256": "c5e0cdbac632519c5f71454a6d2edfd26baaada5575299dbb0db6be0837256a0",
+  "previousReleaseId": "MAX-CLIENT-FEEDBACK-20261007-R3",
+  "acceptance": "USER_VISUAL_REVIEW_PENDING",
+  "requestLocalDate": "2026-10-07",
+  "previousInstallationObservation": "At 2026-10-06T19:43Z MASTER proxy returned 502; no MAX stop or application took place. Awaiting owner approval; later stand state not rechecked in this publication.",
+  "installationNote": "Local client feedback build only; no stand installation, service restart or publication performed."
+}
