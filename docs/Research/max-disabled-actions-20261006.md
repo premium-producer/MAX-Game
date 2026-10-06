@@ -1,0 +1,15 @@
+# MAX: отключение неверных действий
+
+06.10.2026. Источник: принятая установленная MAX-IMMEDIATE-TAP-20261006-R2, отдельный кандидат в `artifacts/workspace/tasks/max-disabled-actions-20261006`.
+
+Готовый механизм — нативный HTML `button.disabled`, определённый [WHATWG](https://html.spec.whatwg.org/multipage/form-elements.html#the-button-element) и описанный [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/disabled). Новая библиотека не требуется. Disabled исключает обычную активацию кнопки; aria-disabled дополняет описание доступности, но не заменяет native disabled. MDN отмечает особенности сохранения динамического disabled в Firefox: состояние здесь заново задаётся из текущего descriptor при построении/смене фазы, а не считается persistent gameplay data.
+
+Реальный ограничивающий случай текущего приложения: два phase writer безусловно включали data-answer при фазе task. Исправлено сохранением semantic data-action-disabled. LiDAR выбирает ближайший расширенный hit-target собственным существующим адаптером: native disabled сам по себе не защищает соседнюю расширенную зону при retarget на родителя. Использован имеющийся Three.js Box2/touchContains; actual footprint запрещённой кнопки исключает fallback, расширенная до500 зона запрещённой кнопки не блокирует соседнюю правильную кнопку. Это адаптация существующего выбора, а не новый механизм кликов.
+
+Backend projection в canonical и local application добавляет disabled только для доменного outcome incorrect. Скрытый outcome не передаётся UI. Facade и reveal-controller проверяют disabled перед отправкой ACT. Исходный каталог/разметка сохранены byte-for-byte, политика не зависит от текста кнопки. Развилки skip/navigate остаются доступными.
+
+Проверка: реальные phase assignments выполняются Node VM в трёх фазах; фактические pointer handlers — CPU fixture; canonical host — HTTP с реальной isolated SQLite. Независимый reviewer нашёл phase overwrite и отсутствие local projection до финальной сборки; оба исправлены. Браузер/физическая приёмка не выполнялись по запрету владельца. Rejected command settlement после INVALID_COMMAND_RECEIPT остаётся отдельной неисправностью; эта правка не очищает pending.
+
+## Диагностика обновлённого LiDAR
+
+Использован штатный [Microsoft Packet Monitor](https://learn.microsoft.com/en-us/windows-server/networking/technologies/pktmon/pktmon), [синтаксис](https://learn.microsoft.com/en-us/windows-server/networking/technologies/pktmon/pktmon-syntax): passiveNIC capture с фильтромUDP9001,20секунд, maxfile2MB, ETL→pcapng; без установки пакетов и второго UDPbind. osc.js2.4.5 из существующего кэша декодирует реальные bundles; actualreceiver replay доказывает mismatch arity3/5. Новая механика ввода/парсер в этой задаче не создавались. Для следующей совместимости сохранить osc.js и все source/id/finite/lifecycle/authority guards, добавить ровно наблюдённый3args вместе сlegacy5; калибровку не сбрасывать. Подробные исходные поля/interval/ranges/replay — task/lidar-audit/new-producer-confirmed.md.

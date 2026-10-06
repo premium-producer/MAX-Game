@@ -1,5 +1,8 @@
 # Preserve snapshot bytes; no global newline normalization.
 * -text
+"integration/current/runtime/stand/app.js" filter=lfs diff=lfs merge=lfs -text
+"integration/current/runtime/client/app.js" filter=lfs diff=lfs merge=lfs -text
+"apps/max-game/assets/device-custom/home-photo-no-benefits.svg" filter=lfs diff=lfs merge=lfs -text
 *.png filter=lfs diff=lfs merge=lfs -text
 *.jpg filter=lfs diff=lfs merge=lfs -text
 *.jpeg filter=lfs diff=lfs merge=lfs -text

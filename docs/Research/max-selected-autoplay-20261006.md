@@ -1,0 +1,13 @@
+# MAX: автопрохождение выбранной миссии
+
+06.10.2026. Повторно используются установленные механизмы: DBOS3.2.0/MIT + registry SQLAlchemyDatasource/SQLite для durable settings, existing V5AutoplayPresentation для ожидания реально готового игрового экрана, createV5AutomaticCatalog с готовым @dagrejs/graphlib2.2.4/MIT для детерминированного маршрута без циклов. Версия/лицензия graphlib сверены с установленным package.json; DBOS — с [прежним исследованием и pinned probe](be14-durable-reconciliation-20261004.md). Новые библиотеки, второй таймер и отдельная игровая authority не добавляются.
+
+Официальные [DBOS workflow IDs](https://docs.dbos.dev/python/tutorials/workflow-tutorial) и [datasource transactions](https://docs.dbos.dev/python/tutorials/transaction-tutorial) подтверждают идемпотентность workflowId и сохранение транзакционных результатов. Реальный описанный [DBOS widget store](https://docs.dbos.dev/python/examples/widget-store) использует durable SQL transaction steps в прикладном сценарии. Локальная установленная версия3.2 проверена actual DBOS/SQLite/HTTP, а не принята по актуальной документации автоматически. Исторический порядок существующих workflows не меняется; новый workflowId prefix и отдельные command receipts исключают переписывание replay старых настроек.
+
+Автомиссии MAX уже используют graphlib и готовый BFM readiness clock; они не должны начислять время при незагруженном media, GPU upload или незавершённом переходе. Clock получает существующий render delta, отдельного setTimeout для прогресса нет. Стандартный canonical assignment сохраняет прежние native-presented/input-owner gates и HTTP ACT validation.
+
+Ограничение установленного show-сценария: `show.automatic` одновременно выбирает ID→videos host и допускает только его authority. Для обычных выбранных миссий это поле повторно использовать нельзя. Добавляется отдельный `autoplay` policy, который проходит прежний MAX gateway binding. Экран переключает policy в том же assignment/session; выключение удаляет automatic presentation, изменение задержки сбрасывает только её visible clock. Уже отправленная допустимая ACT может завершиться; выключение не откатывает игровую историю.
+
+Настройки: default выключено/1000мс; runtime explicit enable по запросу пользователя. Диапазон500–10000мс, шаг100; состояние и immutable receipts сохраняются в SQLite, CAS и exact unknown-ACK retry следуют существующему operator protocol. Settings не изменяют show mode, миссии, разметку или калибровку. F остаётся read-only.
+
+Подтверждение actual integration — отдельный [отчёт](../../artifacts/reports/max-selected-autoplay-20261006.md); браузерные проверки запрещены пользователем, физическое прохождение выделяется отдельно.

@@ -1,5 +1,7 @@
 # Локальный контекст разработки MAX
 
+06.10.2026 — На стенде принят MAX-IMMEDIATE-TAP-20261006-R2: pointer down/pressed move активирует500×500 logical zone сразу; dwell/drag отключены. Непрерывная рука переходит между разными действиями после24px движения, без отпускания; неподвижная рука не запускает новый экран. Актуальные UI исходники в artifacts/workspace/tasks/max-immediate-tap-20261006/code/game, canonical backend — task/backend/mission-session.mjs; исторический корневой source не объявлять актуальнее принятой сборки. F не синхронизирован автоматически. [Передача интегратору](../../../artifacts/workspace/tasks/max-immediate-tap-20261006/HANDOFF.md), [проверка/установка](../../../artifacts/reports/max-immediate-tap-20261006.md).
+
 03.10.2026 — journey-v5-recovery.mjs использует native dialog. Local standalone v5 не активирует owner до выбора и GPU-ready; recoveryBlocked защищает focus/visibility. Continue вызывает renderer.resume(activeId), сохраняя screenId. Restart/Menu ждут reply.ok, ошибки оставляют диалог. [Проверка](../../../artifacts/reports/max-v5-recovery-20261003.md).
 
 03.10.2026 — Внешние v5 action-кнопки radius48/H96, flex center + text-align center. WebGL использует computed radius и DOM Range; отдельный текстовый offset не добавлять. [Проверка](../../../artifacts/reports/max-v5-pill-actions-20261003.md).
@@ -358,11 +360,3 @@ V5RevealJourney.handoff координирует maath и прежние pose/ph
 ## 03.10.2026 — v5: один ряд и motion profile
 
 arrange сразу использует V5.phoneLayout, включая место устройства; trace не меняет цели ряда/камеры. V5_MOTION — общий профиль: travel10/presence12/drag14, popup.45/.45, trace/fan.65. Настройки передаются в прежние IconMotion/JourneyTransition/InstructionMotion, defaults старых renderer сохранены. SharedRevealJourney принимает optional revealTiming; V5 убирает только дополнительные минимальные ожидания, settled сохраняется. Cosmetic popup fade не блокирует handoff; content preparation блокирует. Hidden/pause обнуляет dt v5 foreground. [Проверка](../../../artifacts/reports/max-v5-cadence-20261003.md).
-
-## Reviewed asset replacements (04.10.2026)
-
-`src/reviewed-content/asset-replacements.json` хранит пользовательские замены изображений отдельно от исходного vendor и разметки. `scripts/apply-reviewed-assets.mjs` применяется после applyAssetFlow; проверяет предыдущий SHA, сохраняет ID/contentRevision, масштабирует существующие image-space rect по фактическим новым размерам. `node artifacts/max-game/scripts/apply-asset-flow.mjs` пересобирает reviewed catalog; scoped V5 builder включает файлы из public/assets по новым путям. При изменении структуры экрана требуется новая пользовательская разметка, а не автоматическое предположение. В этой замене компоновка совпала: business.platform.verification,880×550. [Отчёт](../../../artifacts/reports/max-business-screen-3-20261004.md).
-
-Для replacement отключённого экрана указывается assetId; compiler сверяет source task/screen/asset, metadata.disabled и отсутствие активных ссылок. Это обновляет ресурс, но не включает экран. Пример — business.store.ready (04.10.2026).
-
-По следующему запросу пользователя тот же PNG подключён к активному business.store.result (figma.296-19936): asset-only replacement, прежняя below-screen кнопка complete-task. Отключённый ready не включался.

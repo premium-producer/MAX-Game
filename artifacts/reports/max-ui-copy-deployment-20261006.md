@@ -1,0 +1,11 @@
+# MAX UI: установка на MAX_RIGHT
+
+MAX-UI-COPY-20261006-R1 установлен06.10.2026 в21:30:54МСК (18:30:54UTC), рольMAX_RIGHT/DESKTOP-64J4BMN/UUID6a8a4e42-437b-4fd4-a363-d2fb155db83b, pinnedselectel. Пользователь прямо запросил применение; этот чат — назначенный владелец MAX. MASTER использован только для read-only проверки отсутствия активной/ожидающей MAX миссии и show.
+
+Три точечных файла: app/max-ui/max-game/webgl-v5/app.js, app/max-adapter/accepted-source.json, app/max-adapter/ui-copy-build.json. Обновлены root/component hash ledgers и uiCopyOverlay; резерв C:\VKStand\releases\stand-base-20261005-r1\MAX_RIGHT\data\max-ui-copy-20261006-r1/backup-before. SHA нового bundlec5e0cdbac632519c5f71454a6d2edfd26baaada5575299dbb0db6be0837256a0, размер1922437байт. HTTP на9573 отдаёт точные новые байты; accepted pin,root+component hashes,штатный launcher check0 совпали. Новый nodePID9152,bootfb2d66e8-4d41-4ee4-a886-82d154d1479b; ElectronPID19132 вsession1.
+
+Fresh group/UUID/host/task/idle/beforeSHA/config/generation guards и remote payload SHA PASS. Независимый субагент проверил allowlist, ZIP, deep-compare accepted-source и отсутствие ослабления rollback/guards. Рабочий режим standard подтверждён context.presentation.phase=active и renderer ACK. Loggerhealthy,writeErrors0. Калибровка settings.json,receiver/control/topmost-selection,v5.css и config/node.json совпали с preflight SHA. LiDAR bound UDP9001,nodePID9152,selection=topmost; после перезапуска на момент verify пакетов0/no_packets — свежие физические касания не проверялись и не заявляются.
+
+Принятые20CPU/syntax/duplicates/build checks описаны в [UI отчёте](max-ui-copy-20261006.md). Браузер/GPU визуальные проверки не выполнялись по запрету; прохождение и художественная приёмка пользователем OPEN. Исправление пустой справки/типографики/будущих иконок установлено. Сайт, F, MASTER-код, остальная площадка, ассеты/разметка/БД/калибровка не менялись; runtime клиента остаётся локальным.
+
+Трафик SIM: RX≈0.539046МБ файлов; TX≈0.071970МБ логических ответов; всего≈0.611016МБ учтённого объёма; учёт: частичная оценка; основание: один точечный ZIP/plan/script и уникальные SSH-ответы, команды/registry/Base64/framing/WAN не измерены; остаток: неизвестен. Медиа/БД не передавались; localhost/LAN/кэш и прошлые задачи не учтены повторно.

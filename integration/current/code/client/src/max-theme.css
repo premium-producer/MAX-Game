@@ -1,0 +1,81 @@
+/* MAX 0.1.0. Layout dimensions are game decisions; colors/assets come from the brand package. */
+.max-wall-backdrop {display:none}
+html[data-surface="right"],html[data-surface="right"] body {background:transparent}
+html[data-surface="right"] .max-wall-backdrop {display:block;position:absolute;inset:0;pointer-events:none;color:#FFFFFF;font-family:var(--max-font)}
+.max-wall-backdrop img {position:absolute;top:8%;left:7%;width:11%;height:auto}
+.max-wall-backdrop h1 {position:absolute;left:7%;top:24%;margin:0;font-size:3.5vw;line-height:1.05;font-weight:600;letter-spacing:-.04em}
+.max-wall-backdrop p {position:absolute;left:7%;top:59%;font-size:1.05vw;line-height:1.4;color:#FFFFFF}
+.max-wall-help {position:absolute;left:7%;top:72%;font-size:1.15vw;line-height:2.15;font-weight:500;color:#FFFFFF}
+html[data-surface="right"] .stage {border:0;border-radius:0;box-shadow:none;background:transparent}
+html[data-surface="right"] .master-return {display:none!important}
+html[data-surface="right"] .header-actions button {min-width:60px;min-height:60px}
+html[data-service-paused="true"] .stage {pointer-events:none}
+html[data-service-paused="true"] body::after {content:'Пауза';position:fixed;left:45%;top:25%;color:white;background:#0D001Acc;padding:1em 2em;border-radius:16px;font:500 2vw var(--max-font);z-index:99999}
+:root { color-scheme:dark; background:var(--max-dark); font-family:var(--max-font); }
+body,.stage { background:var(--max-dark); }
+button { font-family:var(--max-font); font-weight:500; }
+h1,h2,h3,.ui-copy-heading { font-weight:600; }
+.ui-copy-body,.mission-description { font-weight:400; }
+.brand-logo { width:170px; height:54px; object-fit:contain; }
+html[lang="en"] .shell-header .brand-logo { visibility:visible; opacity:1; display:block; }
+.header-title { font-size:25px; font-weight:600; letter-spacing:-.025em; color:var(--max-white); }
+.shell-header { background:var(--max-dark); border-color:rgba(255,255,255,.15); }
+.shell-frame { border-color:rgba(255,255,255,.20); }
+.shell-inventory,.shell-footer { background:rgba(13,0,26,.96); border-color:rgba(255,255,255,.20); }
+.shell-inventory h2 { font-weight:500; color:var(--max-white); }
+.flow-screen--cta { border:0; border-radius:0; background:linear-gradient(90deg,rgba(13,0,26,.92),rgba(13,0,26,.55) 47%,transparent 78%); }
+.cta-brand-logo { top:54px; left:72px; width:208px; height:66px; }
+.cta-content { text-align:left; padding:218px 0 0 112px; width:1050px; }
+.max-kicker { color:var(--max-cyan); font-size:17px; line-height:1.3; letter-spacing:.15em; font-weight:500; margin:0 0 28px; }
+.cta-content h1 { white-space:pre-line; font-size:100px; line-height:1.02; letter-spacing:-.045em; font-weight:600; color:white; }
+.max-hero-copy { font-size:25px; line-height:1.4; font-weight:400; margin:28px 0 0; color:rgba(255,255,255,.8); }
+.hero-button { min-width:360px; min-height:72px; padding:17px 36px; border:0; border-radius:18px; color:var(--max-white); background:var(--max-main-gradient); font-size:25px; font-weight:500; box-shadow:none; transition:transform 150ms ease,box-shadow 150ms ease; }
+.hero-button:hover:not(:disabled) { background:var(--max-main-gradient); box-shadow:0 0 0 2px rgba(255,255,255,.5); }
+.hero-button:active:not(:disabled) { transform:scale(.98); }
+.hero-button:focus-visible,.outline-button:focus-visible { outline:3px solid white; outline-offset:5px; }
+.cta-content .hero-button { margin-top:42px; }
+.outline-button,.audio-toggle { border-color:rgba(255,255,255,.30); border-radius:12px; color:white; background:var(--max-dark); }
+.outline-button:hover,.audio-toggle:hover { background:var(--max-violet); border-color:var(--max-violet); color:white; }
+.language-switcher { border-color:rgba(255,255,255,.2); background:rgba(255,255,255,.06); border-radius:12px; }
+.language-switcher::before { background:var(--max-violet); border-radius:9px; }
+.language-switcher button { font-family:var(--max-font); }
+.onboarding-title { font-size:38px; font-weight:600; letter-spacing:-.025em; margin-top:68px; }
+.onboarding-steps { column-gap:48px; grid-template-columns:repeat(3,370px); margin-top:80px; }
+.onboarding-step { background:rgba(13,0,26,.94); border:1px solid rgba(255,255,255,.22); border-radius:24px; box-shadow:none; padding:30px; }
+.onboarding-step > strong { font-weight:600; font-size:26px; }
+.onboarding-step p { color:rgba(255,255,255,.85); font-weight:400; font-size:20px; }
+.onboarding-step .step-number { background:var(--max-violet); }
+.mission-marker { border-color:rgba(255,255,255,.27); background:rgba(13,0,26,.95); border-radius:18px; box-shadow:none; }
+.mission-marker.is-selected { border-color:var(--max-cyan); box-shadow:0 0 0 1px var(--max-cyan); }
+.mission-marker.is-completed { border-color:var(--max-violet); }
+.mission-marker .mission-summary { font-family:var(--max-font); color:rgba(255,255,255,.8); font-weight:400; }
+.mission-marker > strong { font-weight:600; }
+.mission-marker-stem,.mission-marker-base { background:var(--max-cyan); }
+.mission-marker .hero-button { min-width:0; min-height:44px; font-size:17px; border-radius:10px; }
+.inventory-item,.ui-shell[data-placement-mode="tap"] .inventory-item { background:rgba(255,255,255,.04); border-color:rgba(255,255,255,.18); border-radius:18px; box-shadow:none; }
+.inventory-item:hover { border-color:var(--max-purple); }
+.inventory-item.is-selected,.ui-shell[data-placement-mode="tap"] .inventory-item.is-selected { background:rgba(110,26,255,.25); border-color:var(--max-cyan); box-shadow:inset 0 0 0 1px var(--max-cyan); }
+.object-card-count { color:var(--max-cyan); }
+.outcome-popup { background:var(--max-dark); border-color:var(--max-violet); border-radius:24px; }
+.outcome-popup h2 { font-weight:600; }
+.boot-screen { background:var(--max-dark); }
+.boot-card { border-color:rgba(255,255,255,.22); background:var(--max-dark); border-radius:24px; }
+.boot-card h1 { font-weight:600; }
+.boot-brand { color:var(--max-cyan); }
+.boot-card progress { accent-color:var(--max-violet); }
+.max-end { padding-top:75px; }
+.max-end-logo { display:block; width:220px; height:70px; margin:0 auto 36px; object-fit:contain; }
+.max-end h1 { font-weight:600; font-size:65px; letter-spacing:-.03em; }
+.max-end-copy { max-width:710px; margin:24px auto; font-weight:400; font-size:25px; line-height:1.4; }
+.master-return { position:fixed; z-index:1000; bottom:12px; left:16px; padding:9px 13px; border:1px solid rgba(255,255,255,.3); background:var(--max-dark); color:white; text-decoration:none; border-radius:12px; font:13px var(--max-font); }
+.master-return[hidden] { display:none; }
+@media(prefers-reduced-motion:reduce){.hero-button{transition:none}.hero-button:active:not(:disabled){transform:none}}
+
+html[data-surface="right"] .stage,html[data-surface="right"] .world-layer,html[data-surface="right"] .game-field,html[data-surface="right"] .flow-screen,html[data-surface="right"] .shell-frame,html[data-surface="right"] .shell-header {background:transparent;border:0;box-shadow:none}
+html[data-surface="right"] .flow-screen--cta {background:none}
+
+/* User-approved six-color game palette; this is a project gradient, not source Main. */
+:root {--max-blue:#471AFF;--max-main-gradient:linear-gradient(90deg,#00BFFF,#6E1AFF 50.48%,#9500FF)}
+html[data-surface="right"] .shell-backdrop {background:transparent;backdrop-filter:none}
+
+.client-branch{display:grid;gap:8px;margin:14px 0;font:400 15px var(--max-font);color:#FFFFFF}.client-branch select{max-width:100%;padding:8px;border:1px solid #6E1AFF;border-radius:8px;background:#0D001A;color:#FFFFFF;font:500 16px var(--max-font)}

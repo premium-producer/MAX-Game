@@ -1,0 +1,33 @@
+{
+  "id": "MAX-LIDAR-COMPACT-20261006-R1",
+  "profiles": {
+    "compact": [
+      "id",
+      "x",
+      "y"
+    ],
+    "legacy": [
+      "id",
+      "x",
+      "y",
+      "a",
+      "b"
+    ],
+    "delete": [
+      "id"
+    ]
+  },
+  "source": "artifacts/workspace/tasks/max-lidar-compact-20261006/code/adapter/hokuyo-osc.mjs",
+  "beforeSHA": "0566d49d869b10c44e1925b906363c5299e4389cacddac239bc408022a40355f",
+  "sha256": "26cccedc4073de57af066c07c3d981dcd6518fbdd536286b73437f63adc14277",
+  "decoder": "osc@2.4.5",
+  "guards": "Existing sourceIP,ID,finite,primary,expiry and authority unchanged",
+  "tests": 7,
+  "realReplay": {
+    "packets": 185,
+    "messages": 935,
+    "acceptedUpdates": 918,
+    "decodeErrors": 0
+  },
+  "calibrationMigration": null
+}

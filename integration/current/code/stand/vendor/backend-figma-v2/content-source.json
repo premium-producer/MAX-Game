@@ -1,0 +1,948 @@
+{
+  "schemaVersion": 1,
+  "revision": "missions-figma-20261003-151916-v2",
+  "sourceFolder": "2026-10-03_15-19-16",
+  "sourceCatalogSha256": "63110f85e314b21e8180a086dbad2f444f01746851c5a066573951eb8a2cb858",
+  "sourceRecords": 103,
+  "missions": 4,
+  "tasks": 15,
+  "screens": 84,
+  "icons": 18,
+  "reviewNotes": [
+    {
+      "screenId": "digital-id.create-id.redirect",
+      "kind": "editorial-instruction-suppressed",
+      "raw": "Текст справки удалён по комментарию клиента"
+    },
+    {
+      "screenId": "digital-id.create-id.biometry",
+      "kind": "editorial-instruction-suppressed",
+      "raw": "Текст справки удалён по комментарию клиента"
+    },
+    {
+      "screenId": "communication.call.connected",
+      "kind": "editorial-instruction-suppressed",
+      "raw": "Текст справки удалён по комментарию клиента"
+    },
+    {
+      "screenId": "business.channel.details",
+      "kind": "editorial-instruction-suppressed",
+      "raw": "текст убран"
+    },
+    {
+      "screenId": "business.channel.description",
+      "kind": "editorial-instruction-suppressed",
+      "raw": "текст убран"
+    },
+    {
+      "screenId": "business.channel.type",
+      "kind": "editorial-instruction-suppressed",
+      "raw": "текст убран"
+    },
+    {
+      "screenId": "business.channel.publish",
+      "kind": "editorial-instruction-suppressed",
+      "raw": "текст убран"
+    },
+    {
+      "screenId": "business.bot.filled",
+      "kind": "editorial-instruction-suppressed",
+      "raw": "Без текста, продолжение прошлого экрана"
+    }
+  ],
+  "sourceRows": [
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.channel",
+      "screenId": "blogger.channel.chats",
+      "sourceOrder": 1,
+      "visualNodeId": "296:13423",
+      "assetId": "figma.296-13423",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.channel",
+      "screenId": "blogger.channel.menu",
+      "sourceOrder": 2,
+      "visualNodeId": "296:13434",
+      "assetId": "figma.296-13434",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.channel",
+      "screenId": "blogger.channel.name",
+      "sourceOrder": 3,
+      "visualNodeId": "296:13442",
+      "assetId": "figma.296-13442",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.channel",
+      "screenId": "blogger.channel.filled",
+      "sourceOrder": 4,
+      "visualNodeId": "296:13455",
+      "assetId": "figma.296-13455",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.channel",
+      "screenId": "blogger.channel.privacy",
+      "sourceOrder": 5,
+      "visualNodeId": "296:13464",
+      "assetId": "figma.296-13464",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.channel",
+      "screenId": "blogger.channel.public-confirm",
+      "sourceOrder": 6,
+      "visualNodeId": "296:13473",
+      "assetId": "figma.296-13473",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.channel",
+      "screenId": "blogger.channel.public-link",
+      "sourceOrder": 7,
+      "visualNodeId": "296:13482",
+      "assetId": "figma.296-13482",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.channel",
+      "screenId": "blogger.channel.public-filled",
+      "sourceOrder": 8,
+      "visualNodeId": "296:13493",
+      "assetId": "figma.296-13493",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.channel",
+      "screenId": "blogger.channel.subscribers",
+      "sourceOrder": 9,
+      "visualNodeId": "296:13504",
+      "assetId": "figma.296-13504",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.channel",
+      "screenId": "blogger.channel.created",
+      "sourceOrder": 10,
+      "visualNodeId": "296:13512",
+      "assetId": "figma.296-13512",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.channel",
+      "screenId": "blogger.channel.result",
+      "sourceOrder": 11,
+      "visualNodeId": "296:13522",
+      "assetId": "figma.296-13522",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.comments",
+      "screenId": "blogger.comments.post",
+      "sourceOrder": 1,
+      "visualNodeId": "296:13537",
+      "assetId": "figma.296-13537",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.comments",
+      "screenId": "blogger.comments.input",
+      "sourceOrder": 2,
+      "visualNodeId": "296:13546",
+      "assetId": "figma.296-13546",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.comments",
+      "screenId": "blogger.comments.reply",
+      "sourceOrder": 3,
+      "visualNodeId": "296:13555",
+      "assetId": "figma.296-13555",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.comments",
+      "screenId": "blogger.comments.sent",
+      "sourceOrder": 4,
+      "visualNodeId": "296:13564",
+      "assetId": "figma.296-13564",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.comments",
+      "screenId": "blogger.comments.result",
+      "sourceOrder": 5,
+      "visualNodeId": "296:13573",
+      "assetId": "figma.296-13573",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.statistics",
+      "screenId": "blogger.statistics.menu",
+      "sourceOrder": 1,
+      "visualNodeId": "296:13587",
+      "assetId": "figma.296-13587",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.statistics",
+      "screenId": "blogger.statistics.statistics",
+      "sourceOrder": 2,
+      "visualNodeId": "296:13597",
+      "assetId": "figma.296-13597",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.create-id",
+      "screenId": "digital-id.create-id.start",
+      "sourceOrder": 1,
+      "visualNodeId": "296:13807",
+      "assetId": "figma.296-13807",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.create-id",
+      "screenId": "digital-id.create-id.documents",
+      "sourceOrder": 2,
+      "visualNodeId": "296:14794",
+      "assetId": "figma.296-14794",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.create-id",
+      "screenId": "digital-id.create-id.redirect",
+      "sourceOrder": 3,
+      "visualNodeId": "296:14873",
+      "assetId": "figma.296-14873",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.create-id",
+      "screenId": "digital-id.create-id.confirm",
+      "sourceOrder": 4,
+      "visualNodeId": "296:14904",
+      "assetId": "figma.296-14904",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.create-id",
+      "screenId": "digital-id.create-id.quick",
+      "sourceOrder": 5,
+      "visualNodeId": "296:14945",
+      "assetId": "figma.296-14945",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.create-id",
+      "screenId": "digital-id.create-id.biometry",
+      "sourceOrder": 6,
+      "visualNodeId": "296:15108",
+      "assetId": "figma.296-15108",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.create-id",
+      "screenId": "digital-id.create-id.ready",
+      "sourceOrder": 7,
+      "visualNodeId": "296:15260",
+      "assetId": "figma.296-15260",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.hotel",
+      "screenId": "digital-id.hotel.arrival",
+      "sourceOrder": 1,
+      "visualNodeId": "296:15686",
+      "assetId": "figma.296-15686",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.hotel",
+      "screenId": "digital-id.hotel.present",
+      "sourceOrder": 2,
+      "visualNodeId": "296:15696",
+      "assetId": "figma.296-15696",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.hotel",
+      "screenId": "digital-id.hotel.result",
+      "sourceOrder": 3,
+      "visualNodeId": "296:15706",
+      "assetId": "figma.296-15706",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.benefit",
+      "screenId": "digital-id.benefit.arrival",
+      "sourceOrder": 1,
+      "visualNodeId": "296:15720",
+      "assetId": "figma.296-15720",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.benefit",
+      "screenId": "digital-id.benefit.present",
+      "sourceOrder": 2,
+      "visualNodeId": "296:15730",
+      "assetId": "figma.296-15730",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.benefit",
+      "screenId": "digital-id.benefit.result",
+      "sourceOrder": 3,
+      "visualNodeId": "296:15740",
+      "assetId": "figma.296-15740",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.age",
+      "screenId": "digital-id.age.arrival",
+      "sourceOrder": 1,
+      "visualNodeId": "296:15754",
+      "assetId": "figma.296-15754",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.age",
+      "screenId": "digital-id.age.present",
+      "sourceOrder": 2,
+      "visualNodeId": "296:15764",
+      "assetId": "figma.296-15764",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.age",
+      "screenId": "digital-id.age.result",
+      "sourceOrder": 3,
+      "visualNodeId": "296:15774",
+      "assetId": "figma.296-15774",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.call",
+      "screenId": "communication.call.chat",
+      "sourceOrder": 1,
+      "visualNodeId": "296:15983",
+      "assetId": "figma.296-15983",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.call",
+      "screenId": "communication.call.calling",
+      "sourceOrder": 2,
+      "visualNodeId": "296:15990",
+      "assetId": "figma.296-15990",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.call",
+      "screenId": "communication.call.connected",
+      "sourceOrder": 3,
+      "visualNodeId": "296:16000",
+      "assetId": "figma.296-16000",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.call",
+      "screenId": "communication.call.result",
+      "sourceOrder": 4,
+      "visualNodeId": "296:16021",
+      "assetId": "figma.296-16021",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.message",
+      "screenId": "communication.message.voice-start",
+      "sourceOrder": 1,
+      "visualNodeId": "296:16039",
+      "assetId": "figma.296-16039",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.message",
+      "screenId": "communication.message.voice-recording",
+      "sourceOrder": 2,
+      "visualNodeId": "296:16051",
+      "assetId": "figma.296-16051",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.message",
+      "screenId": "communication.message.voice-stop",
+      "sourceOrder": 3,
+      "visualNodeId": "296:16061",
+      "assetId": "figma.296-16061",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.message",
+      "screenId": "communication.message.voice-preview",
+      "sourceOrder": 4,
+      "visualNodeId": "296:16071",
+      "assetId": "figma.296-16071",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.message",
+      "screenId": "communication.message.voice-sent",
+      "sourceOrder": 5,
+      "visualNodeId": "296:16081",
+      "assetId": "figma.296-16081",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.message",
+      "screenId": "communication.message.video-start",
+      "sourceOrder": 6,
+      "visualNodeId": "296:16090",
+      "assetId": "figma.296-16090",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.message",
+      "screenId": "communication.message.video-ready",
+      "sourceOrder": 7,
+      "visualNodeId": "296:16098",
+      "assetId": "figma.296-16098",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.message",
+      "screenId": "communication.message.video-recording",
+      "sourceOrder": 8,
+      "visualNodeId": "296:16108",
+      "assetId": "figma.296-16108",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.message",
+      "screenId": "communication.message.video-stop",
+      "sourceOrder": 9,
+      "visualNodeId": "296:16118",
+      "assetId": "figma.296-16118",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.message",
+      "screenId": "communication.message.video-preview",
+      "sourceOrder": 10,
+      "visualNodeId": "296:16126",
+      "assetId": "figma.296-16126",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.message",
+      "screenId": "communication.message.video-sent",
+      "sourceOrder": 11,
+      "visualNodeId": "296:16137",
+      "assetId": "figma.296-16137",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.reaction",
+      "screenId": "communication.reaction.chat",
+      "sourceOrder": 1,
+      "visualNodeId": "296:16151",
+      "assetId": "figma.296-16151",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.reaction",
+      "screenId": "communication.reaction.stickers",
+      "sourceOrder": 2,
+      "visualNodeId": "296:16171",
+      "assetId": "figma.296-16171",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.reaction",
+      "screenId": "communication.reaction.preview",
+      "sourceOrder": 3,
+      "visualNodeId": "296:16290",
+      "assetId": "figma.296-16290",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.reaction",
+      "screenId": "communication.reaction.sent",
+      "sourceOrder": 4,
+      "visualNodeId": "296:16365",
+      "assetId": "figma.296-16365",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.story",
+      "screenId": "communication.story.start",
+      "sourceOrder": 1,
+      "visualNodeId": "296:16392",
+      "assetId": "figma.296-16392",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.story",
+      "screenId": "communication.story.duration",
+      "sourceOrder": 2,
+      "visualNodeId": "296:16403",
+      "assetId": "figma.296-16403",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.story",
+      "screenId": "communication.story.audience",
+      "sourceOrder": 3,
+      "visualNodeId": "296:16411",
+      "assetId": "figma.296-16411",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.story",
+      "screenId": "communication.story.publish",
+      "sourceOrder": 4,
+      "visualNodeId": "296:16423",
+      "assetId": "figma.296-16423",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.story",
+      "screenId": "communication.story.ready",
+      "sourceOrder": 5,
+      "visualNodeId": "296:16433",
+      "assetId": "figma.296-16433",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.platform",
+      "screenId": "business.platform.login",
+      "sourceOrder": 1,
+      "visualNodeId": "296:16657",
+      "assetId": "figma.296-16657",
+      "deviceKind": "pc"
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.platform",
+      "screenId": "business.platform.profile",
+      "sourceOrder": 2,
+      "visualNodeId": "296:16744",
+      "assetId": "figma.296-16744",
+      "deviceKind": "pc"
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.platform",
+      "screenId": "business.platform.verification",
+      "sourceOrder": 3,
+      "visualNodeId": "296:16939",
+      "assetId": "figma.296-16939",
+      "deviceKind": "pc"
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.platform",
+      "screenId": "business.platform.ready",
+      "sourceOrder": 4,
+      "visualNodeId": "296:17134",
+      "assetId": "figma.296-17134",
+      "deviceKind": "pc"
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.platform",
+      "screenId": "business.platform.result",
+      "sourceOrder": 5,
+      "visualNodeId": "296:17148",
+      "assetId": "figma.296-17148",
+      "deviceKind": "pc"
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.channel",
+      "screenId": "business.channel.create",
+      "sourceOrder": 1,
+      "visualNodeId": "296:17351",
+      "assetId": "figma.296-17351",
+      "deviceKind": "pc"
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.channel",
+      "screenId": "business.channel.continue",
+      "sourceOrder": 2,
+      "visualNodeId": "296:17579",
+      "assetId": "figma.296-17579",
+      "deviceKind": "pc"
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.channel",
+      "screenId": "business.channel.open",
+      "sourceOrder": 3,
+      "visualNodeId": "296:17783",
+      "assetId": "figma.296-17783",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.channel",
+      "screenId": "business.channel.setup",
+      "sourceOrder": 4,
+      "visualNodeId": "296:17801",
+      "assetId": "figma.296-17801",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.channel",
+      "screenId": "business.channel.details",
+      "sourceOrder": 5,
+      "visualNodeId": "296:17821",
+      "assetId": "figma.296-17821",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.channel",
+      "screenId": "business.channel.description",
+      "sourceOrder": 6,
+      "visualNodeId": "296:17843",
+      "assetId": "figma.296-17843",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.channel",
+      "screenId": "business.channel.type",
+      "sourceOrder": 7,
+      "visualNodeId": "296:17863",
+      "assetId": "figma.296-17863",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.channel",
+      "screenId": "business.channel.publish",
+      "sourceOrder": 8,
+      "visualNodeId": "296:17887",
+      "assetId": "figma.296-17887",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.channel",
+      "screenId": "business.channel.ready",
+      "sourceOrder": 9,
+      "visualNodeId": "296:17912",
+      "assetId": "figma.296-17912",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.channel",
+      "screenId": "business.channel.result",
+      "sourceOrder": 10,
+      "visualNodeId": "296:18120",
+      "assetId": "figma.296-18120",
+      "deviceKind": "pc"
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.bot",
+      "screenId": "business.bot.create",
+      "sourceOrder": 1,
+      "visualNodeId": "296:18558",
+      "assetId": "figma.296-18558",
+      "deviceKind": "pc"
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.bot",
+      "screenId": "business.bot.details",
+      "sourceOrder": 2,
+      "visualNodeId": "296:18787",
+      "assetId": "figma.296-18787",
+      "deviceKind": "pc"
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.bot",
+      "screenId": "business.bot.filled",
+      "sourceOrder": 3,
+      "visualNodeId": "296:18799",
+      "assetId": "figma.296-18799",
+      "deviceKind": "pc"
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.bot",
+      "screenId": "business.bot.ready",
+      "sourceOrder": 4,
+      "visualNodeId": "296:18852",
+      "assetId": "figma.296-18852",
+      "deviceKind": "pc"
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.bot",
+      "screenId": "business.bot.conversation",
+      "sourceOrder": 5,
+      "visualNodeId": "296:19066",
+      "assetId": "figma.296-19066",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.bot",
+      "screenId": "business.bot.result",
+      "sourceOrder": 6,
+      "visualNodeId": "296:19278",
+      "assetId": "figma.296-19278",
+      "deviceKind": "phone"
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.store",
+      "screenId": "business.store.start",
+      "sourceOrder": 1,
+      "visualNodeId": "296:19495",
+      "assetId": "figma.296-19495",
+      "deviceKind": "pc"
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.store",
+      "screenId": "business.store.connect",
+      "sourceOrder": 2,
+      "visualNodeId": "296:19723",
+      "assetId": "figma.296-19723",
+      "deviceKind": "pc"
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.store",
+      "screenId": "business.store.publish",
+      "sourceOrder": 3,
+      "visualNodeId": "296:19730",
+      "assetId": "figma.296-19730",
+      "deviceKind": "pc"
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.store",
+      "screenId": "business.store.ready",
+      "sourceOrder": 4,
+      "visualNodeId": "296:19737",
+      "assetId": "figma.296-19737",
+      "deviceKind": "pc"
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.store",
+      "screenId": "business.store.result",
+      "sourceOrder": 5,
+      "visualNodeId": "296:19936",
+      "assetId": "figma.296-19936",
+      "deviceKind": "pc"
+    }
+  ],
+  "limitations": [
+    "Explicit new sessions; old progress is not auto-migrated.",
+    "Four source missions only; old test missions remain in the previous release.",
+    "Unknown screenshot hit-targets use one existing below-screen action; visual acceptance remains pending.",
+    "Original images are unchanged, including text drawn inside screenshots."
+  ],
+  "sourceIcons": 19,
+  "iconSelection": {
+    "sourceRoot": "artifacts/DESIGN/UI/max",
+    "assignments": [
+      {
+        "role": "blogger.channel",
+        "assetId": "max-icon.channel"
+      },
+      {
+        "role": "blogger.comments",
+        "assetId": "max-icon.comments"
+      },
+      {
+        "role": "blogger.statistics",
+        "assetId": "max-icon.statistics"
+      },
+      {
+        "role": "digital-id.create-id",
+        "assetId": "max-icon.digital-id"
+      },
+      {
+        "role": "digital-id.hotel",
+        "assetId": "max-icon.hotel"
+      },
+      {
+        "role": "digital-id.benefit",
+        "assetId": "max-icon.benefit"
+      },
+      {
+        "role": "digital-id.age",
+        "assetId": "max-icon.age"
+      },
+      {
+        "role": "communication.call",
+        "assetId": "max-icon.call"
+      },
+      {
+        "role": "communication.message",
+        "assetId": "max-icon.message"
+      },
+      {
+        "role": "communication.reaction",
+        "assetId": "max-icon.stickers"
+      },
+      {
+        "role": "communication.story",
+        "assetId": "max-icon.story"
+      },
+      {
+        "role": "business.platform",
+        "assetId": "max-icon.business"
+      },
+      {
+        "role": "business.channel",
+        "assetId": "max-icon.channel"
+      },
+      {
+        "role": "business.bot",
+        "assetId": "max-icon.bot"
+      },
+      {
+        "role": "business.store",
+        "assetId": "max-icon.store"
+      },
+      {
+        "role": "mission.blogger",
+        "assetId": "max-icon.channel"
+      },
+      {
+        "role": "start.blogger",
+        "assetId": "max-icon.open-max"
+      },
+      {
+        "role": "mission.digital-id",
+        "assetId": "max-icon.digital-id"
+      },
+      {
+        "role": "start.digital-id",
+        "assetId": "max-icon.open-max"
+      },
+      {
+        "role": "mission.communication",
+        "assetId": "max-icon.comments"
+      },
+      {
+        "role": "start.communication",
+        "assetId": "max-icon.open-max"
+      },
+      {
+        "role": "mission.business",
+        "assetId": "max-icon.business"
+      },
+      {
+        "role": "start.business",
+        "assetId": "max-icon.open-max"
+      },
+      {
+        "role": "control.open-max",
+        "assetId": "max-icon.open-max"
+      },
+      {
+        "role": "control.scan",
+        "assetId": "max-icon.scan"
+      },
+      {
+        "role": "control.restart",
+        "assetId": "max-icon.restart"
+      }
+    ],
+    "missing": [],
+    "fallbackAssetId": "max-icon.missing",
+    "sourceFiles": {
+      "bot": "Frame 2131329342.svg",
+      "story": "Frame 2131329343.svg",
+      "stickers": "Frame 2131329344.svg",
+      "call": "Frame 2131329345.svg",
+      "business": "Frame 2131329346.svg",
+      "store": "Frame 2131329347.svg",
+      "channel": "Frame 2131329348.svg",
+      "statistics": "Frame 2131329349.svg",
+      "comments": "Frame 2131329350.svg",
+      "message": "Frame 2131329351.svg",
+      "open-max": "Frame 2131329352.svg",
+      "digital-id": "Frame 2131329353.svg",
+      "hotel": "Frame 2131329354.svg",
+      "benefit": "Frame 2131329355.svg",
+      "age": "Frame 2131329356.svg",
+      "scan": "block_contact.svg",
+      "restart": "undo.svg"
+    }
+  }
+}

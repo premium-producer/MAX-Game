@@ -1,0 +1,81 @@
+/* Logical scene typography is fixed. Viewport fitting happens once on #arena. */
+html[data-experiment=guided] #circles .guided-zone{border:0;box-shadow:none}
+html[data-experiment=guided] #circles h1,html[data-experiment=guided] #circles h2{font-size:48px;line-height:1.1}
+html[data-experiment=guided] #circles p{font-size:32px;line-height:1.24}
+html[data-experiment=guided] #circles .pill{font-size:32px;line-height:1.18;min-height:64px;padding:12px 22px;white-space:normal}
+html[data-experiment=guided] #circles .mission-choices{inset:160px 30px 24px;gap:20px}
+html[data-experiment=guided] #circles .mission-card{padding:24px;gap:22px;border-radius:40px}
+html[data-experiment=guided] #circles .mission-card strong{font-size:32px}
+html[data-experiment=guided] #circles .mission-card small{font-size:24px}
+html[data-experiment=guided] #circles .medallion{flex-basis:96px;height:96px;padding:24px}
+html[data-experiment=guided] #circles .guided-field{inset:100px 0 40px;cursor:grab}
+html[data-experiment=guided] #circles .object{width:240px;height:300px;left:calc(var(--x) * (100% - 240px));top:calc(var(--y) * (100% - 300px));gap:16px}
+html[data-experiment=guided] #circles .object .tile{width:128px;height:128px;border-radius:30px}
+html[data-experiment=guided] #circles .route-first .tile{border-radius:50%}
+html[data-experiment=guided] #circles .object-label{width:240px;max-width:240px;font-size:32px;line-height:1.15;word-break:normal;overflow-wrap:normal;hyphens:none}
+html[data-experiment=guided] #circles .object-label small{display:block;font-size:24px;line-height:1.15;margin-top:12px}
+html[data-experiment=guided] #circles .guided-palm .tile{width:160px;height:160px;border-radius:30px}
+html[data-experiment=guided] #circles .guided-palm .object-label{font-size:32px}
+html[data-experiment=guided] #circles .guided-palm:disabled{pointer-events:none}
+html[data-experiment=guided] #circles .guided-nav{position:absolute;left:20px;right:20px;top:14px;display:flex;justify-content:space-between;pointer-events:none}
+html[data-experiment=guided] #circles .guided-nav button{pointer-events:auto}
+html[data-experiment=guided] #circles .guided-caption{position:absolute;bottom:4px;left:220px;right:220px;text-align:center;pointer-events:none;font-size:24px}
+html[data-experiment=guided] #circles .cta-orb{width:128px;height:128px}
+html[data-experiment=guided] #circles .mission-cta{font-size:32px}
+/* Symmetric shell keeps the phone, including its entrance motion, on the scene centre. */
+html[data-experiment=guided] #circles .task-dialog.context-popup{left:0;right:0;top:0;bottom:0;width:auto;height:auto;overflow:visible;transform-origin:50% 50%;--popup-scale:1;--phone-height:800px;--guided-phone-width:392px}
+html[data-experiment=guided] #circles .task-dialog .instruction{left:20px;top:calc(50% - 400px);bottom:auto;width:calc(50% - var(--guided-phone-width) / 2 - 52px);height:800px;padding:30px;border-radius:32px;overflow:visible}
+html[data-experiment=guided] #circles .task-dialog .instruction-copy{height:100%;gap:18px}
+html[data-experiment=guided] #circles .task-dialog .instruction-copy>*{flex-shrink:0}
+html[data-experiment=guided] #circles .task-dialog .instruction-copy>.pill{font-size:32px;line-height:1.18;padding:12px 22px;margin-top:0}
+html[data-experiment=guided] #circles .task-dialog .eyebrow{font-size:24px;line-height:1.15;letter-spacing:.04em}
+html[data-experiment=guided] #circles .task-dialog .instruction h2{font-size:48px;line-height:1.1}
+html[data-experiment=guided] #circles .task-dialog .instruction p{font-size:32px;line-height:1.24}
+html[data-experiment=guided] #circles .task-dialog .client-difference{font-size:24px!important}
+html[data-experiment=guided] #circles .task-dialog .demo-app{width:var(--guided-phone-width);height:800px;top:calc(50% - 400px);left:calc(50% - var(--guided-phone-width) / 2);right:auto;padding:36px 20px 26px;border-radius:38px}
+html[data-experiment=guided] #circles .task-dialog .phone-content{display:flex;flex-direction:column;gap:18px;height:100%;min-height:0}
+html[data-experiment=guided] #circles .task-dialog .demo-app h3{font-size:32px;line-height:1.18}
+html[data-experiment=guided] #circles .task-dialog .app-top,html[data-experiment=guided] #circles .task-dialog .task-notice,html[data-experiment=guided] #circles .task-dialog .client-scene small{font-size:24px;line-height:1.2}
+html[data-experiment=guided] #circles .task-dialog .client-scene{flex:1;min-height:180px;font-size:28px}
+html[data-experiment=guided] #circles .task-dialog .client-scene span{font-size:28px;line-height:1.15}
+html[data-experiment=guided] #circles .task-dialog .close{width:64px;height:64px;min-height:64px;left:calc(50% + var(--guided-phone-width) / 2 - 32px);right:auto;top:calc(50% - 428px);padding:16px}
+html[data-experiment=guided] #circles .task-dialog .close .glyph{width:100%;height:100%}
+html[data-experiment=guided] #circles .task-dialog .guided-action-title{font-size:24px;color:#fff}
+html[data-experiment=guided] #circles .task-dialog .guided-pages{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;font-size:24px}
+html[data-experiment=guided] #circles .guided-choice .instruction{left:calc(50% - 440px);width:880px}
+html[data-experiment=guided] #circles .guided-choice .close{left:calc(50% + 408px)}
+html[data-experiment=guided] #circles .task-dialog.id-task{--guided-phone-width:360px}
+html[data-experiment=guided] #circles .task-dialog.id-task .demo-app{padding:0;overflow:hidden}
+html[data-experiment=guided] #circles .task-dialog.id-task .id-screen{position:relative;width:100%;height:auto;aspect-ratio:360/800}
+html[data-experiment=guided] #circles .task-dialog.id-task .id-screen-image{display:block;position:static;width:100%;height:100%;object-fit:contain}
+html[data-experiment=guided] #circles [hidden]{display:none!important}
+html[data-experiment=guided] #circles .field-success{width:860px;padding:40px;gap:24px}
+html[data-experiment=guided] #circles .tap-feedback p{font-size:24px;line-height:1.2}
+.guided-review-label{position:fixed;left:8px;bottom:4px;font-size:14px;opacity:.65;pointer-events:none}
+html[data-experiment=guided] #circles .guided-reset-panel{position:absolute;left:50%;top:54%;transform:translate(-50%,-50%);width:800px;padding:40px;border-radius:32px}
+html[data-experiment=guided] #circles .guided-reset-panel h2{font-size:48px;line-height:1.1}
+html[data-experiment=guided] #circles .guided-reset-panel p{font-size:32px;line-height:1.24;margin:24px 0}
+html[data-experiment=guided] #circles .guided-reset-panel .pill{font-size:32px;min-height:64px;padding:12px 22px;margin:8px 12px 0 0}
+/* Task controls live in the device. The adjoining card is read-only. */
+html[data-experiment=guided] #circles .task-dialog .instruction-copy{height:auto;overflow:visible}
+html[data-experiment=guided] #circles .task-dialog .instruction-copy>*{flex-shrink:0}
+html[data-experiment=guided] #circles .demo-app .client-actions{display:flex;flex-direction:column;gap:12px;flex-shrink:0;margin-top:auto}
+html[data-experiment=guided] #circles .demo-app .client-actions .pill{font-size:28px;min-height:64px;padding:12px 16px}
+html[data-experiment=guided] #circles .demo-app .media-caption{display:none}
+html[data-experiment=guided] #circles .demo-app .task-media{background:none;border:0;box-shadow:none}
+html[data-experiment=guided] #circles .demo-app .task-media-frame{overflow:visible}
+html[data-experiment=guided] #circles .demo-app .phone-content{gap:16px}
+html[data-experiment=guided] #circles .route-phone .phone-loading{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;pointer-events:none;text-align:center}
+html[data-experiment=guided] #circles .route-phone .phone-loading-skeleton{display:flex;flex-direction:column;align-items:center;gap:16px;width:68%}
+html[data-experiment=guided] #circles .route-phone .phone-loading-skeleton i{display:block;width:100%;height:22px;border-radius:14px}
+html[data-experiment=guided] #circles .route-phone .phone-loading-skeleton i:nth-child(2){width:74%}
+html[data-experiment=guided] #circles .route-phone .phone-loading-skeleton i:nth-child(3){width:88%}
+html[data-experiment=guided] #circles .route-phone[data-device=pc] .demo-app{width:688px;height:560px;padding:42px 24px 24px;border-radius:28px}
+html[data-experiment=guided] #circles .demo-app[data-device=pc] .phone-camera{display:none}
+html[data-experiment=guided] #circles .pc-chrome{position:absolute;top:12px;left:24px;right:24px;display:flex;align-items:center;gap:16px;font-size:24px;line-height:1;opacity:.8}
+html[data-experiment=guided] #circles .pc-window-dots{width:64px;height:16px;fill:currentColor}
+html[data-experiment=guided] #circles .demo-app[data-device=pc] .phone-home{display:none}
+html[data-experiment=guided] #circles .demo-app[data-device=pc] .client-actions{flex-direction:row;flex-wrap:wrap;gap:12px}
+html[data-experiment=guided] #circles .demo-app[data-device=pc] .client-actions .pill{flex:1}
+html[data-experiment=guided] #circles .task-dialog:has(.demo-app[data-device=pc]){--guided-phone-width:688px;--phone-height:560px}
+html[data-experiment=guided] #circles .task-dialog .demo-app[data-device=pc]{width:688px;height:560px;top:calc(50% - 280px);padding:42px 24px 24px;border-radius:28px}

@@ -1,0 +1,30 @@
+{
+  "id": "MAX-LIDAR-TOPMOST-20261006-R1",
+  "selection": "minimum calibrated screen Y once per complete OSC packet",
+  "identity": "stable gesture ID; physical sourceContactId diagnostic",
+  "fallback": "raw Y only when no calibration solver exists",
+  "outside": "finite mapped points participate, existing inside gate remains authoritative",
+  "timeoutMs": 350,
+  "decoder": "osc@2.4.5 MIT option",
+  "profiles": [
+    3,
+    5
+  ],
+  "migration": null,
+  "files": [
+    {
+      "path": "app/max-lidar/adapter/hokuyo-osc.mjs",
+      "source": "candidate/MAX_RIGHT/app/max-lidar/adapter/hokuyo-osc.mjs",
+      "bytes": 4467,
+      "beforeSha256": "26cccedc4073de57af066c07c3d981dcd6518fbdd536286b73437f63adc14277",
+      "sha256": "4bcc2fc90a8423d07ea0af75d967f933f8ad756cf75397c2970615c8e4e9c474"
+    },
+    {
+      "path": "app/max-lidar/adapter/control.mjs",
+      "source": "candidate/MAX_RIGHT/app/max-lidar/adapter/control.mjs",
+      "bytes": 9083,
+      "beforeSha256": "af469552a9af92f1e4e758886f0c8cb97dc8284f837001f71c3e9132ba815f6d",
+      "sha256": "21b39af1c5a61152b320d654250beaf7253e9acdbfaa1ca335ec4fdb84ef4d43"
+    }
+  ]
+}

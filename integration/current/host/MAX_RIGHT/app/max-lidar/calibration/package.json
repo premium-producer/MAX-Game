@@ -1,0 +1,8 @@
+{
+  "name": "max-lidar-calibration",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {"test": "node --test --test-isolation=none calibration.test.mjs"},
+  "dependencies": {"perspective-transform": "1.1.3"}
+}

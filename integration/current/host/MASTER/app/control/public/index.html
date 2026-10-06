@@ -1,0 +1,70 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MASTER · Все панели стенда</title><link rel="stylesheet" href="/style.css"></head><body><main id="master-links" aria-labelledby="master-links-title"><h1 id="master-links-title">MASTER · Все панели стенда</h1><p>Выберите, чем управлять. Панели открываются в отдельных вкладках; управление устройствами и MAX находится ниже на этой странице.</p><p>Эту страницу можно открыть с любого устройства в сети стенда. Пульты арки и камер доступны по сети стенда. Список сверён 06.10.2026; ссылка не означает, что сервис будет доступен при следующем запуске.</p><nav aria-label="Панели стенда"><section><h2><a href="#device-panel">Управление стендом</a></h2><p><strong>MASTER</strong> · Подключения и IP компьютеров; режимы MAX, независимые ассеты, иконки и ручной автосценарий MAX.</p><p><a href="#device-panel">Открыть панель →</a></p></section><section><h2><a href="http://127.0.0.1:9569/" target="_blank" rel="noopener noreferrer">Сценарий и квиз</a></h2><p><strong>MASTER</strong> · Техническая панель квиза: сессии, вопросы, выбранные теги и контент, состояние общего сценария.</p><p><a href="http://127.0.0.1:9569/" target="_blank" rel="noopener noreferrer">Открыть панель →</a></p></section><section><h2><a href="http://127.0.0.1:9981/" target="_blank" rel="noopener noreferrer">Звук · Dante</a></h2><p><strong>MASTER</strong> · Шесть стереопар: громкость, mute, тест каждой пары, остановка; текущая музыка и звучащие ассеты.</p><p><a href="http://127.0.0.1:9981/" target="_blank" rel="noopener noreferrer">Открыть панель →</a></p></section><section><h2><a href="http://127.0.0.1:9569/max" target="_blank" rel="noopener noreferrer">MAX · Миссии и очередь</a></h2><p><strong>MASTER</strong> · Техническое управление миссиями, очередью и таймерами MAX. Состояние игры и сценария.</p><p><a href="http://127.0.0.1:9569/max" target="_blank" rel="noopener noreferrer">Открыть панель →</a></p></section><section><h2><a href="http://10.0.0.11:9896/control" target="_blank" rel="noopener noreferrer">Арка и лента · Облако</a></h2><p><strong>АРКА / ЛЕНТА</strong> · Настройки текущего облака: теги, видео, постеры, QR, размеры, движение и рампы. Сейчас автономный тест, без сессий Стеллы.</p><p><a href="http://10.0.0.11:9896/control" target="_blank" rel="noopener noreferrer">Открыть панель →</a></p></section><section><h2><a href="http://10.0.0.14:9282/" target="_blank" rel="noopener noreferrer">Камеры · Силуэт и маски</a></h2><p><strong>ЛЕВАЯ СТЕНА VK</strong> · Режимы и параметры камерных масок, силуэта и флюидов. Панель находится на ПК левой стены.</p><p><a href="http://10.0.0.14:9282/" target="_blank" rel="noopener noreferrer">Открыть панель →</a></p></section><section><h2><a href="http://127.0.0.1:9569/readiness" target="_blank" rel="noopener noreferrer">Готовность сценария</a></h2><p><strong>MASTER</strong> · Готовность к новому запуску, возможности исполнителей и состояние физических поверхностей.</p><p><a href="http://127.0.0.1:9569/readiness" target="_blank" rel="noopener noreferrer">Открыть панель →</a></p></section><section><h2><a href="http://127.0.0.1:9569/runner" target="_blank" rel="noopener noreferrer">VK · Технический исполнитель</a></h2><p><strong>MASTER</strong> · Техническое прохождение VK: фазы исполнения и сценарные подтверждения.</p><p><a href="http://127.0.0.1:9569/runner" target="_blank" rel="noopener noreferrer">Открыть панель →</a></p></section><section><h2><a href="http://127.0.0.1:9569/visual-runner" target="_blank" rel="noopener noreferrer">VK · Визуальный исполнитель</a></h2><p><strong>MASTER</strong> · Визуализация технического цикла VK: теги, Discovery, лента и переход контента на стену.</p><p><a href="http://127.0.0.1:9569/visual-runner" target="_blank" rel="noopener noreferrer">Открыть панель →</a></p></section><section><h2><a href="http://127.0.0.1:9569/surface-lab" target="_blank" rel="noopener noreferrer">Арка / лента · Проверка слоёв</a></h2><p><strong>MASTER</strong> · Техническая лаборатория общего исполнителя: независимые слои, владелец вывода и подтверждения.</p><p><a href="http://127.0.0.1:9569/surface-lab" target="_blank" rel="noopener noreferrer">Открыть панель →</a></p></section><section><h2><a href="http://127.0.0.1:9569/stella/?master=1" target="_blank" rel="noopener noreferrer">Стелла · Операторский интерфейс</a></h2><p><strong>MASTER</strong> · Квиз Стеллы через общий backend. Действия могут запускать реальную сессию; это не отдельная независимая игра.</p><p><a href="http://127.0.0.1:9569/stella/?master=1" target="_blank" rel="noopener noreferrer">Открыть панель →</a></p></section></nav><p><a href="#device-panel">Перейти к управлению устройствами и MAX ↓</a></p></main><main id="device-panel"><h1>MASTER · Устройства стенда</h1><p>Подключение и диагностика узлов. Статус процесса не подтверждает вывод Spout, приём в TD или изображение на физическом экране.</p><p id="summary"></p><button id="check">Проверить подключения</button><p id="message" role="status"></p><section aria-labelledby="presentation-title">
+<h2 id="presentation-title">MAX · Режим игры на правой стене</h2>
+<p>Выберите один режим. Переключение применяется после подтверждения проигрывателя MAX_RIGHT.</p>
+<div role="group" aria-label="Режим MAX">
+<button id="presentation-standard" type="button" aria-pressed="false" disabled>Стандартная игра</button>
+<button id="presentation-assets" type="button" aria-pressed="false" disabled>Независимые ассеты</button><button id="presentation-background" type="button" aria-pressed="false" disabled>Только фон</button>
+</div>
+<dl><dt>Запрошен режим</dt><dd id="presentation-desired">Читаем состояние…</dd><dt>Последний режим, подтверждённый проигрывателем</dt><dd id="presentation-effective">Нет подтверждения</dd></dl>
+<p id="presentation-phase" role="status"></p><p id="presentation-ack">Подтверждений ещё нет</p>
+<p id="presentation-notice" role="status" aria-live="polite"></p>
+<p id="presentation-detail"></p>
+<button id="presentation-refresh" type="button">Обновить состояние</button>
+<button id="presentation-retry" type="button" hidden>Повторить неподтверждённую команду</button>
+<p>Время подтверждения — последняя полученная отметка, а не проверка связи в реальном времени. Подтверждение проигрывателя не заменяет проверку изображения на физическом экране. В режиме «Только фон» игровой интерфейс скрыт.</p>
+</section><section id="selected-autoplay-panel" aria-labelledby="selected-autoplay-title">
+<h2 id="selected-autoplay-title">Стандартная игра · Автопрохождение выбранной миссии</h2>
+<p>После выбора миссии её экраны и задания проходят автоматически, без ожидания касаний. Выключите переключатель для обычного ручного прохождения. Эта настройка не запускает отдельный сценарий ID → ролики.</p>
+<p><label><input id="selected-autoplay-enabled" type="checkbox" disabled> Автопрохождение выбранной миссии</label></p>
+<form id="selected-autoplay-speed-form"><label for="selected-autoplay-speed">Время на экран, секунд</label> <input id="selected-autoplay-speed" type="number" min="0.5" max="10" step="0.1" value="1" required disabled> <button id="selected-autoplay-save" type="submit" disabled>Сохранить время</button></form>
+<p>От 0,5 до 10 секунд. Настройка применяется к следующей выбранной миссии; текущий запуск сохраняет своё время.</p>
+<p id="selected-autoplay-state" role="status">Читаем состояние…</p><p id="selected-autoplay-notice" role="status" aria-live="polite"></p>
+<button id="selected-autoplay-refresh" type="button">Обновить состояние</button> <button id="selected-autoplay-reset" type="button" disabled>Вернуть сохранённое время</button>
+<button id="selected-autoplay-retry" type="button" hidden>Повторить неподтверждённую команду</button>
+</section><section aria-labelledby="assets-title">
+<h2 id="assets-title">Независимые ассеты · Сцена в устройстве</h2>
+<p>Настройте сохранённую сцену и нажмите «Применить сцену». Для показа выберите режим «Независимые ассеты» выше.</p>
+<p id="assets-status" role="status" aria-live="polite">Читаем каталог…</p>
+<button id="assets-reload-catalog" type="button">Обновить каталог</button><fieldset id="assets-editor" disabled>
+<legend>Устройство и иконки</legend>
+<p><label for="assets-device">Изображение в устройстве</label> <select id="assets-device"><option value="">Не выбрано</option></select></p>
+<p><label><input id="assets-cycle-enabled" type="checkbox"> Цикл двух экранов</label></p>
+<fieldset id="assets-cycle-options" disabled><legend>Экраны цикла</legend>
+<p><label for="assets-cycle-0">Первый экран</label> <select id="assets-cycle-0"></select></p>
+<p><label for="assets-cycle-1">Второй экран</label> <select id="assets-cycle-1"></select></p>
+<p><label for="assets-static-wait">Пауза изображения, секунд</label> <input id="assets-static-wait" type="number" min="0.5" max="3600" step="0.5" value="5" required></p>
+<p>Изображение показывается указанное время, видео — до конца. Затем экраны плавно сменяют друг друга. Настройки сохраняются кнопкой «Применить сцену».</p></fieldset>
+<p><button id="assets-device-toggle" type="button" disabled>Показать устройство</button> <span id="assets-device-state"></span></p>
+<p><button id="assets-icons-toggle" type="button" disabled>Показать иконки</button> <span id="assets-icons-state"></span></p>
+<p><label for="assets-icon-size">Размер иконок, px</label> <input id="assets-icon-size" type="number" min="64" max="1024" step="16" value="256" required aria-describedby="assets-icon-size-note"></p>
+<p id="assets-icon-size-note">От 64 до 1024 px для всех иконок сцены. По умолчанию — 256 px. Изменение вступит в силу после «Применить сцену».</p>
+<p>Показ устройства и группы иконок переключается независимо. При скрытом устройстве иконки сохраняют расположение относительно его центра. В каждом списке первая иконка — ближайшая к устройству; максимум 8 иконок.</p>
+<label for="assets-add-icon">Добавить иконку</label> <select id="assets-add-icon"></select>
+<label for="assets-add-side">Сторона</label> <select id="assets-add-side"><option value="left">Слева</option><option value="right">Справа</option></select>
+<button id="assets-add" type="button">Добавить</button>
+<h3>Слева от устройства</h3><ol id="assets-left"></ol>
+<h3>Справа от устройства</h3><ol id="assets-right"></ol>
+<button id="assets-apply" type="button">Применить сцену</button>
+<button id="assets-reset" type="button">Вернуть сохранённую сцену</button>
+</fieldset>
+</section><section id="max-lidar-panel" aria-labelledby="lidar-title">
+<h2 id="lidar-title">MAX · LiDAR и калибровка курсора</h2>
+<p>Приём касаний на ПК правой стены 10.0.0.13, UDP 9001. Настройки сохраняются на MAX_RIGHT.</p>
+<p id="lidar-status" role="status" aria-live="polite">Читаем состояние…</p>
+<p id="lidar-receiver"></p><p id="lidar-cursor"></p>
+<div role="group" aria-label="Курсор LiDAR">
+<button id="lidar-enable" type="button" disabled>Включить курсор LiDAR</button>
+<button id="lidar-disable" type="button" disabled>Выключить курсор LiDAR</button>
+</div>
+<p id="lidar-saved"></p><p id="lidar-step"></p>
+<div role="group" aria-label="Калибровка LiDAR">
+<button id="lidar-start" type="button" disabled>Начать калибровку</button>
+<button id="lidar-capture" type="button" disabled>Подтвердить точку</button>
+<button id="lidar-save" type="button" disabled>Сохранить калибровку</button>
+<button id="lidar-cancel" type="button" disabled>Отменить калибровку</button>
+</div>
+<p id="lidar-notice" role="status" aria-live="polite"></p>
+<button id="lidar-refresh" type="button">Обновить состояние LiDAR</button>
+<button id="lidar-retry" type="button" hidden>Повторить неподтверждённую команду</button>
+</section>
+<section><h2>Отдельный сценарий MAX · Стелла → автопрохождение ID → ролики</h2><p>Этот сценарий управляется отдельно. Для переключения между режимами игры сначала выключите его.</p><p>Выбор MAX на Стелле запускает теги и миссию «Цифровой ID». Затем ролики идут до отмены на Стелле.</p><button id="show-on" disabled>Включить режим MAX</button> <button id="show-off" disabled>Выключить режим MAX</button><form id="show-speed-form"><label for="show-speed">Время на экран, секунд</label> <input id="show-speed" type="number" min="0.5" max="10" step="0.1" value="1" required disabled aria-describedby="show-speed-note"> <button id="show-speed-save" type="submit" disabled>Сохранить время</button><p id="show-speed-note">От 0,5 до 10 секунд. Изменение применяется при следующем запуске со Стеллы.</p></form><p id="show-state" role="status">Читаем состояние…</p><button id="show-retry" hidden>Повторить неподтверждённую команду</button></section><div id="nodes"></div><section id="render-output"></section><p>IP меняет адрес предварительно доверенного узла. Роль и сертификат задаются при подготовке комплекта. Проверяется только указанный адрес.</p></main><script type="module" src="/app.js"></script><script type="module" src="/max-lidar-panel.mjs"></script></body></html>
