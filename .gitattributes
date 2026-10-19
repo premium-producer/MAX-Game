@@ -415,3 +415,7 @@ docs/transfer/REPOSITORY_MANIFEST.json filter=lfs diff=lfs merge=lfs -text
 "artifacts/max-game/public/assets/reviewed-20261007/digital-id-home-photo-bf065e64cda1.svg" filter=lfs diff=lfs merge=lfs -text
 "artifacts/max-game/public/assets/reviewed-20261007/digital-id-home-photo-e61ae178507b.svg" filter=lfs diff=lfs merge=lfs -text
 "artifacts/max-game/public/assets/reviewed-20261007/max-logo-qr-f3c691313875.svg" filter=lfs diff=lfs merge=lfs -text
+
+# KDW-MAX stable portable runtime
+kdw-max/apps/max-game/runtime/** filter=lfs diff=lfs merge=lfs -text
+kdw-max/**/*.svg filter=lfs diff=lfs merge=lfs -text

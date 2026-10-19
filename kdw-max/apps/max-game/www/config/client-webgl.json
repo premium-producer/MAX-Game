@@ -1,0 +1,1091 @@
+{
+  "schemaVersion": 2,
+  "revision": "max-client-wording-20260923-webgl",
+  "system": {
+    "schemaVersion": 2,
+    "icons": {
+      "point-a": {
+        "label": "Буква A",
+        "src": "./icons/endpoint-a.svg"
+      },
+      "point-b": {
+        "label": "Буква Б",
+        "src": "./icons/endpoint-b.svg"
+      },
+      "step-1": {
+        "label": "1",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 56 56\"><path d=\"M18 17 L28 9 L28 43 M17 43 L39 43\" fill=\"none\" stroke=\"#FFFFFF\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      },
+      "step-2": {
+        "label": "2",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 56 56\"><path d=\"M14 18 C14 4 42 4 42 18 C42 27 18 30 14 43 L43 43\" fill=\"none\" stroke=\"#FFFFFF\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      },
+      "step-3": {
+        "label": "3",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 56 56\"><path d=\"M14 12 C35 2 47 12 34 25 C49 28 42 48 14 41 M25 25 L34 25\" fill=\"none\" stroke=\"#FFFFFF\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      },
+      "step-4": {
+        "label": "4",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 56 56\"><path d=\"M34 43 L34 8 L12 32 L44 32\" fill=\"none\" stroke=\"#FFFFFF\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      },
+      "step-5": {
+        "label": "5",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 56 56\"><path d=\"M42 10 L16 10 L14 26 C43 17 49 47 15 43\" fill=\"none\" stroke=\"#FFFFFF\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      }
+    },
+    "pointIcons": [
+      "point-a",
+      "point-b"
+    ],
+    "objectTypes": {
+      "blogger-channel": {
+        "label": "Канал",
+        "short": "Канал",
+        "icon": "step-1",
+        "behavior": "ground",
+        "placementSurface": "any"
+      },
+      "blogger-comments": {
+        "label": "Общение с подписчиками",
+        "short": "Общение с подписчиками",
+        "icon": "step-2",
+        "behavior": "ground",
+        "placementSurface": "any"
+      },
+      "blogger-statistics": {
+        "label": "Статистика",
+        "short": "Статистика",
+        "icon": "step-3",
+        "behavior": "ground",
+        "placementSurface": "any"
+      },
+      "digital-id-create-id": {
+        "label": "Создать Цифровой ID",
+        "short": "Создать Цифровой ID",
+        "icon": "step-1",
+        "behavior": "ground",
+        "placementSurface": "any"
+      },
+      "digital-id-hotel": {
+        "label": "Заселиться в отель",
+        "short": "Заселиться в отель",
+        "icon": "step-2",
+        "behavior": "ground",
+        "placementSurface": "any"
+      },
+      "digital-id-benefit": {
+        "label": "Подтвердить льготу",
+        "short": "Подтвердить льготу",
+        "icon": "step-3",
+        "behavior": "ground",
+        "placementSurface": "any"
+      },
+      "digital-id-age": {
+        "label": "Подтвердить возраст",
+        "short": "Подтвердить возраст",
+        "icon": "step-4",
+        "behavior": "ground",
+        "placementSurface": "any"
+      },
+      "communication-call": {
+        "label": "Видеозвонок",
+        "short": "Видеозвонок",
+        "icon": "step-1",
+        "behavior": "ground",
+        "placementSurface": "any"
+      },
+      "communication-message": {
+        "label": "Голосовое / видео-сообщение",
+        "short": "Голосовое / видео-сообщение",
+        "icon": "step-2",
+        "behavior": "ground",
+        "placementSurface": "any"
+      },
+      "communication-group": {
+        "label": "Групповой чат",
+        "short": "Групповой чат",
+        "icon": "step-3",
+        "behavior": "ground",
+        "placementSurface": "any"
+      },
+      "communication-reaction": {
+        "label": "Стикеры / реакции",
+        "short": "Стикеры / реакции",
+        "icon": "step-4",
+        "behavior": "ground",
+        "placementSurface": "any"
+      },
+      "communication-story": {
+        "label": "История",
+        "short": "История",
+        "icon": "step-5",
+        "behavior": "ground",
+        "placementSurface": "any"
+      },
+      "business-sector": {
+        "label": "Сфера бизнеса",
+        "short": "Сфера бизнеса",
+        "icon": "step-1",
+        "behavior": "ground",
+        "placementSurface": "any"
+      },
+      "business-account": {
+        "label": "Бизнес-аккаунт",
+        "short": "Бизнес-аккаунт",
+        "icon": "step-2",
+        "behavior": "ground",
+        "placementSurface": "any"
+      },
+      "business-business-channel": {
+        "label": "Канал",
+        "short": "Канал",
+        "icon": "step-3",
+        "behavior": "ground",
+        "placementSurface": "any"
+      },
+      "demo-benefit-demo-id": {
+        "label": "Создать Цифровой ID",
+        "short": "Создать Цифровой ID",
+        "icon": "step-1",
+        "behavior": "ground",
+        "placementSurface": "any"
+      },
+      "demo-benefit-demo-benefit": {
+        "label": "Получить льготу",
+        "short": "Получить льготу",
+        "icon": "step-2",
+        "behavior": "ground",
+        "placementSurface": "any"
+      },
+      "demo-business-demo-id": {
+        "label": "Создать Цифровой ID",
+        "short": "Создать Цифровой ID",
+        "icon": "step-1",
+        "behavior": "ground",
+        "placementSurface": "any"
+      },
+      "demo-business-demo-account": {
+        "label": "Подключить бизнес",
+        "short": "Подключить бизнес",
+        "icon": "step-2",
+        "behavior": "ground",
+        "placementSurface": "any"
+      },
+      "demo-business-demo-tool": {
+        "label": "Запустить продвижение",
+        "short": "Запустить продвижение",
+        "icon": "step-3",
+        "behavior": "ground",
+        "placementSurface": "any"
+      }
+    },
+    "objectSettings": {
+      "blogger-channel": {
+        "size": 1,
+        "signalRadius": 0.5445
+      },
+      "blogger-comments": {
+        "size": 1,
+        "signalRadius": 0.5445
+      },
+      "blogger-statistics": {
+        "size": 1,
+        "signalRadius": 0.5445
+      },
+      "digital-id-create-id": {
+        "size": 1,
+        "signalRadius": 0.4356
+      },
+      "digital-id-hotel": {
+        "size": 1,
+        "signalRadius": 0.4356
+      },
+      "digital-id-benefit": {
+        "size": 1,
+        "signalRadius": 0.4356
+      },
+      "digital-id-age": {
+        "size": 1,
+        "signalRadius": 0.4356
+      },
+      "communication-call": {
+        "size": 1,
+        "signalRadius": 0.363
+      },
+      "communication-message": {
+        "size": 1,
+        "signalRadius": 0.363
+      },
+      "communication-group": {
+        "size": 1,
+        "signalRadius": 0.363
+      },
+      "communication-reaction": {
+        "size": 1,
+        "signalRadius": 0.363
+      },
+      "communication-story": {
+        "size": 1,
+        "signalRadius": 0.363
+      },
+      "business-sector": {
+        "size": 1,
+        "signalRadius": 0.5445
+      },
+      "business-account": {
+        "size": 1,
+        "signalRadius": 0.5445
+      },
+      "business-business-channel": {
+        "size": 1,
+        "signalRadius": 0.5445
+      },
+      "demo-benefit-demo-id": {
+        "size": 1,
+        "signalRadius": 0.726
+      },
+      "demo-benefit-demo-benefit": {
+        "size": 1,
+        "signalRadius": 0.726
+      },
+      "demo-business-demo-id": {
+        "size": 1,
+        "signalRadius": 0.5445
+      },
+      "demo-business-demo-account": {
+        "size": 1,
+        "signalRadius": 0.5445
+      },
+      "demo-business-demo-tool": {
+        "size": 1,
+        "signalRadius": 0.5445
+      }
+    },
+    "equipmentSets": {},
+    "missionSelectObjects": [],
+    "screenAppearance": {
+      "fieldScale": 1,
+      "objectScale": 1,
+      "showRangeCircle": true,
+      "sizes": {}
+    },
+    "connection": {
+      "policy": "screenProjected",
+      "corridorWidth": 2,
+      "ambiguityEpsilon": 0.0001
+    },
+    "feedback": {
+      "invalid": "neutral"
+    }
+  },
+  "missions": [
+    {
+      "number": 1,
+      "id": "blogger",
+      "name": "Стать блогером",
+      "summary": "Создайте канал, общайтесь с подписчиками в комментариях и оцените рост канала.",
+      "description": "Создайте канал, общайтесь с подписчиками в комментариях и оцените рост канала.\n\nРазмести действия по порядку от А к Б. Сближай соседние узлы, чтобы соединить маршрут.",
+      "timeSeconds": 600,
+      "mapPosition": {
+        "latitude": -15,
+        "longitude": -66
+      },
+      "endpoints": {
+        "A": {
+          "label": "Идея",
+          "icon": "point-a",
+          "roles": [
+            "start"
+          ],
+          "latitude": -5,
+          "longitude": -55
+        },
+        "B": {
+          "label": "Рост аудитории",
+          "icon": "point-b",
+          "roles": [
+            "finish"
+          ],
+          "latitude": -5,
+          "longitude": 55
+        }
+      },
+      "connectEndpointsOnComplete": true,
+      "inventory": {
+        "blogger-channel": 1,
+        "blogger-comments": 1,
+        "blogger-statistics": 1
+      },
+      "objectives": [
+        {
+          "id": "channel",
+          "label": "Канал",
+          "condition": {
+            "type": "placed",
+            "object": "blogger-channel",
+            "count": 1
+          }
+        },
+        {
+          "id": "comments",
+          "label": "Общение с подписчиками",
+          "condition": {
+            "type": "placed",
+            "object": "blogger-comments",
+            "count": 1
+          }
+        },
+        {
+          "id": "statistics",
+          "label": "Статистика",
+          "condition": {
+            "type": "placed",
+            "object": "blogger-statistics",
+            "count": 1
+          }
+        }
+      ],
+      "successText": "Канал создан. Общение с подписчиками настроено. Статистика и рост канала изучены.",
+      "unlock": {
+        "requiresCompleted": []
+      },
+      "topology": {
+        "paths": [
+          {
+            "id": "main",
+            "from": "A",
+            "to": "B",
+            "steps": [
+              {
+                "role": "blogger-channel",
+                "type": "blogger-channel"
+              },
+              {
+                "role": "blogger-comments",
+                "type": "blogger-comments"
+              },
+              {
+                "role": "blogger-statistics",
+                "type": "blogger-statistics"
+              }
+            ],
+            "connection": {
+              "policy": "screenProjected",
+              "corridorWidth": 2,
+              "ambiguityEpsilon": 0.0001
+            }
+          }
+        ]
+      },
+      "completion": {
+        "type": "allPaths"
+      },
+      "feedback": {
+        "invalid": "neutral"
+      },
+      "objectSettings": {
+        "endpoint:A": {
+          "signalRadius": 0.5445,
+          "size": 1
+        },
+        "endpoint:B": {
+          "signalRadius": 0.5445,
+          "size": 1
+        }
+      },
+      "feedbackEvents": {
+        "success": [
+          {
+            "id": "mission-complete",
+            "eyebrow": "МИССИЯ ВЫПОЛНЕНА",
+            "title": "МАРШРУТ СОБРАН",
+            "message": "Канал создан. Общение с подписчиками настроено. Статистика и рост канала изучены.",
+            "condition": {
+              "type": "missionComplete"
+            },
+            "action": "complete"
+          }
+        ],
+        "error": []
+      }
+    },
+    {
+      "number": 2,
+      "id": "digital-id",
+      "name": "Все возможности с Цифровым ID",
+      "summary": "Сначала создайте Цифровой ID, затем откройте его возможности.",
+      "description": "Сначала создайте Цифровой ID, затем откройте его возможности.\n\nРазмести действия по порядку от А к Б. Сближай соседние узлы, чтобы соединить маршрут.",
+      "timeSeconds": 600,
+      "mapPosition": {
+        "latitude": -15,
+        "longitude": -22
+      },
+      "endpoints": {
+        "A": {
+          "label": "Твой профиль",
+          "icon": "point-a",
+          "roles": [
+            "start"
+          ],
+          "latitude": -5,
+          "longitude": -55
+        },
+        "B": {
+          "label": "Возможности ID",
+          "icon": "point-b",
+          "roles": [
+            "finish"
+          ],
+          "latitude": -5,
+          "longitude": 55
+        }
+      },
+      "connectEndpointsOnComplete": true,
+      "inventory": {
+        "digital-id-create-id": 1,
+        "digital-id-hotel": 1,
+        "digital-id-benefit": 1,
+        "digital-id-age": 1
+      },
+      "objectives": [
+        {
+          "id": "create-id",
+          "label": "Создать Цифровой ID",
+          "condition": {
+            "type": "placed",
+            "object": "digital-id-create-id",
+            "count": 1
+          }
+        },
+        {
+          "id": "hotel",
+          "label": "Заселиться в отель",
+          "condition": {
+            "type": "placed",
+            "object": "digital-id-hotel",
+            "count": 1
+          }
+        },
+        {
+          "id": "benefit",
+          "label": "Подтвердить льготу",
+          "condition": {
+            "type": "placed",
+            "object": "digital-id-benefit",
+            "count": 1
+          }
+        },
+        {
+          "id": "age",
+          "label": "Подтвердить возраст",
+          "condition": {
+            "type": "placed",
+            "object": "digital-id-age",
+            "count": 1
+          }
+        }
+      ],
+      "successText": "Цифровой ID создан. Заселение в отель, подтверждение льготы и возраста — все ситуации пройдены.",
+      "unlock": {
+        "requiresCompleted": []
+      },
+      "topology": {
+        "paths": [
+          {
+            "id": "main",
+            "from": "A",
+            "to": "B",
+            "steps": [
+              {
+                "role": "digital-id-create-id",
+                "type": "digital-id-create-id"
+              },
+              {
+                "role": "digital-id-hotel",
+                "type": "digital-id-hotel"
+              },
+              {
+                "role": "digital-id-benefit",
+                "type": "digital-id-benefit"
+              },
+              {
+                "role": "digital-id-age",
+                "type": "digital-id-age"
+              }
+            ],
+            "connection": {
+              "policy": "screenProjected",
+              "corridorWidth": 2,
+              "ambiguityEpsilon": 0.0001
+            }
+          }
+        ]
+      },
+      "completion": {
+        "type": "allPaths"
+      },
+      "feedback": {
+        "invalid": "neutral"
+      },
+      "objectSettings": {
+        "endpoint:A": {
+          "signalRadius": 0.4356,
+          "size": 1
+        },
+        "endpoint:B": {
+          "signalRadius": 0.4356,
+          "size": 1
+        }
+      },
+      "feedbackEvents": {
+        "success": [
+          {
+            "id": "mission-complete",
+            "eyebrow": "МИССИЯ ВЫПОЛНЕНА",
+            "title": "МАРШРУТ СОБРАН",
+            "message": "Цифровой ID создан. Заселение в отель, подтверждение льготы и возраста — все ситуации пройдены.",
+            "condition": {
+              "type": "missionComplete"
+            },
+            "action": "complete"
+          }
+        ],
+        "error": []
+      }
+    },
+    {
+      "number": 3,
+      "id": "communication",
+      "name": "Общение на максимум",
+      "summary": "Звонки, сообщения, групповой чат, стикеры, реакции и история в MAX.",
+      "description": "Звонки, сообщения, групповой чат, стикеры, реакции и история в MAX.\n\nРазмести действия по порядку от А к Б. Сближай соседние узлы, чтобы соединить маршрут.",
+      "timeSeconds": 600,
+      "mapPosition": {
+        "latitude": -15,
+        "longitude": 22
+      },
+      "endpoints": {
+        "A": {
+          "label": "Начни общение",
+          "icon": "point-a",
+          "roles": [
+            "start"
+          ],
+          "latitude": -5,
+          "longitude": -55
+        },
+        "B": {
+          "label": "Всегда на связи",
+          "icon": "point-b",
+          "roles": [
+            "finish"
+          ],
+          "latitude": -5,
+          "longitude": 55
+        }
+      },
+      "connectEndpointsOnComplete": true,
+      "inventory": {
+        "communication-call": 1,
+        "communication-message": 1,
+        "communication-group": 1,
+        "communication-reaction": 1,
+        "communication-story": 1
+      },
+      "objectives": [
+        {
+          "id": "call",
+          "label": "Видеозвонок",
+          "condition": {
+            "type": "placed",
+            "object": "communication-call",
+            "count": 1
+          }
+        },
+        {
+          "id": "message",
+          "label": "Голосовое / видео-сообщение",
+          "condition": {
+            "type": "placed",
+            "object": "communication-message",
+            "count": 1
+          }
+        },
+        {
+          "id": "group",
+          "label": "Групповой чат",
+          "condition": {
+            "type": "placed",
+            "object": "communication-group",
+            "count": 1
+          }
+        },
+        {
+          "id": "reaction",
+          "label": "Стикеры / реакции",
+          "condition": {
+            "type": "placed",
+            "object": "communication-reaction",
+            "count": 1
+          }
+        },
+        {
+          "id": "story",
+          "label": "История",
+          "condition": {
+            "type": "placed",
+            "object": "communication-story",
+            "count": 1
+          }
+        }
+      ],
+      "successText": "Видеозвонок, голосовое или видео-сообщение, групповой чат, стикер или реакция и история — возможности общения освоены.",
+      "unlock": {
+        "requiresCompleted": []
+      },
+      "topology": {
+        "paths": [
+          {
+            "id": "main",
+            "from": "A",
+            "to": "B",
+            "steps": [
+              {
+                "role": "communication-call",
+                "type": "communication-call"
+              },
+              {
+                "role": "communication-message",
+                "type": "communication-message"
+              },
+              {
+                "role": "communication-group",
+                "type": "communication-group"
+              },
+              {
+                "role": "communication-reaction",
+                "type": "communication-reaction"
+              },
+              {
+                "role": "communication-story",
+                "type": "communication-story"
+              }
+            ],
+            "connection": {
+              "policy": "screenProjected",
+              "corridorWidth": 2,
+              "ambiguityEpsilon": 0.0001
+            }
+          }
+        ]
+      },
+      "completion": {
+        "type": "allPaths"
+      },
+      "feedback": {
+        "invalid": "neutral"
+      },
+      "objectSettings": {
+        "endpoint:A": {
+          "signalRadius": 0.363,
+          "size": 1
+        },
+        "endpoint:B": {
+          "signalRadius": 0.363,
+          "size": 1
+        }
+      },
+      "feedbackEvents": {
+        "success": [
+          {
+            "id": "mission-complete",
+            "eyebrow": "МИССИЯ ВЫПОЛНЕНА",
+            "title": "МАРШРУТ СОБРАН",
+            "message": "Видеозвонок, голосовое или видео-сообщение, групповой чат, стикер или реакция и история — возможности общения освоены.",
+            "condition": {
+              "type": "missionComplete"
+            },
+            "action": "complete"
+          }
+        ],
+        "error": []
+      }
+    },
+    {
+      "number": 4,
+      "id": "business",
+      "name": "Продвижение бизнеса",
+      "summary": "Выберите сферу бизнеса, подключите бизнес-аккаунт и инструмент продвижения.",
+      "description": "Выберите сферу бизнеса, подключите бизнес-аккаунт и инструмент продвижения.\n\nРазмести действия по порядку от А к Б. Сближай соседние узлы, чтобы соединить маршрут.",
+      "timeSeconds": 600,
+      "mapPosition": {
+        "latitude": -15,
+        "longitude": 66
+      },
+      "endpoints": {
+        "A": {
+          "label": "Твой бизнес",
+          "icon": "point-a",
+          "roles": [
+            "start"
+          ],
+          "latitude": -5,
+          "longitude": -55
+        },
+        "B": {
+          "label": "Клиенты на связи",
+          "icon": "point-b",
+          "roles": [
+            "finish"
+          ],
+          "latitude": -5,
+          "longitude": 55
+        }
+      },
+      "connectEndpointsOnComplete": true,
+      "inventory": {
+        "business-sector": 1,
+        "business-account": 1,
+        "business-business-channel": 1
+      },
+      "objectives": [
+        {
+          "id": "sector",
+          "label": "Сфера бизнеса",
+          "condition": {
+            "type": "placed",
+            "object": "business-sector",
+            "count": 1
+          }
+        },
+        {
+          "id": "account",
+          "label": "Бизнес-аккаунт",
+          "condition": {
+            "type": "placed",
+            "object": "business-account",
+            "count": 1
+          }
+        },
+        {
+          "id": "business-channel",
+          "label": "Канал",
+          "condition": {
+            "type": "placed",
+            "object": "business-business-channel",
+            "count": 1
+          }
+        }
+      ],
+      "successText": "Сфера бизнеса выбрана. Бизнес-аккаунт подключён. Выбранный инструмент продвижения запущен.",
+      "unlock": {
+        "requiresCompleted": []
+      },
+      "topology": {
+        "paths": [
+          {
+            "id": "main",
+            "from": "A",
+            "to": "B",
+            "steps": [
+              {
+                "role": "business-sector",
+                "type": "business-sector"
+              },
+              {
+                "role": "business-account",
+                "type": "business-account"
+              },
+              {
+                "role": "business-business-channel",
+                "type": "business-business-channel"
+              }
+            ],
+            "connection": {
+              "policy": "screenProjected",
+              "corridorWidth": 2,
+              "ambiguityEpsilon": 0.0001
+            }
+          }
+        ]
+      },
+      "completion": {
+        "type": "allPaths"
+      },
+      "feedback": {
+        "invalid": "neutral"
+      },
+      "objectSettings": {
+        "endpoint:A": {
+          "signalRadius": 0.5445,
+          "size": 1
+        },
+        "endpoint:B": {
+          "signalRadius": 0.5445,
+          "size": 1
+        }
+      },
+      "feedbackEvents": {
+        "success": [
+          {
+            "id": "mission-complete",
+            "eyebrow": "МИССИЯ ВЫПОЛНЕНА",
+            "title": "МАРШРУТ СОБРАН",
+            "message": "Сфера бизнеса выбрана. Бизнес-аккаунт подключён. Выбранный инструмент продвижения запущен.",
+            "condition": {
+              "type": "missionComplete"
+            },
+            "action": "complete"
+          }
+        ],
+        "error": []
+      }
+    },
+    {
+      "number": 5,
+      "id": "demo-benefit",
+      "name": "Получение льготы · тест",
+      "summary": "Цифровой ID и Госуслуги → льгота → QR",
+      "description": "Цифровой ID и Госуслуги → льгота → QR\n\nРазмести действия по порядку от А к Б. Сближай соседние узлы, чтобы соединить маршрут.",
+      "timeSeconds": 600,
+      "mapPosition": {
+        "latitude": -15,
+        "longitude": 110
+      },
+      "endpoints": {
+        "A": {
+          "label": "Открыть MAX",
+          "icon": "point-a",
+          "roles": [
+            "start"
+          ],
+          "latitude": -5,
+          "longitude": -55
+        },
+        "B": {
+          "label": "QR MAX",
+          "icon": "point-b",
+          "roles": [
+            "finish"
+          ],
+          "latitude": -5,
+          "longitude": 55
+        }
+      },
+      "connectEndpointsOnComplete": true,
+      "inventory": {
+        "demo-benefit-demo-id": 1,
+        "demo-benefit-demo-benefit": 1
+      },
+      "objectives": [
+        {
+          "id": "demo-id",
+          "label": "Создать Цифровой ID",
+          "condition": {
+            "type": "placed",
+            "object": "demo-benefit-demo-id",
+            "count": 1
+          }
+        },
+        {
+          "id": "demo-benefit",
+          "label": "Получить льготу",
+          "condition": {
+            "type": "placed",
+            "object": "demo-benefit-demo-benefit",
+            "count": 1
+          }
+        }
+      ],
+      "successText": "MAX → Цифровой ID → Госуслуги (демо) → льгота. Путь завершён.",
+      "unlock": {
+        "requiresCompleted": []
+      },
+      "topology": {
+        "paths": [
+          {
+            "id": "main",
+            "from": "A",
+            "to": "B",
+            "steps": [
+              {
+                "role": "demo-benefit-demo-id",
+                "type": "demo-benefit-demo-id"
+              },
+              {
+                "role": "demo-benefit-demo-benefit",
+                "type": "demo-benefit-demo-benefit"
+              }
+            ],
+            "connection": {
+              "policy": "screenProjected",
+              "corridorWidth": 2,
+              "ambiguityEpsilon": 0.0001
+            }
+          }
+        ]
+      },
+      "completion": {
+        "type": "allPaths"
+      },
+      "feedback": {
+        "invalid": "neutral"
+      },
+      "objectSettings": {
+        "endpoint:A": {
+          "signalRadius": 0.726,
+          "size": 1
+        },
+        "endpoint:B": {
+          "signalRadius": 0.726,
+          "size": 1
+        }
+      },
+      "feedbackEvents": {
+        "success": [
+          {
+            "id": "mission-complete",
+            "eyebrow": "МИССИЯ ВЫПОЛНЕНА",
+            "title": "МАРШРУТ СОБРАН",
+            "message": "MAX → Цифровой ID → Госуслуги (демо) → льгота. Путь завершён.",
+            "condition": {
+              "type": "missionComplete"
+            },
+            "action": "complete"
+          }
+        ],
+        "error": []
+      }
+    },
+    {
+      "number": 6,
+      "id": "demo-business",
+      "name": "Продвижение бизнеса · тест",
+      "summary": "Цифровой ID и Госуслуги → бизнес → QR",
+      "description": "Цифровой ID и Госуслуги → бизнес → QR\n\nРазмести действия по порядку от А к Б. Сближай соседние узлы, чтобы соединить маршрут.",
+      "timeSeconds": 600,
+      "mapPosition": {
+        "latitude": -15,
+        "longitude": 154
+      },
+      "endpoints": {
+        "A": {
+          "label": "Открыть MAX",
+          "icon": "point-a",
+          "roles": [
+            "start"
+          ],
+          "latitude": -5,
+          "longitude": -55
+        },
+        "B": {
+          "label": "QR MAX",
+          "icon": "point-b",
+          "roles": [
+            "finish"
+          ],
+          "latitude": -5,
+          "longitude": 55
+        }
+      },
+      "connectEndpointsOnComplete": true,
+      "inventory": {
+        "demo-business-demo-id": 1,
+        "demo-business-demo-account": 1,
+        "demo-business-demo-tool": 1
+      },
+      "objectives": [
+        {
+          "id": "demo-id",
+          "label": "Создать Цифровой ID",
+          "condition": {
+            "type": "placed",
+            "object": "demo-business-demo-id",
+            "count": 1
+          }
+        },
+        {
+          "id": "demo-account",
+          "label": "Подключить бизнес",
+          "condition": {
+            "type": "placed",
+            "object": "demo-business-demo-account",
+            "count": 1
+          }
+        },
+        {
+          "id": "demo-tool",
+          "label": "Запустить продвижение",
+          "condition": {
+            "type": "placed",
+            "object": "demo-business-demo-tool",
+            "count": 1
+          }
+        }
+      ],
+      "successText": "MAX → Цифровой ID → Госуслуги (демо) → бизнес → инструмент. Путь завершён.",
+      "unlock": {
+        "requiresCompleted": []
+      },
+      "topology": {
+        "paths": [
+          {
+            "id": "main",
+            "from": "A",
+            "to": "B",
+            "steps": [
+              {
+                "role": "demo-business-demo-id",
+                "type": "demo-business-demo-id"
+              },
+              {
+                "role": "demo-business-demo-account",
+                "type": "demo-business-demo-account"
+              },
+              {
+                "role": "demo-business-demo-tool",
+                "type": "demo-business-demo-tool"
+              }
+            ],
+            "connection": {
+              "policy": "screenProjected",
+              "corridorWidth": 2,
+              "ambiguityEpsilon": 0.0001
+            }
+          }
+        ]
+      },
+      "completion": {
+        "type": "allPaths"
+      },
+      "feedback": {
+        "invalid": "neutral"
+      },
+      "objectSettings": {
+        "endpoint:A": {
+          "signalRadius": 0.5445,
+          "size": 1
+        },
+        "endpoint:B": {
+          "signalRadius": 0.5445,
+          "size": 1
+        }
+      },
+      "feedbackEvents": {
+        "success": [
+          {
+            "id": "mission-complete",
+            "eyebrow": "МИССИЯ ВЫПОЛНЕНА",
+            "title": "МАРШРУТ СОБРАН",
+            "message": "MAX → Цифровой ID → Госуслуги (демо) → бизнес → инструмент. Путь завершён.",
+            "condition": {
+              "type": "missionComplete"
+            },
+            "action": "complete"
+          }
+        ],
+        "error": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {WebAssets} from './assets.mjs';
+const data=new TextEncoder().encode('MAX asset'),manifest={files:{'screen.webp':{bytes:data.length,sha256:createHash('sha256').update(data).digest('hex')}},aliases:{'screen.png':'screen.webp'}};
+test('versioned URL, shared in-flight fetch, no eager requests',async()=>{let calls=0;const assets=new WebAssets(manifest,'https://example.test/sub/releases/123/',{fetchImpl:async url=>{calls++;assert.equal(url,'https://example.test/sub/releases/123/screen.webp');return new Response(data);}});assert.equal(calls,0);await Promise.all([assets.load('screen.png'),assets.load('screen.png')]);assert.equal(calls,1);await assets.load('screen.png');assert.equal(calls,1);assert.ok(assets.ready.has('screen.png'));assert.throws(()=>assets.url('../private'));});
+test('transient failure retries, then becomes ready',async()=>{let calls=0;const assets=new WebAssets(manifest,'https://example.test/',{fetchImpl:async()=>++calls===1?new Response('',{status:503}):new Response(data)});await assets.load('screen.png');assert.equal(calls,2);});
+test('wrong bytes never accepted; manual retry can recover',async()=>{let broken=true,calls=0;const assets=new WebAssets(manifest,'https://example.test/',{fetchImpl:async()=>{calls++;return new Response(broken?new Uint8Array(data.length):data);}});await assert.rejects(assets.load('screen.png'));assert.equal(calls,3);assert.ok(!assets.ready.has('screen.png'));broken=false;await assets.load('screen.png');assert.equal(calls,4);});

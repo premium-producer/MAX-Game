@@ -1,0 +1,289 @@
+{
+  "$schema": "./missions.schema.json",
+  "schemaVersion": 1,
+  "missionSelectObjects": [
+    {
+      "id": "mission-hub-satellite",
+      "kind": "orbital-signal",
+      "icon": "satellite",
+      "latitude": 68.25,
+      "longitude": 175.35,
+      "altitude": 1.4,
+      "size": 0.72,
+      "signalRadius": 0.82,
+      "signalMode": "always",
+      "successWhen": "all-missions-completed"
+    }
+  ],
+  "objectSettings": {
+    "terminal": {
+      "size": 1,
+      "signalRadius": 0.46
+    },
+    "satellite": {
+      "size": 1,
+      "signalRadius": 0.78,
+      "radiusAtMinAltitude": 0.78,
+      "radiusAtMaxAltitude": 0.78
+    },
+    "gateway": {
+      "size": 1,
+      "signalRadius": 0.62
+    },
+    "core": {
+      "size": 1,
+      "signalRadius": 0.56
+    },
+    "internet": {
+      "size": 1,
+      "signalRadius": 0.5
+    },
+    "endpoint:A": {
+      "size": 1,
+      "signalRadius": 6.5
+    },
+    "endpoint:B": {
+      "size": 1,
+      "signalRadius": 6.5
+    }
+  },
+  "missions": [
+    {
+      "number": 1,
+      "id": "first-signal",
+      "name": "ЕСТЬ ПИНГ!",
+      "description": "На удалённом исследовательском посту установлен новый абонентский терминал. Расположи элементы сети спутниковой связи и соедини их между собой. Команде необходимо впервые вывести объект в интернет через спутниковую инфраструктуру. Для этого нужно определить роль каждого элемента и правильно выстроить маршрут сигнала.\n\nПосле сборки маршрута система проведёт проверку соединения. Если все устройства расположены в верной последовательности, сигнал пройдёт от терминала через спутник и наземную станцию к центру обработки данных, а пост получит стабильный доступ в интернет.",
+      "timeSeconds": 120,
+      "mapPosition": {
+        "latitude": 57.4897,
+        "longitude": 42.6061
+      },
+      "endpoints": {
+        "A": {
+          "label": "A",
+          "latitude": 55.75,
+          "longitude": 37.62
+        },
+        "B": {
+          "label": "Б",
+          "latitude": 60.7704,
+          "longitude": 87.9687
+        }
+      },
+      "connectEndpointsOnComplete": true,
+      "route": [
+        "terminal",
+        "satellite",
+        "gateway",
+        "core",
+        "internet"
+      ],
+      "objectives": [
+        {
+          "id": "place-terminal",
+          "label": "размести абонентский терминал",
+          "condition": {
+            "type": "placed",
+            "object": "terminal",
+            "count": 1
+          }
+        },
+        {
+          "id": "terminal-to-satellite",
+          "label": "соедини терминал со спутником",
+          "condition": {
+            "type": "adjacent",
+            "first": "terminal",
+            "second": "satellite",
+            "count": 1
+          }
+        },
+        {
+          "id": "satellite-to-gateway",
+          "label": "подключи шлюзовую станцию",
+          "condition": {
+            "type": "adjacent",
+            "first": "satellite",
+            "second": "gateway",
+            "count": 1
+          }
+        },
+        {
+          "id": "core-to-internet",
+          "label": "выведи сигнал в интернет",
+          "condition": {
+            "type": "adjacent",
+            "first": "core",
+            "second": "internet",
+            "count": 1
+          }
+        }
+      ],
+      "successText": "Абонентский терминал подключён к интернету.",
+      "unlock": {
+        "requiresCompleted": []
+      }
+    },
+    {
+      "number": 2,
+      "id": "arctic-route",
+      "name": "АРКТИКА НА СВЯЗИ",
+      "description": "Удалённая точка в Арктике находится вне зоны покрытия. Обеспечь спутниковое покрытие в удалённой точке Арктики: определи высоту орбиты спутников и найди подходящее место для наземной станции.",
+      "timeSeconds": 150,
+      "mapPosition": {
+        "latitude": 60.4473,
+        "longitude": 87.4832
+      },
+      "endpoints": {
+        "A": {
+          "label": "A",
+          "latitude": 59.3033,
+          "longitude": 85.3439
+        },
+        "B": {
+          "label": "Б",
+          "latitude": 78.9902,
+          "longitude": -34.3919
+        }
+      },
+      "connectEndpointsOnComplete": false,
+      "route": [
+        "terminal",
+        "satellite",
+        "satellite",
+        "gateway",
+        "core",
+        "internet"
+      ],
+      "objectives": [
+        {
+          "id": "double-satellite",
+          "label": "определи высоту орбиты спутников",
+          "condition": {
+            "type": "connectedSequence",
+            "sequence": [
+              "satellite",
+              "satellite"
+            ]
+          }
+        },
+        {
+          "id": "return-to-ground",
+          "label": "найди место для шлюзовой станции",
+          "condition": {
+            "type": "connectedSequence",
+            "sequence": [
+              "satellite",
+              "gateway",
+              "core"
+            ]
+          }
+        },
+        {
+          "id": "use-all-equipment",
+          "label": "используй все необходимые элементы сети",
+          "condition": {
+            "type": "allPlaced"
+          }
+        }
+      ],
+      "successText": "Связь с удалённой точкой в Арктике установлена.",
+      "unlock": {
+        "requiresCompleted": [
+          1
+        ]
+      }
+    },
+    {
+      "number": 3,
+      "id": "protected-network",
+      "name": "СВЯЗЬ ДЛЯ БОЛЬШОЙ СТРАНЫ",
+      "description": "Абонентские терминалы в Калининграде и на судне, прибывающем во Владивосток, разделяет вся страна, поэтому одного спутника для такого маршрута недостаточно.\n\nРаспредели элементы сети спутниковой связи через всю страну, чтобы создать надёжный маршрут для передачи данных.\n\nНебольшая подсказка: западную и восточную части страны посередине связывает центр обработки данных.",
+      "timeSeconds": 90,
+      "mapPosition": {
+        "latitude": 44.5915,
+        "longitude": 132.2067
+      },
+      "endpoints": {
+        "A": {
+          "label": "A",
+          "latitude": 54.71,
+          "longitude": 20.51
+        },
+        "B": {
+          "label": "Б",
+          "latitude": 43.12,
+          "longitude": 131.89
+        }
+      },
+      "connectEndpointsOnComplete": true,
+      "route": [
+        "terminal",
+        "satellite",
+        "satellite",
+        "satellite",
+        "core",
+        "satellite",
+        "satellite",
+        "satellite",
+        "terminal"
+      ],
+      "objectives": [
+        {
+          "id": "eastern-network",
+          "label": "построй восточную часть сети",
+          "condition": {
+            "type": "connectedSequence",
+            "sequence": [
+              "satellite",
+              "satellite",
+              "satellite",
+              "terminal",
+              "endpoint:B"
+            ]
+          }
+        },
+        {
+          "id": "western-network",
+          "label": "построй западную часть сети",
+          "condition": {
+            "type": "connectedSequence",
+            "sequence": [
+              "endpoint:A",
+              "terminal",
+              "satellite",
+              "satellite",
+              "satellite"
+            ]
+          }
+        },
+        {
+          "id": "unite-through-core",
+          "label": "установи связь через центр обработки данных",
+          "condition": {
+            "type": "connectedSequence",
+            "sequence": [
+              "satellite",
+              "core",
+              "satellite"
+            ]
+          }
+        },
+        {
+          "id": "calibrate-network",
+          "label": "откалибруй связь",
+          "condition": {
+            "type": "networkConnected"
+          }
+        }
+      ],
+      "successText": "Корпоративные данные переданы на судно, прибывающее во Владивосток.",
+      "unlock": {
+        "requiresCompleted": [
+          1,
+          2
+        ]
+      }
+    }
+  ]
+}

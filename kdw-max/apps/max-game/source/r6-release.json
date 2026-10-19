@@ -1,0 +1,52 @@
+{
+  "id": "MAX-CLIENT-FEEDBACK-20261007-R6",
+  "status": "BUILT_LOCAL_NOT_INSTALLED",
+  "tests": {
+    "startup": 12,
+    "ui": 18,
+    "handoff": 4,
+    "projectTargeted": 76,
+    "totalTargetedCpu": 110,
+    "browser": "NOT_RUN_USER_PROHIBITION"
+  },
+  "profiles": {
+    "stand": {
+      "appSha256": "9e1da418fae63bfb1f3b371ed1bab9859a8f5abb1c00c7487ccd3f869c1f483e",
+      "appBytes": 1934733,
+      "baselineAppSha256": "c5e0cdbac632519c5f71454a6d2edfd26baaada5575299dbb0db6be0837256a0",
+      "changedFiles": [
+        "src/reviewed-content/annotation-source.json",
+        "src/reviewed-content/mission-catalog.json",
+        "src/reviewed-content/presentation-overrides.json"
+      ],
+      "sourceSha256": {
+        "src/reviewed-content/annotation-source.json": "b48786a30ca872537820e41d4950b408068e8ab61c81562ab607aa4cd73734b6",
+        "src/reviewed-content/mission-catalog.json": "f6e86c2059d5c39ed5eaef46eed03dce289a351a5fee35736fb97ab746a3edce",
+        "src/reviewed-content/presentation-overrides.json": "30f61015ff237dbbf6293f6a72dc2e92987b0d363e2995580fd57efd15a1f2e6"
+      },
+      "previousAppSha256": "3c57d34f85c4a8ef89696db5799d8419f70e84fba6a19dfbb034846435db8edf"
+    },
+    "client": {
+      "appSha256": "ddf0718b9a10cbe86e3e551f9d2440c08ab0f4256d011bf7b73f792505978213",
+      "appBytes": 2063606,
+      "baselineAppSha256": "ace063dab2c0e168778a95ee09634285b03bece54b2c94008b59a2f549883c5c",
+      "changedFiles": [
+        "src/reviewed-content/annotation-source.json",
+        "src/reviewed-content/mission-catalog.json",
+        "src/reviewed-content/presentation-overrides.json"
+      ],
+      "sourceSha256": {
+        "src/reviewed-content/annotation-source.json": "b48786a30ca872537820e41d4950b408068e8ab61c81562ab607aa4cd73734b6",
+        "src/reviewed-content/mission-catalog.json": "f6e86c2059d5c39ed5eaef46eed03dce289a351a5fee35736fb97ab746a3edce",
+        "src/reviewed-content/presentation-overrides.json": "30f61015ff237dbbf6293f6a72dc2e92987b0d363e2995580fd57efd15a1f2e6"
+      },
+      "previousAppSha256": "5bac1a9fe674f0b0b887d382a93b0d7d22b5f384e221e700bdef4c36c7f3962d"
+    }
+  },
+  "standInstalledAppSha256": "c5e0cdbac632519c5f71454a6d2edfd26baaada5575299dbb0db6be0837256a0",
+  "previousReleaseId": "MAX-CLIENT-FEEDBACK-20261007-R5",
+  "acceptance": "USER_VISUAL_REVIEW_PENDING",
+  "requestLocalDate": "2026-10-07",
+  "previousInstallationObservation": "At 2026-10-06T19:43Z MASTER proxy returned 502; no MAX stop or application took place. Awaiting owner approval; later stand state not rechecked in this publication.",
+  "installationNote": "Local client feedback build only; no stand installation, service restart or publication performed."
+}

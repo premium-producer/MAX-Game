@@ -1,0 +1,776 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ui-shell.schema.json",
+  "title": "X-SPUTNIK persistent UI shell",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "designViewport",
+    "rendering",
+    "interaction",
+    "geometry",
+    "motion",
+    "states"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "schemaVersion": {
+      "const": 8
+    },
+    "designViewport": {
+      "$ref": "#/$defs/size"
+    },
+    "typography": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["missionTextLayout"],
+      "properties": {
+        "missionTextLayout": { "enum": ["adaptive", "left", "justify", "justify-4"], "default": "adaptive" }
+      }
+    },
+    "rendering": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "maxDrawingBufferPixels",
+        "earth",
+        "signalLinks"
+      ],
+      "properties": {
+        "maxDrawingBufferPixels": {
+          "$ref": "#/$defs/positive"
+        },
+        "earth": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "dayTint",
+            "nightTint",
+            "dayIntensity",
+            "ambientIntensity",
+            "saturation",
+            "textureColorMix",
+            "textureSaturation",
+            "surfaceExposure",
+            "surfaceGamma",
+            "surfaceContrast",
+            "oceanColor",
+            "oceanIntensity",
+            "russiaSurfaceBoost",
+            "outsideSurfaceDim",
+            "russiaMaskFeather",
+            "cityLightsColor",
+            "cityLightsHotColor",
+            "cityLightsIntensity",
+            "cityLightsHotIntensity",
+            "cityLightsGlowIntensity",
+            "cityLightsCoreStart",
+            "cityLightsGlowStart",
+            "cityLightsDayVisibility",
+            "cityLightsBlackPoint",
+            "cityLightsWhitePoint",
+            "cityLightsGamma",
+            "cityLightsHotPoint",
+            "cityLightsLimbStart",
+            "cityLightsLimbEnd",
+            "terminatorSoftness",
+            "specularIntensity",
+            "normalStrength",
+            "cloudHighlights",
+            "cloudColor",
+            "cloudIntensity",
+            "cloudOpacity",
+            "cloudBlackPoint",
+            "cloudWhitePoint",
+            "cloudAltitude",
+            "cloudShadowIntensity",
+            "hazeColor",
+            "hazeIntensity",
+            "hazePower",
+            "borderColor",
+            "borderIntensity",
+            "borderCoreIntensity",
+            "borderCoreWidth",
+            "borderGlowIntensity",
+            "emissiveBloomRadius",
+            "emissiveBloomStrength",
+            "emissiveBloomQuality",
+            "atmosphereColor",
+            "atmosphereIntensity",
+            "atmospherePower",
+            "atmosphereInnerFeather",
+            "atmosphereOuterFeather",
+            "atmosphereSunBias"
+          ],
+          "properties": {
+            "dayTint": {
+              "$ref": "#/$defs/color"
+            },
+            "nightTint": {
+              "$ref": "#/$defs/color"
+            },
+            "dayIntensity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 3
+            },
+            "ambientIntensity": {
+              "$ref": "#/$defs/unit"
+            },
+            "saturation": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 2
+            },
+            "textureColorMix": {
+              "$ref": "#/$defs/unit"
+            },
+            "textureSaturation": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 2
+            },
+            "surfaceExposure": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 2
+            },
+            "surfaceGamma": {
+              "type": "number",
+              "minimum": 0.5,
+              "maximum": 3
+            },
+            "surfaceContrast": {
+              "type": "number",
+              "minimum": 0.5,
+              "maximum": 2
+            },
+            "oceanColor": {
+              "$ref": "#/$defs/color"
+            },
+            "oceanIntensity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 2
+            },
+            "russiaSurfaceBoost": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 2
+            },
+            "outsideSurfaceDim": {
+              "$ref": "#/$defs/unit"
+            },
+            "russiaMaskFeather": {
+              "type": "number",
+              "minimum": 0.25,
+              "maximum": 4
+            },
+            "cityLightsColor": {
+              "$ref": "#/$defs/color"
+            },
+            "cityLightsHotColor": {
+              "$ref": "#/$defs/color"
+            },
+            "cityLightsIntensity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 4
+            },
+            "cityLightsHotIntensity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 6
+            },
+            "cityLightsGlowIntensity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 2
+            },
+            "cityLightsCoreStart": {
+              "$ref": "#/$defs/unit"
+            },
+            "cityLightsGlowStart": {
+              "$ref": "#/$defs/unit"
+            },
+            "cityLightsDayVisibility": {
+              "$ref": "#/$defs/unit"
+            },
+            "cityLightsBlackPoint": {
+              "$ref": "#/$defs/unit"
+            },
+            "cityLightsWhitePoint": {
+              "$ref": "#/$defs/unit"
+            },
+            "cityLightsGamma": {
+              "type": "number",
+              "minimum": 0.1,
+              "maximum": 4
+            },
+            "cityLightsHotPoint": {
+              "$ref": "#/$defs/unit"
+            },
+            "cityLightsLimbStart": {
+              "$ref": "#/$defs/unit"
+            },
+            "cityLightsLimbEnd": {
+              "$ref": "#/$defs/unit"
+            },
+            "terminatorSoftness": {
+              "type": "number",
+              "minimum": 0.01,
+              "maximum": 1
+            },
+            "specularIntensity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 2
+            },
+            "normalStrength": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 2
+            },
+            "cloudHighlights": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 2
+            },
+            "cloudColor": {
+              "$ref": "#/$defs/color"
+            },
+            "cloudIntensity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 2
+            },
+            "cloudOpacity": {
+              "$ref": "#/$defs/unit"
+            },
+            "cloudBlackPoint": {
+              "$ref": "#/$defs/unit"
+            },
+            "cloudWhitePoint": {
+              "$ref": "#/$defs/unit"
+            },
+            "cloudAltitude": {
+              "type": "number",
+              "minimum": 0.003,
+              "maximum": 0.08
+            },
+            "cloudShadowIntensity": {
+              "$ref": "#/$defs/unit"
+            },
+            "hazeColor": {
+              "$ref": "#/$defs/color"
+            },
+            "hazeIntensity": {
+              "$ref": "#/$defs/unit"
+            },
+            "hazePower": {
+              "type": "number",
+              "minimum": 0.5,
+              "maximum": 8
+            },
+            "borderColor": {
+              "$ref": "#/$defs/color"
+            },
+            "borderIntensity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 2
+            },
+            "borderCoreIntensity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 6
+            },
+            "borderCoreWidth": {
+              "type": "number",
+              "minimum": 0.5,
+              "maximum": 6
+            },
+            "borderGlowIntensity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 2
+            },
+            "emissiveBloomRadius": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 64
+            },
+            "emissiveBloomStrength": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 2
+            },
+            "emissiveBloomQuality": {
+              "enum": [
+                "high",
+                "medium",
+                "off"
+              ]
+            },
+            "atmosphereColor": {
+              "$ref": "#/$defs/color"
+            },
+            "atmosphereIntensity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 2
+            },
+            "atmospherePower": {
+              "type": "number",
+              "minimum": 0.5,
+              "maximum": 8
+            },
+            "atmosphereInnerFeather": {
+              "type": "number",
+              "minimum": 0.001,
+              "maximum": 0.25
+            },
+            "atmosphereOuterFeather": {
+              "type": "number",
+              "minimum": 0.01,
+              "maximum": 0.5
+            },
+            "atmosphereSunBias": {
+              "$ref": "#/$defs/unit"
+            },
+            "russiaContour": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9-]{0,63}$",
+              "default": "classic",
+              "description": "ID из config/earth-contours.json; контур и парная декоративная заливка."
+            }
+          }
+        },
+        "nodeIconBackdrop": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "color",
+            "opacity",
+            "radius"
+          ],
+          "properties": {
+            "color": {
+              "type": "string",
+              "pattern": "^#[0-9A-Fa-f]{6}$"
+            },
+            "opacity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "radius": {
+              "$ref": "#/$defs/positive"
+            }
+          }
+        },
+        "signalLinks": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "strandCount",
+            "segmentCount",
+            "particleCount",
+            "flowSpeed",
+            "waveAmplitude",
+            "waveFrequency"
+          ],
+          "properties": {
+            "strandCount": {
+              "$ref": "#/$defs/positiveInteger"
+            },
+            "segmentCount": {
+              "$ref": "#/$defs/positiveInteger"
+            },
+            "particleCount": {
+              "$ref": "#/$defs/positiveInteger"
+            },
+            "flowSpeed": {
+              "$ref": "#/$defs/positive"
+            },
+            "waveAmplitude": {
+              "$ref": "#/$defs/nonNegative"
+            },
+            "waveFrequency": {
+              "$ref": "#/$defs/positive"
+            },
+            "strandSpacing": {
+              "$ref": "#/$defs/nonNegative"
+            }
+          }
+        }
+      }
+    },
+    "interaction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "earthOrbit"
+      ],
+      "properties": {
+        "earthOrbit": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "limitsDegrees",
+            "centerRussia",
+            "verticalCenteringPx"
+          ],
+          "properties": {
+            "limitsDegrees": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "west",
+                "east",
+                "north",
+                "south"
+              ],
+              "properties": {
+                "west": {
+                  "$ref": "#/$defs/orbitAngle"
+                },
+                "east": {
+                  "$ref": "#/$defs/orbitAngle"
+                },
+                "north": {
+                  "$ref": "#/$defs/orbitAngle"
+                },
+                "south": {
+                  "$ref": "#/$defs/orbitAngle"
+                }
+              }
+            },
+            "centerRussia": {
+              "type": "boolean"
+            },
+            "verticalCenteringPx": {
+              "$ref": "#/$defs/nonNegative"
+            },
+            "missionMarkerSafePaddingPx": {
+              "type": "number",
+              "minimum": 0
+            },
+            "endpointSafePaddingPx": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "outerInset",
+        "headerHeight",
+        "frameGap",
+        "headerPadding",
+        "headerSideColumn",
+        "footerHeight",
+        "footerBottom",
+        "inventoryWidth",
+        "columnGap",
+        "borderWidth",
+        "borderRadius"
+      ],
+      "properties": {
+        "outerInset": {
+          "$ref": "#/$defs/nonNegative"
+        },
+        "headerHeight": {
+          "$ref": "#/$defs/positive"
+        },
+        "frameGap": {
+          "$ref": "#/$defs/nonNegative"
+        },
+        "headerPadding": {
+          "$ref": "#/$defs/nonNegative"
+        },
+        "headerSideColumn": {
+          "$ref": "#/$defs/positive"
+        },
+        "footerHeight": {
+          "$ref": "#/$defs/positive"
+        },
+        "footerBottom": {
+          "$ref": "#/$defs/nonNegative"
+        },
+        "inventoryWidth": {
+          "$ref": "#/$defs/positive"
+        },
+        "columnGap": {
+          "$ref": "#/$defs/nonNegative"
+        },
+        "borderWidth": {
+          "$ref": "#/$defs/positive"
+        },
+        "borderRadius": {
+          "$ref": "#/$defs/nonNegative"
+        }
+      }
+    },
+    "motion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "layoutDurationMs",
+        "fadeDurationMs",
+        "screenDurationMs",
+        "screenExitDurationMs",
+        "contentStaggerMs",
+        "microDurationMs",
+        "ambientDurationMs",
+        "easing",
+        "springEasing"
+      ],
+      "properties": {
+        "layoutDurationMs": {
+          "$ref": "#/$defs/nonNegative"
+        },
+        "fadeDurationMs": {
+          "$ref": "#/$defs/nonNegative"
+        },
+        "screenDurationMs": {
+          "$ref": "#/$defs/nonNegative"
+        },
+        "screenExitDurationMs": {
+          "$ref": "#/$defs/nonNegative"
+        },
+        "contentStaggerMs": {
+          "$ref": "#/$defs/nonNegative"
+        },
+        "microDurationMs": {
+          "$ref": "#/$defs/nonNegative"
+        },
+        "ambientDurationMs": {
+          "$ref": "#/$defs/nonNegative"
+        },
+        "cameraIdle": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "delayMs",
+            "fadeMs",
+            "periodMs",
+            "yawDegrees",
+            "pitchDegrees"
+          ],
+          "properties": {
+            "delayMs": {
+              "$ref": "#/$defs/nonNegative"
+            },
+            "fadeMs": {
+              "$ref": "#/$defs/positive"
+            },
+            "periodMs": {
+              "$ref": "#/$defs/positive"
+            },
+            "yawDegrees": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 5
+            },
+            "pitchDegrees": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 5
+            }
+          }
+        },
+        "easing": {
+          "type": "string",
+          "minLength": 1
+        },
+        "springEasing": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "states": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "CTA",
+        "ONBOARDING",
+        "MISSION_SELECT",
+        "MISSION_PLAY",
+        "END"
+      ],
+      "properties": {
+        "CTA": {
+          "$ref": "#/$defs/state"
+        },
+        "ONBOARDING": {
+          "$ref": "#/$defs/state"
+        },
+        "MISSION_SELECT": {
+          "$ref": "#/$defs/state"
+        },
+        "MISSION_PLAY": {
+          "$ref": "#/$defs/state"
+        },
+        "END": {
+          "$ref": "#/$defs/state"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "positive": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "positiveInteger": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "nonNegative": {
+      "type": "number",
+      "minimum": 0
+    },
+    "unit": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "color": {
+      "type": "string",
+      "pattern": "^#[0-9A-Fa-f]{6}$"
+    },
+    "orbitAngle": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 180
+    },
+    "size": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "width",
+        "height"
+      ],
+      "properties": {
+        "width": {
+          "$ref": "#/$defs/positive"
+        },
+        "height": {
+          "$ref": "#/$defs/positive"
+        }
+      }
+    },
+    "vector3": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "number"
+      }
+    },
+    "cameraView": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target",
+        "rotation",
+        "distance",
+        "fov"
+      ],
+      "properties": {
+        "target": {
+          "$ref": "#/$defs/vector3"
+        },
+        "rotation": {
+          "$ref": "#/$defs/vector3"
+        },
+        "distance": {
+          "$ref": "#/$defs/positive"
+        },
+        "fov": {
+          "type": "number",
+          "minimum": 15,
+          "maximum": 100
+        }
+      }
+    },
+    "state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "header",
+        "frame",
+        "footer",
+        "inventory",
+        "footerStyle",
+        "earthMask",
+        "frameAvoidsFooter",
+        "frameRight",
+        "frameBottom",
+        "footerRight",
+        "backgroundBlur",
+        "backgroundDim",
+        "cameraView"
+      ],
+      "properties": {
+        "header": {
+          "type": "boolean"
+        },
+        "frame": {
+          "type": "boolean"
+        },
+        "footer": {
+          "type": "boolean"
+        },
+        "inventory": {
+          "type": "boolean"
+        },
+        "footerStyle": {
+          "enum": [
+            "hidden",
+            "floating",
+            "panel"
+          ]
+        },
+        "earthMask": {
+          "enum": [
+            "full",
+            "frame"
+          ]
+        },
+        "frameAvoidsFooter": {
+          "type": "boolean"
+        },
+        "frameRight": {
+          "$ref": "#/$defs/nonNegative"
+        },
+        "frameBottom": {
+          "$ref": "#/$defs/nonNegative"
+        },
+        "footerRight": {
+          "$ref": "#/$defs/nonNegative"
+        },
+        "backgroundBlur": {
+          "$ref": "#/$defs/nonNegative"
+        },
+        "backgroundDim": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "cameraView": {
+          "$ref": "#/$defs/cameraView"
+        }
+      }
+    }
+  }
+}

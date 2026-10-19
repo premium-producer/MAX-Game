@@ -1,0 +1,768 @@
+{
+  "schema": "max-clean-screen-texts/v1",
+  "pluginRevision": "max-clean-screens-20261009",
+  "contentRevision": "missions-reviewed-20261003-abe878cfed89",
+  "source": "Figma · MAX · Чистые экраны",
+  "coverage": {
+    "tasks": 15,
+    "screens": 70
+  },
+  "tasks": [
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.channel",
+      "title": "Канал",
+      "baselineTitle": "Канал",
+      "changed": false
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.comments",
+      "title": "Общение с подписчиками",
+      "baselineTitle": "Общение с подписчиками",
+      "changed": false
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.statistics",
+      "title": "Статистика",
+      "baselineTitle": "Статистика",
+      "changed": false
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.create-id",
+      "title": "Создать Цифровой ID",
+      "baselineTitle": "Создать Цифровой ID",
+      "changed": false
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.hotel",
+      "title": "Заселиться в отель",
+      "baselineTitle": "Заселиться в отель",
+      "changed": false
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.benefit",
+      "title": "Подтвердить льготу",
+      "baselineTitle": "Подтвердить льготу",
+      "changed": false
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.age",
+      "title": "Подтвердить возраст",
+      "baselineTitle": "Подтвердить возраст",
+      "changed": false
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.call",
+      "title": "Видеозвонок",
+      "baselineTitle": "Видеозвонок",
+      "changed": false
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.message",
+      "title": "Голосовое / видеосообщение",
+      "baselineTitle": "Голосовое / видеосообщение",
+      "changed": false
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.reaction",
+      "title": "Стикеры",
+      "baselineTitle": "Стикеры",
+      "changed": false
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.story",
+      "title": "История",
+      "baselineTitle": "История",
+      "changed": false
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.platform",
+      "title": "Регистрация",
+      "baselineTitle": "Бизнес-аккаунт",
+      "changed": true
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.channel",
+      "title": "Канал",
+      "baselineTitle": "Канал",
+      "changed": false
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.bot",
+      "title": "Чат-бот для приема заказов",
+      "baselineTitle": "Чат-бот для приема заказов",
+      "changed": false
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.store",
+      "title": "Мини-приложение",
+      "baselineTitle": "Мини-приложение",
+      "changed": false
+    }
+  ],
+  "screens": [
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.channel",
+      "screenId": "blogger.channel.chats",
+      "instruction": "Приступаем к созданию канала в MAX",
+      "baselineInstruction": "Приступаем к созданию канала в MAX",
+      "changed": false
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.channel",
+      "screenId": "blogger.channel.menu",
+      "instruction": "Приступаем к созданию канала в MAX",
+      "baselineInstruction": "Приступаем к созданию канала в MAX",
+      "changed": false
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.channel",
+      "screenId": "blogger.channel.name",
+      "instruction": "Придумаем название канала и расскажем, о чем он будет",
+      "baselineInstruction": "Придумаем название канала и расскажем, о чем он будет",
+      "changed": false
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.channel",
+      "screenId": "blogger.channel.filled",
+      "instruction": "Придумаем название канала и расскажем, о чем он будет",
+      "baselineInstruction": "Придумаем название канала и расскажем, о чем он будет",
+      "changed": false
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.channel",
+      "screenId": "blogger.channel.privacy",
+      "instruction": "Настроим тип канала – приватный или публичный",
+      "baselineInstruction": "Настроим тип канала – приватный или публичный",
+      "changed": false
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.channel",
+      "screenId": "blogger.channel.public-confirm",
+      "instruction": "Настроим тип канала – приватный или публичный",
+      "baselineInstruction": "Настроим тип канала – приватный или публичный",
+      "changed": false
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.channel",
+      "screenId": "blogger.channel.public-link",
+      "instruction": "Настроим тип канала – приватный или публичный",
+      "baselineInstruction": "Настроим тип канала – приватный или публичный",
+      "changed": false
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.channel",
+      "screenId": "blogger.channel.public-filled",
+      "instruction": "Настроим тип канала – приватный или публичный",
+      "baselineInstruction": "Настроим тип канала – приватный или публичный",
+      "changed": false
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.channel",
+      "screenId": "blogger.channel.subscribers",
+      "instruction": "Добавим первых подписчиков",
+      "baselineInstruction": "Добавим первых подписчиков",
+      "changed": false
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.channel",
+      "screenId": "blogger.channel.created",
+      "instruction": "Канал создан! Начинаем делиться самым важным",
+      "baselineInstruction": "Канал создан! Начинаем делиться самым важным",
+      "changed": false
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.comments",
+      "screenId": "blogger.comments.post",
+      "instruction": "Начинаем общение с подписчиками – переходим к комментариям!",
+      "baselineInstruction": "Начинаем общение с подписчиками – переходим к комментариям!",
+      "changed": false
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.comments",
+      "screenId": "blogger.comments.input",
+      "instruction": "Ответим на вопрос подписчика в комментариях",
+      "baselineInstruction": "Ответим на вопрос подписчика в комментариях",
+      "changed": false
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.comments",
+      "screenId": "blogger.comments.reply",
+      "instruction": "Ответим на вопрос подписчика в комментариях",
+      "baselineInstruction": "Ответим на вопрос подписчика в комментариях",
+      "changed": false
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.comments",
+      "screenId": "blogger.comments.result",
+      "instruction": "Задание выполнено. Открываем следующую возможность.",
+      "baselineInstruction": "Задание выполнено. Открываем следующую возможность.",
+      "changed": false
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.statistics",
+      "screenId": "blogger.statistics.menu",
+      "instruction": "Посмотрим, как растет канал – изучим статистику!",
+      "baselineInstruction": "Посмотрим, как растет канал – изучим статистику!",
+      "changed": false
+    },
+    {
+      "missionId": "blogger",
+      "taskId": "blogger.statistics",
+      "screenId": "blogger.statistics.statistics",
+      "instruction": "Статистика проверена – канал растет и развивается",
+      "baselineInstruction": "Статистика проверена – канал растет и развивается",
+      "changed": false
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.create-id",
+      "screenId": "digital-id.create-id.start",
+      "instruction": "Создайте Цифровой ID и откройте для себя больше возможностей",
+      "baselineInstruction": "Создайте Цифровой ID и откройте для себя больше возможностей",
+      "changed": false
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.create-id",
+      "screenId": "digital-id.create-id.documents",
+      "instruction": "Добавим документы и создадим Цифровой ID",
+      "baselineInstruction": "Добавим документы и создадим Цифровой ID",
+      "changed": false
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.create-id",
+      "screenId": "digital-id.create-id.confirm",
+      "instruction": "Подтвердите вход в MAX через Госуслуги",
+      "baselineInstruction": "Подтвердите вход в MAX через Госуслуги",
+      "changed": false
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.create-id",
+      "screenId": "digital-id.create-id.quick",
+      "instruction": "Включите вход по лицу или отпечатку пальца — по желанию",
+      "baselineInstruction": "Включите вход по лицу или отпечатку пальца — по желанию",
+      "changed": false
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.create-id",
+      "screenId": "digital-id.create-id.biometry",
+      "instruction": "",
+      "baselineInstruction": "",
+      "changed": false
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.create-id",
+      "screenId": "digital-id.create-id.ready",
+      "instruction": "Цифровой ID готов к работе!",
+      "baselineInstruction": "Цифровой ID готов к работе!",
+      "changed": false
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.hotel",
+      "screenId": "digital-id.hotel.arrival",
+      "instruction": "Поможем Мишке быстро и удобно заселиться в отель с Цифровым ID",
+      "baselineInstruction": "Поможем Мишке быстро и удобно заселиться в отель с Цифровым ID",
+      "changed": false
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.hotel",
+      "screenId": "digital-id.hotel.present",
+      "instruction": "Для заселения необходимо предъявить Цифровой ID для подтверждения личности",
+      "baselineInstruction": "Для заселения необходимо предъявить Цифровой ID для подтверждения личности",
+      "changed": false
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.hotel",
+      "screenId": "digital-id.hotel.result",
+      "instruction": "Задание выполнено – мы помогли Мишке заселиться в отель!",
+      "baselineInstruction": "Задание выполнено – мы помогли Мишке заселиться в отель!",
+      "changed": false
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.benefit",
+      "screenId": "digital-id.benefit.arrival",
+      "instruction": "Поможем Мишке подтвердить студенческую льготу с Цифровым ID для посещения музея",
+      "baselineInstruction": "Поможем Мишке подтвердить студенческую льготу с Цифровым ID для посещения музея",
+      "changed": false
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.benefit",
+      "screenId": "digital-id.benefit.present",
+      "instruction": "Для покупки льготного студенческого билета – необходимо предъявить Цифровой ID",
+      "baselineInstruction": "Для покупки льготного студенческого билета – необходимо предъявить Цифровой ID",
+      "changed": false
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.benefit",
+      "screenId": "digital-id.benefit.result",
+      "instruction": "Задание выполнено – мы помогли Мишке воспользоваться подтверждением льготы с Цифровым ID!",
+      "baselineInstruction": "Задание выполнено – мы помогли Мишке воспользоваться подтверждением льготы с Цифровым ID!",
+      "changed": false
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.age",
+      "screenId": "digital-id.age.arrival",
+      "instruction": "Поможем Мишке подтвердить возраст для покупок в магазине",
+      "baselineInstruction": "Поможем Мишке подтвердить возраст для покупок в магазине",
+      "changed": false
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.age",
+      "screenId": "digital-id.age.present",
+      "instruction": "Для покупок на кассе необходимо подтвердить возраст – это можно сделать с помощью Цифрового ID",
+      "baselineInstruction": "Для покупок на кассе необходимо подтвердить возраст – это можно сделать с помощью Цифрового ID",
+      "changed": false
+    },
+    {
+      "missionId": "digital-id",
+      "taskId": "digital-id.age",
+      "screenId": "digital-id.age.result",
+      "instruction": "Задание выполнено – мы помогли Мишке подтвердить возраст с Цифровым ID!",
+      "baselineInstruction": "Задание выполнено – мы помогли Мишке подтвердить возраст с Цифровым ID!",
+      "changed": false
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.call",
+      "screenId": "communication.call.chat",
+      "instruction": "Совершим удобный звонок на максимум!",
+      "baselineInstruction": "Совершим удобный звонок на максимум!",
+      "changed": false
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.call",
+      "screenId": "communication.call.connected",
+      "instruction": "",
+      "baselineInstruction": "",
+      "changed": false
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.call",
+      "screenId": "communication.call.result",
+      "instruction": "Задание выполнено. Открываем следующую возможность.",
+      "baselineInstruction": "Задание выполнено. Открываем следующую возможность.",
+      "changed": false
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.message",
+      "screenId": "communication.message.voice-start",
+      "instruction": "Отправим голосовое сообщение!",
+      "baselineInstruction": "Отправим голосовое сообщение!",
+      "changed": false
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.message",
+      "screenId": "communication.message.voice-stop",
+      "instruction": "Приступим к записи",
+      "baselineInstruction": "Приступим к записи",
+      "changed": false
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.message",
+      "screenId": "communication.message.voice-preview",
+      "instruction": "Отправим голосовое сообщение в диалог",
+      "baselineInstruction": "Отправим голосовое сообщение в диалог",
+      "changed": false
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.message",
+      "screenId": "communication.message.voice-sent",
+      "instruction": "Голосовое сообщение отправлено!",
+      "baselineInstruction": "Голосовое сообщение отправлено!",
+      "changed": false
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.message",
+      "screenId": "communication.message.video-start",
+      "instruction": "Приступим к записи видеосообщения",
+      "baselineInstruction": "Приступим к записи видеосообщения",
+      "changed": false
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.message",
+      "screenId": "communication.message.video-stop",
+      "instruction": "Остановите запись, когда сообщение готово",
+      "baselineInstruction": "Остановите запись, когда сообщение готово",
+      "changed": false
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.message",
+      "screenId": "communication.message.video-preview",
+      "instruction": "Отправим видеосообщение в диалог",
+      "baselineInstruction": "Отправим видеосообщение в диалог",
+      "changed": false
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.message",
+      "screenId": "communication.message.video-sent",
+      "instruction": "Задание выполнено. Открываем следующую возможность.",
+      "baselineInstruction": "Задание выполнено. Открываем следующую возможность.",
+      "changed": false
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.reaction",
+      "screenId": "communication.reaction.chat",
+      "instruction": "Поделимся эмоциями – прямо в диалоге",
+      "baselineInstruction": "Поделимся эмоциями – прямо в диалоге",
+      "changed": false
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.reaction",
+      "screenId": "communication.reaction.stickers",
+      "instruction": "Выберем стикер и отправим – прямо в диалог",
+      "baselineInstruction": "Выберем стикер и отправим – прямо в диалог",
+      "changed": false
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.reaction",
+      "screenId": "communication.reaction.preview",
+      "instruction": "Выберем стикер и отправим – прямо в диалог",
+      "baselineInstruction": "Выберем стикер и отправим – прямо в диалог",
+      "changed": false
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.reaction",
+      "screenId": "communication.reaction.sent",
+      "instruction": "Задание выполнено. Открываем следующую возможность.",
+      "baselineInstruction": "Задание выполнено. Открываем следующую возможность.",
+      "changed": false
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.story",
+      "screenId": "communication.story.start",
+      "instruction": "Поделимся моментами жизни – выложим историю в MAX",
+      "baselineInstruction": "Поделимся моментами жизни – выложим историю в MAX",
+      "changed": false
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.story",
+      "screenId": "communication.story.duration",
+      "instruction": "Выберем длительность публикации",
+      "baselineInstruction": "Выберем длительность публикации",
+      "changed": false
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.story",
+      "screenId": "communication.story.audience",
+      "instruction": "Выберем аудиторию для просмотра",
+      "baselineInstruction": "Выберем аудиторию для просмотра",
+      "changed": false
+    },
+    {
+      "missionId": "communication",
+      "taskId": "communication.story",
+      "screenId": "communication.story.ready",
+      "instruction": "Задание выполнено. Миссия пройдена.",
+      "baselineInstruction": "Задание выполнено. Миссия пройдена.",
+      "changed": false
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.platform",
+      "screenId": "business.platform.login",
+      "instruction": "Войдем на платформу MAX для бизнеса и пройдем верификацию",
+      "baselineInstruction": "Войдем на платформу MAX для бизнеса и пройдем верификацию",
+      "changed": false
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.platform",
+      "screenId": "business.platform.profile",
+      "instruction": "Выберем тип профиля для регистрации",
+      "baselineInstruction": "Выберем тип профиля для регистрации",
+      "changed": false
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.platform",
+      "screenId": "business.platform.verification",
+      "instruction": "Верифицируем организацию",
+      "baselineInstruction": "Верифицируем организацию",
+      "changed": false
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.platform",
+      "screenId": "business.platform.ready",
+      "instruction": "Профиль подтвержден – приступаем к продвижению бизнеса",
+      "baselineInstruction": "Профиль подтвержден – приступаем к продвижению бизнеса",
+      "changed": false
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.channel",
+      "screenId": "business.channel.create",
+      "instruction": "Создадим канал для вашего бизнеса – и поделимся важными обновлениями, акциями и новостями",
+      "baselineInstruction": "Создадим канал для вашего бизнеса – и поделимся важными обновлениями, акциями и новостями",
+      "changed": false
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.channel",
+      "screenId": "business.channel.continue",
+      "instruction": "Выберем опцию создания канала",
+      "baselineInstruction": "Выберем опцию создания канала",
+      "changed": false
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.channel",
+      "screenId": "business.channel.open",
+      "instruction": "Приступим к созданию канала",
+      "baselineInstruction": "Приступим к созданию канала",
+      "changed": false
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.channel",
+      "screenId": "business.channel.setup",
+      "instruction": "Пройдем все необходимые шаги и начнем публикации",
+      "baselineInstruction": "Пройдем все необходимые шаги и начнем публикации",
+      "changed": false
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.channel",
+      "screenId": "business.channel.details",
+      "instruction": "",
+      "baselineInstruction": "",
+      "changed": false
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.channel",
+      "screenId": "business.channel.description",
+      "instruction": "",
+      "baselineInstruction": "",
+      "changed": false
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.channel",
+      "screenId": "business.channel.type",
+      "instruction": "",
+      "baselineInstruction": "",
+      "changed": false
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.channel",
+      "screenId": "business.channel.publish",
+      "instruction": "Канал создан, теперь можно поделиться новостями вашего бизнеса",
+      "baselineInstruction": "Канал создан – продолжаем делиться новостями вашего бизнеса",
+      "changed": true
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.channel",
+      "screenId": "business.channel.result",
+      "instruction": "Задание выполнено. Поздравляем, о вас узнало больше людей и выросло количество заказов. Открываем следующую возможность.",
+      "baselineInstruction": "Задание выполнено. Открываем следующую возможность.",
+      "changed": true
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.bot",
+      "screenId": "business.bot.create",
+      "instruction": "Подключим чат-бот для приема заказов, сбора обратной связи и быстрых ответов для клиентов",
+      "baselineInstruction": "Подключим чат-бот для приема заказов, сбора обратной связи и быстрых ответов для клиентов",
+      "changed": false
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.bot",
+      "screenId": "business.bot.filled",
+      "instruction": "Заполним данные о чат-боте – логотип, название и выберем задачи, которые он будет решать",
+      "baselineInstruction": "Заполним данные о чат-боте – логотип, название и выберем задачи, которые он будет решать",
+      "changed": false
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.bot",
+      "screenId": "business.bot.ready",
+      "instruction": "Чат-бот почти готов! Осталось только дождаться публикации",
+      "baselineInstruction": "Чат-бот почти готов! Осталось только дождаться публикации",
+      "changed": false
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.bot",
+      "screenId": "business.bot.result",
+      "instruction": "Задание выполнено. Теперь ваш чат-бот принимает заказы и отвечает на вопросы клиентов. Открываем следующую возможность.",
+      "baselineInstruction": "Задание выполнено. Открываем следующую возможность.",
+      "changed": true
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.store",
+      "screenId": "business.store.start",
+      "instruction": "Подключим витрину товаров и услуг, чтобы клиенты могли совершать покупки не выходя из мессенджера",
+      "baselineInstruction": "Подключим мини-приложение для клиентов: для бронирования услуг, совершения покупок и других возможностей",
+      "changed": true
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.store",
+      "screenId": "business.store.publish",
+      "instruction": "Мини-приложение почти готово – осталось только сохранить и опубликовать!",
+      "baselineInstruction": "Мини-приложение почти готово – осталось только сохранить и опубликовать!",
+      "changed": false
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.store",
+      "screenId": "business.store.result",
+      "instruction": "Задание выполнено, теперь ваши клиенты могут подробнее изучить витрину товаров и услуг.",
+      "baselineInstruction": "Миссия пройдена",
+      "changed": true
+    }
+  ],
+  "changes": [
+    {
+      "missionId": "business",
+      "taskId": "business.platform",
+      "field": "title",
+      "targetPath": [
+        "tasks",
+        "business.platform",
+        "title"
+      ],
+      "before": "Бизнес-аккаунт",
+      "after": "Регистрация"
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.channel",
+      "screenId": "business.channel.publish",
+      "field": "instruction",
+      "targetPath": [
+        "tasks",
+        "business.channel",
+        "screens",
+        "business.channel.publish",
+        "instruction"
+      ],
+      "before": "Канал создан – продолжаем делиться новостями вашего бизнеса",
+      "after": "Канал создан, теперь можно поделиться новостями вашего бизнеса"
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.channel",
+      "screenId": "business.channel.result",
+      "field": "instruction",
+      "targetPath": [
+        "tasks",
+        "business.channel",
+        "screens",
+        "business.channel.result",
+        "instruction"
+      ],
+      "before": "Задание выполнено. Открываем следующую возможность.",
+      "after": "Задание выполнено. Поздравляем, о вас узнало больше людей и выросло количество заказов. Открываем следующую возможность."
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.bot",
+      "screenId": "business.bot.result",
+      "field": "instruction",
+      "targetPath": [
+        "tasks",
+        "business.bot",
+        "screens",
+        "business.bot.result",
+        "instruction"
+      ],
+      "before": "Задание выполнено. Открываем следующую возможность.",
+      "after": "Задание выполнено. Теперь ваш чат-бот принимает заказы и отвечает на вопросы клиентов. Открываем следующую возможность."
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.store",
+      "screenId": "business.store.start",
+      "field": "instruction",
+      "targetPath": [
+        "tasks",
+        "business.store",
+        "screens",
+        "business.store.start",
+        "instruction"
+      ],
+      "before": "Подключим мини-приложение для клиентов: для бронирования услуг, совершения покупок и других возможностей",
+      "after": "Подключим витрину товаров и услуг, чтобы клиенты могли совершать покупки не выходя из мессенджера"
+    },
+    {
+      "missionId": "business",
+      "taskId": "business.store",
+      "screenId": "business.store.result",
+      "field": "instruction",
+      "targetPath": [
+        "tasks",
+        "business.store",
+        "screens",
+        "business.store.result",
+        "instruction"
+      ],
+      "before": "Миссия пройдена",
+      "after": "Задание выполнено, теперь ваши клиенты могут подробнее изучить витрину товаров и услуг."
+    }
+  ]
+}

@@ -1,0 +1,1476 @@
+{
+  "passed": true,
+  "url": "https://futuronika.pro/df/max-game-client/",
+  "release": "c0d5499504e1a1329442",
+  "checks": [
+    "public default entry: native standby TV, MAX and four first-task icons; no developer menu",
+    "public task icon opens business at same global scale",
+    "back returns to native standby",
+    "phone landscape uses same native presentation; no alternate mobile menu",
+    "portrait retains native scene and icons",
+    "HTTPS video streams with Range 206; no console, resource or external API failures"
+  ],
+  "metrics": {
+    "start": {
+      "bytes": 770838,
+      "taskImages": 0
+    }
+  },
+  "errors": [],
+  "requests": [
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/?test=memory",
+      "type": "Document",
+      "status": 200,
+      "bytes": 987
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/entry.js",
+      "type": "Script",
+      "status": 200,
+      "bytes": 2077
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/asset-manifest.json",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 19064
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/fonts/max-sans-300.woff2",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 18239
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/fonts/max-sans-400.woff2",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 18393
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/fonts/max-sans-500.woff2",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 18543
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/fonts/max-sans-600.woff2",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 18223
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/fonts/max-sans-700.woff2",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 18427
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/logos/max-mono-white.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1378
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/logos/max-primary-white.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 9694
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/logos/max-symbol-white.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 619
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/tokens/brand.css",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 454
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/manifest.json",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1788
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.age.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 2827
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.benefit.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 2020
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.bot.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1807
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.business.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1694
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.call.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1720
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.channel.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1641
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.comments.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1123
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.digital-id.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 2017
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.hotel.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1318
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.message.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1499
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.missing.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 448
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.open-max.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1306
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.restart.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 584
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.scan.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1959
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.statistics.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1701
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.stickers.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1295
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.store.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1315
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.story.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1894
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/tokens/brand.css",
+      "type": "Stylesheet",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/journey.css",
+      "type": "Stylesheet",
+      "status": 200,
+      "bytes": 9119
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/journey-guided.css",
+      "type": "Stylesheet",
+      "status": 200,
+      "bytes": 2231
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/fonts/max-sans-400.woff2",
+      "type": "Font",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/journey-guided-line.css",
+      "type": "Stylesheet",
+      "status": 200,
+      "bytes": 820
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/journey-guided-reveal.css",
+      "type": "Stylesheet",
+      "status": 200,
+      "bytes": 917
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/v5.css",
+      "type": "Stylesheet",
+      "status": 200,
+      "bytes": 2611
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/kdw-interactions.css",
+      "type": "Stylesheet",
+      "status": 200,
+      "bytes": 4392
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/app.js",
+      "type": "Script",
+      "status": 200,
+      "bytes": 558659
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/config/client-webgl.json",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 4237
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/config/ui-shell.json",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 2010
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/config/client-missions.json",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1953
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/config/earth-contours.json",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 471
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/logos/max-primary-white.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/logos/max-primary-white.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/fonts/max-sans-500.woff2",
+      "type": "Font",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/logos/max-mono-white.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 35
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/icons/endpoint-a.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 302
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/icons/endpoint-b.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 338
+    },
+    {
+      "phase": "desktop",
+      "url": "data:image/svg+xml;charset=utf-8,%3Csvg%20fill%3D%22%23FFFFFF%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2056%2056%22%3E%3Cpath%20d%3D%22M18%2017%20L28%209%20L28%2043%20M17%2043%20L39%2043%22%20fill%3D%22none%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%224%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "type": "Other",
+      "status": 200,
+      "bytes": 219
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/logos/max-symbol-white.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/assets/reviewed-20261007/max-logo-qr-faa6982ad913.webp",
+      "type": "Image",
+      "status": 200,
+      "bytes": 25555
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.missing.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.bot.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.story.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.stickers.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.call.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.business.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.store.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.channel.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.statistics.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.comments.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.message.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.open-max.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.digital-id.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.hotel.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.benefit.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.age.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.scan.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.restart.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/fonts/max-sans-600.woff2",
+      "type": "Font",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "blob:https://futuronika.pro/f456ce49-7739-4020-9ab6-4abf9be042ad",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "blob:https://futuronika.pro/5c3557e3-d080-4bb3-ac45-2aaccbe68055",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "blob:https://futuronika.pro/5ed1f62d-4b0f-412f-8162-721600315f3c",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "blob:https://futuronika.pro/52411856-396a-4372-881d-563741fbdbd0",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "data:image/svg+xml;charset=utf-8,%3Csvg%20fill%3D%22%23FFFFFF%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2056%2056%22%3E%3Cpath%20d%3D%22M14%2018%20C14%204%2042%204%2042%2018%20C42%2027%2018%2030%2014%2043%20L43%2043%22%20fill%3D%22none%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%224%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "type": "Other",
+      "status": 200,
+      "bytes": 235
+    },
+    {
+      "phase": "desktop",
+      "url": "data:image/svg+xml;charset=utf-8,%3Csvg%20fill%3D%22%23FFFFFF%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2056%2056%22%3E%3Cpath%20d%3D%22M14%2012%20C35%202%2047%2012%2034%2025%20C49%2028%2042%2048%2014%2041%20M25%2025%20L34%2025%22%20fill%3D%22none%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%224%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "type": "Other",
+      "status": 200,
+      "bytes": 243
+    },
+    {
+      "phase": "desktop",
+      "url": "data:image/svg+xml;charset=utf-8,%3Csvg%20fill%3D%22%23FFFFFF%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2056%2056%22%3E%3Cpath%20d%3D%22M34%2043%20L34%208%20L12%2032%20L44%2032%22%20fill%3D%22none%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%224%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "type": "Other",
+      "status": 200,
+      "bytes": 212
+    },
+    {
+      "phase": "desktop",
+      "url": "data:image/svg+xml;charset=utf-8,%3Csvg%20fill%3D%22%23FFFFFF%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2056%2056%22%3E%3Cpath%20d%3D%22M42%2010%20L16%2010%20L14%2026%20C43%2017%2049%2047%2015%2043%22%20fill%3D%22none%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%224%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "type": "Other",
+      "status": 200,
+      "bytes": 225
+    },
+    {
+      "phase": "desktop",
+      "url": "blob:https://futuronika.pro/3a57de28-7a82-43a9-a03b-bed4216c25af",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "blob:https://futuronika.pro/23e50368-5b18-44ee-a6ec-8709af266b46",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "blob:https://futuronika.pro/896d46ff-c6f7-4771-b8a5-9f3becabe044",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "blob:https://futuronika.pro/476d0245-5c24-4465-8413-df10bf970197",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.channel.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.comments.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.statistics.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.digital-id.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.hotel.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.benefit.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.age.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.call.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.message.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.stickers.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.story.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.business.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.bot.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.store.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.open-max.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.scan.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/logos/max-primary-white.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/assets/device-custom/tv-first-30s.mp4?v=9625418092337e279fb5470af706451238ba681b297ed22db73464644b6ee96a",
+      "type": "Media",
+      "status": 206
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.restart.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/assets/kdw-native/business-choice.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 1221
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/assets/figma-20261003/296-16657.webp",
+      "type": "Image",
+      "status": 200,
+      "bytes": 652280
+    },
+    {
+      "phase": "desktop",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/assets/figma-20261003/296-17351.webp",
+      "type": "Image",
+      "status": 200,
+      "bytes": 86731
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/?test=memory",
+      "type": "Document",
+      "status": 200,
+      "bytes": 987
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/entry.js",
+      "type": "Script",
+      "status": 200,
+      "bytes": 2077
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/asset-manifest.json",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 19064
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/fonts/max-sans-300.woff2",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 18239
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/fonts/max-sans-400.woff2",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 18393
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/fonts/max-sans-500.woff2",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 18543
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/fonts/max-sans-600.woff2",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 18223
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/fonts/max-sans-700.woff2",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 18427
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/logos/max-mono-white.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1378
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/logos/max-primary-white.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 9694
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/logos/max-symbol-white.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 619
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/tokens/brand.css",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 454
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/manifest.json",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1788
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.age.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 2827
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.benefit.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 2020
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.bot.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1807
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.business.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1694
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.call.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1720
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.channel.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1641
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.comments.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1123
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.digital-id.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 2017
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.hotel.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1318
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.message.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1499
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.missing.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 448
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.open-max.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1307
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.restart.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 583
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.scan.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1959
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.statistics.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1701
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.stickers.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1295
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.store.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1315
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.story.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1894
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/tokens/brand.css",
+      "type": "Stylesheet",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/journey.css",
+      "type": "Stylesheet",
+      "status": 200,
+      "bytes": 9119
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/journey-guided.css",
+      "type": "Stylesheet",
+      "status": 200,
+      "bytes": 2231
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/fonts/max-sans-400.woff2",
+      "type": "Font",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/journey-guided-line.css",
+      "type": "Stylesheet",
+      "status": 200,
+      "bytes": 820
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/journey-guided-reveal.css",
+      "type": "Stylesheet",
+      "status": 200,
+      "bytes": 917
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/v5.css",
+      "type": "Stylesheet",
+      "status": 200,
+      "bytes": 2611
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/kdw-interactions.css",
+      "type": "Stylesheet",
+      "status": 200,
+      "bytes": 4392
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/app.js",
+      "type": "Script",
+      "status": 200,
+      "bytes": 558659
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/config/client-webgl.json",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 4214
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/config/ui-shell.json",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 2010
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/config/client-missions.json",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 1953
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/config/earth-contours.json",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 471
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/logos/max-primary-white.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/logos/max-primary-white.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/fonts/max-sans-500.woff2",
+      "type": "Font",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/logos/max-mono-white.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 35
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/icons/endpoint-a.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 302
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/icons/endpoint-b.svg",
+      "type": "Fetch",
+      "status": 200,
+      "bytes": 338
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "data:image/svg+xml;charset=utf-8,%3Csvg%20fill%3D%22%23FFFFFF%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2056%2056%22%3E%3Cpath%20d%3D%22M18%2017%20L28%209%20L28%2043%20M17%2043%20L39%2043%22%20fill%3D%22none%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%224%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "type": "Other",
+      "status": 200,
+      "bytes": 219
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/logos/max-symbol-white.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/assets/reviewed-20261007/max-logo-qr-faa6982ad913.webp",
+      "type": "Image",
+      "status": 200,
+      "bytes": 25555
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.missing.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.bot.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.story.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.stickers.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.call.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.business.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.store.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.channel.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.statistics.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.comments.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.message.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.open-max.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.digital-id.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.hotel.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.benefit.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.age.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.scan.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.restart.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/fonts/max-sans-600.woff2",
+      "type": "Font",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "blob:https://futuronika.pro/0bd339c4-7598-41f3-9533-63da83197f72",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "data:image/svg+xml;charset=utf-8,%3Csvg%20fill%3D%22%23FFFFFF%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2056%2056%22%3E%3Cpath%20d%3D%22M14%2018%20C14%204%2042%204%2042%2018%20C42%2027%2018%2030%2014%2043%20L43%2043%22%20fill%3D%22none%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%224%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "type": "Other",
+      "status": 200,
+      "bytes": 235
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "blob:https://futuronika.pro/5b42fb48-8269-4b3e-b7c0-6f2447540d29",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "blob:https://futuronika.pro/8be1de92-5fc3-47bc-b4f9-067f42986acb",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "blob:https://futuronika.pro/918c500e-1598-4f9b-8e49-f37b50ac7740",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "blob:https://futuronika.pro/76e8eb4b-72a6-41c2-a8db-9655cc299449",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "data:image/svg+xml;charset=utf-8,%3Csvg%20fill%3D%22%23FFFFFF%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2056%2056%22%3E%3Cpath%20d%3D%22M14%2012%20C35%202%2047%2012%2034%2025%20C49%2028%2042%2048%2014%2041%20M25%2025%20L34%2025%22%20fill%3D%22none%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%224%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "type": "Other",
+      "status": 200,
+      "bytes": 243
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "data:image/svg+xml;charset=utf-8,%3Csvg%20fill%3D%22%23FFFFFF%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2056%2056%22%3E%3Cpath%20d%3D%22M34%2043%20L34%208%20L12%2032%20L44%2032%22%20fill%3D%22none%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%224%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "type": "Other",
+      "status": 200,
+      "bytes": 212
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "data:image/svg+xml;charset=utf-8,%3Csvg%20fill%3D%22%23FFFFFF%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2056%2056%22%3E%3Cpath%20d%3D%22M42%2010%20L16%2010%20L14%2026%20C43%2017%2049%2047%2015%2043%22%20fill%3D%22none%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%224%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E",
+      "type": "Other",
+      "status": 200,
+      "bytes": 225
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "blob:https://futuronika.pro/436d01aa-8d84-45b2-bce6-58c8c14a7e59",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "blob:https://futuronika.pro/5e6d5249-4102-4fd0-8aaa-64333ce47671",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "blob:https://futuronika.pro/c2c154b8-567a-459f-9f83-a9b7d81e0dd3",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.channel.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.comments.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.statistics.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.digital-id.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.hotel.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.benefit.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.age.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.call.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.message.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.stickers.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.story.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.business.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.bot.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.store.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.open-max.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.scan.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/brand/assets/logos/max-primary-white.svg",
+      "type": "Image",
+      "status": 200,
+      "bytes": 0
+    },
+    {
+      "phase": "phone-landscape",
+      "url": "https://futuronika.pro/df/max-game-client/releases/c0d5499504e1a1329442/assets/device-custom/tv-first-30s.mp4?v=9625418092337e279fb5470af706451238ba681b297ed22db73464644b6ee96a",
+      "type": "Media",
+      "status": 206
+    }
+  ]
+}

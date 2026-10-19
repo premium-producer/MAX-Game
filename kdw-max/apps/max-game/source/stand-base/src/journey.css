@@ -1,0 +1,264 @@
+:root{color-scheme:dark}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:transparent;color:#fff;font-family:"Max Sans",sans-serif;font-synthesis:none}body{touch-action:none}button{font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}button:focus-visible{outline:3px solid #00bfff;outline-offset:1px}#ambient{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}html[data-service=true] #ambient{display:none}#arena{position:absolute;left:50%;top:50%;width:4096px;height:1280px;transform-origin:center}#world,#circles{position:absolute;inset:0}#world{pointer-events:none;z-index:1}#world canvas{width:100%;height:100%;display:block}#circles{pointer-events:none;z-index:2}.journey-zone{position:absolute;pointer-events:auto;isolation:isolate;border-radius:32px}.journey-zone::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(115deg,#0d001a60,#471aff16 50%,#0d001a60);border-radius:32px}.glyph{width:100%;height:100%;display:block;fill:currentColor}.pill{border:1px solid #ffffff55;border-radius:40px;background:linear-gradient(125deg,#471aff80,#6e1aff50 55%,#0d001ad0);box-shadow:inset 0 1px 2px #ffffff28,0 6px 24px #0d001a50;padding:10px 24px;font-size:20px;line-height:25px;white-space:nowrap;min-height:44px}.pill:hover{border-color:#fff;background-color:#6e1aff60}.primary{background:linear-gradient(120deg,#471aff,#9500ff 68%,#6e1aff);box-shadow:inset 0 1px 3px #fff9,0 0 22px #6e1aff80,0 6px 20px #0d001a80}.tile{display:grid;place-items:center;position:relative;width:88px;height:88px;border-radius:25px;color:#fff;background:linear-gradient(145deg,#471aff90,#6e1aff90 48%,#0d001ac0);border:1.5px solid #ffffff80;box-shadow:inset 0 1px 7px #ffffff50,inset 0 0 18px #6e1aff80,0 0 14px #6e1aff80,0 8px 24px #0d001a50}.tile>.glyph{width:55%;height:55%}.badge{display:grid;place-items:center;position:absolute;right:-8px;top:-8px;width:29px;height:29px;background:linear-gradient(145deg,#9500ff,#6e1aff);border:1px solid #ffffff90;border-radius:50%;font-size:21px;font-style:normal;font-weight:600;box-shadow:0 0 14px #6e1aff80}.badge .glyph{width:59%;height:59%}h1,h2,h3,p{margin:0}h1{font-size:48px;font-weight:600;line-height:1.06}h2{font-size:29px;line-height:1.12;font-weight:600}h3{font-size:26px;line-height:1.15;font-weight:500}p{font-size:21px;line-height:1.25;color:#ffffffd9}.eyebrow{font-size:14px;letter-spacing:.16em;opacity:.7}.zone-header{position:absolute;left:18px;right:18px;top:12px;display:flex;justify-content:space-between;align-items:center;gap:18px;min-height:68px}.zone-header h2{margin-top:5px}.mission-choices{position:absolute;left:18px;right:18px;top:96px;bottom:16px;display:grid;grid-template-columns:1fr 1fr;gap:16px}.mission-card{position:relative;display:flex;gap:18px;align-items:center;text-align:left;border:1px solid #ffffff60;border-radius:45px;padding:16px 40px 16px 18px;background:linear-gradient(120deg,#471aff80,#6e1aff30 55%,#0d001abd);box-shadow:inset 0 1px 3px #fff5,0 8px 24px #0d001a50}.mission-card:hover{border-color:#fff;background-color:#6e1aff30}.mission-card strong{display:block;font-size:23px;line-height:1.1;font-weight:500}.mission-card small{display:block;font-size:16px;line-height:1.2;margin-top:9px;color:#ffffffb8}.medallion{flex:0 0 72px;height:72px;padding:18px;border-radius:50%;background:linear-gradient(145deg,#471aff,#6e1aff80);box-shadow:inset 0 1px 3px #fff8,0 0 20px #6e1aff50}.card-state{position:absolute;right:17px;font-size:25px}.cta-copy{position:absolute;inset:14px 20%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:17px}.brand-logo{height:35px;width:auto}.cta-copy .pill{min-width:230px;font-size:25px}.attract-icons{position:absolute;inset:0;pointer-events:none}.attract-icons .tile{position:absolute;animation:float 9s ease-in-out infinite alternate}.float-0{left:6%;top:16%}.float-1{right:7%;top:22%;animation-delay:-3s!important}.float-2{left:13%;bottom:13%;animation-delay:-5s!important}.float-3{right:15%;bottom:10%;animation-delay:-7s!important}.field-header{height:88px;align-items:flex-start;gap:16px}.field-header>div:not(.branches){flex:1;min-width:0}.field-header h2{font-size:26px}.field-header p{font-size:18px;margin-top:7px;max-width:900px}.field-header>.pill{padding:7px 18px;font-size:18px;min-height:40px}.branches{display:flex;gap:6px;flex-wrap:wrap;max-width:340px}.branches .pill{padding:6px 16px;font-size:16px;line-height:20px;min-height:34px}.branches [aria-pressed=true]{background:#6e1aff;border-color:#fff}.playfield{position:absolute;inset:106px 18px 65px;cursor:crosshair}.object{position:absolute;left:calc(var(--x) * (100% - 116px));top:calc(var(--y) * (100% - 116px));width:116px;height:116px;padding:0;border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:7px}.object .tile{width:76px;height:76px;border-radius:22px;flex-shrink:0}.object-label{font-size:16px;line-height:17px;text-align:center;text-shadow:0 2px 6px #0d001a,0 0 12px #0d001a}.object:hover .tile{border-color:#fff;box-shadow:0 0 30px #6e1aff,inset 0 1px 4px #fff9}.empty-hint{pointer-events:none;position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:15px;font-size:21px;color:#ffffffb5}.empty-hint span{width:70px;height:70px;border:1px solid #ffffff55;border-radius:50%;display:grid;place-items:center;font-size:40px;background:#6e1aff30;box-shadow:0 0 25px #6e1aff50}.zone-footer{position:absolute;left:18px;right:18px;bottom:10px;height:48px;display:flex;align-items:center;justify-content:space-between;gap:20px}.zone-footer>span{font-size:17px}.completion strong{display:block;font-size:23px;font-weight:500}.completion small{display:block;font-size:16px;color:#ffffffc0;margin-top:3px}.picker{position:absolute;top:110px;z-index:6;width:470px;max-width:calc(100% - 16px);padding:14px 20px 18px;border-radius:32px;border:1px solid #ffffff70;background:linear-gradient(130deg,#471affec,#0d001af5);box-shadow:0 0 30px #6e1aff90,0 18px 70px #0d001a;backdrop-filter:blur(16px)}.picker-heading{font-size:20px;margin:0 50px 14px 0}.close{position:absolute;right:12px;top:10px;width:36px;height:36px;min-height:36px;padding:10px;z-index:8}.picker-items{display:flex;gap:13px;flex-wrap:wrap;justify-content:center}.picker-items button{width:72px;padding:0;border:0;background:none;font-size:14px;line-height:15px;text-align:center}.picker-items .tile{width:54px;height:54px;border-radius:17px;margin:0 auto 8px}.task-cover,.reset-cover{position:absolute;inset:0;border-radius:32px;background:#0d001aa8;z-index:7;backdrop-filter:blur(12px)}.task-dialog{position:absolute;inset:6px;display:grid;grid-template-columns:42% 58%;border:1px solid #ffffff70;border-radius:32px;background:linear-gradient(125deg,#471affc0,#6e1aff70 55%,#0d001af0);overflow:hidden;box-shadow:0 0 24px #6e1aff70}.instruction{padding:26px;display:flex;flex-direction:column;gap:14px}.instruction h2{font-size:28px}.instruction p{font-size:20px}.task-icon{width:75px;height:75px;margin-top:auto;flex-shrink:0}.demo-app{margin:9px;padding:16px 24px;border-radius:26px;background:linear-gradient(150deg,#0d001af2,#0d001aa8);border:1px solid #ffffff30;display:flex;flex-direction:column;gap:12px}.app-top{display:flex;gap:20px;align-items:center;font-size:13px;opacity:.75;padding-right:32px}.app-top img{height:24px}.demo-app h3{font-size:23px}.app-progress{display:flex;gap:6px}.app-progress i{height:3px;flex:1;background:#ffffff20;border-radius:6px}.app-progress .on{background:#9500ff;box-shadow:0 0 10px #6e1aff}.task-options{display:flex;flex-direction:column;gap:10px;margin-top:auto}.app-option{text-align:left;font-size:19px;white-space:normal;line-height:22px;padding:10px 20px;min-height:46px}.task-notice{font-size:15px;min-height:19px;color:#ffffffb5}.task-success{margin:auto;display:flex;align-items:center;gap:20px}.task-success .glyph{width:70px;height:70px;filter:drop-shadow(0 0 16px #6e1aff)}.final-copy{position:absolute;inset:14px 20px;text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:14px}.final-copy h1{font-size:40px}.final-icons{display:flex;justify-content:center;gap:45px;margin:6px 0}.final-icons>div{display:flex;flex-direction:column;gap:9px;align-items:center}.final-icons .tile{width:65px;height:65px;border-radius:21px}.final-icons small{font-size:16px}.final-buttons{display:flex;gap:18px}.reset-cover{display:grid;place-items:center;text-align:center}.reset-cover p{margin:18px}.reset-cover button{margin:8px}#loading{position:absolute;left:2312px;top:770px;width:1664px;font-size:28px;line-height:36px;z-index:30}html[data-service=false] #loading{position:fixed;left:10%;top:45%;width:80%;text-align:center}html[data-service-paused=true] .journey-zone{pointer-events:none}html[data-service-paused=true] .attract-icons .tile{animation-play-state:paused}html[data-service-paused=true] #arena::after{content:'Пауза';position:absolute;left:3000px;top:623px;font-size:24px;z-index:30;background:#0d001a;padding:10px 22px;border-radius:30px}html[data-layout=two] .field-header{height:92px;flex-wrap:wrap;gap:8px}html[data-layout=two] .field-header h2{font-size:23px}html[data-layout=two] .field-header p{font-size:16px}html[data-layout=two] .branches{position:absolute;right:0;top:64px;max-width:none}html[data-layout=two] .mission-card strong{font-size:20px}html[data-layout=two] .mission-card small{font-size:14px}.journey-zone[data-screen=cta]::before{background:radial-gradient(ellipse,#0d001a60,transparent 70%)}html[data-layout=two] .mission-card{gap:12px;padding:12px 32px 12px 12px}html[data-layout=two] .medallion{flex-basis:55px;height:55px;padding:14px}html[data-layout=two] h1{font-size:34px}html[data-layout=two] .cta-copy{inset:14px 19%;gap:12px}html[data-layout=two] .cta-copy p{font-size:20px}html[data-layout=two] .attract-icons .tile{width:65px;height:65px}html[data-layout=two] .zone-footer .pill{font-size:18px;padding:8px 18px}html[data-layout=two] .completion small{max-width:530px;font-size:14px}html[data-layout=two] .zone-footer>span{max-width:480px;font-size:15px}html[data-layout=two] .instruction{padding:23px 20px}html[data-layout=two] .instruction h2{font-size:25px}html[data-layout=two] .instruction p{font-size:18px}html[data-layout=two] .demo-app{padding:18px}html[data-layout=two] .final-icons{gap:28px}
+html[data-service=false] .journey-zone{box-shadow:0 25px 100px #0d001a80;border:1px solid #ffffff30}html[data-service=false] .zone-header{top:26px;left:32px;right:32px}html[data-service=false] .mission-choices{top:145px;bottom:40px;left:40px;right:40px;gap:28px}html[data-service=false] .mission-card{border-radius:60px;padding:30px;gap:30px}html[data-service=false] .mission-card strong{font-size:32px}html[data-service=false] .mission-card small{font-size:22px}html[data-service=false] .medallion{flex-basis:106px;height:106px;padding:26px}html[data-service=false] .playfield{inset:150px 36px 95px}html[data-service=false] .object{width:170px;height:160px;left:calc(var(--x) * (100% - 170px));top:calc(var(--y) * (100% - 160px))}html[data-service=false] .object .tile{width:108px;height:108px;border-radius:30px}html[data-service=false] .object-label{font-size:23px;line-height:25px}html[data-service=false] .badge{width:36px;height:36px;font-size:27px}html[data-service=false] .zone-footer{bottom:26px;left:40px;right:40px;height:55px}html[data-service=false] h1{font-size:64px}html[data-service=false] .cta-copy{gap:32px}html[data-service=false] .cta-copy p{font-size:30px}html[data-service=false] .cta-copy .pill{font-size:30px;min-height:64px}html[data-service=false] .attract-icons .tile{width:125px;height:125px;border-radius:36px}html[data-service=false] .picker{top:230px;width:580px;padding:24px}html[data-service=false] .picker-items button{width:92px;font-size:18px;line-height:20px}html[data-service=false] .picker-items .tile{width:72px;height:72px;border-radius:21px}html[data-service=false] .task-dialog{inset:30px}html[data-service=false] .instruction{padding:60px 45px;gap:30px}html[data-service=false] .instruction h2{font-size:40px}html[data-service=false] .instruction p{font-size:27px}html[data-service=false] .task-icon{width:130px;height:130px;border-radius:36px}html[data-service=false] .demo-app{padding:35px;gap:24px}html[data-service=false] .demo-app h3{font-size:34px}html[data-service=false] .task-options{gap:18px}html[data-service=false] .app-option{min-height:65px;font-size:25px;line-height:29px}html[data-service=false] .task-notice{font-size:20px}html[data-service=false] .final-copy{gap:26px}html[data-service=false] .final-icons{gap:70px;margin:24px 0}html[data-service=false] .final-icons .tile{width:110px;height:110px;border-radius:32px}html[data-service=false] .final-icons small{font-size:24px}html[data-service=false] .final-buttons .pill{font-size:25px;min-height:60px}html[data-service=false] .final-copy p{font-size:30px}
+@keyframes float{from{transform:translateY(-5px) rotate(-2deg)}to{transform:translateY(7px) rotate(2deg)}}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* WebGL draws all visible UI; this tree retains layout, focus and hit targets. */
+#circles{opacity:0}
+.attract-icons .tile{animation:none}
+/* All game screens share this policy, including dynamically created popups. */
+body{user-select:none;-webkit-user-select:none}
+img,a,svg,canvas,[draggable]{-webkit-user-drag:none}
+input,textarea,[contenteditable]:not([contenteditable="false"]){user-select:text;-webkit-user-select:text}
+.object{cursor:grab;touch-action:none;user-select:none}
+.object[data-dragging=true]{cursor:grabbing}
+.picker.radial-picker,html[data-service=false] .picker.radial-picker{inset:0;width:100%;height:100%;max-width:none;padding:0;border:0;background:none!important;box-shadow:none;backdrop-filter:none;cursor:default}
+.radial-picker>button{position:absolute;display:flex;flex-direction:column;align-items:center;gap:9px;padding:0;border:0;background:none;text-align:center;font-size:15px;line-height:17px;transform-origin:center;touch-action:none}
+.radial-picker>button .tile{width:var(--orbit-tile);height:var(--orbit-tile);border-radius:20px;flex-shrink:0}
+html[data-service=false] .radial-picker>button{font-size:20px;line-height:23px;gap:12px}
+html[data-service=false] .radial-picker>button .tile{border-radius:27px}
+.radial-picker>button:disabled{cursor:default}
+.tap-feedback{position:absolute;inset:0;pointer-events:none}
+.tap-feedback p{position:absolute;text-align:center;font-size:20px;line-height:26px;pointer-events:none}
+.radial-empty{position:absolute;inset:40% 15%;text-align:center;pointer-events:none}
+
+
+
+/* Optical pass supplies glass; opaque CSS fills would hide Frost/refraction. */
+html[data-service=true] .journey-zone::before,html[data-optical-glass=true] .journey-zone::before{background:none}
+html[data-optical-glass=true] .journey-zone{border-color:transparent;box-shadow:none}
+:is(html[data-service=true],html[data-optical-glass=true]) .journey-zone :is(.mission-card,.pill,.glass-control){background:transparent;border-color:transparent;box-shadow:none}
+:is(html[data-service=true],html[data-optical-glass=true]) .journey-zone :is(.mission-card,.pill,.glass-control):hover{background:#6e1aff12;border-color:#ffffff60}
+:is(html[data-service=true],html[data-optical-glass=true]) :is(.task-cover,.reset-cover){background:#0d001a20;backdrop-filter:none}
+:is(html[data-service=true],html[data-optical-glass=true]) :is(.task-dialog,.demo-app,.picker){background:#0d001a30;backdrop-filter:none}
+
+/* Contextual tasks stay beside their node; no full-zone cover or scrim. */
+#circles .context-popup{position:absolute;inset:auto;z-index:7;display:grid;grid-template-columns:1fr calc(var(--phone-height) * .49);gap:12px;background:none;border:0;box-shadow:none;backdrop-filter:none;transform-origin:center}
+#circles .context-popup .instruction{align-self:end;height:calc(100% - 48px);padding:18px;display:flex;flex-direction:column;gap:12px;border-radius:24px;background:none;min-width:0}
+#circles .context-popup .eyebrow{font-size:calc(10px * var(--popup-scale));letter-spacing:.1em}
+#circles .context-popup .instruction h2{font-size:calc(21px * var(--popup-scale));line-height:1.12}
+#circles .context-popup .instruction p{font-size:calc(17px * var(--popup-scale));line-height:1.22}
+#circles .context-popup .task-icon{width:calc(66px * var(--popup-scale));height:calc(66px * var(--popup-scale));border-radius:20px;margin-top:auto}
+#circles .context-popup .badge{width:25px;height:25px;font-size:18px}
+#circles .context-popup .demo-app{position:relative;margin:0;width:100%;height:100%;padding:30px 12px 22px;border-radius:28px;display:flex;flex-direction:column;gap:8px;background:#0d001a;min-width:0}
+#circles .context-popup .app-top{gap:6px;padding:0;font-size:calc(9px * var(--popup-scale));min-height:18px;flex-shrink:0}
+#circles .context-popup .app-top img{width:42px;height:18px;object-fit:contain}
+#circles .context-popup .demo-app h3{font-size:calc(17px * var(--popup-scale));line-height:1.12;flex-shrink:0}
+#circles .context-popup .app-progress{flex-shrink:0}
+#circles .context-popup .task-options{gap:7px;margin-top:auto}
+#circles .context-popup .app-option,#circles .context-popup .phone-content>.pill{padding:8px 10px;min-height:44px;font-size:calc(14px * var(--popup-scale));line-height:1.16;white-space:normal;border-radius:16px}
+#circles .context-popup .task-notice{font-size:calc(11px * var(--popup-scale));line-height:1.2;min-height:26px;flex-shrink:0}
+#circles .context-popup .task-success{flex-direction:column;gap:12px;text-align:center}
+#circles .context-popup .task-success p{font-size:calc(17px * var(--popup-scale))}
+#circles .context-popup .task-success .glyph{width:48px;height:48px}
+#circles .context-popup .close{left:0;right:auto;top:0;width:44px;height:44px;min-height:44px;padding:14px}
+#circles .phone-camera{position:absolute;left:calc(50% - 20px);top:10px;width:40px;height:5px;border-radius:6px}
+#circles .phone-home{position:absolute;left:calc(50% - 26px);bottom:9px;width:52px;height:3px;border-radius:4px}
+#circles .reset-popup{display:block;border-radius:26px;padding:22px;text-align:left}
+#circles .reset-popup h2{font-size:24px}
+#circles .reset-popup p{font-size:17px;margin:12px 0}
+#circles .reset-popup .pill{font-size:16px;min-height:44px;padding:8px 14px;margin:4px 4px 0 0}
+
+/* The popup tile shares the exact footprint of its field node. */
+#circles .task-dialog.context-popup{display:block}
+#circles .task-dialog .instruction{position:absolute;display:flex;padding:18px}
+#circles .task-dialog .instruction-copy{display:flex;flex-direction:column;gap:12px}
+#circles .task-dialog .demo-app{position:absolute;right:0;top:0;width:calc(var(--phone-height) * .49)}
+#circles .task-dialog[data-mirrored=true] .demo-app{right:auto;left:0}
+#circles .task-dialog .close{left:auto;right:0;top:0}
+#circles .task-dialog[data-mirrored=true] .close{left:0;right:auto}
+
+/* Field labels share the same WebGL focus fade as their icon. */
+
+/* One invitation on an empty field. Layout wrappers never receive GPU transforms. */
+.field-center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.field-center>button,.field-center>.field-success{pointer-events:auto}
+/* One WebGL group: round glass target and a separate, unframed caption. */
+.mission-cta{display:flex;flex-direction:column;align-items:center;gap:16px;max-width:calc(100% - 64px);padding:0;border:0;background:none;box-shadow:none;font-size:28px;line-height:1.18;font-weight:500;text-align:center;white-space:normal}
+.cta-orb{display:grid;place-items:center;width:84px;height:84px;border-radius:50%;border:1.5px solid #ffffff55;background:#471aff60;box-shadow:inset 0 1px 4px #ffffff30,0 8px 28px #0d001a55;flex-shrink:0}
+.cta-orb>.glyph{width:38px;height:38px}
+.cta-label{max-width:520px}
+.mission-cta:disabled{pointer-events:none}
+.journey-zone[data-cta-visible=false] .mission-cta{pointer-events:none}
+html[data-service=false] .mission-cta{font-size:34px;gap:20px}
+html[data-service=false] .cta-orb{width:104px;height:104px}
+html[data-service=false] .cta-orb>.glyph{width:46px;height:46px}
+.context-navigation{display:flex;gap:8px;flex-wrap:wrap}
+#circles .context-navigation .pill{min-height:44px;font-size:14px;line-height:18px;padding:8px 14px}
+.field-success{width:530px;max-width:calc(100% - 120px);border-radius:28px;padding:24px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px}
+.field-success h2{font-size:26px}.field-success p{font-size:18px}
+#circles .branch-options{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}
+#circles .branch-options [aria-pressed=true]{background:#6e1aff}
+/* The task borrows the field tile; this span is only its layout anchor. */
+#circles .journey-zone[data-shared-task]:not([data-shared-task=""]) .task-icon{visibility:hidden}
+/* Navigation belongs to the network and follows its leftmost node in WebGL. */
+#circles .network-back{position:absolute;left:0;top:0;display:flex;align-items:center;justify-content:center;gap:8px;width:110px;height:44px;min-height:44px;padding:8px 12px;font-size:17px;line-height:22px;z-index:3}
+#circles .network-back>.glyph{width:22px;height:22px;flex-shrink:0}
+html[data-service=false] #circles .network-back{width:144px;height:56px;font-size:22px;gap:10px}
+html[data-service=false] #circles .network-back>.glyph{width:26px;height:26px}
+
+/* Stable phone shell; only its inner content changes between task steps. */
+#circles .context-popup .phone-content{display:flex;flex-direction:column;gap:8px;flex:1;min-height:0}
+/* Route planning keeps each control in the same WebGL motion registry. */
+.object.route-first .tile,.object.route-next .tile{border-radius:50%}
+.journey-zone[data-route-phase=building] .object,.journey-zone[data-route-phase=ready] .object{cursor:pointer}
+.journey-zone[data-route-phase=building] .object-label,.journey-zone[data-route-phase=ready] .object-label{width:var(--route-caption-width);max-width:none}
+.object-label small{display:block;font-size:.68em;line-height:1.2;margin-top:7px;color:#ffffffb8}
+.route-next .tile>.glyph{width:43%;height:43%}
+.route-next:disabled{pointer-events:none}
+.route-named .tile>.glyph{opacity:.65;width:55%;height:55%}
+.route-error{position:absolute;left:22%;right:8%;top:8px;margin:0;font-size:18px;line-height:1.25;pointer-events:none}
+.route-ready{z-index:7}
+
+.route-intro-plus{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.route-intro-plus>.glyph{width:44%;height:44%}
+.route-brand{width:55%;height:55%;object-fit:contain;display:block}
+.service-brand{display:inline-flex;align-items:center;gap:6px;flex-shrink:0;white-space:nowrap}
+.service-brand img{display:block;width:35px;height:35px;object-fit:contain;flex-shrink:0}
+.service-name{font-size:28px;line-height:1;font-weight:600;letter-spacing:0}
+#circles .context-popup .app-top .service-brand img{width:18px;height:18px}
+#circles .context-popup .app-top .service-name{font-size:calc(13px * var(--popup-scale));line-height:1}
+.journey-zone .object-label{max-width:var(--route-caption-width)}
+
+/* Client frames and explicit gaps share the retained phone shell. */
+#circles .client-task .phone-content{gap:8px}
+#circles .client-scene{flex:1;min-height:84px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:12px;padding:12px 4px;color:#ffffffc9}
+#circles .client-scene>span{font-size:calc(16px * var(--popup-scale));line-height:1.25;font-weight:500;letter-spacing:.04em}
+#circles .client-scene>small{font-size:calc(11px * var(--popup-scale));line-height:1.2;color:#ffffff99}
+#circles .client-actions{display:flex;flex-direction:column;gap:6px;margin-top:auto}
+#circles .client-action{font-size:calc(13px * var(--popup-scale));line-height:1.14;padding:9px 12px;min-height:44px}
+#circles .client-selection,#circles .client-next{font-size:calc(12px * var(--popup-scale));line-height:1.22}
+#circles .client-done{font-size:calc(17px * var(--popup-scale));font-weight:500;text-align:center}
+#circles .instruction-copy .client-difference{font-size:calc(11px * var(--popup-scale));line-height:1.2;color:#ffffffb8}
+#circles .client-path{display:flex;flex-direction:column;gap:12px;margin:10px 0;padding-left:20px;font-size:calc(13px * var(--popup-scale));line-height:1.2}
+#circles .client-path small{display:block;margin-top:4px;font-size:.75em;color:#ffffffb8}
+#circles .edition-caption{font-size:17px;line-height:1.2;color:#ffffff99}
+#circles .cta-copy .edition-switch{font-size:17px;min-height:44px;padding:8px 18px}
+
+.mission-choices.has-presentations{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:12px}
+.has-presentations .mission-card{padding:12px 28px 12px 14px;gap:12px;border-radius:30px;min-width:0}
+.has-presentations .mission-card strong{font-size:21px}.has-presentations .mission-card small{font-size:15px;margin-top:6px}.has-presentations .medallion{flex-basis:54px;height:54px;padding:13px}
+.presentation-success{max-height:100%;padding:18px!important;display:flex;flex-direction:column;align-items:center;gap:8px}
+.presentation-success p{font-size:17px;max-width:580px}.presentation-qr{display:block;width:148px;height:148px;flex-shrink:0;image-rendering:pixelated}.presentation-success .qr-caption{font-size:14px;margin:0}.presentation-success h2{font-size:25px}
+@media(max-width:900px){.has-presentations .mission-card strong{font-size:18px}.has-presentations .mission-card small{font-size:13px}}
+
+/* Supplied ID screens keep their original 360:800 ratio inside the existing phone. */
+#circles .id-task .demo-app{padding:0;background:transparent}
+#circles .id-task .phone-content{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:0}
+#circles .id-screen{position:relative;height:100%;aspect-ratio:9/20;flex:none}
+#circles .id-screen-image{position:absolute;inset:0;width:100%;height:100%;display:block}
+.phone-media-error{position:absolute;inset:16px;display:grid;place-items:center;margin:0;padding:18px;border-radius:16px;background:#260b48;color:#fff;text-align:center;font-size:22px;line-height:1.25}
+#circles .id-hotspot{position:absolute;padding:0;margin:0;min-height:0;border:0;background:transparent;border-radius:8px}
+#circles .id-task .instruction-copy>.pill{margin-top:10px;font-size:16px;padding:10px 16px}
+
+#circles .id-task .close{left:0;right:auto}
+#circles .id-task[data-mirrored=true] .close{left:auto;right:0}
+
+/* Independent experimental entry. Shared normal-page rules remain unchanged. */
+html[data-experiment=large-blocks] .object{width:var(--large-width);height:var(--large-height);left:calc(var(--x) * (100% - var(--large-width)));top:calc(var(--y) * (100% - var(--large-height)))}
+html[data-experiment=large-blocks] .object .tile{width:var(--large-tile);height:var(--large-tile);border-radius:var(--large-radius)}
+html[data-experiment=large-blocks] .object:is(.route-first,.route-next) .tile{border-radius:50%}
+html[data-experiment=large-blocks] .cta-orb{width:var(--large-orb);height:var(--large-orb)}
+html[data-experiment=large-blocks] .cta-orb>.glyph{width:44%;height:44%}
+html[data-experiment=large-blocks] .object-label{width:var(--large-width);max-width:var(--large-width)}
+/* Experimental 2.5x geometry, captions beside the enlarged nodes. */
+html[data-experiment=large-blocks] .object{flex-direction:row;gap:calc(20px * var(--large-factor))}
+html[data-experiment=large-blocks] .object .tile{flex:none}
+html[data-experiment=large-blocks] .object-label{width:calc(290px * var(--large-factor));max-width:calc(290px * var(--large-factor));font-size:calc(57.5px * var(--large-factor));line-height:1.08;text-align:left;flex:none}
+html[data-experiment=large-blocks] .object-label small{margin-top:calc(17.5px * var(--large-factor));font-size:calc(39.1px * var(--large-factor));line-height:1.12}
+html[data-experiment=large-blocks] #circles .network-back{width:calc(360px * var(--large-factor));height:calc(140px * var(--large-factor));font-size:calc(55px * var(--large-factor));gap:calc(25px * var(--large-factor));border-radius:calc(70px * var(--large-factor))}
+html[data-experiment=large-blocks] #circles .network-back>.glyph{width:calc(65px * var(--large-factor));height:calc(65px * var(--large-factor))}
+html[data-experiment=large-blocks] .mission-cta{font-size:calc(85px * var(--large-factor));gap:calc(50px * var(--large-factor))}
+html[data-experiment=large-blocks] .cta-label{max-width:calc(1300px * var(--large-factor))}
+html[data-experiment=large-blocks] .route-error{left:calc(18px * var(--large-factor));right:auto;top:calc(170px * var(--large-factor));width:calc(320px * var(--large-factor));font-size:calc(28px * var(--large-factor))}
+html[data-experiment=large-blocks] .field-success{width:calc(1325px * var(--large-factor));max-width:calc(100% - calc(40px * var(--large-factor)));padding:calc(60px * var(--large-factor));gap:calc(40px * var(--large-factor));border-radius:calc(70px * var(--large-factor))}
+html[data-experiment=large-blocks] .field-success h2{font-size:calc(65px * var(--large-factor))}
+html[data-experiment=large-blocks] .field-success p{font-size:calc(45px * var(--large-factor))}
+html[data-experiment=large-blocks] .field-success .pill{font-size:calc(55px * var(--large-factor));padding:calc(30px * var(--large-factor)) calc(45px * var(--large-factor))}
+html[data-experiment=large-blocks] .mission-choices{left:calc(20px * var(--large-factor));right:calc(20px * var(--large-factor));top:calc(170px * var(--large-factor));bottom:calc(20px * var(--large-factor));gap:calc(20px * var(--large-factor));grid-template-columns:repeat(3,1fr)}
+html[data-experiment=large-blocks] .mission-card{padding:calc(20px * var(--large-factor));gap:calc(16px * var(--large-factor));flex-direction:column;justify-content:center;text-align:center;border-radius:calc(42px * var(--large-factor))}
+html[data-experiment=large-blocks] .mission-card strong{font-size:calc(44.8px * var(--large-factor))}
+html[data-experiment=large-blocks] .mission-card small{font-size:calc(25px * var(--large-factor))}
+html[data-experiment=large-blocks] .mission-card .medallion{flex:0 0 calc(105px * var(--large-factor));height:calc(105px * var(--large-factor));width:calc(105px * var(--large-factor));padding:calc(26px * var(--large-factor))}
+html[data-experiment=large-blocks] .zone-header h2{font-size:calc(50px * var(--large-factor))}
+html[data-experiment=large-blocks] .zone-header .pill{font-size:calc(35px * var(--large-factor));padding:calc(20px * var(--large-factor)) calc(28px * var(--large-factor))}
+html[data-experiment=large-blocks] .cta-copy{inset:calc(20px * var(--large-factor));gap:calc(28px * var(--large-factor))}
+html[data-experiment=large-blocks] .cta-copy h1{font-size:calc(90px * var(--large-factor))}
+html[data-experiment=large-blocks] .cta-copy p{font-size:calc(42px * var(--large-factor))}
+html[data-experiment=large-blocks] .cta-copy .pill{font-size:calc(42px * var(--large-factor));min-height:calc(90px * var(--large-factor));padding:calc(20px * var(--large-factor)) calc(32px * var(--large-factor))}
+html[data-experiment=large-blocks] .edition-caption{font-size:calc(28px * var(--large-factor))}
+html[data-experiment=large-blocks] #circles .context-popup .close{width:calc(44px * var(--window-scale));height:calc(44px * var(--window-scale));font-size:calc(24px * var(--window-scale));padding:calc(14px * var(--window-scale))}
+html[data-experiment=large-blocks] #circles .context-popup .demo-app{padding:calc(30px * var(--window-scale)) calc(12px * var(--window-scale)) calc(22px * var(--window-scale));border-radius:calc(28px * var(--window-scale))}
+html[data-experiment=large-blocks] #circles .context-popup .app-top img{width:calc(42px * var(--window-scale));height:calc(18px * var(--window-scale))}
+html[data-experiment=large-blocks] #circles .context-popup .app-option{min-height:calc(44px * var(--window-scale));padding:calc(8px * var(--window-scale)) calc(10px * var(--window-scale))}
+html[data-experiment=large-blocks] #circles .reset-popup h2{font-size:calc(42px * var(--large-factor))}
+html[data-experiment=large-blocks] #circles .reset-popup p,html[data-experiment=large-blocks] #circles .reset-popup .pill{font-size:calc(32px * var(--large-factor))}
+html[data-experiment=large-blocks] .final-copy h1{font-size:calc(80px * var(--large-factor))}
+html[data-experiment=large-blocks] .final-copy p{font-size:calc(42px * var(--large-factor))}
+html[data-experiment=large-blocks] .final-copy .pill{font-size:calc(38px * var(--large-factor));padding:calc(24px * var(--large-factor))}
+html[data-experiment=large-blocks] .final-icons .tile{width:calc(180px * var(--large-factor));height:calc(180px * var(--large-factor))}
+html[data-experiment=large-blocks] .final-icons small{font-size:calc(34px * var(--large-factor))}
+
+html[data-experiment=large-blocks] .object-label{overflow-wrap:anywhere;hyphens:auto}
+html[data-experiment=large-blocks] #circles .context-popup .app-top .service-brand img{width:calc(18px * var(--window-scale));height:calc(18px * var(--window-scale))}
+html[data-experiment=large-blocks] #circles .context-popup .app-top .service-brand{font-size:calc(17px * var(--window-scale));gap:calc(5px * var(--window-scale))}
+html[data-experiment=large-blocks] #circles .context-popup .client-action{min-height:calc(44px * var(--window-scale));padding:calc(9px * var(--window-scale)) calc(12px * var(--window-scale))}
+html[data-experiment=large-blocks] #circles .context-popup[data-detached=true] .task-icon{display:none}
+html[data-experiment=large-blocks] #circles .context-popup .instruction{border-radius:calc(24px * var(--window-scale))}
+html[data-experiment=large-blocks] #circles .context-popup .close{left:auto;right:0}
+html[data-experiment=large-blocks] .object .badge{width:calc(70px * var(--large-factor));height:calc(70px * var(--large-factor));font-size:calc(45px * var(--large-factor));right:calc(-10px * var(--large-factor));top:calc(-12px * var(--large-factor))}
+
+/* Window scale is measured from wrapped contents, never a whole-page zoom. */
+html[data-experiment=large-blocks] :is(.cta-copy,.mission-choices,.final-copy,.field-success,.reset-popup){--window-ui-scale:1.6666666667}
+html[data-experiment=large-blocks] .mission-choices{grid-template-rows:repeat(2,minmax(0,1fr))}
+html[data-experiment=large-blocks] .mission-card{min-height:0;padding:calc(18px * var(--window-ui-scale));gap:calc(12px * var(--window-ui-scale))}
+html[data-experiment=large-blocks] .mission-card>*{flex-shrink:0}
+html[data-experiment=large-blocks] .mission-card strong{font-size:calc(32px * var(--window-ui-scale))}
+html[data-experiment=large-blocks] .mission-card small{font-size:calc(22px * var(--window-ui-scale));margin-top:calc(9px * var(--window-ui-scale))}
+html[data-experiment=large-blocks] .mission-card .medallion{flex-basis:calc(106px * var(--window-ui-scale));width:calc(106px * var(--window-ui-scale));height:calc(106px * var(--window-ui-scale));padding:calc(26px * var(--window-ui-scale))}
+html[data-experiment=large-blocks] .cta-copy{gap:calc(32px * var(--window-ui-scale))}
+html[data-experiment=large-blocks] .cta-copy h1{font-size:calc(64px * var(--window-ui-scale))}
+html[data-experiment=large-blocks] .cta-copy p{font-size:calc(30px * var(--window-ui-scale))}
+html[data-experiment=large-blocks] .cta-copy .pill{font-size:calc(30px * var(--window-ui-scale));min-height:calc(64px * var(--window-ui-scale));padding:calc(12px * var(--window-ui-scale)) calc(22px * var(--window-ui-scale))}
+html[data-experiment=large-blocks] .cta-copy>*{flex-shrink:0}
+html[data-experiment=large-blocks] .field-success{padding:calc(24px * var(--window-ui-scale));gap:calc(16px * var(--window-ui-scale));width:calc(530px * var(--window-ui-scale))}
+html[data-experiment=large-blocks] .field-success h2{font-size:calc(26px * var(--window-ui-scale))}
+html[data-experiment=large-blocks] .field-success p{font-size:calc(18px * var(--window-ui-scale))}
+html[data-experiment=large-blocks] .field-success .pill{font-size:calc(22px * var(--window-ui-scale));padding:calc(12px * var(--window-ui-scale)) calc(18px * var(--window-ui-scale))}
+html[data-experiment=large-blocks] .final-copy h1{font-size:calc(40px * var(--window-ui-scale))}
+html[data-experiment=large-blocks] .final-copy p{font-size:calc(30px * var(--window-ui-scale))}
+html[data-experiment=large-blocks] .final-copy .pill{font-size:calc(24px * var(--window-ui-scale));padding:calc(12px * var(--window-ui-scale))}
+html[data-experiment=large-blocks] .final-icons .tile{width:calc(110px * var(--window-ui-scale));height:calc(110px * var(--window-ui-scale))}
+html[data-experiment=large-blocks] .final-icons small{font-size:calc(24px * var(--window-ui-scale))}
+.object[hidden]{display:none!important}
+.mission-card .media-coverage{display:block;margin-top:8px;font-weight:600}
+.mission-card .media-complete{color:#b7edff}
+.mission-card .media-incomplete{color:#ffe0a8}
+#circles .client-scene.task-media{display:flex;flex-direction:column;padding:0;gap:8px;min-height:0;overflow:hidden;flex:1}
+.task-media-frame{position:relative;flex:1;min-height:100px;width:100%;overflow:hidden}
+.task-media-image{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none;-webkit-user-drag:none}
+.task-media-image{border-radius:22px}
+.task-media-frame:has(.task-media-canvas){display:flex;justify-content:center;align-items:center}
+.task-media-canvas{position:relative;height:100%;aspect-ratio:360 / 800;max-width:100%}
+.task-media-canvas .task-media-image{width:100%;height:100%;object-fit:fill}
+.media-hotspot{position:absolute;z-index:2;padding:0;margin:0;min-width:0;min-height:0;border:2px solid transparent;border-radius:12px;background:transparent;cursor:pointer;touch-action:manipulation}
+.media-hotspot:hover,.media-hotspot:focus-visible{border-color:#00BFFF;box-shadow:0 0 16px #00BFFF88;outline:none}
+.channel-plus{left:82%;top:5.5%;width:17%;height:8%}
+.channel-create{left:4%;top:19.5%;width:70%;height:9%}
+[data-media-index="0"] .channel-create,[data-media-index="1"] .channel-plus{display:none}
+.story-task .task-media-image{box-shadow:0 6px 12px #0D001AA6}
+.id-final-action{position:absolute;bottom:24px;left:20px;right:20px;z-index:3}
+#circles .task-media small{font-size:16px;line-height:1.2}
+.media-navigation{display:flex;align-items:center;justify-content:center;gap:14px;flex-shrink:0}
+.media-navigation .pill{padding:4px 14px;min-width:44px;min-height:44px}
+.media-counter{min-width:54px;text-align:center}
+.media-missing{font-size:18px;line-height:1.2;color:#ffe0a8}
+.media-placeholder{justify-content:center;text-align:center}
+html[data-experiment=guided] #circles .task-media small,html[data-experiment=guided] #circles .media-missing{font-size:24px}
+/* Original screenshots already have their own header. Keep the image large;
+   the adjoining instruction remains the owner of stage copy and actions. */
+#circles .demo-app:has(.task-media-image) .app-top,
+#circles .demo-app:has(.task-media-image) .phone-content>h3,
+#circles .demo-app:has(.task-media-image) .app-progress,
+#circles .demo-app:has(.task-media-image) .task-notice{display:none}
+html[data-experiment=large-blocks] #circles .reset-popup h2{font-size:calc(26px * var(--window-ui-scale))}
+html[data-experiment=large-blocks] #circles .reset-popup p,html[data-experiment=large-blocks] #circles .reset-popup .pill{font-size:calc(20px * var(--window-ui-scale))}

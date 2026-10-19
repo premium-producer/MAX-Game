@@ -1,0 +1,376 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "X-SPUTNIK Mission System v2",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "missionSelectObjects",
+    "objectSettings",
+    "connection",
+    "feedback"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 2
+    },
+    "missionSelectObjects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "kind",
+          "icon",
+          "latitude",
+          "longitude",
+          "altitude",
+          "size",
+          "signalRadius",
+          "signalMode",
+          "successWhen"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^(?!(?:__proto__|constructor|prototype)$)[a-zA-Z0-9_-]+$"
+          },
+          "kind": {
+            "const": "orbital-signal"
+          },
+          "icon": {
+            "type": "string",
+            "pattern": "^(?!(?:__proto__|constructor|prototype)$)[a-zA-Z0-9_-]+$"
+          },
+          "latitude": {
+            "type": "number",
+            "minimum": -82,
+            "maximum": 82
+          },
+          "longitude": {
+            "type": "number",
+            "minimum": -180,
+            "maximum": 180
+          },
+          "altitude": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "maximum": 3
+          },
+          "size": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "signalRadius": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "signalMode": {
+            "const": "always"
+          },
+          "successWhen": {
+            "const": "all-missions-completed"
+          }
+        }
+      }
+    },
+    "objectSettings": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^(?:(?!(?:__proto__|constructor|prototype)$)[a-zA-Z0-9_-]+|endpoint:[AB])$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "size": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "signalRadius": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "radiusAtMinAltitude": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "radiusAtMaxAltitude": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "minAltitude": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "maxAltitude": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "defaultAltitude": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        }
+      },
+      "description": "Ключи оборудования — ID из system.objectTypes. Допустимые поля зависят от behavior; проверяются runtime-парсером."
+    },
+    "connection": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "policy": {
+          "enum": [
+            "geographicCorridor",
+            "screenProjected",
+            "hybridProjected"
+          ]
+        },
+        "corridorWidth": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "ambiguityEpsilon": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "screen": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "corridorFraction": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 1,
+              "default": 0.25
+            },
+            "ambiguityFraction": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "exclusiveMaximum": 0.5,
+              "default": 0.01
+            },
+            "minimumEndpointSpan": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 2000,
+              "default": 120
+            },
+            "iconGap": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 100,
+              "default": 8
+            },
+            "stableHoldMs": {
+              "type": "number",
+              "minimum": 100,
+              "maximum": 5000,
+              "default": 300
+            }
+          }
+        }
+      }
+    },
+    "feedback": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "invalid": {
+          "enum": [
+            "error",
+            "neutral"
+          ]
+        }
+      }
+    },
+    "_revision": {
+      "type": "string"
+    },
+    "$schema": {
+      "type": "string"
+    },
+    "icons": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^(?!(?:__proto__|constructor|prototype)$)[a-zA-Z0-9_-]+$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "label"
+        ],
+        "properties": {
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "src": {
+            "enum": [
+              "./icons/terminal.svg",
+              "./icons/sputnik.svg",
+              "./icons/station.svg",
+              "./icons/core.svg",
+              "./icons/internet.svg",
+              "./icons/endpoint-a.svg",
+              "./icons/endpoint-b.svg"
+            ]
+          },
+          "svg": {
+            "type": "string",
+            "maxLength": 131072
+          }
+        },
+        "oneOf": [
+          {
+            "required": [
+              "src"
+            ],
+            "not": {
+              "required": [
+                "svg"
+              ]
+            }
+          },
+          {
+            "required": [
+              "svg"
+            ],
+            "not": {
+              "required": [
+                "src"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "objectTypes": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^(?!(?:__proto__|constructor|prototype)$)[a-zA-Z0-9_-]+$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "label",
+          "short",
+          "icon",
+          "behavior"
+        ],
+        "properties": {
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "short": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "icon": {
+            "type": "string",
+            "pattern": "^(?!(?:__proto__|constructor|prototype)$)[a-zA-Z0-9_-]+$"
+          },
+          "behavior": {
+            "enum": [
+              "ground",
+              "orbital"
+            ]
+          },
+          "placementSurface": {
+            "enum": [
+              "land",
+              "water",
+              "any"
+            ],
+            "description": "Допустимая поверхность: суша, вода или любая. По умолчанию ground=land, orbital=any."
+          }
+        }
+      }
+    },
+    "pointIcons": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^(?!(?:__proto__|constructor|prototype)$)[a-zA-Z0-9_-]+$"
+      },
+      "description": "ID SVG из icons, образующие отдельный банк обозначений фиксированных точек"
+    },
+    "equipmentSets": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^(?!(?:__proto__|constructor|prototype)$)[a-zA-Z0-9_-]+$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "label",
+          "inventory"
+        ],
+        "properties": {
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "inventory": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string",
+              "pattern": "^(?!(?:__proto__|constructor|prototype)$)[a-zA-Z0-9_-]+$"
+            },
+            "additionalProperties": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    },
+    "screenAppearance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "fieldScale": {
+          "type": "number",
+          "minimum": 0.1,
+          "maximum": 5
+        },
+        "objectScale": {
+          "type": "number",
+          "minimum": 0.1,
+          "maximum": 5
+        },
+        "sizes": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^(?:(?!(?:__proto__|constructor|prototype)$)[a-zA-Z0-9_-]+|endpoint:[AB])$"
+          },
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0.1,
+            "maximum": 5
+          }
+        },
+        "showRangeCircle": {
+          "type": "boolean",
+          "default": true
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

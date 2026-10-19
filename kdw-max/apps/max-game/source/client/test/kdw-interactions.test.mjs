@@ -1,0 +1,135 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {createKdwCatalog,emptyInteraction,keyboardEdit,placeProduct} from '../src/kdw-interactions-model.mjs';
+import {createMissionModel,dispatchMissionCommand,restoreMissionModel} from '../src/core/mission-core.mjs';
+import {createMissionSessionApplication} from '../src/application/mission-session.mjs';
+import {createMemoryPersistencePort} from '../src/application/memory-persistence.mjs';
+const base=JSON.parse(fs.readFileSync(new URL('../src/reviewed-content/mission-catalog.json',import.meta.url)));
+const catalog=createKdwCatalog(base);
+function driver(c=catalog,rulesRevision='mission-rules-task-clock-v2'){
+ let model=createMissionModel(c,{sessionId:'test',rulesRevision}),serial=0,now=1000000;
+ function act(type,fields={},internal=false){const command={schemaVersion:1,type,commandId:'test.'+(++serial),sessionId:'test',contentRevision:c.contentRevision,expectedRevision:model.state.revision,...fields};const result=dispatchMissionCommand(c,model,command,{now:now++,internal});if(result.reply.ok)model=result.model;return {...result,command};}
+ function reach(missionId,screenId){
+  assert.equal(act('OWNER_CHANGED',{active:true},true).reply.ok,true);act('SELECT_MISSION',{missionId});act('HOLD_CONFIRMED',{},true);
+  for(let i=0;i<150&&model.state.screenId!==screenId;i++){
+   const s=model.state;if(s.status==='result'){now+=1000;assert.equal(act('ADVANCE_RESULT').reply.ok,true);continue;}
+   const screen=c.tasks[s.taskId].screens[s.screenId],action=screen.actions.find(a=>a.outcome.kind!=='incorrect'&&a.outcome.screenId!==s.screenId);
+   assert.ok(action,`${s.taskId}/${s.screenId}`);if(screen.automaticMs!==null)now+=screen.automaticMs;
+   assert.equal(act(screen.automaticMs!==null?'AUTO_SCREEN':'ACT',{taskId:s.taskId,screenId:s.screenId,actionId:action.actionId},screen.automaticMs!==null).reply.ok,true);
+  }
+  assert.equal(model.state.screenId,screenId);
+ }
+ return {act,reach,advance(ms){now+=ms;},get model(){return model;},get now(){return now;}};
+}
+test('real channel input required; commands preserve draft through creation and replay',()=>{
+ const d=driver();d.reach('blogger','blogger.channel.name');
+ assert.equal(d.act('ACT',{screenId:'blogger.channel.name',actionId:'channel.fill-name-example'}).reply.code,'CHANNEL_NAME_REQUIRED');
+ const value={name:'Мой канал',description:'Новости и общение',avatar:'heart'};
+ const saved=d.act('SAVE_INTERACTION',{taskId:'blogger.channel',screenId:'blogger.channel.name',value});assert.equal(saved.reply.ok,true);
+ const duplicate=dispatchMissionCommand(catalog,d.model,saved.command,{now:d.now});assert.equal(duplicate.duplicate,true);
+ assert.equal(d.act('ACT',{screenId:'blogger.channel.name',actionId:'channel.fill-name-example'}).reply.ok,true);
+ assert.equal(d.act('ACT',{screenId:'blogger.channel.filled',actionId:'channel.create'}).reply.ok,true);
+ assert.equal(d.model.state.screenId,'blogger.channel.privacy');
+ const restored=restoreMissionModel(catalog,JSON.parse(JSON.stringify(d.model)));assert.equal(restored.ok,true);assert.deepEqual(restored.model.state.progress.blogger.interactions['blogger.channel'],value);
+});
+test('empty/invalid channel name cannot advance; stale and oversized edits rejected',()=>{
+ const d=driver();d.reach('blogger','blogger.channel.name');
+ const save=value=>d.act('SAVE_INTERACTION',{taskId:'blogger.channel',screenId:'blogger.channel.name',value});
+ assert.equal(save({...emptyInteraction('channel'),name:'a'.repeat(65)}).reply.code,'INVALID_INTERACTION');
+ assert.equal(save({...emptyInteraction('channel'),name:' '}).reply.ok,true);
+ assert.equal(d.act('ACT',{screenId:'blogger.channel.name',actionId:'channel.fill-name-example'}).reply.code,'CHANNEL_NAME_REQUIRED');
+ assert.equal(d.act('SAVE_INTERACTION',{taskId:'business.store',screenId:'business.store.start',value:emptyInteraction('store')}).reply.code,'WRONG_CONTEXT');
+ d.act('RETURN_MENU');assert.equal(save({...emptyInteraction('channel'),name:'Поздний ответ'}).reply.code,'INTERACTION_UNAVAILABLE');
+});
+test('store uses actual selections, prevents empty publish and duplicate/unknown products',()=>{
+ const d=driver();d.reach('business','business.store.start');
+ assert.equal(d.act('ACT',{screenId:'business.store.start',actionId:'business.store.start.continue'}).reply.code,'STORE_PRODUCT_REQUIRED');
+ const save=value=>d.act('SAVE_INTERACTION',{taskId:'business.store',screenId:'business.store.start',value});
+ assert.equal(save({slots:['unknown',null,null,null,null,null]}).reply.code,'INVALID_INTERACTION');
+ assert.equal(save({slots:['brazil','brazil',null,null,null,null]}).reply.code,'INVALID_INTERACTION');
+ const slots=placeProduct(placeProduct(emptyInteraction('store').slots,'brazil',0),'ethiopia',1);
+ assert.equal(save({slots}).reply.ok,true);
+ for(const step of ['start','publish','result'])assert.equal(d.act('ACT',{screenId:`business.store.${step}`,actionId:`business.store.${step}.continue`}).reply.ok,true);
+ assert.equal(d.model.state.status,'result');assert.ok(d.model.state.progress.business.completed.includes('business.store'));
+ assert.deepEqual(restoreMissionModel(catalog,d.model).model.state.progress.business.interactions['business.store'].slots,slots);
+});
+test('removal/move and restart retain semantic ownership of the current run',()=>{
+ let slots=placeProduct(emptyInteraction('store').slots,'brazil',0);slots=placeProduct(slots,'brazil',3);assert.equal(slots[0],null);assert.equal(slots[3],'brazil');
+ const d=driver();d.reach('business','business.store.start');d.act('SAVE_INTERACTION',{taskId:'business.store',screenId:'business.store.start',value:{slots}});d.act('RESTART_MISSION');assert.equal(d.model.state.progress.business.interactions,undefined);
+});
+test('application persistence restores the draft after closing and reopening the authority',async()=>{
+ const d=driver();d.reach('blogger','blogger.channel.name');d.act('SAVE_INTERACTION',{taskId:'blogger.channel',screenId:'blogger.channel.name',value:{name:'Сохранённый канал',description:'После перезапуска',avatar:'cat'}});
+ const persistence=createMemoryPersistencePort();await persistence.create('test',{schemaVersion:2,mission:d.model,layouts:{layoutRevision:0,positions:{},receipts:[]},clockCheckpointAt:d.now});
+ const app=createMissionSessionApplication({catalog,persistence,now:()=>d.now+10000});const snapshot=await app.getSnapshot('test');assert.equal(snapshot.state.progress.blogger.interactions['blogger.channel'].name,'Сохранённый канал');await app.close();
+ const reopened=createMissionSessionApplication({catalog,persistence,now:()=>d.now+20000});assert.equal((await reopened.getSnapshot('test')).state.progress.blogger.interactions['blogger.channel'].description,'После перезапуска');await reopened.close();
+});
+
+test('saved store selection from the separate scene restores in the native device without progress reset',()=>{
+ const previous=structuredClone(catalog);previous.tasks['business.store']=structuredClone(base.tasks['business.store']);
+ const d=driver(previous);d.reach('business','business.store.start');const value={slots:['brazil',null,'ethiopia',null,null,null]};
+ assert.equal(d.act('SAVE_INTERACTION',{taskId:'business.store',screenId:'business.store.start',value}).reply.ok,true);
+ const restored=restoreMissionModel(catalog,JSON.parse(JSON.stringify(d.model)));assert.equal(restored.ok,true);
+ assert.deepEqual(restored.model.state.progress.business.interactions['business.store'],value);
+ assert.deepEqual(restored.model.state.progress.business.completed,d.model.state.progress.business.completed);
+ for(const screen of Object.values(catalog.tasks['business.store'].screens)){assert.equal(screen.deviceKind,'phone');assert.equal(screen.assetId,'kdw.native.store-phone');assert.ok(screen.actions.every(a=>a.placement==='below-screen'&&!a.rect));}
+});
+
+test('business registration begins with three explicit choices; every choice persists and advances to login',()=>{
+ const task=catalog.tasks['business.platform'];assert.equal(task.startScreenId,'business.platform.business-type');assert.equal(Object.keys(task.screens)[0],task.startScreenId);
+ assert.deepEqual(task.screens[task.startScreenId].actions.map(a=>a.label),['Кофейня','Отель','Театр']);
+ for(const type of ['cafe','hotel','theater']){
+  const d=driver();d.reach('business',task.startScreenId);const deadline=d.model.state.deadlineAt;
+  assert.equal(d.act('ACT',{screenId:task.startScreenId,actionId:'business.platform.choose-other'}).reply.code,'ACTION_UNAVAILABLE');
+  assert.equal(d.act('ACT',{screenId:task.startScreenId,actionId:'business.platform.choose-'+type}).reply.ok,true);
+  assert.equal(d.model.state.screenId,'business.platform.login');assert.equal(d.model.state.progress.business.answers.businessType,type);assert.equal(d.model.state.deadlineAt,deadline);
+  const restored=restoreMissionModel(catalog,JSON.parse(JSON.stringify(d.model)));assert.equal(restored.ok,true);assert.equal(restored.model.state.progress.business.answers.businessType,type);
+  assert.equal(d.act('RETURN_MENU').reply.ok,true);assert.equal(d.act('SELECT_MISSION',{missionId:'business'}).reply.ok,true);assert.equal(d.model.state.screenId,'business.platform.login');assert.equal(d.model.state.progress.business.answers.businessType,type);
+ }
+});
+
+test('old accepted business receipts restore; a restarted run requires the new choice and mixed history remains valid',()=>{
+ const previous=structuredClone(catalog);delete previous.tasks['business.platform'].screens['business.platform.business-type'];previous.tasks['business.platform'].startScreenId='business.platform.login';delete previous.kdwBusinessChoice;
+ const d=driver(previous);d.reach('business','business.store.start');const old=JSON.parse(JSON.stringify(d.model));
+ const restored=restoreMissionModel(catalog,old);assert.equal(restored.ok,true);assert.deepEqual(restored.model,old);
+ let model=restored.model;let now=d.now+1;
+ for(const type of ['RESTART_MISSION','HOLD_CONFIRMED']){const command={schemaVersion:1,type,commandId:'upgrade.'+type,sessionId:'test',contentRevision:catalog.contentRevision,expectedRevision:model.state.revision};const result=dispatchMissionCommand(catalog,model,command,{now:now++,internal:type==='HOLD_CONFIRMED'});assert.equal(result.reply.ok,true);model=result.model;}
+ assert.equal(model.state.screenId,'business.platform.business-type');assert.equal(restoreMissionModel(catalog,model).ok,true);
+ old.receipts.find(r=>r.command.type==='HOLD_CONFIRMED').reply.snapshot.progress.business.answers.businessType='hotel';assert.equal(restoreMissionModel(catalog,old).ok,false);
+});
+test('keyboard edits at caret, replaces selection, handles emoji deletion and length',()=>{
+ assert.deepEqual(keyboardEdit('Мой канал',4,9,'мир'),{value:'Мой мир',caret:7});
+ assert.deepEqual(keyboardEdit('MAX♥',4,4,'backspace'),{value:'MAX',caret:3});
+ assert.deepEqual(keyboardEdit('MAX😀',5,5,'backspace'),{value:'MAX',caret:3});
+ assert.deepEqual(keyboardEdit('абв',1,1,'Я'),{value:'аЯбв',caret:2});
+ assert.equal(keyboardEdit('abc',3,3,'d',{limit:3}).value,'abc');
+});
+test('legacy stand rules still replay without requiring KDW draft data',()=>{
+ const d=driver(base,'mission-rules-v1');d.reach('blogger','blogger.channel.name');assert.equal(d.act('ACT',{screenId:'blogger.channel.name',actionId:'channel.fill-name-example'}).reply.ok,true);assert.equal(restoreMissionModel(base,d.model).ok,true);
+});
+
+test('installed task clock grants one minute per task, never per internal screen, and expires the mission',()=>{
+ const d=driver();d.reach('blogger','blogger.channel.chats');assert.equal(d.model.state.deadlineAt-d.model.state.startedAt,60000);
+ const deadline=d.model.state.deadlineAt;d.advance(5000);d.act('ACT',{screenId:'blogger.channel.chats',actionId:'channel.open-create-menu'});assert.equal(d.model.state.deadlineAt,deadline);
+ d.advance(60000);assert.equal(d.act('EXPIRE',{},true).reply.ok,true);assert.equal(d.model.state.status,'expired');
+});
+
+test('all four stand missions and all fifteen tasks complete through the local authority',()=>{
+ let total=0;
+ for(const mission of Object.values(catalog.missions)){
+  const d=driver(),first=catalog.tasks[mission.taskIds[0]];d.reach(mission.missionId,first.startScreenId);
+  for(let i=0;i<300&&!['completed','incomplete'].includes(d.model.state.status);i++){
+   const s=d.model.state;
+   if(s.status==='result'){d.advance(3000);assert.equal(d.act('ADVANCE_RESULT').reply.ok,true);continue;}
+   assert.equal(s.status,'task');
+   if(s.screenId==='blogger.channel.name')assert.equal(d.act('SAVE_INTERACTION',{taskId:s.taskId,screenId:s.screenId,value:{name:'Канал MAX',description:'Проверка стендовой базы',avatar:'cat'}}).reply.ok,true);
+   if(s.screenId==='business.store.start')assert.equal(d.act('SAVE_INTERACTION',{taskId:s.taskId,screenId:s.screenId,value:{slots:['ethiopia',null,null,null,null,null]}}).reply.ok,true);
+   const screens=catalog.tasks[s.taskId].screens,screen=screens[s.screenId],queue=[{id:s.screenId,first:null}],seen=new Set();let action;
+   while(queue.length&&!action){const node=queue.shift();if(seen.has(node.id))continue;seen.add(node.id);for(const candidate of screens[node.id].actions){if(candidate.outcome.kind==='incorrect')continue;const first=node.first??candidate;if(candidate.outcome.kind!=='navigate'){action=first;break;}queue.push({id:candidate.outcome.screenId,first});}}
+   assert.ok(action,s.screenId);if(screen.automaticMs!==null)d.advance(screen.automaticMs);
+   assert.equal(d.act(screen.automaticMs!==null?'AUTO_SCREEN':'ACT',{taskId:s.taskId,screenId:s.screenId,actionId:action.actionId},screen.automaticMs!==null).reply.ok,true,s.screenId);
+  }
+  assert.equal(d.model.state.status,'completed',mission.missionId);assert.deepEqual(d.model.state.progress[mission.missionId].completed,mission.taskIds);total+=mission.taskIds.length;
+ }
+ assert.equal(total,15);
+});

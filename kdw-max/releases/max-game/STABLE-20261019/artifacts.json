@@ -1,0 +1,20 @@
+{
+  "portable": {
+    "file": "MAX-Game-Portable-STABLE-20261019.zip",
+    "bytes": 638836521,
+    "sha256": "6be93d3cc72a0d9d07d622b4f3e8fff3976a0297c18da15e0a16651e5af71f9b",
+    "verifiedAppFiles": 1787,
+    "entries": 1821
+  },
+  "web": {
+    "file": "MAX-Game-Web-c0d5499504e1a1329442.zip",
+    "bytes": 90500749,
+    "sha256": "f411f85725af36e727ac6e8ec34475e7bd655712a5db234fbf80ffaa253ff85a"
+  },
+  "gitleaks": {
+    "version": "8.30.1",
+    "unresolvedFindings": 0,
+    "reviewedExceptions": "Three build-input SHA-256 references to client/src/application/local-player-auth.mjs, matching the actual source hash. Narrow SHA-only build-receipt allowlist."
+  },
+  "scope": "Only the new KDW-MAX game; no stela or visitor data. Full Electron included."
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "screenId": "digital-id.create-id.quick",
+    "interactionId": "digital-id.create-id.quick.action-1",
+    "expectedRect": [12.4, 1412.49, 772.01, 153.34],
+    "rect": [12.4, 1412.49, 772.01, 151.66],
+    "reason": "User approved 2026-10-04: split the overlapping strip at its midpoint in the game copy only."
+  },
+  {
+    "screenId": "digital-id.create-id.quick",
+    "interactionId": "digital-id.create-id.quick.action-2",
+    "expectedRect": [24.53, 1562.46, 754.1, 146.62],
+    "rect": [24.53, 1564.15, 754.1, 144.93],
+    "reason": "User approved 2026-10-04: retain original bottom edge; share a non-overlapping boundary at y=1564.15."
+  }
+]

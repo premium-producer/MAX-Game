@@ -18,3 +18,10 @@ regexes = ['''^[a-fA-F0-9]{10,64}$''']
 description = "Figma document and selection identifiers are public resource identifiers"
 regexTarget = "match"
 regexes = ['''(?i)^(file_?Key|selectionKey)["']?\s*:\s*["'][a-zA-Z0-9:_/-]+["']$''']
+
+[[rules.allowlists]]
+description = "KDW build-input SHA-256 values, verified against the packaged source"
+condition = "AND"
+paths = ['''(^|/)kdw-max/apps/max-game/(source/history/r8-before-oct07|www/webgl-v5)/r[89]-build\.json$''']
+regexTarget = "secret"
+regexes = ['''^[a-f0-9]{64}$''']

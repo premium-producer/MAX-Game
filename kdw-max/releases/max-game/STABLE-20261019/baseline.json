@@ -1,0 +1,34 @@
+{
+  "id": "KDW-MAX-GAME-STABLE-20261019",
+  "status": "stable: user accepted 2026-10-19",
+  "git": {
+    "repository": "premium-producer/MAX-Game",
+    "branch": "kdw-max",
+    "tag": "kdw-max-stable-20261019",
+    "path": "kdw-max/"
+  },
+  "iteration": "KDW-MAX-R9-STAND-20261018",
+  "standbyRevision": "KDW-MAX-NATIVE-STANDBY-20261019",
+  "bundleSha256": "23bf67dad8708624ba015c13719ebbb1fc71a35c8cef5b2f6fb23e4b84d91c94",
+  "packageManifestSha256": "56dae40951faef5b744eed221e23f74047afd49e93cbcaea379b0269244eeba4",
+  "appFiles": 1787,
+  "appBytes": 897995675,
+  "web": {
+    "release": "c0d5499504e1a1329442",
+    "deployment": "20261019T080842Z",
+    "url": "https://futuronika.pro/df/max-game-client/",
+    "archive": "MAX-Game-Web-c0d5499504e1a1329442.zip",
+    "bytes": 90500749,
+    "sha256": "f411f85725af36e727ac6e8ec34475e7bd655712a5db234fbf80ffaa253ff85a"
+  },
+  "excluded": [
+    "User data and browser profiles",
+    "Stela",
+    "Server credentials and live editor drafts"
+  ],
+  "verification": "docs/verification-standby-20261019/",
+  "limitations": [
+    "Physical phones/Safari, stand hardware and second PC not verified",
+    "External stand queue and stela linkage not included"
+  ]
+}

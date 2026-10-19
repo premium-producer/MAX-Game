@@ -1,0 +1,398 @@
+{
+  "passed": true,
+  "release": {
+    "release": "c0d5499504e1a1329442",
+    "files": 298,
+    "bytes": 100499589,
+    "desktopBundleSha256": "23bf67dad8708624ba015c13719ebbb1fc71a35c8cef5b2f6fb23e4b84d91c94"
+  },
+  "checks": [
+    "portable uses unchanged native idle renderer: MAX, playing TV and first-task glyphs; no dev menu",
+    "native 4096x1280 standby geometry retained at desktop, landscape and portrait sizes",
+    "standby icon starts business with stable projection and native timer",
+    "standby icon starts blogger with stable projection and native timer",
+    "standby icon starts communication with stable projection and native timer",
+    "standby icon starts digital-id with stable projection and native timer",
+    "phone-sized web entry is same native standby; 720p video uses HTTP Range; no task-image preload",
+    "web native task icon starts real business mission",
+    "reload opens standby without recovery/dev menu; selecting task retains saved hotel progress"
+  ],
+  "metrics": {
+    "residency": {
+      "textures": 60,
+      "pixels": 17851958,
+      "rgbaBytes": 71407832,
+      "startupPinned": 47,
+      "decodedShellImages": 21
+    },
+    "webInitial": {
+      "bytes": 6030786,
+      "requests": 47,
+      "taskImages": 0,
+      "videoRangeRequests": 1
+    }
+  },
+  "errors": [],
+  "requests": [
+    {
+      "phase": "web",
+      "url": "/nested/max/",
+      "bytes": 1108,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/entry.js",
+      "bytes": 4068,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/asset-manifest.json",
+      "bytes": 77565,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/brand/assets/fonts/max-sans-300.woff2",
+      "bytes": 18168,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/brand/assets/fonts/max-sans-400.woff2",
+      "bytes": 18308,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/brand/assets/fonts/max-sans-500.woff2",
+      "bytes": 18472,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/brand/assets/fonts/max-sans-600.woff2",
+      "bytes": 18152,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/brand/assets/fonts/max-sans-700.woff2",
+      "bytes": 18356,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/brand/assets/logos/max-mono-white.svg",
+      "bytes": 2814,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/brand/assets/logos/max-primary-white.svg",
+      "bytes": 79378,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/brand/assets/logos/max-symbol-white.svg",
+      "bytes": 928,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/manifest.json",
+      "bytes": 5769,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/brand/tokens/brand.css",
+      "bytes": 1175,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.age.svg",
+      "bytes": 6013,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.benefit.svg",
+      "bytes": 4793,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.bot.svg",
+      "bytes": 4356,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.business.svg",
+      "bytes": 3879,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.call.svg",
+      "bytes": 3898,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.channel.svg",
+      "bytes": 3446,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.digital-id.svg",
+      "bytes": 4910,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.comments.svg",
+      "bytes": 2315,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.hotel.svg",
+      "bytes": 3033,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.message.svg",
+      "bytes": 3321,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.missing.svg",
+      "bytes": 397,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.open-max.svg",
+      "bytes": 2760,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.restart.svg",
+      "bytes": 869,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.scan.svg",
+      "bytes": 4090,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.statistics.svg",
+      "bytes": 4021,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.stickers.svg",
+      "bytes": 2649,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.store.svg",
+      "bytes": 3295,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/webgl-v5/icon-glyphs/max-icon.story.svg",
+      "bytes": 3958,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/webgl-v5/journey.css",
+      "bytes": 39825,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/webgl-v5/journey-guided.css",
+      "bytes": 9291,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/webgl-v5/journey-guided-line.css",
+      "bytes": 2511,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/webgl-v5/journey-guided-reveal.css",
+      "bytes": 2891,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/webgl-v5/v5.css",
+      "bytes": 8986,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/webgl-v5/kdw-interactions.css",
+      "bytes": 14184,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/webgl-v5/app.js",
+      "bytes": 2042063,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/config/client-webgl.json",
+      "bytes": 32662,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/config/ui-shell.json",
+      "bytes": 6833,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/config/client-missions.json",
+      "bytes": 6689,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/config/earth-contours.json",
+      "bytes": 414,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/icons/endpoint-a.svg",
+      "bytes": 239,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/icons/endpoint-b.svg",
+      "bytes": 287,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/brand/assets/logos/max-mono-white.svg",
+      "bytes": 2814,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/assets/reviewed-20261007/max-logo-qr-faa6982ad913.webp",
+      "bytes": 25466,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/assets/device-custom/tv-first-30s.mp4?v=9625418092337e279fb5470af706451238ba681b297ed22db73464644b6ee96a",
+      "bytes": 3509367,
+      "range": true
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/assets/kdw-native/business-choice.svg",
+      "bytes": 3300,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/assets/figma-20261003/296-16657.webp",
+      "bytes": 651856,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/assets/figma-20261003/296-17351.webp",
+      "bytes": 86614,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/assets/figma-20261003/296-16744.webp",
+      "bytes": 31782,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/?backend=local&view=game",
+      "bytes": 1108,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/asset-manifest.json",
+      "bytes": 77565,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/config/client-webgl.json",
+      "bytes": 32662,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/config/earth-contours.json",
+      "bytes": 414,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/config/ui-shell.json",
+      "bytes": 6833,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/brand/assets/logos/max-mono-white.svg",
+      "bytes": 2814,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/icons/endpoint-a.svg",
+      "bytes": 239,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/icons/endpoint-b.svg",
+      "bytes": 287,
+      "range": false
+    },
+    {
+      "phase": "web",
+      "url": "/nested/max/releases/c0d5499504e1a1329442/assets/device-custom/tv-first-30s.mp4?v=9625418092337e279fb5470af706451238ba681b297ed22db73464644b6ee96a",
+      "bytes": 3509367,
+      "range": true
+    }
+  ]
+}

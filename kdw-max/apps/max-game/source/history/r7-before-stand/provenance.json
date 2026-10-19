@@ -1,0 +1,31 @@
+{
+  "imported": "2026-10-18",
+  "sourceProject": "D:/job/production/FUTURONIKA/VK_DigitalProducts",
+  "profile": "client; local IndexedDB session; no MASTER",
+  "release": "MAX-CLIENT-FEEDBACK-20261007-R6",
+  "bundleSha256": "ddf0718b9a10cbe86e3e551f9d2440c08ab0f4256d011bf7b73f792505978213",
+  "changes": [
+    "Portable Electron desktop host; local HTTP only; application-local data/profile",
+    "R6 client bundle copied without modification"
+  ],
+  "excluded": [
+    "MASTER and role-host services",
+    "Visitor data, databases, credentials, deployment configuration",
+    "Other MAX website sections and old game editions"
+  ],
+  "currentIteration": "KDW-MAX-R7-20261018",
+  "currentBundleSha256": "a98d2c34d2784127b97182ebccc84dcb261289a62280d4a2ae11b2c7664c7e3f",
+  "iterationChanges": [
+    "Channel editor inside original phone; bottom keyboard opens on field click without replacing gameplay scene",
+    "Product catalog and real phone-slot selection with persistent mission validation",
+    "Separate R7 storage profile; original R6 bundle and profile preserved",
+    "Completion SVG and fade ported from accepted stand source production-source-max-show-20261005"
+  ],
+  "interactionAsset": {
+    "path": "assets/kdw-r7/catalog-reference.png",
+    "source": "User supplied screenshot 2026-10-18",
+    "sha256": "d9af0f9cc740ef9dc84a8dcad9e23416519ba299f079a6c62cbd78372ac62037",
+    "rendering": "CSS regions; original image bytes retained"
+  },
+  "completionSource": "F:/project/VK_DigitalProducts_Stand/artifacts/production-source-max-show-20261005/source/max-presentation/src/"
+}

@@ -1,0 +1,82 @@
+/* Geometry/accessibility only: journey-webgl-ui paints these shapes in Three.js.
+   First iteration preserves GuidedReveal's original layout and motion owners. */
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .journey-zone::before{display:none}
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .object:not(.guided-palm){height:320px;overflow:visible}
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .object:not(.guided-palm) .tile{width:256px;height:256px;border-radius:68px;border:0;box-shadow:none}
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .object:not(.guided-palm) .tile>.glyph{left:58px;top:58px;width:140px;height:140px}
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .object:not(.guided-palm) .tile>.reference-glyph{left:0;top:0;width:256px;height:256px}
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .object:not(.guided-palm) .object-label{left:-32px;right:auto;top:278px;bottom:auto;width:320px;max-width:320px;font-size:32px;line-height:1.16;font-weight:400;display:block}
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .object:not(.guided-palm) .object-label small{display:block;font-size:24px;margin-top:8px}
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .guided-palm .tile{border:0;border-radius:42px;box-shadow:none}
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .medallion{border-radius:26px}
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .mission-card{border-radius:40px;border-color:#8e68e06b;box-shadow:none}
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .task-dialog .instruction{border-radius:64px;padding:42px 48px;border-color:#8e68e06b;box-shadow:none}
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .task-dialog .instruction .eyebrow{font-size:20px;letter-spacing:0;color:#b5a3d7}
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .task-dialog .instruction h2{font-size:48px;font-weight:500}
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .task-dialog .instruction p{font-size:32px;line-height:1.22}
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .demo-app{border-radius:38px;border-color:#9980ff80;box-shadow:none}
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .route-phone .demo-app{padding:12px 10px;border:0;width:100%;height:100%;border-radius:38px}
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .pc-chrome{display:none}
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .phone-camera,html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .phone-home,html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .phone-drag-label{display:none}
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .pill{border-radius:32px;border-color:#b894ff70;box-shadow:none}
+/* Background follows the right wall's aspect ratio, never the window stretch. */
+html[data-visual=webgl-bfm-v5] #ambient{inset:auto;left:50%;top:50%;width:min(100vw,320vh);height:min(100vh,31.25vw);transform:translate(-50%,-50%)}
+#version-label{position:fixed;left:12px;bottom:8px;z-index:100;pointer-events:none;font-size:12px;padding:5px 9px;border-radius:8px;background:#16082acc;color:#c7b9ef}
+html[data-visual=webgl-bfm-v5] #circles .route-phone .v5-startup-screen .phone-content{height:100%;padding:0;display:flex;align-items:center;justify-content:center}
+html[data-visual=webgl-bfm-v5] #circles .v5-startup-screen img{width:260px;height:82px;object-fit:contain}
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .v5-brand{position:absolute;left:3616px;top:96px;width:360px;height:114px;pointer-events:none}
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .v5-brand img{display:block;width:360px;height:114px;object-fit:contain}
+/* Persistent v4 tools, outside game transitions and #circles opacity. */
+#v5-tools{position:fixed;inset:0;z-index:200;pointer-events:none;font-size:14px}
+#v5-tools>label,#v5-tools>details{position:absolute;pointer-events:auto;border:1px solid #b894ff60;border-radius:12px;background:#190d38f2;color:#fff;padding:10px 14px}
+#viewport-control{right:12px;top:10px;display:flex;gap:8px;align-items:center}
+#viewport-layout{font:inherit;color:white;background:#25105e;border:1px solid #b894ff60;border-radius:6px;padding:4px 8px}
+#pixel-map-control{left:12px;top:10px;display:flex;gap:8px;align-items:center}
+#v5-debug{left:12px;top:60px;max-width:calc(100vw - 24px)}
+#v5-debug-status{display:block;white-space:pre-line;line-height:1.5;margin-top:10px;font-size:12px}
+#v5-tools summary{cursor:pointer}
+#gradient-controls{right:12px;bottom:12px;width:min(280px,calc(100vw - 24px));max-height:calc(100vh - 80px);overflow:auto}
+#gradient-controls label{display:flex;justify-content:space-between;gap:10px;margin-top:16px}
+#gradient-controls input[type=range]{display:block;width:100%;accent-color:#6e1aff;margin-top:8px}
+#gradient-controls .gradient-pause{justify-content:flex-start;align-items:center}
+#pixel-map-overlay{position:absolute;inset:0;z-index:5;pointer-events:none}
+#pixel-map-overlay>svg{display:block;width:100%;height:100%}
+#pixel-map-overlay[hidden]{display:none}
+.map-copy{font:28px "Max Sans",sans-serif;fill:white;paint-order:stroke;stroke:#100823;stroke-width:6px;stroke-linejoin:round}
+.map-lidar{fill:#ffd080}.map-comfort{fill:#75ffd5}
+@media(max-width:560px){#pixel-map-control{top:58px}#v5-debug{top:104px}}
+
+/* Asset-ratio viewport; dimensions match V5_DEVICE_FRAME and prewarm metrics. */
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .route-phone .demo-app{overflow:visible}
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .route-phone .demo-app .phone-content{position:relative;inset:auto;display:flex;flex-direction:column;width:100%;height:100%;min-height:0;padding:0;overflow:visible}
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .route-phone .demo-app .client-actions:empty{display:none}
+/* Inner viewport ends 12px above the shell: 30px leaves an 18px outer gap.
+   Keep the action owner with task content for fade, inert and pointer handling. */
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .route-phone .demo-app .client-actions{position:absolute;top:calc(100% + 30px);left:50%;transform:translateX(-50%);width:min(100%,392px);min-width:0;flex:none;display:flex;flex-direction:column;flex-wrap:nowrap;align-items:stretch;gap:10px;margin:0}
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .route-phone .demo-app .client-actions .pill{flex:none;box-sizing:border-box;width:100%;min-width:0;height:96px;min-height:96px;max-height:96px;border-radius:48px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:28px;line-height:1.16;padding:12px 16px;white-space:normal;overflow-wrap:anywhere}
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .route-phone .demo-app .task-media{flex:1;min-height:0;width:100%;margin:0;padding:0}
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .route-phone .demo-app .task-media-frame{min-height:0;width:100%;height:100%}
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .route-phone .demo-app .task-media-canvas{height:100%;width:auto;max-width:none;flex:none}
+
+/* Recovery is a native top-layer dialog outside the scaled WebGL layout. */
+.v5-recovery{box-sizing:border-box;width:min(520px,calc(100vw - 32px));max-height:calc(100vh - 32px);padding:32px;border:1px solid #b894ff70;border-radius:28px;background:#190d38;color:#fff;font-family:inherit;text-align:center}
+.v5-recovery::backdrop{background:#0d001aeb}
+#v5-recovery-title{font-size:28px;margin:0 0 16px}
+.v5-recovery-note{font-size:16px;line-height:1.5;color:#d4c7f0}
+.v5-recovery form{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+.v5-recovery button{min-height:48px;border:1px solid #b894ff70;border-radius:999px;padding:12px 24px;font:inherit;color:#fff;background:#471aff;cursor:pointer}
+.v5-recovery button[value=menu]{background:transparent}
+.v5-recovery button:disabled{opacity:.5;cursor:wait}
+.v5-recovery button:focus-visible{outline:3px solid #00bfff;outline-offset:3px}
+
+.v5-audio-control{position:fixed;right:16px;bottom:14px;z-index:10000;border:1px solid #ffffff55;border-radius:999px;padding:8px 14px;background:#170b38d9;color:white;font:14px sans-serif;cursor:pointer}.v5-audio-control:focus-visible{outline:2px solid #91dfff;outline-offset:3px}
+
+/* Fullscreen video is native media, outside the WebGL UI raster. */
+.v5-finale-option{position:fixed;left:16px;bottom:16px;z-index:10010;display:flex;gap:10px;align-items:center;background:#160c30e8;color:white;padding:12px 16px;border-radius:18px;font:16px sans-serif}
+.v5-finale-option[hidden]{display:none}.v5-finale-option input{width:20px;height:20px;accent-color:#8544ff}
+.v5-finale{position:fixed;inset:0;background:#000;color:white;z-index:20000;font:16px sans-serif}
+.v5-finale-player{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.v5-finale-player .video-js{position:absolute!important;inset:60px 0 62px;width:100%;height:calc(100% - 122px)}
+.v5-finale-player video{object-fit:contain}.v5-finale button,.v5-finale select{font:inherit;color:white;background:#37215c;border:1px solid #9270cc;border-radius:14px;padding:10px 14px;cursor:pointer}
+.v5-finale-exit{position:absolute;right:16px;top:12px;z-index:2}.v5-finale-tools{position:absolute;bottom:12px;left:16px;right:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}.v5-finale-tools select{min-width:0;max-width:48vw}.v5-finale-tools span{font-size:14px}
+html[data-video-finale="true"] .v5-audio-control{display:none}

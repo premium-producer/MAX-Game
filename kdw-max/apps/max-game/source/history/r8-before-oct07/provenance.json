@@ -1,0 +1,48 @@
+{
+  "imported": "2026-10-18",
+  "sourceProject": "F:/project/VK_DigitalProducts_Stand/artifacts/production-source-max-show-20261005",
+  "profile": "shared stand renderer and engine; portable local SessionPort/IndexedDB; no MASTER",
+  "release": "MAX-SHOW-02-ACCEPTED",
+  "bundleSha256": "0c49fd41417347eee70fc29096685978fec5ebc7056878c17ca8e4062e17bd6f",
+  "changes": [
+    "Full accepted stand presentation/core/catalog/styles imported; native KDW forms retained",
+    "Local host admission without palm screen; shared browser/Electron bundle",
+    "Stand host timer hiding; portable grid background and viewport projection"
+  ],
+  "excluded": [
+    "MASTER and role-host services",
+    "Visitor data, databases, credentials, deployment configuration",
+    "Other MAX website sections and old game editions"
+  ],
+  "currentIteration": "KDW-MAX-R8-STAND-20261018",
+  "currentBundleSha256": "0c49fd41417347eee70fc29096685978fec5ebc7056878c17ca8e4062e17bd6f",
+  "iterationChanges": [
+    "Full accepted stand presentation/core/catalog/styles imported; native KDW forms retained",
+    "Local host admission without palm screen; shared browser/Electron bundle",
+    "Stand host timer hiding; portable grid background and viewport projection"
+  ],
+  "interactionAsset": {
+    "path": "assets/kdw-r7/catalog-reference.png",
+    "source": "User supplied screenshot 2026-10-18",
+    "sha256": "d9af0f9cc740ef9dc84a8dcad9e23416519ba299f079a6c62cbd78372ac62037",
+    "rendering": "CSS regions; original image bytes retained"
+  },
+  "completionSource": "F:/project/VK_DigitalProducts_Stand/artifacts/production-source-max-show-20261005/source/max-presentation/src/",
+  "originalImport": {
+    "release": "MAX-CLIENT-FEEDBACK-20261007-R6",
+    "bundleSha256": "ddf0718b9a10cbe86e3e551f9d2440c08ab0f4256d011bf7b73f792505978213",
+    "sourceProject": "D:/job/production/FUTURONIKA/VK_DigitalProducts"
+  },
+  "standBaseline": {
+    "assets": 103,
+    "adaptations": [
+      "src/contracts/mission-command.mjs",
+      "src/core/mission-core.mjs",
+      "src/journey-guided-main.js",
+      "src/journey-v5-backend.mjs"
+    ],
+    "runtimeSha256": "25e37373fa80cebcc6a1b829662dfddd372613a933dc5b7be22b2f8292d5813a",
+    "manifest": "source/stand-base/manifest.json",
+    "fileCount": 179
+  }
+}
