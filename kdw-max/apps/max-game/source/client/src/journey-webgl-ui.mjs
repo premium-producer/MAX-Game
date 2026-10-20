@@ -810,6 +810,9 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startu
     if(m.uniforms?.scanProgress)m.uniforms.scanProgress.value=Number(el.closest('[data-palm]')?.dataset.progress||0);
     const retained=host?.dataset.uiRetained&&el.closest('[data-object]')?.dataset.object===host.dataset.uiRetained;
     let presence=el?.closest('[hidden]')?0:retained?1:Number(host?.dataset.uiPresence??1);
+    const activityCopy=el?.closest('.context-popup,.guided-caption');
+    if(activityCopy)presence*=Number(getComputedStyle(activityCopy).opacity);
+    if(document.documentElement.dataset.kdwPosts==='active'&&el?.closest('.route-phone .client-actions'))presence=0;
     if(!el?.closest('.v5-mission-qr'))presence*=Number(host?.dataset.finalGamePresence??1);
     if(el?.closest('.context-popup,.picker'))presence*=Number(host?.dataset.popupPresence??1);
     const routePhone=el?.closest('.route-phone');
@@ -897,7 +900,7 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startu
     }
     if(artwork&&uploadedPhoneTextures.has(material.map))image.dataset.gpuReady='true';
    }
-   const panes=[...root.querySelectorAll('.context-popup .instruction,.context-popup .demo-app,.field-success,.v5-device-timer')].filter(el=>!el.closest('[hidden]')).map(el=>({...rect(el),radius:parseFloat(getComputedStyle(el).borderTopLeftRadius),opacity:glassControlPresence(el,document)*(el.matches('.v5-mission-qr')?1:Number(el.closest('.journey-zone')?.dataset.finalGamePresence??1))})).filter(pane=>pane.opacity>.001);
+   const panes=[...root.querySelectorAll('.context-popup .instruction,.context-popup .demo-app,.field-success,.v5-device-timer')].filter(el=>!el.closest('[hidden]')).map(el=>({...rect(el),radius:parseFloat(getComputedStyle(el).borderTopLeftRadius),opacity:glassControlPresence(el,document)*(el.closest('.context-popup')?Number(getComputedStyle(el.closest('.context-popup')).opacity):1)*(el.matches('.v5-mission-qr')?1:Number(el.closest('.journey-zone')?.dataset.finalGamePresence??1))})).filter(pane=>pane.opacity>.001);
    contextGlass.render(renderer,scene,camera,panes,getSize());
    for(const phone of root.querySelectorAll('.route-phone[data-media-ready-key]')){
     const key=phone.dataset.sceneVersion;

@@ -1,0 +1,86 @@
+const {app,BrowserWindow}=require('electron'),fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const {createPortableServer}=require('../launcher/portable-server.cjs');
+const root=path.resolve(__dirname,'..'),report=path.resolve(root,'../../docs/verification-post-compact-20261020');fs.mkdirSync(report,{recursive:true});
+fs.mkdirSync(path.join(report,'test-runtime'),{recursive:true});
+process.on('uncaughtException',e=>{fs.writeFileSync(path.join(report,'startup-error.txt'),e.stack);app.exit(1);});
+app.setPath('userData',path.join(report,'test-runtime'));app.commandLine.appendSwitch('force-device-scale-factor','1');app.commandLine.appendSwitch('autoplay-policy','no-user-gesture-required');app.on('window-all-closed',()=>{});
+let w,server;const errors=[],checks=[],delay=ms=>new Promise(r=>setTimeout(r,ms));const js=s=>w.webContents.executeJavaScript(s),shot=async name=>fs.writeFileSync(path.join(report,name+'.png'),(await w.webContents.capturePage()).toPNG());
+const mark=stage=>fs.writeFileSync(path.join(report,'progress.json'),JSON.stringify({stage,checks,errors}));
+setTimeout(()=>{mark('watchdog');app.exit(2);},150000);
+async function wait(s,ms=45000){for(let i=0;i<ms/100;i++){if(await js(s))return;await delay(100);}throw Error('Timeout: '+s);}
+async function click(selector){const r=await js(`document.querySelector(${JSON.stringify(selector)}).getBoundingClientRect().toJSON()`),p={x:Math.round(r.x+r.width/2),y:Math.round(r.y+r.height/2)};w.webContents.sendInputEvent({type:'mouseDown',button:'left',clickCount:1,...p});await delay(30);w.webContents.sendInputEvent({type:'mouseUp',button:'left',clickCount:1,...p});}
+app.whenReady().then(async()=>{
+ mark('ready');
+ server=createPortableServer({root,config:{id:'posts-test',version:'posts-v1',port:18777,entry:'/'},onMissing:url=>errors.push(url)});await server.listen();
+ w=new BrowserWindow({width:1920,height:1080,useContentSize:true,show:false,webPreferences:{sandbox:true,contextIsolation:true,offscreen:true,backgroundThrottling:false,partition:'posts-'+Date.now()}});
+ w.webContents.on('console-message',e=>{if(e.level===3||e.level==='error')errors.push(e.message);});await w.loadURL('about:blank');w.webContents.debugger.attach('1.3');await w.webContents.debugger.sendCommand('Emulation.setFocusEmulationEnabled',{enabled:true});
+ mark('loading');await Promise.race([w.loadURL('http://127.0.0.1:18777/webgl-v5/client.html?backend=local&view=game&interaction=posts&test=memory'),delay(30000).then(()=>{throw Error('load timeout')})]);mark('loaded');
+ await wait("document.documentElement.dataset.gameReady==='true'&&document.querySelector('#kdw-posts')?.dataset.ready==='true'&&document.querySelector('[data-spawn]')");await delay(1200);await shot('active');
+ const bounds=await js("(()=>{const p=document.querySelector('.route-phone').getBoundingClientRect(),a=document.querySelector('#arena'),scale=a.getBoundingClientRect().width/a.offsetWidth;return {left:p.left-(100+880+32)*scale,right:p.right+(100+880+32)*scale}})()");
+ const frames=[],seen=new Map(),removed=[];let prior=new Map(),nearPairs=0;
+ for(let n=0;n<240;n++){
+  const rows=await js("[...document.querySelectorAll('[data-spawn]')].map(b=>({id:b.dataset.spawn,lane:Number(b.dataset.lane),start:Number(b.dataset.start),post:b.dataset.post,...b.getBoundingClientRect().toJSON()}))");
+  for(const lane of [0,1])assert.ok(rows.filter(r=>r.lane===lane).length<=4);
+  for(const r of rows)assert.ok(r.left>=bounds.left-1&&r.right<=bounds.right+1,'card outside compact two-column band');
+  for(let i=0;i<rows.length;i++)for(let j=i+1;j<rows.length;j++){
+   assert.ok(Math.abs(rows[i].top-rows[j].top)>5,'synchronized vertical positions');
+   if(rows[i].lane===rows[j].lane&&Math.abs(rows[i].top-rows[j].top)<70&&rows[i].top>0&&rows[j].top>0&&rows[i].bottom<1080&&rows[j].bottom<1080){nearPairs++;if(nearPairs===1)await shot('near-parallel');}
+   assert.ok(rows[i].right<=rows[j].left||rows[j].right<=rows[i].left||rows[i].bottom<=rows[j].top||rows[j].bottom<=rows[i].top,'overlapping cards');
+  }
+  const current=new Map(rows.map(r=>[r.id,r]));for(const [id,r] of prior)if(!current.has(id)){removed.push(r);assert.ok(r.top>=1080-10,'card removed before leaving viewport');}
+  prior=current;for(const r of rows)seen.set(r.id,r);frames.push(rows);
+  if(n===90)await shot('stream-filled');if(n===210)await shot('stream-variety');await delay(100);
+ }
+ assert.ok(seen.size>12);assert.ok(removed.length>5);assert.ok(nearPairs>0,"no near-parallel neighbours seen");
+ const starts=[...seen.values()].map(r=>r.start).sort((a,b)=>a-b);assert.equal(new Set(starts).size,starts.length);
+ assert.ok(new Set(starts.slice(1).map((t,i)=>t-starts[i])).size>5);
+ fs.writeFileSync(path.join(report,'stream-frames.json'),JSON.stringify({bounds,nearPairs,frames,removed,starts}));
+ checks.push('compact two-column stream: near-parallel neighbours, narrow bounds, varied delays, at most four per side, no equal rows/overlaps, untouched cards exit below viewport');
+ assert.equal(await js("document.querySelector('[data-mission-timer]').textContent"),'--:--');
+ await click('[data-mission-timer]');await wait("/^0:5[0-9]$/.test(document.querySelector('[data-mission-timer]').textContent)");await shot('timer-running');
+ await click('[data-mission-timer]');await wait("document.querySelector('[data-mission-timer]').textContent==='--:--'");await shot('timer-off');
+ checks.push('native timer defaults to --:--; real pointer starts countdown and switches it off');
+ const scale=await js("document.querySelector('#arena').style.transform");
+ assert.equal(await js("document.querySelector('.route-phone').dataset.device"),'phone');assert.equal(await js("document.querySelectorAll('.route-phone').length"),1);
+ assert.equal(await js("getComputedStyle(document.querySelector('[data-object]')).visibility"),'hidden');assert.equal(await js("getComputedStyle(document.querySelector('.context-popup')).visibility"),'hidden');assert.equal(await js("getComputedStyle(document.querySelector('.client-action')).visibility"),'hidden');
+ const phone=await js("document.querySelector('.route-phone').getBoundingClientRect().toJSON()");assert.ok(Math.abs(phone.x+phone.width/2-960)<12);checks.push('same scene, one central phone, route icons and instruction hidden; no extra frame');
+ await wait("[...document.querySelectorAll('[data-spawn]')].some(b=>!b.disabled&&b.getBoundingClientRect().top>50&&b.getBoundingClientRect().bottom<1000)");
+ const id=await js("[...document.querySelectorAll('[data-spawn]')].find(b=>!b.disabled&&b.getBoundingClientRect().top>50&&b.getBoundingClientRect().bottom<1000).dataset.spawn");
+ await click(`[data-spawn="${id}"]`);await delay(120);await shot('flight');await wait(`document.querySelector('[data-published="${id}"]')`);await delay(700);
+ assert.equal(await js(`document.querySelectorAll('[data-published="${id}"]').length`),1);assert.equal(await js("document.querySelector('#arena').style.transform"),scale);checks.push('real pointer publishes once, updates audience and feed; projection unchanged');await shot('published');
+ w.setContentSize(1280,720);await delay(600);const centered=await js("(()=>{const r=document.querySelector('.route-phone').getBoundingClientRect();return Math.abs(r.x+r.width/2-innerWidth/2)})()");assert.ok(centered<12);await shot('resized');checks.push('resize retains central phone and active publication');
+ w.setContentSize(1920,1080);await delay(400);
+ const allowed="b=>!b.disabled&&b.getBoundingClientRect().top>50&&b.getBoundingClientRect().bottom<1000";
+ await wait(`[...document.querySelectorAll('[data-spawn]')].some(b=>(${allowed})(b)&&['spam','promise','unrelated'].includes(b.dataset.post))`);
+ const bad=await js(`[...document.querySelectorAll('[data-spawn]')].find(b=>(${allowed})(b)&&['spam','promise','unrelated'].includes(b.dataset.post)).dataset.spawn`);
+ const beforeBad=await js("document.querySelector('[data-post-audience]').textContent");await click(`[data-spawn="${bad}"]`);await wait(`document.querySelector('[data-published="${bad}"][data-good=false]')`);await delay(700);assert.notEqual(await js("document.querySelector('[data-post-audience]').textContent"),beforeBad);await shot('bad-post');checks.push('harmful publication receives dislike, audience loss and explanation');
+ for(let i=0;i<6;i++){
+  if(await js("!document.querySelector('[data-post-finish]').hidden"))break;
+  await wait(`!document.querySelector('[data-post-finish]').hidden||[...document.querySelectorAll('[data-spawn]')].some(b=>(${allowed})(b)&&!['spam','promise','unrelated'].includes(b.dataset.post))`);
+  if(await js("!document.querySelector('[data-post-finish]').hidden"))break;
+  const good=await js(`[...document.querySelectorAll('[data-spawn]')].find(b=>(${allowed})(b)&&!['spam','promise','unrelated'].includes(b.dataset.post)).dataset.spawn`);
+  await click(`[data-spawn="${good}"]`);await wait(`document.querySelector('[data-published="${good}"]')`);await delay(700);
+ }
+ await wait("!document.querySelector('[data-post-finish]').hidden&&!document.querySelector('[data-post-finish]').disabled");await shot('goal');assert.equal(await js("document.querySelector('#arena').style.transform"),scale);
+ assert.ok(await js("document.querySelector('.kdw-post-feed').scrollTop>0"));checks.push('good publications recover loss, grow audience and auto-scroll to goal without rescaling');
+ await click('[data-post-finish]');await wait("!document.documentElement.dataset.kdwPosts");await wait("document.querySelector('.journey-zone')?.dataset.revealPhase==='task'&&Number(document.querySelector('.journey-zone').dataset.contentPresence??1)>.97");assert.equal(await js("document.querySelectorAll('.kdw-post-flight').length"),0);assert.notEqual(await js("getComputedStyle(document.querySelector('[data-object]')).visibility"),'hidden');checks.push('completion restores regular mission icons and removes all flights');await shot('next-task');
+ await delay(1200);
+ await click('[data-object="business.channel"]');
+ await wait("document.documentElement.dataset.kdwScreen==='business.channel.create'");
+ await wait("document.querySelector('.journey-zone')?.dataset.revealPhase==='task'&&Number(document.querySelector('.journey-zone').dataset.contentPresence??1)>.97");
+ assert.equal(await js("document.querySelector('[data-mission-timer]').textContent"),'--:--');await shot('completed-task-restarted');
+ checks.push('clicking completed channel icon reopens its first screen with countdown off');
+ await click('[data-object="business.channel"]');await delay(1600);
+ assert.equal(await js("document.documentElement.dataset.kdwScreen"),'business.channel.create');
+ checks.push('clicking current task icon restarts it as well');
+ const fixture=JSON.parse(fs.readFileSync(path.resolve(root,'../../docs/verification-posts-20261020/test-save.json')));
+ await w.loadURL('http://127.0.0.1:18777/__kdw/health');await js(`localStorage.setItem(${JSON.stringify(fixture.key)},${JSON.stringify(JSON.stringify(fixture.entries))})`);
+ const durable='http://127.0.0.1:18777/webgl-v5/client.html?backend=local&view=game&session='+fixture.id;
+ await w.loadURL(durable);await wait("document.documentElement.dataset.idleMenuReady==='kdw-local-standby'");await click('[data-idle-mission=business]');
+ await wait("document.querySelector('#kdw-posts')?.dataset.ready==='true'&&document.querySelectorAll('[data-published]').length===1");
+ assert.equal(await js("document.documentElement.dataset.sessionStorage"),'indexeddb');
+ assert.equal(await js("document.querySelector('[data-post-audience]').textContent.match(/[0-9]/g).join('')"),String(fixture.expected.audience));
+ await wait(`[...document.querySelectorAll('[data-spawn]')].some(${allowed})`);const durableId=await js(`[...document.querySelectorAll('[data-spawn]')].find(${allowed}).dataset.spawn`);await click(`[data-spawn="${durableId}"]`);await wait("document.querySelectorAll('[data-published]').length===2");const audienceSaved=await js("document.querySelector('[data-post-audience]').textContent");
+ await w.loadURL(durable);await wait("document.documentElement.dataset.idleMenuReady==='kdw-local-standby'");await click('[data-idle-mission=business]');await wait("document.querySelector('#kdw-posts')?.dataset.ready==='true'&&document.querySelectorAll('[data-published]').length===2");assert.equal(await js("document.querySelector('[data-post-audience]').textContent"),audienceSaved);await shot('restored');checks.push('normal standby route restores accepted history through IndexedDB; real selection survives reload without duplicate audience');
+ assert.deepEqual(errors,[]);fs.writeFileSync(path.join(report,'checks.json'),JSON.stringify({passed:true,checks,errors},null,2));w.destroy();await server.close();app.exit(0);
+}).catch(async e=>{fs.writeFileSync(path.join(report,'checks.json'),JSON.stringify({passed:false,error:e.stack,checks,errors},null,2));if(w){await Promise.race([Promise.all([shot('failure'),js('document.documentElement.outerHTML').then(html=>fs.writeFileSync(path.join(report,'failure.html'),html))]),delay(3000)]);w.destroy();}if(server)await server.close();app.exit(1);});

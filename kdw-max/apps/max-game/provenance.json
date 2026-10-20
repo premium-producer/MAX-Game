@@ -3,7 +3,7 @@
   "sourceProject": "D:/job/production/FUTURONIKA/VK_DigitalProducts/artifacts/workspace/tasks/max-palm-wait-timer-20261007",
   "profile": "shared stand renderer and engine; portable local SessionPort/IndexedDB; no MASTER",
   "release": "MAX-PALM-WAIT-TIMER-20261007",
-  "bundleSha256": "23bf67dad8708624ba015c13719ebbb1fc71a35c8cef5b2f6fb23e4b84d91c94",
+  "bundleSha256": "77e5f152fbd41665879f8b59445e2bb34bcde6279418e57d6a7a3f65e8a4b82d",
   "changes": [
     "Upgrade from stale Oct 5 snapshot to verified installed Oct 7 renderer and authoritative task-clock core; 247 original build inputs verified",
     "Future icons remain unmounted until native handoff; completed task vector checks retained",
@@ -20,7 +20,8 @@
     "Business registration starts with a native vector choice of cafe, hotel or theater; ACT persists businessType before the existing login, retaining task timer and common scale. Strict historical receipt replay preserves pre-choice R9 saves; new starts and restarts use the new first screen.",
     "Replace three static histogram peaks with a broad curved travelling light ramp over the pixel lattice; stronger independent 8/16-second gradient orbits and colour drift on the existing bounded GPU clock. Foreground geometry and saved gameplay are unchanged.",
     "Correct the background to a true moving circular ramp in pixel coordinates. The same per-cell ramp controls both square half-size and emission; dark cells shrink to zero. Profile-scoped composite SDF replaces the fixed-size stamp and disables its mismatched fixed-size halo. Preserve dynamic gradient and the existing shared clock.",
-    "Use the unchanged installed native standby renderer: TV loop, MAX logo and four first-task glyphs. Local SELECT_MISSION uses the authoritative session, resumed tasks enter directly, one 4096px composition envelope prevents scale jumps; no default developer or alternate touch menu."
+    "Use the unchanged installed native standby renderer: TV loop, MAX logo and four first-task glyphs. Local SELECT_MISSION uses the authoritative session, resumed tasks enter directly, one 4096px composition envelope prevents scale jumps; no default developer or alternate touch menu.",
+    "Local posts P1: same mission scene, central phone, hidden route/copy/links, deterministic falling posts, authoritative atomic publication/audience, native scrolling feed and cancellable flight; three business banks, retained task clock, strict legacy receipt replay. Not deployed."
   ],
   "excluded": [
     "MASTER and role-host services",
@@ -28,7 +29,7 @@
     "Other MAX website sections and old game editions"
   ],
   "currentIteration": "KDW-MAX-R9-STAND-20261018",
-  "currentBundleSha256": "23bf67dad8708624ba015c13719ebbb1fc71a35c8cef5b2f6fb23e4b84d91c94",
+  "currentBundleSha256": "77e5f152fbd41665879f8b59445e2bb34bcde6279418e57d6a7a3f65e8a4b82d",
   "iterationChanges": [
     "Upgrade from stale Oct 5 snapshot to verified installed Oct 7 renderer and authoritative task-clock core; 247 original build inputs verified",
     "Future icons remain unmounted until native handoff; completed task vector checks retained",
@@ -45,7 +46,8 @@
     "Business registration starts with a native vector choice of cafe, hotel or theater; ACT persists businessType before the existing login, retaining task timer and common scale. Strict historical receipt replay preserves pre-choice R9 saves; new starts and restarts use the new first screen.",
     "Replace three static histogram peaks with a broad curved travelling light ramp over the pixel lattice; stronger independent 8/16-second gradient orbits and colour drift on the existing bounded GPU clock. Foreground geometry and saved gameplay are unchanged.",
     "Correct the background to a true moving circular ramp in pixel coordinates. The same per-cell ramp controls both square half-size and emission; dark cells shrink to zero. Profile-scoped composite SDF replaces the fixed-size stamp and disables its mismatched fixed-size halo. Preserve dynamic gradient and the existing shared clock.",
-    "Use the unchanged installed native standby renderer: TV loop, MAX logo and four first-task glyphs. Local SELECT_MISSION uses the authoritative session, resumed tasks enter directly, one 4096px composition envelope prevents scale jumps; no default developer or alternate touch menu."
+    "Use the unchanged installed native standby renderer: TV loop, MAX logo and four first-task glyphs. Local SELECT_MISSION uses the authoritative session, resumed tasks enter directly, one 4096px composition envelope prevents scale jumps; no default developer or alternate touch menu.",
+    "Local posts P1: same mission scene, central phone, hidden route/copy/links, deterministic falling posts, authoritative atomic publication/audience, native scrolling feed and cancellable flight; three business banks, retained task clock, strict legacy receipt replay. Not deployed."
   ],
   "interactionAsset": {
     "path": "assets/kdw-r7/catalog-reference.png",
@@ -93,5 +95,97 @@
     "deployment": "20261019T080842Z",
     "verification": "docs/verification-standby-20261019/"
   },
-  "standbyRevision": "KDW-MAX-NATIVE-STANDBY-20261019"
+  "standbyRevision": "KDW-MAX-NATIVE-STANDBY-20261019",
+  "localActivity": {
+    "id": "KDW-MAX-ACTIVITY-STAGE-RATING-20261020",
+    "date": "2026-10-20",
+    "bundleSha256": "aae261bb8aabbcd816388a0b8cb1f33fd2c5f0662c92b007bc7fbcae28f88549",
+    "screenId": "business.channel.result",
+    "published": false,
+    "preview": "http://127.0.0.1:18752/webgl-v5/client.html?backend=local&view=game&interaction=posts",
+    "sourceSvg": {
+      "path": "UI/new_screens/busines_channel/screen1.svg",
+      "sha256": "d32cee7d57d5f1f9157a774eefa3170c95ef68abc2ff557a429e9b8caa44b66b"
+    },
+    "verification": "docs/verification-activity-stage-20261020",
+    "schedule": "v6: all new posts right only; two columns, cap4 total, 600–1200ms stagger and10–18s travel. Versions1–5 replay unchanged.",
+    "trails": "Bright blue/violet grid cells behind falling cards, tapered wake and fading persistence; one bounded Canvas2D driven by activity clock, no input capture, reduced motion off, no new assets.",
+    "composition": "Shared native device projection, left icons/links/timer retained. Reference copy fades out completely in DOM/GPU; both overlays follow native opacity and fade out280ms."
+  },
+  "localDevelopment": {
+    "id": "KDW-MAX-DEV-SKIP-20261020",
+    "date": "2026-10-20",
+    "bundleSha256": "01f20a6876e26c172ec9598ddd2de7e5f3aa99249d770c7262a27851d420cdf8",
+    "published": false,
+    "verification": "docs/verification-task-skip-20261020",
+    "default": "loopback browser and Electron; separate webgl-v5-development session",
+    "timer": "off by default; click enables a fresh 60s budget, click again disables expiration",
+    "restart": "visible current/completed task icon restarts that task; other completed tasks retained",
+    "skip": "Current icon has a separate Skip button; authoritative SKIP_TASK records skipped/finished, enters next task, preserves timer mode and supports replay/restart. Hidden during posts/menu and disabled outside local development."
+  },
+  "localStartupFix": {
+    "id": "KDW-MAX-PREVIEW-FOCUS-20261020",
+    "bundleSha256": "d073b20437bc4c9d6e77107dffa1b93b82a38372bedc845492c91a572c476e48",
+    "published": false,
+    "verification": "docs/verification-game-startup-20261020",
+    "reason": "Isolated preview bootstrap retains temporary input ownership until preparation completes; prevents blur/focus recovery deadlock before renderer startup. Normal runtime focus policy retained."
+  },
+  "localStoreActivity": {
+    "id": "KDW-MAX-ACTIVITY-STAGE-RATING-20261020",
+    "published": false,
+    "version": 1,
+    "bundleSha256": "aae261bb8aabbcd816388a0b8cb1f33fd2c5f0662c92b007bc7fbcae28f88549",
+    "verification": "docs/verification-activity-stage-20261020",
+    "rules": "Right-only falling products; accepted picks append and autoscroll; correct5, incorrect3; mean of last10 scores initialized with4s, goal>=4.9. START_STORE/PICK_PRODUCT authoritative and durable; no slot selection."
+  },
+  "localStoreEntry": {
+    "iteration": "KDW-MAX-STORE-ENTRY-20261020",
+    "bundleSha256": "2fcfc28e03386b6a171d88b614c83c7d12d7984a2b7feda870f5922bd9ae3b73",
+    "changes": [
+      "Prepare native catalogue during device entrance; start once from live authoritative session snapshot",
+      "Visible local game continues on blur; hidden tab pauses, server owner policy unchanged",
+      "Reserve accepted destination before commit and reveal content only after flight landing"
+    ],
+    "verification": "docs/verification-store-entry-20261020/README.md",
+    "deployed": false
+  },
+  "localStoreIcons": {
+    "iteration": "KDW-MAX-STORE-ICONS-20261020",
+    "bundleSha256": "77e5f152fbd41665879f8b59445e2bb34bcde6279418e57d6a7a3f65e8a4b82d",
+    "changes": [
+      "Capture source glyph screen font before detachment, interpolate toward live slot font, retain grid centering and clip flight content"
+    ],
+    "verification": "docs/verification-store-icons-20261020/README.md",
+    "deployed": false
+  },
+  "localCardSurfaces": {
+    "iteration": "KDW-MAX-CARD-SURFACES-20261020",
+    "cssSha256": "8c0d5bdb05bf4b373a20c627f5acd7372f4f7126d81b0249d6d09bbf3d5515f3",
+    "changes": [
+      "Opaque MAX dark surfaces and Max Sans; larger game-specific radii and photo insets",
+      "No ordinary/hover hairline borders; soft shadows, retained keyboard focus",
+      "Same treatment for products, posts, catalogue slots and product flights"
+    ],
+    "verification": "docs/verification-card-surfaces-20261020/README.md",
+    "deployed": false
+  },
+  "localStoreGlow": {
+    "iteration": "KDW-MAX-STORE-GLOW-20261020",
+    "cssSha256": "0b26d45c33eccb84b84d9e038bbe5a449d7615f9a7782e85ecde867508e20d54",
+    "changes": [
+      "Restore cyan/violet soft glow on product flights, receiving and filled catalogue cells; keep opaque surfaces and borderless geometry"
+    ],
+    "verification": "docs/verification-store-glow-20261020/README.md",
+    "deployed": false
+  },
+  "localStoreHandoff": {
+    "iteration": "KDW-MAX-STORE-HANDOFF-20261020",
+    "bundleSha256": "33de33c1eec4e1f799d68ec860adf5e1afe32d81a492ed75de8edde45ef0233d",
+    "cssSha256": "936d93b8fc41d82e2334198320bd99ca80af1af55eec75cd40b910ae5081939b",
+    "changes": [
+      "Synchronous opaque photo handoff before awaiting authority; fade caption shell for 180ms; commit starts flight; reject/teardown clean up visual reservation"
+    ],
+    "verification": "docs/verification-store-handoff-20261020/README.md",
+    "deployed": false
+  }
 }

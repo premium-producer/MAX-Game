@@ -1,3 +1,4 @@
+import {storeTimeline,storeGoal,storeRating,storeElapsed} from '../src/kdw-store-rating.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -5,22 +6,45 @@ import {createKdwCatalog,emptyInteraction,keyboardEdit,placeProduct} from '../sr
 import {createMissionModel,dispatchMissionCommand,restoreMissionModel} from '../src/core/mission-core.mjs';
 import {createMissionSessionApplication} from '../src/application/mission-session.mjs';
 import {createMemoryPersistencePort} from '../src/application/memory-persistence.mjs';
+import {POSTS_SCREEN,POSTS_RULES,postSpawn,postsGoal} from '../src/kdw-posts-model.mjs';
 const base=JSON.parse(fs.readFileSync(new URL('../src/reviewed-content/mission-catalog.json',import.meta.url)));
 const catalog=createKdwCatalog(base);
 function driver(c=catalog,rulesRevision='mission-rules-task-clock-v2'){
  let model=createMissionModel(c,{sessionId:'test',rulesRevision}),serial=0,now=1000000;
  function act(type,fields={},internal=false){const command={schemaVersion:1,type,commandId:'test.'+(++serial),sessionId:'test',contentRevision:c.contentRevision,expectedRevision:model.state.revision,...fields};const result=dispatchMissionCommand(c,model,command,{now:now++,internal});if(result.reply.ok)model=result.model;return {...result,command};}
+ function postsRound(){
+  if(!c.kdwPostsActivity||model.state.screenId!==POSTS_SCREEN)return;
+  const fields={taskId:'business.channel',screenId:POSTS_SCREEN};
+  if(!model.state.progress.business.postsActivity)assert.equal(act('START_POSTS',fields).reply.ok,true);
+  for(let i=0;i<8&&!postsGoal(model.state.progress.business.postsActivity);i++){
+   const p=model.state.progress.business.postsActivity,spawn=postSpawn(p,i);if(!spawn.post.good)continue;
+   const elapsed=p.startRemainingMs-(model.state.deadlineAt-now);if(elapsed<spawn.start)now+=spawn.start-elapsed;
+   assert.equal(act('PUBLISH_POST',{...fields,spawnId:spawn.spawnId}).reply.ok,true);
+  }
+  assert.equal(postsGoal(model.state.progress.business.postsActivity),true);
+ }
+ function storeRound(){
+  const fields={taskId:'business.store',screenId:'business.store.start'};
+  if(!model.state.progress.business.storeActivity)assert.equal(act('START_STORE',fields).reply.ok,true);
+  for(let i=0;i<40&&!storeGoal(model.state.progress.business.storeActivity);i++){
+   const activity=model.state.progress.business.storeActivity,elapsed=storeElapsed(activity,model.state,now),timeline=storeTimeline(activity);
+   const spawn=timeline.at(elapsed).find(s=>s.post.good);
+   if(!spawn){now+=1000;continue;}
+   assert.equal(act('PICK_PRODUCT',{...fields,spawnId:spawn.spawnId}).reply.ok,true);
+  }
+  assert.ok(storeGoal(model.state.progress.business.storeActivity));
+ }
  function reach(missionId,screenId){
   assert.equal(act('OWNER_CHANGED',{active:true},true).reply.ok,true);act('SELECT_MISSION',{missionId});act('HOLD_CONFIRMED',{},true);
   for(let i=0;i<150&&model.state.screenId!==screenId;i++){
    const s=model.state;if(s.status==='result'){now+=1000;assert.equal(act('ADVANCE_RESULT').reply.ok,true);continue;}
-   const screen=c.tasks[s.taskId].screens[s.screenId],action=screen.actions.find(a=>a.outcome.kind!=='incorrect'&&a.outcome.screenId!==s.screenId);
+   postsRound();const screen=c.tasks[s.taskId].screens[s.screenId],action=screen.actions.find(a=>a.outcome.kind!=='incorrect'&&a.outcome.screenId!==s.screenId);
    assert.ok(action,`${s.taskId}/${s.screenId}`);if(screen.automaticMs!==null)now+=screen.automaticMs;
    assert.equal(act(screen.automaticMs!==null?'AUTO_SCREEN':'ACT',{taskId:s.taskId,screenId:s.screenId,actionId:action.actionId},screen.automaticMs!==null).reply.ok,true);
   }
   assert.equal(model.state.screenId,screenId);
  }
- return {act,reach,advance(ms){now+=ms;},get model(){return model;},get now(){return now;}};
+ return {act,reach,postsRound,storeRound,advance(ms){now+=ms;},get model(){return model;},get now(){return now;}};
 }
 test('real channel input required; commands preserve draft through creation and replay',()=>{
  const d=driver();d.reach('blogger','blogger.channel.name');
@@ -42,8 +66,8 @@ test('empty/invalid channel name cannot advance; stale and oversized edits rejec
  assert.equal(d.act('SAVE_INTERACTION',{taskId:'business.store',screenId:'business.store.start',value:emptyInteraction('store')}).reply.code,'WRONG_CONTEXT');
  d.act('RETURN_MENU');assert.equal(save({...emptyInteraction('channel'),name:'Поздний ответ'}).reply.code,'INTERACTION_UNAVAILABLE');
 });
-test('store uses actual selections, prevents empty publish and duplicate/unknown products',()=>{
- const d=driver();d.reach('business','business.store.start');
+test('legacy store selections still validate and replay under the new catalog',()=>{
+ const d=driver({...catalog,kdwStoreActivity:false});d.reach('business','business.store.start');
  assert.equal(d.act('ACT',{screenId:'business.store.start',actionId:'business.store.start.continue'}).reply.code,'STORE_PRODUCT_REQUIRED');
  const save=value=>d.act('SAVE_INTERACTION',{taskId:'business.store',screenId:'business.store.start',value});
  assert.equal(save({slots:['unknown',null,null,null,null,null]}).reply.code,'INVALID_INTERACTION');
@@ -89,7 +113,7 @@ test('business registration begins with three explicit choices; every choice per
 });
 
 test('old accepted business receipts restore; a restarted run requires the new choice and mixed history remains valid',()=>{
- const previous=structuredClone(catalog);delete previous.tasks['business.platform'].screens['business.platform.business-type'];previous.tasks['business.platform'].startScreenId='business.platform.login';delete previous.kdwBusinessChoice;
+ const previous=structuredClone(catalog);previous.kdwPostsActivity=null;delete previous.tasks['business.platform'].screens['business.platform.business-type'];previous.tasks['business.platform'].startScreenId='business.platform.login';delete previous.kdwBusinessChoice;
  const d=driver(previous);d.reach('business','business.store.start');const old=JSON.parse(JSON.stringify(d.model));
  const restored=restoreMissionModel(catalog,old);assert.equal(restored.ok,true);assert.deepEqual(restored.model,old);
  let model=restored.model;let now=d.now+1;
@@ -122,8 +146,9 @@ test('all four stand missions and all fifteen tasks complete through the local a
    const s=d.model.state;
    if(s.status==='result'){d.advance(3000);assert.equal(d.act('ADVANCE_RESULT').reply.ok,true);continue;}
    assert.equal(s.status,'task');
+   d.postsRound();
    if(s.screenId==='blogger.channel.name')assert.equal(d.act('SAVE_INTERACTION',{taskId:s.taskId,screenId:s.screenId,value:{name:'Канал MAX',description:'Проверка стендовой базы',avatar:'cat'}}).reply.ok,true);
-   if(s.screenId==='business.store.start')assert.equal(d.act('SAVE_INTERACTION',{taskId:s.taskId,screenId:s.screenId,value:{slots:['ethiopia',null,null,null,null,null]}}).reply.ok,true);
+   if(s.screenId==='business.store.start')d.storeRound();
    const screens=catalog.tasks[s.taskId].screens,screen=screens[s.screenId],queue=[{id:s.screenId,first:null}],seen=new Set();let action;
    while(queue.length&&!action){const node=queue.shift();if(seen.has(node.id))continue;seen.add(node.id);for(const candidate of screens[node.id].actions){if(candidate.outcome.kind==='incorrect')continue;const first=node.first??candidate;if(candidate.outcome.kind!=='navigate'){action=first;break;}queue.push({id:candidate.outcome.screenId,first});}}
    assert.ok(action,s.screenId);if(screen.automaticMs!==null)d.advance(screen.automaticMs);
@@ -132,4 +157,19 @@ test('all four stand missions and all fifteen tasks complete through the local a
   assert.equal(d.model.state.status,'completed',mission.missionId);assert.deepEqual(d.model.state.progress[mission.missionId].completed,mission.taskIds);total+=mission.taskIds.length;
  }
  assert.equal(total,15);
+});
+
+test('rated store rejects early completion, scores wrong goods below four, recovers to4.9 and replays',async()=>{
+ const d=driver();d.reach('business','business.store.start');const fields={taskId:'business.store',screenId:'business.store.start'},action={screenId:fields.screenId,actionId:fields.screenId+'.continue'};
+ assert.equal(d.act('ACT',action).reply.code,'STORE_RATING_REQUIRED');
+ assert.equal(d.act('START_STORE',fields).reply.ok,true);assert.equal(storeRating(d.model.state.progress.business.storeActivity),4);
+ let bad;for(let i=0;i<30&&!bad;i++){const a=d.model.state.progress.business.storeActivity;bad=storeTimeline(a).at(storeElapsed(a,d.model.state,d.now)).find(s=>!s.post.good);if(!bad)d.advance(1000);}
+ assert.ok(bad);assert.equal(d.act('PICK_PRODUCT',{...fields,spawnId:bad.spawnId}).reply.ok,true);assert.equal(storeRating(d.model.state.progress.business.storeActivity),3.9);
+ assert.equal(d.act('PICK_PRODUCT',{...fields,spawnId:bad.spawnId}).reply.code,'PRODUCT_ALREADY_ADDED');assert.equal(d.act('PICK_PRODUCT',{...fields,spawnId:'999.99999999'}).reply.code,'PRODUCT_NOT_AVAILABLE');
+ assert.equal(d.act('ACT',action).reply.code,'STORE_RATING_REQUIRED');d.storeRound();const a=d.model.state.progress.business.storeActivity;assert.ok(storeRating(a)>=4.9);assert.ok(a.published.some(r=>r.score===3)&&a.published.some(r=>r.score===5));
+ assert.equal(restoreMissionModel(catalog,structuredClone(d.model)).ok,true);
+ const persistence=createMemoryPersistencePort();await persistence.create('test',{schemaVersion:2,mission:d.model,layouts:{layoutRevision:0,positions:{},receipts:[]},clockCheckpointAt:d.now});
+ const app=createMissionSessionApplication({catalog,persistence,now:()=>d.now+1000});assert.deepEqual((await app.getSnapshot('test')).state.progress.business.storeActivity.published,a.published);await app.close();
+ const reopened=createMissionSessionApplication({catalog,persistence,now:()=>d.now+2000});assert.equal(storeRating((await reopened.getSnapshot('test')).state.progress.business.storeActivity),storeRating(a));await reopened.close();
+ assert.equal(d.act('ACT',action).reply.ok,true);
 });

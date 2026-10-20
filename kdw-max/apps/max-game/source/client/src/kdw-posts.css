@@ -1,0 +1,52 @@
+#kdw-posts{position:fixed;inset:0;z-index:101;pointer-events:none;overflow:hidden;color:#fff;font-family:'Max Sans',sans-serif}
+#kdw-posts[hidden],#kdw-posts [hidden]{display:none!important}
+#kdw-posts *{box-sizing:border-box}
+#kdw-posts button{font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+#kdw-posts button:focus-visible{outline:4px solid #32c8ff;outline-offset:4px}
+.kdw-post-phone{position:absolute;width:390px;transform-origin:0 0;display:flex;flex-direction:column;background:#19191f;border-radius:28px;overflow:hidden;pointer-events:auto;box-shadow:inset 0 0 0 1px #ffffff0a}
+.kdw-post-status{padding:14px 20px 8px;font-size:15px;display:flex;justify-content:space-between;flex-shrink:0}
+.kdw-post-status span{margin-left:auto}
+.kdw-post-phone header{display:flex;gap:12px;align-items:center;padding:14px 16px 18px;border-bottom:1px solid #ffffff12;flex-shrink:0}
+.kdw-post-avatar{background:linear-gradient(140deg,#6942ff,#00bbff);width:50px;height:50px;display:grid;place-items:center;font-size:30px;border-radius:50%}
+.kdw-post-phone header strong{font-size:23px;font-weight:600}.kdw-post-phone header b{color:#278fff;font-size:13px}
+.kdw-post-phone header small{display:block;color:#aba6b9;font-size:16px;margin-top:5px}
+.kdw-post-phone header i{margin-left:auto;font-size:25px;font-style:normal}
+.kdw-post-feed{flex:1;overflow:auto;overscroll-behavior:contain;touch-action:pan-y;padding:12px 10px 18px;scrollbar-width:thin;scrollbar-color:#7f57d3 transparent;min-height:0}
+.kdw-post-empty{margin:130px 10px;text-align:center;font-size:20px;line-height:1.6;color:#a6a0b8}.kdw-post-empty strong{font-weight:500;color:#eee}
+.kdw-feed-post{margin:0 18px 16px 0;border-radius:24px;background:var(--kdw-card-raised);overflow:hidden}
+.kdw-feed-photo{height:200px;background:#272231;overflow:hidden}.kdw-feed-photo img,.kdw-fall-photo img,.kdw-post-flight img{width:100%;height:100%;object-fit:cover;display:block}
+.kdw-feed-post[data-arriving] .kdw-feed-photo{opacity:.15}.kdw-feed-copy{padding:14px}.kdw-feed-copy strong{font-size:22px;font-weight:500}
+.kdw-feed-copy p{font-size:19px;line-height:1.35;margin:10px 0 14px;color:#e1dce9}
+.kdw-feed-reaction{display:inline-flex;align-items:center;gap:7px;background:#675b82;border-radius:22px;padding:7px 13px;font-size:18px;color:#d0b2ff}
+.kdw-feed-reaction svg{width:21px;height:21px}.kdw-feed-post[data-good=false] .kdw-feed-reaction{color:#ff9cbe;background:#633e55}
+.kdw-feed-copy small{display:block;color:#a6eddc;font-size:16px;margin-top:9px}.kdw-feed-post[data-good=false] small{color:#ffa0bb}
+.kdw-post-phone footer{padding:16px 18px 14px;border-top:1px solid #ffffff12;flex-shrink:0;background:#212027}
+.kdw-post-goal{display:flex;justify-content:space-between;font-size:17px;color:#c1b9d0}.kdw-post-goal strong{font-weight:500;color:#f8f5ff}
+.kdw-post-progress{height:6px;border-radius:8px;background:#42334e;margin-top:12px;overflow:hidden}.kdw-post-progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,#933cff,#25c2ff);transition:width .35s ease}
+.kdw-post-phone footer p{font-size:16px;margin:12px 0 0;color:#bbb1cf;text-align:center}.kdw-post-phone [data-post-error]{color:#ffc5d8}
+.kdw-post-phone footer button,.kdw-post-new{border:0;border-radius:18px;background:linear-gradient(110deg,#8e23ff,#168ef2);color:#fff;padding:15px 14px;width:100%;font-size:20px;margin-top:14px;pointer-events:auto}
+.kdw-post-new{font-size:16px;margin:0;padding:8px;flex-shrink:0}.kdw-post-home{height:4px;width:100px;border-radius:8px;background:#eee;display:block;align-self:center;margin:9px;flex-shrink:0}
+.kdw-post-cards{position:absolute;inset:0;pointer-events:none}
+.kdw-post-trails{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.kdw-post-phone{z-index:1}.kdw-post-cards{z-index:2}.kdw-post-notice{z-index:3}
+.kdw-falling-post{position:absolute;left:0;top:0;border:0;border-radius:40em;overflow:hidden;isolation:isolate;padding:12em 12em 18em;background:var(--kdw-card-surface);color:var(--max-white,#fff);text-align:left;pointer-events:auto;touch-action:none;box-shadow:0 16em 48em #0d001a80;will-change:transform}
+.kdw-falling-post:hover{box-shadow:0 16em 48em #0d001a80,0 0 44em #6e1aff66}
+.kdw-falling-post:disabled{cursor:default}.kdw-falling-post[data-pending]{filter:brightness(.85)}
+.kdw-fall-photo{height:220em;display:block;overflow:hidden;border-radius:28em}.kdw-fall-title{display:block;font-size:30em;line-height:1.2;font-weight:600;margin:calc(var(--u)*20) calc(var(--u)*16) calc(var(--u)*10)}
+.kdw-fall-body{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:23em;line-height:1.25;margin:0 calc(var(--u)*20) calc(var(--u)*14);color:#e4d7ee}
+.kdw-fall-reactions{display:flex;align-items:center;gap:calc(var(--u)*12);font-size:27em;padding:0 calc(var(--u)*20) calc(var(--u)*17);color:#d6b8ff}.kdw-fall-reactions span{font-size:.65em;color:#c2acdf}
+.kdw-post-art{display:grid;place-items:center;width:100%;height:100%;background:radial-gradient(ellipse at 70% 20%,#67b2e8,#362e74 75%)}
+.kdw-post-art[data-theme=theater]{background:radial-gradient(ellipse at 70% 20%,#c26097,#532659 75%)}.kdw-post-art svg{width:65%;height:65%;fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.kdw-post-flight{position:fixed;z-index:3;border-radius:16px;overflow:hidden;pointer-events:none;box-shadow:0 0 36px #a349ff88}
+.kdw-post-notice{position:absolute;left:50%;bottom:3%;transform:translateX(-50%);max-width:80vw;min-width:20px;padding:10px 18px;border-radius:18px;background:#17112bd9;color:#a6f2db;text-align:center;font-size:16px;pointer-events:none}
+.kdw-post-notice:empty{display:none}.kdw-post-notice[data-good=false]{color:#ffb1cb}
+@media(prefers-reduced-motion:reduce){.kdw-post-progress i{transition:none}.kdw-falling-post{will-change:auto}}
+@media(prefers-reduced-motion:reduce){.kdw-post-trails{display:none}}
+
+/* One route for both activities: only the reference copy yields its space. */
+html[data-kdw-posts=active] .context-popup,html[data-kdw-posts=active] .guided-caption,html[data-kdw-interaction=store] .context-popup,html[data-kdw-interaction=store] .guided-caption{opacity:0!important;pointer-events:none!important}
+html[data-kdw-posts=active] .route-phone .client-actions{visibility:hidden!important;pointer-events:none!important}
+.context-popup,.guided-caption{transition:opacity .28s ease}
+.kdw-post-phone,.kdw-post-cards,.kdw-post-trails,.kdw-store-editor,.kdw-product-stream{transition:opacity .28s ease}
+[data-activity-ghost], [data-activity-ghost] *{pointer-events:none!important}
+@media(prefers-reduced-motion:reduce){.kdw-post-phone,.kdw-post-cards,.kdw-post-trails,.kdw-store-editor,.kdw-product-stream,.context-popup,.guided-caption{transition:none!important}}

@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "checks": [
+    "same scene, one central phone, route icons and instruction hidden; no extra frame",
+    "real pointer publishes once, updates audience and feed; projection unchanged",
+    "resize retains central phone and active publication",
+    "harmful publication receives dislike, audience loss and explanation",
+    "good publications recover loss, grow audience and auto-scroll to goal without rescaling",
+    "completion restores regular mission icons and removes all flights",
+    "normal standby route restores accepted history through IndexedDB; real selection survives reload without duplicate audience"
+  ],
+  "errors": []
+}

@@ -1,4 +1,6 @@
 import {mountKdwInteractions} from './kdw-interactions.mjs';
+import {mountTaskSkip} from './kdw-task-skip.mjs';
+import {mountPostActivity} from './kdw-posts.mjs';
 import {CalmLinkMotion,CALM_LINK_STYLE} from './kdw-link-motion.mjs';
 import {prepareInteractionPreview} from './kdw-preview.mjs';
 import {createMemoryPersistencePort} from './application/memory-persistence.mjs';
@@ -89,17 +91,21 @@ const deviceLinkStyle=calmLinks?routeLinkStyle:bfmVisual?{...LINE_LINK_STYLE,...
 if((referenceVisual||bfmVisual)&&!params.has('backend'))params.set('backend','local');
 const referenceTile=referenceVisual?REFERENCE_UI.tile:GUIDED_ICON_SIZE;
 const sharedBackend=revealMode&&['local','server'].includes(params.get('backend'));
-const interactionPreview=['channel','store'].includes(params.get('interaction'))?params.get('interaction'):null;
+const interactionPreview=['channel','store','posts'].includes(params.get('interaction'))?params.get('interaction'):null;
+let preparingInteractionPreview=!!interactionPreview;
 const portable=params.get('backend')!=='server';
 const standPresentation=portable&&bfmVisual&&params.get('debug')!=='1';
+const localDevelopment=portable&&params.get('dev')!=='0'&&(params.get('dev')==='1'||['127.0.0.1','localhost','[::1]'].includes(location.hostname));
+if(localDevelopment)document.documentElement.dataset.kdwDevelopment='true';
 const kdwInteractions=mountKdwInteractions({getSession:()=>sharedSession,onMenu:()=>navigate()});
+const kdwPosts=mountPostActivity({getSession:()=>sharedSession});
 let standBrowser;
 const localAdmission=new LocalStandAdmission({active:()=>inputActive()});
 let sharedSession,v5Tools,missionContinuation,continuationContext,automaticPresentation=null,automaticRoutes=null,showScreenDelayMs=1000;
 const localRecovery=bfmVisual&&sharedBackend&&!service&&params.get('backend')==='local';
 let recoveryBlocked=localRecovery,recoveryChoice=null,windowFocused=document.hasFocus();
 const presentationActive=()=>!document.hidden&&!servicePaused&&(!managedShell||managedVisible&&(!!idleMenu||!!independent||!!controller&&sharedSession?.snapshot?.assignment?.lifecycle.status==='active'));
-const inputActive=()=>!independent&&!mobileWall&&!host.querySelector('.v5-mission-qr')&&presentationActive()&&!recoveryBlocked&&!document.hidden&&!servicePaused&&(!localRecovery||windowFocused||interactionPreview||params.get('test')==='memory');
+const inputActive=()=>!independent&&!mobileWall&&!host.querySelector('.v5-mission-qr')&&presentationActive()&&!recoveryBlocked&&!document.hidden&&!servicePaused&&(portable||!localRecovery||windowFocused);
 let startupAssets,startupPlan;
 const adjustableIcons=revealMode&&!service;
 const host=document.createElement('section');host.className='circle journey-zone guided-zone';host.dataset.zone='0';root.append(host);
@@ -169,12 +175,12 @@ function updateTargets(){
  if(bfmVisual){const logo=host.querySelector('.v5-startup-screen [data-task-content]');if(logo)logo.dataset.pathPresence=String(controller.startupContentPresence);}
  const scan=host.querySelector('[data-palm]');if(scan)placeElement(scan,revealMode?{worldX:referenceVisual?566:host.clientWidth/2,worldY:0}:{worldX:(controller.nodes[0]?.worldX||0)+320,worldY:controller.nodes[0]?.worldY||0},true);
  if(inlinePhone){
-  const phone=host.querySelector('.route-phone');if(phone){const metrics=deviceMetrics(),centerY=host.clientHeight/2+phoneY.value;if(bfmVisual){setStyleValue(phone,'width',`${metrics.width}px`);setStyleValue(phone,'height',`${metrics.height}px`);}setStyleValue(phone,'left',`${phoneX.value-layoutCamera()-metrics.width/2}px`);setStyleValue(phone,'top',`${centerY-metrics.height/2}px`);host.style.setProperty('--guided-device-center-y',`${centerY}px`);host.style.setProperty('--kdw-store-copy-left',`${phoneX.value-layoutCamera()-metrics.width/2-768}px`);phone.dataset.pathPresence=String(phonePresence.value);phone.inert=phonePresence.value<.05||bfmVisual&&!!controller.startup;
+  const phone=host.querySelector('.route-phone');if(phone){const metrics=deviceMetrics(),centerY=host.clientHeight/2+phoneY.value;if(bfmVisual){setStyleValue(phone,'width',`${metrics.width}px`);setStyleValue(phone,'height',`${metrics.height}px`);}setStyleValue(phone,'left',`${phoneX.value-layoutCamera()-metrics.width/2}px`);setStyleValue(phone,'top',`${centerY-metrics.height/2}px`);host.style.setProperty('--guided-device-center-y',`${centerY}px`);phone.dataset.pathPresence=String(phonePresence.value);phone.inert=phonePresence.value<.05||bfmVisual&&!!controller.startup;
    const timer=host.querySelector('[data-mission-timer]');if(timer){const r=v5DeviceTimerRect({left:phoneX.value-layoutCamera()-metrics.width/2,top:centerY-metrics.height/2},controller.nodeWidth??240,portable&&params.get('view')!=='wall'?BROWSER_ROUTE_GAP:REVEAL_ELEMENT_GAP);setStyleValue(timer,'left',`${r.left}px`);setStyleValue(timer,'top',`${r.top}px`);timer.dataset.pathPresence=String(phonePresence.value*(controller.snapshot?.state.scanned===false?0:1));}
   }
   const next=host.querySelector('[data-line-next]');if(next&&controller.continuation)placeElement(next,{...controller.continuation,step:'route-add:line-next'});
  }
- kdwInteractions.align();
+ kdwInteractions.align();kdwPosts.align();
 }
 function updateScanWaitDisplays(delta=0){
  if(!bfmVisual)return;
@@ -227,7 +233,7 @@ function render(preserveTransition=false){
   if(s.screen!=='field'){
    host.innerHTML=`<header class="zone-header"><div><h1>Открой возможности MAX</h1><p>Выбери миссию</p></div>${resetPrompt?'':button('Обнулить миссии','data-reset-progress')}</header>${resetPrompt?`<section class="guided-reset-panel reset-popup" role="dialog" aria-label="Обнулить миссии?"><h2>Обнулить миссии?</h2><p>Задания, ответы и положения иконок этой версии игры будут сброшены.</p>${button('Да, обнулить','data-confirm-reset-progress')}${button('Отмена','data-cancel-reset-progress','primary')}</section>`:`<div class="mission-choices">${content.missions.map(m=>`<button class="mission-card glass-control" data-mission="${m.id}">${bfmVisual?v5IconTile(MISSION_CATALOG,m.id,96,'medallion'):`<span class="medallion">${icon(m.id)}</span>`}<span><strong>${v5CopyMarkup(m.title)}</strong><small>${v5CopyMarkup(m.description)}</small>${sharedBackend?`<small class="media-coverage ${m.missing.length?'media-incomplete':'media-complete'}">${m.missing.length?'Есть заглушки':'Без заглушек'}</small>`:coverageMarkup(m)}</span><span class="card-state">${s.completed.includes(m.id)?'✓':'↗'}</span></button>`).join('')}</div>`}`;
   }else{
-   host.innerHTML=`<div class="playfield guided-field"></div><nav class="guided-nav">${revealMode?`${bfmVisual?'':button(revealTimerLabel(controller.secondsLeft),'data-menu data-mission-timer aria-label="Вернуться к миссиям"')}<button class="pill guided-restart" data-restart-mission aria-label="Начать миссию заново">${bfmVisual?v5IconImage(MISSION_CATALOG,'restart'):`<svg class="glyph" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M50 18V7l-7 7A24 24 0 1 0 56 36h-8a16 16 0 1 1-10-15l-9 9h27V18Z"/></svg>`}</button>`:`${button('← К миссиям','data-menu')}${button('К текущему шагу','data-focus')}`}</nav>${bfmVisual&&revealMode?`<div class="v5-device-timer" data-mission-timer data-path-presence="0" role="timer" aria-live="off" aria-label="Оставшееся время миссии">${revealTimerLabel(controller.secondsLeft)}</div>`:''}<p class="guided-caption" role="status"></p>`;
+   host.innerHTML=`<div class="playfield guided-field"></div><nav class="guided-nav">${revealMode?`${bfmVisual?'':button((localDevelopment&&controller.snapshot?.state.devTimerEnabled!==true?'--:--':revealTimerLabel(controller.secondsLeft)),'data-menu data-mission-timer aria-label="Вернуться к миссиям"')}<button class="pill guided-restart" data-restart-mission aria-label="Начать миссию заново">${bfmVisual?v5IconImage(MISSION_CATALOG,'restart'):`<svg class="glyph" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M50 18V7l-7 7A24 24 0 1 0 56 36h-8a16 16 0 1 1-10-15l-9 9h27V18Z"/></svg>`}</button>`:`${button('← К миссиям','data-menu')}${button('К текущему шагу','data-focus')}`}</nav>${bfmVisual&&revealMode?`<${localDevelopment?'button':'div'} class="v5-device-timer" data-mission-timer data-path-presence="0" role="timer" aria-live="off" aria-label="Таймер задания">${(localDevelopment&&controller.snapshot?.state.devTimerEnabled!==true?'--:--':revealTimerLabel(controller.secondsLeft))}</${localDevelopment?'button':'div'}>`:''}<p class="guided-caption" role="status"></p>`;
    focusCurrent(true);
   }
   foreground?.invalidate();
@@ -527,8 +533,20 @@ function markQrPresented(active){
   .catch(error=>{if(generation===bindingGeneration){qrRetryAt=performance.now()+1000;console.error('MAX QR presented',error);}})
   .finally(()=>{if(generation===bindingGeneration)qrReadyPending=false;});
 }
+const taskSkip=mountTaskSkip({host,onSkip:async taskId=>{
+ if(!localDevelopment||!inputActive()||sharedSession.busy)return;
+ try{
+  await kdwInteractions.flush();
+  const result=await sharedSession.command('SKIP_TASK',{taskId});
+  if(!result?.reply.ok){feedback('Не удалось пропустить задание');return;}
+  cancelGesture();screenEpoch++;answerPending=false;pendingResume=null;phonePending='';foreground?.cancelContent(host);
+  popupPage=0;if(controller.phase==='paused')controller.resume(controller.activeId);focusCurrent();render();
+ }catch(error){feedback('Не удалось сохранить пропуск. Попробуйте ещё раз.');}
+}});
 function tick(delta){
+ taskSkip.update(controller?.snapshot?.state,localDevelopment&&inputActive()&&!sharedSession?.busy&&!controller?.startup&&!controller?.handoff);
  kdwInteractions.update(controller?.snapshot,controller?.phase);
+ kdwPosts.update(controller?.snapshot,controller?.phase);
  if(controller?.snapshot?.state)document.documentElement.dataset.kdwScreen=controller.snapshot.state.screenId??controller.snapshot.state.status;
  standBrowser?.update(controller?.snapshot);
  if(portable)void localAdmission.update(sharedSession)?.catch(error=>console.error('MAX local admission',error));
@@ -603,7 +621,7 @@ function tick(delta){
  controller.tick(delta,{active,deviceShown:phonePresence.at(1,.005,.05)&&!!controller.phone&&phoneX.at(controller.phone.x)&&phoneY.at(controller.phone.y),deviceHidden:phonePresence.at(0,.005,.05),deviceReady:phoneReady&&(!bfmVisual||waitingPhone?.dataset.gpuReadyKey===displayPhoneKey()),dragging:!!gesture,busy:bfmVisual&&(controller.handoff||controller.startup)?foreground?.contentBusy(host):foreground?.busy(host,bfmVisual||!revealMode),reduced:reduced.matches,settled:referenceVisual?referenceReady:camera.at(focusTarget,.1,.5)&&settled});
  if(bfmVisual&&(controller.paths||controller.startup))updateTargets();
  if(revealMode&&controller.expired&&!sharedBackend){controller.expired=false;navigate();return;}
- if(revealMode){const timer=host.querySelector('[data-mission-timer]'),label=revealTimerLabel(controller.secondsLeft);if(timer&&timer.textContent!==label){timer.textContent=label;foreground?.refreshPart(timer);save();changed();}}
+ if(revealMode){const timer=host.querySelector('[data-mission-timer]'),label=(localDevelopment&&controller.snapshot?.state.devTimerEnabled!==true?'--:--':revealTimerLabel(controller.secondsLeft));if(timer&&timer.textContent!==label){timer.textContent=label;foreground?.refreshPart(timer);save();changed();}}
  const scan=host.querySelector('[data-palm]');
  if(mobileBridge&&sharedSession?.snapshot){const snap=sharedSession.snapshot,s=snap.state,key=displayPhoneKey();const displayed=controller.displayedState;const ready=displayed?.runId===s.runId&&displayed?.screenId===s.screenId&&displayed?.status===s.status&&presentationActive()&&!gesture&&!answerPending&&!sharedSession.busy&&!waitingPhone?.querySelector('.phone-media-error')&&!waitingPhone?.dataset.gpuUploadError&&!controller.startup&&!controller.handoff&&!foreground?.contentBusy(host)&&!foreground?.busy(host,true)&&(s.status==='scan'?palmPresence.value>.97:['completed','incomplete','expired'].includes(s.status)?true:['task','result'].includes(s.status)&&controller.phase===s.status&&phoneContentReady()&&phonePresence.at(1,.005,.05)&&!!controller.phone&&phoneX.at(controller.phone.x)&&phoneY.at(controller.phone.y)&&waitingPhone?.dataset.sceneVersion===key&&waitingPhone?.dataset.mediaReadyKey===key&&waitingPhone?.dataset.gpuReadyKey===key);mobileBridge.update({snapshot:snap,ready,palm:scan});}
  if(scan){palmPresence.step(palmVisible?1:0,Math.min(delta,.05),bfmVisual?V5_MOTION.presenceOmega:12,reduced.matches);scan.dataset.pathPresence=String(palmPresence.value);scan.dataset.progress=String(controller.phase==='holding'?controller.elapsed/.8:0);
@@ -690,6 +708,7 @@ function activateButton(b){
  if(!controller||!inputActive()||!b||b.disabled)return;
  if(bfmVisual&&!touchEligible(root,b))return;
  if((managedAssignment||managedShell)&&(b.dataset.mission||['data-restart-mission','data-menu','data-continue-mission','data-reset-progress','data-confirm-reset-progress'].some(a=>b.hasAttribute(a))))return;
+ if(localDevelopment&&b.hasAttribute('data-mission-timer')){if(!sharedSession.busy)void sharedSession.command('DEV_TIMER',{active:controller.snapshot.state.devTimerEnabled!==true});return;}
  if(!b.classList.contains('media-hotspot'))foreground?.highlightTile(b);
  if(b.hasAttribute('data-media-page')){void turnMediaPage(b,foreground,host);return;}
  if(b.hasAttribute('data-reset-progress')){changeResetPrompt(true);return;}
@@ -715,6 +734,14 @@ function activateButton(b){
  if(b.dataset.branch){if(foreground?.busy(host)){feedback('Завершаем переход');return;}if(revealMode){const epoch=screenEpoch;foreground.transitionContent(host,()=>{if(epoch===screenEpoch&&controller.choose(b.dataset.branch)){popupPage=0;render();}});}else if(controller.choose(b.dataset.branch))render();return;}
  if(b.hasAttribute('data-answer')){answer(sharedBackend?b.dataset.answer:Number(b.dataset.answer),b.dataset.answerToken);return;}
  if(b.dataset.object){
+  if(localDevelopment&&b.dataset.object!=='open-max'){
+   if(sharedSession.busy)return;
+   cancelGesture();screenEpoch++;answerPending=false;pendingResume=null;phonePending='';foreground?.cancelContent(host);
+   void sharedSession.command('RESTART_TASK',{taskId:b.dataset.object}).then(result=>{
+    if(!result?.reply.ok){feedback('Не удалось перезапустить задание');return;}
+    popupPage=0;if(controller.phase==='paused')controller.resume(controller.activeId);focusCurrent();render();
+   });return;
+  }
   if(['paused','branch-paused'].includes(controller.phase)&&foreground?.busy(host)){pendingResume={step:b.dataset.object,epoch:screenEpoch};feedback('Открываем задание');return;}
   if(controller.resume(b.dataset.object)){popupPage=0;if(controller.phase==='reveal')focusCurrent();render();}
   else feedback(b.dataset.object==='open-max'?'MAX открыт':controller.nodes.find(o=>o.step===b.dataset.object)?.done?'Задание уже выполнено':revealMode?'Откроется после текущего задания':'Задание откроется после появления иконки');
@@ -770,7 +797,7 @@ root.addEventListener('pointercancel',cancelGesture);
 // Keyboard and physical touch share the same trusted immediate contact.
 root.addEventListener('keydown',e=>{if(!controller||!inputActive())return;if(e.target.closest('[data-palm]')&&[' ','Enter'].includes(e.key)){e.preventDefault();if(!e.repeat&&controller.down('keyboard')){render();}}});
 root.addEventListener('keyup',e=>{if(!controller||!inputActive())return;if([' ','Enter'].includes(e.key))(sharedBackend?controller.up('keyboard'):controller.cancelContact('keyboard'));});
-window.addEventListener('blur',()=>{windowFocused=false;gameAudio?.setActive(presentationActive()&&!localRecovery);cancelGesture();sharedSession?.owner(false);});window.addEventListener('focus',()=>{windowFocused=true;if(inputActive())sharedSession?.owner(true);});document.addEventListener('visibilitychange',()=>{cancelGesture();independent?.setActive(presentationActive());sharedSession?.owner(inputActive());});
+window.addEventListener('blur',()=>{windowFocused=false;gameAudio?.setActive(presentationActive()&&!localRecovery);cancelGesture();if(!preparingInteractionPreview)sharedSession?.owner(portable&&inputActive());});window.addEventListener('focus',()=>{windowFocused=true;if(!preparingInteractionPreview&&inputActive())sharedSession?.owner(true);});document.addEventListener('visibilitychange',()=>{cancelGesture();independent?.setActive(presentationActive());if(!preparingInteractionPreview)sharedSession?.owner(inputActive());});
 window.addEventListener('max-service-pointer-cancel',cancelGesture);
 window.addEventListener('keydown',e=>{if(!controller||!inputActive())return;if(e.key==='Escape'){if(resetPrompt){changeResetPrompt(false);return;}cancelGesture();close();}});
 document.addEventListener('dragstart',e=>e.preventDefault(),true);
@@ -1099,14 +1126,15 @@ async function boot(){
   if(profile!=='server'){
    const key=`${WEBGL_SHARED_KEY}${bfmVisual?':v5':''}:${MISSION_CATALOG.contentRevision}`;
    const persistence=interactionPreview||params.get('test')==='memory'?createMemoryPersistencePort():bfmVisual?createIndexedDBPersistence({legacyStorage:localStorage,key}):createBrowserPersistence({storage:localStorage,key});
-   port=(bfmVisual?createV5MissionSessionApplication:createMissionSessionApplication)({catalog:MISSION_CATALOG,persistence});
+   port=(bfmVisual?createV5MissionSessionApplication:createMissionSessionApplication)({catalog:MISSION_CATALOG,persistence,development:localDevelopment});
   }
-  sharedSession=profile==='server'?managedSession(managedAssignment,params.get('session')):createWebGLSession({port,catalog:MISSION_CATALOG,initialOwnerActive:false,assignmentId:managedAssignment,sessionId:params.get('session')||(bfmVisual?'webgl-v5':'site-shared'),profile,onSnapshot:snapshot=>{managedSnapshot(snapshot);if(!controller||!portable&&snapshot.assignment?.lifecycle.status!=='active')return;controller.accept(snapshot);if(foreground&&!navigating){if((controller.phase==='burst'||bfmVisual&&controller.startup&&controller.snapshot.state.scanned)&&gesture?.kind==='palm')cancelGesture();if(!gesture)focusCurrent();render();}},onError:error=>{console.error('MAX backend',error);if(foreground)feedback('Нет связи с backend. Экран сохранён.');}});
+  sharedSession=profile==='server'?managedSession(managedAssignment,params.get('session')):createWebGLSession({port,catalog:MISSION_CATALOG,initialOwnerActive:false,assignmentId:managedAssignment,sessionId:params.get('session')||(bfmVisual?(localDevelopment?'webgl-v5-development':'webgl-v5'):'site-shared'),profile,onSnapshot:snapshot=>{managedSnapshot(snapshot);if(!controller||!portable&&snapshot.assignment?.lifecycle.status!=='active')return;controller.accept(snapshot);if(foreground&&!navigating){if((controller.phase==='burst'||bfmVisual&&controller.startup&&controller.snapshot.state.scanned)&&gesture?.kind==='palm')cancelGesture();if(!gesture)focusCurrent();render();}},onError:error=>{console.error('MAX backend',error);if(foreground)feedback('Нет связи с backend. Экран сохранён.');}});
   await sharedSession.start();
+  if(localDevelopment&&sharedSession.snapshot.state.devTimerEnabled===undefined)await sharedSession.command('DEV_TIMER',{active:false});
   if(standPresentation&&!interactionPreview&&sharedSession.snapshot.state.status!=='menu')await sharedSession.command('RETURN_MENU');
   if(pageDisposed){await sharedSession.close();return;}
   if(localRecovery&&!standPresentation&&!interactionPreview&&params.get('test')!=='memory')recoveryChoice=await showV5Recovery({snapshot:sharedSession.snapshot,catalog:MISSION_CATALOG,document,onChoose:choice=>applyRecoveryChoice(sharedSession,choice)});
-  if(interactionPreview)await prepareInteractionPreview(sharedSession,MISSION_CATALOG,interactionPreview);
+  if(interactionPreview){loading.textContent='Подготавливаем активность MAX…';try{await prepareInteractionPreview(sharedSession,MISSION_CATALOG,interactionPreview);}finally{preparingInteractionPreview=false;}}
   document.documentElement.dataset.sessionStorage=profile==='server'?'server':bfmVisual?'indexeddb':'localStorage';
  }
  let saved;if(!sharedBackend&&!reviewMission)try{saved=localStorage.getItem(storage);}catch{}
@@ -1142,4 +1170,4 @@ async function boot(){
  if(managedShell){document.documentElement.dataset.managedBinding='';managedNotice.hidden=true;applyManagedActivity();void refreshManagedBinding();}
 }
 boot().catch(e=>{if(pageDisposed)return;console.error(e);startupAssets?.dispose();document.documentElement.dataset.assetPreparation='failed';loading.textContent=startupErrorText(e);document.body.append(loading);Object.assign(loading.style,{position:'fixed',inset:'0',zIndex:'10000',padding:'32px',whiteSpace:'pre-line',fontSize:'clamp(16px,2vw,28px)',lineHeight:'1.5',background:'#10091e',overflow:'auto',transform:'none'});});
-window.addEventListener('pagehide',()=>{localAdmission.dispose();standBrowser?.dispose();kdwInteractions.dispose();pageDisposed=true;bindingGeneration++;clearTimeout(contextTimer);screenEpoch++;gameAudio?.dispose();missionContinuation?.cancel();cancelGesture();save();sharedSession?.close();idleMenu?.dispose();independent?.dispose();field?.dispose();foreground?.dispose();assets?.dispose();startupAssets?.dispose();ambient?.dispose();v5Tools?.dispose();},{once:true});
+window.addEventListener('pagehide',()=>{taskSkip.dispose();localAdmission.dispose();standBrowser?.dispose();kdwInteractions.dispose();kdwPosts.dispose();pageDisposed=true;bindingGeneration++;clearTimeout(contextTimer);screenEpoch++;gameAudio?.dispose();missionContinuation?.cancel();cancelGesture();save();sharedSession?.close();idleMenu?.dispose();independent?.dispose();field?.dispose();foreground?.dispose();assets?.dispose();startupAssets?.dispose();ambient?.dispose();v5Tools?.dispose();},{once:true});

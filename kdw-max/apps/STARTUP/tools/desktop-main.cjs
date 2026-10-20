@@ -1,0 +1,63 @@
+const {app, BrowserWindow, dialog} = require('electron');
+const fs = require('node:fs');
+const path = require('node:path');
+const {createPortableServer} = require('./portable-server.cjs');
+const root = path.resolve(__dirname, '..');
+const config = JSON.parse(fs.readFileSync(path.join(root,'app.json'),'utf8'));
+const data = path.join(root,'data');fs.mkdirSync(data,{recursive:true});
+const stateFile = path.join(data,'runtime.json');
+const smoke = process.argv.includes('--verify');
+const serveOnly = process.argv.includes('--serve-only');
+app.setPath('userData',path.join(data,'profile'));
+app.setAppUserModelId('pro.futuronika.kdw.'+config.id);
+app.commandLine.appendSwitch('autoplay-policy','no-user-gesture-required');
+app.commandLine.appendSwitch('disable-renderer-backgrounding');
+let window,host,closing=false;
+const errors=[],missing=[];
+function log(value){fs.appendFileSync(path.join(data,'desktop.log'),JSON.stringify({time:new Date().toISOString(),...value})+'\n');}
+if(!app.requestSingleInstanceLock()){app.quit();}
+else {
+  app.on('second-instance',()=>{if(window){if(window.isMinimized())window.restore();window.show();window.focus();}});
+  app.on('window-all-closed',()=>app.quit());
+  app.on('before-quit',event=>{
+    if(closing)return;
+    event.preventDefault();closing=true;
+    void (async()=>{await host?.close();try{if(JSON.parse(fs.readFileSync(stateFile)).pid===process.pid)fs.unlinkSync(stateFile);}catch{}app.exit(0);})();
+  });
+  app.whenReady().then(async()=>{
+    host=createPortableServer({root,config,onStop:()=>app.quit(),onMissing:url=>missing.push(url)});
+    await host.listen();
+    fs.writeFileSync(stateFile,JSON.stringify({...host.health,token:host.token},null,2)+'\n');
+    log({event:'ready',...host.health});
+    if(serveOnly)return;
+    window=new BrowserWindow({title:config.title,width:config.window.width,height:config.window.height,show:false,backgroundColor:'#0D001A',autoHideMenuBar:true,webPreferences:{nodeIntegration:false,contextIsolation:true,sandbox:true,backgroundThrottling:false}});
+    const entry=new URL(config.entry,host.origin).href;
+    window.webContents.setWindowOpenHandler(()=>({action:'deny'}));
+    window.webContents.on('will-navigate',(event,url)=>{if(new URL(url).origin!==host.origin)event.preventDefault();});
+    window.webContents.on('render-process-gone',(_,details)=>log({event:'renderer-gone',details}));
+    window.webContents.on('console-message',(event,details,message)=>{const row=details&&typeof details==='object'?details:typeof event?.message==='string'?event:{level:details,message};if(row.level==='error'||row.level===3){errors.push(row.message);log({event:'console-error',message:row.message});}});
+    window.webContents.session.webRequest.onBeforeRequest((details,callback)=>{
+      const url=new URL(details.url);
+      const allow=['data:','blob:','devtools:'].includes(url.protocol)||url.origin===host.origin;
+      if(!allow)log({event:'external-request-blocked',url:url.origin+url.pathname});
+      callback({cancel:!allow});
+    });
+    window.webContents.on('before-input-event',(event,input)=>{if(input.type==='keyDown'&&input.key==='F11'){window.setFullScreen(!window.isFullScreen());event.preventDefault();}if(input.type==='keyDown'&&input.key==='Escape'&&window.isFullScreen())window.setFullScreen(false);});
+    window.webContents.on('did-fail-load',(_,code,description)=>log({event:'load-failed',code,description}));
+    let loadTimer;
+    try { await Promise.race([window.loadURL(entry),new Promise((_,reject)=>{loadTimer=setTimeout(()=>reject(Error('PAGE_LOAD_TIMEOUT')),30000);})]); }
+    finally { clearTimeout(loadTimer); }
+    if(!smoke){window.show();window.focus();return;}
+    const deadline=Date.now()+45000;let snapshot;
+    do {
+      snapshot=await window.webContents.executeJavaScript(`({ready:${config.verifyExpression},title:document.title,body:document.body.innerText.slice(0,900),ring:document.documentElement.dataset.stellaRingState,gameReady:document.documentElement.dataset.gameReady})`);
+      if(snapshot.ready)break;
+      await new Promise(resolve=>setTimeout(resolve,250));
+    }while(Date.now()<deadline);
+    const result={application:config.id,ready:!!snapshot.ready,snapshot,errors,missing};
+    fs.writeFileSync(path.join(data,'verification.json'),JSON.stringify(result,null,2)+'\n');
+    log({event:'verification',...result});
+    await host.close();try{fs.unlinkSync(stateFile);}catch{}
+    app.exit(result.ready&&errors.length===0&&missing.length===0?0:1);
+  }).catch(async error=>{log({event:'startup-error',message:error.stack});if(!smoke&&!serveOnly)dialog.showErrorBox(config.title,error.message);await host?.close();try{if(JSON.parse(fs.readFileSync(stateFile)).pid===process.pid)fs.unlinkSync(stateFile);}catch{}app.exit(1);});
+}

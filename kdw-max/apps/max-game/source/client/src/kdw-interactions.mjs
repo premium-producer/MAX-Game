@@ -1,12 +1,18 @@
+import {storeBank,storeGoal,storeRating,STORE_TASK,STORE_SCREEN} from './kdw-store-rating.mjs';
+import {activityGeometry,alignActivityPhone,fadeActivityOut} from './kdw-activity-stage.mjs';
+import {createProductStream} from './kdw-product-stream.mjs';
 import {createStoreMotion} from './kdw-store-motion.mjs';
 import {COFFEE_PRODUCTS,CHANNEL_LIMITS,CHANNEL_AVATARS,emptyInteraction,interactionComplete,placeProduct,keyboardEdit} from './kdw-interactions-model.mjs';
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const avatars={cat:'🐱',game:'🎮',island:'🏝️',heart:'♥'};
 const rows={ru:['й ц у к е н г ш щ з х ъ','ф ы в а п р о л д ж э','я ч с м и т ь б ю'],en:['q w e r t y u i o p','a s d f g h j k l','z x c v b n m'],symbols:['1 2 3 4 5 6 7 8 9 0','@ # ₽ % & * ( ) - +','! ? . , : ; / « »']};
 const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
-const photo=product=>{const [x,y,w,h]=product.crop;return `<span class="kdw-product-photo" style="background-size:${780/w*100}% ${447/h*100}%;background-position:${x/(780-w)*100}% ${y/(447-h)*100}%" aria-hidden="true"></span>`;};
+const photo=product=>{if(!product.crop)return `<span class="kdw-product-photo kdw-product-emoji">${product.emoji}</span>`;const [x,y,w,h]=product.crop;return `<span class="kdw-product-photo" style="background-size:${780/w*100}% ${447/h*100}%;background-position:${x/(780-w)*100}% ${y/(447-h)*100}%" aria-hidden="true"></span>`;};
 function currentScene(snapshot,phase){
- const s=snapshot?.state;if(!s||!['task','result'].includes(s.status)||!['task','result'].includes(phase))return null;
+ const s=snapshot?.state;if(!s||!['task','result'].includes(s.status))return null;
+ // Prepare native content during the same entrance as its device shell.
+ if(s.taskId==='business.store'&&['trace','phone-enter','task','result'].includes(phase))return 'store';
+ if(!['task','result'].includes(phase))return null;
  if(s.taskId==='blogger.channel'&&['blogger.channel.name','blogger.channel.filled'].includes(s.screenId))return 'channel';
  if(s.taskId==='business.store')return 'store';
  return null;
@@ -15,12 +21,15 @@ function currentScene(snapshot,phase){
 export function mountKdwInteractions({getSession,onMenu}){
  const overlay=document.createElement('section');overlay.id='kdw-interactions';overlay.hidden=true;overlay.setAttribute('aria-label','Интерактивное задание MAX');document.body.append(overlay);
  const storeMotion=createStoreMotion(overlay);
+ const productStream=createProductStream(overlay,product=>productMarkup(product));
+ let latestSnapshot=null,storeStarting=false,storeSignature='',storePending=false,scenePhase='';
  let scene=null,context='',draft=null,dirty=false,saving=null,submitBusy=false,saveTimer=null,disposed=false,activeField='name',keyboardOpen=false,language='ru',shift=true,symbols=false,activeSlot=0,screenId='';
+ const storeFinished=()=>storeGoal(latestSnapshot?.state.progress.business?.storeActivity)||screenId!==STORE_SCREEN&&!latestSnapshot?.state.progress.business?.storeActivity&&interactionComplete('store',draft);
  const sameContext=()=>{const s=getSession()?.snapshot?.state;return !disposed&&context===`${s?.runId}:${s?.taskId}`&&s?.status==='task';};
  const error=message=>{const el=overlay.querySelector('[data-kdw-error]');if(el)el.textContent=message;};
  const resize=()=>{const element=overlay.querySelector('.kdw-scene');if(element)element.style.setProperty('--kdw-scale',Math.min(innerWidth/1600,innerHeight/900));};
  window.addEventListener('resize',resize);
- function buttonsBusy(value){overlay.querySelectorAll('[data-kdw-submit]').forEach(button=>{button.disabled=value||!interactionComplete(scene,draft);button.setAttribute('aria-busy',String(value));});overlay.querySelectorAll('[data-kdw-key],[data-kdw-avatar],[data-kdw-field],[data-kdw-product],[data-kdw-slot],[data-kdw-remove]').forEach(control=>{control.disabled=value||(scene==='store'&&screenId!=='business.store.start');});}
+ function buttonsBusy(value){overlay.querySelectorAll('[data-kdw-submit]').forEach(button=>{button.disabled=value||!(scene==='store'?storeFinished():interactionComplete(scene,draft));button.setAttribute('aria-busy',String(value));});overlay.querySelectorAll('[data-kdw-key],[data-kdw-avatar],[data-kdw-field],[data-kdw-product],[data-kdw-slot],[data-kdw-remove]').forEach(control=>{control.disabled=value||(scene==='store'&&screenId!=='business.store.start');});}
  async function flush(){
   clearTimeout(saveTimer);
   if(saving){await saving;if(dirty&&sameContext())return flush();return;}
@@ -57,25 +66,26 @@ export function mountKdwInteractions({getSession,onMenu}){
   if(!(scale>0)){editor.hidden=true;return;}
   Object.assign(editor.style,{left:rect.left+'px',top:rect.top+'px',height:rect.height/scale+'px',transform:`scale(${scale})`});
  }
- function slotMarkup(){return draft.slots.map((id,index)=>{const product=COFFEE_PRODUCTS.find(p=>p.id===id),editable=screenId==='business.store.start';return `<div class="kdw-slot" data-active="${editable&&activeSlot===index}" data-filled="${!!product}"><button type="button" data-kdw-slot="${index}" ${editable?'':'disabled'} aria-label="${product?(editable?'Изменить: ':'Товар: ')+esc(product.name):(editable?'Добавить товар в слот ':'Пустой слот ')+(index+1)}">${product?photo(product)+`<span>${esc(product.name)}</span>`:'<span class="kdw-slot-plus">+</span>'}</button>${product&&editable?`<button type="button" class="kdw-remove" data-kdw-remove="${index}" aria-label="Удалить ${esc(product.name)}">×</button>`:''}</div>`;}).join('');}
- function productMarkup(){return COFFEE_PRODUCTS.map(product=>{const selected=draft.slots.includes(product.id),editable=screenId==='business.store.start';return `<button type="button" class="kdw-product" data-kdw-product="${product.id}" ${editable?'':'disabled'} aria-pressed="${selected}">${photo(product)}<span>${esc(product.name)}</span><strong>${product.price} ₽</strong>${selected?'<i class="kdw-product-check">✓</i>':''}</button>`;}).join('');}
+ function slotMarkup(){const activity=latestSnapshot?.state.progress.business?.storeActivity,bank=storeBank(activity?.businessType??latestSnapshot?.state.progress.business?.answers?.businessType);return (activity?.published??(screenId!==STORE_SCREEN?(draft?.slots??[]).filter(Boolean).map(postId=>({postId,score:null})):[])).map((row,index)=>{const product=bank.find(p=>p.id===row.postId)??COFFEE_PRODUCTS.find(p=>p.id===row.postId);return `<div class="kdw-slot" data-filled="true" data-rating="${row.score}"><div data-kdw-slot="${index}" class="kdw-slot-content">${photo(product)}<span>${esc(product.name)}</span><small>★ ${row.score?.toFixed(1)??'—'}</small></div></div>`;}).join('');}
+ function productMarkup(product){return `<button type="button" class="kdw-product" data-kdw-product="${product.id}" aria-label="Добавить ${esc(product.name)}">${photo(product)}<span>${esc(product.name)}</span><strong>${product.price} ₽</strong></button>`;}
  function storeMarkup(){
   const editing=screenId==='business.store.start',ready=screenId==='business.store.result';
-  const title=editing?'Выберите товар для добавления':ready?'Витрина готова':'Проверьте вашу витрину';
-  return `<div class="kdw-store-editor" hidden><div class="kdw-phone-status"><span>9:41</span><span>▴ ▰ ▰</span></div><h2 class="kdw-phone-title">${ready?'Витрина готова':'Мини-приложение'}</h2><div class="kdw-store-slots">${slotMarkup()}</div><span class="kdw-phone-bottom"></span></div><section class="kdw-catalog kdw-native-catalog" hidden><h2><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 10h24l-3 17H7L4 10ZM11 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg>${title}</h2><div class="kdw-products" ${editing?'':'data-readonly="true"'}>${productMarkup()}</div><footer><p data-kdw-count role="status" aria-live="polite"></p><button type="button" class="kdw-primary" data-kdw-submit>${editing?'Готово':ready?'Продолжить':'Опубликовать витрину'}</button><p class="kdw-error" data-kdw-error role="status" aria-live="polite"></p></footer></section>`;
+  return `<div class="kdw-store-editor"><div class="kdw-phone-status"><span>9:41</span><span>▴ ▰ ▰</span></div><h2 class="kdw-phone-title">${ready?'Витрина готова':'Мини-приложение'}</h2><div class="kdw-store-scroll"><div class="kdw-store-slots">${slotMarkup()}</div></div><footer class="kdw-store-controls"><p>${editing?'Выбирайте товары справа':'Проверьте вашу витрину'}</p><p data-kdw-count role="status" aria-live="polite"></p><strong data-store-rating>★ 4,0 / 4,9</strong><button type="button" class="kdw-primary" data-kdw-submit>${editing?'Готово':ready?'Продолжить':'Опубликовать витрину'}</button><p class="kdw-error" data-kdw-error role="status" aria-live="polite"></p></footer><span class="kdw-phone-bottom"></span></div><section class="kdw-product-stream" aria-label="Товары для витрины"></section>`;
  }
  function alignStore(){
   if(scene!=='store')return;
-  const editor=overlay.querySelector('.kdw-store-editor'),panel=overlay.querySelector('.kdw-native-catalog'),phone=document.querySelector('.route-phone'),canvas=phone?.querySelector('.task-media-canvas'),host=phone?.closest('.journey-zone'),arena=document.querySelector('#arena');
-  const ready=canvas&&phone.dataset.mediaReadyKey===phone.dataset.sceneVersion&&phone.dataset.sceneVersion?.includes(screenId)&&Number(phone.dataset.pathPresence??0)>.97&&canvas.querySelector('img')?.getAttribute('src')?.endsWith('kdw-native/store-phone.svg');
-  editor.hidden=panel.hidden=!ready;if(!ready)return;
-  const r=canvas.getBoundingClientRect(),p=phone.getBoundingClientRect(),scale=r.width/390,sceneScale=arena.getBoundingClientRect().width/parseFloat(arena.style.width),alpha=Math.min(Number(host?.dataset.contentPresence??1),Number(host?.dataset.popupPresence??1));
-  Object.assign(editor.style,{left:r.left+'px',top:r.top+'px',height:r.height/scale+'px',transform:`scale(${scale})`,opacity:String(alpha)});
-  Object.assign(panel.style,{left:(p.right+64*sceneScale)+'px',top:p.top+'px',transform:`scale(${sceneScale})`,opacity:String(alpha)});
-  editor.inert=panel.inert=alpha<.97||phone.inert;
+  const editor=overlay.querySelector('.kdw-store-editor'),field=overlay.querySelector('.kdw-product-stream'),g=activityGeometry();
+  const ready=g&&g.matched&&g.phone.dataset.sceneVersion?.includes(screenId)&&g.phone.querySelector('.task-media-canvas img')?.getAttribute('src')?.endsWith('kdw-native/store-phone.svg');
+  if(!ready){editor.style.opacity='0';field.style.opacity='0';editor.inert=field.inert=true;return;}
+  alignActivityPhone(editor,g);editor.inert ||=scenePhase!=='task';if(g.alpha>.97&&screenId===STORE_SCREEN&&scenePhase==='task')void startStore();productStream.sync(g,latestSnapshot,screenId===STORE_SCREEN&&scenePhase==='task');
+  for(const node of field.querySelectorAll('[data-kdw-product]'))node.disabled ||=submitBusy||storePending;
  }
  function redraw(){storeMotion.clear();overlay.innerHTML=scene==='channel'?channelMarkup():storeMarkup();resize();alignChannel();alignStore();buttonsBusy(submitBusy);refreshStore();}
- function refreshStore(){if(scene!=='store')return;const slots=overlay.querySelector('.kdw-store-slots');if(slots)slots.innerHTML=slotMarkup();const products=overlay.querySelector('.kdw-products');if(products)products.innerHTML=productMarkup();const count=overlay.querySelector('[data-kdw-count]');if(count)count.textContent=`Выбрано товаров: ${draft.slots.filter(Boolean).length}`;storeMotion.sync();}
+ function refreshStore(){if(scene!=='store')return;const activity=latestSnapshot?.state.progress.business?.storeActivity,signature=JSON.stringify(activity?.published??[]),slots=overlay.querySelector('.kdw-store-slots');if(slots&&signature!==storeSignature){storeSignature=signature;slots.innerHTML=slotMarkup();const scroller=overlay.querySelector('.kdw-store-scroll');scroller.scrollTo({top:scroller.scrollHeight,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});}const count=overlay.querySelector('[data-kdw-count]');if(count)count.textContent=storeFinished()?'Отличная витрина!':'Наберите рейтинг 4,9';const rating=overlay.querySelector('[data-store-rating]');if(rating)rating.hidden=storeFinished()&&!activity;if(rating)rating.textContent='★ '+storeRating(activity).toFixed(1).replace('.',',')+' / 4,9';storeMotion.sync();buttonsBusy(submitBusy);}
+ async function startStore(){const session=getSession();if(storeStarting||session.snapshot?.state.progress.business?.storeActivity||session.busy||!session.snapshot?.state.ownerActive)return;storeStarting=true;const key=context;try{const r=await session.command('START_STORE',{taskId:STORE_TASK,screenId:STORE_SCREEN});if(key===context){latestSnapshot=session.snapshot;if(!r?.reply.ok)error('Не удалось начать каталог.');}}finally{storeStarting=false;}}
+ async function pickProduct(button){if(storePending||submitBusy||getSession().busy||screenId!==STORE_SCREEN)return;storePending=true;button.dataset.pending='true';const key=context,index=latestSnapshot.state.progress.business.storeActivity.published.length,product=button.dataset.kdwProduct;
+  storeMotion.begin(index,button);
+  try{const session=getSession(),r=await session.command('PICK_PRODUCT',{taskId:STORE_TASK,screenId:STORE_SCREEN,spawnId:button.dataset.productSpawn});if(key!==context)return;if(!r?.reply.ok){storeMotion.cancel(index);error('Товар уже улетел. Выберите следующий.');return;}latestSnapshot=session.snapshot;refreshStore();error('');storeMotion.add(product,index,button);}catch(cause){if(key===context){storeMotion.cancel(index);error('Не удалось выбрать товар. Попробуйте ещё раз.');}}finally{storePending=false;delete button.dataset.pending;}}
  function refreshKeyboard(){const old=overlay.querySelector('.kdw-keyboard');if(old){const template=document.createElement('template');template.innerHTML=keyboard();old.replaceChildren(...template.content.firstElementChild.childNodes);}overlay.querySelector('.kdw-scene').dataset.keyboard=String(keyboardOpen);const panel=overlay.querySelector('.kdw-keyboard');panel.inert=!keyboardOpen;panel.setAttribute('aria-hidden',String(!keyboardOpen));}
  function dismissKeyboard(){keyboardOpen=false;overlay.querySelector('[data-kdw-field]:focus')?.blur();refreshKeyboard();}
  function editKey(key){
@@ -92,7 +102,7 @@ export function mountKdwInteractions({getSession,onMenu}){
  }
  async function act(){
   if(submitBusy||!sameContext())return;
-  if(!interactionComplete(scene,draft)){error(scene==='channel'?'Введи название канала — минимум два символа.':'Добавь хотя бы один товар.');return;}
+  if(!(scene==='store'?storeFinished():interactionComplete(scene,draft))){error(scene==='channel'?'Введи название канала — минимум два символа.':'Добавь хотя бы один товар.');return;}
   submitBusy=true;buttonsBusy(true);const started=context;
   try{
    if(scene==='channel')dismissKeyboard();
@@ -105,7 +115,8 @@ export function mountKdwInteractions({getSession,onMenu}){
    }else await existingAction(session.snapshot.view.actions[0]?.actionId);
   }catch(cause){error(cause.message);}finally{submitBusy=false;if(started===context)buttonsBusy(false);}
  }
- overlay.addEventListener('pointerdown',event=>{if(event.target.closest('[data-kdw-key]'))event.preventDefault();});
+ overlay.addEventListener('pointerdown',event=>{if(event.target.closest('[data-kdw-key]'))event.preventDefault();const b=event.target.closest('[data-product-spawn]');if(b&&!b.disabled){b.dataset.held='true';b.setPointerCapture(event.pointerId);}});
+ for(const type of ['pointerup','pointercancel','lostpointercapture'])overlay.addEventListener(type,event=>{const b=event.target.closest('[data-product-spawn]');if(b)delete b.dataset.held;});
  overlay.addEventListener('input',event=>{const field=event.target.dataset.kdwField;if(field&&draft){draft[field]=event.target.value;changed();}});
  overlay.addEventListener('focusin',event=>{if(event.target.dataset.kdwField){activeField=event.target.dataset.kdwField;keyboardOpen=true;refreshKeyboard();}});
  overlay.addEventListener('keydown',event=>{if(event.isComposing)return;if(event.key==='Escape'&&scene==='channel'){event.preventDefault();event.stopPropagation();dismissKeyboard();}if(event.key==='Enter'&&event.target.name==='name'){event.preventDefault();editKey('enter');}});
@@ -118,19 +129,21 @@ export function mountKdwInteractions({getSession,onMenu}){
   if(submitBusy)return;
   if(button.dataset.kdwAvatar){draft.avatar=button.dataset.kdwAvatar;overlay.querySelectorAll('[data-kdw-avatar]').forEach(el=>el.setAttribute('aria-pressed',String(el===button)));changed();return;}
   if(scene!=='store'||screenId!=='business.store.start')return;
-  if(button.hasAttribute('data-kdw-slot')){activeSlot=Number(button.dataset.kdwSlot);refreshStore();return;}
+  
   if(button.hasAttribute('data-kdw-remove')){activeSlot=Number(button.dataset.kdwRemove);storeMotion.cancel(activeSlot);draft.slots[activeSlot]=null;changed();refreshStore();return;}
-  if(button.dataset.kdwProduct){const target=activeSlot,product=button.dataset.kdwProduct,previous=draft.slots.indexOf(product);if(previous===target)return;if(previous>=0)storeMotion.cancel(previous);draft.slots=placeProduct(draft.slots,product,target);const next=draft.slots.findIndex(id=>id===null);if(next!==-1)activeSlot=next;changed();refreshStore();storeMotion.add(product,target);}
+  if(button.dataset.kdwProduct)void pickProduct(button);
+
  });
- function hide(){if(!scene)return;storeMotion.clear();clearTimeout(saveTimer);scene=null;context='';dirty=false;submitBusy=false;overlay.hidden=true;overlay.replaceChildren();delete document.documentElement.dataset.kdwInteraction;document.querySelector('#circles').inert=false;}
+ function hide(){if(!scene)return;if(scene==='store')fadeActivityOut(overlay);productStream.clear();storeSignature='';storeMotion.clear();clearTimeout(saveTimer);scene=null;context='';dirty=false;submitBusy=false;overlay.hidden=true;overlay.replaceChildren();delete document.documentElement.dataset.kdwInteraction;document.querySelector('#circles').inert=false;}
  return {
   flush,
   align(){alignChannel();alignStore();},
   update(next,phase){
-   if(disposed)return;const kind=currentScene(next,phase);if(!kind){hide();return;}
+   if(disposed)return;latestSnapshot=next;scenePhase=phase;productStream.accept(next);const kind=currentScene(next,phase);if(!kind){hide();return;}
    const s=next.state,key=`${s.runId}:${s.taskId}`;
-   if(key!==context){context=key;scene=kind;draft=structuredClone(s.progress[s.missionId]?.interactions?.[s.taskId]??emptyInteraction(kind));dirty=false;screenId=s.screenId;activeSlot=Math.max(0,draft.slots?.findIndex(id=>id===null)??0);activeField='name';keyboardOpen=false;redraw();overlay.hidden=false;document.documentElement.dataset.kdwInteraction=kind;document.querySelector('#circles').inert=false;if(scene==='channel')refreshKeyboard();}
-   else if(screenId!==s.screenId){screenId=s.screenId;redraw();}
+   if(key!==context){storeSignature='';productStream.reset();context=key;scene=kind;draft=structuredClone(s.progress[s.missionId]?.interactions?.[s.taskId]??emptyInteraction(kind));dirty=false;screenId=s.screenId;activeSlot=Math.max(0,draft.slots?.findIndex(id=>id===null)??0);activeField='name';keyboardOpen=false;redraw();overlay.hidden=false;document.documentElement.dataset.kdwInteraction=kind;document.querySelector('#circles').inert=false;if(scene==='channel')refreshKeyboard();}
+   else if(screenId!==s.screenId){screenId=s.screenId;storeSignature='';redraw();}
+   if(scene==='store')refreshStore();
    alignChannel();alignStore();
 
   },

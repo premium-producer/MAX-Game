@@ -1,5 +1,6 @@
 // Native HTML storefront uses the same device shell and presentation authority.
 export function applyNativeStore(catalog){
+ catalog.kdwStoreActivity=true;
  const assetId='kdw.native.store-phone';
  catalog.assets[assetId]={assetId,path:'assets/kdw-native/store-phone.svg',width:390,height:800,sha256:'828dcb6fad602311e9fc23db9f7e3f75a91ebad5dbbb436f52fec954739fc944',mimeType:'image/svg+xml'};
  for(const screen of Object.values(catalog.tasks['business.store'].screens)){

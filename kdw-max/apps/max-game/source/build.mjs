@@ -23,7 +23,7 @@ for(const asset of Object.values(nativeCatalog.assets).filter(a=>a.path.startsWi
  fs.mkdirSync(path.dirname(path.join(root,'www',asset.path)),{recursive:true});fs.writeFileSync(path.join(root,'www',asset.path),bytes);
 }
 const result=await build({entryPoints:[path.join(source,'client/src/journey-guided-main.js')],nodePaths:[path.join(source,'vendor'),packages],bundle:true,format:'esm',platform:'browser',target:['es2022'],minify:true,write:false,metafile:true,legalComments:'inline'});
-const css=fs.readFileSync(path.join(source,'client/src/kdw-interactions.css'),'utf8');
+const css=fs.readFileSync(path.join(source,'client/src/kdw-interactions.css'),'utf8')+'\n'+fs.readFileSync(path.join(source,'client/src/kdw-posts.css'),'utf8');
 await transform(css,{loader:'css',sourcefile:'kdw-interactions.css'});
 fs.writeFileSync(path.join(web,'app.js'),result.outputFiles[0].contents);
 fs.writeFileSync(path.join(web,'kdw-interactions.css'),css);
