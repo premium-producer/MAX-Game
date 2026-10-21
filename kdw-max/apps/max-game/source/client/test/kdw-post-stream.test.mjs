@@ -106,3 +106,36 @@ test('snapshot replay, different frame rates and backwards clock reads reproduce
  }
  assert.ok(visiblePosts(oldSurvivor,13000).some(row=>row.index===0));
 });
+
+const dense=seed=>({...initial(seed),version:7});
+const largestGap=rows=>{const p=[0,...rows.map(r=>r.progress).sort((a,b)=>a-b),1];return Math.max(...p.slice(1).map((n,i)=>n-p[i]));};
+test('v7 fills the field on entry and bounds empty height over two minutes without clicks',()=>{
+ for(let seed=0;seed<16;seed++){
+  const t=createPostTimeline(dense(seed),postBank());assert.equal(t.at(0).length,4);let prev=new Map();
+  for(let ms=0;ms<120000;ms+=41){const rows=t.at(ms);assert.ok(rows.length>=3&&rows.length<=4);assert.ok(largestGap(rows)<.34);
+   assert.ok(rows.every(r=>r.lane===1&&r.column<2));assert.equal(new Set(rows.map(r=>r.post.id)).size,rows.length);
+   for(const r of rows){const before=prev.get(r.index);if(before!==undefined){assert.ok(r.progress>=before);assert.ok(r.progress-before<.025,'no teleport or sudden jump');}}
+   prev=new Map(rows.map(r=>[r.index,r.progress]));
+  }
+ }
+});
+test('v7 accepted choice refills capacity within 300 ms and closes its height gap smoothly',()=>{
+ const p=dense(4),original=createPostTimeline(p,postBank()),before=original.at(6000),picked=before.find(r=>r.progress>.3&&r.progress<.7);
+ p.published.push({index:picked.index,elapsedMs:6000});const next=createPostTimeline(p,postBank());
+ const at=next.at(6000);assert.equal(at.length,3);for(const r of at)assert.equal(r.progress,before.find(b=>b.index===r.index).progress);
+ assert.equal(next.at(6300).length,4);assert.ok(largestGap(next.at(7000))<.38);
+ assert.ok(!next.at(7000).some(r=>r.index===picked.index));
+});
+test('v7 clock partitions, snapshot reload, backwards reads and multiple choices reproduce exact positions',()=>{
+ const p=dense(8),slow=createPostTimeline(p,postBank()),fast=createPostTimeline(p,postBank());
+ for(let time=0;time<=30000;time+=37)fast.at(time);
+ assert.deepEqual(fast.at(30000),slow.at(30000));assert.deepEqual(fast.at(3500),createPostTimeline(p,postBank()).at(3500));
+ const selected=slow.at(30000).slice(0,2);p.published=selected.map(r=>({index:r.index,elapsedMs:30000}));
+ const cached=createPostStreamReader();for(const time of [30000,30300,31000,60000,32000])assert.deepEqual(cached(p,time),visiblePosts(structuredClone(p),time));
+});
+
+test('v7 interpolation remains continuous at every simulation boundary during refill',()=>{
+ const p=dense(4),base=createPostTimeline(p,postBank()),row=base.at(6000).find(r=>r.progress>.3&&r.progress<.7);
+ p.published=[{index:row.index,elapsedMs:6000}];const t=createPostTimeline(p,postBank());let previous=new Map();
+ for(let ms=5900;ms<8500;ms++){const rows=t.at(ms);for(const r of rows){const before=previous.get(r.index);if(before!==undefined){assert.ok(r.progress>=before);assert.ok(r.progress-before<=.000481);}}previous=new Map(rows.map(r=>[r.index,r.progress]));}
+});

@@ -1,3 +1,4 @@
+import {KEYBOARD_DISMISS_ICON,updateKeyboardPanel} from './kdw-keyboard-ui.mjs';
 import {storeBank,storeGoal,storeRating,STORE_TASK,STORE_SCREEN} from './kdw-store-rating.mjs';
 import {activityGeometry,alignActivityPhone,fadeActivityOut} from './kdw-activity-stage.mjs';
 import {createProductStream} from './kdw-product-stream.mjs';
@@ -11,9 +12,9 @@ const photo=product=>{if(!product.crop)return `<span class="kdw-product-photo kd
 function currentScene(snapshot,phase){
  const s=snapshot?.state;if(!s||!['task','result'].includes(s.status))return null;
  // Prepare native content during the same entrance as its device shell.
- if(s.taskId==='business.store'&&['trace','phone-enter','task','result'].includes(phase))return 'store';
+ if(s.taskId==='business.store'&&['trace','phone-enter','task','result','phone-exit'].includes(phase))return 'store';
  if(!['task','result'].includes(phase))return null;
- if(s.taskId==='blogger.channel'&&['blogger.channel.name','blogger.channel.filled'].includes(s.screenId))return 'channel';
+ // The personal channel renderer owns both blogger tasks and their shared profile.
  if(s.taskId==='business.store')return 'store';
  return null;
 }
@@ -29,7 +30,7 @@ export function mountKdwInteractions({getSession,onMenu}){
  const error=message=>{const el=overlay.querySelector('[data-kdw-error]');if(el)el.textContent=message;};
  const resize=()=>{const element=overlay.querySelector('.kdw-scene');if(element)element.style.setProperty('--kdw-scale',Math.min(innerWidth/1600,innerHeight/900));};
  window.addEventListener('resize',resize);
- function buttonsBusy(value){overlay.querySelectorAll('[data-kdw-submit]').forEach(button=>{button.disabled=value||!(scene==='store'?storeFinished():interactionComplete(scene,draft));button.setAttribute('aria-busy',String(value));});overlay.querySelectorAll('[data-kdw-key],[data-kdw-avatar],[data-kdw-field],[data-kdw-product],[data-kdw-slot],[data-kdw-remove]').forEach(control=>{control.disabled=value||(scene==='store'&&screenId!=='business.store.start');});}
+ function buttonsBusy(value){overlay.querySelectorAll('[data-kdw-submit]').forEach(button=>{button.disabled=value||scene==='store'&&(storeMotion.active()||storePending||scenePhase!=='task')||!(scene==='store'?storeFinished():interactionComplete(scene,draft));button.setAttribute('aria-busy',String(value));});overlay.querySelectorAll('[data-kdw-key],[data-kdw-avatar],[data-kdw-field],[data-kdw-product],[data-kdw-slot],[data-kdw-remove]').forEach(control=>{control.disabled=value||(scene==='store'&&screenId!=='business.store.start');});}
  async function flush(){
   clearTimeout(saveTimer);
   if(saving){await saving;if(dirty&&sameContext())return flush();return;}
@@ -50,7 +51,7 @@ export function mountKdwInteractions({getSession,onMenu}){
  function changed(){dirty=true;error('');buttonsBusy(submitBusy);clearTimeout(saveTimer);saveTimer=setTimeout(()=>{void flush().catch(cause=>error(cause.message));},180);}
  function keyboard(){
   const layout=symbols?'symbols':language;
-  return `<div class="kdw-keyboard" aria-label="Экранная клавиатура"><div class="kdw-keyboard-tools"><span data-kdw-editing>${activeField==='name'?'Название канала':'Описание канала'}</span><button type="button" data-kdw-key="dismiss" aria-label="Скрыть клавиатуру">⌄</button></div>${rows[layout].map((row,index)=>`<div class="kdw-key-row">${index===2?'<button type="button" class="kdw-key-wide" data-kdw-key="shift" aria-label="Регистр" aria-pressed="'+shift+'">⇧</button>':''}${row.split(' ').map(key=>`<button type="button" data-kdw-key="${esc(key)}">${esc(shift?key.toUpperCase():key)}</button>`).join('')}${index===0?'<button type="button" class="kdw-key-wide" data-kdw-key="backspace" aria-label="Удалить символ">⌫</button>':''}${index===2?`<button type="button" class="kdw-key-wide" data-kdw-key="symbols">${symbols?'АБВ':'123'}</button>`:''}</div>`).join('')}<div class="kdw-key-row"><button type="button" class="kdw-key-wide" data-kdw-key="language">${language==='ru'?'EN':'РУ'}</button><button type="button" class="kdw-key-space" data-kdw-key=" ">Пробел</button><button type="button" class="kdw-key-enter" data-kdw-key="enter" aria-label="${activeField==='name'?'К описанию':'Готово'}">${activeField==='name'?'↵':'Готово'}</button></div></div>`;
+  return `<div class="kdw-keyboard" aria-label="Экранная клавиатура"><div class="kdw-keyboard-tools"><span data-kdw-editing>${activeField==='name'?'Название канала':'Описание канала'}</span><button type="button" data-kdw-key="dismiss" class="kdw-keyboard-dismiss" aria-label="Скрыть клавиатуру">${KEYBOARD_DISMISS_ICON}</button></div>${rows[layout].map((row,index)=>`<div class="kdw-key-row">${index===2?'<button type="button" class="kdw-key-wide" data-kdw-key="shift" aria-label="Регистр" aria-pressed="'+shift+'">⇧</button>':''}${row.split(' ').map(key=>`<button type="button" data-kdw-key="${esc(key)}">${esc(shift?key.toUpperCase():key)}</button>`).join('')}${index===0?'<button type="button" class="kdw-key-wide" data-kdw-key="backspace" aria-label="Удалить символ">⌫</button>':''}${index===2?`<button type="button" class="kdw-key-wide" data-kdw-key="symbols">${symbols?'АБВ':'123'}</button>`:''}</div>`).join('')}<div class="kdw-key-row"><button type="button" class="kdw-key-wide" data-kdw-key="language">${language==='ru'?'EN':'РУ'}</button><button type="button" class="kdw-key-space" data-kdw-key=" ">Пробел</button><button type="button" class="kdw-key-enter" data-kdw-key="enter" aria-label="${activeField==='name'?'К описанию':'Готово'}">${activeField==='name'?'↵':'Готово'}</button></div></div>`;
  }
  function channelMarkup(){
   // Only the editable display occupies the existing phone's screen. Its shell,
@@ -70,23 +71,23 @@ export function mountKdwInteractions({getSession,onMenu}){
  function productMarkup(product){return `<button type="button" class="kdw-product" data-kdw-product="${product.id}" aria-label="Добавить ${esc(product.name)}">${photo(product)}<span>${esc(product.name)}</span><strong>${product.price} ₽</strong></button>`;}
  function storeMarkup(){
   const editing=screenId==='business.store.start',ready=screenId==='business.store.result';
-  return `<div class="kdw-store-editor"><div class="kdw-phone-status"><span>9:41</span><span>▴ ▰ ▰</span></div><h2 class="kdw-phone-title">${ready?'Витрина готова':'Мини-приложение'}</h2><div class="kdw-store-scroll"><div class="kdw-store-slots">${slotMarkup()}</div></div><footer class="kdw-store-controls"><p>${editing?'Выбирайте товары справа':'Проверьте вашу витрину'}</p><p data-kdw-count role="status" aria-live="polite"></p><strong data-store-rating>★ 4,0 / 4,9</strong><button type="button" class="kdw-primary" data-kdw-submit>${editing?'Готово':ready?'Продолжить':'Опубликовать витрину'}</button><p class="kdw-error" data-kdw-error role="status" aria-live="polite"></p></footer><span class="kdw-phone-bottom"></span></div><section class="kdw-product-stream" aria-label="Товары для витрины"></section>`;
+  return `<div class="kdw-store-editor"><div class="kdw-phone-status"><span>9:41</span><span>▴ ▰ ▰</span></div><h2 class="kdw-phone-title">${ready?'Витрина готова':'Мини-приложение'}</h2><div class="kdw-store-scroll"><div class="kdw-store-slots">${slotMarkup()}</div></div><footer class="kdw-store-controls"><p data-store-hint>${editing?'Выбирайте товары справа':'Проверьте вашу витрину'}</p><p data-kdw-count role="status" aria-live="polite"></p><strong data-store-rating>★ 4,0 / 4,9</strong><button type="button" class="kdw-primary" data-kdw-submit>${storeFinished()?'Опубликовать витрину':'Готово'}</button><p class="kdw-error" data-kdw-error role="status" aria-live="polite"></p></footer><span class="kdw-phone-bottom"></span></div><section class="kdw-product-stream" aria-label="Товары для витрины"></section>`;
  }
  function alignStore(){
   if(scene!=='store')return;
   const editor=overlay.querySelector('.kdw-store-editor'),field=overlay.querySelector('.kdw-product-stream'),g=activityGeometry();
   const ready=g&&g.matched&&g.phone.dataset.sceneVersion?.includes(screenId)&&g.phone.querySelector('.task-media-canvas img')?.getAttribute('src')?.endsWith('kdw-native/store-phone.svg');
   if(!ready){editor.style.opacity='0';field.style.opacity='0';editor.inert=field.inert=true;return;}
-  alignActivityPhone(editor,g);editor.inert ||=scenePhase!=='task';if(g.alpha>.97&&screenId===STORE_SCREEN&&scenePhase==='task')void startStore();productStream.sync(g,latestSnapshot,screenId===STORE_SCREEN&&scenePhase==='task');
+  const phoneAlpha=alignActivityPhone(editor,g);editor.inert ||=scenePhase!=='task';if(phoneAlpha>.97&&!editor.inert&&screenId===STORE_SCREEN&&scenePhase==='task')void startStore();productStream.sync(g,latestSnapshot,screenId===STORE_SCREEN,scenePhase==='task'&&phoneAlpha>.97&&!editor.inert);
   for(const node of field.querySelectorAll('[data-kdw-product]'))node.disabled ||=submitBusy||storePending;
  }
  function redraw(){storeMotion.clear();overlay.innerHTML=scene==='channel'?channelMarkup():storeMarkup();resize();alignChannel();alignStore();buttonsBusy(submitBusy);refreshStore();}
- function refreshStore(){if(scene!=='store')return;const activity=latestSnapshot?.state.progress.business?.storeActivity,signature=JSON.stringify(activity?.published??[]),slots=overlay.querySelector('.kdw-store-slots');if(slots&&signature!==storeSignature){storeSignature=signature;slots.innerHTML=slotMarkup();const scroller=overlay.querySelector('.kdw-store-scroll');scroller.scrollTo({top:scroller.scrollHeight,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});}const count=overlay.querySelector('[data-kdw-count]');if(count)count.textContent=storeFinished()?'Отличная витрина!':'Наберите рейтинг 4,9';const rating=overlay.querySelector('[data-store-rating]');if(rating)rating.hidden=storeFinished()&&!activity;if(rating)rating.textContent='★ '+storeRating(activity).toFixed(1).replace('.',',')+' / 4,9';storeMotion.sync();buttonsBusy(submitBusy);}
+ function refreshStore(){if(scene!=='store')return;const activity=latestSnapshot?.state.progress.business?.storeActivity,signature=JSON.stringify(activity?.published??[]),slots=overlay.querySelector('.kdw-store-slots');if(slots&&signature!==storeSignature){storeSignature=signature;slots.innerHTML=slotMarkup();const scroller=overlay.querySelector('.kdw-store-scroll');scroller.scrollTo({top:scroller.scrollHeight,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});}const finished=storeFinished();document.documentElement.dataset.kdwStorePlaying=String(!finished);const count=overlay.querySelector('[data-kdw-count]');if(count)count.textContent=finished?'Отличная витрина!':'Наберите рейтинг 4,9';const hint=overlay.querySelector('[data-store-hint]');if(hint)hint.textContent=finished?'Витрина готова к публикации':'Выбирайте товары справа';const submit=overlay.querySelector('[data-kdw-submit]');if(submit)submit.textContent=finished?'Опубликовать витрину':'Готово';const rating=overlay.querySelector('[data-store-rating]');if(rating)rating.hidden=finished&&!activity;if(rating)rating.textContent='★ '+storeRating(activity).toFixed(1).replace('.',',')+' / 4,9';storeMotion.sync();buttonsBusy(submitBusy);}
  async function startStore(){const session=getSession();if(storeStarting||session.snapshot?.state.progress.business?.storeActivity||session.busy||!session.snapshot?.state.ownerActive)return;storeStarting=true;const key=context;try{const r=await session.command('START_STORE',{taskId:STORE_TASK,screenId:STORE_SCREEN});if(key===context){latestSnapshot=session.snapshot;if(!r?.reply.ok)error('Не удалось начать каталог.');}}finally{storeStarting=false;}}
- async function pickProduct(button){if(storePending||submitBusy||getSession().busy||screenId!==STORE_SCREEN)return;storePending=true;button.dataset.pending='true';const key=context,index=latestSnapshot.state.progress.business.storeActivity.published.length,product=button.dataset.kdwProduct;
+ async function pickProduct(button){if(button.disabled||storeFinished()||storePending||submitBusy||getSession().busy||screenId!==STORE_SCREEN)return;storePending=true;button.dataset.pending='true';const key=context,index=latestSnapshot.state.progress.business.storeActivity.published.length,product=button.dataset.kdwProduct;
   storeMotion.begin(index,button);
   try{const session=getSession(),r=await session.command('PICK_PRODUCT',{taskId:STORE_TASK,screenId:STORE_SCREEN,spawnId:button.dataset.productSpawn});if(key!==context)return;if(!r?.reply.ok){storeMotion.cancel(index);error('Товар уже улетел. Выберите следующий.');return;}latestSnapshot=session.snapshot;refreshStore();error('');storeMotion.add(product,index,button);}catch(cause){if(key===context){storeMotion.cancel(index);error('Не удалось выбрать товар. Попробуйте ещё раз.');}}finally{storePending=false;delete button.dataset.pending;}}
- function refreshKeyboard(){const old=overlay.querySelector('.kdw-keyboard');if(old){const template=document.createElement('template');template.innerHTML=keyboard();old.replaceChildren(...template.content.firstElementChild.childNodes);}overlay.querySelector('.kdw-scene').dataset.keyboard=String(keyboardOpen);const panel=overlay.querySelector('.kdw-keyboard');panel.inert=!keyboardOpen;panel.setAttribute('aria-hidden',String(!keyboardOpen));}
+ function refreshKeyboard(){updateKeyboardPanel(overlay.querySelector('.kdw-channel-scene'),keyboard(),keyboardOpen);}
  function dismissKeyboard(){keyboardOpen=false;overlay.querySelector('[data-kdw-field]:focus')?.blur();refreshKeyboard();}
  function editKey(key){
   if(submitBusy)return;
@@ -101,7 +102,7 @@ export function mountKdwInteractions({getSession,onMenu}){
   input.value=edited.value;input.focus({preventScroll:true});input.setSelectionRange(edited.caret,edited.caret);draft[activeField]=edited.value;if(shift&&key!=='backspace'){shift=false;refreshKeyboard();}changed();
  }
  async function act(){
-  if(submitBusy||!sameContext())return;
+  if(submitBusy||!sameContext()||scene==='store'&&storeMotion.active())return;
   if(!(scene==='store'?storeFinished():interactionComplete(scene,draft))){error(scene==='channel'?'Введи название канала — минимум два символа.':'Добавь хотя бы один товар.');return;}
   submitBusy=true;buttonsBusy(true);const started=context;
   try{
@@ -112,7 +113,7 @@ export function mountKdwInteractions({getSession,onMenu}){
    if(scene==='channel'){
     if(session.snapshot.state.screenId==='blogger.channel.name')await existingAction('channel.fill-name-example');
     if(started===context&&session.snapshot.state.screenId==='blogger.channel.filled')await existingAction('channel.create');
-   }else await existingAction(session.snapshot.view.actions[0]?.actionId);
+   }else await existingAction(session.snapshot.state.screenId+'.publish-now');
   }catch(cause){error(cause.message);}finally{submitBusy=false;if(started===context)buttonsBusy(false);}
  }
  overlay.addEventListener('pointerdown',event=>{if(event.target.closest('[data-kdw-key]'))event.preventDefault();const b=event.target.closest('[data-product-spawn]');if(b&&!b.disabled){b.dataset.held='true';b.setPointerCapture(event.pointerId);}});
@@ -134,7 +135,7 @@ export function mountKdwInteractions({getSession,onMenu}){
   if(button.dataset.kdwProduct)void pickProduct(button);
 
  });
- function hide(){if(!scene)return;if(scene==='store')fadeActivityOut(overlay);productStream.clear();storeSignature='';storeMotion.clear();clearTimeout(saveTimer);scene=null;context='';dirty=false;submitBusy=false;overlay.hidden=true;overlay.replaceChildren();delete document.documentElement.dataset.kdwInteraction;document.querySelector('#circles').inert=false;}
+ function hide(){if(!scene)return;productStream.clear();if(scene==='store')fadeActivityOut(overlay);storeSignature='';storeMotion.clear();clearTimeout(saveTimer);scene=null;context='';dirty=false;submitBusy=false;overlay.hidden=true;overlay.replaceChildren();delete document.documentElement.dataset.kdwInteraction;delete document.documentElement.dataset.kdwStorePlaying;document.querySelector('#circles').inert=false;}
  return {
   flush,
   align(){alignChannel();alignStore();},

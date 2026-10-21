@@ -18,7 +18,7 @@ function driver(c=catalog,rulesRevision='mission-rules-task-clock-v2'){
   if(!model.state.progress.business.postsActivity)assert.equal(act('START_POSTS',fields).reply.ok,true);
   for(let i=0;i<8&&!postsGoal(model.state.progress.business.postsActivity);i++){
    const p=model.state.progress.business.postsActivity,spawn=postSpawn(p,i);if(!spawn.post.good)continue;
-   const elapsed=p.startRemainingMs-(model.state.deadlineAt-now);if(elapsed<spawn.start)now+=spawn.start-elapsed;
+   const elapsed=p.startRemainingMs-(model.state.deadlineAt-now);if(elapsed<spawn.start)now+=Math.ceil(spawn.start-elapsed);
    assert.equal(act('PUBLISH_POST',{...fields,spawnId:spawn.spawnId}).reply.ok,true);
   }
   assert.equal(postsGoal(model.state.progress.business.postsActivity),true);
@@ -147,7 +147,8 @@ test('all four stand missions and all fifteen tasks complete through the local a
    if(s.status==='result'){d.advance(3000);assert.equal(d.act('ADVANCE_RESULT').reply.ok,true);continue;}
    assert.equal(s.status,'task');
    d.postsRound();
-   if(s.screenId==='blogger.channel.name')assert.equal(d.act('SAVE_INTERACTION',{taskId:s.taskId,screenId:s.screenId,value:{name:'Канал MAX',description:'Проверка стендовой базы',avatar:'cat'}}).reply.ok,true);
+   if(s.screenId==='blogger.channel.name')assert.equal(d.act('SAVE_INTERACTION',{taskId:s.taskId,screenId:s.screenId,value:{schemaVersion:2,name:'Канал MAX',description:'Проверка стендовой базы',avatar:'cat',visibility:'private',slug:'max_test'}}).reply.ok,true);
+   if(s.screenId==='blogger.comments.input')assert.equal(d.act('SAVE_INTERACTION',{taskId:s.taskId,screenId:s.screenId,value:{schemaVersion:1,reply:'Ждём в следующем году!'}}).reply.ok,true);
    if(s.screenId==='business.store.start')d.storeRound();
    const screens=catalog.tasks[s.taskId].screens,screen=screens[s.screenId],queue=[{id:s.screenId,first:null}],seen=new Set();let action;
    while(queue.length&&!action){const node=queue.shift();if(seen.has(node.id))continue;seen.add(node.id);for(const candidate of screens[node.id].actions){if(candidate.outcome.kind==='incorrect')continue;const first=node.first??candidate;if(candidate.outcome.kind!=='navigate'){action=first;break;}queue.push({id:candidate.outcome.screenId,first});}}
@@ -172,4 +173,46 @@ test('rated store rejects early completion, scores wrong goods below four, recov
  const app=createMissionSessionApplication({catalog,persistence,now:()=>d.now+1000});assert.deepEqual((await app.getSnapshot('test')).state.progress.business.storeActivity.published,a.published);await app.close();
  const reopened=createMissionSessionApplication({catalog,persistence,now:()=>d.now+2000});assert.equal(storeRating((await reopened.getSnapshot('test')).state.progress.business.storeActivity),storeRating(a));await reopened.close();
  assert.equal(d.act('ACT',action).reply.ok,true);
+});
+
+test('native store publishes directly from its current screen, once, with the same catalogue and replayable completion',()=>{
+ for(const step of ['start','publish','result']){
+  const d=driver();d.reach('business','business.store.start');
+  const command={screenId:'business.store.start',actionId:'business.store.start.publish-now'};
+  assert.equal(d.act('ACT',command).reply.code,'STORE_RATING_REQUIRED');
+  d.storeRound();
+  if(step!=='start')assert.equal(d.act('ACT',{screenId:'business.store.start',actionId:'business.store.start.continue'}).reply.ok,true);
+  if(step==='result')assert.equal(d.act('ACT',{screenId:'business.store.publish',actionId:'business.store.publish.continue'}).reply.ok,true);
+  command.screenId='business.store.'+step;
+  command.actionId=command.screenId+'.publish-now';
+  const published=structuredClone(d.model.state.progress.business.storeActivity.published),r=d.act('ACT',command);
+  assert.equal(r.reply.ok,true);assert.equal(d.model.state.screenId,command.screenId);assert.equal(d.model.state.status,'result');
+  assert.deepEqual(d.model.state.progress.business.storeActivity.published,published);
+  assert.equal(d.model.state.progress.business.completed.filter(t=>t==='business.store').length,1);
+  assert.equal(dispatchMissionCommand(catalog,d.model,r.command,{now:d.now}).duplicate,true);
+  assert.equal(d.act('ACT',command).reply.code,'TASK_UNAVAILABLE');
+  assert.equal(restoreMissionModel(catalog,d.model).ok,true);
+  d.advance(900);assert.equal(d.act('ADVANCE_RESULT').reply.ok,true);assert.equal(d.model.state.status,'completed');
+ }
+});
+
+test('saved v1 rated store receipts retain their old timeline after density upgrade',()=>{
+ const d=driver({...catalog,kdwStoreActivity:1});d.reach('business','business.store.start');d.storeRound();
+ assert.equal(d.model.state.progress.business.storeActivity.version,1);assert.equal(restoreMissionModel(catalog,d.model).ok,true);
+});
+test('saved v2 store receipts retain the density timeline after lane upgrade',()=>{
+ const d=driver({...catalog,kdwStoreActivity:2});d.reach('business','business.store.start');d.storeRound();
+ assert.equal(d.model.state.progress.business.storeActivity.version,2);assert.equal(restoreMissionModel(catalog,d.model).ok,true);
+});
+test('saved v3 store receipts retain the lane timeline after free-flight upgrade',()=>{
+ const d=driver({...catalog,kdwStoreActivity:3});d.reach('business','business.store.start');d.storeRound();
+ assert.equal(d.model.state.progress.business.storeActivity.version,3);assert.equal(restoreMissionModel(catalog,d.model).ok,true);
+});
+test('saved v4 store receipts retain their speed after the double-speed upgrade',()=>{
+ const d=driver({...catalog,kdwStoreActivity:4});d.reach('business','business.store.start');d.storeRound();
+ assert.equal(d.model.state.progress.business.storeActivity.version,4);assert.equal(restoreMissionModel(catalog,d.model).ok,true);
+});
+test('saved v5 store receipts retain prefilled history after empty-start upgrade',()=>{
+ const d=driver({...catalog,kdwStoreActivity:5});d.reach('business','business.store.start');d.storeRound();
+ assert.equal(d.model.state.progress.business.storeActivity.version,5);assert.equal(restoreMissionModel(catalog,d.model).ok,true);
 });

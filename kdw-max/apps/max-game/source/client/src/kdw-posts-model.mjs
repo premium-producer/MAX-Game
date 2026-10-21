@@ -1,8 +1,9 @@
 import photos from './kdw-post-assets.json' with {type:'json'};
+import chrome from './kdw-posts-chrome.json' with {type:'json'};
 import {activityRemaining} from './kdw-development.mjs';
 import {createPostTimeline} from './kdw-post-stream.mjs';
 export const POSTS_SCREEN='business.channel.result',POSTS_TASK='business.channel';
-export const POSTS_RULES=Object.freeze({version:6,initialAudience:14628,goal:300,good:120,bad:-100,interval:2300,travel:10500,maxPosts:20});
+export const POSTS_RULES=Object.freeze({version:11,initialAudience:14628,goal:300,good:120,bad:-100,interval:2300,travel:10500,maxPosts:20});
 const banks={
  cafe:[
   ['coffee-duo','Два кофе + третий в подарок','До 12:00. Третий напиток того же объёма — в подарок.',2,true,'Понятная акция с условиями помогает выбрать.'],
@@ -40,8 +41,9 @@ export function postBank(type='cafe'){return (banks[type]??banks.cafe).map(([id,
 export const postPhoto=id=>photos.find(a=>a.assetId===`kdw.posts.photo-${id}`);
 export function applyPostsCatalog(catalog){
  for(const asset of photos)catalog.assets[asset.assetId]=asset;
+ Object.assign(catalog.assets,chrome);
  const screen=catalog.tasks[POSTS_TASK].screens[POSTS_SCREEN];
- screen.assetId='kdw.native.store-phone';screen.deviceKind='phone';screen.annotations=[];
+ screen.assetId='kdw.posts.phone';screen.deviceKind='phone';screen.annotations=[];
  screen.instruction='Выберите полезные публикации для канала';
  catalog.kdwPostsActivity=POSTS_RULES.version;
  return catalog;
@@ -94,7 +96,7 @@ export function reducePosts(state,command,now,version=POSTS_RULES.version){
  const index=Number(parts[1]),elapsed=postsElapsed(posts,remaining);
  if(posts.published.some(p=>p.spawnId===command.spawnId))return 'POST_ALREADY_PUBLISHED';
  const spawn=posts.version>=3?visiblePosts(posts,elapsed).find(row=>row.index===index):postSpawn(posts,index);
- if(!spawn||elapsed<spawn.start||elapsed>=spawn.start+(spawn.travel??POSTS_RULES.travel))return 'POST_NOT_AVAILABLE';
+ if(!spawn||elapsed<spawn.start||posts.version<7&&elapsed>=spawn.start+(spawn.travel??POSTS_RULES.travel))return 'POST_NOT_AVAILABLE';
  if(posts.version<2&&posts.published.some(p=>p.postId===spawn.post.id))return 'POST_ALREADY_PUBLISHED';
  const post=spawn.post,before=posts.audience;posts.audience=Math.max(0,before+post.delta);
  posts.published.push({spawnId:spawn.spawnId,postId:post.id,index,good:post.good,delta:posts.audience-before,audience:posts.audience,...(posts.version>=3?{elapsedMs:elapsed}:{})});return null;
@@ -102,7 +104,7 @@ export function reducePosts(state,command,now,version=POSTS_RULES.version){
 // Replaying an already accepted legacy completion must not retroactively impose
 // the new activity. Live commands never receive this replay-only catalog.
 export function catalogForPostsReceipt(catalog,r){
- if(r.command.type==='START_POSTS'&&[1,2,3,4,5].includes(r.reply?.snapshot?.progress?.business?.postsActivity?.version))return {...catalog,kdwPostsActivity:r.reply.snapshot.progress.business.postsActivity.version};
+ if(r.command.type==='START_POSTS'&&[1,2,3,4,5,6,7,8,9,10].includes(r.reply?.snapshot?.progress?.business?.postsActivity?.version))return {...catalog,kdwPostsActivity:r.reply.snapshot.progress.business.postsActivity.version};
  if(r.command.type==='ACT'&&r.command.screenId===POSTS_SCREEN&&r.command.actionId==='business.channel.result.continue'&&!r.reply?.snapshot?.progress?.business?.postsActivity)return {...catalog,kdwPostsActivity:null};
  return catalog;
 }

@@ -1,0 +1,246 @@
+{
+  "assets": {
+    "kdw.visitor.business-platform-profile": {
+      "assetId": "kdw.visitor.business-platform-profile",
+      "path": "assets/kdw-native/visitor-details/business-platform-profile.svg",
+      "width": 1789,
+      "height": 1118,
+      "mimeType": "image/svg+xml",
+      "sha256": "fae3b57201cde40429ee2d98b9d154f04a1203a6e85512db94d11940a94e5012"
+    },
+    "kdw.visitor.business-platform-verification": {
+      "assetId": "kdw.visitor.business-platform-verification",
+      "path": "assets/kdw-native/visitor-details/business-platform-verification.svg",
+      "width": 880,
+      "height": 550,
+      "mimeType": "image/svg+xml",
+      "sha256": "6c041c508feaab0981f1465d5e744ad928a242d29a055e3dcea9df28e7878272"
+    },
+    "kdw.visitor.business-channel-create": {
+      "assetId": "kdw.visitor.business-channel-create",
+      "path": "assets/kdw-native/visitor-details/business-channel-create.svg",
+      "width": 1513,
+      "height": 986,
+      "mimeType": "image/svg+xml",
+      "sha256": "221e561e8a901b92b166fe59ab897380cbc827cc6c7a067bbb31fb5da7dac3d3"
+    },
+    "kdw.visitor.business-channel-continue": {
+      "assetId": "kdw.visitor.business-channel-continue",
+      "path": "assets/kdw-native/visitor-details/business-channel-continue.svg",
+      "width": 1587,
+      "height": 992,
+      "mimeType": "image/svg+xml",
+      "sha256": "bc081489ee6a7ba710c206f554f638453464985be740cd3a82ee0151204d95af"
+    },
+    "kdw.visitor.business-bot-create": {
+      "assetId": "kdw.visitor.business-bot-create",
+      "path": "assets/kdw-native/visitor-details/business-bot-create.svg",
+      "width": 1513,
+      "height": 986,
+      "mimeType": "image/svg+xml",
+      "sha256": "221e561e8a901b92b166fe59ab897380cbc827cc6c7a067bbb31fb5da7dac3d3"
+    },
+    "kdw.visitor.business-bot-filled": {
+      "assetId": "kdw.visitor.business-bot-filled",
+      "path": "assets/kdw-native/visitor-details/business-bot-filled.svg",
+      "width": 1445,
+      "height": 903,
+      "mimeType": "image/svg+xml",
+      "sha256": "5cabcb61fa127a33810770d305cc09284b5cfae40555d5c4334682e4dcc0328b"
+    },
+    "kdw.visitor.business-bot-ready": {
+      "assetId": "kdw.visitor.business-bot-ready",
+      "path": "assets/kdw-native/visitor-details/business-bot-ready.svg",
+      "width": 1332,
+      "height": 832,
+      "mimeType": "image/svg+xml",
+      "sha256": "3805763ab81970584c2fc7f0731218ed29f44d433500df18aa47c3e62c5ce1db"
+    },
+    "kdw.visitor.communication-call-chat": {
+      "assetId": "kdw.visitor.communication-call-chat",
+      "path": "assets/kdw-native/visitor-details/communication-call-chat.svg",
+      "width": 807,
+      "height": 1792,
+      "mimeType": "image/svg+xml",
+      "sha256": "0d550377dcd984725161b6295bf9b15bc2308210bc8a19b75287dc8da298dd59"
+    }
+  },
+  "screens": {
+    "business.platform.profile": "kdw.visitor.business-platform-profile",
+    "business.platform.verification": "kdw.visitor.business-platform-verification",
+    "business.channel.create": "kdw.visitor.business-channel-create",
+    "business.channel.continue": "kdw.visitor.business-channel-continue",
+    "business.bot.create": "kdw.visitor.business-bot-create",
+    "business.bot.filled": "kdw.visitor.business-bot-filled",
+    "business.bot.ready": "kdw.visitor.business-bot-ready",
+    "communication.call.chat": "kdw.visitor.communication-call-chat"
+  },
+  "regions": {
+    "business.platform.profile": {
+      "kind": "avatar",
+      "cx": 1525,
+      "cy": 72,
+      "r": 26
+    },
+    "business.platform.verification": {
+      "kind": "avatar",
+      "cx": 749.723,
+      "cy": 35.4179,
+      "r": 13.4343
+    },
+    "business.channel.create": {
+      "kind": "avatar",
+      "cx": 1213,
+      "cy": 62,
+      "r": 20
+    },
+    "business.channel.continue": {
+      "kind": "avatar",
+      "cx": 1264,
+      "cy": 65,
+      "r": 20
+    },
+    "business.bot.create": {
+      "kind": "avatar",
+      "cx": 1213,
+      "cy": 62,
+      "r": 20
+    },
+    "business.bot.filled": {
+      "kind": "avatar",
+      "cx": 1166,
+      "cy": 59,
+      "r": 19,
+      "dim": 0.32
+    },
+    "business.bot.ready": {
+      "kind": "avatar",
+      "cx": 1075.5,
+      "cy": 54.5,
+      "r": 17.5,
+      "visibleFrom": 65,
+      "dim": 0.35
+    },
+    "communication.call.chat": {
+      "kind": "times",
+      "patches": [
+        {
+          "x": 507,
+          "y": 508,
+          "w": 72,
+          "h": 25,
+          "time": "09:23",
+          "baseline": 529,
+          "anchor": 573
+        },
+        {
+          "x": 507,
+          "y": 660,
+          "w": 72,
+          "h": 25,
+          "time": "09:24",
+          "baseline": 681,
+          "anchor": 573
+        },
+        {
+          "x": 507,
+          "y": 812,
+          "w": 72,
+          "h": 25,
+          "time": "09:25",
+          "baseline": 833,
+          "anchor": 573
+        },
+        {
+          "x": 507,
+          "y": 965,
+          "w": 72,
+          "h": 25,
+          "time": "09:26",
+          "baseline": 986,
+          "anchor": 573
+        },
+        {
+          "x": 664,
+          "y": 1118,
+          "w": 74,
+          "h": 25,
+          "time": "09:27",
+          "baseline": 1139,
+          "anchor": 735
+        },
+        {
+          "x": 664,
+          "y": 1270,
+          "w": 74,
+          "h": 25,
+          "time": "09:28",
+          "baseline": 1291,
+          "anchor": 735
+        },
+        {
+          "x": 664,
+          "y": 1422,
+          "w": 74,
+          "h": 25,
+          "time": "09:29",
+          "baseline": 1443,
+          "anchor": 735
+        },
+        {
+          "x": 664,
+          "y": 1575,
+          "w": 74,
+          "h": 25,
+          "time": "09:30",
+          "baseline": 1596,
+          "anchor": 735
+        }
+      ]
+    }
+  },
+  "sourcePins": {
+    "business.platform.profile": {
+      "assetId": "figma.296-16744",
+      "sha256": "2f3a8875d7b7af13cf52ed6a82b9574813c39812142d2b2a9caa08125aef7f1f"
+    },
+    "business.platform.verification": {
+      "assetId": "figma.296-16939",
+      "sha256": "98d2a4483c086caba7159b8497349f5d1b8c58f8aeebf511b842a380f0673274"
+    },
+    "business.channel.create": {
+      "assetId": "figma.296-17351",
+      "sha256": "5db6890f2c6fff9e0e15bb29f8679a653a7cdcc3f4c6eaa6e0a62697a1d18387"
+    },
+    "business.channel.continue": {
+      "assetId": "kdw.native.business-channel-menu",
+      "sha256": "0ec4fd8f696d6ab0b5d9df169e02ab777e154a35322bb86b0ae2368bea40056b"
+    },
+    "business.bot.create": {
+      "assetId": "figma.296-18558",
+      "sha256": "5db6890f2c6fff9e0e15bb29f8679a653a7cdcc3f4c6eaa6e0a62697a1d18387"
+    },
+    "business.bot.filled": {
+      "assetId": "figma.296-18799",
+      "sha256": "60c2dc36e76720a497b316e6be573ac13a0b481ffd0c9026efc8994350b59d5a"
+    },
+    "business.bot.ready": {
+      "assetId": "figma.296-18852",
+      "sha256": "5047c3219f2b9185e976a2bad5973fbec39759740193728482fec7410ff38bf9"
+    },
+    "communication.call.chat": {
+      "assetId": "figma.296-15983",
+      "sha256": "6591d0f5b17c97c0a31d262492db94c000237743ba3118a500fbbf73a1b21f98"
+    }
+  },
+  "times": [
+    "09:23",
+    "09:24",
+    "09:25",
+    "09:26",
+    "09:27",
+    "09:28",
+    "09:29",
+    "09:30"
+  ]
+}

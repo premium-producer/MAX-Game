@@ -187,5 +187,271 @@
     ],
     "verification": "docs/verification-store-handoff-20261020/README.md",
     "deployed": false
+  },
+  "localStoreReveal": {
+    "iteration": "KDW-MAX-STORE-REVEAL-20261020",
+    "bundleSha256": "554392451c39361714bdd827de9820650188047c4a5ea4ae0b155bbfc263d81e",
+    "cssSha256": "71d603ebfbad119b35ae22f0e2a08f12cd55a4b7aa4da1dbed7972e8aede59bb",
+    "changes": [
+      "Invisible reserved slot; 300ms card reveal at landing with flight image retained until underlying image is almost opaque; live destination tracking during scroll"
+    ],
+    "verification": "docs/verification-store-reveal-20261020/README.md",
+    "deployed": false
+  },
+  "localLinksDocking": {
+    "iteration": "KDW-MAX-LINKS-DOCKING-20261020",
+    "bundleSha256": "7bf918a72058cfb767b41a19613e0e55b9d383e6d701d230a9677124e84497a9",
+    "cssSha256": "8c75850081c3444728170f65a79cfecdd8595a8e5da47c753e0651c6d92e2460",
+    "changes": [
+      "Gate portable phone entrance on complete fan trace; avoid reveal snap on task transition",
+      "Flight remains unmasked until arrival, then reparents into native catalogue scroll container for reveal and synchronous clipping"
+    ],
+    "verification": "docs/verification-links-docking-20261020/README.md",
+    "deployed": false
+  },
+  "localStoreApproachMask": {
+    "iteration": "KDW-MAX-STORE-APPROACH-MASK-20261020",
+    "bundleSha256": "fcd4d8d9e70b7c81fca50749b2db9128a33b5a3436854ab0e304537a078b10d0",
+    "cssSha256": "4351ef90a51dfd86573c205593a363e258ae7a731bb37cce59c68878ad9a6d39",
+    "changes": [
+      "Incoming thumbnail clipped over device chrome while still in flight; free outside device and visible within catalogue aperture; native scroll docking retained"
+    ],
+    "verification": "docs/verification-store-approach-mask-20261020/README.md",
+    "deployed": false
+  },
+  "localStoreContinuousMask": {
+    "iteration": "KDW-MAX-STORE-CONTINUOUS-MASK-20261020",
+    "bundleSha256": "fab9be7a8dba71651c6423ca8b9354e72d4d89f80ac67666baa70f5b9cc41084",
+    "cssSha256": "4351ef90a51dfd86573c205593a363e258ae7a731bb37cce59c68878ad9a6d39",
+    "changes": [
+      "Replace outside-device/catalogue union with a single smoothly contracting aperture; full catalogue clipping before landing; native scroll docking retained"
+    ],
+    "verification": "docs/verification-store-continuous-mask-20261020/README.md",
+    "deployed": false
+  },
+  "localPersonalChannel": {
+    "iteration": "KDW-MAX-PERSONAL-CHANNEL-20261020",
+    "bundleSha256": "b272a7682a91d7ed6d9aa5a54eb42826a1a6f3b2c9f5e56f4c61fdb380f37c76",
+    "cssSha256": "bbcc8cf417ce3d4328bf7f541fb5f6ce9a867fb230f0eb5a7137574ff692886a",
+    "changes": [
+      "Shared persisted channel profile across native creation and comments; five avatar choices, name/description and local private/public link setup",
+      "Editable reply, authored return-to-post screen with two comments, legacy receipt replay retained",
+      "Existing statistics renderer unchanged; only prepared small assets are shipped"
+    ],
+    "verification": "docs/verification-personal-channel-20261020/README.md",
+    "deployed": false
+  },
+  "localPostLanding": {
+    "iteration": "KDW-MAX-POSTS-LANDING-20261020",
+    "bundleSha256": "b272a7682a91d7ed6d9aa5a54eb42826a1a6f3b2c9f5e56f4c61fdb380f37c76",
+    "cssSha256": "bbcc8cf417ce3d4328bf7f541fb5f6ce9a867fb230f0eb5a7137574ff692886a",
+    "changes": [
+      "Native post phone remains hidden until aligned with the live device",
+      "Posts and products share opaque selection handoff, single approach aperture and native scroll docking with card reveal"
+    ],
+    "verification": "docs/verification-posts-landing-20261020/README.md",
+    "deployed": false
+  },
+  "localUnmaskedFlights": {
+    "iteration": "KDW-MAX-UNMASKED-FLIGHTS-20261020",
+    "bundleSha256": "d7222b6cbabe49a46678d9b73db17a82c23eae5da3f6af64ace0b79f0e7260d8",
+    "cssSha256": "d464e6dbbc6c9534405a320ba312fffef474b1528fbb74e52c7499e5877745cb",
+    "report": "docs/verification-unmasked-flights-20261020/README.md",
+    "deployed": false
+  },
+  "localMissionRestart": {
+    "iteration": "KDW-MAX-MISSION-RESTART-20261020",
+    "bundleSha256": "6c421f8dfada7b546369465d9e78d7542842053c7bad9d29f4c577d6140147fd",
+    "cssSha256": "1d03c42a75491e94c1b22db702462fa2e109e969794c21adbac2055a7705674f",
+    "report": "docs/verification-mission-restart-20261020/README.md",
+    "deployed": false
+  },
+  "localPersonalPreservedScreens": {
+    "iteration": "KDW-MAX-PERSONAL-PRESERVE-20261020",
+    "bundleSha256": "744eeaa295d09c1572b62e8207bcd57476fe756e5e3768bfc084bdf92818146b",
+    "cssSha256": "074ecc035988311b21b9dc59bdebc4febf7dd2ad4ab1651c88e5c932761ab15d",
+    "changes": [
+      "Restore exact supplied MAX PNG screens; replace only personalized channel regions and input",
+      "Preserve menus, contacts, posts and privacy layout; shared profile and persistence retained"
+    ],
+    "verification": "docs/verification-personal-channel-preserve-20261020/README.md",
+    "deployed": false
+  },
+  "localPersonalSync": {
+    "iteration": "KDW-MAX-PERSONAL-SYNC-20261020",
+    "bundleSha256": "1bbad0a7955ec7052116e2922f67a10efbe478a92d345770b612b84281e8122e",
+    "cssSha256": "074ecc035988311b21b9dc59bdebc4febf7dd2ad4ab1651c88e5c932761ab15d",
+    "changes": [
+      "Remove sample channel data from GPU underlays only in personalized regions",
+      "Keep native profile bound to displayed media through exit/fade; atomic commit and decode barrier, stale input guard"
+    ],
+    "verification": "docs/verification-personal-channel-sync-20261020/README.md",
+    "deployed": false
+  },
+  "localStreamDensity": {
+    "iteration": "KDW-MAX-STREAM-DENSITY-20261020",
+    "bundleSha256": "4af8e1d65c1a099474600fb2438edc16400f37c64944007e634ddff9eb6b4a37",
+    "cssSha256": "3745bd6db51da3ecd53d5f0a946a26e48e93ac501089955da958cc97048fe5cb",
+    "report": "docs/verification-stream-density-20261020/README.md",
+    "deployed": false
+  },
+  "localPersonalField": {
+    "iteration": "KDW-MAX-PERSONAL-FIELD-20261020",
+    "bundleSha256": "ed3238a805d525901a5f03ccf3aed10d0eb89cf89fa0ea2b7972a04ab99ad019",
+    "cssSha256": "3745bd6db51da3ecd53d5f0a946a26e48e93ac501089955da958cc97048fe5cb",
+    "changes": [
+      "Keep field geometry/background unchanged on focus; remove rectangular focus shadow",
+      "Match link editor and GPU masks to exact screen7/screen8 fill; disable spelling marks for slug"
+    ],
+    "verification": "docs/verification-personal-field-20261020/README.md",
+    "deployed": false
+  },
+  "localPersonalReply": {
+    "iteration": "KDW-MAX-PERSONAL-REPLY-20261020",
+    "bundleSha256": "7a3555dfbd8181b38024f561592e5f80291e709d7dbe717f687c54b0d203d3bc",
+    "cssSha256": "627cd4a76a91f7ad876cb46e1e8cfd869d0656123f87220cb4ea9974f469221e",
+    "changes": [
+      "Visible native send arrow and keyboard submit share the same core path",
+      "Transparent light comment editor over clean reviewed backdrop",
+      "Dismiss keyboard on outside mouse/touch without discarding text; remove listener on dispose"
+    ],
+    "verification": "docs/verification-personal-reply-20261020/README.md",
+    "deployed": false
+  },
+  "localPersonalDirect": {
+    "iteration": "KDW-MAX-PERSONAL-DIRECT-20261020",
+    "bundleSha256": "44be7a5110cb2844c3170a7fc0ec4f284ae5fd06ec8c6ce9ce3061c8f4166788",
+    "cssSha256": "8713596bd111f05a69b1417c2b6e25d4e04aa6bc6dd5a7b6f11287e00d6f8cf6",
+    "changes": [
+      "Persistent avatar chooser; native cross above avatar; selection updates without remounting fields",
+      "Atomic core confirmation skips equivalent legacy filled/preview frames; native back skips equivalent forms",
+      "Original actions and saved receipts remain replayable"
+    ],
+    "verification": "docs/verification-personal-direct-20261020/README.md",
+    "deployed": false
+  },
+  "localLaneFlow": {
+    "iteration": "KDW-MAX-LANE-FLOW-20261020",
+    "bundleSha256": "44be7a5110cb2844c3170a7fc0ec4f284ae5fd06ec8c6ce9ce3061c8f4166788",
+    "cssSha256": "8713596bd111f05a69b1417c2b6e25d4e04aa6bc6dd5a7b6f11287e00d6f8cf6",
+    "changes": [
+      "Posts v8 / store v3: reserved independent lanes with common velocity and bounded phase correction",
+      "Full card geometry envelope, safe refill and moving pointer capture; legacy replay retained"
+    ],
+    "verification": "docs/verification-lane-flow-20261020/README.md",
+    "deployed": false
+  },
+  "localFreeFlow": {
+    "iteration": "KDW-MAX-FREE-FLOW-20261020",
+    "bundleSha256": "48d4bd99317e7e78cb15284d05763fca077a05915a88fa336c5ec331f2acb0de",
+    "cssSha256": "6e35e4b195e95cf225c80f7d2928338b3a3e7a60a7021550bd2175c627e09fb9",
+    "changes": [
+      "Posts v9 / store v4: ten-card continuous right field; independent constant velocities and authoritative refill",
+      "Shared measured rectangle trajectory forecast; exact overlap integral and continuous horizontal minimum; no sideways repositioning during flight",
+      "Legacy receipts and previously completed personal-channel changes retained"
+    ],
+    "verification": "docs/verification-free-flow-20261020/README.md",
+    "deployed": false
+  },
+  "localCompactField": {
+    "iteration": "KDW-MAX-COMPACT-FIELD-20261020",
+    "bundleSha256": "8e4c43207b399ef53a500bf24c011ea255f2df1ea9fb6bda0e7942f4a402d385",
+    "cssSha256": "6e35e4b195e95cf225c80f7d2928338b3a3e7a60a7021550bd2175c627e09fb9",
+    "changes": [
+      "Limit the shared free-flight field to 2.1 nominal card widths beside the device; retain card size, ten-card admission and prediction"
+    ],
+    "verification": "docs/verification-compact-field-20261020/README.md",
+    "deployed": false
+  },
+  "localDoubleSpeed": {
+    "iteration": "KDW-MAX-DOUBLE-SPEED-20261020",
+    "bundleSha256": "51b52ce87bda3439699de8aece4f81f2ff7d8cfab0ec8eabbe583969a33fcddc",
+    "changes": [
+      "Posts v10 / store v5 double conveyor clock, velocity and refill while preserving real command timestamps and legacy replay"
+    ],
+    "verification": "docs/verification-double-speed-20261020/README.md",
+    "deployed": false
+  },
+  "localKeyboardMotion": {
+    "iteration": "KDW-MAX-KEYBOARD-MOTION-20261020",
+    "bundleSha256": "51b52ce87bda3439699de8aece4f81f2ff7d8cfab0ec8eabbe583969a33fcddc",
+    "cssSha256": "64f35e9045ac5d18e6ca8d62a1be761a129e7bdad62e3cf302f7d7df54618a86",
+    "changes": [
+      "Persistent animated keyboard shell; 520ms entry and 280ms exit, no restart during typing/layout changes",
+      "Rounded SVG down chevron, keyboard above game controls and reduced-motion support"
+    ],
+    "verification": "docs/verification-keyboard-motion-20261020/README.md",
+    "deployed": false
+  },
+  "localScreenContinue": {
+    "iteration": "KDW-MAX-SCREEN-CONTINUE-20261020",
+    "bundleSha256": "adba047341c742d3fa9dc084cfb205ac2a5fc967ec8bcea0a8a67b232440f443",
+    "changes": [
+      "Single footer action also responds to device image taps through original command/token; held contact does not cascade; controls and choices retain semantics"
+    ],
+    "verification": "docs/verification-screen-continue-20261020/README.md",
+    "deployed": false
+  },
+  "localTaskReplay": {
+    "iteration": "KDW-MAX-TASK-REPLAY-20261020",
+    "bundleSha256": "f29be4eddc814c428bf737312a4848993f8630e3e404a7d91548e0dfdc01429e",
+    "cssSha256": "18da1a5c0c2fb6a23920c876a677c2e851fbbde7d9f8f2385d228c0e84181075",
+    "fullRouteVerificationBundleSha256": "921a8e892c040be81e7731bd1ca7fda2162aa51b32e1c4341be8b2b880d86970",
+    "changes": [
+      "Retain physical scene and outgoing display through acknowledged local task replay; reject duplicate transitions",
+      "Whole mission restart defers presentation until scene fade and blocks premature local admission",
+      "Skip belongs to the painted ready task, hidden through transition/keyboard; native activities follow displayed snapshot"
+    ],
+    "verification": "docs/verification-task-replay-20261020/README.md",
+    "deployed": false
+  },
+  "localEmptyStart": {
+    "iteration": "KDW-MAX-EMPTY-START-20261020",
+    "bundleSha256": "f29be4eddc814c428bf737312a4848993f8630e3e404a7d91548e0dfdc01429e",
+    "changes": [
+      "Posts v11 and store v6 start empty; sequential 425–675ms top-edge admissions, legacy replay retained"
+    ],
+    "verification": "docs/verification-empty-start-20261020/README.md",
+    "deployed": false
+  },
+  "localActivityReveal": {
+    "iteration": "KDW-MAX-ACTIVITY-REVEAL-20261020",
+    "bundleSha256": "b8ec7acce27ea32ce059a94fd3141d293cc64910424fce1cf8280661f56c243b",
+    "cssSha256": "948f03bf75c44c90743bf1ac977f9b52f624e6a820ca83524416be12e5714b38",
+    "changes": [
+      "Shared 360ms native activity entry with header and audience ready from first frame; input follows actual opacity",
+      "Gate future replayed/skipped route nodes and edges until displayed handoff reaches their slot"
+    ],
+    "verification": "docs/verification-activity-reveal-20261020/README.md",
+    "deployed": false
+  },
+  "localBusinessSidebar": {
+    "iteration": "KDW-MAX-BUSINESS-SIDEBAR-20261020",
+    "bundleSha256": "28d86289c912e63f69a72b3e612ae63872f0fbdfd9ab43c01eadc75cac680114",
+    "changes": [
+      "Replace six baked-in menu avatars with local vector glyphs on business.channel.continue; retain profile avatar, source raster and actions"
+    ],
+    "verification": "docs/verification-business-sidebar-20261020/README.md",
+    "deployed": false
+  },
+  "localPostsQueue": {
+    "iteration": "KDW-MAX-POSTS-QUEUE-20261020",
+    "bundleSha256": "99bde4e74bb0cacd334ca42e650fca6557a8e4426fc045499a889502db6277d3",
+    "changes": [
+      "Serialize visual post arrivals and feed scroll without delaying durable publication; extend queued flights outside the phone",
+      "Wait for reveal before next scroll; reduced motion immediate; clear on exit; store animation remains unqueued"
+    ],
+    "verification": "docs/verification-posts-queue-20261020/README.md",
+    "deployed": false
+  },
+  "localScreenExit": {
+    "iteration": "SCREEN-EXIT-20261020",
+    "bundleSha256": "6776a8a0a90ff7cd45351b7073cbc6f9f851297c954aa46a1f4f08b8af9d18cb",
+    "changes": [
+      "Keep displayed screen key and instruction across same-screen task completion in every local mission",
+      "Cancel departing content transitions without restoring opacity; reset content only at hidden handoff"
+    ],
+    "verification": "docs/verification-screen-exit-20261020/README.md",
+    "deployed": false
   }
 }

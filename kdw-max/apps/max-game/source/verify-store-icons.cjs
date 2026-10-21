@@ -17,12 +17,12 @@ app.whenReady().then(async()=>{
   await js(`document.querySelector(${JSON.stringify(selector)}).click()`);
   await wait("!!document.querySelector('.kdw-product-flight')",2000);
   const samples=[];for(let i=0;i<36;i++){
-   const s=await js(`(()=>{const e=document.querySelector('.kdw-product-flight');if(!e)return null;const c=getComputedStyle(e);return {width:parseFloat(e.style.width),height:parseFloat(e.style.height),font:parseFloat(c.fontSize),display:c.display,overflow:c.overflow,emoji:e.classList.contains('kdw-product-emoji'),hidden:getComputedStyle(document.querySelector('.kdw-slot[data-arriving] .kdw-slot-content')).visibility}})()`);
+   const s=await js(`(()=>{const e=document.querySelector('.kdw-product-flight');if(!e)return null;const c=getComputedStyle(e);return {width:e.getBoundingClientRect().width,height:e.getBoundingClientRect().height,font:parseFloat(c.fontSize)*e.getBoundingClientRect().height/e.offsetHeight,display:c.display,overflow:c.overflow,emoji:e.classList.contains('kdw-product-emoji'),landing:!!document.querySelector('.kdw-slot[data-landing]'),hidden:getComputedStyle(document.querySelector('.kdw-slot[data-arriving] .kdw-slot-content,.kdw-slot[data-landing] .kdw-slot-content')).visibility}})()`);
    if(!s)break;if(s.height>0)samples.push(s);
    if(i===9)await shot(id+'-flight');
    await delay(16);
   }
-  assert.ok(samples.length>3);assert.ok(samples.every(s=>s.overflow==='hidden'&&s.hidden==='hidden'));
+  assert.ok(samples.length>3);assert.ok(samples.every(s=>s.overflow==='hidden'&&s.hidden===(s.landing?'visible':'hidden')));
   if(id!=='ethiopia'){
    assert.ok(samples.every(s=>s.display==='grid'&&s.font/s.height>.4&&s.font/s.height<.65));
    assert.ok(samples.at(-1).font<samples[0].font);checks.push(id+': glyph centred, scales with flight throughout animation, fits card');

@@ -3,6 +3,7 @@ import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 import {createKdwCatalog} from './client/src/kdw-interactions-model.mjs';
+import {PERSONAL_ASSETS} from './client/src/kdw-personal-channel-assets.mjs';
 const source=path.dirname(fileURLToPath(import.meta.url)),root=path.resolve(source,'..');
 const packages=process.argv[2]?path.resolve(process.argv[2]):path.join(source,'client/node_modules');
 if(!fs.existsSync(path.join(packages,'esbuild/lib/main.js')))throw Error('Pass an existing development node_modules directory. Runtime startup does not need this toolchain.');
@@ -17,13 +18,13 @@ if(!fs.existsSync(originalBundle)){
  fs.writeFileSync(path.join(web,'r6-client.html'),fs.readFileSync(path.join(web,'client.html'),'utf8').replace('./webgl-v5/app.js','./webgl-v5/r6-app.js'));
 }
 const nativeCatalog=createKdwCatalog(JSON.parse(fs.readFileSync(path.join(source,'client/src/reviewed-content/mission-catalog.json'))));
-for(const asset of Object.values(nativeCatalog.assets).filter(a=>a.path.startsWith('assets/kdw-native/'))){
+for(const asset of Object.values({...nativeCatalog.assets,...PERSONAL_ASSETS}).filter(a=>a.path.startsWith('assets/kdw-native/'))){
  const bytes=fs.readFileSync(path.join(source,'client/public',asset.path));
  if(sha(bytes)!==asset.sha256)throw Error('Native interaction resource differs: '+asset.path);
  fs.mkdirSync(path.dirname(path.join(root,'www',asset.path)),{recursive:true});fs.writeFileSync(path.join(root,'www',asset.path),bytes);
 }
 const result=await build({entryPoints:[path.join(source,'client/src/journey-guided-main.js')],nodePaths:[path.join(source,'vendor'),packages],bundle:true,format:'esm',platform:'browser',target:['es2022'],minify:true,write:false,metafile:true,legalComments:'inline'});
-const css=fs.readFileSync(path.join(source,'client/src/kdw-interactions.css'),'utf8')+'\n'+fs.readFileSync(path.join(source,'client/src/kdw-posts.css'),'utf8');
+const css=['kdw-interactions.css','kdw-posts.css','kdw-personal-channel.css'].map(name=>fs.readFileSync(path.join(source,'client/src',name),'utf8')).join('\n');
 await transform(css,{loader:'css',sourcefile:'kdw-interactions.css'});
 fs.writeFileSync(path.join(web,'app.js'),result.outputFiles[0].contents);
 fs.writeFileSync(path.join(web,'kdw-interactions.css'),css);

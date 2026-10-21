@@ -313,8 +313,15 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startu
    }
   }
  }
- function cancelContent(host){
+ function cancelContent(host,{departing=false}={}){
   const motion=contentTransitions.get(host);
+  if(departing){
+   // A departing screen must never recover toward opacity 1. Preserve its
+   // current opacity until the hidden swap, and revoke any delayed commit.
+   if(motion)host.dataset.contentPresence=String(motion.value);
+   motion?.cancel();contentTransitions.delete(host);host.dataset.contentPhase='departed';
+   return;
+  }
   if(motion&&host.isConnected&&host.querySelector('.route-phone'))motion.restore(reduced.matches);
   else{motion?.cancel();contentTransitions.delete(host);}
   // Manual close keeps the currently displayed alpha, then the shell fades out.
@@ -330,7 +337,11 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startu
   if(retained.has(el))return;
   const firstMaterial=materials.length;
   const cs=getComputedStyle(el);if(cs.display==='none'||cs.visibility==='hidden')return;
-  const r=rect(el);if(!r.w||!r.h)return;opacity*=Number(cs.opacity);
+  const r=rect(el);if(!r.w||!r.h)return;
+  // The native store yields the help panel while playing, then returns it on
+  // the same screen. Its opacity is sampled live below; baking zero here would
+  // keep every help mesh permanently invisible after the activity ends.
+  opacity*=el.matches('.context-popup')&&document.documentElement.dataset.kdwInteraction==='store'?1:Number(cs.opacity);
   if(el.matches(movingSelector)){
    const previous=previousGroups.get(el),group=previous?.group||new THREE.Group();group.clear();scene.add(group);const born=births.get(el)??time;births.set(el,born);
    el.dataset.sceneId=String(group.id);

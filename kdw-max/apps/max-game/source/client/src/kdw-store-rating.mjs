@@ -14,14 +14,14 @@ export function storeRating(activity){
 }
 export const storeGoal=activity=>!!activity&&storeRating(activity)>=4.9;
 export const storeElapsed=(activity,state,now)=>Math.max(0,activity.startRemainingMs-activityRemaining(state,now));
-export function storeTimeline(activity){return createPostTimeline({...activity,version:6},storeBank(activity.businessType));}
-export function reduceStore(state,command,now){
+export function storeTimeline(activity){return createPostTimeline({...activity,version:activity.version>=6?11:activity.version>=5?10:activity.version>=4?9:activity.version>=3?8:activity.version>=2?7:6},storeBank(activity.businessType));}
+export function reduceStore(state,command,now,version=6){
  if(state.status!=='task'||state.taskId!==STORE_TASK||state.screenId!==STORE_SCREEN||command.taskId!==STORE_TASK||command.screenId!==STORE_SCREEN)return 'WRONG_STORE_CONTEXT';
  if(!state.ownerActive)return 'STORE_PAUSED';
  const p=state.progress.business;
  if(command.type==='START_STORE'){
   if(p.storeActivity)return 'STORE_ALREADY_STARTED';
-  p.storeActivity={version:1,runId:state.runId,seed:714+state.runId,businessType:p.answers?.businessType??'cafe',startRemainingMs:activityRemaining(state,now),published:[]};return null;
+  p.storeActivity={version,runId:state.runId,seed:714+state.runId,businessType:p.answers?.businessType??'cafe',startRemainingMs:activityRemaining(state,now),published:[]};return null;
  }
  const activity=p.storeActivity;if(!activity)return 'STORE_NOT_STARTED';
  if(storeGoal(activity))return 'STORE_FINISHED';
@@ -32,6 +32,7 @@ export function reduceStore(state,command,now){
  return null;
 }
 export function catalogForStoreReceipt(catalog,r){
+ if(r.command.type==='START_STORE'&&[1,2,3,4,5].includes(r.reply?.snapshot?.progress?.business?.storeActivity?.version))return {...catalog,kdwStoreActivity:r.reply.snapshot.progress.business.storeActivity.version};
  if(r.command.type==='ACT'&&r.command.screenId?.startsWith('business.store.')&&!r.reply?.snapshot?.progress?.business?.storeActivity)return {...catalog,kdwStoreActivity:false};
  return catalog;
 }

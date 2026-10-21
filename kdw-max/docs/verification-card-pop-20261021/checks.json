@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "mode": "posts",
+      "count": 3,
+      "rows": 3,
+      "sequence": [
+        180,
+        90,
+        0
+      ]
+    },
+    {
+      "mode": "store",
+      "count": 5,
+      "rows": 9,
+      "sequence": [
+        360,
+        270,
+        180,
+        90,
+        0
+      ]
+    },
+    {
+      "cancelAndRestart": true,
+      "tenCardsFinishWithin1150ms": true,
+      "reducedMotion": true
+    }
+  ],
+  "errors": []
+}

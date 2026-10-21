@@ -31,6 +31,7 @@ export function reduceDevelopment(catalog,s,c,now,{sequence,enterTask,budget}){
  if(task.coreCatalog)delete p.channelModel;
  if(c.taskId==='business.channel')delete p.postsActivity;
  if(c.taskId==='business.store')delete p.storeActivity;
+ if(c.taskId==='blogger.comments')delete p.personalComments;
  p.currentTaskIndex=index;p.currentScreenId=null;p.scanned=true;
  s.scanned=true;s.runId++;s.resultReadyAt=null;
  enterTask(catalog,s,now,true);
