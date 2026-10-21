@@ -659,11 +659,11 @@ export const PERSONAL_ASSETS={
   },
   "kdw.personal.underlay-14": {
     "assetId": "kdw.personal.underlay-14",
-    "path": "assets/kdw-native/personal-channel/screens/underlay_14.svg",
+    "path": "assets/kdw-native/personal-channel/reply/background.svg",
     "mimeType": "image/svg+xml",
     "width": 360,
     "height": 800,
-    "sha256": "09a22c7f2225bf4a0a693a07b0bc381dba40cb40398ad54e2969b58ff357d01d"
+    "sha256": "daccb625f50b86630360f8e8b55f1ea67407bbffb18706ace490ae881badc269"
   },
   "kdw.personal.screen-15": {
     "assetId": "kdw.personal.screen-15",
@@ -680,5 +680,53 @@ export const PERSONAL_ASSETS={
     "width": 360,
     "height": 800,
     "sha256": "288b100e8c0bf57e5e18504ea9f1086396f3ebdb6cd6e449cac9972c1bd1350e"
+  },
+  "kdw.personal.reply-skin": {
+    "assetId": "kdw.personal.reply-skin",
+    "path": "assets/kdw-native/personal-channel/reply/skin.svg",
+    "mimeType": "image/svg+xml",
+    "width": 291,
+    "height": 114,
+    "sha256": "98a0b6d73122972b1b74e2715adc06f3860c24d1c7a7c2b91d5fa639ebe79b6d"
+  },
+  "kdw.personal.reply-meta": {
+    "assetId": "kdw.personal.reply-meta",
+    "path": "assets/kdw-native/personal-channel/reply/meta.svg",
+    "mimeType": "image/svg+xml",
+    "width": 48,
+    "height": 10,
+    "sha256": "f68e9b72d8013053ba38f56680724e27e6fe86822b40f7587188d5c183c10653"
+  },
+  "kdw.personal.reply-quote": {
+    "assetId": "kdw.personal.reply-quote",
+    "path": "assets/kdw-native/personal-channel/reply/quote.svg",
+    "mimeType": "image/svg+xml",
+    "width": 200,
+    "height": 32,
+    "sha256": "af44bbed5e4a81eda57759d1a44357568ca589ff578a7af63fdefafa5a400274"
+  },
+  "kdw.personal.reply-background": {
+    "assetId": "kdw.personal.reply-background",
+    "path": "assets/kdw-native/personal-channel/reply/background.svg",
+    "mimeType": "image/svg+xml",
+    "width": 360,
+    "height": 800,
+    "sha256": "daccb625f50b86630360f8e8b55f1ea67407bbffb18706ace490ae881badc269"
+  },
+  "kdw.personal.reply-wallpaper": {
+    "assetId": "kdw.personal.reply-wallpaper",
+    "path": "assets/kdw-native/personal-channel/reply/wallpaper.svg",
+    "mimeType": "image/svg+xml",
+    "width": 360,
+    "height": 564,
+    "sha256": "76424b0cad5417505dc2513c7586600a23c2639ec64299cb8cbebd09e25762d4"
+  },
+  "kdw.personal.reply-prefix": {
+    "assetId": "kdw.personal.reply-prefix",
+    "path": "assets/kdw-native/personal-channel/reply/prefix.png",
+    "mimeType": "image/png",
+    "width": 360,
+    "height": 434,
+    "sha256": "8c747d206773fff1a540b6a4402f4397c7e2d7bb9c9d505f4d73bbf6a29009cf"
   }
 };

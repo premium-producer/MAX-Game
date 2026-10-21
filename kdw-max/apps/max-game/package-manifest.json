@@ -328,12 +328,12 @@
       "sha256": "17f4fb133bf92744913abe23202c3d6434fa84577746ad9fce18a74d1ec921c8"
     },
     "source/adapt-stand-main.mjs": {
-      "bytes": 21025,
-      "sha256": "a17a4e9a7b0da87da81f4545549a911e14a07b77fda26e650161fe2c569e1316"
+      "bytes": 22251,
+      "sha256": "3c812c7cb85bff6e62b707b48b15b203180f02320fb129401b464a97134fb746"
     },
     "source/build.mjs": {
-      "bytes": 6307,
-      "sha256": "568175934a9a82662807b7497b77835fa30caf97dbfb968a21409d77e786a789"
+      "bytes": 6922,
+      "sha256": "61cd0a95a58fadba9ebf362d28cd399c1d436498738593054e8c2826bd7e06dc"
     },
     "source/client/audio-producer-port.mjs": {
       "bytes": 306,
@@ -367,45 +367,649 @@
       "bytes": 3300,
       "sha256": "a8f9eef8f77ce9892e09deb2d698b8cc3e4fb6783db8dd4e88a6bc5315b9181e"
     },
+    "source/client/public/assets/kdw-native/business-components/business-bot-create-binding-0.svg": {
+      "bytes": 1520,
+      "sha256": "63f9ebe3cd9e3a4b8cbf1770e3f7226765fced599f87bb447d7cbd35270bd356"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-bot-create-binding-1.svg": {
+      "bytes": 1520,
+      "sha256": "940ee6b5672caba2deb4fc5a7ba5943c789e0f1fa2a665452d526f308ba86dc5"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-bot-filled-0.svg": {
+      "bytes": 665332,
+      "sha256": "24a58ba5bae0480d6d4190169c6a4a7df681e46e0c9e59c8857faca4d16bddc0"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-bot-filled-1.svg": {
+      "bytes": 665336,
+      "sha256": "500a779f3cfd1ca74ec17178235fef67fa060d8f108fe36350a59ff58d70f687"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-bot-filled-2.svg": {
+      "bytes": 665336,
+      "sha256": "f543a63e5adfdc2a00227f4124cbc0db436bd5061d4bf6ae5bd02751df2ea669"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-bot-filled-binding-0.svg": {
+      "bytes": 2856,
+      "sha256": "386b9284af8d14139853bd8ae24c815caf9ddb15990d47b5256d3de8ea0c0a98"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-bot-filled-binding-1.svg": {
+      "bytes": 2856,
+      "sha256": "6f6db6c31569831631c2e7a704210e572a41ac2272e7ce64bc7e22422d5f4461"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-bot-filled-binding-10.svg": {
+      "bytes": 11336,
+      "sha256": "c2c23784eac3895793df9f7729d301c4509987255850212fe167598db11fdaf4"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-bot-filled-binding-11.svg": {
+      "bytes": 11974,
+      "sha256": "0f3f0a5c51f3fbedf9542742fe2b00d597626512a88c9f9670f31ba213fe8bf0"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-bot-filled-binding-2.svg": {
+      "bytes": 5115,
+      "sha256": "4205c92a8962493c99a4a75e4373dd2f241d8b20a6070d849c07d5cfea265990"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-bot-filled-binding-3.svg": {
+      "bytes": 4480,
+      "sha256": "d4f6e3f315b5195728fb3cf9d520da3856a09e486ce092621060406f95bae05a"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-bot-filled-binding-4.svg": {
+      "bytes": 8469,
+      "sha256": "cfd5b11bf105cf91db24c8ac8549aebceacac18238376ee0dafad4c0055edc81"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-bot-filled-binding-5.svg": {
+      "bytes": 8524,
+      "sha256": "16f61f2f2921d1a9cb832ba9f254201e9cc0af6e3d886c9ab0685578075d8e49"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-bot-filled-binding-6.svg": {
+      "bytes": 8529,
+      "sha256": "47b9d232b0ea8efc5485c7a4c082a234c42fd826084add82b1f650b4a560998d"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-bot-filled-binding-7.svg": {
+      "bytes": 11335,
+      "sha256": "5dd83af64cc4f7ef637b12dcdee8d93f23fcc173a591290ea56d697177f0662e"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-bot-filled-binding-8.svg": {
+      "bytes": 11336,
+      "sha256": "a1f5c5ed744db703848a0be77b659e6de524bdad0686d09ae64b35a7d1be25d2"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-bot-filled-binding-9.svg": {
+      "bytes": 11336,
+      "sha256": "4810c157c46c541d2248ea9aca4fe032bc0bf613ccdc8ca1940ec40ca200a74a"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-bot-ready-0.svg": {
+      "bytes": 273398,
+      "sha256": "3ab0c5c0d41de0ffa324f777f958eb157238e181789507d4f31d838c057ce2fa"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-bot-ready-1.svg": {
+      "bytes": 273403,
+      "sha256": "bae945847ea8fa82fd495ab5b4c7a45cafe20652fd3a9449dbdd4c4022096c66"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-bot-ready-2.svg": {
+      "bytes": 273407,
+      "sha256": "b3a03e48b16089e2363dde6125be23b87a3335c2d02e58f65b0094b7e70627b5"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-bot-ready-binding-0.svg": {
+      "bytes": 1370,
+      "sha256": "2801c0fd0aef3e0cebf7a892d75d1c35420165762be0e054a15d670f2ff0f0ae"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-bot-ready-binding-1.svg": {
+      "bytes": 1372,
+      "sha256": "f39efed96459e331a60e0b575c4f0ffef443a1ebc1d30def39ae0658efbfd4bd"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-bot-ready-binding-2.svg": {
+      "bytes": 1372,
+      "sha256": "4cff2a645105ba88bc050c3bd4be776412989a90090467909ca03767ffbe5389"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-bot-ready-binding-3.svg": {
+      "bytes": 1372,
+      "sha256": "1a205374dd22c7fedd7abcb743bae2f9dfde904d733febab93e5f7e683559258"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-bot-result-0.svg": {
+      "bytes": 502332,
+      "sha256": "e9a4a57d472e321513964d0ac33e5e19999467694930400c6f1648ddff67aa26"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-bot-result-1.svg": {
+      "bytes": 502336,
+      "sha256": "c2f5c733352eb81571614edd772881a0bf593b6289c60e5087ea57178925df9e"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-bot-result-2.svg": {
+      "bytes": 502333,
+      "sha256": "59429ed1e3cc678d3c62bedcdab2e38abe29de38a92a1843e7d44b4524d98f1f"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-bot-result-binding-0.svg": {
+      "bytes": 3385,
+      "sha256": "7d917525b86cb467509ed6195f402074ad80ca009cc1e53571acde0810c2c833"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-bot-result-binding-1.svg": {
+      "bytes": 3387,
+      "sha256": "2e3a135a5eafd4de104d27d433a9a8afa8fa2e4602a7f537501b9f9ee89507cf"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-bot-result-binding-2.svg": {
+      "bytes": 2368,
+      "sha256": "07616bfa106611a3c39a9cad121926d11e0438f4ba7cfab6d07ebcf1b5e7116f"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-bot-result-binding-3.svg": {
+      "bytes": 2368,
+      "sha256": "0a7753292bee44c6f43c2a6953d05a3ad2475688b7eb2d8c8f2dcf0dade07d56"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-bot-result-binding-4.svg": {
+      "bytes": 3038,
+      "sha256": "bc82d7d1c2bc67e7c7bb93fd4c64a83391eba99b7526fbbfb46b9f59567e20f3"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-continue-0.svg": {
+      "bytes": 305013,
+      "sha256": "81dfa3bd3246b4bb0f74adc30625f6d2847d82ff6cc4598581469dd81b0feb9f"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-continue-1.svg": {
+      "bytes": 305018,
+      "sha256": "df7190b090064f188e0d19d0c60b30baf039d4b686972e8fea416d6ed58e80e7"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-continue-2.svg": {
+      "bytes": 305022,
+      "sha256": "2d7e23bc78363bef22de1476f676b3626d19498f8868bc7c3121b9ffc4277cd0"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-continue-binding-0.svg": {
+      "bytes": 1351,
+      "sha256": "ce746db34a352150ec6c0aea54c0c1ea8cfcaf130acc746aab71666834925e55"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-continue-binding-1.svg": {
+      "bytes": 1351,
+      "sha256": "0a985f23be57855ff140a1ccf47863e137e1da0543ed08e51a634308592d1895"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-create-0.svg": {
+      "bytes": 381996,
+      "sha256": "6285c63b776af097d4d45808297e0c5de1ef408734c1eaa02c623ae2ae343f66"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-create-1.svg": {
+      "bytes": 382001,
+      "sha256": "cf239e4fd871981cec0878eb25ad20e5af8b1dc3ac740f86c31dc65ee11f1269"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-create-2.svg": {
+      "bytes": 382005,
+      "sha256": "cbc32f6f1ca033e4a7796c0aca9cdc41d75d4930ba7fbcc7ab1e5db045a712b8"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-create-binding-0.svg": {
+      "bytes": 1520,
+      "sha256": "63f9ebe3cd9e3a4b8cbf1770e3f7226765fced599f87bb447d7cbd35270bd356"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-create-binding-1.svg": {
+      "bytes": 1520,
+      "sha256": "940ee6b5672caba2deb4fc5a7ba5943c789e0f1fa2a665452d526f308ba86dc5"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-description-0.svg": {
+      "bytes": 476406,
+      "sha256": "e3cf0ac879e4a641fb085fc668446c58df18bdf848259af3501a7211ee8d29b7"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-description-1.svg": {
+      "bytes": 476408,
+      "sha256": "210aa71d76282b68fb3a25997c9078bb125419e89c170d8beb794a410a1a61c1"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-description-2.svg": {
+      "bytes": 476406,
+      "sha256": "3c0316926b7c6056759022eadad1496e021fa9d00dce94a484f5548d28712844"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-details-0.svg": {
+      "bytes": 475353,
+      "sha256": "9b7e3d34467feb553b77ffa39b1e6d6dea1b4533f6315910842ee5af18c8afa5"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-details-1.svg": {
+      "bytes": 475355,
+      "sha256": "e2362a704ae226b7d7381423bdf91d52a4303cfa2cf1f2269f4f0187cd5194c7"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-details-2.svg": {
+      "bytes": 475353,
+      "sha256": "4e098c958b755bbd0216e83d7fe1d74aaca6e227e6f1eafdddc5b02a3b61b265"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-open-0.svg": {
+      "bytes": 150059,
+      "sha256": "15de01bad8fb138235c75cdf918d9911fbaaf7ee4d068b4d4b34f9b8fa5e3b0e"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-open-1.svg": {
+      "bytes": 150061,
+      "sha256": "14df62ba119ff9e701e5416349eda506ee794f77dc836eb2853ec2f5205a404b"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-open-2.svg": {
+      "bytes": 150059,
+      "sha256": "c7f0d8e7e1b4a848f5c4b20331d1c63137f4f93f3d04608459a73f3744dc41e2"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-publish-0.svg": {
+      "bytes": 463545,
+      "sha256": "03f1db782f3adbb340717f5af80f16d4f211e3371c2dd4516e0d71ac57e8ff3e"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-publish-1.svg": {
+      "bytes": 463549,
+      "sha256": "502f4ddfca22b577d37fd35193de117b9410a53c6ce29c0bbb2cb7798deaaea5"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-publish-2.svg": {
+      "bytes": 463546,
+      "sha256": "8c34f51fe645b987f78c9f262e30f257934eb2cad2c5c50c04765a79da7af813"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-publish-binding-0.svg": {
+      "bytes": 2672,
+      "sha256": "542458ac3b4fa0968b4031b216e9159b0d2635034c35f8597be4b886292a857e"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-publish-binding-1.svg": {
+      "bytes": 2683,
+      "sha256": "9bc8ebb17c67c423dfb657403a6e30594ba48f933d17b1f1823840583a35517c"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-publish-binding-2.svg": {
+      "bytes": 2683,
+      "sha256": "4987f59c5df670bcaab28bbc96537cf4442777deb499ec6250d325f3fc189f16"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-publish-name-footer.svg": {
+      "bytes": 471192,
+      "sha256": "6fb28251e251229a75c868c1f17114a1a732d3569b1aad05f4012cd940587edc"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-publish-name-header.svg": {
+      "bytes": 471192,
+      "sha256": "17ab5e9587703330627428c46eec88830f53d28217239a85b505c042f01d170f"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-publish-name-meta.svg": {
+      "bytes": 6253,
+      "sha256": "84299aa7c27f516a6ed9844955a962114aaae6e32d9d371f18bd28af89ff99bb"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-publish-name-prefix.svg": {
+      "bytes": 470326,
+      "sha256": "1fae825a95eb6f43325845a8efaad8341d43b3e9c7a3621a4f51f48e5cb9160c"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-publish-name-skin.svg": {
+      "bytes": 1806,
+      "sha256": "ea2647d15c54a3ce111e9c0385af4550caae349cd76b3a3bd9f1986d9e7b7a00"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-publish-name-tail.svg": {
+      "bytes": 470547,
+      "sha256": "d7eca00c69ea6e39453e899395e335b06297f58ac59f3c771d74c05d6df21502"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-publish-name-wallpaper.svg": {
+      "bytes": 1308,
+      "sha256": "dcbc5b0736781a624be86493f79fc828516c93ea2ac6459db589e3393e6ab8cf"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-setup-0.svg": {
+      "bytes": 411451,
+      "sha256": "2f8b8951478326c88f96bc97f711f2068f098e00598d2313574063da473c69b4"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-setup-1.svg": {
+      "bytes": 411455,
+      "sha256": "ab4b78b34434b0f9264b5c7ebd66465af0033ad16cda8852331786280c661e1b"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-setup-2.svg": {
+      "bytes": 411452,
+      "sha256": "237a3414219a01d54fcd03a15b612b6bdc05ecdca7ca80e78c4ee2fc0b522da0"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-setup-binding-0.svg": {
+      "bytes": 2521,
+      "sha256": "354d5417662e7cad789fdb5173017ee2dc35c7ad0fb65148db677dd15f81548d"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-type-0.svg": {
+      "bytes": 547481,
+      "sha256": "58786fe62a669f308f1a84b32ad3074645399e21ebcece71bf039f47ce1ef0f9"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-type-1.svg": {
+      "bytes": 547485,
+      "sha256": "b0bc7253596af6d64e5d48c90bdd62f65cdbd596cb9a0e932f86de3e77561bda"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-type-2.svg": {
+      "bytes": 547482,
+      "sha256": "5a70a16c409e3e14732e1be0e26745a1671562bbfca648ef1d1cdc8ea49684ab"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-type-binding-0.svg": {
+      "bytes": 2671,
+      "sha256": "80e1d5c8e28ef7e211129856a9a55d5c70d5c1b510d8d9759075f9aadca83a6d"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-type-binding-1.svg": {
+      "bytes": 2680,
+      "sha256": "027143dff6155c27f8276dabbad1357c399caa02917a2198bd3d8ad4343ff7c2"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-type-binding-2.svg": {
+      "bytes": 2680,
+      "sha256": "02a9a953b4114ed49852cee2dde36377e3827008f2a2642a068cf5faa75b3d1f"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-type-name-footer.svg": {
+      "bytes": 559961,
+      "sha256": "87f11dd2df6259c400f352744f590afe0b69af1216f184388e368b30d530327c"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-type-name-header.svg": {
+      "bytes": 559961,
+      "sha256": "303aa0ff641246c6d3e6da5102e1945d0bacd4c61b0e74141197e1a5dee3dd7e"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-type-name-meta.svg": {
+      "bytes": 6251,
+      "sha256": "d62f7113af56ae3dcd93003488fdf6832f2857fc2307690c657fc70f53f6298b"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-type-name-prefix.svg": {
+      "bytes": 559095,
+      "sha256": "738fad3f69fefe9fe656f48c763d421583159d9953740a4f9a72d9b25269a818"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-type-name-skin.svg": {
+      "bytes": 1805,
+      "sha256": "71e258d121dc07597dc90f1c0e4dc5b0ebea445c3b2bb720e35eafc06b9795a3"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-type-name-tail.svg": {
+      "bytes": 554482,
+      "sha256": "4a3cd71d16181397e2618c2bf64390dfceb422e39bb445d9153cd13e0e9a36b2"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-channel-type-name-wallpaper.svg": {
+      "bytes": 1308,
+      "sha256": "56c21ee9a86ca5765bccf214ea8da0730afef0cee46c95d8d364bac867fb8ead"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-platform-login-0.svg": {
+      "bytes": 167826,
+      "sha256": "90af8cde5500aa5ec302676e62428356b921a79e3286aa5120639d69aebfe0ba"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-platform-login-1.svg": {
+      "bytes": 167826,
+      "sha256": "4d2dac7424d5196991feafa0f66933ec66ba8c95c17bc5ba51a5a1e6d25d80ad"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-platform-login-2.svg": {
+      "bytes": 167828,
+      "sha256": "fc171f1ad396a44fba064c6d43b631909964bafcdbfee905dc806f5131ac8a93"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-platform-profile-0.svg": {
+      "bytes": 215055,
+      "sha256": "a4c461b1dce94bf83c7bf21f804fac880182a227fbadb44f923243548061caee"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-platform-profile-1.svg": {
+      "bytes": 215060,
+      "sha256": "e15e895a363cd14ece30c5410ba3754c45f20de30aad0a7c19755dfd497509de"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-platform-profile-2.svg": {
+      "bytes": 215064,
+      "sha256": "754f50be7f7ffeff475bc22f4fe95b54dc1c02436618936264facb609c69b412"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-platform-profile-binding-0.svg": {
+      "bytes": 1588,
+      "sha256": "1a7de70b15e554fe737965bb0651d120eaa1145e44b0953a1fb09a713950f6e3"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-platform-ready-0.svg": {
+      "bytes": 401973,
+      "sha256": "47ad227c3c0221c28c56e0a0e4f946eb292ad35eed4369399cba06858f3dfbd6"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-platform-ready-1.svg": {
+      "bytes": 401976,
+      "sha256": "2c6ca8d411a76a91f8e767c6d1f0c8feda2d7ed22f3ad9c8a9f0c40815545e22"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-platform-ready-2.svg": {
+      "bytes": 401978,
+      "sha256": "1ec49df64b968b542bb9ce5357cc6cf8f49880002dd1e0e9600a1284c189bca7"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-platform-verification-0.svg": {
+      "bytes": 245308,
+      "sha256": "fb9e0a877771a379bdfa3f498c4f8da2714661a58ee3469ad73c3ea0e59462af"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-platform-verification-1.svg": {
+      "bytes": 245313,
+      "sha256": "4fe4f9df8cc3844357a249fd5fa23cff32413cec62adf91ba43b1f9b1a440992"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-platform-verification-2.svg": {
+      "bytes": 245317,
+      "sha256": "00b87a382fe4ae6d65788cc17693a7b29fac2125d531b1a57e953f39b407f4f2"
+    },
+    "source/client/public/assets/kdw-native/business-components/business-platform-verification-binding-0.svg": {
+      "bytes": 1588,
+      "sha256": "947861903bb339a7e5c464f1dd47336360d682a23ea5c585b9e65a3b4a6c7125"
+    },
+    "source/client/public/assets/kdw-native/business-components/canvas-business-bot-create.svg": {
+      "bytes": 66,
+      "sha256": "66bee21f7598d9709de879b00252ac10e3309b4e1d2f043d2c0ed14d0a85389f"
+    },
+    "source/client/public/assets/kdw-native/business-components/canvas-business-bot-filled.svg": {
+      "bytes": 66,
+      "sha256": "274bd5fa7f5549a9e865aab9651c5064f8a2f6bb7b43fcd9b2fc0417d2a5f7aa"
+    },
+    "source/client/public/assets/kdw-native/business-components/canvas-business-bot-ready.svg": {
+      "bytes": 66,
+      "sha256": "71e3c6d51b7621a8431c509a22ff1de89a15c97a72d12036b016a095b28c41fc"
+    },
+    "source/client/public/assets/kdw-native/business-components/canvas-business-bot-result.svg": {
+      "bytes": 66,
+      "sha256": "16ff5e01c9c4b50912ebd98935ed68dbdebb5a5785d95bf4b66e15b84d20f6ed"
+    },
+    "source/client/public/assets/kdw-native/business-components/canvas-business-channel-continue.svg": {
+      "bytes": 66,
+      "sha256": "d76711dcc3549a33ca976acb766cc07429dd3c300e0796621ec7eb098d3ea9f9"
+    },
+    "source/client/public/assets/kdw-native/business-components/canvas-business-channel-create.svg": {
+      "bytes": 66,
+      "sha256": "66bee21f7598d9709de879b00252ac10e3309b4e1d2f043d2c0ed14d0a85389f"
+    },
+    "source/client/public/assets/kdw-native/business-components/canvas-business-channel-description.svg": {
+      "bytes": 66,
+      "sha256": "3328ede0e62c2323f6c6ebbab71a94fabcc415ac2bc4c0b067295e686f9b9774"
+    },
+    "source/client/public/assets/kdw-native/business-components/canvas-business-channel-details.svg": {
+      "bytes": 66,
+      "sha256": "3328ede0e62c2323f6c6ebbab71a94fabcc415ac2bc4c0b067295e686f9b9774"
+    },
+    "source/client/public/assets/kdw-native/business-components/canvas-business-channel-open.svg": {
+      "bytes": 66,
+      "sha256": "3328ede0e62c2323f6c6ebbab71a94fabcc415ac2bc4c0b067295e686f9b9774"
+    },
+    "source/client/public/assets/kdw-native/business-components/canvas-business-channel-publish.svg": {
+      "bytes": 66,
+      "sha256": "3328ede0e62c2323f6c6ebbab71a94fabcc415ac2bc4c0b067295e686f9b9774"
+    },
+    "source/client/public/assets/kdw-native/business-components/canvas-business-channel-setup.svg": {
+      "bytes": 66,
+      "sha256": "3328ede0e62c2323f6c6ebbab71a94fabcc415ac2bc4c0b067295e686f9b9774"
+    },
+    "source/client/public/assets/kdw-native/business-components/canvas-business-channel-type.svg": {
+      "bytes": 66,
+      "sha256": "3328ede0e62c2323f6c6ebbab71a94fabcc415ac2bc4c0b067295e686f9b9774"
+    },
+    "source/client/public/assets/kdw-native/business-components/canvas-business-platform-login.svg": {
+      "bytes": 67,
+      "sha256": "15812e3d3482e63d2f4b9aa78af8db79d686a08bf97a3afc61b239aeeea5d3db"
+    },
+    "source/client/public/assets/kdw-native/business-components/canvas-business-platform-profile.svg": {
+      "bytes": 66,
+      "sha256": "764db78bf4cdd6e72bf6b44a551f6c6809d6d790766695149a8667311844dc34"
+    },
+    "source/client/public/assets/kdw-native/business-components/canvas-business-platform-ready.svg": {
+      "bytes": 66,
+      "sha256": "764db78bf4cdd6e72bf6b44a551f6c6809d6d790766695149a8667311844dc34"
+    },
+    "source/client/public/assets/kdw-native/business-components/canvas-business-platform-verification.svg": {
+      "bytes": 66,
+      "sha256": "61742680b9c2812c69267176259a45eb6892c139eae564ee96135da01a9af081"
+    },
+    "source/client/public/assets/kdw-native/business-components/order-flow-action-button.svg": {
+      "bytes": 659281,
+      "sha256": "58d3fa6a84de8df35f8283d8d54302cf3668d512f3e20c482cdaa4bddc832d24"
+    },
+    "source/client/public/assets/kdw-native/business-components/order-flow-cancel-button.svg": {
+      "bytes": 659280,
+      "sha256": "bf9bb0a252c62519599fbac71b19dbe1ca10d24d1235dda67587313bdab5b3d0"
+    },
+    "source/client/public/assets/kdw-native/business-components/order-flow-delivery-0.svg": {
+      "bytes": 659280,
+      "sha256": "6fcf8b32ffec492c8bbebeb02038f736ee5ed26912b422cc6e24002f31154031"
+    },
+    "source/client/public/assets/kdw-native/business-components/order-flow-delivery-1.svg": {
+      "bytes": 659280,
+      "sha256": "718a0a1191995b695cdc7a8a0b6986b70ad2fb44bbd110d58a2a56323f483b11"
+    },
+    "source/client/public/assets/kdw-native/business-components/order-flow-delivery-2.svg": {
+      "bytes": 659280,
+      "sha256": "215aad12c251a2b9745e802bf0a7e7f1dab3bb3ef7dfeda94c040f00640e2eff"
+    },
+    "source/client/public/assets/kdw-native/business-components/order-flow-footer.svg": {
+      "bytes": 659280,
+      "sha256": "f951a73cb8456c83225561a6c4b8b72cdbdc626ff431d40a3cb21e37397963d1"
+    },
+    "source/client/public/assets/kdw-native/business-components/order-flow-header.svg": {
+      "bytes": 631774,
+      "sha256": "8da8e2e8bdf58ed4170c4c3efb7eac602e99fa6967fccf12d601cecc7610c37d"
+    },
+    "source/client/public/assets/kdw-native/business-components/order-flow-incoming-meta.svg": {
+      "bytes": 5494,
+      "sha256": "dc8577da473636ffa5b8c720971b54f339626f8cd60aadff82d04b7efbe6a6ea"
+    },
+    "source/client/public/assets/kdw-native/business-components/order-flow-incoming-skin.svg": {
+      "bytes": 2018,
+      "sha256": "1fb84435af9f3fe941ede861544b784be47899ccfafb853ec696a23985cb203f"
+    },
+    "source/client/public/assets/kdw-native/business-components/order-flow-outgoing-meta.svg": {
+      "bytes": 5041,
+      "sha256": "e67ae9ebfbd677486190c95deeb2d73906285dbd37255634d3d046d5c2d14935"
+    },
+    "source/client/public/assets/kdw-native/business-components/order-flow-outgoing-skin.svg": {
+      "bytes": 1347,
+      "sha256": "9c6c175e3e83dae289f946427da8b8689f8652d72e1ecb89e754be1ed2a2df3b"
+    },
+    "source/client/public/assets/kdw-native/business-components/order-flow-status-button.svg": {
+      "bytes": 659280,
+      "sha256": "4d1e7d5077eef48ba8fd8ba48983bc95abc604a0632df21e8f1af0640dc6fd42"
+    },
+    "source/client/public/assets/kdw-native/business-components/order-flow-status-message.svg": {
+      "bytes": 659281,
+      "sha256": "a3531c4a45a370af771c0ea618c31e6552f4b1aed46712d2bf4b66b34800f594"
+    },
+    "source/client/public/assets/kdw-native/business-components/order-message-meta-0.svg": {
+      "bytes": 659280,
+      "sha256": "2d2cc0853f9763eeec8d547ef7c1af333aa91cca49f60ea836d802386061051c"
+    },
+    "source/client/public/assets/kdw-native/business-components/order-message-meta-1.svg": {
+      "bytes": 659280,
+      "sha256": "7080d8f287588be28261b26cddd16f4cebd7d0e7a734988b076f65ac6fe1970a"
+    },
+    "source/client/public/assets/kdw-native/business-components/order-message-meta-2.svg": {
+      "bytes": 659280,
+      "sha256": "972a4d50886e63fee77a592e527ff7e4baa7bea89b8ffd2720e8758beb80203e"
+    },
+    "source/client/public/assets/kdw-native/business-components/raster-1ffaa52678ed5abbbd8ac7d3.png": {
+      "bytes": 1343118,
+      "sha256": "b2c641940f8f2c3d0460898b519bfe5a369e25f1b76a255aaed5e752b6e16361"
+    },
+    "source/client/public/assets/kdw-native/business-components/raster-309eeac091232aaaa6ed5e95.png": {
+      "bytes": 151597,
+      "sha256": "bab77cf022642644b5859742ec08b403296975f46050c88fc72aa8d59814e23d"
+    },
+    "source/client/public/assets/kdw-native/business-components/raster-4d8c926bb85aff84e717da64.png": {
+      "bytes": 148445,
+      "sha256": "18967f584e0fe97a8582b6a9398baed2110c525679ecd2c59b30fbfba297fb2d"
+    },
+    "source/client/public/assets/kdw-native/business-components/raster-73eeca3b8cd426b7ab2db273.png": {
+      "bytes": 887049,
+      "sha256": "fa9c7b73234dcde8a0fe50a43d4ce3cf989a5019f66b8835fb85686b0cfb4b4e"
+    },
+    "source/client/public/assets/kdw-native/business-components/raster-763279c56de316c6c836f1cf.png": {
+      "bytes": 7516,
+      "sha256": "28a8f1a1f08cea0916d078d808e3cdfbcad4f29eb7262cffc4af6a74d723b66c"
+    },
+    "source/client/public/assets/kdw-native/business-components/raster-79c1d658361ee8435a956da6.png": {
+      "bytes": 37016,
+      "sha256": "82d18d75e2bc2bbd049bfb37c1d464415627c0a2f79a5185859dbf1667084921"
+    },
+    "source/client/public/assets/kdw-native/business-components/raster-951cc2326453473c49556d16.png": {
+      "bytes": 7761,
+      "sha256": "6bca28c8500fa36c41248a9f011d861789e15602e92d846d8687b26bd4591b78"
+    },
+    "source/client/public/assets/kdw-native/business-components/raster-a998691e7132a7ffc884adc1.png": {
+      "bytes": 630698,
+      "sha256": "5b9f82cda65852aee1c96250fd2a098dee76b1ac2e18931aa2fd18d59f87feaa"
+    },
+    "source/client/public/assets/kdw-native/business-components/verification-bank.svg": {
+      "bytes": 250212,
+      "sha256": "f204c9d2e16395da1f6bc7f5f78918a7d5b9773e6783460bc2ec62b2494dd76a"
+    },
+    "source/client/public/assets/kdw-native/business-ui/bots.svg": {
+      "bytes": 140,
+      "sha256": "377908ff855c69ab5edb06f088202854a7ad4cf3bbe033d4e154e2ea27d6ac46"
+    },
+    "source/client/public/assets/kdw-native/business-ui/cafe.webp": {
+      "bytes": 5588,
+      "sha256": "b4c3db3ab6f085b972c191c22b85cac223dba12f5cb34cd02465810c82d6a523"
+    },
+    "source/client/public/assets/kdw-native/business-ui/channel-bot.webp": {
+      "bytes": 58616,
+      "sha256": "c1d481fe4e5221d7b145042ed61207002fa4c096c925a0e1d39d42fc9030b37f"
+    },
+    "source/client/public/assets/kdw-native/business-ui/choice.svg": {
+      "bytes": 143,
+      "sha256": "bb1ddec22938f36d6bd9221494e80aff268f6230a73452d7821c2f36360cfd80"
+    },
+    "source/client/public/assets/kdw-native/business-ui/dashboard.svg": {
+      "bytes": 140,
+      "sha256": "bf45dd2ff5c0428414678f38d85a76fa406ede50b55c80cb206e5bc19272d2c1"
+    },
+    "source/client/public/assets/kdw-native/business-ui/desktop.svg": {
+      "bytes": 140,
+      "sha256": "7fc6afa3f052c07400a98a2dda5bb7fcaa638c10893eb334a16bacb239a99fa1"
+    },
+    "source/client/public/assets/kdw-native/business-ui/form.svg": {
+      "bytes": 140,
+      "sha256": "c8fe09f688a1d049d547f3ee5319a64425c8680445d49cf736005d407dda0284"
+    },
+    "source/client/public/assets/kdw-native/business-ui/landing-art.webp": {
+      "bytes": 19260,
+      "sha256": "718a0437b8520d13ff6a2a167059e8aa6ef8629af10a374ade71ed77e9d9105b"
+    },
+    "source/client/public/assets/kdw-native/business-ui/landing.svg": {
+      "bytes": 143,
+      "sha256": "20de005b4d00881b5868034acbd3ce1e15b09013459aa109b16d4c6c2b914c45"
+    },
+    "source/client/public/assets/kdw-native/business-ui/method.svg": {
+      "bytes": 140,
+      "sha256": "59ec76a1f85a7e9d115902d9aa96c12d2d14a21032b3d4451bfc747c6ce71a4a"
+    },
+    "source/client/public/assets/kdw-native/business-ui/order.svg": {
+      "bytes": 140,
+      "sha256": "596ec9c3603886a31f38998bd8745dfcd558e58a45e13eb1aa105f7b9402a370"
+    },
+    "source/client/public/assets/kdw-native/business-ui/phone.svg": {
+      "bytes": 140,
+      "sha256": "f311f3b4e60d29294317c832d7dcf36fb000c9417f8d0626ddeebeac5d686909"
+    },
+    "source/client/public/assets/kdw-native/business-ui/provenance.json": {
+      "bytes": 1248,
+      "sha256": "ab8d6952dbe6fc43fff63b1a6effd947a239b2011a264878bcec02877050199e"
+    },
+    "source/client/public/assets/kdw-native/business-ui/wallpaper.webp": {
+      "bytes": 118844,
+      "sha256": "e9cb45c40e0a2bc16ec20dc1b881d1095c4b72a9c75c2dd469a74b5b83ba367c"
+    },
     "source/client/public/assets/kdw-native/conversation/manifest.json": {
       "bytes": 3402,
-      "sha256": "356ec04707fdd6a33b192d8b6918718f75a451db1d13c0c0fce31c977424cd18"
+      "sha256": "c5dca429bc6b1e1c2eb9a7a352078531e01d1d6c17b3cb20a8c845131670ae4a"
     },
     "source/client/public/assets/kdw-native/conversation/screen_1.svg": {
-      "bytes": 1744449,
-      "sha256": "fa02c85b8b475c2fd99c365fdb3a3feae24fc21b1d2569e2ae98ffb6f03a05f0"
+      "bytes": 1644860,
+      "sha256": "498cfa8733187f7d2efde4d97502a28f422ef4aa442db5166f46adaac13def44"
     },
     "source/client/public/assets/kdw-native/conversation/screen_2.svg": {
-      "bytes": 1488461,
-      "sha256": "e24e0571dbc8675321560f5680879fafde272fe06662a4a94e3935eb99dbe051"
+      "bytes": 1388872,
+      "sha256": "28a2cab567e8e5a9ad5425bcefa7d9b555b8eb9ad9b56a5922f81182052a1701"
     },
     "source/client/public/assets/kdw-native/conversation/screen_3.svg": {
-      "bytes": 1459057,
-      "sha256": "7c27651fc6d60dfd453e3d96f680a0244d36fed5df229b37a7258ba7e4b5d7b9"
+      "bytes": 1359484,
+      "sha256": "cec3e646da8eba316f554122d9e4dd0163ad4f35332da40e2fa90a9ef35984de"
     },
     "source/client/public/assets/kdw-native/conversation/screen_4.svg": {
-      "bytes": 1470123,
-      "sha256": "afbd86ef550a502e636aad98cff133da84a26184697ed86d7a40601cd0c2c48d"
+      "bytes": 1370550,
+      "sha256": "c8794c7832f3926a9a6649ed0b26a454ab76414668837bdd36cf2bc27a8e0f33"
     },
     "source/client/public/assets/kdw-native/conversation/screen_5.svg": {
-      "bytes": 1287226,
-      "sha256": "e4189aee569a708cf8070caa087de517fafed600144283af0f6b8699c622a627"
+      "bytes": 1187653,
+      "sha256": "fff675f9fa66a7a82ff7cd52a01df75db4e42c577a4558f3f208e083e9cca6a3"
     },
     "source/client/public/assets/kdw-native/conversation/screen_6.svg": {
-      "bytes": 666555,
-      "sha256": "0c59d02cf7728b21fb69bd62c8e8e36522d25786a218d95b8be4aebd83ed2924"
+      "bytes": 566982,
+      "sha256": "9ff5fea9d2333c0b8b0f743c24b1a4b581cb9cbbf68b20b7a5f31a142ddaf71a"
     },
     "source/client/public/assets/kdw-native/conversation/screen_7.svg": {
-      "bytes": 2459844,
-      "sha256": "c6d35762e43456ebd5efaf11cbf43600f0e36f4d72a5f6bf9b0b0c4519ca810f"
+      "bytes": 2360271,
+      "sha256": "22727def4317ec79b92aaf288c9258e42c5c04a5f7f4072d7731f5a720a3b1f2"
+    },
+    "source/client/public/assets/kdw-native/conversation/visitor-avatar.svg": {
+      "bytes": 119548,
+      "sha256": "f2eb9c376147d72cb31f08528deef6620ed60eb1b4d742080abe10df6c3c063e"
     },
     "source/client/public/assets/kdw-native/conversation/visitor-placeholder.svg": {
-      "bytes": 219120,
-      "sha256": "9fd1a4e0d0e19ee896400a5a0e7f0e7b3cdfd92dc10fc55a232f0f57906d732a"
+      "bytes": 119548,
+      "sha256": "e75c15723cc6904c04b7085b048ced14caafa6223411b79a8ef0220c3cddf424"
     },
     "source/client/public/assets/kdw-native/conversation/visitor-placeholder.webp": {
-      "bytes": 164216,
-      "sha256": "0b9c97b0b19cea65c44afa0d59f93bebc0ddb2a9bebf3b4a2ba52909df0d8443"
+      "bytes": 89538,
+      "sha256": "e4b15a7ddc3ae39e0da2b54a4de2257c3875e998f8fdfc9d202a03cb3f2e6fcd"
     },
     "source/client/public/assets/kdw-native/personal-channel/icons/attachment.svg": {
       "bytes": 2534,
@@ -627,6 +1231,34 @@
       "bytes": 149,
       "sha256": "15b70262b5887afa2c71377693ac76ddfb06ff1841f4a526002f4b25cf3762f9"
     },
+    "source/client/public/assets/kdw-native/personal-channel/reply/background.svg": {
+      "bytes": 405756,
+      "sha256": "daccb625f50b86630360f8e8b55f1ea67407bbffb18706ace490ae881badc269"
+    },
+    "source/client/public/assets/kdw-native/personal-channel/reply/manifest.json": {
+      "bytes": 1468,
+      "sha256": "d560321c5296c30b327dbcfec5df2aa7228efc991ffb8bc58837652203d8684e"
+    },
+    "source/client/public/assets/kdw-native/personal-channel/reply/meta.svg": {
+      "bytes": 4295,
+      "sha256": "f68e9b72d8013053ba38f56680724e27e6fe86822b40f7587188d5c183c10653"
+    },
+    "source/client/public/assets/kdw-native/personal-channel/reply/prefix.png": {
+      "bytes": 74690,
+      "sha256": "8c747d206773fff1a540b6a4402f4397c7e2d7bb9c9d505f4d73bbf6a29009cf"
+    },
+    "source/client/public/assets/kdw-native/personal-channel/reply/quote.svg": {
+      "bytes": 35584,
+      "sha256": "af44bbed5e4a81eda57759d1a44357568ca589ff578a7af63fdefafa5a400274"
+    },
+    "source/client/public/assets/kdw-native/personal-channel/reply/skin.svg": {
+      "bytes": 648,
+      "sha256": "98a0b6d73122972b1b74e2715adc06f3860c24d1c7a7c2b91d5fa639ebe79b6d"
+    },
+    "source/client/public/assets/kdw-native/personal-channel/reply/wallpaper.svg": {
+      "bytes": 230356,
+      "sha256": "76424b0cad5417505dc2513c7586600a23c2639ec64299cb8cbebd09e25762d4"
+    },
     "source/client/public/assets/kdw-native/personal-channel/screens/screen_1.png": {
       "bytes": 100934,
       "sha256": "6fa913ba1ce95c11c1adf79beae7b06eda2768413925fd904b95f2ff12ddfc63"
@@ -784,8 +1416,8 @@
       "sha256": "9d4ff5cef8f309d3446f89f8ba12d5ed71c94c0d3fb4985bc57c4ab4a1a022ef"
     },
     "source/client/public/assets/kdw-native/posts-chrome/header.svg": {
-      "bytes": 859521,
-      "sha256": "3f13d571c5bdb7cedf74a2f5976b588671f4bdee5bd9a230d0e5d7922911c7c1"
+      "bytes": 5445,
+      "sha256": "48902d583cdb8119bd7460d4f512bae32c5125c60ae70fbeab0174c7b2c614b9"
     },
     "source/client/public/assets/kdw-native/posts-chrome/heart.svg": {
       "bytes": 6447,
@@ -807,37 +1439,45 @@
       "bytes": 1327,
       "sha256": "5117559051874dbcfbb4dcfaaaac095b2bb412356482076e4f489ad3dab3d16f"
     },
+    "source/client/public/assets/kdw-native/store-chrome-source.json": {
+      "bytes": 186,
+      "sha256": "5b2504e0eb86e2780c44de59093fccd4983f078dd24bce87c59980b611e350b8"
+    },
+    "source/client/public/assets/kdw-native/store-header.svg": {
+      "bytes": 8110,
+      "sha256": "24e76d8ba2f11bf944768df95503bba7c6b9c181201199485bedf550361b1e17"
+    },
     "source/client/public/assets/kdw-native/store-phone.svg": {
-      "bytes": 149,
-      "sha256": "828dcb6fad602311e9fc23db9f7e3f75a91ebad5dbbb436f52fec954739fc944"
+      "bytes": 145,
+      "sha256": "47622eea8de8aeefef8119db0a8aedf625bca208db176cef54ba43ff23971f50"
     },
     "source/client/public/assets/kdw-native/visitor-details/business-bot-create.svg": {
-      "bytes": 422929,
-      "sha256": "221e561e8a901b92b166fe59ab897380cbc827cc6c7a067bbb31fb5da7dac3d3"
+      "bytes": 323356,
+      "sha256": "5f03ba9cd6c33ebd41a801bf58635520b6baaad1907cb91262436f8518414550"
     },
     "source/client/public/assets/kdw-native/visitor-details/business-bot-filled.svg": {
-      "bytes": 427155,
-      "sha256": "5cabcb61fa127a33810770d305cc09284b5cfae40555d5c4334682e4dcc0328b"
+      "bytes": 327582,
+      "sha256": "6d311fe14615cb4d35044debf78e1fda469eb274cbe0b4c8c8254c5d598c5577"
     },
     "source/client/public/assets/kdw-native/visitor-details/business-bot-ready.svg": {
-      "bytes": 356542,
-      "sha256": "3805763ab81970584c2fc7f0731218ed29f44d433500df18aa47c3e62c5ce1db"
+      "bytes": 256969,
+      "sha256": "207b1f9da1c6c8d237d2d90103fa350443d93816d03abfc5aa683bf1288d0208"
     },
     "source/client/public/assets/kdw-native/visitor-details/business-channel-continue.svg": {
-      "bytes": 399662,
-      "sha256": "bc081489ee6a7ba710c206f554f638453464985be740cd3a82ee0151204d95af"
+      "bytes": 300089,
+      "sha256": "820ff8f64c4f22eed7219ea4340715ad8898151d2e56a396530a882860f04bf3"
     },
     "source/client/public/assets/kdw-native/visitor-details/business-channel-create.svg": {
-      "bytes": 422929,
-      "sha256": "221e561e8a901b92b166fe59ab897380cbc827cc6c7a067bbb31fb5da7dac3d3"
+      "bytes": 323356,
+      "sha256": "5f03ba9cd6c33ebd41a801bf58635520b6baaad1907cb91262436f8518414550"
     },
     "source/client/public/assets/kdw-native/visitor-details/business-platform-profile.svg": {
-      "bytes": 306681,
-      "sha256": "fae3b57201cde40429ee2d98b9d154f04a1203a6e85512db94d11940a94e5012"
+      "bytes": 207108,
+      "sha256": "b9a4777c11624c8c429617de8766d2c7d89d6fc34debbdee2312782d519d1982"
     },
     "source/client/public/assets/kdw-native/visitor-details/business-platform-verification.svg": {
-      "bytes": 469803,
-      "sha256": "6c041c508feaab0981f1465d5e744ad928a242d29a055e3dcea9df28e7878272"
+      "bytes": 370230,
+      "sha256": "8355a7aae8f9e2b807540232148342f6c7981cc372add226aedc898238d9bcf5"
     },
     "source/client/public/assets/kdw-native/visitor-details/communication-call-chat.svg": {
       "bytes": 740666,
@@ -1048,8 +1688,8 @@
       "sha256": "f907db1540a36099ce26a27b5f1bd48b666bcf4da515d0fa1c72cd0452c9f660"
     },
     "source/client/src/contracts/mission-command.mjs": {
-      "bytes": 3371,
-      "sha256": "2502ae18d35c670fe957acd0728d5e4d5ceac20b6fbeeaf6db97fb7575cb2955"
+      "bytes": 3709,
+      "sha256": "b6ce43d6ff89a1537be2f67f14f3508330ce5fb2167ac05950da58623a5569f2"
     },
     "source/client/src/contracts/task-catalog.mjs": {
       "bytes": 8736,
@@ -1068,8 +1708,8 @@
       "sha256": "5812e6a6a2ea454c2e9c59eaff90fcf1c3369b92ab40ea6538d1a0c7c3a57c56"
     },
     "source/client/src/core/mission-core.mjs": {
-      "bytes": 14240,
-      "sha256": "d46e208fe786f844326b6292d3f5b97ac30ae9ffac26468ea2495946ab120d5b"
+      "bytes": 14838,
+      "sha256": "59c01e9755e91d5f71785b991a819b1478616726c90785822ffde18e15406222"
     },
     "source/client/src/development/shared-fixtures.mjs": {
       "bytes": 3215,
@@ -1152,8 +1792,8 @@
       "sha256": "3914275b3b5bda4474e3e244240401c84176a8994b7ef8a0275f5460b2174592"
     },
     "source/client/src/journey-guided-main.js": {
-      "bytes": 116572,
-      "sha256": "c1c33e4a41b3ea928435ab755320a4728338f317178e29458ef0f4fd4ff3840b"
+      "bytes": 116981,
+      "sha256": "d68db41c1cadb7ddad4d56d48999a8e884cccfaf5e4595c91ba7dd88165f1887"
     },
     "source/client/src/journey-guided-reveal.css": {
       "bytes": 2891,
@@ -1424,12 +2064,12 @@
       "sha256": "d9abc7ebebc5706ae62aa670a40fd2dd382557ccfdd42806b766e8e9658898d3"
     },
     "source/client/src/journey-v5-video-source.mjs": {
-      "bytes": 4042,
-      "sha256": "5b22bf939968980cf46dca6d87b17b707a8ef969b579feee4b3a51bd17c78f59"
+      "bytes": 4172,
+      "sha256": "f7b6b515d286edb3dec62ce0b83f8114107fc5abcafc849bb3849a0541b6f8d0"
     },
     "source/client/src/journey-webgl-ui.mjs": {
-      "bytes": 75236,
-      "sha256": "5ca11d2d5d146cc912efaec27fc53c27232c1b6fc1bf171ba9f3488d988f425a"
+      "bytes": 76210,
+      "sha256": "3cc4e4efe1c036f59ef198f08881687bd6e2a6486d917bdab510dcb9016f9b26"
     },
     "source/client/src/journey.css": {
       "bytes": 39825,
@@ -1440,12 +2080,36 @@
       "sha256": "f5dd54b3d6d1250c6077b66c4eb4a6c695d12801c25a2df5806feb34ff18d457"
     },
     "source/client/src/kdw-business-choice.mjs": {
-      "bytes": 1939,
-      "sha256": "ed0b35dea9499c01b5d2eb0fd207fd7fc8b30f7b2ec15638ee29045f2a0766f3"
+      "bytes": 2059,
+      "sha256": "26c1e85428512bf738d7536c4ef7f9e135f2254ab375f9c51e78ccc9b829bd53"
+    },
+    "source/client/src/kdw-business-components.json": {
+      "bytes": 127617,
+      "sha256": "6e7ebf232c337a87ff2e871b9fd2be0e381ad5144850536221371465ba63532d"
+    },
+    "source/client/src/kdw-business-messages.mjs": {
+      "bytes": 4141,
+      "sha256": "7e4e8c25e1e44497df92e5f87eec3b3ee3675f8fb6e4f6d82d1ea563e26d5192"
+    },
+    "source/client/src/kdw-business-native-model.mjs": {
+      "bytes": 1666,
+      "sha256": "14b57bd7ac1a316c059128490dc564c0fb6e1a4a454e8efb12b1afd56683816a"
+    },
+    "source/client/src/kdw-business-native.css": {
+      "bytes": 6947,
+      "sha256": "0e564c1622fe88a4c2a3a30dc7860856b240404d3ec64ec5c220360697531c6d"
+    },
+    "source/client/src/kdw-business-native.mjs": {
+      "bytes": 3726,
+      "sha256": "f7951614fdd388e7f3e09296ce826d4b1362e0885938d754685275aa73ad20f2"
     },
     "source/client/src/kdw-business-phone-asset.json": {
       "bytes": 719,
       "sha256": "0dfe2843edf13c0f0ce50cd7f45540969603463f5a8f98f39b4647556b715bfc"
+    },
+    "source/client/src/kdw-business-profile.mjs": {
+      "bytes": 2070,
+      "sha256": "fcf8cc6ad6e34b7163ec0dcb2855d972b34d20726ce2fece1388563eec08cac4"
     },
     "source/client/src/kdw-business-screen-assets.json": {
       "bytes": 444,
@@ -1455,25 +2119,33 @@
       "bytes": 550,
       "sha256": "e748c92dcdc2440b18424cedabc0e9faa5f8d19814da3158e144ec4c555f989d"
     },
+    "source/client/src/kdw-business-source-ui.mjs": {
+      "bytes": 7572,
+      "sha256": "17ae4a426e796ac9f7035d73064ec2f3dd46f72caeda6b45cb350b027c2ebb19"
+    },
+    "source/client/src/kdw-business-ui-assets.json": {
+      "bytes": 3707,
+      "sha256": "951b8e6b9bc3b66db2e541b986ef6ecf8922582959a1e6ede27416fc1319942e"
+    },
     "source/client/src/kdw-card-pop.mjs": {
       "bytes": 1894,
       "sha256": "4158fd4903dbf0471b94ddef82976c8832931a4e1f7ef10b6ccba7db88fcc9ee"
     },
     "source/client/src/kdw-conversation-assets.json": {
-      "bytes": 2358,
-      "sha256": "95c3b1d4ac66891072193ade97cbb1c18da85a60cc8b4ee7f3b5e53a6ce9fc72"
+      "bytes": 2652,
+      "sha256": "01e8cfe90d8504a2879fad9748a3544e805f88439f06ae4a6d615c73c62d8ded"
     },
     "source/client/src/kdw-conversation-model.mjs": {
       "bytes": 1141,
       "sha256": "54bec1e80a80d6523a09c64bd32dc85a94e354b3ab9949bd1bd15dc27e54a3a4"
     },
     "source/client/src/kdw-conversation-photo.mjs": {
-      "bytes": 2111,
-      "sha256": "8bacb167d4ff49cebb0d839fd647035e3a56c6a680a1aec58736dcdf9e32bb61"
+      "bytes": 2136,
+      "sha256": "55c2eb67ec392da325b69537409bf74f09977ae082df234e9446c175f72e3010"
     },
     "source/client/src/kdw-development.mjs": {
-      "bytes": 2886,
-      "sha256": "914c7245feb6f8a45c91d8e69743004be6ee363ca9bb314e3f0797540bd6295a"
+      "bytes": 3775,
+      "sha256": "a323e2bfab8701b551adabe5633cf75a666fe016a593d6e23305cab5c8d94432"
     },
     "source/client/src/kdw-device-frame.mjs": {
       "bytes": 783,
@@ -1488,16 +2160,16 @@
       "sha256": "75d7bf2b2029aa1b42c94115267fafa08a8439f03584e6ad75a309c6c1603fc4"
     },
     "source/client/src/kdw-interactions-model.mjs": {
-      "bytes": 3815,
-      "sha256": "b4073ab39603f258eef3eaa35bcc80d86b92de0baa268f05ccdf9a7a91c5bfb4"
+      "bytes": 3906,
+      "sha256": "f40f14e475660e6a196d7f78691196a8c49014aa7ca8b641595749dce6e0127b"
     },
     "source/client/src/kdw-interactions.css": {
-      "bytes": 18159,
-      "sha256": "99897e4cac66f812ee43cb6e7b18ff75c9074d54035a422ae1981d3bf407a2f3"
+      "bytes": 22233,
+      "sha256": "ef7a470dbe3fd3320e54418024b7a761025e126f36b64d05f80ce13ffeb9b223"
     },
     "source/client/src/kdw-interactions.mjs": {
-      "bytes": 20868,
-      "sha256": "a11bd08f2daf37dbc30f2d2a18dbcdaeda2fee8cf12f4ac64827ef79e9141e5c"
+      "bytes": 22630,
+      "sha256": "fe47a3e67979995bd7f3e638db0f89330944ee3a1c722c9a0089ae87b4a16ac0"
     },
     "source/client/src/kdw-keyboard-ui.mjs": {
       "bytes": 943,
@@ -1508,24 +2180,24 @@
       "sha256": "abfc25ef93a74dfcfbe96c6b7d219fdb213602ec5f4c7301fbf20cc979ad37f3"
     },
     "source/client/src/kdw-native-store.mjs": {
-      "bytes": 997,
-      "sha256": "4ba6e978c49584d1405487a00917370e7ab4cb32aef5137b5429bc1c907f7629"
+      "bytes": 905,
+      "sha256": "0477665a5214f49cb6fc515da1526396789672e2464ce2f6c478a70d13c7688f"
     },
     "source/client/src/kdw-personal-channel-assets.mjs": {
-      "bytes": 26574,
-      "sha256": "d6c763d0d1ef088340b4eeb69b75c748f7b0da30f562b5d88b6a6a6e7db2f493"
+      "bytes": 28370,
+      "sha256": "7030e245e410c5519a0f5e65fa17d5f430fdf59dba0b6a6965af2009e8984663"
     },
     "source/client/src/kdw-personal-channel-model.mjs": {
-      "bytes": 9145,
-      "sha256": "0b3e3717e139b627e4f36127009f3d36cf31e4c0dc9a4d453c94e8d127ded630"
+      "bytes": 10191,
+      "sha256": "267275b87e150adff7e300862dd6322123ceec5c92747ad3bc5a0dd047ba7360"
     },
     "source/client/src/kdw-personal-channel.css": {
-      "bytes": 5152,
-      "sha256": "dc5be67106487a36f2052f2778a1356a2b08b92cca29768661ee64bef5f2f65b"
+      "bytes": 6402,
+      "sha256": "66ab6b04750f42a34bc90bb765d1c3e5330cb95f790cf9ec41a4e1b70b202a53"
     },
     "source/client/src/kdw-personal-channel.mjs": {
-      "bytes": 18292,
-      "sha256": "f9f88af96a57526df77f3305f64dc31d4ad6742ff898c5d6fea781a6dc133789"
+      "bytes": 20755,
+      "sha256": "afd3790c2f6dd0d7a71bd439ffc8875bf882871e6e3576368058e368c2c51fdb"
     },
     "source/client/src/kdw-post-assets.json": {
       "bytes": 1704,
@@ -1545,19 +2217,19 @@
     },
     "source/client/src/kdw-posts-chrome.json": {
       "bytes": 1953,
-      "sha256": "825915e65035f3365bdf71f5f0a2578caa01a9b12137112d9441432e61199918"
+      "sha256": "4254e18ad380ebfb69990cc0a54d3aad28525cbe5bc8ee5ccedfed53eb236909"
     },
     "source/client/src/kdw-posts-model.mjs": {
-      "bytes": 12468,
-      "sha256": "af1afeeb9d785e39eef7ed8b9fa711dbfc1c353eaa94c13f8216a73c0dce2e0c"
+      "bytes": 16771,
+      "sha256": "e90283854a550a6d49fe5f7296f11aeb0849da9ebdb61abf79240df6837bc721"
     },
     "source/client/src/kdw-posts.css": {
-      "bytes": 8233,
-      "sha256": "b1cfcb473f74e50d73930a96892fc17164d3d9bf3f4f117607f3396b5eed8b17"
+      "bytes": 8834,
+      "sha256": "251e6b1b43d0678c8a07a1a3b730b83215f6bbfcab435de19c3566d8fc2551bb"
     },
     "source/client/src/kdw-posts.mjs": {
-      "bytes": 20076,
-      "sha256": "9d80c6617cf165cfd7862d539e02f2ca87a3ff21a770b42e634b06dbce8299ab"
+      "bytes": 20828,
+      "sha256": "34b535649aac4e38410d14157ff1bd4f4c79c28d92b86df545f9e5134d0bd2bf"
     },
     "source/client/src/kdw-preview.mjs": {
       "bytes": 2030,
@@ -1572,20 +2244,24 @@
       "sha256": "5d78edb9cf6625e28c6ddb0412f71fdfe2a2134877b88ccb8e562696965e2479"
     },
     "source/client/src/kdw-screen-continue.mjs": {
-      "bytes": 1226,
-      "sha256": "cb1f5046c3e885802601f0482eb48272e8d71946acbcb6582fb3c0c2ae77c3e2"
+      "bytes": 1300,
+      "sha256": "887c7f1829b9e3bfcb0dc04e68f3c81cadb609ef45786fe4c93127e24c866412"
     },
     "source/client/src/kdw-stand-adapter.mjs": {
       "bytes": 4329,
       "sha256": "fd69bcecd79d44efed3b9c5b6cf712e05efb5601a7292a8892a8cf60e59c62f9"
     },
+    "source/client/src/kdw-store-chrome.json": {
+      "bytes": 576,
+      "sha256": "cb027d79bea6bf8deda7c4a72cf6078f0f1e5ba89439770f300000dd4e142c1f"
+    },
     "source/client/src/kdw-store-motion.mjs": {
-      "bytes": 8081,
-      "sha256": "7cf1fbbc996f9b072cb52d86017e9a2e90935e9040978706c83c324d5346e26e"
+      "bytes": 8760,
+      "sha256": "e4de0c3ae448552f56e4fa00ed056c421d4c9be6bb4947416a17ee224bf18db5"
     },
     "source/client/src/kdw-store-rating.mjs": {
-      "bytes": 3375,
-      "sha256": "6bf0160de2dbbd0b09475f55862da8f0690e034333b325e99a6e3434d8af60fb"
+      "bytes": 3850,
+      "sha256": "9d8bbf45f8b275e5e934a948efbef9b12754d2f13e3bdf680540c8c387528171"
     },
     "source/client/src/kdw-task-journey.mjs": {
       "bytes": 4952,
@@ -1595,13 +2271,25 @@
       "bytes": 2034,
       "sha256": "0247ca76d247ac1bb44785dfd479090fe30fdeb0a54fe15546f251fcb01a1370"
     },
+    "source/client/src/kdw-text-input-guard.mjs": {
+      "bytes": 1966,
+      "sha256": "7f26b369c4d01b0dcfe4ff6f32e6d6a9883bb0d89c5da89f69a9eb6d406c785d"
+    },
+    "source/client/src/kdw-text-input.mjs": {
+      "bytes": 756,
+      "sha256": "b1d9307de3f52dc1ea9f544a6fd8c703dd085a37fcdd9a97be1137bf2e5c6840"
+    },
+    "source/client/src/kdw-text-policy.mjs": {
+      "bytes": 8456,
+      "sha256": "35cf7f72bd37bde12d336546a370d2233f5444b34d1616ee09d8e83e1946148b"
+    },
     "source/client/src/kdw-text-updates.mjs": {
       "bytes": 1063,
       "sha256": "77ecbe0e39758ea05592ab7a2a17f3e1948e687f851446447b0707ff3dbe3ea4"
     },
     "source/client/src/kdw-visitor-details-assets.json": {
       "bytes": 7192,
-      "sha256": "f476aecfd9da41b402ff9fc7cd3b46f3bcdef4c792b5224a447ae0ed53aeddd0"
+      "sha256": "244249fc4641f4c443b2e923ff1a7a72cbaf24d2eeaa9a3c358a9b586658b63f"
     },
     "source/client/src/kdw-visitor-details.mjs": {
       "bytes": 353,
@@ -1775,9 +2463,13 @@
       "bytes": 5724,
       "sha256": "a6652c05e78791ff275a130fc50efc5cb843d18f026527776a37f032d20e36d2"
     },
+    "source/client/test/kdw-business-native.test.mjs": {
+      "bytes": 5755,
+      "sha256": "7bd5fec2c54d00f074f2afb6297d65128f98cc9aba378c99287a4ad3eb0e755c"
+    },
     "source/client/test/kdw-conversation.test.mjs": {
-      "bytes": 2628,
-      "sha256": "3ad4b027e0ea08e476f438ef34d26402e48615a46dbb0a6e4af01bef39288f16"
+      "bytes": 2654,
+      "sha256": "dd12904a8a2157370391385e1771785d975bb353011bc9fb128656b03367b042"
     },
     "source/client/test/kdw-development.test.mjs": {
       "bytes": 7001,
@@ -1795,9 +2487,13 @@
       "bytes": 6006,
       "sha256": "4f7e0e1f743ad1728329e0e024e3bfd3bc1f3d9190dfd9c32483ba60724ad168"
     },
+    "source/client/test/kdw-fresh-entry.test.mjs": {
+      "bytes": 2172,
+      "sha256": "004891971c84ce0aaf0e0a9cdc4ac3ce51e6916e7a5e13297f7137be81e61beb"
+    },
     "source/client/test/kdw-interactions.test.mjs": {
-      "bytes": 21433,
-      "sha256": "252dbec226d672730b32693ecda8131ed25d2e80ab01520aa04db41a28f5e77d"
+      "bytes": 21524,
+      "sha256": "618f17207113da417c90ae4a63846535ff00a3b30961b97ceb3756a9b05ff677"
     },
     "source/client/test/kdw-lane-flow.test.mjs": {
       "bytes": 2943,
@@ -1808,8 +2504,8 @@
       "sha256": "9c3fbc387e5ac96274c2706e261a599c1e0720783213b10fce7bd709be26f79e"
     },
     "source/client/test/kdw-personal-channel.test.mjs": {
-      "bytes": 9994,
-      "sha256": "3ec3aed02efaad8a772b16c3de0e72cb1a3799fce4df1862de19a5bb3f7bf1c4"
+      "bytes": 11273,
+      "sha256": "357dfb5d57d5a5bb9917df81f0bf0cbe0d3e9f6a15e12f3977f7acfe66f35eb1"
     },
     "source/client/test/kdw-post-metrics.test.mjs": {
       "bytes": 1296,
@@ -1827,9 +2523,17 @@
       "bytes": 3813,
       "sha256": "84785b7b0d36455ad4aaa45251d69f8736d81ef7ccdcad52bdd3c145d61a6e0b"
     },
+    "source/client/test/kdw-text-policy.test.mjs": {
+      "bytes": 6132,
+      "sha256": "4d7e80d50e0a42641e2a9cc270e6e3df20405a781a1667c7f22db3750757f7c8"
+    },
     "source/client/test/kdw-text-updates.test.mjs": {
       "bytes": 1659,
       "sha256": "f484ace8208dae3e45a9ff4274760e736f21dd283afc65e62bd6b851d04ac14a"
+    },
+    "source/client/test/kdw-video-ready.test.mjs": {
+      "bytes": 1050,
+      "sha256": "a059049bc3c51318e9abbeb1457329825e6db087f39654f0e2bb5a861cfabf80"
     },
     "source/client/vendor/backend-figma-v2/catalog.json": {
       "bytes": 370232,
@@ -1952,8 +2656,16 @@
       "sha256": "0ab5a7467f39715e101c26b28231f8a3b017f1dd2a95e12e1c62de5d0a3b4c6a"
     },
     "source/export-web.mjs": {
-      "bytes": 11709,
-      "sha256": "fd81e781bef9c24e88a24d2097608e8a872b7935191c3e60df6c1710ff1c266b"
+      "bytes": 11816,
+      "sha256": "eba057c1f84b3fa1a394e6dd028620f3ea35945634c4132126a2b1d7ba4f71be"
+    },
+    "source/fixtures/visitor-photo-source.json": {
+      "bytes": 347,
+      "sha256": "8c41db77ed9af9c41a9fe63cf0d4954c2359e520ea6b0c1cd5f393b8f3fd6fa6"
+    },
+    "source/fixtures/visitor-photo.jpg": {
+      "bytes": 69240,
+      "sha256": "5d8215bf51443bc75b9591b4845e79db642bae32744d13ffc279ac5b2582fa8b"
     },
     "source/fixtures/visitor-photo.png": {
       "bytes": 13808546,
@@ -4455,6 +5167,14 @@
       "bytes": 3342,
       "sha256": "b5d3f02c9110e18c0e44017d0e99c87503bc4e7299ed8173746d5ad4b90d390a"
     },
+    "source/prepare-business-components.cjs": {
+      "bytes": 18175,
+      "sha256": "f51d89b8df56053fc3d1705db9a8877541d345ae14618c1da1afa3052dbe5a27"
+    },
+    "source/prepare-business-native.mjs": {
+      "bytes": 3574,
+      "sha256": "f9b65942378f183063f7e2b174161c3c08456fa9498aab1a2f6cd3c751e1c884"
+    },
     "source/prepare-business-phone.mjs": {
       "bytes": 2156,
       "sha256": "9685106a1c81d8a8b4d7196c04106b97f67ade524be46ddcd31a62f8bc9486f4"
@@ -4464,16 +5184,24 @@
       "sha256": "9b972179bf4393d399f5ac301ebd5aeeb5db5aff51877c9b86deccdd7d2c40b6"
     },
     "source/prepare-conversation.mjs": {
-      "bytes": 4007,
-      "sha256": "10cc2baa832be9eabdd286bdce09281b5e7ba99cc6b7575fe86a450c6deaa93e"
+      "bytes": 4571,
+      "sha256": "682e6beddad59b2fa3082fbe3abd25b04cb2f3fbc0a8e0bef9ab8d3c353625d1"
     },
     "source/prepare-personal-channel.mjs": {
-      "bytes": 3752,
-      "sha256": "a73e673b2652217a415dede7f9fa1cf11052dd113eda29f2c7a3a1ac371a5cf9"
+      "bytes": 4519,
+      "sha256": "ed375eaf886c5c302dd2d18e0252cdeaeda3348ca28356422e283c2499696102"
+    },
+    "source/prepare-personal-reply.py": {
+      "bytes": 2521,
+      "sha256": "6e2d6e6ebb940be02cc66b13bc01b0a3160739a716d6efe7a046bcad5b2e9b42"
     },
     "source/prepare-posts-chrome.py": {
-      "bytes": 2665,
-      "sha256": "1e0dd4d690a982d8bf917fee18d248388d0d79856286247e94de7d48539156b7"
+      "bytes": 2811,
+      "sha256": "9f8636cd4b0aed4bdc6d88e401bfd00932df392e6769c702c86e6809fe8b71be"
+    },
+    "source/prepare-store-chrome.py": {
+      "bytes": 1978,
+      "sha256": "cecd17abe348320389d185b554eb1465eb6fec98d54208ce15b9037b8f5241ca"
     },
     "source/prepare-visitor-details.mjs": {
       "bytes": 5375,
@@ -5563,6 +6291,22 @@
       "bytes": 4331,
       "sha256": "a53c363abaf69c0a848b5239dfb518571c70765a359f8319ea8d37e99e517ac4"
     },
+    "source/vendor/glin-profanity/LICENSE": {
+      "bytes": 1109,
+      "sha256": "63e8210e6bf3e8c032dc0c69b1d1d2e3ab72c14b02cabcc0dada2618bb188b97"
+    },
+    "source/vendor/glin-profanity/prepare.cjs": {
+      "bytes": 1475,
+      "sha256": "771dd5dedf14df711b14f3734666a9f73738fb02550d91cf734b8dffdf51d009"
+    },
+    "source/vendor/glin-profanity/provenance.json": {
+      "bytes": 666,
+      "sha256": "ce813468069afadc70c3a3480a14836ed45af0634c82cf952fa241fe11b290ba"
+    },
+    "source/vendor/glin-profanity/words.mjs": {
+      "bytes": 10177,
+      "sha256": "d56a6edc0d6d685ee2014fb9d05aeee61ffd1a0f8ef9c918d729d580fc401df1"
+    },
     "source/vendor/howler/dist/howler.js": {
       "bytes": 107970,
       "sha256": "81343a465947066ec1cd91a1ab88fe83591234159f4f55bcdf44073822c0bd9e"
@@ -5583,13 +6327,41 @@
       "bytes": 9647,
       "sha256": "ba20764b56b779dd59a371e4eceecff164b79f387d8af10fe7c65d765edff831"
     },
+    "source/verify-business-bubbles.cjs": {
+      "bytes": 7785,
+      "sha256": "e8e1ce197e2a945283214fd43c6f5b3ea66019282ea265a4c966188f7d19a043"
+    },
+    "source/verify-business-channel-name.cjs": {
+      "bytes": 9035,
+      "sha256": "f1bb41cee4b6050827f78dae3ce83594dd3d1f7d3b944ae2d6713c370c353236"
+    },
     "source/verify-business-choice.cjs": {
       "bytes": 5573,
       "sha256": "35f1a2c0d15cfb43943346c4c781b9e4e3be8a37ec9c65309bd9237f6e4bb9cb"
     },
+    "source/verify-business-fidelity-edge.cjs": {
+      "bytes": 6717,
+      "sha256": "8cb68d672d1cb1cc0291aa1c93750e7d340774e930702b3d62154ed50efdd095"
+    },
+    "source/verify-business-fidelity.cjs": {
+      "bytes": 3590,
+      "sha256": "843c112c7e0b48a1e8005f73f3cbc42df705633b109b843422f5333295759d08"
+    },
+    "source/verify-business-native-edge.cjs": {
+      "bytes": 4879,
+      "sha256": "19473637c6184ae90d527b29e3b93ff3da16ca00e62a5014b34c360197e5504c"
+    },
+    "source/verify-business-native.cjs": {
+      "bytes": 6346,
+      "sha256": "bfd97f93d20ec26c9e01a8c27560ed18f553581a65c918bf69ab3060d7687ab8"
+    },
     "source/verify-business-phone.cjs": {
       "bytes": 3103,
       "sha256": "0ea2f8601d12aa5235439c647d3ea90158a4e7890d1b3d8cda230de228843035"
+    },
+    "source/verify-business-runtime.cjs": {
+      "bytes": 7029,
+      "sha256": "afd1bea5aee375aeeb6b17f68c8a0b50ba9b45a29bfcd5cf8ad99897c5d7044f"
     },
     "source/verify-business-sidebar.cjs": {
       "bytes": 5194,
@@ -5631,6 +6403,14 @@
       "bytes": 5685,
       "sha256": "86890d0e510d939dd74cd56d975b5d31b5c66b81e9e55dd02ab8533c1ce75a9c"
     },
+    "source/verify-fresh-entry.cjs": {
+      "bytes": 2792,
+      "sha256": "4036a76e237a7c899feadb56d1f945a11ce1e6de3c23cfbfb42030d4538b4367"
+    },
+    "source/verify-idle-video.cjs": {
+      "bytes": 3251,
+      "sha256": "982947ba79c433bd119d1d1b1c420b109ad29750f46e4a877fb520409a9fb17e"
+    },
     "source/verify-interactions.cjs": {
       "bytes": 19829,
       "sha256": "f974956890ddedf34aaa6d24d592cc26d94a81d4151f3e3708f486b5b4db952f"
@@ -5666,6 +6446,10 @@
     "source/verify-personal-avatar.cjs": {
       "bytes": 7946,
       "sha256": "cd86102242cb231c20fd526fcbd35544f7509175cbb0aa1a3c21195c9fbfb2dd"
+    },
+    "source/verify-personal-bubble.cjs": {
+      "bytes": 5760,
+      "sha256": "65648d988d5bc70e0b3bc4d62deb16e2cf0fab1de57c496445ae92915c6a3bd8"
     },
     "source/verify-personal-channel-preserve.cjs": {
       "bytes": 11662,
@@ -5779,9 +6563,17 @@
       "bytes": 5797,
       "sha256": "b746fcef62c3e3a509c1f68f2291716bc2830365f0d7b21e0e6a45656d041265"
     },
+    "source/verify-store-header.cjs": {
+      "bytes": 1866,
+      "sha256": "47728ae3d18f349baa5d0e8b9c34d04076d8423a754d20dff15db270513250f0"
+    },
     "source/verify-store-icons.cjs": {
       "bytes": 3869,
       "sha256": "2a24cb10a93b572bd1e91133d8c1dbb97c83cf1920d7c165ff5a57e3740d9e55"
+    },
+    "source/verify-store-max.cjs": {
+      "bytes": 7853,
+      "sha256": "650408b349fe67f2091607c355b939517e0096f7df4a5dda26d915504ee30caf"
     },
     "source/verify-store-publish.cjs": {
       "bytes": 6153,
@@ -5806,6 +6598,10 @@
     "source/verify-task-skip.cjs": {
       "bytes": 6046,
       "sha256": "32bff62fda8b522c8b9c6bfa8348e6c57d44385d6a64a413357a60270da09145"
+    },
+    "source/verify-text-filter.cjs": {
+      "bytes": 9018,
+      "sha256": "5cf4017c3709f26e4bd937ae1b2636fc22bda7fb00d2263f6783c2b3f2cc52b4"
     },
     "source/verify-visitor-details.cjs": {
       "bytes": 6739,
@@ -6783,37 +7579,637 @@
       "bytes": 3300,
       "sha256": "a8f9eef8f77ce9892e09deb2d698b8cc3e4fb6783db8dd4e88a6bc5315b9181e"
     },
+    "www/assets/kdw-native/business-components/business-bot-create-binding-0.svg": {
+      "bytes": 1520,
+      "sha256": "63f9ebe3cd9e3a4b8cbf1770e3f7226765fced599f87bb447d7cbd35270bd356"
+    },
+    "www/assets/kdw-native/business-components/business-bot-create-binding-1.svg": {
+      "bytes": 1520,
+      "sha256": "940ee6b5672caba2deb4fc5a7ba5943c789e0f1fa2a665452d526f308ba86dc5"
+    },
+    "www/assets/kdw-native/business-components/business-bot-filled-0.svg": {
+      "bytes": 665332,
+      "sha256": "24a58ba5bae0480d6d4190169c6a4a7df681e46e0c9e59c8857faca4d16bddc0"
+    },
+    "www/assets/kdw-native/business-components/business-bot-filled-1.svg": {
+      "bytes": 665336,
+      "sha256": "500a779f3cfd1ca74ec17178235fef67fa060d8f108fe36350a59ff58d70f687"
+    },
+    "www/assets/kdw-native/business-components/business-bot-filled-2.svg": {
+      "bytes": 665336,
+      "sha256": "f543a63e5adfdc2a00227f4124cbc0db436bd5061d4bf6ae5bd02751df2ea669"
+    },
+    "www/assets/kdw-native/business-components/business-bot-filled-binding-0.svg": {
+      "bytes": 2856,
+      "sha256": "386b9284af8d14139853bd8ae24c815caf9ddb15990d47b5256d3de8ea0c0a98"
+    },
+    "www/assets/kdw-native/business-components/business-bot-filled-binding-1.svg": {
+      "bytes": 2856,
+      "sha256": "6f6db6c31569831631c2e7a704210e572a41ac2272e7ce64bc7e22422d5f4461"
+    },
+    "www/assets/kdw-native/business-components/business-bot-filled-binding-10.svg": {
+      "bytes": 11336,
+      "sha256": "c2c23784eac3895793df9f7729d301c4509987255850212fe167598db11fdaf4"
+    },
+    "www/assets/kdw-native/business-components/business-bot-filled-binding-11.svg": {
+      "bytes": 11974,
+      "sha256": "0f3f0a5c51f3fbedf9542742fe2b00d597626512a88c9f9670f31ba213fe8bf0"
+    },
+    "www/assets/kdw-native/business-components/business-bot-filled-binding-2.svg": {
+      "bytes": 5115,
+      "sha256": "4205c92a8962493c99a4a75e4373dd2f241d8b20a6070d849c07d5cfea265990"
+    },
+    "www/assets/kdw-native/business-components/business-bot-filled-binding-3.svg": {
+      "bytes": 4480,
+      "sha256": "d4f6e3f315b5195728fb3cf9d520da3856a09e486ce092621060406f95bae05a"
+    },
+    "www/assets/kdw-native/business-components/business-bot-filled-binding-4.svg": {
+      "bytes": 8469,
+      "sha256": "cfd5b11bf105cf91db24c8ac8549aebceacac18238376ee0dafad4c0055edc81"
+    },
+    "www/assets/kdw-native/business-components/business-bot-filled-binding-5.svg": {
+      "bytes": 8524,
+      "sha256": "16f61f2f2921d1a9cb832ba9f254201e9cc0af6e3d886c9ab0685578075d8e49"
+    },
+    "www/assets/kdw-native/business-components/business-bot-filled-binding-6.svg": {
+      "bytes": 8529,
+      "sha256": "47b9d232b0ea8efc5485c7a4c082a234c42fd826084add82b1f650b4a560998d"
+    },
+    "www/assets/kdw-native/business-components/business-bot-filled-binding-7.svg": {
+      "bytes": 11335,
+      "sha256": "5dd83af64cc4f7ef637b12dcdee8d93f23fcc173a591290ea56d697177f0662e"
+    },
+    "www/assets/kdw-native/business-components/business-bot-filled-binding-8.svg": {
+      "bytes": 11336,
+      "sha256": "a1f5c5ed744db703848a0be77b659e6de524bdad0686d09ae64b35a7d1be25d2"
+    },
+    "www/assets/kdw-native/business-components/business-bot-filled-binding-9.svg": {
+      "bytes": 11336,
+      "sha256": "4810c157c46c541d2248ea9aca4fe032bc0bf613ccdc8ca1940ec40ca200a74a"
+    },
+    "www/assets/kdw-native/business-components/business-bot-ready-0.svg": {
+      "bytes": 273398,
+      "sha256": "3ab0c5c0d41de0ffa324f777f958eb157238e181789507d4f31d838c057ce2fa"
+    },
+    "www/assets/kdw-native/business-components/business-bot-ready-1.svg": {
+      "bytes": 273403,
+      "sha256": "bae945847ea8fa82fd495ab5b4c7a45cafe20652fd3a9449dbdd4c4022096c66"
+    },
+    "www/assets/kdw-native/business-components/business-bot-ready-2.svg": {
+      "bytes": 273407,
+      "sha256": "b3a03e48b16089e2363dde6125be23b87a3335c2d02e58f65b0094b7e70627b5"
+    },
+    "www/assets/kdw-native/business-components/business-bot-ready-binding-0.svg": {
+      "bytes": 1370,
+      "sha256": "2801c0fd0aef3e0cebf7a892d75d1c35420165762be0e054a15d670f2ff0f0ae"
+    },
+    "www/assets/kdw-native/business-components/business-bot-ready-binding-1.svg": {
+      "bytes": 1372,
+      "sha256": "f39efed96459e331a60e0b575c4f0ffef443a1ebc1d30def39ae0658efbfd4bd"
+    },
+    "www/assets/kdw-native/business-components/business-bot-ready-binding-2.svg": {
+      "bytes": 1372,
+      "sha256": "4cff2a645105ba88bc050c3bd4be776412989a90090467909ca03767ffbe5389"
+    },
+    "www/assets/kdw-native/business-components/business-bot-ready-binding-3.svg": {
+      "bytes": 1372,
+      "sha256": "1a205374dd22c7fedd7abcb743bae2f9dfde904d733febab93e5f7e683559258"
+    },
+    "www/assets/kdw-native/business-components/business-bot-result-0.svg": {
+      "bytes": 502332,
+      "sha256": "e9a4a57d472e321513964d0ac33e5e19999467694930400c6f1648ddff67aa26"
+    },
+    "www/assets/kdw-native/business-components/business-bot-result-1.svg": {
+      "bytes": 502336,
+      "sha256": "c2f5c733352eb81571614edd772881a0bf593b6289c60e5087ea57178925df9e"
+    },
+    "www/assets/kdw-native/business-components/business-bot-result-2.svg": {
+      "bytes": 502333,
+      "sha256": "59429ed1e3cc678d3c62bedcdab2e38abe29de38a92a1843e7d44b4524d98f1f"
+    },
+    "www/assets/kdw-native/business-components/business-bot-result-binding-0.svg": {
+      "bytes": 3385,
+      "sha256": "7d917525b86cb467509ed6195f402074ad80ca009cc1e53571acde0810c2c833"
+    },
+    "www/assets/kdw-native/business-components/business-bot-result-binding-1.svg": {
+      "bytes": 3387,
+      "sha256": "2e3a135a5eafd4de104d27d433a9a8afa8fa2e4602a7f537501b9f9ee89507cf"
+    },
+    "www/assets/kdw-native/business-components/business-bot-result-binding-2.svg": {
+      "bytes": 2368,
+      "sha256": "07616bfa106611a3c39a9cad121926d11e0438f4ba7cfab6d07ebcf1b5e7116f"
+    },
+    "www/assets/kdw-native/business-components/business-bot-result-binding-3.svg": {
+      "bytes": 2368,
+      "sha256": "0a7753292bee44c6f43c2a6953d05a3ad2475688b7eb2d8c8f2dcf0dade07d56"
+    },
+    "www/assets/kdw-native/business-components/business-bot-result-binding-4.svg": {
+      "bytes": 3038,
+      "sha256": "bc82d7d1c2bc67e7c7bb93fd4c64a83391eba99b7526fbbfb46b9f59567e20f3"
+    },
+    "www/assets/kdw-native/business-components/business-channel-continue-0.svg": {
+      "bytes": 305013,
+      "sha256": "81dfa3bd3246b4bb0f74adc30625f6d2847d82ff6cc4598581469dd81b0feb9f"
+    },
+    "www/assets/kdw-native/business-components/business-channel-continue-1.svg": {
+      "bytes": 305018,
+      "sha256": "df7190b090064f188e0d19d0c60b30baf039d4b686972e8fea416d6ed58e80e7"
+    },
+    "www/assets/kdw-native/business-components/business-channel-continue-2.svg": {
+      "bytes": 305022,
+      "sha256": "2d7e23bc78363bef22de1476f676b3626d19498f8868bc7c3121b9ffc4277cd0"
+    },
+    "www/assets/kdw-native/business-components/business-channel-continue-binding-0.svg": {
+      "bytes": 1351,
+      "sha256": "ce746db34a352150ec6c0aea54c0c1ea8cfcaf130acc746aab71666834925e55"
+    },
+    "www/assets/kdw-native/business-components/business-channel-continue-binding-1.svg": {
+      "bytes": 1351,
+      "sha256": "0a985f23be57855ff140a1ccf47863e137e1da0543ed08e51a634308592d1895"
+    },
+    "www/assets/kdw-native/business-components/business-channel-create-0.svg": {
+      "bytes": 381996,
+      "sha256": "6285c63b776af097d4d45808297e0c5de1ef408734c1eaa02c623ae2ae343f66"
+    },
+    "www/assets/kdw-native/business-components/business-channel-create-1.svg": {
+      "bytes": 382001,
+      "sha256": "cf239e4fd871981cec0878eb25ad20e5af8b1dc3ac740f86c31dc65ee11f1269"
+    },
+    "www/assets/kdw-native/business-components/business-channel-create-2.svg": {
+      "bytes": 382005,
+      "sha256": "cbc32f6f1ca033e4a7796c0aca9cdc41d75d4930ba7fbcc7ab1e5db045a712b8"
+    },
+    "www/assets/kdw-native/business-components/business-channel-create-binding-0.svg": {
+      "bytes": 1520,
+      "sha256": "63f9ebe3cd9e3a4b8cbf1770e3f7226765fced599f87bb447d7cbd35270bd356"
+    },
+    "www/assets/kdw-native/business-components/business-channel-create-binding-1.svg": {
+      "bytes": 1520,
+      "sha256": "940ee6b5672caba2deb4fc5a7ba5943c789e0f1fa2a665452d526f308ba86dc5"
+    },
+    "www/assets/kdw-native/business-components/business-channel-description-0.svg": {
+      "bytes": 476406,
+      "sha256": "e3cf0ac879e4a641fb085fc668446c58df18bdf848259af3501a7211ee8d29b7"
+    },
+    "www/assets/kdw-native/business-components/business-channel-description-1.svg": {
+      "bytes": 476408,
+      "sha256": "210aa71d76282b68fb3a25997c9078bb125419e89c170d8beb794a410a1a61c1"
+    },
+    "www/assets/kdw-native/business-components/business-channel-description-2.svg": {
+      "bytes": 476406,
+      "sha256": "3c0316926b7c6056759022eadad1496e021fa9d00dce94a484f5548d28712844"
+    },
+    "www/assets/kdw-native/business-components/business-channel-details-0.svg": {
+      "bytes": 475353,
+      "sha256": "9b7e3d34467feb553b77ffa39b1e6d6dea1b4533f6315910842ee5af18c8afa5"
+    },
+    "www/assets/kdw-native/business-components/business-channel-details-1.svg": {
+      "bytes": 475355,
+      "sha256": "e2362a704ae226b7d7381423bdf91d52a4303cfa2cf1f2269f4f0187cd5194c7"
+    },
+    "www/assets/kdw-native/business-components/business-channel-details-2.svg": {
+      "bytes": 475353,
+      "sha256": "4e098c958b755bbd0216e83d7fe1d74aaca6e227e6f1eafdddc5b02a3b61b265"
+    },
+    "www/assets/kdw-native/business-components/business-channel-open-0.svg": {
+      "bytes": 150059,
+      "sha256": "15de01bad8fb138235c75cdf918d9911fbaaf7ee4d068b4d4b34f9b8fa5e3b0e"
+    },
+    "www/assets/kdw-native/business-components/business-channel-open-1.svg": {
+      "bytes": 150061,
+      "sha256": "14df62ba119ff9e701e5416349eda506ee794f77dc836eb2853ec2f5205a404b"
+    },
+    "www/assets/kdw-native/business-components/business-channel-open-2.svg": {
+      "bytes": 150059,
+      "sha256": "c7f0d8e7e1b4a848f5c4b20331d1c63137f4f93f3d04608459a73f3744dc41e2"
+    },
+    "www/assets/kdw-native/business-components/business-channel-publish-0.svg": {
+      "bytes": 463545,
+      "sha256": "03f1db782f3adbb340717f5af80f16d4f211e3371c2dd4516e0d71ac57e8ff3e"
+    },
+    "www/assets/kdw-native/business-components/business-channel-publish-1.svg": {
+      "bytes": 463549,
+      "sha256": "502f4ddfca22b577d37fd35193de117b9410a53c6ce29c0bbb2cb7798deaaea5"
+    },
+    "www/assets/kdw-native/business-components/business-channel-publish-2.svg": {
+      "bytes": 463546,
+      "sha256": "8c34f51fe645b987f78c9f262e30f257934eb2cad2c5c50c04765a79da7af813"
+    },
+    "www/assets/kdw-native/business-components/business-channel-publish-binding-0.svg": {
+      "bytes": 2672,
+      "sha256": "542458ac3b4fa0968b4031b216e9159b0d2635034c35f8597be4b886292a857e"
+    },
+    "www/assets/kdw-native/business-components/business-channel-publish-binding-1.svg": {
+      "bytes": 2683,
+      "sha256": "9bc8ebb17c67c423dfb657403a6e30594ba48f933d17b1f1823840583a35517c"
+    },
+    "www/assets/kdw-native/business-components/business-channel-publish-binding-2.svg": {
+      "bytes": 2683,
+      "sha256": "4987f59c5df670bcaab28bbc96537cf4442777deb499ec6250d325f3fc189f16"
+    },
+    "www/assets/kdw-native/business-components/business-channel-publish-name-footer.svg": {
+      "bytes": 471192,
+      "sha256": "6fb28251e251229a75c868c1f17114a1a732d3569b1aad05f4012cd940587edc"
+    },
+    "www/assets/kdw-native/business-components/business-channel-publish-name-header.svg": {
+      "bytes": 471192,
+      "sha256": "17ab5e9587703330627428c46eec88830f53d28217239a85b505c042f01d170f"
+    },
+    "www/assets/kdw-native/business-components/business-channel-publish-name-meta.svg": {
+      "bytes": 6253,
+      "sha256": "84299aa7c27f516a6ed9844955a962114aaae6e32d9d371f18bd28af89ff99bb"
+    },
+    "www/assets/kdw-native/business-components/business-channel-publish-name-prefix.svg": {
+      "bytes": 470326,
+      "sha256": "1fae825a95eb6f43325845a8efaad8341d43b3e9c7a3621a4f51f48e5cb9160c"
+    },
+    "www/assets/kdw-native/business-components/business-channel-publish-name-skin.svg": {
+      "bytes": 1806,
+      "sha256": "ea2647d15c54a3ce111e9c0385af4550caae349cd76b3a3bd9f1986d9e7b7a00"
+    },
+    "www/assets/kdw-native/business-components/business-channel-publish-name-tail.svg": {
+      "bytes": 470547,
+      "sha256": "d7eca00c69ea6e39453e899395e335b06297f58ac59f3c771d74c05d6df21502"
+    },
+    "www/assets/kdw-native/business-components/business-channel-publish-name-wallpaper.svg": {
+      "bytes": 1308,
+      "sha256": "dcbc5b0736781a624be86493f79fc828516c93ea2ac6459db589e3393e6ab8cf"
+    },
+    "www/assets/kdw-native/business-components/business-channel-setup-0.svg": {
+      "bytes": 411451,
+      "sha256": "2f8b8951478326c88f96bc97f711f2068f098e00598d2313574063da473c69b4"
+    },
+    "www/assets/kdw-native/business-components/business-channel-setup-1.svg": {
+      "bytes": 411455,
+      "sha256": "ab4b78b34434b0f9264b5c7ebd66465af0033ad16cda8852331786280c661e1b"
+    },
+    "www/assets/kdw-native/business-components/business-channel-setup-2.svg": {
+      "bytes": 411452,
+      "sha256": "237a3414219a01d54fcd03a15b612b6bdc05ecdca7ca80e78c4ee2fc0b522da0"
+    },
+    "www/assets/kdw-native/business-components/business-channel-setup-binding-0.svg": {
+      "bytes": 2521,
+      "sha256": "354d5417662e7cad789fdb5173017ee2dc35c7ad0fb65148db677dd15f81548d"
+    },
+    "www/assets/kdw-native/business-components/business-channel-type-0.svg": {
+      "bytes": 547481,
+      "sha256": "58786fe62a669f308f1a84b32ad3074645399e21ebcece71bf039f47ce1ef0f9"
+    },
+    "www/assets/kdw-native/business-components/business-channel-type-1.svg": {
+      "bytes": 547485,
+      "sha256": "b0bc7253596af6d64e5d48c90bdd62f65cdbd596cb9a0e932f86de3e77561bda"
+    },
+    "www/assets/kdw-native/business-components/business-channel-type-2.svg": {
+      "bytes": 547482,
+      "sha256": "5a70a16c409e3e14732e1be0e26745a1671562bbfca648ef1d1cdc8ea49684ab"
+    },
+    "www/assets/kdw-native/business-components/business-channel-type-binding-0.svg": {
+      "bytes": 2671,
+      "sha256": "80e1d5c8e28ef7e211129856a9a55d5c70d5c1b510d8d9759075f9aadca83a6d"
+    },
+    "www/assets/kdw-native/business-components/business-channel-type-binding-1.svg": {
+      "bytes": 2680,
+      "sha256": "027143dff6155c27f8276dabbad1357c399caa02917a2198bd3d8ad4343ff7c2"
+    },
+    "www/assets/kdw-native/business-components/business-channel-type-binding-2.svg": {
+      "bytes": 2680,
+      "sha256": "02a9a953b4114ed49852cee2dde36377e3827008f2a2642a068cf5faa75b3d1f"
+    },
+    "www/assets/kdw-native/business-components/business-channel-type-name-footer.svg": {
+      "bytes": 559961,
+      "sha256": "87f11dd2df6259c400f352744f590afe0b69af1216f184388e368b30d530327c"
+    },
+    "www/assets/kdw-native/business-components/business-channel-type-name-header.svg": {
+      "bytes": 559961,
+      "sha256": "303aa0ff641246c6d3e6da5102e1945d0bacd4c61b0e74141197e1a5dee3dd7e"
+    },
+    "www/assets/kdw-native/business-components/business-channel-type-name-meta.svg": {
+      "bytes": 6251,
+      "sha256": "d62f7113af56ae3dcd93003488fdf6832f2857fc2307690c657fc70f53f6298b"
+    },
+    "www/assets/kdw-native/business-components/business-channel-type-name-prefix.svg": {
+      "bytes": 559095,
+      "sha256": "738fad3f69fefe9fe656f48c763d421583159d9953740a4f9a72d9b25269a818"
+    },
+    "www/assets/kdw-native/business-components/business-channel-type-name-skin.svg": {
+      "bytes": 1805,
+      "sha256": "71e258d121dc07597dc90f1c0e4dc5b0ebea445c3b2bb720e35eafc06b9795a3"
+    },
+    "www/assets/kdw-native/business-components/business-channel-type-name-tail.svg": {
+      "bytes": 554482,
+      "sha256": "4a3cd71d16181397e2618c2bf64390dfceb422e39bb445d9153cd13e0e9a36b2"
+    },
+    "www/assets/kdw-native/business-components/business-channel-type-name-wallpaper.svg": {
+      "bytes": 1308,
+      "sha256": "56c21ee9a86ca5765bccf214ea8da0730afef0cee46c95d8d364bac867fb8ead"
+    },
+    "www/assets/kdw-native/business-components/business-platform-login-0.svg": {
+      "bytes": 167826,
+      "sha256": "90af8cde5500aa5ec302676e62428356b921a79e3286aa5120639d69aebfe0ba"
+    },
+    "www/assets/kdw-native/business-components/business-platform-login-1.svg": {
+      "bytes": 167826,
+      "sha256": "4d2dac7424d5196991feafa0f66933ec66ba8c95c17bc5ba51a5a1e6d25d80ad"
+    },
+    "www/assets/kdw-native/business-components/business-platform-login-2.svg": {
+      "bytes": 167828,
+      "sha256": "fc171f1ad396a44fba064c6d43b631909964bafcdbfee905dc806f5131ac8a93"
+    },
+    "www/assets/kdw-native/business-components/business-platform-profile-0.svg": {
+      "bytes": 215055,
+      "sha256": "a4c461b1dce94bf83c7bf21f804fac880182a227fbadb44f923243548061caee"
+    },
+    "www/assets/kdw-native/business-components/business-platform-profile-1.svg": {
+      "bytes": 215060,
+      "sha256": "e15e895a363cd14ece30c5410ba3754c45f20de30aad0a7c19755dfd497509de"
+    },
+    "www/assets/kdw-native/business-components/business-platform-profile-2.svg": {
+      "bytes": 215064,
+      "sha256": "754f50be7f7ffeff475bc22f4fe95b54dc1c02436618936264facb609c69b412"
+    },
+    "www/assets/kdw-native/business-components/business-platform-profile-binding-0.svg": {
+      "bytes": 1588,
+      "sha256": "1a7de70b15e554fe737965bb0651d120eaa1145e44b0953a1fb09a713950f6e3"
+    },
+    "www/assets/kdw-native/business-components/business-platform-ready-0.svg": {
+      "bytes": 401973,
+      "sha256": "47ad227c3c0221c28c56e0a0e4f946eb292ad35eed4369399cba06858f3dfbd6"
+    },
+    "www/assets/kdw-native/business-components/business-platform-ready-1.svg": {
+      "bytes": 401976,
+      "sha256": "2c6ca8d411a76a91f8e767c6d1f0c8feda2d7ed22f3ad9c8a9f0c40815545e22"
+    },
+    "www/assets/kdw-native/business-components/business-platform-ready-2.svg": {
+      "bytes": 401978,
+      "sha256": "1ec49df64b968b542bb9ce5357cc6cf8f49880002dd1e0e9600a1284c189bca7"
+    },
+    "www/assets/kdw-native/business-components/business-platform-verification-0.svg": {
+      "bytes": 245308,
+      "sha256": "fb9e0a877771a379bdfa3f498c4f8da2714661a58ee3469ad73c3ea0e59462af"
+    },
+    "www/assets/kdw-native/business-components/business-platform-verification-1.svg": {
+      "bytes": 245313,
+      "sha256": "4fe4f9df8cc3844357a249fd5fa23cff32413cec62adf91ba43b1f9b1a440992"
+    },
+    "www/assets/kdw-native/business-components/business-platform-verification-2.svg": {
+      "bytes": 245317,
+      "sha256": "00b87a382fe4ae6d65788cc17693a7b29fac2125d531b1a57e953f39b407f4f2"
+    },
+    "www/assets/kdw-native/business-components/business-platform-verification-binding-0.svg": {
+      "bytes": 1588,
+      "sha256": "947861903bb339a7e5c464f1dd47336360d682a23ea5c585b9e65a3b4a6c7125"
+    },
+    "www/assets/kdw-native/business-components/canvas-business-bot-create.svg": {
+      "bytes": 66,
+      "sha256": "66bee21f7598d9709de879b00252ac10e3309b4e1d2f043d2c0ed14d0a85389f"
+    },
+    "www/assets/kdw-native/business-components/canvas-business-bot-filled.svg": {
+      "bytes": 66,
+      "sha256": "274bd5fa7f5549a9e865aab9651c5064f8a2f6bb7b43fcd9b2fc0417d2a5f7aa"
+    },
+    "www/assets/kdw-native/business-components/canvas-business-bot-ready.svg": {
+      "bytes": 66,
+      "sha256": "71e3c6d51b7621a8431c509a22ff1de89a15c97a72d12036b016a095b28c41fc"
+    },
+    "www/assets/kdw-native/business-components/canvas-business-bot-result.svg": {
+      "bytes": 66,
+      "sha256": "16ff5e01c9c4b50912ebd98935ed68dbdebb5a5785d95bf4b66e15b84d20f6ed"
+    },
+    "www/assets/kdw-native/business-components/canvas-business-channel-continue.svg": {
+      "bytes": 66,
+      "sha256": "d76711dcc3549a33ca976acb766cc07429dd3c300e0796621ec7eb098d3ea9f9"
+    },
+    "www/assets/kdw-native/business-components/canvas-business-channel-create.svg": {
+      "bytes": 66,
+      "sha256": "66bee21f7598d9709de879b00252ac10e3309b4e1d2f043d2c0ed14d0a85389f"
+    },
+    "www/assets/kdw-native/business-components/canvas-business-channel-description.svg": {
+      "bytes": 66,
+      "sha256": "3328ede0e62c2323f6c6ebbab71a94fabcc415ac2bc4c0b067295e686f9b9774"
+    },
+    "www/assets/kdw-native/business-components/canvas-business-channel-details.svg": {
+      "bytes": 66,
+      "sha256": "3328ede0e62c2323f6c6ebbab71a94fabcc415ac2bc4c0b067295e686f9b9774"
+    },
+    "www/assets/kdw-native/business-components/canvas-business-channel-open.svg": {
+      "bytes": 66,
+      "sha256": "3328ede0e62c2323f6c6ebbab71a94fabcc415ac2bc4c0b067295e686f9b9774"
+    },
+    "www/assets/kdw-native/business-components/canvas-business-channel-publish.svg": {
+      "bytes": 66,
+      "sha256": "3328ede0e62c2323f6c6ebbab71a94fabcc415ac2bc4c0b067295e686f9b9774"
+    },
+    "www/assets/kdw-native/business-components/canvas-business-channel-setup.svg": {
+      "bytes": 66,
+      "sha256": "3328ede0e62c2323f6c6ebbab71a94fabcc415ac2bc4c0b067295e686f9b9774"
+    },
+    "www/assets/kdw-native/business-components/canvas-business-channel-type.svg": {
+      "bytes": 66,
+      "sha256": "3328ede0e62c2323f6c6ebbab71a94fabcc415ac2bc4c0b067295e686f9b9774"
+    },
+    "www/assets/kdw-native/business-components/canvas-business-platform-login.svg": {
+      "bytes": 67,
+      "sha256": "15812e3d3482e63d2f4b9aa78af8db79d686a08bf97a3afc61b239aeeea5d3db"
+    },
+    "www/assets/kdw-native/business-components/canvas-business-platform-profile.svg": {
+      "bytes": 66,
+      "sha256": "764db78bf4cdd6e72bf6b44a551f6c6809d6d790766695149a8667311844dc34"
+    },
+    "www/assets/kdw-native/business-components/canvas-business-platform-ready.svg": {
+      "bytes": 66,
+      "sha256": "764db78bf4cdd6e72bf6b44a551f6c6809d6d790766695149a8667311844dc34"
+    },
+    "www/assets/kdw-native/business-components/canvas-business-platform-verification.svg": {
+      "bytes": 66,
+      "sha256": "61742680b9c2812c69267176259a45eb6892c139eae564ee96135da01a9af081"
+    },
+    "www/assets/kdw-native/business-components/order-flow-action-button.svg": {
+      "bytes": 659281,
+      "sha256": "58d3fa6a84de8df35f8283d8d54302cf3668d512f3e20c482cdaa4bddc832d24"
+    },
+    "www/assets/kdw-native/business-components/order-flow-cancel-button.svg": {
+      "bytes": 659280,
+      "sha256": "bf9bb0a252c62519599fbac71b19dbe1ca10d24d1235dda67587313bdab5b3d0"
+    },
+    "www/assets/kdw-native/business-components/order-flow-delivery-0.svg": {
+      "bytes": 659280,
+      "sha256": "6fcf8b32ffec492c8bbebeb02038f736ee5ed26912b422cc6e24002f31154031"
+    },
+    "www/assets/kdw-native/business-components/order-flow-delivery-1.svg": {
+      "bytes": 659280,
+      "sha256": "718a0a1191995b695cdc7a8a0b6986b70ad2fb44bbd110d58a2a56323f483b11"
+    },
+    "www/assets/kdw-native/business-components/order-flow-delivery-2.svg": {
+      "bytes": 659280,
+      "sha256": "215aad12c251a2b9745e802bf0a7e7f1dab3bb3ef7dfeda94c040f00640e2eff"
+    },
+    "www/assets/kdw-native/business-components/order-flow-footer.svg": {
+      "bytes": 659280,
+      "sha256": "f951a73cb8456c83225561a6c4b8b72cdbdc626ff431d40a3cb21e37397963d1"
+    },
+    "www/assets/kdw-native/business-components/order-flow-header.svg": {
+      "bytes": 631774,
+      "sha256": "8da8e2e8bdf58ed4170c4c3efb7eac602e99fa6967fccf12d601cecc7610c37d"
+    },
+    "www/assets/kdw-native/business-components/order-flow-incoming-meta.svg": {
+      "bytes": 5494,
+      "sha256": "dc8577da473636ffa5b8c720971b54f339626f8cd60aadff82d04b7efbe6a6ea"
+    },
+    "www/assets/kdw-native/business-components/order-flow-incoming-skin.svg": {
+      "bytes": 2018,
+      "sha256": "1fb84435af9f3fe941ede861544b784be47899ccfafb853ec696a23985cb203f"
+    },
+    "www/assets/kdw-native/business-components/order-flow-outgoing-meta.svg": {
+      "bytes": 5041,
+      "sha256": "e67ae9ebfbd677486190c95deeb2d73906285dbd37255634d3d046d5c2d14935"
+    },
+    "www/assets/kdw-native/business-components/order-flow-outgoing-skin.svg": {
+      "bytes": 1347,
+      "sha256": "9c6c175e3e83dae289f946427da8b8689f8652d72e1ecb89e754be1ed2a2df3b"
+    },
+    "www/assets/kdw-native/business-components/order-flow-status-button.svg": {
+      "bytes": 659280,
+      "sha256": "4d1e7d5077eef48ba8fd8ba48983bc95abc604a0632df21e8f1af0640dc6fd42"
+    },
+    "www/assets/kdw-native/business-components/order-flow-status-message.svg": {
+      "bytes": 659281,
+      "sha256": "a3531c4a45a370af771c0ea618c31e6552f4b1aed46712d2bf4b66b34800f594"
+    },
+    "www/assets/kdw-native/business-components/order-message-meta-0.svg": {
+      "bytes": 659280,
+      "sha256": "2d2cc0853f9763eeec8d547ef7c1af333aa91cca49f60ea836d802386061051c"
+    },
+    "www/assets/kdw-native/business-components/order-message-meta-1.svg": {
+      "bytes": 659280,
+      "sha256": "7080d8f287588be28261b26cddd16f4cebd7d0e7a734988b076f65ac6fe1970a"
+    },
+    "www/assets/kdw-native/business-components/order-message-meta-2.svg": {
+      "bytes": 659280,
+      "sha256": "972a4d50886e63fee77a592e527ff7e4baa7bea89b8ffd2720e8758beb80203e"
+    },
+    "www/assets/kdw-native/business-components/raster-1ffaa52678ed5abbbd8ac7d3.png": {
+      "bytes": 1343118,
+      "sha256": "b2c641940f8f2c3d0460898b519bfe5a369e25f1b76a255aaed5e752b6e16361"
+    },
+    "www/assets/kdw-native/business-components/raster-309eeac091232aaaa6ed5e95.png": {
+      "bytes": 151597,
+      "sha256": "bab77cf022642644b5859742ec08b403296975f46050c88fc72aa8d59814e23d"
+    },
+    "www/assets/kdw-native/business-components/raster-4d8c926bb85aff84e717da64.png": {
+      "bytes": 148445,
+      "sha256": "18967f584e0fe97a8582b6a9398baed2110c525679ecd2c59b30fbfba297fb2d"
+    },
+    "www/assets/kdw-native/business-components/raster-73eeca3b8cd426b7ab2db273.png": {
+      "bytes": 887049,
+      "sha256": "fa9c7b73234dcde8a0fe50a43d4ce3cf989a5019f66b8835fb85686b0cfb4b4e"
+    },
+    "www/assets/kdw-native/business-components/raster-763279c56de316c6c836f1cf.png": {
+      "bytes": 7516,
+      "sha256": "28a8f1a1f08cea0916d078d808e3cdfbcad4f29eb7262cffc4af6a74d723b66c"
+    },
+    "www/assets/kdw-native/business-components/raster-79c1d658361ee8435a956da6.png": {
+      "bytes": 37016,
+      "sha256": "82d18d75e2bc2bbd049bfb37c1d464415627c0a2f79a5185859dbf1667084921"
+    },
+    "www/assets/kdw-native/business-components/raster-951cc2326453473c49556d16.png": {
+      "bytes": 7761,
+      "sha256": "6bca28c8500fa36c41248a9f011d861789e15602e92d846d8687b26bd4591b78"
+    },
+    "www/assets/kdw-native/business-components/raster-a998691e7132a7ffc884adc1.png": {
+      "bytes": 630698,
+      "sha256": "5b9f82cda65852aee1c96250fd2a098dee76b1ac2e18931aa2fd18d59f87feaa"
+    },
+    "www/assets/kdw-native/business-components/verification-bank.svg": {
+      "bytes": 250212,
+      "sha256": "f204c9d2e16395da1f6bc7f5f78918a7d5b9773e6783460bc2ec62b2494dd76a"
+    },
+    "www/assets/kdw-native/business-ui/bots.svg": {
+      "bytes": 140,
+      "sha256": "377908ff855c69ab5edb06f088202854a7ad4cf3bbe033d4e154e2ea27d6ac46"
+    },
+    "www/assets/kdw-native/business-ui/cafe.webp": {
+      "bytes": 5588,
+      "sha256": "b4c3db3ab6f085b972c191c22b85cac223dba12f5cb34cd02465810c82d6a523"
+    },
+    "www/assets/kdw-native/business-ui/channel-bot.webp": {
+      "bytes": 58616,
+      "sha256": "c1d481fe4e5221d7b145042ed61207002fa4c096c925a0e1d39d42fc9030b37f"
+    },
+    "www/assets/kdw-native/business-ui/choice.svg": {
+      "bytes": 143,
+      "sha256": "bb1ddec22938f36d6bd9221494e80aff268f6230a73452d7821c2f36360cfd80"
+    },
+    "www/assets/kdw-native/business-ui/dashboard.svg": {
+      "bytes": 140,
+      "sha256": "bf45dd2ff5c0428414678f38d85a76fa406ede50b55c80cb206e5bc19272d2c1"
+    },
+    "www/assets/kdw-native/business-ui/desktop.svg": {
+      "bytes": 140,
+      "sha256": "7fc6afa3f052c07400a98a2dda5bb7fcaa638c10893eb334a16bacb239a99fa1"
+    },
+    "www/assets/kdw-native/business-ui/form.svg": {
+      "bytes": 140,
+      "sha256": "c8fe09f688a1d049d547f3ee5319a64425c8680445d49cf736005d407dda0284"
+    },
+    "www/assets/kdw-native/business-ui/landing-art.webp": {
+      "bytes": 19260,
+      "sha256": "718a0437b8520d13ff6a2a167059e8aa6ef8629af10a374ade71ed77e9d9105b"
+    },
+    "www/assets/kdw-native/business-ui/landing.svg": {
+      "bytes": 143,
+      "sha256": "20de005b4d00881b5868034acbd3ce1e15b09013459aa109b16d4c6c2b914c45"
+    },
+    "www/assets/kdw-native/business-ui/method.svg": {
+      "bytes": 140,
+      "sha256": "59ec76a1f85a7e9d115902d9aa96c12d2d14a21032b3d4451bfc747c6ce71a4a"
+    },
+    "www/assets/kdw-native/business-ui/order.svg": {
+      "bytes": 140,
+      "sha256": "596ec9c3603886a31f38998bd8745dfcd558e58a45e13eb1aa105f7b9402a370"
+    },
+    "www/assets/kdw-native/business-ui/phone.svg": {
+      "bytes": 140,
+      "sha256": "f311f3b4e60d29294317c832d7dcf36fb000c9417f8d0626ddeebeac5d686909"
+    },
+    "www/assets/kdw-native/business-ui/wallpaper.webp": {
+      "bytes": 118844,
+      "sha256": "e9cb45c40e0a2bc16ec20dc1b881d1095c4b72a9c75c2dd469a74b5b83ba367c"
+    },
     "www/assets/kdw-native/conversation/screen_1.svg": {
-      "bytes": 1744449,
-      "sha256": "fa02c85b8b475c2fd99c365fdb3a3feae24fc21b1d2569e2ae98ffb6f03a05f0"
+      "bytes": 1644860,
+      "sha256": "498cfa8733187f7d2efde4d97502a28f422ef4aa442db5166f46adaac13def44"
     },
     "www/assets/kdw-native/conversation/screen_2.svg": {
-      "bytes": 1488461,
-      "sha256": "e24e0571dbc8675321560f5680879fafde272fe06662a4a94e3935eb99dbe051"
+      "bytes": 1388872,
+      "sha256": "28a2cab567e8e5a9ad5425bcefa7d9b555b8eb9ad9b56a5922f81182052a1701"
     },
     "www/assets/kdw-native/conversation/screen_3.svg": {
-      "bytes": 1459057,
-      "sha256": "7c27651fc6d60dfd453e3d96f680a0244d36fed5df229b37a7258ba7e4b5d7b9"
+      "bytes": 1359484,
+      "sha256": "cec3e646da8eba316f554122d9e4dd0163ad4f35332da40e2fa90a9ef35984de"
     },
     "www/assets/kdw-native/conversation/screen_4.svg": {
-      "bytes": 1470123,
-      "sha256": "afbd86ef550a502e636aad98cff133da84a26184697ed86d7a40601cd0c2c48d"
+      "bytes": 1370550,
+      "sha256": "c8794c7832f3926a9a6649ed0b26a454ab76414668837bdd36cf2bc27a8e0f33"
     },
     "www/assets/kdw-native/conversation/screen_5.svg": {
-      "bytes": 1287226,
-      "sha256": "e4189aee569a708cf8070caa087de517fafed600144283af0f6b8699c622a627"
+      "bytes": 1187653,
+      "sha256": "fff675f9fa66a7a82ff7cd52a01df75db4e42c577a4558f3f208e083e9cca6a3"
     },
     "www/assets/kdw-native/conversation/screen_6.svg": {
-      "bytes": 666555,
-      "sha256": "0c59d02cf7728b21fb69bd62c8e8e36522d25786a218d95b8be4aebd83ed2924"
+      "bytes": 566982,
+      "sha256": "9ff5fea9d2333c0b8b0f743c24b1a4b581cb9cbbf68b20b7a5f31a142ddaf71a"
     },
     "www/assets/kdw-native/conversation/screen_7.svg": {
-      "bytes": 2459844,
-      "sha256": "c6d35762e43456ebd5efaf11cbf43600f0e36f4d72a5f6bf9b0b0c4519ca810f"
+      "bytes": 2360271,
+      "sha256": "22727def4317ec79b92aaf288c9258e42c5c04a5f7f4072d7731f5a720a3b1f2"
+    },
+    "www/assets/kdw-native/conversation/visitor-avatar.svg": {
+      "bytes": 119548,
+      "sha256": "f2eb9c376147d72cb31f08528deef6620ed60eb1b4d742080abe10df6c3c063e"
     },
     "www/assets/kdw-native/conversation/visitor-placeholder.svg": {
-      "bytes": 219120,
-      "sha256": "9fd1a4e0d0e19ee896400a5a0e7f0e7b3cdfd92dc10fc55a232f0f57906d732a"
+      "bytes": 119548,
+      "sha256": "e75c15723cc6904c04b7085b048ced14caafa6223411b79a8ef0220c3cddf424"
     },
     "www/assets/kdw-native/personal-channel/icons/attachment.svg": {
       "bytes": 2534,
@@ -7035,6 +8431,30 @@
       "bytes": 149,
       "sha256": "15b70262b5887afa2c71377693ac76ddfb06ff1841f4a526002f4b25cf3762f9"
     },
+    "www/assets/kdw-native/personal-channel/reply/background.svg": {
+      "bytes": 405756,
+      "sha256": "daccb625f50b86630360f8e8b55f1ea67407bbffb18706ace490ae881badc269"
+    },
+    "www/assets/kdw-native/personal-channel/reply/meta.svg": {
+      "bytes": 4295,
+      "sha256": "f68e9b72d8013053ba38f56680724e27e6fe86822b40f7587188d5c183c10653"
+    },
+    "www/assets/kdw-native/personal-channel/reply/prefix.png": {
+      "bytes": 74690,
+      "sha256": "8c747d206773fff1a540b6a4402f4397c7e2d7bb9c9d505f4d73bbf6a29009cf"
+    },
+    "www/assets/kdw-native/personal-channel/reply/quote.svg": {
+      "bytes": 35584,
+      "sha256": "af44bbed5e4a81eda57759d1a44357568ca589ff578a7af63fdefafa5a400274"
+    },
+    "www/assets/kdw-native/personal-channel/reply/skin.svg": {
+      "bytes": 648,
+      "sha256": "98a0b6d73122972b1b74e2715adc06f3860c24d1c7a7c2b91d5fa639ebe79b6d"
+    },
+    "www/assets/kdw-native/personal-channel/reply/wallpaper.svg": {
+      "bytes": 230356,
+      "sha256": "76424b0cad5417505dc2513c7586600a23c2639ec64299cb8cbebd09e25762d4"
+    },
     "www/assets/kdw-native/personal-channel/screens/screen_1.png": {
       "bytes": 100934,
       "sha256": "6fa913ba1ce95c11c1adf79beae7b06eda2768413925fd904b95f2ff12ddfc63"
@@ -7192,8 +8612,8 @@
       "sha256": "9d4ff5cef8f309d3446f89f8ba12d5ed71c94c0d3fb4985bc57c4ab4a1a022ef"
     },
     "www/assets/kdw-native/posts-chrome/header.svg": {
-      "bytes": 859521,
-      "sha256": "3f13d571c5bdb7cedf74a2f5976b588671f4bdee5bd9a230d0e5d7922911c7c1"
+      "bytes": 5445,
+      "sha256": "48902d583cdb8119bd7460d4f512bae32c5125c60ae70fbeab0174c7b2c614b9"
     },
     "www/assets/kdw-native/posts-chrome/heart.svg": {
       "bytes": 6447,
@@ -7211,37 +8631,41 @@
       "bytes": 1327,
       "sha256": "5117559051874dbcfbb4dcfaaaac095b2bb412356482076e4f489ad3dab3d16f"
     },
+    "www/assets/kdw-native/store-header.svg": {
+      "bytes": 8110,
+      "sha256": "24e76d8ba2f11bf944768df95503bba7c6b9c181201199485bedf550361b1e17"
+    },
     "www/assets/kdw-native/store-phone.svg": {
-      "bytes": 149,
-      "sha256": "828dcb6fad602311e9fc23db9f7e3f75a91ebad5dbbb436f52fec954739fc944"
+      "bytes": 145,
+      "sha256": "47622eea8de8aeefef8119db0a8aedf625bca208db176cef54ba43ff23971f50"
     },
     "www/assets/kdw-native/visitor-details/business-bot-create.svg": {
-      "bytes": 422929,
-      "sha256": "221e561e8a901b92b166fe59ab897380cbc827cc6c7a067bbb31fb5da7dac3d3"
+      "bytes": 323356,
+      "sha256": "5f03ba9cd6c33ebd41a801bf58635520b6baaad1907cb91262436f8518414550"
     },
     "www/assets/kdw-native/visitor-details/business-bot-filled.svg": {
-      "bytes": 427155,
-      "sha256": "5cabcb61fa127a33810770d305cc09284b5cfae40555d5c4334682e4dcc0328b"
+      "bytes": 327582,
+      "sha256": "6d311fe14615cb4d35044debf78e1fda469eb274cbe0b4c8c8254c5d598c5577"
     },
     "www/assets/kdw-native/visitor-details/business-bot-ready.svg": {
-      "bytes": 356542,
-      "sha256": "3805763ab81970584c2fc7f0731218ed29f44d433500df18aa47c3e62c5ce1db"
+      "bytes": 256969,
+      "sha256": "207b1f9da1c6c8d237d2d90103fa350443d93816d03abfc5aa683bf1288d0208"
     },
     "www/assets/kdw-native/visitor-details/business-channel-continue.svg": {
-      "bytes": 399662,
-      "sha256": "bc081489ee6a7ba710c206f554f638453464985be740cd3a82ee0151204d95af"
+      "bytes": 300089,
+      "sha256": "820ff8f64c4f22eed7219ea4340715ad8898151d2e56a396530a882860f04bf3"
     },
     "www/assets/kdw-native/visitor-details/business-channel-create.svg": {
-      "bytes": 422929,
-      "sha256": "221e561e8a901b92b166fe59ab897380cbc827cc6c7a067bbb31fb5da7dac3d3"
+      "bytes": 323356,
+      "sha256": "5f03ba9cd6c33ebd41a801bf58635520b6baaad1907cb91262436f8518414550"
     },
     "www/assets/kdw-native/visitor-details/business-platform-profile.svg": {
-      "bytes": 306681,
-      "sha256": "fae3b57201cde40429ee2d98b9d154f04a1203a6e85512db94d11940a94e5012"
+      "bytes": 207108,
+      "sha256": "b9a4777c11624c8c429617de8766d2c7d89d6fc34debbdee2312782d519d1982"
     },
     "www/assets/kdw-native/visitor-details/business-platform-verification.svg": {
-      "bytes": 469803,
-      "sha256": "6c041c508feaab0981f1465d5e744ad928a242d29a055e3dcea9df28e7878272"
+      "bytes": 370230,
+      "sha256": "8355a7aae8f9e2b807540232148342f6c7981cc372add226aedc898238d9bcf5"
     },
     "www/assets/kdw-native/visitor-details/communication-call-chat.svg": {
       "bytes": 740666,
@@ -7999,6 +9423,10 @@
       "bytes": 146,
       "sha256": "f86fe9a6a548dbd8d33371519e293df7ccc965a8202ad0681392ce6c482b096d"
     },
+    "www/licenses/glin-profanity.txt": {
+      "bytes": 1346,
+      "sha256": "c98684ffb9bc332d62fdcf2dc7a411e0d01eab6c0200b22b32ae6e09b00bd820"
+    },
     "www/licenses/three.txt": {
       "bytes": 1081,
       "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
@@ -8008,8 +9436,8 @@
       "sha256": "b48786a30ca872537820e41d4950b408068e8ab61c81562ab607aa4cd73734b6"
     },
     "www/webgl-v5/app.js": {
-      "bytes": 2177335,
-      "sha256": "74aa9a64b0642afe0594875ee9bacf2b73ca7f993a20ab50345b4b5f273bc7d1"
+      "bytes": 2321542,
+      "sha256": "b68b39c620c08085b0d9e852bb5cb0e7bee93b6b93e32b34f52e4fd17f3cc6e8"
     },
     "www/webgl-v5/audio/audio/game_ambience_loop.mp3": {
       "bytes": 615213,
@@ -8281,7 +9709,7 @@
     },
     "www/webgl-v5/build.json": {
       "bytes": 73220,
-      "sha256": "cecad1a795a5e9766fbbb85f55da630cb357d428e43da638d1fb0b5e93cb51e5"
+      "sha256": "adca124f2ba5068b84730a5f844f331ec953ebebd5cc4ac7a1373be0f72220ab"
     },
     "www/webgl-v5/client.css": {
       "bytes": 615,
@@ -8444,8 +9872,8 @@
       "sha256": "84043200dca1248646a296eda2477ff464cd4a091aa25f348aa7a1ba180c8721"
     },
     "www/webgl-v5/kdw-interactions.css": {
-      "bytes": 31546,
-      "sha256": "5210d7b60484dbbb7358a4a394d0d830eb80983f4335590beefadb30f4c21a2f"
+      "bytes": 44419,
+      "sha256": "436bcc4ac885b971929ae7d6427c7ce9724ca2f3b619c6aa3681eeac1ce02a30"
     },
     "www/webgl-v5/licenses/range-parser.txt": {
       "bytes": 1178,
@@ -8476,8 +9904,8 @@
       "sha256": "268fb099a3d140504205c8e562a039f98cd1f6860894cc2f9fd59f11b166466c"
     },
     "www/webgl-v5/r9-build.json": {
-      "bytes": 37034,
-      "sha256": "725d5317b1db84c902d1a7deb2e9b21a277a5ed5da60fb73480d4e8e8b743cee"
+      "bytes": 38401,
+      "sha256": "efdf5f80f7e7d5910616b40886636c724451a92fc4061303a96a0f5ac392a0c3"
     },
     "www/webgl-v5/third-party-notices.html": {
       "bytes": 3971,

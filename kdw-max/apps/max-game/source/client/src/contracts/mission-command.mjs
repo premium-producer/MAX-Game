@@ -2,13 +2,15 @@ export const MISSION_COMMAND_TYPES=['SELECT_MISSION','ACT','SAVE_INTERACTION','S
 export const missionToken=v=>typeof v==='string'&&/^[a-zA-Z0-9][a-zA-Z0-9._:-]{0,127}$/.test(v);
 export function assertMissionCommand(input){
  if(!input||typeof input!=='object'||Array.isArray(input))throw new TypeError('Command required');
- const keys=['schemaVersion','type','commandId','sessionId','contentRevision','expectedRevision','missionId','taskId','screenId','actionId','active','value','spawnId'];
+ const keys=['schemaVersion','type','commandId','sessionId','contentRevision','expectedRevision','missionId','taskId','screenId','actionId','active','value','spawnId','fresh','textPolicy'];
  if(Object.keys(input).some(k=>!keys.includes(k))||input.schemaVersion!==1||!MISSION_COMMAND_TYPES.includes(input.type))throw new TypeError('Invalid command');
  for(const k of ['commandId','sessionId','contentRevision'])if(!missionToken(input[k]))throw new TypeError(`Invalid ${k}`);
  if(!Number.isSafeInteger(input.expectedRevision)||input.expectedRevision<0)throw new TypeError('Invalid revision');
  if(input.type==='SELECT_MISSION'&&!missionToken(input.missionId))throw new TypeError('Invalid mission');
+ if(Object.hasOwn(input,'fresh')&&(input.type!=='SELECT_MISSION'||typeof input.fresh!=='boolean'))throw new TypeError('Invalid fresh mission flag');
  if(['ACT','AUTO_SCREEN'].includes(input.type)&&(!missionToken(input.screenId)||!missionToken(input.actionId)))throw new TypeError('Invalid screen/action');
  if(input.type==='SAVE_INTERACTION'&&(!missionToken(input.taskId)||!missionToken(input.screenId)||!input.value||typeof input.value!=='object'))throw new TypeError('Invalid interaction');
+ if(Object.hasOwn(input,'textPolicy')&&(!['SAVE_INTERACTION','ACT'].includes(input.type)||input.textPolicy!=='kdw-text-v1'))throw new TypeError('Invalid text policy');
  if(['START_POSTS','PUBLISH_POST','START_STORE','PICK_PRODUCT'].includes(input.type)&&(!missionToken(input.taskId)||!missionToken(input.screenId)))throw new TypeError('Invalid posts context');
  if(['PUBLISH_POST','PICK_PRODUCT'].includes(input.type)&&!missionToken(input.spawnId))throw new TypeError('Invalid spawn');
  if(!['PUBLISH_POST','PICK_PRODUCT'].includes(input.type)&&Object.hasOwn(input,'spawnId'))throw new TypeError('Unexpected spawn');

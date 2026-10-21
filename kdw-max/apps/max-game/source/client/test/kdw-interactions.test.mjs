@@ -101,8 +101,8 @@ test('saved store selection from the separate scene restores in the native devic
 
 test('business registration begins with three explicit choices; every choice persists and advances to login',()=>{
  const task=catalog.tasks['business.platform'];assert.equal(task.startScreenId,'business.platform.business-type');assert.equal(Object.keys(task.screens)[0],task.startScreenId);
- assert.deepEqual(task.screens[task.startScreenId].actions.map(a=>a.label),['Кофейня','Отель','Театр']);
- for(const type of ['cafe','hotel','theater']){
+ assert.deepEqual(task.screens[task.startScreenId].actions.map(a=>a.label),['Кофейня','Спортивный магазин','Цветочный магазин','Отель','Театр']);
+ for(const type of ['cafe','sports','flowers','hotel','theater']){
   const d=driver();d.reach('business',task.startScreenId);const deadline=d.model.state.deadlineAt;
   assert.equal(d.act('ACT',{screenId:task.startScreenId,actionId:'business.platform.choose-other'}).reply.code,'ACTION_UNAVAILABLE');
   assert.equal(d.act('ACT',{screenId:task.startScreenId,actionId:'business.platform.choose-'+type}).reply.ok,true);

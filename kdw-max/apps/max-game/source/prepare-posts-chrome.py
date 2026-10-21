@@ -29,7 +29,9 @@ def save(name, bounds, nodes, width=None, height=None):
     (output/(name+'.svg')).write_bytes(data)
     aid='kdw.posts.'+name
     assets[aid]={'assetId':aid,'path':'assets/kdw-native/posts-chrome/'+name+'.svg','width':width,'height':height,'mimeType':'image/svg+xml','sha256':hashlib.sha256(data).hexdigest()}
-save('header',(324.363,143.371,264.643,82.3332),[screen[i] for i in [2,3,4,5,6,7,8,10,11,12]],390,390*82.3332/264.643)
+# The business avatar is a live field. Do not leave the original cafe avatar
+# underneath it; retain every other immutable header element verbatim.
+save('header',(324.363,143.371,264.643,82.3332),[screen[i] for i in [2,3,4,5,6,7,10,11,12]],390,390*82.3332/264.643)
 save('composer',(324.363,678.535,264.643,52.9285),list(screen[14][0]),390,390*52.9285/264.643)
 save('fire',(342.006,402.332,17.6428,17.6428),[screen[13][7]])
 save('heart',(399.762,402.332,17.6428,17.6428),[screen[13][10]])

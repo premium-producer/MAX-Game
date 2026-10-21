@@ -1,0 +1,37 @@
+const {app,BrowserWindow}=require('electron'),fs=require('fs'),path=require('path'),assert=require('node:assert/strict'),{pathToFileURL}=require('url');
+const sharp=require('D:/job/production/FUTURONIKA/VK_DigitalProducts/artifacts/max-game/node_modules/sharp');
+const {createPortableServer}=require('../launcher/portable-server.cjs'),root=path.resolve(__dirname,'..'),report=path.resolve(root,'../../docs/verification-business-bubbles-20261021');
+app.setPath('userData',path.join(report,'test-runtime'));app.on('window-all-closed',()=>{});const delay=ms=>new Promise(r=>setTimeout(r,ms)),checks=[],errors=[];let w,server,fit;
+const js=s=>w.webContents.executeJavaScript(s);
+async function wait(s){for(let i=0;i<900;i++){if(await js(s))return;await delay(50);}throw Error('Timeout '+s);}
+async function active(id){await wait(`document.querySelector('[data-bn-screen="${id}"]')&&!document.querySelector('[data-bn-screen="${id}"]').inert`);await delay(350);console.log(id);}
+async function click(s){await wait(`(()=>{const n=document.querySelector(${JSON.stringify(s)});return n&&!n.hidden&&!n.disabled&&!n.closest('[inert]')})()`);await js(`document.querySelector(${JSON.stringify(s)}).click()`);}
+async function shot(name,native=false){if(native){await js("(()=>{const s=document.createElement('style');s.id='pixel-capture';s.textContent='#kdw-business-native .bn-surface{left:0!important;top:0!important;transform:scale(1)!important;opacity:1!important}body>button{visibility:hidden!important}';document.head.append(s)})()");await delay(100);}for(let i=0;i<5;i++)try{fs.writeFileSync(path.join(report,name+'.png'),(await w.webContents.capturePage(native?{x:0,y:0,width:341,height:744}:undefined)).toPNG());break;}catch(e){if(i===4)throw e;await delay(250);}if(native)await js("document.getElementById('pixel-capture').remove()");}
+const metrics=()=>js(`(()=>{const box=n=>{const r=n.getBoundingClientRect();return{x:r.x,y:r.y,w:r.width,h:r.height,right:r.right,bottom:r.bottom}};return {bubbles:[...document.querySelectorAll('[data-bn-message]')].map(n=>({key:n.dataset.bnMessage,lines:+n.dataset.lines,row:n.dataset.metaRow,rect:box(n),height:n.offsetHeight,copy:box(n.querySelector('.bn-message-copy')),stamp:box(n.querySelector('.bn-message-meta')),skin:getComputedStyle(n.querySelector('.bn-message-skin')).borderImageSource,slice:getComputedStyle(n.querySelector('.bn-message-skin')).borderImageSlice,last:box(n.querySelector('.bn-message-copy span'))})),choices:[...document.querySelectorAll('.bn-flow-choice')].map(box),stream:(()=>{const n=document.querySelector('.bn-order-messages');return{...box(n),scroll:n.scrollTop,max:n.scrollHeight-n.clientHeight}})()}})()`);
+function check(m){for(const b of m.bubbles){assert.ok(b.lines>=1);assert.ok(b.skin.startsWith('url('));assert.ok(b.stamp.y>=b.rect.y&&b.stamp.bottom<=b.rect.bottom+.1);assert.ok(b.stamp.right<=b.rect.right+.1);assert.ok(b.height>=b.lines*20+20);assert.ok(b.height<=b.lines*20+36);}
+ assert.ok(m.bubbles[2].rect.y>=m.bubbles[1].rect.bottom-.1);assert.ok(m.choices[0].y>=m.bubbles[2].rect.bottom-.1);for(let i=1;i<3;i++)assert.ok(m.choices[i].y>=m.choices[i-1].bottom-.1);
+}
+app.whenReady().then(async()=>{try{
+ fit=(await import(pathToFileURL(path.join(__dirname,'client/src/kdw-business-messages.mjs')))).fitBusinessMessages;
+ server=createPortableServer({root,config:{id:'business-bubbles',version:'test',port:18899,entry:'/'}});await server.listen();w=new BrowserWindow({width:1920,height:1080,useContentSize:true,show:false,webPreferences:{offscreen:true,backgroundThrottling:false,sandbox:true}});
+ w.webContents.on('console-message',e=>{if(e.level===3||e.level==='error')errors.push(e.message);});
+ for(const type of ['cafe','sports','flowers']){
+  await w.loadURL(server.origin+'/webgl-v5/client.html?backend=local&view=game&test=memory');await click('[data-idle-mission=business]');await active('business.platform.business-type');await click(`[data-bn-action="business.platform.choose-${type}"]`);await active('business.platform.login');await click('.kdw-task-skip:not([hidden])');await active('business.channel.create');await click('.kdw-task-skip:not([hidden])');
+  for(const id of ['business.bot.create','business.bot.filled','business.bot.ready']){await active(id);await click('.bn-surface [data-bn-action]');}await active('business.bot.result');
+  let m=await metrics();check(m);assert.equal(m.bubbles.length,3);assert.equal(m.choices.length,3);assert.ok(m.bubbles[0].height<70,'Single-line message retained old 81px skin');assert.ok(m.bubbles[1].height<81);checks.push({type,initial:m});await shot(type+'-game');await shot(type+'-native',true);
+  // Inspect painted pixels, not merely the CSS URL: an incorrectly selected
+  // SVG can decode successfully while containing only transparent background.
+  const native=await sharp(fs.readFileSync(path.join(report,type+'-native.png'))).ensureAlpha().raw().toBuffer({resolveWithObject:true}),scale=m.bubbles[0].rect.w/282,originX=m.bubbles[0].rect.x-55*scale,originY=m.stream.y-106.646*scale,palette=[];
+  for(const [i,b]of m.bubbles.entries()){const x=Math.round((b.rect.x-originX)/scale+(i===2?138:141)),y=Math.round((b.rect.y-originY)/scale+5),idx=(y*native.info.width+x)*4,rgb=[...native.data.subarray(idx,idx+3)];assert.ok(rgb[0]>25&&rgb[2]>40,'Original message skin is missing: '+rgb);if(i<2)assert.ok(rgb[2]>100);palette.push(rgb);}checks.push({type,paintedSkins:palette});
+  if(type==='cafe'){
+   const samples=['Да','Когда доставят мой заказ?','Первая строка\nВторая строка\nТретья строка','Сатурн — это газовый гигант, почти полностью состоящий из водорода и гелия',('Длинное сообщение с несколькими строками текста и подробностями доставки. ').repeat(6),'ОченьДлинноеСловоБезПробелов'.repeat(10)];
+   for(const [i,text]of samples.entries()){await js(`document.querySelector('[data-bn-binding=deliveryQuestion]').textContent=${JSON.stringify(text)};(${fit.toString()})(document.querySelector('.bn-surface'));`);const m=await metrics();check(m);if(i===0)assert.equal(m.bubbles[1].lines,1);if(i===2)assert.equal(m.bubbles[1].lines,3);if(i>=4){assert.ok(m.stream.max>0);assert.ok(Math.abs(m.stream.scroll-m.stream.max)<1);}
+    if(i===0)assert.ok(m.bubbles[1].rect.w<m.bubbles[0].rect.w,'Short message should use a narrower bubble');checks.push({sample:i,textLength:text.length,metrics:m});if([0,2,4].includes(i))await shot('sample-'+i,true);
+   }
+   await js(`document.querySelector('[data-bn-binding=deliveryQuestion]').textContent='Можно выбрать другое время доставки?';(${fit.toString()})(document.querySelector('.bn-surface'));`);
+   for(const [width,height]of [[1366,768],[2560,1080]]){w.setContentSize(width,height);await active('business.bot.result');m=await metrics();check(m);checks.push({viewport:[width,height],metrics:m});}w.setContentSize(1920,1080);await active('business.bot.result');
+  }
+  await click('.bn-flow-choice');await wait("document.querySelector('.kdw-store-editor')&&!document.querySelector('.kdw-store-editor').inert");checks.push({type,nextTask:true});
+ }
+ assert.deepEqual(errors,[]);fs.writeFileSync(path.join(report,'checks.json'),JSON.stringify({passed:true,bundle:JSON.parse(fs.readFileSync(path.join(root,'www/webgl-v5/r9-build.json'))).bundleSha256,checks,errors},null,2));w.destroy();await server.close();app.exit(0);
+}catch(e){fs.writeFileSync(path.join(report,'checks.json'),JSON.stringify({passed:false,error:e.stack,checks,errors},null,2));if(w){await shot('failure');w.destroy();}await server?.close();app.exit(1);}});setTimeout(()=>app.exit(2),240000);

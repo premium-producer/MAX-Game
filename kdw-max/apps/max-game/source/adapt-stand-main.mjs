@@ -9,6 +9,7 @@ text=`import {KdwTaskJourney} from './kdw-task-journey.mjs';
 import {mountKdwInteractions} from './kdw-interactions.mjs';
 import {screenContinuationTarget} from './kdw-screen-continue.mjs';
 import {mountPersonalChannel} from './kdw-personal-channel.mjs';
+import {mountBusinessNative} from './kdw-business-native.mjs';
 import {mountTaskSkip} from './kdw-task-skip.mjs';
 import {mountPostActivity} from './kdw-posts.mjs';
 import {CalmLinkMotion,CALM_LINK_STYLE} from './kdw-link-motion.mjs';
@@ -25,8 +26,8 @@ replace('function managedSnapshot(snapshot){','function managedSnapshot(snapshot
 replace('let sharedSession,v5Tools,missionContinuation',"const interactionPreview=['channel','store','posts'].includes(params.get('interaction'))?params.get('interaction'):null;\nconst portable=params.get('backend')!=='server';\nconst kdwInteractions=mountKdwInteractions({getSession:()=>sharedSession,onMenu:()=>navigate()});\nconst personalChannel=mountPersonalChannel({getSession:()=>sharedSession});\nconst kdwPosts=mountPostActivity({getSession:()=>sharedSession});\nlet standBrowser;\nconst localAdmission=new LocalStandAdmission({active:()=>inputActive()});\nlet sharedSession,v5Tools,missionContinuation");
 replace("const portable=params.get('backend')!=='server';", "const portable=params.get('backend')!=='server';\nconst standPresentation=portable&&bfmVisual&&params.get('debug')!=='1';");
 replace('(!localRecovery||windowFocused);','(portable||!localRecovery||windowFocused);');
-replace("palmVisible=['palm','holding',...(revealMode?['burst']:[])].includes(controller.phase);","palmVisible=!(portable&&bfmVisual)&&['palm','holding',...(revealMode?['burst']:[])].includes(controller.phase);");
-replace('function tick(delta){',"function tick(delta){\n kdwInteractions.update(controller?.displaySnapshot,controller?.phase);\n personalChannel.update(controller?.displaySnapshot,controller?.phase);\n kdwPosts.update(controller?.displaySnapshot,controller?.phase);\n if(controller?.snapshot?.state)document.documentElement.dataset.kdwScreen=controller.snapshot.state.screenId??controller.snapshot.state.status;document.documentElement.dataset.kdwRun=controller?.snapshot?.state.runId??'';\n standBrowser?.update(controller?.snapshot);\n if(portable&&!navigating)void localAdmission.update(sharedSession)?.catch(error=>console.error('MAX local admission',error));");
+replace("palmVisible=['palm','holding',...(revealMode?['burst']:[])].includes(controller.phase);","palmVisible=!(portable&&bfmVisual&&!standPresentation)&&['palm','holding',...(revealMode?['burst']:[])].includes(controller.phase);");
+replace('function tick(delta){',"function tick(delta){\n kdwInteractions.update(controller?.displaySnapshot,controller?.phase);\n personalChannel.update(controller?.displaySnapshot,controller?.phase);\n kdwPosts.update(controller?.displaySnapshot,controller?.phase);\n if(controller?.snapshot?.state)document.documentElement.dataset.kdwScreen=controller.snapshot.state.screenId??controller.snapshot.state.status;document.documentElement.dataset.kdwRun=controller?.snapshot?.state.runId??'';\n standBrowser?.update(controller?.snapshot);\n if(portable&&!standPresentation&&!navigating)void localAdmission.update(sharedSession)?.catch(error=>console.error('MAX local admission',error));");
 replace('function phoneContentReady(){', 'function phoneContentReady(){\n if(!personalChannel.ready(controller?.displaySnapshot))return false;');
 replace("old.dataset.closing='true';const epoch=screenEpoch;foreground?.cancelContent(host);",
  "old.dataset.closing='true';const epoch=screenEpoch;foreground?.cancelContent(host,{departing:portable});");
@@ -64,7 +65,7 @@ async function selectIdleMission(missionId){
   const menu=idleMenu;idleSelecting=true;navigating=true;
   try{
    await menu.exit();if(idleMenu!==menu)return;
-   const reply=await sharedSession.command('SELECT_MISSION',{missionId});
+   const reply=await sharedSession.command('SELECT_MISSION',{missionId,fresh:true});
    if(!reply?.reply.ok)throw Error('MAX_LOCAL_IDLE_SELECTION_REJECTED');
    if(controller.phase==='paused')controller.resume(controller.activeId);
    await disposeIdleMenu();clearManagedScene();view='';navigating=false;fit();render();syncScene();
@@ -154,5 +155,11 @@ replace(' const prior=tapHand.rect,insidePrior=prior&&touchContains(prior,e.clie
 replace(" const tile=b.querySelector('.tile'),rect=(tile||b).getBoundingClientRect();",
  " const tile=b.querySelector('.tile'),rect=screenTap?.rect??(tile||b).getBoundingClientRect();");
 
+text=text.replace('const personalChannel=mountPersonalChannel({getSession:()=>sharedSession});','const personalChannel=mountPersonalChannel({getSession:()=>sharedSession});\nconst businessNative=mountBusinessNative({getSession:()=>sharedSession});');
+text=text.replace('personalChannel.update(controller?.displaySnapshot,controller?.phase);','personalChannel.update(controller?.displaySnapshot,controller?.phase);\n businessNative.update(controller?.displaySnapshot,controller?.phase);');
+text=text.replace('if(!personalChannel.ready(controller?.displaySnapshot))return false;','if(!personalChannel.ready(controller?.displaySnapshot)||!businessNative.ready(controller?.displaySnapshot))return false;');
+text=text.replace('&&personalChannel.ready(controller.displaySnapshot)}:undefined;','&&personalChannel.ready(controller.displaySnapshot)&&businessNative.ready(controller.displaySnapshot)}:undefined;');
+text=text.replace('personalChannel.align();','personalChannel.align();businessNative.align();');
+text=text.replace('personalChannel.dispose();','personalChannel.dispose();businessNative.dispose();');
 fs.writeFileSync(file,text);
 console.log('Stand main adapted only at local host boundaries');

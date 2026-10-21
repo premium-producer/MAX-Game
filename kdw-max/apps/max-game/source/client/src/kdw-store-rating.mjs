@@ -3,7 +3,9 @@ import {createPostTimeline} from './kdw-post-stream.mjs';
 import {activityRemaining} from './kdw-development.mjs';
 export const STORE_TASK='business.store',STORE_SCREEN='business.store.start';
 export function storeBank(type='cafe'){
- const goods=type==='hotel'?[['room','Номер на двоих','🛏',4500],['breakfast','Завтрак в номер','🥐',700],['spa','Посещение спа','🧖',1500],['transfer','Трансфер до отеля','🚐',1200]]:
+ const goods=type==='sports'?[['ball','Футбольный мяч','⚽',1900],['shoes','Беговые кроссовки','👟',5900],['mat','Коврик для тренировок','▱',1700],['weights','Набор гантелей','🏋',3900]]:
+ type==='flowers'?[['roses','Букет роз','🌹',3900],['tulips','Букет тюльпанов','🌷',2900],['seasonal','Сезонный букет','💐',3500],['orchid','Орхидея в горшке','🌸',2700]]:
+ type==='hotel'?[['room','Номер на двоих','🛏',4500],['breakfast','Завтрак в номер','🥐',700],['spa','Посещение спа','🧖',1500],['transfer','Трансфер до отеля','🚐',1200]]:
  type==='theater'?[['ticket','Билет на спектакль','🎭',1500],['tour','Экскурсия за кулисы','🎟',800],['program','Программа спектакля','📖',200],['subscription','Театральный абонемент','✨',5000]]:null;
  const bank=goods?goods.map(([id,name,emoji,price])=>({id,name,emoji,price,good:true})):COFFEE_PRODUCTS.map(p=>({...p,good:true}));
  return [...bank,{id:'engine-oil',name:'Моторное масло',emoji:'🛢',price:2200,good:false},{id:'drill',name:'Ударная дрель',emoji:'🛠',price:3900,good:false}];

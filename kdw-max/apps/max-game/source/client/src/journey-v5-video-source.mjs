@@ -16,7 +16,9 @@ export function createDeviceVideo(document,asset,{onError=()=>{},onEnded=()=>{},
  function data(){
   if(disposed||loaded||element.readyState<2)return;
   if(element.videoWidth!==asset.width||element.videoHeight!==asset.height){fail(Error('MAX_VIDEO_DIMENSIONS_MISMATCH'));return;}
-  element.currentTime=0;loaded=true;cleanupReady();settle.resolve();
+  // A newly loaded element already starts at zero. Seeking here invalidates
+  // loadeddata in Firefox: readyState drops while the GPU scene is built.
+  loaded=true;cleanupReady();settle.resolve();
  }
  function fail(error){if(disposed||failed)return;failed=true;wanted=false;playing=false;audioObserver?.setVisible(false);element.pause();cleanupReady();settle.reject(error);onError(error);}
  const error=()=>fail(Error('MAX_VIDEO_MEDIA_ERROR_'+(element.error?.code??'UNKNOWN')));

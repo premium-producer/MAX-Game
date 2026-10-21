@@ -27,5 +27,13 @@ for(let n=1;n<=15;n++){
  const underlay=`<svg xmlns="http://www.w3.org/2000/svg" width="360" height="800" viewBox="0 0 360 800"><image width="360" height="800" href="data:image/png;base64,${b.toString('base64')}"/>${masks}</svg>\n`,underlayPath=base+'screens/underlay_'+n+'.svg',underlayId='kdw.personal.underlay-'+n;
  fs.writeFileSync(path.join(source,'client/public',underlayPath),underlay);assets[underlayId]={assetId:underlayId,path:underlayPath,mimeType:'image/svg+xml',width:360,height:800,sha256:sha(underlay)};
 }
+const replyParts=JSON.parse(fs.readFileSync(path.join(source,'client/public',base,'reply/manifest.json')));
+if(sha(fs.readFileSync(path.resolve(source,'../../..',replyParts.source)))!==replyParts.sourceSha256)throw Error('Reviewed reply source changed');
+for(const [name,a]of Object.entries(replyParts.parts)){
+ const id='kdw.personal.reply-'+name;assets[id]={assetId:id,...a};
+}
+const prefixPath=base+'reply/prefix.png',prefix=fs.readFileSync(path.join(source,'client/public',prefixPath));
+assets['kdw.personal.reply-prefix']={assetId:'kdw.personal.reply-prefix',path:prefixPath,mimeType:'image/png',width:360,height:434,sha256:sha(prefix)};
+assets['kdw.personal.underlay-14']={...assets['kdw.personal.reply-background'],assetId:'kdw.personal.underlay-14'};
 fs.writeFileSync(path.join(source,'client/src/kdw-personal-channel-assets.mjs'),`// Generated from reviewed assets and exact PNG screen references.\nexport const PERSONAL_ASSET_BASE=${JSON.stringify(base)};\nexport const PERSONAL_ASSETS=${JSON.stringify(assets,null,2)};\n`);
 console.log(JSON.stringify({assets:Object.keys(assets).length,bytes:manifest.totals.preparedAssetBytes}));

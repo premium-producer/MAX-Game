@@ -5,7 +5,7 @@ import {VISITOR_CAPTURE,visitorCrop,validVisitorPhoto,composeVisitorScreen} from
 import {applyConversationScreens,CONVERSATION_SCREENS} from '../src/kdw-conversation-model.mjs';
 const base=()=>JSON.parse(fs.readFileSync(new URL('../src/reviewed-content/mission-catalog.json',import.meta.url)));
 test('one circular capture region is reused by round messages and avatars; call crop remains inside the full portrait',()=>{
- assert.deepEqual(visitorCrop('circle'),{x:40,y:460,width:1000,height:1000});
+ assert.deepEqual(visitorCrop('circle'),{x:100,y:100,width:880,height:880});
  const r=visitorCrop('call');assert.equal(r.width/r.height,132/200);assert.equal(r.x,0);assert.ok(r.y>=0&&r.y+r.height<=1920);
  assert.throws(()=>visitorCrop('circle',{...VISITOR_CAPTURE,guide:{cx:100,cy:840,radius:432}}));
 });
@@ -13,7 +13,7 @@ test('photo replacement accepts data only and preserves the rest of the screen t
  const template='<svg><svg data-visitor-viewport="circle" viewBox="0 0 1 1"><image data-visitor-photo="true" href="old"/></svg><path id="controls"/></svg>';
  const photo={...VISITOR_CAPTURE,dataUri:'data:image/jpeg;base64,YWJj'};
  assert.ok(validVisitorPhoto(photo));const next=composeVisitorScreen(template,photo);
- assert.ok(next.includes('viewBox="40 460 1000 1000"'));assert.ok(next.includes('<path id="controls"/>'));
+ assert.ok(next.includes('viewBox="100 100 880 880"'));assert.ok(next.includes('<path id="controls"/>'));
  for(const dataUri of ['https://other.example/photo.jpg','data:image/svg+xml;base64,YWJj','data:image/jpeg;base64,YWJj" onload="x'])assert.throws(()=>composeVisitorScreen(template,{...photo,dataUri}));
  assert.throws(()=>composeVisitorScreen('<svg/>',photo));
 });

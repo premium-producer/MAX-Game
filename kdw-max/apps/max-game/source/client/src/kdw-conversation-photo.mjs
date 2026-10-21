@@ -1,5 +1,5 @@
 // Pixel coordinates in the upright 1080×1920 capture; shared by every surface.
-export const VISITOR_CAPTURE=Object.freeze({width:1080,height:1920,guide:Object.freeze({cx:540,cy:960,radius:500})});
+export const VISITOR_CAPTURE=Object.freeze({width:1080,height:1920,guide:Object.freeze({cx:540,cy:540,radius:440})});
 export function visitorCrop(kind,{width,height,guide} = VISITOR_CAPTURE){
  if(!Number.isInteger(width)||!Number.isInteger(height)||width<1||height<1||!guide||![guide.cx,guide.cy,guide.radius].every(Number.isFinite)||guide.radius<=0||guide.radius>Math.min(width,height)/2||guide.cx<guide.radius||guide.cx>width-guide.radius||guide.cy<guide.radius||guide.cy>height-guide.radius)throw new TypeError('Invalid upright photo/circular guide');
  if(kind==='circle')return {x:guide.cx-guide.radius,y:guide.cy-guide.radius,width:guide.radius*2,height:guide.radius*2};

@@ -2,6 +2,7 @@ import {KdwTaskJourney} from './kdw-task-journey.mjs';
 import {mountKdwInteractions} from './kdw-interactions.mjs';
 import {screenContinuationTarget} from './kdw-screen-continue.mjs';
 import {mountPersonalChannel} from './kdw-personal-channel.mjs';
+import {mountBusinessNative} from './kdw-business-native.mjs';
 import {mountTaskSkip} from './kdw-task-skip.mjs';
 import {mountPostActivity} from './kdw-posts.mjs';
 import {CalmLinkMotion,CALM_LINK_STYLE} from './kdw-link-motion.mjs';
@@ -102,6 +103,7 @@ const localDevelopment=portable&&params.get('dev')!=='0'&&(params.get('dev')==='
 if(localDevelopment)document.documentElement.dataset.kdwDevelopment='true';
 const kdwInteractions=mountKdwInteractions({getSession:()=>sharedSession,onMenu:()=>navigate()});
 const personalChannel=mountPersonalChannel({getSession:()=>sharedSession});
+const businessNative=mountBusinessNative({getSession:()=>sharedSession});
 const kdwPosts=mountPostActivity({getSession:()=>sharedSession});
 let standBrowser;
 const localAdmission=new LocalStandAdmission({active:()=>inputActive()});
@@ -184,7 +186,7 @@ function updateTargets(){
   }
   const next=host.querySelector('[data-line-next]');if(next&&controller.continuation)placeElement(next,{...controller.continuation,step:'route-add:line-next'});
  }
- kdwInteractions.align();personalChannel.align();kdwPosts.align();
+ kdwInteractions.align();personalChannel.align();businessNative.align();kdwPosts.align();
 }
 function updateScanWaitDisplays(delta=0){
  if(!bfmVisual)return;
@@ -260,7 +262,7 @@ function render(preserveTransition=false){
   if(controller.phase==='start'&&!cta){host.insertAdjacentHTML('beforeend',`<div class="field-center guided-start"><button class="mission-cta" data-cta><span class="cta-orb glass-control">${icon('plus')}</span><span>Открыть MAX</span></button></div>`);foreground?.invalidate();}
   else if(controller.phase!=='start'&&cta){cta.parentElement.remove();foreground?.invalidate();}
   host.dataset.ctaVisible=String(controller.phase==='start');
-  palmVisible=!(portable&&bfmVisual)&&['palm','holding',...(revealMode?['burst']:[])].includes(controller.phase);
+  palmVisible=!(portable&&bfmVisual&&!standPresentation)&&['palm','holding',...(revealMode?['burst']:[])].includes(controller.phase);
   if(palmVisible)warmMissionEntry(controller.session.mission);
   if(palmVisible&&!host.querySelector('[data-palm]')){
    fieldEl.insertAdjacentHTML('beforeend',`<button class="object guided-palm" data-route-next="guided-palm" data-palm data-touch-minimum="500" data-planning="true" aria-label="${palmCopy}${palmHint?`. ${palmHint}`:''}">${bfmVisual?v5IconTile(MISSION_CATALOG,'scan',160):`<span class="tile glass-control">${palm}</span>`}<span class="object-label icon-caption">${palmCopy}<small>${palmHint}</small></span></button>`);foreground?.invalidate();
@@ -418,7 +420,7 @@ function syncLinePhone(){
    const target=bfmVisual?controller.targetPhoneMetrics:null;
    const morph=bfmVisual?{from:deviceMetrics().width,to:target.width,
     resize:width=>{if(epoch!==screenEpoch||!shell.isConnected)return;controller.presentedDevice={...target,width};updateTargets();},
-    ready:()=>epoch!==screenEpoch||displayPhoneKey()!==key||shell.dataset.sceneVersion===key&&shell.dataset.mediaReadyKey===key&&shell.dataset.gpuReadyKey===key&&personalChannel.ready(controller.displaySnapshot)}:undefined;
+    ready:()=>epoch!==screenEpoch||displayPhoneKey()!==key||shell.dataset.sceneVersion===key&&shell.dataset.mediaReadyKey===key&&shell.dataset.gpuReadyKey===key&&personalChannel.ready(controller.displaySnapshot)&&businessNative.ready(controller.displaySnapshot)}:undefined;
    if(!foreground.transitionContent(host,()=>{if(epoch===screenEpoch)commit();else if(phonePending===key)phonePending='';},morph))phonePending='';
   }else if(!phonePending)commit();
  }
@@ -433,7 +435,7 @@ function syncLinePhone(){
  if(label&&label.textContent!==text){label.textContent=text;foreground?.refreshPart(label);}
 }
 function phoneContentReady(){
- if(!personalChannel.ready(controller?.displaySnapshot))return false;
+ if(!personalChannel.ready(controller?.displaySnapshot)||!businessNative.ready(controller?.displaySnapshot))return false;
  const shell=host.querySelector('.route-phone');
  if(!shell?.querySelector('.demo-app')||revealMode&&(shell.dataset.sceneVersion!==displayPhoneKey()||shell.dataset.mediaReadyKey!==displayPhoneKey()))return false;
  return [...shell.querySelectorAll('.demo-app img')].every(image=>image.complete&&image.naturalWidth>0);
@@ -557,10 +559,11 @@ function tick(delta){
  taskSkip.update(skipState,localDevelopment&&inputActive()&&!navigating&&!sharedSession?.busy&&!controller?.startup&&!controller?.handoff&&controller?.phase==='task'&&!foreground?.busy(host,true)&&!foreground?.contentBusy(host)&&skipState?.runId===skipShown?.runId&&skipState?.taskId===skipShown?.taskId&&skipState?.screenId===skipShown?.screenId);
  kdwInteractions.update(controller?.displaySnapshot,controller?.phase);
  personalChannel.update(controller?.displaySnapshot,controller?.phase);
+ businessNative.update(controller?.displaySnapshot,controller?.phase);
  kdwPosts.update(controller?.displaySnapshot,controller?.phase);
  if(controller?.snapshot?.state)document.documentElement.dataset.kdwScreen=controller.snapshot.state.screenId??controller.snapshot.state.status;document.documentElement.dataset.kdwRun=controller?.snapshot?.state.runId??'';
  standBrowser?.update(controller?.snapshot);
- if(portable&&!navigating)void localAdmission.update(sharedSession)?.catch(error=>console.error('MAX local admission',error));
+ if(portable&&!standPresentation&&!navigating)void localAdmission.update(sharedSession)?.catch(error=>console.error('MAX local admission',error));
  if(idleMenu){ambient?.tick?.(delta,{active:presentationActive(),reduced:reduced.matches});idleMenu.tick(delta,presentationActive());return;}
  if(independent){independent.tick(presentationActive()?delta:0);return;}
  syncGameAudio();
@@ -1024,7 +1027,7 @@ async function selectIdleMission(missionId){
   const menu=idleMenu;idleSelecting=true;navigating=true;
   try{
    await menu.exit();if(idleMenu!==menu)return;
-   const reply=await sharedSession.command('SELECT_MISSION',{missionId});
+   const reply=await sharedSession.command('SELECT_MISSION',{missionId,fresh:true});
    if(!reply?.reply.ok)throw Error('MAX_LOCAL_IDLE_SELECTION_REJECTED');
    if(controller.phase==='paused')controller.resume(controller.activeId);
    await disposeIdleMenu();clearManagedScene();view='';navigating=false;fit();render();syncScene();
@@ -1182,4 +1185,4 @@ async function boot(){
  if(managedShell){document.documentElement.dataset.managedBinding='';managedNotice.hidden=true;applyManagedActivity();void refreshManagedBinding();}
 }
 boot().catch(e=>{if(pageDisposed)return;console.error(e);startupAssets?.dispose();document.documentElement.dataset.assetPreparation='failed';loading.textContent=startupErrorText(e);document.body.append(loading);Object.assign(loading.style,{position:'fixed',inset:'0',zIndex:'10000',padding:'32px',whiteSpace:'pre-line',fontSize:'clamp(16px,2vw,28px)',lineHeight:'1.5',background:'#10091e',overflow:'auto',transform:'none'});});
-window.addEventListener('pagehide',()=>{taskSkip.dispose();localAdmission.dispose();standBrowser?.dispose();kdwInteractions.dispose();personalChannel.dispose();kdwPosts.dispose();pageDisposed=true;bindingGeneration++;clearTimeout(contextTimer);screenEpoch++;gameAudio?.dispose();missionContinuation?.cancel();cancelGesture();save();sharedSession?.close();idleMenu?.dispose();independent?.dispose();field?.dispose();foreground?.dispose();assets?.dispose();startupAssets?.dispose();ambient?.dispose();v5Tools?.dispose();},{once:true});
+window.addEventListener('pagehide',()=>{taskSkip.dispose();localAdmission.dispose();standBrowser?.dispose();kdwInteractions.dispose();personalChannel.dispose();businessNative.dispose();kdwPosts.dispose();pageDisposed=true;bindingGeneration++;clearTimeout(contextTimer);screenEpoch++;gameAudio?.dispose();missionContinuation?.cancel();cancelGesture();save();sharedSession?.close();idleMenu?.dispose();independent?.dispose();field?.dispose();foreground?.dispose();assets?.dispose();startupAssets?.dispose();ambient?.dispose();v5Tools?.dispose();},{once:true});

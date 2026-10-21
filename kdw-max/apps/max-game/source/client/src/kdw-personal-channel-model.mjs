@@ -1,33 +1,39 @@
 import {PERSONAL_ASSETS} from './kdw-personal-channel-assets.mjs';
+import {forbiddenFields} from './kdw-text-policy.mjs';
 export const PERSONAL_AVATARS=Object.freeze(['cinema','cat','game','island','heart']);
-export const PERSONAL_LIMITS=Object.freeze({name:64,description:160,slug:32,reply:400});
+export const PERSONAL_LIMITS=Object.freeze({name:64,description:160,slug:32,reply:200});
+// Match native maxlength and keyboardEdit (UTF-16), without leaving a half emoji.
+export function limitPersonalReply(value){let s=String(value).slice(0,PERSONAL_LIMITS.reply);if(/[\uD800-\uDBFF]$/.test(s))s=s.slice(0,-1);return s;}
 export const PERSONAL_TASKS=Object.freeze(['blogger.channel','blogger.comments']);
 export const PERSONAL_SCREEN_NUMBERS=Object.freeze({'blogger.channel.chats':1,'blogger.channel.menu':2,'blogger.channel.name':4,'blogger.channel.filled':4,'blogger.channel.privacy':5,'blogger.channel.public-confirm':6,'blogger.channel.public-link':7,'blogger.channel.public-filled':8,'blogger.channel.subscribers':9,'blogger.channel.created':10,'blogger.comments.post':11,'blogger.comments.input':12,'blogger.comments.reply':13,'blogger.comments.result':14,'blogger.comments.returned-post':15});
 const exact=(v,keys)=>v&&typeof v==='object'&&!Array.isArray(v)&&Object.keys(v).sort().join('|')===[...keys].sort().join('|');
 const text=(v,n,multiline=false)=>typeof v==='string'&&v.length<=n&&!/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(v)&&(multiline||!/[\r\n]/.test(v));
 export const validSlug=v=>typeof v==='string'&&/^[a-z][a-z0-9_]{3,31}$/.test(v);
 export function validPersonalDraft(v){return exact(v,['schemaVersion','name','description','avatar','visibility','slug'])&&v.schemaVersion===2&&text(v.name,64)&&text(v.description,160,true)&&PERSONAL_AVATARS.includes(v.avatar)&&['private','public'].includes(v.visibility)&&text(v.slug,32);}
-export const validReply=v=>exact(v,['schemaVersion','reply'])&&v.schemaVersion===1&&text(v.reply,400,true);
+export const validReply=v=>exact(v,['schemaVersion','reply'])&&[1,2].includes(v.schemaVersion)&&text(v.reply,v.schemaVersion===1?400:PERSONAL_LIMITS.reply,true);
 export const personalComplete=v=>validPersonalDraft(v)&&v.name.trim().length>=2;
 export function personalDraft(state){const p=state?.progress?.blogger,v=p?.interactions?.['blogger.channel']??p?.personalChannel??{};return {schemaVersion:2,name:v.name??'',description:v.description??'',avatar:PERSONAL_AVATARS.includes(v.avatar)?v.avatar:'cinema',visibility:v.visibility??p?.answers?.['channel-type']??'private',slug:v.slug??''};}
 export function personalProfile(state){const p=state?.progress?.blogger,v=p?.personalChannel;return v??{...personalDraft(state),id:'legacy-channel',created:!!p?.answers?.['blogger.channel.filled']};}
-export function savePersonal(state,c){
+export function savePersonal(state,c,legacyReply=false,moderate=true){
  if(!state.ownerActive)return 'OWNER_REQUIRED';
  const p=state.progress.blogger;
  if(c.taskId==='blogger.channel'){
   if(!['blogger.channel.name','blogger.channel.filled','blogger.channel.privacy','blogger.channel.public-confirm','blogger.channel.public-link','blogger.channel.public-filled'].includes(state.screenId)||!validPersonalDraft(c.value))return 'INVALID_INTERACTION';
+  if(moderate&&forbiddenFields(c.value))return 'TEXT_NOT_ALLOWED';
   p.interactions??={};p.interactions[c.taskId]=structuredClone(c.value);
   if(p.personalChannel)p.personalChannel={...p.personalChannel,...structuredClone(c.value)};
  }else{
-  if(!['blogger.comments.input','blogger.comments.reply'].includes(state.screenId)||!validReply(c.value))return 'INVALID_INTERACTION';
+  if(!['blogger.comments.input','blogger.comments.reply'].includes(state.screenId)||!validReply(c.value)||(!legacyReply&&c.value.reply.length>PERSONAL_LIMITS.reply))return 'INVALID_INTERACTION';
+  if(moderate&&forbiddenFields(c.value))return 'TEXT_NOT_ALLOWED';
   p.interactions??={};p.interactions[c.taskId]=structuredClone(c.value);
  }
  return null;
 }
-export function personalAction(state,c,now){
+export function personalAction(state,c,now,moderate=true){
  const p=state.progress.blogger;if(!p)return null;
  const draft=p.interactions?.['blogger.channel'];
  const actionId=({'personal.channel.create':'channel.create','personal.channel.save-public-link':'channel.save-public-link','personal.comments.send':'blogger.comments.reply.action-1'})[c.actionId]??c.actionId;
+ if(moderate&&(['channel.fill-name-example','channel.create','channel.fill-link-example','channel.save-public-link'].includes(actionId)&&forbiddenFields(draft)||actionId==='blogger.comments.reply.action-1'&&forbiddenFields(p.interactions?.['blogger.comments'])))return 'TEXT_NOT_ALLOWED';
  if(c.actionId==='personal.channel.create'&&!personalComplete(draft))return 'CHANNEL_NAME_REQUIRED';
  if(c.actionId==='personal.channel.save-public-link'&&(!personalComplete(draft)||!validSlug(draft.slug)))return 'CHANNEL_LINK_REQUIRED';
  if(draft?.schemaVersion===2){
@@ -71,6 +77,7 @@ export function applyPersonalChannel(catalog){
 // Replay old receipts with their exact original semantics; new saves opt in via v2.
 export function catalogForPersonalReceipt(catalog,r){
  if(!catalog.kdwPersonalChannel)return catalog;
+ if(r.command.type==='SAVE_INTERACTION'&&r.command.taskId==='blogger.comments'&&r.command.value?.schemaVersion===1)return {...catalog,kdwPersonalReplayLongReply:true};
  const progress=r.reply?.snapshot?.progress?.blogger;
  const legacy=!progress?.personalComments&&!progress?.interactions?.['blogger.comments']&&progress?.interactions?.['blogger.channel']?.schemaVersion!==2;
  const oldFinish=legacy&&r.command.type==='ACT'&&r.command.actionId==='blogger.comments.result.continue'&&r.reply?.snapshot?.status==='result';

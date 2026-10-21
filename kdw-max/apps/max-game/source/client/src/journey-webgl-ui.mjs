@@ -103,6 +103,7 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startu
  const warmPhoneImages=new Map(),warmPhoneUploads=new Map();let warmPhoneKeys=new Set();
  const uploadedPhoneTextures=new WeakSet(),failedPhoneTextures=new WeakSet();
  const videoTextures=new Map();
+ const pendingVideoFrames=new Map();
  const preparedDevices=new Map(),preparedDeviceKeys=new Set();let preparingDevice=false;
  const preparationStats={rasters:0,rasterMs:0,maxRasterMs:0,uploads:0,uploadMs:0,maxUploadMs:0,warmHits:0,visibleMisses:0};
  const reportPreparation=()=>{root.dataset.devicePreparation=JSON.stringify({...preparationStats,retained:preparedDevices.size});};
@@ -293,7 +294,19 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startu
   if(el.matches('.route-brand'))mesh.userData.logoSize={w:r.w,h:r.h};
  }
  function video(el,r,parent,origin,opacity){
-  if(el.readyState<2)return;
+  if(el.readyState<2){
+   // Media can lose its decoded frame between readiness and scene assembly
+   // (seek/buffering). Rebuild its retained owner when a frame is available;
+   // GPU readiness must not depend on an unrelated layout change.
+   if(!pendingVideoFrames.has(el)){
+    const events=['loadeddata','canplay','seeked'];
+    const cleanup=()=>{for(const event of events)el.removeEventListener(event,retry);pendingVideoFrames.delete(el);};
+    const retry=()=>{if(el.readyState<2)return;cleanup();if(disposed||!el.isConnected)return;pendingParts.add(el.closest(movingSelector)||el);partsDirty=true;onMotion();};
+    pendingVideoFrames.set(el,cleanup);for(const event of events)el.addEventListener(event,retry);
+   }
+   return;
+  }
+  pendingVideoFrames.get(el)?.();
   let map=videoTextures.get(el);
   if(!map){map=createDeviceVideoTexture(THREE.VideoTexture,THREE.SRGBColorSpace,el);videoTextures.set(el,map);}
   const radius=Math.min(parseFloat(getComputedStyle(el).borderTopLeftRadius)||0,r.w/2,r.h/2);
@@ -525,7 +538,7 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startu
   releaseObject(host){for(const item of groups.values())if(item.el.closest('.journey-zone')===host)item.motion?.release();},
   refreshPart(el){pendingParts.add(el);partsDirty=true;},
   refreshParts(elements){for(const el of elements)pendingParts.add(el);partsDirty=true;},
-  releaseVideo(el){const texture=videoTextures.get(el);if(texture){texture.dispose();videoTextures.delete(el);}},
+  releaseVideo(el){pendingVideoFrames.get(el)?.();const texture=videoTextures.get(el);if(texture){texture.dispose();videoTextures.delete(el);}},
   renderFibers(renderer,target){fiberGlass.render(renderer,target);},
   invalidate({layout=false}={}){if(layout)for(const item of groups.values())item.version=null;dirty=true;},
   snapIconSizes(host){sizeSnapHosts.add(host);for(const item of groups.values())if(item.el.closest('.journey-zone')===host&&item.el.hasAttribute('data-object'))item.version=null;dirty=true;},
@@ -924,6 +937,7 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startu
    const liveShellGeometry=new Set();scene.traverse(mesh=>{if(mesh.userData.deviceFrame)liveShellGeometry.add(mesh.geometry);});
    for(const patch of shellGeometry)if(!liveShellGeometry.has(patch)){patch.dispose();shellGeometry.delete(patch);}
    for(const [element,texture]of videoTextures)if(!element.isConnected){texture.dispose();videoTextures.delete(element);}
+   for(const [element,cleanup]of pendingVideoFrames)if(!element.isConnected)cleanup();
    document.documentElement.dataset.webglUi='true';
    for(const [picker,flight]of finished){queueMicrotask(()=>{if(flights.get(picker)!==flight||!picker.isConnected)return;flights.delete(picker);flight.complete();});}
    arenaFrame=null;
@@ -934,6 +948,6 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startu
     if(++timingSamples%15===0)root.dataset.uiTiming=JSON.stringify(timingHistory);timingFrame=null;
    }
   },
-  dispose(){disposed=true;for(const patch of shellGeometry)patch.dispose();shellGeometry.clear();for(const texture of videoTextures.values())texture.dispose();videoTextures.clear();preparedDevices.clear();preparedDeviceKeys.clear();rotatingMaps.forEach(t=>t.dispose());rotatingMaps.clear();warmPhoneImages.clear();warmPhoneUploads.clear();warmPhoneKeys.clear();startupTextureKeys.clear();startupProgramPins.forEach(m=>m.dispose());startupProgramPins.length=0;reconnections.clear();clearGlassFrame(document);introBurst.dispose();for(const m of contentTransitions.values())m.cancel();contentTransitions.clear();instructionMotions.clear();for(const m of transitions.values())m.cancel();transitions.clear();feedbacks.clear();completionMotions.clear();motions.clear();for(const shapes of vectorCache.values())for(const shape of shapes)shape.dispose();vectorCache.clear();fiberGlass.dispose();contextGlass.dispose();flights.clear();materials.forEach(m=>m.dispose());retiredMaterials.forEach(m=>m.dispose());retiredMaterials.length=0;geometry.forEach(g=>g.dispose());cache.forEach(t=>t.dispose());plane.dispose();scene.clear();}
+  dispose(){disposed=true;for(const cleanup of pendingVideoFrames.values())cleanup();for(const patch of shellGeometry)patch.dispose();shellGeometry.clear();for(const texture of videoTextures.values())texture.dispose();videoTextures.clear();preparedDevices.clear();preparedDeviceKeys.clear();rotatingMaps.forEach(t=>t.dispose());rotatingMaps.clear();warmPhoneImages.clear();warmPhoneUploads.clear();warmPhoneKeys.clear();startupTextureKeys.clear();startupProgramPins.forEach(m=>m.dispose());startupProgramPins.length=0;reconnections.clear();clearGlassFrame(document);introBurst.dispose();for(const m of contentTransitions.values())m.cancel();contentTransitions.clear();instructionMotions.clear();for(const m of transitions.values())m.cancel();transitions.clear();feedbacks.clear();completionMotions.clear();motions.clear();for(const shapes of vectorCache.values())for(const shape of shapes)shape.dispose();vectorCache.clear();fiberGlass.dispose();contextGlass.dispose();flights.clear();materials.forEach(m=>m.dispose());retiredMaterials.forEach(m=>m.dispose());retiredMaterials.length=0;geometry.forEach(g=>g.dispose());cache.forEach(t=>t.dispose());plane.dispose();scene.clear();}
  };
 }

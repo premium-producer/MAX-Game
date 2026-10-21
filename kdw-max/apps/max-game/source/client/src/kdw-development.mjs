@@ -39,6 +39,14 @@ export function reduceDevelopment(catalog,s,c,now,{sequence,enterTask,budget}){
 }
 
 export function finishDevelopmentState(previous,s,c,now,budget){
+ // Changing sector creates a coherent downstream story. Preserve old receipt
+ // behavior when no sector changed, including all café/hotel/theater timelines.
+ if(c.type==='ACT'&&c.actionId?.startsWith('business.platform.choose-')&&['sports','flowers'].some(t=>[previous.progress.business?.answers?.businessType,s.progress.business?.answers?.businessType].includes(t))&&previous.progress.business?.answers?.businessType!==s.progress.business?.answers?.businessType){
+  const p=s.progress.business,downstream=['business.channel','business.bot','business.store'];
+  for(const name of ['completed','skipped','finished'])p[name]=p[name].filter(id=>!downstream.includes(id));
+  for(const id of Object.keys(p.answers))if(downstream.some(t=>id.startsWith(t+'.')))delete p.answers[id];
+  delete p.postsActivity;delete p.storeActivity;if(p.interactions)delete p.interactions['business.store'];
+ }
  if(s.devTimerEnabled===undefined)return;
  const p=s.missionId?s.progress[s.missionId]:null;
  if(c.type==='RETURN_MENU'&&previous.missionId){

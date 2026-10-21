@@ -1,4 +1,5 @@
 #kdw-posts{position:fixed;inset:0;z-index:101;pointer-events:none;overflow:hidden;color:#fff;font-family:'Max Sans',sans-serif}
+.kdw-post-bound-avatar{position:absolute;left:52px;top:65.2px;width:42.95px;height:42.95px;border-radius:50%;display:grid;place-items:center;overflow:hidden;font-size:28px;line-height:1}.kdw-post-bound-avatar img{width:100%;height:100%;object-fit:cover}.kdw-post-theme-symbol{font-size:100px;line-height:1}
 #kdw-posts[hidden],#kdw-posts [hidden]{display:none!important}
 #kdw-posts *{box-sizing:border-box}
 #kdw-posts button{font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
@@ -8,9 +9,12 @@
 .kdw-post-status span{margin-left:auto}
 .kdw-post-phone header{position:relative;height:121.33px;flex-shrink:0;background:#1e1f24}
 .kdw-post-header-art{display:block;width:100%;height:100%}
-.kdw-post-identity{position:absolute;left:103.6px;top:62px;right:30px}
+/* A separate transparent text surface disables Windows LCD colour fringes;
+   font-smoothing alone does not affect Chromium's Windows renderer. */
+.kdw-post-identity{position:absolute;left:103.6px;top:62px;right:30px;opacity:.999}
 .kdw-post-phone header .kdw-post-identity strong{display:flex;gap:6px;align-items:center;font-size:18px;font-weight:600;line-height:22px}
-.kdw-post-identity strong img{width:17.34px;height:17.34px}
+.kdw-post-identity strong img{width:17.34px;height:17.34px;flex:none}
+.kdw-post-channel-name{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:none;filter:none}
 .kdw-post-phone header .kdw-post-identity small{display:block;font-size:14px;color:#818287;line-height:18px;margin-top:1px;font-variant-numeric:tabular-nums}
 .kdw-post-avatar{background:linear-gradient(140deg,#6942ff,#00bbff);width:50px;height:50px;display:grid;place-items:center;font-size:30px;border-radius:50%}
 .kdw-post-phone header strong{font-size:23px;font-weight:600}.kdw-post-phone header b{color:#278fff;font-size:13px}

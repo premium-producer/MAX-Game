@@ -3,6 +3,10 @@
 export function createStoreMotion(root,{duration=680,revealDuration=300,getSlot=null,photoSelector='.kdw-product-photo',sourcePhotoSelector=photoSelector,scrollerSelector='.kdw-store-scroll',sequence=false,onApproach=null}={}){
  const flights=new Map(),reserved=new Set(),reduced=matchMedia('(prefers-reduced-motion: reduce)');let frame=0;
  let nextApproach=0;
+ const cornerNames=['borderTopLeftRadius','borderTopRightRadius','borderBottomRightRadius','borderBottomLeftRadius'];
+ // Flight coordinates are viewport pixels; native corners are local CSS pixels.
+ // Interpolate in the same space so docking under the scaled phone cannot snap.
+ const screenCorners=(photo,rect)=>{const style=getComputedStyle(photo),scale=rect.width/photo.offsetWidth;return cornerNames.map(key=>parseFloat(style[key])*scale);};
  const slot=getSlot??(i=>root.querySelector(`[data-kdw-slot="${i}"]`)?.closest('.kdw-slot'));
  function mark(index,f){const target=slot(index);if(!target)return;
   if(f?.landingStart!==undefined){delete target.dataset.arriving;target.dataset.landing='true';target.style.setProperty('--kdw-reveal',String(f.reveal??0));}
@@ -47,7 +51,8 @@ export function createStoreMotion(root,{duration=680,revealDuration=300,getSlot=
   if(!photo||root.hidden){cancel(index);continue;}
   const from=f.from,to=photo.getBoundingClientRect(),t=Math.min(1,(now-f.start)/duration),ease=t*t*t*(t*(t*6-15)+10),arc=Math.sin(Math.PI*ease)*Math.min(100,Math.abs(from.x-to.x)*.16);
   const x=from.x+(to.x-from.x)*ease,y=from.y+(to.y-from.y)*ease-arc,w=from.width+(to.width-from.width)*ease,h=from.height+(to.height-from.height)*ease;
-  if(t<1){Object.assign(f.element.style,{left:x+'px',top:y+'px',width:w+'px',height:h+'px',transform:`rotate(${Math.sin(Math.PI*t)*-7}deg)`});}
+  if(t<1){const corners=screenCorners(photo,to).map((end,i)=>from.corners[i]+(end-from.corners[i])*ease);
+   Object.assign(f.element.style,{left:x+'px',top:y+'px',width:w+'px',height:h+'px',borderRadius:corners.map(r=>r+'px').join(' '),transform:`rotate(${Math.sin(Math.PI*t)*-7}deg)`});}
   if(t<1&&f.element.classList.contains('kdw-product-emoji')){
    const endFont=parseFloat(getComputedStyle(photo).fontSize)*to.height/photo.offsetHeight;
    f.element.style.fontSize=(from.fontSizePx+(endFont-from.fontSizePx)*ease)+'px';
@@ -71,7 +76,7 @@ export function createStoreMotion(root,{duration=680,revealDuration=300,getSlot=
   active(){return reserved.size>0||flights.size>0;},
   // Capture while still in the falling field: its font and ancestor scale differ
   // from the catalogue, and the authority may detach this source before add().
-  capture(source){const rect=source.getBoundingClientRect();return {...rect.toJSON(),fontSizePx:parseFloat(getComputedStyle(source).fontSize)*rect.height/source.offsetHeight};},
+  capture(source){const rect=source.getBoundingClientRect();return {...rect.toJSON(),corners:screenCorners(source,rect),fontSizePx:parseFloat(getComputedStyle(source).fontSize)*rect.height/source.offsetHeight};},
   reserve(index){reserved.add(index);const target=slot(index);if(target)target.dataset.arriving='true';},
   begin(index,button){
    cancel(index);if(sequence&&reduced.matches)return;this.reserve(index);if(reduced.matches)return;
@@ -81,7 +86,7 @@ export function createStoreMotion(root,{duration=680,revealDuration=300,getSlot=
    Object.assign(shell.style,{position:'fixed',left:rect.x+'px',top:rect.y+'px',width:button.offsetWidth+'px',height:button.offsetHeight+'px',transform:`scale(${rect.width/button.offsetWidth})`,transformOrigin:'0 0'});
    shell.querySelector(sourcePhotoSelector).style.visibility='hidden';
    const element=source.cloneNode(true);element.classList.add('kdw-product-flight');element.setAttribute('aria-hidden','true');
-   Object.assign(element.style,{left:from.x+'px',top:from.y+'px',width:from.width+'px',height:from.height+'px',fontSize:from.fontSizePx+'px',opacity:'1'});
+   Object.assign(element.style,{left:from.x+'px',top:from.y+'px',width:from.width+'px',height:from.height+'px',borderRadius:from.corners.map(r=>r+'px').join(' '),fontSize:from.fontSizePx+'px',opacity:'1'});
    root.append(shell,element);button.style.visibility='hidden';
    const shellAnimation=shell.animate([{opacity:1},{opacity:0}],{duration:180,easing:'ease-out',fill:'forwards'});
    shellAnimation.finished.then(()=>shell.remove(),()=>{});

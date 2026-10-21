@@ -4,6 +4,7 @@ const controls='button,input,textarea,select,a,[contenteditable="true"],[role="b
 // Expand the existing single footer action to the device's image surface.
 // Keep the original button/token/command and all host eligibility checks.
 export function screenContinuationTarget(root,target,x,y,screenId){
+ if(document.documentElement.dataset.businessNative==='true')return null;
  if(target?.closest?.(controls))return null;
  for(const shell of root.querySelectorAll('.route-phone')){
   if(shell.closest('[inert],[hidden]')||shell.dataset.mediaReadyKey!==shell.dataset.sceneVersion)continue;

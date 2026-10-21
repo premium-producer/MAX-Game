@@ -1,0 +1,57 @@
+#kdw-business-native{position:fixed;inset:0;z-index:102;pointer-events:none;overflow:hidden;font-family:Arial,sans-serif;color:#111}
+#kdw-business-native[hidden]{display:none!important}
+#kdw-business-native *{box-sizing:border-box}
+#kdw-business-native .bn-surface{position:absolute;transform-origin:0 0;pointer-events:auto;overflow:visible;background:transparent;border:0;border-radius:0}
+#kdw-business-native .bn-source-canvas{position:relative;isolation:isolate}
+#kdw-business-native .bn-original{position:absolute;display:block;max-width:none;max-height:none;margin:0;padding:0;border:0;border-radius:0;box-shadow:none;filter:none;object-fit:fill;pointer-events:none}
+#kdw-business-native .bn-original-field{position:absolute;display:block;padding:0;margin:0;border:0;box-shadow:none;overflow:hidden;pointer-events:none}
+#kdw-business-native .bn-source-copy{font-family:Arial,sans-serif;letter-spacing:normal;text-shadow:none;white-space:nowrap;background:transparent}
+#kdw-business-native .bn-source-copy[data-bn-multiline=true]{white-space:normal;overflow-wrap:break-word}
+#kdw-business-native .bn-source-photo,#kdw-business-native .bn-source-logo{border-radius:50%;display:grid;place-items:center;font-size:24px;line-height:1}
+#kdw-business-native .bn-source-photo img,#kdw-business-native .bn-source-logo img{display:block;width:100%;height:100%;max-width:none;object-fit:cover}
+#kdw-business-native .bn-source-photo img{transform:scale(1.08)}
+#kdw-business-native .bn-original-action{position:absolute;cursor:pointer;pointer-events:auto;background:transparent;border:0;margin:0;padding:0;border-radius:0;box-shadow:none;color:transparent;-webkit-tap-highlight-color:transparent}
+#kdw-business-native .bn-original-action:focus-visible{outline:2px solid #007aff;outline-offset:2px}
+#kdw-business-native .bn-order-messages{position:absolute;left:0;right:0;top:106.646px;bottom:55.299px;background:#0e0e11;overflow-x:hidden;overflow-y:auto;scrollbar-width:none;touch-action:pan-y;overscroll-behavior:contain}
+#kdw-business-native .bn-order-messages::-webkit-scrollbar{display:none}
+#kdw-business-native .bn-order-flow{display:flex;flex-direction:column;align-items:flex-start;padding-bottom:7px}
+#kdw-business-native .bn-flow-fixed{position:relative;flex:none;pointer-events:none}
+#kdw-business-native .bn-flow-fixed>.bn-original,#kdw-business-native .bn-flow-choice>.bn-original{left:0;top:0}
+#kdw-business-native .bn-flow-previous{margin-left:6px;margin-bottom:1px}
+#kdw-business-native .bn-flow-status{margin-left:11px;margin-top:6px}
+#kdw-business-native .bn-flow-action{margin-left:11px;margin-top:1px}
+#kdw-business-native .bn-message{position:relative;flex:none;padding:11px 11px 11px;color:#fff;pointer-events:none}
+#kdw-business-native .bn-message-out{width:282px;margin-top:6px;margin-right:4px;align-self:flex-end}
+#kdw-business-native .bn-message-in{width:276px;margin-top:6px;margin-left:6px;padding:12px 10px 8px}
+#kdw-business-native .bn-message-skin{position:absolute;inset:0;border:17px solid transparent;border-image-slice:17 fill;border-image-width:17px;border-image-repeat:stretch;pointer-events:none}
+#kdw-business-native .bn-message-in .bn-message-skin{border-width:12px;border-image-slice:12 fill;border-image-width:12px}
+#kdw-business-native .bn-message-copy{position:relative;padding:0;margin:0;font:400 17px/20px Arial,sans-serif;letter-spacing:normal;white-space:pre-wrap;overflow-wrap:anywhere;color:#fff}
+#kdw-business-native .bn-message-meta{right:12px;bottom:7px;left:auto;top:auto}
+#kdw-business-native .bn-message-in .bn-message-meta{right:10px;bottom:6px}
+#kdw-business-native .bn-flow-choices{display:flex;flex-direction:column;margin-top:2px;margin-left:6px;gap:0}
+#kdw-business-native .bn-flow-choice{position:relative;flex:none;padding:0;margin:0;background:transparent;border:0;box-shadow:none;border-radius:0;cursor:pointer}
+#kdw-business-native .bn-flow-choice:focus-visible{outline:2px solid #007aff;outline-offset:1px}
+#kdw-business-native .bn-channel-feed{position:absolute;left:0;right:0;top:112px;bottom:72px;overflow-x:hidden;overflow-y:auto;scrollbar-width:none;touch-action:pan-y;overscroll-behavior:contain}
+#kdw-business-native .bn-channel-feed::-webkit-scrollbar{display:none}
+#kdw-business-native .bn-channel-flow{display:flex;flex-direction:column;width:360px}
+#kdw-business-native .bn-channel-name-row{display:flex;justify-content:flex-end;flex:none;width:360px}
+#kdw-business-native .bn-channel-name{padding:8px 11px 12px;margin:0 6px 0 0}
+#kdw-business-native .bn-channel-name .bn-message-copy{font-size:16px;line-height:20px}
+#kdw-business-native .bn-channel-name .bn-message-meta{right:9px;bottom:5px}
+#kdw-business-native .bn-channel-tail{position:relative;flex:none;width:360px}
+#kdw-business-native .bn-channel-tail>.bn-original{left:0;top:0}
+#kdw-business-native .bn-source-forward{position:absolute;left:0;right:0;top:calc(100% + 22px);display:flex;justify-content:center}
+#kdw-business-native .bn-source-forward button{font-family:'Max Sans',Arial,sans-serif;font-size:28px;color:white;border:0;border-radius:35px;padding:16px 32px;background:linear-gradient(110deg,#009cff,#3458f5);cursor:pointer}
+#kdw-business-native .bn-error{position:absolute;bottom:10px;left:10px;right:10px;margin:0;padding:5px;font:14px Arial,sans-serif;color:#f2789d;text-align:center;background:#17181c}
+#kdw-business-native .bn-error:empty{display:none}
+#kdw-business-native .bn-choice{height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;background:radial-gradient(ellipse at 70% 20%,#48169b,#150b2c);color:white;font-family:'Max Sans',Arial,sans-serif;border-radius:12px}
+#kdw-business-native .bn-choice h1{font:500 48px/1.25 'Max Sans',Arial,sans-serif;margin:0}
+#kdw-business-native .bn-choice>p{margin:14px 0 0;font-size:25px;color:#cbbce3}
+#kdw-business-native .bn-choice>div{display:flex;gap:30px;margin-top:65px}
+#kdw-business-native .bn-choice-card{cursor:pointer;border:0;color:white;font:500 26px/1.25 'Max Sans',Arial,sans-serif;width:340px;height:310px;border-radius:40px;background:#ffffff0c;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px}
+#kdw-business-native .bn-choice-card:hover{background:#ffffff19}
+#kdw-business-native .bn-business-logo{width:140px;height:140px;background:var(--business-color);border-radius:50%;display:grid;place-items:center;overflow:hidden;font-size:80px}
+#kdw-business-native .bn-business-logo img{width:100%;height:100%;object-fit:cover}
+#kdw-business-native .bn-choice-card strong{max-width:260px;font:inherit}
+html[data-business-native=true] .route-phone .client-actions,html[data-business-native=true] .route-phone .task-media-canvas .media-hotspot{visibility:hidden!important;pointer-events:none!important}
+html[data-business-native=true] .route-phone .client-actions{height:0!important;min-height:0!important;margin:0!important;padding:0!important;overflow:hidden!important}

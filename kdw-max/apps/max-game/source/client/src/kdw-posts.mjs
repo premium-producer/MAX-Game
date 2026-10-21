@@ -7,11 +7,12 @@ import {createPresentationClock} from './application/presentation-clock.mjs';
 import {createFlowEntry} from './kdw-flow-entry.mjs';
 import {createCardPop} from './kdw-card-pop.mjs';
 import {postMetrics,formatPostCount,counterProgress,COUNTER_DURATION} from './kdw-post-metrics.mjs';
+import {businessProfile} from './kdw-business-profile.mjs';
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const number=n=>n.toLocaleString('ru-RU');
 const chrome=name=>`./assets/kdw-native/posts-chrome/${name}.svg`;
 const art=(type)=>`<span class="kdw-post-art" data-theme="${type}"><svg viewBox="0 0 120 80" aria-hidden="true">${type==='hotel'?'<path d="M16 52V20h8v20h72V20h8v48h-8V56H24v12h-8Zm12-16V20h28v16Zm36 0V20h28v16Z"/>':'<path d="M15 15q23 12 45 0v28q-23 30-45 0Zm12 14 10 4m8-4 9-2M29 43q9 9 18 0M66 26q20 8 40-1v28q-20 22-40 0Zm10 11 7 2m9 0 7-2M78 56q8-7 16 0"/>'}</svg></span>`;
-function photo(post,type){const a=postPhoto(post.photo);return a?`<img src="./${a.path}" alt="" draggable="false">`:art(type);}
+function photo(post,type){const a=postPhoto(post.photo);return a?`<img src="./${a.path}" alt="" draggable="false">`:['sports','flowers'].includes(type)?`<span class="kdw-post-art kdw-post-theme-symbol" data-theme="${type}">${businessProfile(type).symbol}</span>`:art(type);}
 export function mountPostActivity({getSession}){
  const root=document.createElement('section');root.id='kdw-posts';root.hidden=true;root.setAttribute('aria-label','Публикации канала');document.body.append(root);
  const clock=createPresentationClock(),reduced=matchMedia('(prefers-reduced-motion: reduce)'),readStream=createPostStreamReader();
@@ -33,7 +34,7 @@ export function mountPostActivity({getSession}){
    try{await Promise.all([...new Set(postBank(kind).map(p=>p.photo).filter(Boolean))].map(async id=>{
     if(images.has(id))return;const asset=postPhoto(id),image=new Image();image.src='./'+asset.path;
     await Promise.race([image.decode(),new Promise((_,reject)=>setTimeout(()=>reject(Error('Изображения пока недоступны')),10000))]);images.set(id,image);
-   }));await Promise.all(['header','composer','fire','heart','views','verified'].map(async name=>{
+   }));const profile=businessProfile(kind);if(profile.logo&&!images.has('avatar:'+kind)){const avatar=new Image();avatar.src='./'+profile.logo;await avatar.decode();images.set('avatar:'+kind,avatar);}await Promise.all(['header','composer','fire','heart','views','verified'].map(async name=>{
     const key='chrome:'+name;if(images.has(key))return;const image=new Image();image.src=chrome(name);await image.decode();images.set(key,image);
    }));loadedType=kind;loadError='';return true;}
    catch{loadError='Не удалось загрузить фотографии';return false;}
@@ -42,7 +43,8 @@ export function mountPostActivity({getSession}){
  }
  function build(){
   placement.clear();
-  root.innerHTML=`<div class="kdw-post-phone"><header><img class="kdw-post-header-art" src="${chrome('header')}" alt=""><div class="kdw-post-identity"><strong>${esc(BUSINESS_CHANNELS[type()]??'Кофейня')} <img src="${chrome('verified')}" alt="Подтверждённый канал"></strong><small data-post-audience></small></div></header><div class="kdw-post-feed" tabindex="0" aria-label="Публикации канала"></div><button class="kdw-post-new" hidden>Новые публикации ↓</button><footer aria-label="Панель публикации MAX"><img src="${chrome('composer')}" alt="Пост · Вложения · Камера · Микрофон"></footer></div><div class="kdw-post-actions"><p data-post-hint>Выбирайте посты справа</p><button data-post-finish hidden>К следующему заданию →</button><button data-post-retry hidden>Повторить загрузку</button><p data-post-error role="status" aria-live="polite"></p></div><div class="kdw-post-cards"></div><div class="kdw-post-notice" role="status" aria-live="polite"></div>`;
+  root.innerHTML=`<div class="kdw-post-phone"><header><img class="kdw-post-header-art" src="${chrome('header')}" alt=""><div class="kdw-post-identity"><strong><span class="kdw-post-channel-name">${esc(BUSINESS_CHANNELS[type()]??'Кофейня')}</span><img src="${chrome('verified')}" alt="Подтверждённый канал"></strong><small data-post-audience></small></div></header><div class="kdw-post-feed" tabindex="0" aria-label="Публикации канала"></div><button class="kdw-post-new" hidden>Новые публикации ↓</button><footer aria-label="Панель публикации MAX"><img src="${chrome('composer')}" alt="Пост · Вложения · Камера · Микрофон"></footer></div><div class="kdw-post-actions"><p data-post-hint>Выбирайте посты справа</p><button data-post-finish hidden>К следующему заданию →</button><button data-post-retry hidden>Повторить загрузку</button><p data-post-error role="status" aria-live="polite"></p></div><div class="kdw-post-cards"></div><div class="kdw-post-notice" role="status" aria-live="polite"></div>`;
+  const profile=businessProfile(type()),avatar=document.createElement('span');avatar.className='kdw-post-bound-avatar';avatar.style.background=profile.accent;avatar.innerHTML=profile.logo?`<img src="./${profile.logo}" alt="">`:esc(profile.symbol);root.querySelector('.kdw-post-phone header').append(avatar);
   const trailCanvas=document.createElement('canvas');trailCanvas.className='kdw-post-trails';trailCanvas.setAttribute('aria-hidden','true');root.prepend(trailCanvas);trails=createPostTrails(trailCanvas);
   // The full header participates in entry; do not pop the counter in only
   // after START_POSTS returns and the phone has already become opaque.

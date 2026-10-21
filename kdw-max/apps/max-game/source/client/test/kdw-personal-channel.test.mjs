@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {createKdwCatalog} from '../src/kdw-interactions-model.mjs';
 import {createMissionModel,dispatchMissionCommand,restoreMissionModel} from '../src/core/mission-core.mjs';
-import {personalProfile,personalDraft,validPersonalDraft,validSlug} from '../src/kdw-personal-channel-model.mjs';
+import {personalProfile,personalDraft,validPersonalDraft,validSlug,PERSONAL_LIMITS,limitPersonalReply} from '../src/kdw-personal-channel-model.mjs';
 import {createMissionSessionApplication} from '../src/application/mission-session.mjs';
 import {createMemoryPersistencePort} from '../src/application/memory-persistence.mjs';
 const base=JSON.parse(fs.readFileSync(new URL('../src/reviewed-content/mission-catalog.json',import.meta.url))),catalog=createKdwCatalog(base);
@@ -11,6 +11,22 @@ const value={schemaVersion:2,name:'Мой <канал> & кино',description:'
 function driver(c=catalog){let model=createMissionModel(c,{sessionId:'personal-test',rulesRevision:'mission-rules-task-clock-v2'}),id=0,now=1000;const cmd=(type,fields={},internal=false)=>{const result=dispatchMissionCommand(c,model,{schemaVersion:1,type,commandId:'p.'+(++id),sessionId:'personal-test',contentRevision:c.contentRevision,expectedRevision:model.state.revision,...fields},{now:now++,internal});if(result.reply.ok)model=result.model;return result;};const act=actionId=>cmd('ACT',{screenId:model.state.screenId,actionId});const save=v=>cmd('SAVE_INTERACTION',{taskId:model.state.taskId,screenId:model.state.screenId,value:v});const begin=()=>{cmd('OWNER_CHANGED',{active:true},true);cmd('SELECT_MISSION',{missionId:'blogger'});cmd('HOLD_CONFIRMED',{},true);act('channel.open-create-menu');act('channel.choose-create');};const advance=()=>{now+=1000;return cmd('ADVANCE_RESULT');};return {cmd,act,save,begin,advance,get model(){return model},get now(){return now}};}
 function create(d){d.begin();assert.equal(d.save(value).reply.ok,true);d.act('channel.fill-name-example');d.act('channel.create');}
 function finishChannel(d){d.act('channel.continue-private');d.act('channel.skip-invites');d.act('channel.complete');d.advance();}
+
+test('comment limit applies to new commands and restores accepted historical long replies',()=>{
+ assert.equal(PERSONAL_LIMITS.reply,200);
+ assert.equal(limitPersonalReply('я'.repeat(201)).length,200);
+ assert.equal(limitPersonalReply('я'.repeat(199)+'😀'),'я'.repeat(199));
+ const d=driver();create(d);finishChannel(d);d.act('blogger.comments.post.action-1');
+ for(const schemaVersion of [1,2])assert.equal(d.save({schemaVersion,reply:'я'.repeat(201)}).reply.code,'INVALID_INTERACTION');
+ assert.equal(d.save({schemaVersion:2,reply:'я'.repeat(200)}).reply.ok,true);
+ assert.equal(d.act('personal.comments.send').reply.ok,true);
+ assert.equal(d.model.state.progress.blogger.personalComments.reply.length,200);
+ assert.equal(restoreMissionModel(catalog,d.model).ok,true);
+ const old=driver({...catalog,kdwPersonalReplayLongReply:true});create(old);finishChannel(old);old.act('blogger.comments.post.action-1');
+ assert.equal(old.save({schemaVersion:1,reply:'я'.repeat(400)}).reply.ok,true);old.act('personal.comments.send');
+ const restored=restoreMissionModel(catalog,old.model);assert.equal(restored.ok,true,restored.message);
+ assert.equal(restored.model.state.progress.blogger.personalComments.reply.length,400);
+});
 test('one custom profile, private/public setup, reply and returned post persist and restore',async()=>{
  const d=driver();create(d);const id=personalProfile(d.model.state).id;
  assert.equal(d.act('channel.choose-public').reply.ok,true);d.act('channel.use-new-link');

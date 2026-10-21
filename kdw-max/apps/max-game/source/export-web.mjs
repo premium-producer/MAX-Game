@@ -4,6 +4,7 @@ import crypto from 'node:crypto';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 import {execFileSync} from 'node:child_process';
 import {createKdwCatalog} from './client/src/kdw-interactions-model.mjs';
+import {BUSINESS_UI_ASSETS} from './client/src/kdw-business-native-model.mjs';
 const source=path.dirname(fileURLToPath(import.meta.url)),root=path.resolve(source,'..'),www=path.join(root,'www'),out=path.resolve(source,'../../../dist/max-game-web');
 const modules=path.resolve(process.argv[2]??path.join(source,'client/node_modules')),{build}=await import(pathToFileURL(path.join(modules,'esbuild/lib/main.js')));
 const hash=b=>crypto.createHash('sha256').update(b).digest('hex'),files=new Map();
@@ -11,7 +12,7 @@ function put(name,bytes){if(name.startsWith('/')||name.split('/').includes('..')
 function add(name){name=name.replaceAll('\\','/');if(files.has(name))return;const full=path.resolve(www,name);if(!full.startsWith(www+path.sep))throw Error('Asset outside www');if(!fs.existsSync(full))throw Error('Missing web asset: '+name);put(name,fs.readFileSync(full));}
 function tree(dir){for(const e of fs.readdirSync(path.join(www,dir),{withFileTypes:true})){const name=dir+'/'+e.name;if(e.isDirectory())tree(name);else add(name);}}
 const catalog=createKdwCatalog(JSON.parse(fs.readFileSync(path.join(source,'client/src/reviewed-content/mission-catalog.json'))));
-for(const a of Object.values(catalog.assets))if(a.path)add(a.path);
+for(const a of Object.values({...catalog.assets,...BUSINESS_UI_ASSETS}))if(a.path)add(a.path);
 for(const dir of ['brand','config','icons','licenses','webgl-v5/icon-glyphs','assets/kdw-r7'])tree(dir);
 for(const name of ['app.js','journey.css','journey-guided.css','journey-guided-line.css','journey-guided-reveal.css','v5.css','kdw-interactions.css'])add('webgl-v5/'+name);
 // Include literal local resources referenced by the actual bundle inputs, not historical bundles.

@@ -1,10 +1,31 @@
 import photos from './kdw-post-assets.json' with {type:'json'};
 import chrome from './kdw-posts-chrome.json' with {type:'json'};
+import {BUSINESS_PROFILES} from './kdw-business-profile.mjs';
 import {activityRemaining} from './kdw-development.mjs';
 import {createPostTimeline} from './kdw-post-stream.mjs';
 export const POSTS_SCREEN='business.channel.result',POSTS_TASK='business.channel';
 export const POSTS_RULES=Object.freeze({version:11,initialAudience:14628,goal:300,good:120,bad:-100,interval:2300,travel:10500,maxPosts:20});
 const banks={
+ sports:[
+  ['training','Всё для первой тренировки','Подберём форму, обувь и инвентарь под ваш вид спорта.',0,true,'Понятное предложение помогает выбрать экипировку.'],
+  ['spam','КУПИ! КУПИ! КУПИ!','Пришлём эту рекламу ещё десять раз сегодня!',0,false,'Навязчивый спам раздражает подписчиков.'],
+  ['hours','Тренировки начинаются раньше','С понедельника магазин работает с 8:00 до 21:00.',0,true,'Полезная новость помогает спланировать визит.'],
+  ['shoes','Как выбрать кроссовки для бега','Рассказываем о посадке, амортизации и примерке перед покупкой.',0,true,'Практический совет полезен аудитории.'],
+  ['promise','Любые кроссовки бесплатно навсегда!','Настоящие условия узнаете только на кассе.',0,false,'Обещание без честных условий подрывает доверие.'],
+  ['offer','Набор для домашней тренировки','Коврик и эспандер за 2 900 ₽. Предложение действует до воскресенья.',0,true,'У предложения есть понятная цена и срок.'],
+  ['unrelated','Продаём автомобиль','Отправьте объявление всем друзьям прямо сейчас!',0,false,'Пост не связан с интересами спортивной аудитории.'],
+  ['care','Уход за спортивной формой','Три простых совета, чтобы любимая экипировка служила дольше.',0,true,'Полезный материал помогает сохранить покупку.'],
+ ],
+ flowers:[
+  ['bouquet','Букет, который скажет всё','Собираем композиции из свежих сезонных цветов. Поможем с выбором.',0,true,'Понятное предложение отвечает интересам покупателей.'],
+  ['spam','КУПИ БУКЕТ НЕМЕДЛЕННО!','Будем повторять эту рекламу каждый час!',0,false,'Навязчивые сообщения приводят к отпискам.'],
+  ['hours','Цветы по пути на работу','Открываемся в 8:00. Можно заранее заказать букет к нужному времени.',0,true,'Практичная новость помогает спланировать покупку.'],
+  ['care','Чтобы букет радовал дольше','Меняйте воду каждый день и обновляйте срез. Сохраняйте памятку.',0,true,'Совет по уходу полезен подписчикам.'],
+  ['promise','Все букеты бесплатно навсегда!','Ограничения и настоящую цену сообщим только в магазине.',0,false,'Нечестное обещание разрушает доверие.'],
+  ['delivery','Доставим цветы в тот же день','Заказы до 15:00. Доставка по городу — 350 ₽, время согласуем с вами.',0,true,'У доставки указаны условия, цена и срок.'],
+  ['unrelated','Срочно продаём автомобиль','Разошлите объявление всем знакомым!',0,false,'Случайная реклама не помогает выбрать цветы.'],
+  ['florist','Как рождается ваш букет','Флорист показывает, как сочетать оттенки и выбирать сезонные цветы.',0,true,'История о работе магазина помогает познакомиться с ним.'],
+ ],
  cafe:[
   ['coffee-duo','Два кофе + третий в подарок','До 12:00. Третий напиток того же объёма — в подарок.',2,true,'Понятная акция с условиями помогает выбрать.'],
   ['spam','КУПИ! КУПИ! КУПИ!','Срочно покупайте! Пришлём это сообщение ещё десять раз.',3,false,'Навязчивый спам раздражает подписчиков.'],
@@ -36,7 +57,7 @@ const banks={
   ['actors','Знакомство с труппой','Актёры рассказывают о любимых ролях и первой встрече со сценой.',0,true,'Люди и истории делают канал интереснее.'],
  ],
 };
-export const BUSINESS_CHANNELS=Object.freeze({cafe:'Кофейня',hotel:'Отель',theater:'Театр'});
+export const BUSINESS_CHANNELS=Object.freeze(Object.fromEntries(Object.values(BUSINESS_PROFILES).map(p=>[p.id,p.name])));
 export function postBank(type='cafe'){return (banks[type]??banks.cafe).map(([id,title,body,photo,good,reason])=>({id,title,body,photo,good,reason,delta:good?POSTS_RULES.good:POSTS_RULES.bad,reactions:good?128:34}));}
 export const postPhoto=id=>photos.find(a=>a.assetId===`kdw.posts.photo-${id}`);
 export function applyPostsCatalog(catalog){
@@ -79,7 +100,7 @@ export function createPostStreamReader(){
   lastTime=elapsed;return timeline.at(elapsed);
  };
 }
-export function postsGoal(posts){return posts.audience>=POSTS_RULES.initialAudience+POSTS_RULES.goal;}
+export function postsGoal(posts){return !!posts&&posts.audience>=POSTS_RULES.initialAudience+POSTS_RULES.goal;}
 export function reducePosts(state,command,now,version=POSTS_RULES.version){
  if(state.status!=='task'||state.taskId!==POSTS_TASK||state.screenId!==POSTS_SCREEN||command.taskId!==state.taskId||command.screenId!==state.screenId)return 'WRONG_POST_CONTEXT';
  if(!state.ownerActive)return 'POSTS_PAUSED';

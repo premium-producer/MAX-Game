@@ -12,12 +12,16 @@ if(parsed.status!==0)throw Error(parsed.error?.message??parsed.stderr);
 const map=JSON.parse(parsed.stdout),sha=b=>createHash('sha256').update(b).digest('hex'),assets={},records=[];
 const output=path.join(source,'client/public',base);fs.mkdirSync(output,{recursive:true});
 // Explicit local fixture supplied by the user, simulating an upright stela capture.
-const photoSource='fixtures/visitor-photo.png',photoInput=fs.readFileSync(path.join(source,photoSource));
+const photoSource='fixtures/visitor-photo.jpg',photoInput=fs.readFileSync(path.join(source,photoSource));
 const photo=await sharp(photoInput).rotate().resize(1080,1920,{fit:'cover',position:'centre'}).webp({quality:90}).toBuffer();
 fs.writeFileSync(path.join(output,'visitor-placeholder.webp'),photo);
 const descriptor={...VISITOR_CAPTURE,dataUri:'data:image/webp;base64,'+photo.toString('base64')};
 const placeholder=`<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920"><image width="1080" height="1920" href="${descriptor.dataUri}"/></svg>\n`;
 fs.writeFileSync(path.join(output,'visitor-placeholder.svg'),placeholder);
+const circle=visitorCrop('circle'),avatar=`<svg xmlns="http://www.w3.org/2000/svg" width="${circle.width}" height="${circle.height}" viewBox="${circle.x} ${circle.y} ${circle.width} ${circle.height}"><image width="1080" height="1920" href="${descriptor.dataUri}"/></svg>\n`;
+fs.writeFileSync(path.join(output,'visitor-avatar.svg'),avatar);
+assets['kdw.conversation.avatar']={assetId:'kdw.conversation.avatar',path:base+'visitor-avatar.svg',mimeType:'image/svg+xml',width:circle.width,height:circle.height,sha256:sha(avatar)};
+
 assets['kdw.conversation.placeholder']={assetId:'kdw.conversation.placeholder',path:base+'visitor-placeholder.svg',mimeType:'image/svg+xml',width:1080,height:1920,sha256:sha(placeholder)};
 for(const s of map.screens){
  const png=fs.readFileSync(path.join(input,`screen_${s.number}@2x.png`)),svgSource=fs.readFileSync(path.join(input,`screen_${s.number}.svg`));

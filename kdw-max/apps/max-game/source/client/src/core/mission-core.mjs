@@ -6,6 +6,7 @@ import {assertMissionCommand,missionToken,deepFreeze} from '../contracts/mission
 import {createGameModel,dispatchGameCommand} from './game-core.mjs';
 import {interactionKind,validateInteraction,interactionComplete} from '../kdw-interactions-model.mjs';
 import {PERSONAL_TASKS,savePersonal,personalAction,personalComplete,catalogForPersonalReceipt} from '../kdw-personal-channel-model.mjs';
+import {forbiddenFields,catalogForTextReceipt} from '../kdw-text-policy.mjs';
 
 export const MISSION_RULES_REVISION='mission-rules-v1';
 export const TASK_CLOCK_RULES_REVISION='mission-rules-task-clock-v2';
@@ -48,6 +49,8 @@ export function dispatchMissionCommand(catalog,model,input,{now=0,internal=false
  }else if(c.type==='SELECT_MISSION'){
   if(!Object.hasOwn(catalog.missions,c.missionId))return reject('MISSION_UNAVAILABLE');
   s.missionId=c.missionId;s.runId++;s.resultReadyAt=null;
+  // Standby entry is a fresh visit; ordinary selection retains recovery semantics.
+  if(c.fresh===true)delete s.progress[s.missionId];
   const p=s.progress[s.missionId]??={completed:[],skipped:[],finished:[],answers:{},businessTool:null,currentTaskIndex:0,currentScreenId:null,scanned:false,remainingMs:initialBudget(s)};
   const ids=sequence(catalog,s,p),previousTaskIndex=p.currentTaskIndex;while(p.finished.includes(ids[p.currentTaskIndex])){p.currentTaskIndex++;p.currentScreenId=null;}
   s.startedAt=now;s.deadlineAt=now+p.remainingMs;s.pausedAt=s.ownerActive?null:now;s.scanned=p.scanned;
@@ -92,10 +95,11 @@ export function dispatchMissionCommand(catalog,model,input,{now=0,internal=false
   if(!catalog.kdwInteractions||s.status!=='task')return reject('INTERACTION_UNAVAILABLE');
   if(c.taskId!==s.taskId||c.screenId!==s.screenId)return reject('WRONG_CONTEXT');
   if(catalog.kdwPersonalChannel&&PERSONAL_TASKS.includes(s.taskId)&&(c.value.schemaVersion!==undefined||s.taskId==='blogger.comments')){
-   const error=savePersonal(s,c);if(error)return reject(error);
+   const error=savePersonal(s,c,!!catalog.kdwPersonalReplayLongReply,!catalog.kdwTextReplayLegacy);if(error)return reject(error);
   }else{
    const kind=interactionKind(s.taskId),editable=kind==='channel'?['blogger.channel.name','blogger.channel.filled'].includes(s.screenId):kind==='store'&&s.screenId==='business.store.start';
    if(!editable||!validateInteraction(kind,c.value))return reject('INVALID_INTERACTION');
+   if(kind==='channel'&&!catalog.kdwTextReplayLegacy&&forbiddenFields(c.value))return reject('TEXT_NOT_ALLOWED');
    const p=currentProgress(s);p.interactions??={};p.interactions[s.taskId]=structuredClone(c.value);
   }
   effects.push({type:'INTERACTION_SAVED',taskId:s.taskId});
@@ -107,9 +111,10 @@ export function dispatchMissionCommand(catalog,model,input,{now=0,internal=false
   if(catalog.kdwStoreActivity&&s.taskId==='business.store'&&(s.screenId==='business.store.start'||p.storeActivity)&&!storeGoal(p.storeActivity))return reject('STORE_RATING_REQUIRED');
   if(catalog.kdwPostsActivity&&s.screenId===POSTS_SCREEN&&!postsGoal(p.postsActivity??{audience:0}))return reject('POSTS_GOAL_REQUIRED');
   const a=screen.actions.find(a=>a.actionId===c.actionId);if(!a)return reject('ACTION_UNAVAILABLE');
-  if(catalog.kdwPersonalChannel&&!catalog.kdwPersonalReplayLegacy){const error=personalAction(s,c,now);if(error)return reject(error);}
+  if(catalog.kdwPersonalChannel&&!catalog.kdwPersonalReplayLegacy){const error=personalAction(s,c,now,!catalog.kdwTextReplayLegacy);if(error)return reject(error);}
   if(catalog.kdwInteractions){
    const kind=interactionKind(s.taskId),needsValue=kind==='channel'&&['channel.fill-name-example','channel.create'].includes(c.actionId)||kind==='store';
+   if(kind==='channel'&&needsValue&&!catalog.kdwTextReplayLegacy&&forbiddenFields(p.interactions?.[s.taskId]))return reject('TEXT_NOT_ALLOWED');
    if(needsValue&&!(kind==='store'&&p.storeActivity&&storeGoal(p.storeActivity))&&!(kind==='channel'&&personalComplete(p.interactions?.[s.taskId]))&&!interactionComplete(kind,p.interactions?.[s.taskId]))return reject(kind==='channel'?'CHANNEL_NAME_REQUIRED':'STORE_PRODUCT_REQUIRED');
   }
   if(screen.automaticMs!==null&&screen.automaticMs!==undefined){if(c.type!=='AUTO_SCREEN')return reject('AUTOMATIC_SCREEN');if(now-s.screenEnteredAt<screen.automaticMs)return reject('SCREEN_NOT_READY');}
@@ -139,7 +144,7 @@ export function dispatchMissionCommand(catalog,model,input,{now=0,internal=false
 export function restoreMissionModel(catalog,raw){
  try{const saved=typeof raw==='string'?JSON.parse(raw):raw;if(saved?.schemaVersion!==1||!saved.state||!Array.isArray(saved.receipts))throw new Error('Invalid mission model');
   let m=createMissionModel(catalog,{sessionId:saved.state.sessionId,rulesRevision:saved.state.rulesRevision});
-  for(const r of saved.receipts){const result=dispatchMissionCommand(catalogForPersonalReceipt(catalogForStoreReceipt(catalogForPostsReceipt(catalogForBusinessReceipt(catalog,r),r),r),r),m,r.command,{now:r.now,internal:r.internal});if(!result.reply.ok||result.duplicate||JSON.stringify(result.reply)!==JSON.stringify(r.reply))throw new Error('Invalid mission receipt');m=result.model;}
+  for(const r of saved.receipts){const result=dispatchMissionCommand(catalogForTextReceipt(catalogForPersonalReceipt(catalogForStoreReceipt(catalogForPostsReceipt(catalogForBusinessReceipt(catalog,r),r),r),r),r),m,r.command,{now:r.now,internal:r.internal});if(!result.reply.ok||result.duplicate||JSON.stringify(result.reply)!==JSON.stringify(r.reply))throw new Error('Invalid mission receipt');m=result.model;}
   if(JSON.stringify(m)!==JSON.stringify(saved))throw new Error('State differs from accepted commands');return {ok:true,model:m};
  }catch(error){return {ok:false,code:'INVALID_SAVED_MISSION',message:error.message,model:null};}
 }
