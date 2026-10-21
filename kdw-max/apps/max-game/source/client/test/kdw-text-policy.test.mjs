@@ -7,7 +7,7 @@ import {createMissionModel,dispatchMissionCommand,restoreMissionModel} from '../
 import {assertMissionCommand} from '../src/contracts/mission-command.mjs';
 const clean=v=>filterUserText(v,{final:true}).value;
 test('RU/EN dictionaries remove whole words, inflections, repetitions, homoglyphs and split forms',()=>{
- for(const v of ['блять','ЕБАТЬ','пиздец','нахуй','охуенный','ебанутый','е6aть','eбать','хyй','бляяяять','пиз.дец','х у й','е б а т ь','б*л*я*т*ь','ебать123','fuck','FUCKING','fυck','f*u*c*k','f.u.c.k','f u c k','sh1t','b!tch','motherfucker'])assert.equal(clean(v),'',v);
+ for(const v of ['блять','ЕБАТЬ','пиздец','нахуй','охуенный','ебанутый','е6aть','eбать','хyй','бляяяять','б\u200bлять','пиз.дец','х у й','е б а т ь','б*л*я*т*ь','ебать123','fuck','FUCKING','fυck','f*u*c*k','f.u.c.k','f u c k','sh1t','b!tch','motherfucker'])assert.equal(clean(v),'',v);
  assert.equal(clean('Привет, блять! Увидимся, fuck.'),'Привет, ! Увидимся, .');
  for(const s of ['fu fuck ck','Бот для магазина','пиздец','a '.repeat(100)])assert.equal(clean(clean(s)),clean(s));
 });
