@@ -1,9 +1,9 @@
-import {activityGeometry,alignActivityPhone,createRightCardLayout,fadeActivityOut} from './kdw-activity-stage.mjs';
+import {activityGeometry,alignActivityPhone,alignActivityActions,createRightCardLayout,fadeActivityOut} from './kdw-activity-stage.mjs';
 import {activityRemaining} from './kdw-development.mjs';
 import {createStoreMotion} from './kdw-store-motion.mjs';
 import {createPostTrails} from './kdw-post-trails.mjs';
 import {POSTS_SCREEN,POSTS_TASK,POSTS_RULES,BUSINESS_CHANNELS,postBank,postPhoto,createPostStreamReader,postsElapsed,postsGoal} from './kdw-posts-model.mjs';
-import {createPresentationClock} from './application/presentation-clock.mjs';
+import {createPresentationClock} from './kdw-card-clock.mjs';
 import {createFlowEntry} from './kdw-flow-entry.mjs';
 import {createCardPop} from './kdw-card-pop.mjs';
 import {postMetrics,formatPostCount,counterProgress,COUNTER_DURATION} from './kdw-post-metrics.mjs';
@@ -11,11 +11,12 @@ import {businessProfile} from './kdw-business-profile.mjs';
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const number=n=>n.toLocaleString('ru-RU');
 const chrome=name=>`./assets/kdw-native/posts-chrome/${name}.svg`;
+async function decodeImage(image){let timer;try{await Promise.race([image.decode(),new Promise((_,reject)=>{timer=setTimeout(()=>reject(Error('Изображения пока недоступны')),10000);})]);}finally{clearTimeout(timer);}}
 const art=(type)=>`<span class="kdw-post-art" data-theme="${type}"><svg viewBox="0 0 120 80" aria-hidden="true">${type==='hotel'?'<path d="M16 52V20h8v20h72V20h8v48h-8V56H24v12h-8Zm12-16V20h28v16Zm36 0V20h28v16Z"/>':'<path d="M15 15q23 12 45 0v28q-23 30-45 0Zm12 14 10 4m8-4 9-2M29 43q9 9 18 0M66 26q20 8 40-1v28q-20 22-40 0Zm10 11 7 2m9 0 7-2M78 56q8-7 16 0"/>'}</svg></span>`;
-function photo(post,type){const a=postPhoto(post.photo);return a?`<img src="./${a.path}" alt="" draggable="false">`:['sports','flowers'].includes(type)?`<span class="kdw-post-art kdw-post-theme-symbol" data-theme="${type}">${businessProfile(type).symbol}</span>`:art(type);}
+function photo(post,type){const a=postPhoto(post.photo);return a?`<img src="./${a.path}" alt="" draggable="false">`:['sports','flowers','auto'].includes(type)?`<span class="kdw-post-art kdw-post-theme-symbol" data-theme="${type}">${businessProfile(type).symbol}</span>`:art(type);}
 export function mountPostActivity({getSession}){
  const root=document.createElement('section');root.id='kdw-posts';root.hidden=true;root.setAttribute('aria-label','Публикации канала');document.body.append(root);
- const clock=createPresentationClock(),reduced=matchMedia('(prefers-reduced-motion: reduce)'),readStream=createPostStreamReader();
+ const clock=createPresentationClock({smooth:true}),reduced=matchMedia('(prefers-reduced-motion: reduce)'),readStream=createPostStreamReader();
  let context='',snapshot=null,phase='',disposed=false,loading=null,loadedType='',loadError='',ready=false,starting=false,startFailed=false,error='',pending=new Set(),chain=Promise.resolve(),feedSignature='',audience=null,lastClock=0,geometry=null,generation=0,autoScroll=true,scrollAnimation=null;
  const cards=new Map(),images=new Map(),placement=createRightCardLayout(),entry=createFlowEntry();
  const reactionStarts=new Map(),completionPop=createCardPop();
@@ -33,9 +34,9 @@ export function mountPostActivity({getSession}){
   loading=(async()=>{
    try{await Promise.all([...new Set(postBank(kind).map(p=>p.photo).filter(Boolean))].map(async id=>{
     if(images.has(id))return;const asset=postPhoto(id),image=new Image();image.src='./'+asset.path;
-    await Promise.race([image.decode(),new Promise((_,reject)=>setTimeout(()=>reject(Error('Изображения пока недоступны')),10000))]);images.set(id,image);
-   }));const profile=businessProfile(kind);if(profile.logo&&!images.has('avatar:'+kind)){const avatar=new Image();avatar.src='./'+profile.logo;await avatar.decode();images.set('avatar:'+kind,avatar);}await Promise.all(['header','composer','fire','heart','views','verified'].map(async name=>{
-    const key='chrome:'+name;if(images.has(key))return;const image=new Image();image.src=chrome(name);await image.decode();images.set(key,image);
+    await decodeImage(image);images.set(id,image);
+   }));const profile=businessProfile(kind);if(profile.logo&&!images.has('avatar:'+kind)){const avatar=new Image();avatar.src='./'+profile.logo;await decodeImage(avatar);images.set('avatar:'+kind,avatar);}await Promise.all(['header','composer','fire','heart','views','verified'].map(async name=>{
+    const key='chrome:'+name;if(images.has(key))return;const image=new Image();image.src=chrome(name);await decodeImage(image);images.set(key,image);
    }));loadedType=kind;loadError='';return true;}
    catch{loadError='Не удалось загрузить фотографии';return false;}
    finally{loading=null;}
@@ -43,7 +44,7 @@ export function mountPostActivity({getSession}){
  }
  function build(){
   placement.clear();
-  root.innerHTML=`<div class="kdw-post-phone"><header><img class="kdw-post-header-art" src="${chrome('header')}" alt=""><div class="kdw-post-identity"><strong><span class="kdw-post-channel-name">${esc(BUSINESS_CHANNELS[type()]??'Кофейня')}</span><img src="${chrome('verified')}" alt="Подтверждённый канал"></strong><small data-post-audience></small></div></header><div class="kdw-post-feed" tabindex="0" aria-label="Публикации канала"></div><button class="kdw-post-new" hidden>Новые публикации ↓</button><footer aria-label="Панель публикации MAX"><img src="${chrome('composer')}" alt="Пост · Вложения · Камера · Микрофон"></footer></div><div class="kdw-post-actions"><p data-post-hint>Выбирайте посты справа</p><button data-post-finish hidden>К следующему заданию →</button><button data-post-retry hidden>Повторить загрузку</button><p data-post-error role="status" aria-live="polite"></p></div><div class="kdw-post-cards"></div><div class="kdw-post-notice" role="status" aria-live="polite"></div>`;
+  root.innerHTML=`<div class="kdw-post-phone"><header><img class="kdw-post-header-art" src="${chrome('header')}" alt=""><div class="kdw-post-identity"><strong><span class="kdw-post-channel-name">${esc(BUSINESS_CHANNELS[type()]??'Кофейня')}</span><img src="${chrome('verified')}" alt="Подтверждённый канал"></strong><small data-post-audience></small></div></header><div class="kdw-post-feed" tabindex="0" aria-label="Публикации канала"></div><button class="kdw-post-new" hidden>Новые публикации ↓</button><footer aria-label="Панель публикации MAX"><img src="${chrome('composer')}" alt="Пост · Вложения · Камера · Микрофон"></footer></div><div class="kdw-post-actions"><p data-post-hint></p><button class="kdw-activity-button" data-post-finish hidden>К следующему заданию →</button><button class="kdw-activity-button" data-post-retry hidden>Повторить загрузку</button><p data-post-error role="status" aria-live="polite"></p></div><div class="kdw-post-cards"></div>`;
   const profile=businessProfile(type()),avatar=document.createElement('span');avatar.className='kdw-post-bound-avatar';avatar.style.background=profile.accent;avatar.innerHTML=profile.logo?`<img src="./${profile.logo}" alt="">`:esc(profile.symbol);root.querySelector('.kdw-post-phone header').append(avatar);
   const trailCanvas=document.createElement('canvas');trailCanvas.className='kdw-post-trails';trailCanvas.setAttribute('aria-hidden','true');root.prepend(trailCanvas);trails=createPostTrails(trailCanvas);
   // The full header participates in entry; do not pop the counter in only
@@ -74,11 +75,10 @@ export function mountPostActivity({getSession}){
    }
    feedSignature=signature;motion.sync();if(appended){feed.querySelector('.kdw-post-empty')?.remove();scrollToBottom();}
   }
-  const previous=audience;
   if(audience!==p.audience){audienceFrom=audience===null?p.audience:displayAudience();audienceAt=performance.now();audience=p.audience;}
   const goal=postsGoal(p);
-  root.querySelector('[data-post-finish]').hidden=!goal;root.querySelector('[data-post-hint]').textContent=goal?'Канал растёт. Отличная работа!':'Выбирайте посты справа';
-  if(previous!==null&&previous!==audience){const row=p.published.at(-1),post=postBank(p.businessType).find(item=>item.id===row.postId),notice=root.querySelector('.kdw-post-notice');notice.dataset.good=String(row.good);notice.textContent=`${row.delta>0?'+':''}${row.delta} подписчиков · ${post.reason}`;}
+  document.documentElement.dataset.kdwPostsComplete=String(goal);
+  root.querySelector('[data-post-finish]').hidden=!goal;root.querySelector('[data-post-hint]').textContent='';
  }
  function displayAudience(){const progress=reduced.matches?1:counterProgress(performance.now()-audienceAt);return Math.round(audienceFrom+((audience??audienceFrom)-audienceFrom)*progress);}
  function updateMetrics(elapsed){
@@ -172,8 +172,14 @@ export function mountPostActivity({getSession}){
   if(b.classList.contains('kdw-post-new')){autoScroll=true;scrollToBottom();b.hidden=true;}
   if(b.hasAttribute('data-post-finish')&&!motion.active()&&!getSession().busy&&postsGoal(posts())){b.disabled=true;void getSession().act(POSTS_SCREEN,'business.channel.result.continue').then(r=>{if(!r?.reply.ok&&valid()){b.disabled=false;status('Не удалось продолжить. Попробуйте ещё раз.');}});}
  });
- function clear(){motion.clear();completionPop.clear();reactionStarts.clear();fadeActivityOut(root);generation++;context='';root.hidden=true;trails?.clear();trails=null;root.replaceChildren();cards.clear();entry.clear();pending.clear();stopScroll();ready=false;starting=false;startFailed=false;audience=null;feedSignature='';autoScroll=true;error='';delete document.documentElement.dataset.kdwPosts;}
+ function clear(){motion.clear();completionPop.clear();reactionStarts.clear();fadeActivityOut(root);generation++;context='';root.hidden=true;trails?.clear();trails=null;root.replaceChildren();cards.clear();entry.clear();pending.clear();stopScroll();ready=false;starting=false;startFailed=false;audience=null;feedSignature='';autoScroll=true;error='';delete document.documentElement.dataset.kdwPosts;delete document.documentElement.dataset.kdwPostsComplete;}
  return {
+  ready(next){
+   if(!active(next))return true;
+   const kind=next.state.progress.business?.postsActivity?.businessType??next.state.progress.business?.answers?.businessType??'cafe';
+   if(loadedType!==kind&&!loading&&!loadError)void preload(kind);
+   return loadedType===kind||!!loadError;
+  },
   update(next,nextPhase){
    snapshot=next;phase=nextPhase;clock.accept(next);
    if(next?.state?.taskId===POSTS_TASK&&next.state.screenId!==POSTS_SCREEN&&!loading)void preload(next.state.progress.business?.answers?.businessType??'cafe');
@@ -186,13 +192,12 @@ export function mountPostActivity({getSession}){
   },
   align(){
    if(!context)return;const g=activityGeometry(),phone=g?.phone;
-   const available=g&&g.matched&&phone.dataset.sceneVersion?.includes(POSTS_SCREEN);
+   const available=g&&g.matched&&phone.dataset.sceneVersion?.includes(POSTS_SCREEN)&&(loadedType===type()||!!loadError);
    const editor=root.querySelector('.kdw-post-phone'),field=root.querySelector('.kdw-post-cards');
    ready=false;if(!available){root.hidden=true;root.dataset.ready='false';editor.style.opacity='0';field.style.opacity='0';return;}
    const entering=root.hidden;
-   geometry=g;const phoneAlpha=alignActivityPhone(editor,g);field.style.opacity=String(g.alpha);root.hidden=false;
-   const controls=root.querySelector('.kdw-post-actions'),uiScale=g.rect.width/390;
-   Object.assign(controls.style,{left:g.rect.left+'px',top:(g.rect.bottom+12*g.scale)+'px',width:'390px',transform:`scale(${uiScale})`,opacity:String(phoneAlpha)});controls.inert=editor.inert;
+   geometry=g;const phoneAlpha=alignActivityPhone(editor,g,{sharedPresence:true});field.style.opacity=String(g.alpha);root.hidden=false;
+   alignActivityActions(root.querySelector('.kdw-post-actions'),g,phoneAlpha,editor.inert);
    if(entering&&feedSignature)scrollToBottom();
    root.querySelector('.kdw-post-trails').style.opacity=String(g.alpha);
    ready=loadedType===type()&&!document.hidden&&phase==='task'&&phoneAlpha>.97&&!editor.inert;

@@ -19,7 +19,9 @@ export function assertMissionCatalog(c){
     if(o.answer&&(!missionToken(o.answer.kind)||typeof o.answer.value!=='string'||!o.answer.value))fail(`answer ${a.actionId}`);
    }
   }
-  const visited=new Set(),walk=id=>{if(visited.has(id))return;visited.add(id);for(const a of t.screens[id].actions)if(['navigate','skip-screen'].includes(a.outcome.kind))walk(a.outcome.screenId);};walk(t.startScreenId);if(visited.size!==Object.keys(t.screens).length)fail(`unreachable screen ${id}`);
+  const confirmation=c.kdwBusinessConfirmation;
+  if(confirmation&&t.screens[confirmation.from]&&(!t.screens[confirmation.screenId]||!t.screens[confirmation.from].actions.some(a=>a.outcome.kind==='complete-task')))fail(`invalid confirmation ${id}`);
+  const visited=new Set(),walk=id=>{if(visited.has(id))return;visited.add(id);for(const a of t.screens[id].actions)if(['navigate','skip-screen'].includes(a.outcome.kind))walk(a.outcome.screenId);if(confirmation?.from===id)walk(confirmation.screenId);};walk(t.startScreenId);if(visited.size!==Object.keys(t.screens).length)fail(`unreachable screen ${id}`);
  }
  for(const [id,m] of Object.entries(c.missions)){if(m.missionId!==id||!missionToken(id)||typeof m.title!=='string'||!m.title||typeof m.test!=='boolean'||m.completionText!==undefined&&(typeof m.completionText!=='string'||!m.completionText)||!Array.isArray(m.taskIds)||!m.taskIds.length||new Set(m.taskIds).size!==m.taskIds.length||m.taskIds.some(t=>!c.tasks[t])||!c.assets[m.qr?.assetId])fail(`invalid mission ${id}`);}
  return c;

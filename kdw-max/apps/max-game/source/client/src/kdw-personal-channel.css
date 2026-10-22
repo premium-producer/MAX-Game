@@ -25,6 +25,12 @@
 .pc-bound-avatar .pc-avatar{font-size:22px}
 .pc-bound-name{position:absolute;left:96px;top:62px;width:222px;height:24px;background:#fff;color:#101010;font-size:16px;font-weight:600;line-height:24px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pc-name-dark{top:64px;background:#17181c;color:#ddd}
+.pc-stat-avatar{position:absolute;left:132px;top:64px;width:96px;height:96px}
+.pc-stat-avatar .pc-avatar{font-size:56px}
+.pc-stat-name{position:absolute;left:24px;top:172px;width:312px;height:32px;display:block;text-align:center;color:#0c0d0e;font-size:24px;line-height:32px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pc-stat-description{position:absolute;left:24px;top:359px;width:312px;height:40px;overflow:auto;scrollbar-width:none;white-space:pre-wrap;overflow-wrap:anywhere;color:#0c0d0e;font-size:16px;line-height:20px}
+.pc-stat-link{color:#007aff;font-size:14px;line-height:20px}
+.pc-stat-subscribers{position:absolute;left:263px;top:678px;width:51px;height:16px;text-align:right;color:#858586;font-size:14px;line-height:16px}
 .pc-avatar-options{position:absolute;top:450px;left:12px;width:336px;padding:12px;display:flex;justify-content:space-between;background:#292a30;border-radius:18px;box-shadow:0 8px 30px #0008;z-index:2}
 .pc-avatar-options button{display:grid;justify-items:center;gap:5px;width:59px;border:2px solid transparent;background:transparent;border-radius:12px;padding:4px 0}
 .pc-avatar-options button[aria-pressed=true]{border-color:#007aff}

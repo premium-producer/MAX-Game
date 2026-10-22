@@ -728,5 +728,29 @@ export const PERSONAL_ASSETS={
     "width": 360,
     "height": 434,
     "sha256": "8c747d206773fff1a540b6a4402f4397c7e2d7bb9c9d505f4d73bbf6a29009cf"
+  },
+  "kdw.personal.underlay-16": {
+    "assetId": "kdw.personal.underlay-16",
+    "path": "assets/kdw-native/personal-channel/screens/underlay_16.svg",
+    "mimeType": "image/svg+xml",
+    "width": 360,
+    "height": 800,
+    "sha256": "7d5b34634fd79af11d73e044225ec16e8e2ad151b7c6c0083a225511b801d6c7",
+    "origin": {
+      "path": "UI/new_screens/personal_channel/statistic/Профиль.svg",
+      "sha256": "34379675cbe8845ad24cdc920867f08d3733b52519a32b8183c7c5c0c90226a6"
+    }
+  },
+  "kdw.personal.underlay-17": {
+    "assetId": "kdw.personal.underlay-17",
+    "path": "assets/kdw-native/personal-channel/screens/underlay_17.svg",
+    "mimeType": "image/svg+xml",
+    "width": 360,
+    "height": 800,
+    "sha256": "4a6a90cc3e670f14d88d6176b57f685f7dd8d2a5a7c52ee222e0cab21d75fb10",
+    "origin": {
+      "path": "UI/new_screens/personal_channel/statistic/Статистика_скролл_Подписчики.svg",
+      "sha256": "4a6a90cc3e670f14d88d6176b57f685f7dd8d2a5a7c52ee222e0cab21d75fb10"
+    }
   }
 };

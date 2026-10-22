@@ -1,11 +1,11 @@
 import {createRightCardLayout} from './kdw-activity-stage.mjs';
 import {createPostTrails} from './kdw-post-trails.mjs';
-import {createPresentationClock} from './application/presentation-clock.mjs';
+import {createPresentationClock} from './kdw-card-clock.mjs';
 import {storeTimeline,storeElapsed,storeGoal} from './kdw-store-rating.mjs';
 import {createFlowEntry} from './kdw-flow-entry.mjs';
 import {createCardPop} from './kdw-card-pop.mjs';
 export function createProductStream(root,markup){
- const clock=createPresentationClock(),reduced=matchMedia('(prefers-reduced-motion: reduce)'),placement=createRightCardLayout(),entry=createFlowEntry();
+ const clock=createPresentationClock({smooth:true}),reduced=matchMedia('(prefers-reduced-motion: reduce)'),placement=createRightCardLayout(),entry=createFlowEntry();
  const completionPop=createCardPop();
  let timeline=null,signature='',trails=null,canvas=null;
  function reset(){completionPop.clear();timeline=null;signature='';trails?.clear();trails=null;canvas=null;placement.clear();entry.clear();}

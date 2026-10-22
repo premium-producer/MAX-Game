@@ -10,7 +10,7 @@ export function assertMissionCommand(input){
  if(Object.hasOwn(input,'fresh')&&(input.type!=='SELECT_MISSION'||typeof input.fresh!=='boolean'))throw new TypeError('Invalid fresh mission flag');
  if(['ACT','AUTO_SCREEN'].includes(input.type)&&(!missionToken(input.screenId)||!missionToken(input.actionId)))throw new TypeError('Invalid screen/action');
  if(input.type==='SAVE_INTERACTION'&&(!missionToken(input.taskId)||!missionToken(input.screenId)||!input.value||typeof input.value!=='object'))throw new TypeError('Invalid interaction');
- if(Object.hasOwn(input,'textPolicy')&&(!['SAVE_INTERACTION','ACT'].includes(input.type)||input.textPolicy!=='kdw-text-v1'))throw new TypeError('Invalid text policy');
+ if(Object.hasOwn(input,'textPolicy')&&(!['SAVE_INTERACTION','ACT'].includes(input.type)||!['kdw-text-v1','kdw-text-v2'].includes(input.textPolicy)))throw new TypeError('Invalid text policy');
  if(['START_POSTS','PUBLISH_POST','START_STORE','PICK_PRODUCT'].includes(input.type)&&(!missionToken(input.taskId)||!missionToken(input.screenId)))throw new TypeError('Invalid posts context');
  if(['PUBLISH_POST','PICK_PRODUCT'].includes(input.type)&&!missionToken(input.spawnId))throw new TypeError('Invalid spawn');
  if(!['PUBLISH_POST','PICK_PRODUCT'].includes(input.type)&&Object.hasOwn(input,'spawnId'))throw new TypeError('Unexpected spawn');

@@ -1,4 +1,6 @@
+import {applyBusinessAll} from './kdw-business-all-model.mjs';
 import {applyBusinessChoice} from './kdw-business-choice.mjs';
+import {applyOriginalCafe} from './kdw-business-original.mjs';
 import {applyBusinessNative} from './kdw-business-native-model.mjs';
 import {applyBusinessScreens} from './kdw-business-screens.mjs';
 import {applyConversationScreens} from './kdw-conversation-model.mjs';
@@ -37,7 +39,7 @@ export function placeProduct(slots,productId,index){
  if(!Number.isInteger(index)||index<0||index>=STORE_SLOTS||!COFFEE_PRODUCTS.some(p=>p.id===productId))return [...slots];
  const next=[...slots],previous=next.indexOf(productId);if(previous!==-1&&previous!==index)next[previous]=null;next[index]=productId;return next;
 }
-export function createKdwCatalog(base){const catalog=applyBusinessNative(applyVisitorDetails(applyConversationScreens(applyBusinessScreens(applyPersonalChannel(applyPostsCatalog(applyBusinessChoice(applyNativeStore(applyReviewedTexts(structuredClone(base))))))))));catalog.contentRevision=base.contentRevision+'.kdw-r9-stand';catalog.kdwInteractions=KDW_ITERATION;return catalog;}
+export function createKdwCatalog(base,{businessScreens='custom'}={}){const catalog=applyBusinessNative(applyVisitorDetails(applyConversationScreens(applyBusinessScreens(applyPersonalChannel(applyPostsCatalog(applyBusinessChoice(applyNativeStore(applyReviewedTexts(structuredClone(base))))))))));if(businessScreens==='original')applyOriginalCafe(catalog,base);else applyBusinessAll(catalog);catalog.contentRevision=base.contentRevision+'.kdw-r9-stand'+(businessScreens==='original'?'.cafe-original-v1':'.business-all-v1');catalog.kdwInteractions=KDW_ITERATION;return catalog;}
 export function keyboardEdit(value,start,end,key,{limit=160}={}){
  start=Math.min(value.length,Math.max(0,start));end=Math.min(value.length,Math.max(start,end));
  if(key==='backspace'&&start===end&&start>0){const segments=[...new Intl.Segmenter(undefined,{granularity:'grapheme'}).segment(value.slice(0,start))];start=segments.at(-1)?.index??0;key='';}

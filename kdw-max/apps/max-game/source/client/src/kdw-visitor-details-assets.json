@@ -56,6 +56,14 @@
       "mimeType": "image/svg+xml",
       "sha256": "207b1f9da1c6c8d237d2d90103fa350443d93816d03abfc5aa683bf1288d0208"
     },
+    "kdw.visitor.digital-id-create-id-ready": {
+      "assetId": "kdw.visitor.digital-id-create-id-ready",
+      "path": "assets/kdw-native/visitor-details/digital-id-create-id-ready.svg",
+      "width": 360,
+      "height": 800,
+      "mimeType": "image/svg+xml",
+      "sha256": "78ecd6041b50c8ba7d914cd4d24194cf77c72c20d29222513a6d57e62fdf5ebe"
+    },
     "kdw.visitor.communication-call-chat": {
       "assetId": "kdw.visitor.communication-call-chat",
       "path": "assets/kdw-native/visitor-details/communication-call-chat.svg",
@@ -73,6 +81,7 @@
     "business.bot.create": "kdw.visitor.business-bot-create",
     "business.bot.filled": "kdw.visitor.business-bot-filled",
     "business.bot.ready": "kdw.visitor.business-bot-ready",
+    "digital-id.create-id.ready": "kdw.visitor.digital-id-create-id-ready",
     "communication.call.chat": "kdw.visitor.communication-call-chat"
   },
   "regions": {
@@ -120,6 +129,14 @@
       "r": 17.5,
       "visibleFrom": 65,
       "dim": 0.35
+    },
+    "digital-id.create-id.ready": {
+      "kind": "id-photo",
+      "x": 69,
+      "y": 129,
+      "width": 222,
+      "height": 222,
+      "crop": "circle"
     },
     "communication.call.chat": {
       "kind": "times",
@@ -227,6 +244,14 @@
     "business.bot.ready": {
       "assetId": "figma.296-18852",
       "sha256": "5047c3219f2b9185e976a2bad5973fbec39759740193728482fec7410ff38bf9"
+    },
+    "digital-id.create-id.ready": {
+      "assetId": "figma.296-15260",
+      "sha256": "e61ae178507bf56f76a1a328ef84fbd22344e74a195d5a71cf27de54fa9e6e14",
+      "reference": {
+        "path": "UI/new_screens/ID/Главная с фото. Нет льгот.svg",
+        "sha256": "57a330e469fbf4a13cdf73cccb1c4affd578d8a677d2c3b032137a4a4407f9d0"
+      }
     },
     "communication.call.chat": {
       "assetId": "figma.296-15983",

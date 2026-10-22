@@ -65,12 +65,25 @@ export class KdwTaskJourney extends V5RevealJourney{
    this.sceneRunId=next?.runId;this.taskChange=null;this.replayPending=false;
   }
   super.accept(snapshot);
+  if(next?.status==='result'&&next.screenId==='business.platform.ready')this._displayView={...this._displayView,preserveAuthoredCompletion:true};
   if(retainCompletion){
    this.resultPresentationKey=presentationKey;
    this._displayView={...snapshot.view,instruction:displayed.view.instruction,preserveAuthoredCompletion:true};
   }
  }
  tick(dt,options){
+  // The confirmation is a genuine result. Give it the same 800 ms visible
+  // dwell as other results, starting after decoding/morphing, not the command.
+  const confirmation=this.displayedState?.screenId==='business.platform.ready'&&this.displayedState?.status==='result'&&
+   this.snapshot?.state.status==='result'&&this.snapshot.state.screenId===this.displayedState.screenId&&this.snapshot.state.runId===this.displayedState.runId;
+  const key=confirmation?`${this.displayedState.runId}:${this.displayedState.revision}`:null;
+  if(key!==this.confirmationKey){this.confirmationKey=key;this.confirmationVisibleMs=0;}
+  if(confirmation){
+   const visible=options.active!==false&&!options.busy&&!options.dragging&&options.deviceReady&&options.deviceShown;
+   if(visible)this.confirmationVisibleMs+=Math.max(0,Math.min(.1,dt))*1000;
+   if(this.confirmationVisibleMs<800)options={...options,busy:true};
+   this._displayView={...this._displayView,preserveAuthoredCompletion:true};
+  }
   super.tick(dt,options);
   if(this.replayPending&&this.displayedState?.runId===this.snapshot.state.runId){this.replayPending=false;this.syncTaskNodes();}
  }

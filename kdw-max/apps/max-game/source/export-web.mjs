@@ -9,7 +9,7 @@ const source=path.dirname(fileURLToPath(import.meta.url)),root=path.resolve(sour
 const modules=path.resolve(process.argv[2]??path.join(source,'client/node_modules')),{build}=await import(pathToFileURL(path.join(modules,'esbuild/lib/main.js')));
 const hash=b=>crypto.createHash('sha256').update(b).digest('hex'),files=new Map();
 function put(name,bytes){if(name.startsWith('/')||name.split('/').includes('..'))throw Error('Invalid export path');files.set(name,Buffer.from(bytes));}
-function add(name){name=name.replaceAll('\\','/');if(files.has(name))return;const full=path.resolve(www,name);if(!full.startsWith(www+path.sep))throw Error('Asset outside www');if(!fs.existsSync(full))throw Error('Missing web asset: '+name);put(name,fs.readFileSync(full));}
+function add(name){name=name.replaceAll('\\','/');if(files.has(name))return;const full=path.resolve(www,name);if(!full.startsWith(www+path.sep))throw Error('Asset outside www: '+name);if(!fs.existsSync(full))throw Error('Missing web asset: '+name);put(name,fs.readFileSync(full));}
 function tree(dir){for(const e of fs.readdirSync(path.join(www,dir),{withFileTypes:true})){const name=dir+'/'+e.name;if(e.isDirectory())tree(name);else add(name);}}
 const catalog=createKdwCatalog(JSON.parse(fs.readFileSync(path.join(source,'client/src/reviewed-content/mission-catalog.json'))));
 for(const a of Object.values({...catalog.assets,...BUSINESS_UI_ASSETS}))if(a.path)add(a.path);
@@ -23,6 +23,9 @@ for(const name of Object.keys(inputManifest.inputs)){
  if(hash(Buffer.from(text))!==inputManifest.inputs[name])throw Error('Rebuild the portable game before web export: '+name);
  for(const m of text.matchAll(/["'`]\.\/(assets|brand|icons|audio|webgl-v5|earth)\/([^"'`\s${}]+)["'`]/g))if(fs.existsSync(path.join(www,m[1],m[2]))&&fs.statSync(path.join(www,m[1],m[2])).isFile())add(m[1]+'/'+m[2]);
 }
+// The portable stylesheet contains this source-relative URL. In the exported
+// webgl-v5 stylesheet its asset root is one directory up.
+put('webgl-v5/kdw-interactions.css',files.get('webgl-v5/kdw-interactions.css').toString().replaceAll('../../assets/','../assets/'));
 // Resolve stylesheet resource dependencies and reject a missing font/image during export.
 for(const [name,bytes] of files)if(name.endsWith('.css'))for(const m of bytes.toString().matchAll(/url\(\s*["']?([^"')]+)["']?\s*\)/g)){if(/^(data:|https?:|#)/.test(m[1]))continue;add(path.posix.normalize(path.posix.join(path.posix.dirname(name),m[1].split('?')[0])));}
 // Lossless web derivatives; original source art and the portable www stay intact.
@@ -41,7 +44,9 @@ origins[idleVideo.path]={path:idleVideo.path,sha256:idleVideo.sha256};
 for(const [name,bytes] of [...files]){
  if(/\.(png|jpe?g)$/i.test(name)&&rasterPaths.has(name)){
   const converted=await compress(bytes);
-  if(converted.length<bytes.length){const next=name.replace(/\.[^.]+$/,'.webp');if(files.has(next))continue;files.delete(name);put(next,converted);aliases[name]=next;origins[next]={path:name,sha256:hash(bytes)};}
+  // Some native media components read canonical paths from JSON directly.
+  // Keep those URLs valid alongside derivatives used by WebAssets.
+  if(converted.length<bytes.length){const next=name.replace(/\.[^.]+$/,'.webp');if(files.has(next))continue;put(next,converted);aliases[name]=next;origins[next]={path:name,sha256:hash(bytes)};}
  }else if(name.endsWith('.svg')){
   let text=bytes.toString();for(const m of text.matchAll(/data:image\/png;base64,([A-Za-z0-9+/=\r\n]+)/g)){const raw=Buffer.from(m[1],'base64'),key=hash(raw);if(!embedded.has(key))embedded.set(key,await compress(raw));const webp=embedded.get(key);if(webp.length<raw.length)text=text.replace(m[0],'data:image/webp;base64,'+webp.toString('base64'));}
   if(text!==bytes.toString()){put(name,text);origins[name]={path:name,sha256:hash(bytes)};}

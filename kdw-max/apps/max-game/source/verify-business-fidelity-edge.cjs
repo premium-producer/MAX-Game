@@ -15,7 +15,7 @@ app.whenReady().then(async()=>{try{
  await w.loadURL(url);await click('[data-idle-mission=business]');await screen('business.platform.business-type');
  await js("document.querySelector('[data-bn-action=\"business.platform.choose-flowers\"]').click();document.querySelector('[data-bn-action=\"business.platform.choose-flowers\"]').click()");
  await screen('business.platform.login');await delay(600);assert.equal(await js('document.documentElement.dataset.kdwScreen'),'business.platform.login');checks.push('double choice commits once');
- await next();for(const id of ['business.platform.profile','business.platform.verification','business.platform.ready','business.channel.create','business.channel.continue','business.channel.open','business.channel.setup','business.channel.details','business.channel.description']){await screen(id);if(id==='business.channel.description')break;await next();}
+ await next();for(const id of ['business.platform.profile','business.platform.verification','business.channel.create','business.channel.continue','business.channel.open','business.channel.setup','business.channel.details','business.channel.description']){await screen(id);if(id==='business.channel.description')break;await next();}
  assert.equal(await js("document.querySelector('.bn-composer')"),null);await next();await screen('business.channel.type');assert.equal(await js("document.querySelector('[data-bn-binding=name]').textContent"),'Цветочный магазин');
  const run=await js('document.documentElement.dataset.kdwRun');await click('[data-object="business.channel"]');await screen('business.channel.create');
  assert.notEqual(await js('document.documentElement.dataset.kdwRun'),run);assert.equal(await js("document.querySelector('.bn-surface').dataset.business"),'flowers');checks.push('replay returns to first task screen with same business');
@@ -30,7 +30,7 @@ app.whenReady().then(async()=>{try{
  // Fault injection is scoped to this disposable browser session.
  let blocked=0;w.webContents.session.webRequest.onBeforeRequest({urls:[server.origin+'/assets/kdw-native/business-components/verification-bank.svg']},(_d,done)=>{blocked++;done({cancel:true});});await w.webContents.session.clearCache();
  w.setContentSize(1920,1080);await w.loadURL(url);await click('[data-idle-mission=business]');await screen('business.platform.business-type');await click('[data-bn-action="business.platform.choose-cafe"]');await screen('business.platform.login');
- await next();await screen('business.platform.profile');await next();await screen('business.platform.verification');await next();await screen('business.platform.ready');
+ await next();await screen('business.platform.profile');await next();await screen('business.platform.verification');await next();await screen('business.channel.create');
  assert.ok(blocked>0,'Fault was not injected');checks.push({missingImageRequestsBlocked:blocked,readinessAndNavigation:true});
  fs.writeFileSync(path.join(report,'edge-checks.json'),JSON.stringify({passed:true,bundle:JSON.parse(fs.readFileSync(path.join(root,'www/webgl-v5/r9-build.json'))).bundleSha256,checks,expectedFaultErrors:errors},null,2));w.destroy();await server.close();app.exit(0);
  }catch(e){fs.writeFileSync(path.join(report,'edge-checks.json'),JSON.stringify({passed:false,error:e.stack,checks,errors},null,2));if(w){fs.writeFileSync(path.join(report,'edge-failure.png'),(await w.webContents.capturePage()).toPNG());w.destroy();}await server?.close();app.exit(1);}});

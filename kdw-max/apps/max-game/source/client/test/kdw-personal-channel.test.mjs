@@ -40,6 +40,14 @@ test('one custom profile, private/public setup, reply and returned post persist 
  const persistence=createMemoryPersistencePort();await persistence.create('personal-test',{schemaVersion:2,mission:d.model,layouts:{layoutRevision:0,positions:{},receipts:[]},clockCheckpointAt:d.now});
  const app=createMissionSessionApplication({catalog,persistence,now:()=>d.now+100});assert.equal((await app.getSnapshot('personal-test')).state.progress.blogger.personalChannel.id,id);await app.close();
  d.act('blogger.comments.returned-post.continue');d.advance();assert.equal(d.model.state.taskId,'blogger.statistics');assert.equal(personalProfile(d.model.state).name,value.name);
+ assert.equal(Object.keys(catalog.tasks['blogger.statistics'].screens).length,2);
+ assert.equal(catalog.tasks['blogger.statistics'].screens[d.model.state.screenId].assetId,'kdw.personal.underlay-16');
+ assert.equal(d.act('blogger.statistics.menu.action-1').reply.ok,true);
+ assert.equal(d.model.state.screenId,'blogger.statistics.statistics');
+ assert.equal(catalog.tasks['blogger.statistics'].screens[d.model.state.screenId].assetId,'kdw.personal.underlay-17');
+ assert.equal(personalProfile(d.model.state).id,id);
+ assert.equal(restoreMissionModel(catalog,d.model).ok,true);
+ assert.equal(d.act('blogger.statistics.statistics.action-1').reply.ok,true);
 });
 test('invalid custom payloads, paused owner and stale context cannot change profile',()=>{
  const d=driver();d.begin();assert.equal(validPersonalDraft(value),true);assert.equal(validSlug('Канал'),false);

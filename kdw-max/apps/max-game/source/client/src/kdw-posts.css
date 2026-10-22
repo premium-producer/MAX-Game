@@ -23,8 +23,9 @@
 .kdw-post-phone:not([data-activity-aligned]){visibility:hidden}
 .kdw-post-feed{position:relative;flex:1;overflow:auto;overscroll-behavior:contain;touch-action:pan-y;padding:0 6.5px 12px;scrollbar-width:none;min-height:0;background:#0d0e10}
 .kdw-post-empty{margin:130px 10px;text-align:center;font-size:20px;line-height:1.6;color:#a6a0b8}.kdw-post-empty strong{font-weight:500;color:#eee}
-.kdw-feed-post{width:315.25px;margin:0 0 14px;border-radius:18px;background:#36394e;overflow:hidden}
-.kdw-feed-photo{height:210.17px;background:#525252;overflow:hidden}.kdw-feed-photo img,.kdw-fall-photo img,.kdw-post-flight img{width:100%;height:100%;object-fit:cover;display:block}
+.kdw-feed-post{--kdw-post-radius:18px;width:315.25px;margin:0 0 14px;border-radius:var(--kdw-post-radius);background:#36394e;overflow:hidden}
+/* Flight geometry reads the photo itself; match the card's visible upper corners. */
+.kdw-feed-photo{height:210.17px;background:#525252;border-radius:var(--kdw-post-radius,18px) var(--kdw-post-radius,18px) 0 0;overflow:hidden}.kdw-feed-photo img,.kdw-fall-photo img,.kdw-post-flight img{width:100%;height:100%;object-fit:cover;display:block}
 .kdw-feed-post[data-arriving]{opacity:0}.kdw-feed-post[data-landing]{opacity:var(--kdw-reveal,0)}.kdw-feed-copy{padding:9px 10px 6px}.kdw-feed-copy strong{font-size:18px;font-weight:400;line-height:1.25}
 .kdw-feed-copy p{font-size:18px;line-height:1.25;margin:24px 0 12px;color:inherit}
 .kdw-feed-reactions{display:flex;gap:5px;align-items:center}
@@ -33,8 +34,7 @@
 .kdw-feed-meta{display:flex;justify-content:flex-end;align-items:center;gap:3px;height:15px;color:#9295a6;font-size:11px;font-variant-numeric:tabular-nums}.kdw-feed-meta img{width:17.7px;height:17.7px}
 .kdw-post-phone footer{flex-shrink:0;height:78px;background:#1e1f24}.kdw-post-phone footer>img{display:block;width:100%;height:100%}
 .kdw-post-actions{position:absolute;transform-origin:0 0;text-align:center;z-index:4;pointer-events:auto}
-.kdw-post-actions p{font-size:17px;margin:4px 0;color:#cbc4da}.kdw-post-actions [data-post-error]:empty{display:none}
-.kdw-post-actions button{border:0;border-radius:25px;background:linear-gradient(110deg,#109bef,#2a61eb);color:white;padding:16px 20px;width:100%;font-size:23px}
+.kdw-post-actions p{font-size:17px;margin:4px 0;color:#cbc4da}.kdw-post-actions [data-post-error]:empty,.kdw-post-actions [data-post-hint]:empty{display:none}
 .kdw-post-actions:has([data-post-finish]:not([hidden])) [data-post-hint]{display:none}
 .kdw-post-goal{display:flex;justify-content:space-between;font-size:17px;color:#c1b9d0}.kdw-post-goal strong{font-weight:500;color:#f8f5ff}
 .kdw-post-progress{height:6px;border-radius:8px;background:#42334e;margin-top:12px;overflow:hidden}.kdw-post-progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,#933cff,#25c2ff);transition:width .35s ease}
@@ -43,7 +43,7 @@
 .kdw-post-new{font-size:16px;margin:0;padding:8px;flex-shrink:0}.kdw-post-home{height:4px;width:100px;border-radius:8px;background:#eee;display:block;align-self:center;margin:9px;flex-shrink:0}
 .kdw-post-cards{position:absolute;inset:0;pointer-events:none}
 .kdw-post-trails{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
-.kdw-post-phone{z-index:1}.kdw-post-cards{z-index:2}.kdw-post-notice{z-index:3}
+.kdw-post-phone{z-index:1}.kdw-post-cards{z-index:2}
 .kdw-falling-post{position:absolute;left:0;top:0;border:0;border-radius:40em;overflow:hidden;isolation:isolate;padding:12em 12em 18em;background:var(--kdw-card-surface);color:var(--max-white,#fff);text-align:left;pointer-events:auto;touch-action:none;box-shadow:0 16em 48em #0d001a80;will-change:transform}
 .kdw-falling-post:hover{box-shadow:0 16em 48em #0d001a80,0 0 44em #6e1aff66}
 .kdw-falling-post:disabled{cursor:default}.kdw-falling-post[data-pending]{filter:brightness(.85)}
@@ -54,13 +54,11 @@
 .kdw-post-art{display:grid;place-items:center;width:100%;height:100%;background:radial-gradient(ellipse at 70% 20%,#67b2e8,#362e74 75%)}
 .kdw-post-art[data-theme=theater]{background:radial-gradient(ellipse at 70% 20%,#c26097,#532659 75%)}.kdw-post-art svg{width:65%;height:65%;fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
 .kdw-post-flight{position:fixed;z-index:3;border-radius:16px;overflow:hidden;pointer-events:none;box-shadow:0 0 36px #a349ff88}
-.kdw-post-notice{position:absolute;left:50%;bottom:3%;transform:translateX(-50%);max-width:80vw;min-width:20px;padding:10px 18px;border-radius:18px;background:#17112bd9;color:#a6f2db;text-align:center;font-size:16px;pointer-events:none}
-.kdw-post-notice:empty{display:none}.kdw-post-notice[data-good=false]{color:#ffb1cb}
 @media(prefers-reduced-motion:reduce){.kdw-post-progress i{transition:none}.kdw-falling-post{will-change:auto}}
 @media(prefers-reduced-motion:reduce){.kdw-post-trails{display:none}}
 
 /* One route for both activities: only the reference copy yields its space. */
-html[data-kdw-posts=active] .context-popup,html[data-kdw-posts=active] .guided-caption,html[data-kdw-interaction=store][data-kdw-store-playing=true] .context-popup,html[data-kdw-interaction=store][data-kdw-store-playing=true] .guided-caption{opacity:0!important;pointer-events:none!important}
+html[data-kdw-posts=active]:not([data-kdw-posts-complete=true]) .context-popup,html[data-kdw-posts=active]:not([data-kdw-posts-complete=true]) .guided-caption,html[data-kdw-interaction=store][data-kdw-store-playing=true] .context-popup,html[data-kdw-interaction=store][data-kdw-store-playing=true] .guided-caption{opacity:0!important;pointer-events:none!important}
 html[data-kdw-posts=active] .route-phone .client-actions{visibility:hidden!important;pointer-events:none!important}
 .context-popup,.guided-caption{transition:opacity .28s ease}
 .kdw-post-cards,.kdw-post-trails,.kdw-product-stream{transition:opacity .28s ease}

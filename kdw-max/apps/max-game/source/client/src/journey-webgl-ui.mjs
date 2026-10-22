@@ -1,4 +1,5 @@
 import {V5_MOTION} from './journey-v5-motion-profile.mjs';
+import {BUSINESS_ORIGINAL} from './kdw-business-original.mjs';
 import {createDeviceVideoTexture} from './journey-v5-video-source.mjs';
 import * as THREE from 'three';
 import {SVGLoader} from 'three/addons/loaders/SVGLoader.js';
@@ -11,7 +12,8 @@ import {INTERACTION_BAND} from './circle-model.mjs';
 import {JourneyTransition} from './journey-transition.mjs';
 import {RouteReconnect} from './journey-reconnect.mjs';
 import {PopupFocus,InstructionMotion,TaskContentTransition,joinTaskContentCommit} from './journey-popup-motion.mjs';
-import {V5DeviceMorph,v5DeviceMetrics} from './journey-v5-device-morph.mjs';
+import {v5DeviceMetrics} from './journey-v5-device-morph.mjs';
+import {KdwDeviceMorph as V5DeviceMorph} from './kdw-device-morph.mjs';
 import {sharedTaskMarkup} from './journey-shared-ui.mjs';
 import {objectContextPresence,glassControlPresence,taskContentPresence,readGlassControls,publishGlassFrame,clearGlassFrame} from '../../service/public/max-panel-optics.js';
 import {scenePose,projectBounds} from './journey-scene-pose.mjs';
@@ -92,6 +94,7 @@ export function webglTextRasterBounds(metrics,width,height){
 }
 
 export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startup=null,gradients=null}){
+ const confirmationPanel=el=>!BUSINESS_ORIGINAL&&el?.matches('.demo-app')&&el.closest('.route-phone')?.dataset.sceneVersion?.includes(':business.platform.ready:');
  const referenceVisual=document.documentElement.dataset.visual==='reference';
  const bfmVisual=document.documentElement.dataset.visual==='webgl-bfm-v5';
  const scene=new THREE.Scene(),camera=new THREE.OrthographicCamera(0,1,0,1,-10,10);
@@ -770,6 +773,9 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startu
      const t=Math.min(1,age/.4),ease=1-Math.pow(1-t,3);dy=12*(1-ease);s=.96+.04*ease;moving=true;
 
     }else if(el.matches('.attract-icons>.tile')&&!reduced.matches){dy=Math.sin(time*.7+base.x)*5;}
+    // Standby parts enter only after their own resource is prepared. Apply the
+    // same pose to GPU geometry and DOM hit targets, without a second CSS fade.
+    if(el.dataset.idlePart==='true'&&!reduced.matches){const p=Number(el.dataset.pathPresence??0);dy+=36*(1-p);s*=.96+.04*p;}
     // Both hit targets and optical bounds follow precisely the visible group.
     const transform=`translate(${dx}px,${dy}px) scale(${s})`;
     if(el.style.transform!==transform){el.style.transform=transform;moving=true;}
@@ -834,6 +840,9 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startu
     if(m.uniforms?.scanProgress)m.uniforms.scanProgress.value=Number(el.closest('[data-palm]')?.dataset.progress||0);
     const retained=host?.dataset.uiRetained&&el.closest('[data-object]')?.dataset.object===host.dataset.uiRetained;
     let presence=el?.closest('[hidden]')?0:retained?1:Number(host?.dataset.uiPresence??1);
+    // Retain the shell resource/readiness owner, but the confirmation is a
+    // standalone SVG snack, with no device bezel or glass behind it.
+    if(m.userData.deviceShell&&confirmationPanel(el))presence=0;
     const activityCopy=el?.closest('.context-popup,.guided-caption');
     if(activityCopy)presence*=Number(getComputedStyle(activityCopy).opacity);
     if(document.documentElement.dataset.kdwPosts==='active'&&el?.closest('.route-phone .client-actions'))presence=0;
@@ -924,7 +933,7 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startu
     }
     if(artwork&&uploadedPhoneTextures.has(material.map))image.dataset.gpuReady='true';
    }
-   const panes=[...root.querySelectorAll('.context-popup .instruction,.context-popup .demo-app,.field-success,.v5-device-timer')].filter(el=>!el.closest('[hidden]')).map(el=>({...rect(el),radius:parseFloat(getComputedStyle(el).borderTopLeftRadius),opacity:glassControlPresence(el,document)*(el.closest('.context-popup')?Number(getComputedStyle(el.closest('.context-popup')).opacity):1)*(el.matches('.v5-mission-qr')?1:Number(el.closest('.journey-zone')?.dataset.finalGamePresence??1))})).filter(pane=>pane.opacity>.001);
+   const panes=[...root.querySelectorAll('.context-popup .instruction,.context-popup .demo-app,.field-success,.v5-device-timer')].filter(el=>!el.closest('[hidden]')&&!confirmationPanel(el)).map(el=>({...rect(el),radius:parseFloat(getComputedStyle(el).borderTopLeftRadius),opacity:glassControlPresence(el,document)*(el.closest('.context-popup')?Number(getComputedStyle(el.closest('.context-popup')).opacity):1)*(el.matches('.v5-mission-qr')?1:Number(el.closest('.journey-zone')?.dataset.finalGamePresence??1))})).filter(pane=>pane.opacity>.001);
    contextGlass.render(renderer,scene,camera,panes,getSize());
    for(const phone of root.querySelectorAll('.route-phone[data-media-ready-key]')){
     const key=phone.dataset.sceneVersion;

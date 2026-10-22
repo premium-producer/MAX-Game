@@ -4,8 +4,8 @@ export const PERSONAL_AVATARS=Object.freeze(['cinema','cat','game','island','hea
 export const PERSONAL_LIMITS=Object.freeze({name:64,description:160,slug:32,reply:200});
 // Match native maxlength and keyboardEdit (UTF-16), without leaving a half emoji.
 export function limitPersonalReply(value){let s=String(value).slice(0,PERSONAL_LIMITS.reply);if(/[\uD800-\uDBFF]$/.test(s))s=s.slice(0,-1);return s;}
-export const PERSONAL_TASKS=Object.freeze(['blogger.channel','blogger.comments']);
-export const PERSONAL_SCREEN_NUMBERS=Object.freeze({'blogger.channel.chats':1,'blogger.channel.menu':2,'blogger.channel.name':4,'blogger.channel.filled':4,'blogger.channel.privacy':5,'blogger.channel.public-confirm':6,'blogger.channel.public-link':7,'blogger.channel.public-filled':8,'blogger.channel.subscribers':9,'blogger.channel.created':10,'blogger.comments.post':11,'blogger.comments.input':12,'blogger.comments.reply':13,'blogger.comments.result':14,'blogger.comments.returned-post':15});
+export const PERSONAL_TASKS=Object.freeze(['blogger.channel','blogger.comments','blogger.statistics']);
+export const PERSONAL_SCREEN_NUMBERS=Object.freeze({'blogger.channel.chats':1,'blogger.channel.menu':2,'blogger.channel.name':4,'blogger.channel.filled':4,'blogger.channel.privacy':5,'blogger.channel.public-confirm':6,'blogger.channel.public-link':7,'blogger.channel.public-filled':8,'blogger.channel.subscribers':9,'blogger.channel.created':10,'blogger.comments.post':11,'blogger.comments.input':12,'blogger.comments.reply':13,'blogger.comments.result':14,'blogger.comments.returned-post':15,'blogger.statistics.menu':16,'blogger.statistics.statistics':17});
 const exact=(v,keys)=>v&&typeof v==='object'&&!Array.isArray(v)&&Object.keys(v).sort().join('|')===[...keys].sort().join('|');
 const text=(v,n,multiline=false)=>typeof v==='string'&&v.length<=n&&!/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(v)&&(multiline||!/[\r\n]/.test(v));
 export const validSlug=v=>typeof v==='string'&&/^[a-z][a-z0-9_]{3,31}$/.test(v);
@@ -19,12 +19,12 @@ export function savePersonal(state,c,legacyReply=false,moderate=true){
  const p=state.progress.blogger;
  if(c.taskId==='blogger.channel'){
   if(!['blogger.channel.name','blogger.channel.filled','blogger.channel.privacy','blogger.channel.public-confirm','blogger.channel.public-link','blogger.channel.public-filled'].includes(state.screenId)||!validPersonalDraft(c.value))return 'INVALID_INTERACTION';
-  if(moderate&&forbiddenFields(c.value))return 'TEXT_NOT_ALLOWED';
+  if(moderate&&forbiddenFields(c.value,moderate===true?undefined:moderate))return 'TEXT_NOT_ALLOWED';
   p.interactions??={};p.interactions[c.taskId]=structuredClone(c.value);
   if(p.personalChannel)p.personalChannel={...p.personalChannel,...structuredClone(c.value)};
  }else{
   if(!['blogger.comments.input','blogger.comments.reply'].includes(state.screenId)||!validReply(c.value)||(!legacyReply&&c.value.reply.length>PERSONAL_LIMITS.reply))return 'INVALID_INTERACTION';
-  if(moderate&&forbiddenFields(c.value))return 'TEXT_NOT_ALLOWED';
+  if(moderate&&forbiddenFields(c.value,moderate===true?undefined:moderate))return 'TEXT_NOT_ALLOWED';
   p.interactions??={};p.interactions[c.taskId]=structuredClone(c.value);
  }
  return null;
@@ -33,7 +33,7 @@ export function personalAction(state,c,now,moderate=true){
  const p=state.progress.blogger;if(!p)return null;
  const draft=p.interactions?.['blogger.channel'];
  const actionId=({'personal.channel.create':'channel.create','personal.channel.save-public-link':'channel.save-public-link','personal.comments.send':'blogger.comments.reply.action-1'})[c.actionId]??c.actionId;
- if(moderate&&(['channel.fill-name-example','channel.create','channel.fill-link-example','channel.save-public-link'].includes(actionId)&&forbiddenFields(draft)||actionId==='blogger.comments.reply.action-1'&&forbiddenFields(p.interactions?.['blogger.comments'])))return 'TEXT_NOT_ALLOWED';
+ if(moderate&&(['channel.fill-name-example','channel.create','channel.fill-link-example','channel.save-public-link'].includes(actionId)&&forbiddenFields(draft,moderate===true?undefined:moderate)||actionId==='blogger.comments.reply.action-1'&&forbiddenFields(p.interactions?.['blogger.comments'],moderate===true?undefined:moderate)))return 'TEXT_NOT_ALLOWED';
  if(c.actionId==='personal.channel.create'&&!personalComplete(draft))return 'CHANNEL_NAME_REQUIRED';
  if(c.actionId==='personal.channel.save-public-link'&&(!personalComplete(draft)||!validSlug(draft.slug)))return 'CHANNEL_LINK_REQUIRED';
  if(draft?.schemaVersion===2){

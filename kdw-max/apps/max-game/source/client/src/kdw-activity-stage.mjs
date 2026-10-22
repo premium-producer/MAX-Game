@@ -45,11 +45,16 @@ export function createRightCardLayout(){
  };
 }
 const activityEntries=new WeakMap();
-export function alignActivityPhone(node,g){
+export function alignActivityActions(node,g,alpha,inert){
+ const scale=g.rect.width/390;
+ Object.assign(node.style,{left:g.rect.left+'px',top:(g.rect.bottom+32*scale)+'px',width:'390px',transform:`scale(${scale})`,opacity:String(alpha)});
+ node.inert=inert;
+}
+export function alignActivityPhone(node,g,{sharedPresence=false}={}){
  const now=performance.now();
  if(!activityEntries.has(node))activityEntries.set(node,now);
  const progress=matchMedia('(prefers-reduced-motion: reduce)').matches?1:Math.min(1,Math.max(0,(now-activityEntries.get(node))/360));
- const alpha=Math.min(g.alpha,progress*progress*(3-2*progress));
+ const alpha=sharedPresence?g.alpha:Math.min(g.alpha,progress*progress*(3-2*progress));
  const scale=g.rect.width/390;
  Object.assign(node.style,{left:g.rect.left+'px',top:g.rect.top+'px',height:g.rect.height/scale+'px',transform:`scale(${scale})`,opacity:String(alpha)});
  node.dataset.activityAligned='true';

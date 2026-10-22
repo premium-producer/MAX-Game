@@ -26,6 +26,24 @@ for(const [id,cx,cy,r,options={}] of profiles){
  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${asset.width}" height="${asset.height}" viewBox="0 0 ${asset.width} ${asset.height}"><defs><clipPath id="avatar"><circle cx="${cx}" cy="${cy}" r="${r}"/></clipPath><clipPath id="visible"><rect width="${asset.width}" height="${asset.height}" y="${options.visibleFrom??0}"/></clipPath></defs>${background}<g clip-path="url(#avatar)"><g clip-path="url(#visible)"><svg data-visitor-viewport="circle" x="${x}" y="${y}" width="${d}" height="${d}" viewBox="${crop.x} ${crop.y} ${crop.width} ${crop.height}" preserveAspectRatio="none"><image data-visitor-photo="true" width="1080" height="1920" href="${photo.dataUri}"/></svg>${options.dim?`<rect x="${x}" y="${y}" width="${d}" height="${d}" fill="black" opacity="${options.dim}"/>`:''}</g></g></svg>\n`;
  save(id,asset,composeVisitorScreen(svg,photo),{kind:'avatar',cx,cy,r,...options});
 }
+// Keep the canvas-safe reviewed ID artwork. The newly supplied SVG uses the
+// same portrait path; replace its pattern contents, not the surrounding UI.
+{
+ const id='digital-id.create-id.ready',{asset,bytes}=original(id),svg=bytes.toString('utf8');
+ const referencePath=path.resolve(source,'../../../UI/new_screens/ID/Главная с фото. Нет льгот.svg'),reference=fs.readFileSync(referencePath,'utf8');
+ const portrait=/<path d="([^"]+)" fill="url\(#(pattern0_[^)]+)\)"\/>/;
+ const sourcePath=svg.match(portrait),referenceShape=reference.match(portrait);
+ if(!sourcePath||!referenceShape||sourcePath[1]!==referenceShape[1])throw Error('ID portrait geometry changed');
+ const patternId=sourcePath[2],pattern=new RegExp(`(<pattern id="${patternId}"[^>]*>)[\\s\\S]*?</pattern>`),old=svg.match(pattern);
+ const imageId=old?.[0].match(/xlink:href="#([^"]+)"/)?.[1];
+ if(!imageId)throw Error('ID portrait source missing');
+ const r=visitorCrop('circle');
+ const viewport=`<svg data-visitor-viewport="circle" x="0" y="0" width="1" height="1" viewBox="${r.x} ${r.y} ${r.width} ${r.height}" preserveAspectRatio="none"><image data-visitor-photo="true" width="1080" height="1920" href="${photo.dataUri}"/></svg>`;
+ const prepared=svg.replace(pattern,(_,open)=>open+viewport+'</pattern>').replace(new RegExp(`<image id="${imageId}"[^>]*\\/>`),'');
+ if(prepared.includes(`#${imageId}`))throw Error('Unexpected shared ID portrait');
+ sourcePins[id].reference={path:'UI/new_screens/ID/Главная с фото. Нет льгот.svg',sha256:sha(reference)};
+ save(id,asset,composeVisitorScreen(prepared,photo),{kind:'id-photo',x:69,y:129,width:222,height:222,crop:'circle'});
+}
 // Reconstruct only each timestamp's local background from clean scanlines.
 // Keep source gradients and delivery ticks; no rectangular solid-colour patches.
 const chat='communication.call.chat',{asset,bytes}=original(chat);

@@ -2,7 +2,7 @@ import {createTextInputGuard} from './kdw-text-input-guard.mjs';
 import {TEXT_POLICY,TEXT_REMOVED_NOTICE} from './kdw-text-policy.mjs';
 import {KEYBOARD_DISMISS_ICON,updateKeyboardPanel} from './kdw-keyboard-ui.mjs';
 import {storeBank,storeGoal,storeRating,STORE_TASK,STORE_SCREEN} from './kdw-store-rating.mjs';
-import {activityGeometry,alignActivityPhone,fadeActivityOut} from './kdw-activity-stage.mjs';
+import {activityGeometry,alignActivityPhone,alignActivityActions,fadeActivityOut} from './kdw-activity-stage.mjs';
 import {createProductStream} from './kdw-product-stream.mjs';
 import {createStoreMotion} from './kdw-store-motion.mjs';
 import {COFFEE_PRODUCTS,CHANNEL_LIMITS,CHANNEL_AVATARS,emptyInteraction,interactionComplete,placeProduct,keyboardEdit} from './kdw-interactions-model.mjs';
@@ -13,7 +13,7 @@ const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 const photo=product=>{if(!product.crop)return `<span class="kdw-product-photo kdw-product-emoji">${product.emoji}</span>`;const [x,y,w,h]=product.crop;return `<span class="kdw-product-photo" style="background-size:${780/w*100}% ${447/h*100}%;background-position:${x/(780-w)*100}% ${y/(447-h)*100}%" aria-hidden="true"></span>`;};
 const ratingMarkup=score=>`<small class="kdw-store-score" data-tone="${score==null?'none':score>=5?'gold':score<4?'red':'blue'}" aria-label="Оценка ${score??'нет'}"><span aria-hidden="true">★</span> ${score?.toFixed(1).replace('.',',')??'—'}</small>`;
 function currentScene(snapshot,phase){
- const s=snapshot?.state;if(!s||!['task','result'].includes(s.status))return null;
+ const s=snapshot?.state;if(!s||!['task','result'].includes(s.status)||['business.store.dashboard','business.store.settings'].includes(s.screenId))return null;
  // Prepare native content during the same entrance as its device shell.
  if(s.taskId==='business.store'&&['trace','phone-enter','task','result','phone-exit'].includes(phase))return 'store';
  if(!['task','result'].includes(phase))return null;
@@ -76,7 +76,7 @@ export function mountKdwInteractions({getSession,onMenu}){
  function slotMarkup(){const rows=storeRows(),capacity=Math.max(8,Math.ceil((rows.length+2)/2)*2);return rows.map((row,index)=>{const product=storeProduct(row.postId);return `<article class="kdw-slot" data-filled="true" data-rating="${row.score}"><div data-kdw-slot="${index}" class="kdw-slot-content">${photo(product)}<div class="kdw-store-price"><strong>${product.price} ₽</strong>${ratingMarkup(row.score)}</div><span class="kdw-store-name">${esc(product.name)}</span><span class="kdw-store-more">Подробнее</span></div></article>`;}).join('')+Array.from({length:capacity-rows.length},()=>'<div class="kdw-slot kdw-slot-placeholder" aria-hidden="true"></div>').join('');}
  function productMarkup(product){return `<button type="button" class="kdw-product" data-kdw-product="${product.id}" aria-label="Добавить ${esc(product.name)}">${photo(product)}<span>${esc(product.name)}</span><strong>${product.price} ₽</strong></button>`;}
  function storeMarkup(){
-  return `<div class="kdw-store-editor kdw-max-store"><header class="kdw-store-header"><img src="./assets/kdw-native/store-header.svg" alt="" draggable="false"><h2>Рейтинг магазина: <span data-store-rating>4,0</span></h2></header><div class="kdw-store-scroll" tabindex="0" aria-label="Каталог магазина"><div class="kdw-store-slots">${slotMarkup()}</div></div></div><footer class="kdw-store-actions"><button type="button" class="kdw-primary" data-kdw-submit hidden>Опубликовать витрину</button><p class="kdw-error" data-kdw-error role="status" aria-live="polite"></p><p class="kdw-moderation-notice" data-kdw-moderation role="status" aria-live="polite"></p></footer><section class="kdw-product-stream" aria-label="Товары для витрины"></section>`;
+  return `<div class="kdw-store-editor kdw-max-store"><header class="kdw-store-header"><img src="./assets/kdw-native/store-header.svg" alt="" draggable="false"><h2>Рейтинг магазина: <span data-store-rating>4,0</span></h2></header><div class="kdw-store-scroll" tabindex="0" aria-label="Каталог магазина"><div class="kdw-store-slots">${slotMarkup()}</div></div></div><footer class="kdw-store-actions"><button type="button" class="kdw-activity-button" data-kdw-submit hidden>Опубликовать витрину</button><p class="kdw-error" data-kdw-error role="status" aria-live="polite"></p><p class="kdw-moderation-notice" data-kdw-moderation role="status" aria-live="polite"></p></footer><section class="kdw-product-stream" aria-label="Товары для витрины"></section>`;
  }
  function alignStore(){
   if(scene!=='store')return;
@@ -85,7 +85,7 @@ export function mountKdwInteractions({getSession,onMenu}){
   const controls=overlay.querySelector('.kdw-store-actions');
   if(!ready){editor.style.opacity='0';field.style.opacity='0';controls.style.opacity='0';editor.inert=field.inert=controls.inert=true;return;}
   const phoneAlpha=alignActivityPhone(editor,g);editor.inert ||=scenePhase!=='task';if(phoneAlpha>.97&&!editor.inert&&screenId===STORE_SCREEN&&scenePhase==='task')void startStore();productStream.sync(g,latestSnapshot,screenId===STORE_SCREEN,scenePhase==='task'&&phoneAlpha>.97&&!editor.inert);
-  Object.assign(controls.style,{left:g.rect.left+'px',top:(g.rect.bottom+12*g.scale)+'px',width:'390px',transform:`scale(${g.rect.width/390})`,opacity:String(phoneAlpha)});controls.inert=editor.inert;
+  alignActivityActions(controls,g,phoneAlpha,editor.inert);
   for(const node of field.querySelectorAll('[data-kdw-product]'))node.disabled ||=submitBusy||storePending;
  }
  function redraw(){storeMotion.clear();overlay.innerHTML=scene==='channel'?channelMarkup():storeMarkup();resize();alignChannel();alignStore();buttonsBusy(submitBusy);refreshStore();}

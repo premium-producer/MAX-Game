@@ -15,7 +15,7 @@ app.whenReady().then(async()=>{try{
  await w.loadURL(url);await click('[data-idle-mission=business]');await screen('business.platform.business-type');
  await js("document.querySelector('[data-bn-action=\"business.platform.choose-flowers\"]').click();document.querySelector('[data-bn-action=\"business.platform.choose-flowers\"]').click()");
  await screen('business.platform.login');await delay(600);assert.equal(await js('document.documentElement.dataset.kdwScreen'),'business.platform.login');checks.push('double choice commits once');
- await next();for(const id of ['business.platform.profile','business.platform.verification','business.platform.ready','business.channel.create','business.channel.continue','business.channel.open','business.channel.setup','business.channel.details','business.channel.description']){await screen(id);if(id==='business.channel.description')break;await next();}
+ await next();for(const id of ['business.platform.profile','business.platform.verification','business.channel.create','business.channel.continue','business.channel.open','business.channel.setup','business.channel.details','business.channel.description']){await screen(id);if(id==='business.channel.description')break;await next();}
  assert.equal(await js("document.querySelector('.bn-composer input').value"),'Цветочный магазин');await next();await screen('business.channel.type');
  const run=await js('document.documentElement.dataset.kdwRun');await click('[data-object="business.channel"]');await screen('business.channel.create');
  assert.notEqual(await js('document.documentElement.dataset.kdwRun'),run);assert.equal(await js("document.querySelector('.bn-surface').dataset.business"),'flowers');checks.push('replay returns to first task screen with same business');

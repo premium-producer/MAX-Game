@@ -12,15 +12,17 @@ test('RU/EN dictionaries remove whole words, inflections, repetitions, homoglyph
  for(const s of ['fu fuck ck','Бот для магазина','пиздец','a '.repeat(100)])assert.equal(clean(clean(s)),clean(s));
 });
 test('normal text, names, emoji and channel vocabulary survive unchanged',()=>{
- for(const v of ['Наш бот для магазина','Школьник про рак и мусор','Херсон и херувим','Бляха и бляшки','страховка: подстрахуй друга','Канал об играх 🎮','Семён Semen','Сукачёв','Cassidy Class Classic','Assassin Cocktail Title','Кофейня — скидка 20%','my_channel_2026'])assert.equal(clean(v),v,v);
+ for(const v of ['Наш бот для магазина','Школьник про рак и мусор','Канал об играх 🎮','Семён','Кофейня — скидка 20%','my_channel_2026'])assert.equal(clean(v),v,v);
 });
-test('typing can complete ambiguous prefixes; paste, delimiters and blur finalize them',()=>{
- for(const word of ['бля','хер','ass','tit','cum','сука']){
-  const r=filterUserText(word);assert.equal(r.value,word,word);assert.equal(r.pending,true,word);assert.equal(clean(word),'',word);assert.equal(filterUserText(word+' ').value,' ',word);
+test('strict roots remove the entire token immediately, including benign overlaps requested by the user',()=>{
+ for(const word of ['пенис','порно','рхуй','щлюха','страхуй','спорно','подстрахуй','Херсон','бляшка','Сукачёв','sex','penis','porn','хуйр','рхуйр','порнография','эротический','мастурбация','гениталии','щлюхой','шлюхами','щлЮха','рхyй','ПЕHИС','спорный','беспорно','сексуальный','вагина','клитор','анус','оргазм','минет','проституция','эскорт','педофилия','hentai','vagina','blowjob','хуууй','рх\u200bуй']){
+  const r=filterUserText(word);assert.equal(r.value,'',word);assert.equal(r.pending,false,word);assert.equal(clean(word),'',word);
  }
- assert.equal(filterUserText('херсон').pending,false);
- assert.equal(filterUserText('еба').value,'еба');
- assert.equal(filterUserText('пизд').value,'пизд');
+ assert.equal(clean('Новости порно и пенис сегодня'),'Новости  и  сегодня');
+ assert.equal(clean('the pen is blue'),'the pen is blue');
+ for(const letter of [...'abcdefghijklmnopqrstuvwxyzабвгдеёжзийклмнопрстуфхцчшщъыьэюя'])assert.equal(filterUserText(letter).value,letter,letter);
+ let typed='';for(const letter of 'хуй')typed=filterUserText(typed+letter).value;assert.equal(typed,'');
+ assert.equal(clean('х у й'),'');assert.equal(clean('щ.л.ю.х.а'),'');
 });
 test('deletion maps selection offsets to original UTF-16 ranges without changing surrounding whitespace',()=>{
  const s='😀 до блять после';const from=s.indexOf('блять'),to=from+5;
@@ -31,7 +33,7 @@ test('deletion maps selection offsets to original UTF-16 ranges without changing
 });
 const base=JSON.parse(fs.readFileSync(new URL('../src/reviewed-content/mission-catalog.json',import.meta.url))),catalog=createKdwCatalog(base);
 const profile={schemaVersion:2,name:'Наш канал',description:'Наш бот',avatar:'cinema',visibility:'private',slug:''};
-function driver(c=catalog,policy=true){let model=createMissionModel(c,{sessionId:'filter-test'}),n=0,now=1000;const cmd=(type,v={},internal=false)=>{const r=dispatchMissionCommand(c,model,{schemaVersion:1,type,commandId:'f.'+(++n),sessionId:'filter-test',contentRevision:c.contentRevision,expectedRevision:model.state.revision,...(policy&&['ACT','SAVE_INTERACTION'].includes(type)?{textPolicy:TEXT_POLICY}:{}),...v},{now:now++,internal});if(r.reply.ok)model=r.model;return r};const act=actionId=>cmd('ACT',{screenId:model.state.screenId,actionId});const save=value=>cmd('SAVE_INTERACTION',{taskId:model.state.taskId,screenId:model.state.screenId,value});const begin=()=>{cmd('OWNER_CHANGED',{active:true},true);cmd('SELECT_MISSION',{missionId:'blogger'});cmd('HOLD_CONFIRMED',{},true);act('channel.open-create-menu');act('channel.choose-create')};return {cmd,act,save,begin,get model(){return model},advance(){now+=1000;return cmd('ADVANCE_RESULT')}}}
+function driver(c=catalog,policy=true){let model=createMissionModel(c,{sessionId:'filter-test'}),n=0,now=1000;const cmd=(type,v={},internal=false)=>{const r=dispatchMissionCommand(c,model,{schemaVersion:1,type,commandId:'f.'+(++n),sessionId:'filter-test',contentRevision:c.contentRevision,expectedRevision:model.state.revision,...(policy&&['ACT','SAVE_INTERACTION'].includes(type)?{textPolicy:typeof policy==='string'?policy:TEXT_POLICY}:{}),...v},{now:now++,internal});if(r.reply.ok)model=r.model;return r};const act=actionId=>cmd('ACT',{screenId:model.state.screenId,actionId});const save=value=>cmd('SAVE_INTERACTION',{taskId:model.state.taskId,screenId:model.state.screenId,value});const begin=()=>{cmd('OWNER_CHANGED',{active:true},true);cmd('SELECT_MISSION',{missionId:'blogger'});cmd('HOLD_CONFIRMED',{},true);act('channel.open-create-menu');act('channel.choose-create')};return {cmd,act,save,begin,get model(){return model},advance(){now+=1000;return cmd('ADVANCE_RESULT')}}}
 test('authority rejects raw bad text in every field even without a client policy flag; clean data persists',()=>{
  for(const policy of [true,false]){const d=driver(catalog,policy);d.begin();for(const field of ['name','description','slug'])assert.equal(d.save({...profile,[field]:'блять'}).reply.code,'TEXT_NOT_ALLOWED',field);
   assert.equal(d.save(profile).reply.ok,true);d.act('personal.channel.create');d.act('channel.continue-private');d.act('channel.skip-invites');d.act('channel.complete');d.advance();d.act('blogger.comments.post.action-1');
@@ -47,4 +49,13 @@ test('old accepted names replay unchanged; new confirmation must clean the histo
 test('invalid policy identifiers cannot bypass validation',()=>{
  const d=driver();d.begin();assert.throws(()=>assertMissionCommand({schemaVersion:1,type:'ACT',commandId:'x',sessionId:'x',contentRevision:'x',expectedRevision:0,screenId:'x',actionId:'x',textPolicy:'unknown'}));
  assert.equal(containsDisallowedText('бот'),false);
+});
+
+test('V1 accepted receipts keep their exact policy, but old or missing client markers cannot downgrade new commands',()=>{
+ const old=driver({...catalog,kdwTextReplayVersion:'kdw-text-v1'},'kdw-text-v1');old.begin();assert.equal(old.save({...profile,name:'пенис порно рхуй щлюха'}).reply.ok,true);old.act('personal.channel.create');
+ const restored=restoreMissionModel(catalog,old.model);assert.equal(restored.ok,true,restored.message);assert.equal(restored.model.state.progress.blogger.personalChannel.name,'пенис порно рхуй щлюха');
+ for(const policy of [true,false,'kdw-text-v1']){const d=driver(catalog,policy);d.begin();for(const field of ['name','description','slug'])for(const word of ['пенис','порно','рхуй','щлюха','страхуй','спорно'])assert.equal(d.save({...profile,[field]:word}).reply.code,'TEXT_NOT_ALLOWED',field+':'+word);
+  assert.equal(d.save(profile).reply.ok,true);d.act('personal.channel.create');d.act('channel.continue-private');d.act('channel.skip-invites');d.act('channel.complete');d.advance();d.act('blogger.comments.post.action-1');
+  for(const word of ['пенис','порно','рхуй','щлюха','страхуй','спорно'])assert.equal(d.save({schemaVersion:2,reply:word}).reply.code,'TEXT_NOT_ALLOWED',word);
+ }
 });

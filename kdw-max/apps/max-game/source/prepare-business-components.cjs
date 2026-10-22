@@ -13,7 +13,8 @@ const screens={
  'business.channel.create':{file:'Platform.svg'},
  'business.channel.continue':{file:'Frame 2087330775.svg'},
  'business.channel.open':{file:'1. botStart.svg',phone:true},
- 'business.channel.setup':{file:'4. number.svg',phone:true},
+ // The export includes a future receipt; omit that exact group until sharing.
+ 'business.channel.setup':{file:'4. number.svg',phone:true,omitSelectors:['g[clip-path="url(#clip10_147_66130)"]'],omitIndices:[53,54]},
  'business.channel.details':{file:'5. confirmRequest.svg',phone:true},
  'business.channel.description':{file:'5. confirmRequest-3.svg',phone:true},
  'business.channel.type':{file:'5. confirmRequest-1.svg',phone:true},
@@ -34,7 +35,6 @@ const bindings={
  'business.bot.create':[photo([618,18,24,24]),text('name',[648,31,66,13],10)],
  'business.bot.filled':[photo([594,18,23,23]),text('name',[623,29,57,12],9,{opacity:.45}),emblem([39,97,30,30]),text('filename',[76,105,175,15],8),text('name',[38,166,230,14],8),text('botHandle',[38,215,230,15],8),text('description',[38,263,240,25],8,{multiline:true,line:10}),emblem([423,96,38,38]),text('name',[403,137,80,15],10,{align:'center'}),text('botLink',[402,152,82,9],6,{color:'#007AFF',align:'center'}),text('name',[402,218,94,12],8),text('description',[380,282,116,32],7,{multiline:true,line:8})],
  'business.bot.ready':[emblem([187,131,28,28]),text('name',[187,166,150,15],10),text('botHandle',[187,181,160,11],8,{color:'#65707D'}),text('description',[187,194,175,22],8,{multiline:true,line:10})],
- 'business.channel.setup':[text('number',[16,593,185,21],16,{color:'#fff',weight:600})],
  'business.channel.type':[text('name',[221,536,68,21],16,{color:'#fff',textWidth:126}),text('channelHandle',[111,625,175,21],16,{color:'#fff'}),text('name',[159,645,129,21],16,{color:'#fff'})],
  'business.channel.publish':[text('name',[221,294,68,21],16,{color:'#fff',textWidth:126}),text('channelHandle',[111,383,175,21],16,{color:'#fff'}),text('name',[159,403,129,21],16,{color:'#fff'})],
  'business.bot.result':[emblem([45,56,40,40]),text('name',[91,59,202,23],18,{color:'#fff',weight:600}),text('orderQuestion',[65,181,244,67],17,{color:'#fff',multiline:true,line:20}),text('deliveryQuestion',[65,380,244,66],17,{color:'#fff',multiline:true,line:20}),text('deliveryAnswer',[15,472,243,80],17,{color:'#fff',multiline:true,line:20})],
@@ -73,7 +73,7 @@ app.whenReady().then(async()=>{try{
   // fractional device scaling exposes hairline seams between separate images.
   for(const [index,part] of parts.entries()){
    const left=Math.max(0,part[0]-1),top=Math.max(0,part[1]-1),right=Math.min(info.width,part[0]+part[2]+1),bottom=Math.min(info.height,part[1]+part[3]+1),box=[left,top,right-left,bottom-top];
-   const request={box,holes:holes.map(b=>b.box),backgroundOnly:false};
+   const request={box,holes:holes.map(b=>b.box),backgroundOnly:false,omitSelectors:config.omitSelectors??[],omitIndices:config.omitIndices??[]};
    const svg=await compact(await extract(request));const signature=sha(svg),name=memo.get(signature)??id.replaceAll('.','-')+'-'+index;
    if(!memo.has(signature)){put(name,Buffer.from(svg),box[2],box[3],{file:config.file,sha256:sha(bytes),box});memo.set(signature,name);}
    components.push({assetId:'kdw.business-component.'+name,box});
@@ -131,13 +131,14 @@ app.whenReady().then(async()=>{try{
  console.log(JSON.stringify({screens:Object.keys(layouts).length,components:Object.keys(assetRecords).length,bytes:Object.values(assetRecords).reduce((n,a)=>n+fs.statSync(path.join(source,'client/public',a.path)).size,0)}));w.destroy();app.exit(0);
  }catch(e){console.error(e);w?.destroy();app.exit(1);}});
 async function extract(request){return w.webContents.executeJavaScript(`(${extractInPage.toString()})(${JSON.stringify(request)})`);}
-function extractInPage({box,holes,backgroundOnly,foregroundOnly=false,surfaceIndices=null,omitIndices=[]}){
+function extractInPage({box,holes,backgroundOnly,foregroundOnly=false,surfaceIndices=null,omitIndices=[],omitSelectors=[]}){
  const root=document.documentElement,inv=root.getCTM().inverse(),[x,y,width,height]=box,ns='http://www.w3.org/2000/svg';
  const definitions=new Map([...root.querySelectorAll('[id]')].map(n=>[n.id,n]));
  const definitionTags=new Set(['defs','mask','clipPath','filter','pattern','linearGradient','radialGradient','symbol']);
+ for(const selector of omitSelectors)if(root.querySelectorAll(selector).length!==1)throw Error('Expected one authored message: '+selector);
  const indices=surfaceIndices||omitIndices.length?new Map([...root.querySelectorAll('*')].map((n,i)=>[n,i])):null;
  function bounds(n){try{const b=n.getBBox(),m=inv.multiply(n.getCTM()),p=[[b.x,b.y],[b.x+b.width,b.y],[b.x,b.y+b.height],[b.x+b.width,b.y+b.height]].map(([x,y])=>new DOMPoint(x,y).matrixTransform(m));return [Math.min(...p.map(p=>p.x)),Math.min(...p.map(p=>p.y)),Math.max(...p.map(p=>p.x)),Math.max(...p.map(p=>p.y))];}catch{return null;}}
- function copy(n){if(n.nodeType!==1||definitionTags.has(n.localName))return null;const b=bounds(n);
+ function copy(n){if(n.nodeType!==1||definitionTags.has(n.localName)||omitSelectors.some(selector=>n.matches(selector)))return null;const b=bounds(n);
   if(surfaceIndices&&n.localName!=='g'&&!surfaceIndices.includes(indices.get(n)))return null;
   if(omitIndices.length&&omitIndices.includes(indices.get(n)))return null;
   if(backgroundOnly&&n.localName!=='g'&&(!b||b[0]>x+.1||b[1]>y+.1||b[2]<x+width-.1||b[3]<y+height-.1))return null;

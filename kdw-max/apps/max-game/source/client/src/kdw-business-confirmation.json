@@ -1,0 +1,57 @@
+{
+  "assets": {
+    "kdw.business-confirmation.snack-body": {
+      "assetId": "kdw.business-confirmation.snack-body",
+      "path": "assets/kdw-native/business-confirmation/snack-body.svg",
+      "width": 455,
+      "height": 78,
+      "mimeType": "image/svg+xml",
+      "sha256": "ba951f65d49642f0be93ea79ab665deb4c6931048d5f7d11fcaeaf08b05d4d61",
+      "origin": {
+        "file": "Snack Body.svg",
+        "sha256": "ba951f65d49642f0be93ea79ab665deb4c6931048d5f7d11fcaeaf08b05d4d61"
+      }
+    },
+    "kdw.business-confirmation.canvas": {
+      "assetId": "kdw.business-confirmation.canvas",
+      "path": "assets/kdw-native/business-confirmation/canvas.svg",
+      "width": 895,
+      "height": 559,
+      "mimeType": "image/svg+xml",
+      "sha256": "764db78bf4cdd6e72bf6b44a551f6c6809d6d790766695149a8667311844dc34",
+      "origin": {
+        "kind": "transparent-canvas"
+      }
+    }
+  },
+  "screens": {
+    "business.platform.ready": {
+      "width": 895,
+      "height": 559,
+      "source": "Snack Body.svg",
+      "components": [
+        {
+          "assetId": "kdw.business-confirmation.snack-body",
+          "box": [
+            0,
+            202.78571428571428,
+            895,
+            153.42857142857142
+          ]
+        }
+      ],
+      "bindings": [],
+      "actions": [
+        [
+          0,
+          202.78571428571428,
+          895,
+          153.42857142857142,
+          "Продолжить"
+        ]
+      ],
+      "canvas": "kdw.business-confirmation.canvas",
+      "forward": false
+    }
+  }
+}

@@ -3,6 +3,7 @@ import {mountKdwInteractions} from './kdw-interactions.mjs';
 import {screenContinuationTarget} from './kdw-screen-continue.mjs';
 import {mountPersonalChannel} from './kdw-personal-channel.mjs';
 import {mountBusinessNative} from './kdw-business-native.mjs';
+import {businessConfirmationLinkRect} from './kdw-business-native-model.mjs';
 import {mountTaskSkip} from './kdw-task-skip.mjs';
 import {mountPostActivity} from './kdw-posts.mjs';
 import {CalmLinkMotion,CALM_LINK_STYLE} from './kdw-link-motion.mjs';
@@ -67,7 +68,7 @@ import {createV5Tools} from './journey-v5-tools.mjs';
 import {V5StartupAssets,v5StartupPlan} from './journey-v5-startup-assets.mjs';
 import {V5MissionContinuation,continueV5Mission} from './journey-v5-mission-continuation.mjs';
 import {createIndependentAssets,independentKey} from './journey-v5-independent-assets.mjs';
-import {createIdleMenu} from './journey-v5-idle-menu.mjs';
+import {createIdleMenu} from './kdw-idle-menu.mjs';
 import independentAssetCatalog from './independent-assets-catalog.json' with {type:'json'};
 
 const arena=document.querySelector('#arena'),root=document.querySelector('#circles'),loading=document.querySelector('#loading');
@@ -103,7 +104,7 @@ const localDevelopment=portable&&params.get('dev')!=='0'&&(params.get('dev')==='
 if(localDevelopment)document.documentElement.dataset.kdwDevelopment='true';
 const kdwInteractions=mountKdwInteractions({getSession:()=>sharedSession,onMenu:()=>navigate()});
 const personalChannel=mountPersonalChannel({getSession:()=>sharedSession});
-const businessNative=mountBusinessNative({getSession:()=>sharedSession});
+const businessNative=mountBusinessNative({getSession:()=>sharedSession,enabled:!!MISSION_CATALOG.kdwBusinessNative});
 const kdwPosts=mountPostActivity({getSession:()=>sharedSession});
 let standBrowser;
 const localAdmission=new LocalStandAdmission({active:()=>inputActive()});
@@ -419,8 +420,9 @@ function syncLinePhone(){
    phonePending=key;const epoch=screenEpoch;
    const target=bfmVisual?controller.targetPhoneMetrics:null;
    const morph=bfmVisual?{from:deviceMetrics().width,to:target.width,
-    resize:width=>{if(epoch!==screenEpoch||!shell.isConnected)return;controller.presentedDevice={...target,width};updateTargets();},
-    ready:()=>epoch!==screenEpoch||displayPhoneKey()!==key||shell.dataset.sceneVersion===key&&shell.dataset.mediaReadyKey===key&&shell.dataset.gpuReadyKey===key&&personalChannel.ready(controller.displaySnapshot)&&businessNative.ready(controller.displaySnapshot)}:undefined;
+    fromHeight:deviceMetrics().height,toHeight:target.height,
+    resize:(width,height)=>{if(epoch!==screenEpoch||!shell.isConnected)return;controller.presentedDevice={...target,width,height};updateTargets();},
+    ready:()=>epoch!==screenEpoch||displayPhoneKey()!==key||shell.dataset.sceneVersion===key&&shell.dataset.mediaReadyKey===key&&shell.dataset.gpuReadyKey===key&&personalChannel.ready(controller.displaySnapshot)&&businessNative.ready(controller.displaySnapshot)&&kdwPosts.ready(controller.displaySnapshot)}:undefined;
    if(!foreground.transitionContent(host,()=>{if(epoch===screenEpoch)commit();else if(phonePending===key)phonePending='';},morph))phonePending='';
   }else if(!phonePending)commit();
  }
@@ -842,7 +844,9 @@ function syncScene(){
   network.links.push({a,b,screen:inlinePhone,scope:'guided',correct:true,visibility,reveal:edge.reveal??(edge.revealing&&!reduced.matches?revealTracePresence(controller.elapsed/(controller.revealTiming?.trace??REVEAL_TIMING.trace)):1),edgeCurve:{start:world(curve.start),end:world(curve.end),c1:world(curve.c1),c2:world(curve.c2),bowX:curve.bowX*scale,bowY:-curve.bowY*scale,frames,flipBow:true}});
  }
  if(inlinePhone&&controller.current&&controller.session.screen==='field'){
-  const current=ids.get(controller.current.step),phone=bounds(host.querySelector('.route-phone .demo-app')),next=revealMode?rects.get(ids.get(controller.next?.id)):bounds(host.querySelector('[data-line-next] .tile'));
+  const confirmation=!!MISSION_CATALOG.kdwBusinessConfirmation&&host.querySelector('.route-phone')?.dataset.sceneVersion?.includes(':business.platform.ready:');
+  const phone=confirmation?businessConfirmationLinkRect(bounds(host.querySelector('.route-phone .task-media-canvas'))):bounds(host.querySelector('.route-phone .demo-app'));
+  const current=ids.get(controller.current.step),next=revealMode?rects.get(ids.get(controller.next?.id)):bounds(host.querySelector('[data-line-next] .tile'));
   const type=placements.at(-1)?.type;
   const addAnchor=(id,r)=>{rects.set(id,{...r,radius:30});placements.push({id,type,longitude:(r.x+r.w/2-size.width/2)*scale/.03,latitude:(size.height/2-r.y-r.h/2)*scale/.03,altitude:.08,droppedAt:0,signalRadius:.15});network.states[id]='link';};
   if(current!==undefined&&phone&&(next||revealMode)){
@@ -1170,7 +1174,7 @@ async function boot(){
  document.documentElement.dataset.graphicsBootCount=String(Number(document.documentElement.dataset.graphicsBootCount||0)+1);
  field=await createWebGLField({container:document.querySelector('#world'),planar:true,hideNodes:true,preparedAssets:assets,contourCatalog:contours,startPaused:true,placements:[],network:{states:{},links:[]},itemTypes:ITEM_TYPES,endpoints:{},selectedItem:null,maxDrawingBufferPixels:MAX_DRAWING_BUFFER_PIXELS,earthStyle:shell.rendering.earth,nodeIconBackdropStyle:shell.rendering.nodeIconBackdrop,signalLinkStyle:{...shell.rendering.signalLinks,...routeLinkStyle},onPlace:()=>{},onMove:()=>{},onRemove:()=>{}});
  if(pageDisposed){field.dispose();return;}
- foreground=createJourneyWebGLUI({root,arena,getSize:()=>size,onFrame:tick,gradients:standBrowser?.gradients??v5Tools?.gradients,onMotion:()=>{changed();syncScene();},startup:startupAssets?{
+ foreground=createJourneyWebGLUI({root,arena,getSize:()=>size,onFrame:tick,gradients:standBrowser?.gradients??v5Tools?.gradients,onMotion:()=>{kdwPosts.align();changed();syncScene();},startup:startupAssets?{
   assets:startupAssets,host,frames:[v5SplashWarmup(),v5SplashWarmup(360)],
   icons:content.missions.flatMap(m=>m.steps.flatMap(step=>['','Следующий шаг','Выполнено','Продолжить задание'].map(status=>referenceNodeMarkup(step.id,step.iconId,step.label,true,status)))).concat(referenceNodeMarkup('open-max','open-max','Открыть MAX')),
   palm:`<button class="object guided-palm" data-route-next="guided-palm" data-palm data-touch-minimum="500">${bfmVisual?v5IconTile(MISSION_CATALOG,'scan',160):`<span class="tile glass-control">${palm}</span>`}<span class="object-label icon-caption">${palmCopy}<small>${palmHint}</small></span></button>`,

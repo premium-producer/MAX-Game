@@ -96,13 +96,13 @@ test('saved store selection from the separate scene restores in the native devic
  const restored=restoreMissionModel(catalog,JSON.parse(JSON.stringify(d.model)));assert.equal(restored.ok,true);
  assert.deepEqual(restored.model.state.progress.business.interactions['business.store'],value);
  assert.deepEqual(restored.model.state.progress.business.completed,d.model.state.progress.business.completed);
- for(const screen of Object.values(catalog.tasks['business.store'].screens)){assert.equal(screen.deviceKind,'phone');assert.equal(screen.assetId,'kdw.native.store-phone');assert.ok(screen.actions.every(a=>a.placement==='below-screen'&&!a.rect));}
+ for(const screen of Object.values(catalog.tasks['business.store'].screens).filter(s=>['business.store.start','business.store.publish','business.store.result'].includes(s.screenId))){assert.equal(screen.deviceKind,'phone');assert.equal(screen.assetId,'kdw.native.store-phone');assert.ok(screen.actions.every(a=>a.placement==='below-screen'&&!a.rect));}
 });
 
 test('business registration begins with three explicit choices; every choice persists and advances to login',()=>{
  const task=catalog.tasks['business.platform'];assert.equal(task.startScreenId,'business.platform.business-type');assert.equal(Object.keys(task.screens)[0],task.startScreenId);
- assert.deepEqual(task.screens[task.startScreenId].actions.map(a=>a.label),['Кофейня','Спортивный магазин','Цветочный магазин','Отель','Театр']);
- for(const type of ['cafe','sports','flowers','hotel','theater']){
+ assert.deepEqual(task.screens[task.startScreenId].actions.map(a=>a.label),['Кофейня','Цветочный магазин','Автомастерская','Спортивный магазин','Отель','Театр']);
+ for(const type of ['cafe','flowers','auto','sports','hotel','theater']){
   const d=driver();d.reach('business',task.startScreenId);const deadline=d.model.state.deadlineAt;
   assert.equal(d.act('ACT',{screenId:task.startScreenId,actionId:'business.platform.choose-other'}).reply.code,'ACTION_UNAVAILABLE');
   assert.equal(d.act('ACT',{screenId:task.startScreenId,actionId:'business.platform.choose-'+type}).reply.ok,true);

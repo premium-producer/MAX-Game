@@ -26,7 +26,10 @@ export function reduceDevelopment(catalog,s,c,now,{sequence,enterTask,budget}){
  if(index<0||index>p.currentTaskIndex&&!p.finished.includes(c.taskId))return 'TASK_UNAVAILABLE';
  const task=catalog.tasks[c.taskId];
  for(const key of ['completed','skipped','finished'])p[key]=p[key].filter(id=>id!==c.taskId);
- for(const screenId of Object.keys(task.screens))delete p.answers[screenId];
+ for(const screenId of Object.keys(task.screens))if(!(catalog.kdwBusinessRestartRetainLegacy&&screenId==='business.platform.ready'))delete p.answers[screenId];
+ // Retired registration screens remain in accepted history. Restart must clear
+ // their answers too, exactly as it did before the screen left the live route.
+ if(c.taskId==='business.platform'&&catalog.kdwBusinessPlatformLegacy&&!catalog.kdwBusinessRestartRetainLegacy)delete p.answers['business.platform.ready'];
  if(p.interactions)delete p.interactions[c.taskId];
  if(task.coreCatalog)delete p.channelModel;
  if(c.taskId==='business.channel')delete p.postsActivity;
@@ -41,7 +44,7 @@ export function reduceDevelopment(catalog,s,c,now,{sequence,enterTask,budget}){
 export function finishDevelopmentState(previous,s,c,now,budget){
  // Changing sector creates a coherent downstream story. Preserve old receipt
  // behavior when no sector changed, including all café/hotel/theater timelines.
- if(c.type==='ACT'&&c.actionId?.startsWith('business.platform.choose-')&&['sports','flowers'].some(t=>[previous.progress.business?.answers?.businessType,s.progress.business?.answers?.businessType].includes(t))&&previous.progress.business?.answers?.businessType!==s.progress.business?.answers?.businessType){
+ if(c.type==='ACT'&&c.actionId?.startsWith('business.platform.choose-')&&['sports','flowers','auto'].some(t=>[previous.progress.business?.answers?.businessType,s.progress.business?.answers?.businessType].includes(t))&&previous.progress.business?.answers?.businessType!==s.progress.business?.answers?.businessType){
   const p=s.progress.business,downstream=['business.channel','business.bot','business.store'];
   for(const name of ['completed','skipped','finished'])p[name]=p[name].filter(id=>!downstream.includes(id));
   for(const id of Object.keys(p.answers))if(downstream.some(t=>id.startsWith(t+'.')))delete p.answers[id];

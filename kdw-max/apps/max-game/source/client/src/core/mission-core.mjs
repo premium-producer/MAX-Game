@@ -78,7 +78,7 @@ export function dispatchMissionCommand(catalog,model,input,{now=0,internal=false
   const id=s.missionId;delete s.progress[id];const p=s.progress[id]={completed:[],skipped:[],finished:[],answers:{},businessTool:null,currentTaskIndex:0,currentScreenId:null,scanned:false,remainingMs:initialBudget(s)};
   s.runId++;s.status='scan';s.taskId=null;s.screenId=null;s.scanned=false;s.startedAt=now;s.deadlineAt=now+p.remainingMs;s.pausedAt=s.ownerActive?null:now;s.resultReadyAt=null;effects.push({type:'MISSION_RESTARTED'});
  }else if(c.type==='ADVANCE_RESULT'){
-  if(s.status!=='result'||now<s.resultReadyAt)return reject('RESULT_NOT_READY');
+  if(s.status!=='result'||now<s.resultReadyAt&&!(catalog.kdwBusinessConfirmation?.screenId===s.screenId&&!internal))return reject('RESULT_NOT_READY');
   currentProgress(s).currentTaskIndex++;currentProgress(s).currentScreenId=null;
   if(catalog.kdwDevelopment){const p=currentProgress(s),ids=sequence(catalog,s,p);while(p.finished.includes(ids[p.currentTaskIndex]))p.currentTaskIndex++;}
   enterTask(catalog,s,now,true);
@@ -95,11 +95,11 @@ export function dispatchMissionCommand(catalog,model,input,{now=0,internal=false
   if(!catalog.kdwInteractions||s.status!=='task')return reject('INTERACTION_UNAVAILABLE');
   if(c.taskId!==s.taskId||c.screenId!==s.screenId)return reject('WRONG_CONTEXT');
   if(catalog.kdwPersonalChannel&&PERSONAL_TASKS.includes(s.taskId)&&(c.value.schemaVersion!==undefined||s.taskId==='blogger.comments')){
-   const error=savePersonal(s,c,!!catalog.kdwPersonalReplayLongReply,!catalog.kdwTextReplayLegacy);if(error)return reject(error);
+   const error=savePersonal(s,c,!!catalog.kdwPersonalReplayLongReply,catalog.kdwTextReplayLegacy?false:(catalog.kdwTextReplayVersion??true));if(error)return reject(error);
   }else{
    const kind=interactionKind(s.taskId),editable=kind==='channel'?['blogger.channel.name','blogger.channel.filled'].includes(s.screenId):kind==='store'&&s.screenId==='business.store.start';
    if(!editable||!validateInteraction(kind,c.value))return reject('INVALID_INTERACTION');
-   if(kind==='channel'&&!catalog.kdwTextReplayLegacy&&forbiddenFields(c.value))return reject('TEXT_NOT_ALLOWED');
+   if(kind==='channel'&&!catalog.kdwTextReplayLegacy&&forbiddenFields(c.value,catalog.kdwTextReplayVersion))return reject('TEXT_NOT_ALLOWED');
    const p=currentProgress(s);p.interactions??={};p.interactions[s.taskId]=structuredClone(c.value);
   }
   effects.push({type:'INTERACTION_SAVED',taskId:s.taskId});
@@ -111,10 +111,10 @@ export function dispatchMissionCommand(catalog,model,input,{now=0,internal=false
   if(catalog.kdwStoreActivity&&s.taskId==='business.store'&&(s.screenId==='business.store.start'||p.storeActivity)&&!storeGoal(p.storeActivity))return reject('STORE_RATING_REQUIRED');
   if(catalog.kdwPostsActivity&&s.screenId===POSTS_SCREEN&&!postsGoal(p.postsActivity??{audience:0}))return reject('POSTS_GOAL_REQUIRED');
   const a=screen.actions.find(a=>a.actionId===c.actionId);if(!a)return reject('ACTION_UNAVAILABLE');
-  if(catalog.kdwPersonalChannel&&!catalog.kdwPersonalReplayLegacy){const error=personalAction(s,c,now,!catalog.kdwTextReplayLegacy);if(error)return reject(error);}
+  if(catalog.kdwPersonalChannel&&!catalog.kdwPersonalReplayLegacy){const error=personalAction(s,c,now,catalog.kdwTextReplayLegacy?false:(catalog.kdwTextReplayVersion??true));if(error)return reject(error);}
   if(catalog.kdwInteractions){
-   const kind=interactionKind(s.taskId),needsValue=kind==='channel'&&['channel.fill-name-example','channel.create'].includes(c.actionId)||kind==='store';
-   if(kind==='channel'&&needsValue&&!catalog.kdwTextReplayLegacy&&forbiddenFields(p.interactions?.[s.taskId]))return reject('TEXT_NOT_ALLOWED');
+   const kind=interactionKind(s.taskId),needsValue=kind==='channel'&&['channel.fill-name-example','channel.create'].includes(c.actionId)||kind==='store'&&['business.store.start','business.store.publish','business.store.result'].includes(s.screenId);
+   if(kind==='channel'&&needsValue&&!catalog.kdwTextReplayLegacy&&forbiddenFields(p.interactions?.[s.taskId],catalog.kdwTextReplayVersion))return reject('TEXT_NOT_ALLOWED');
    if(needsValue&&!(kind==='store'&&p.storeActivity&&storeGoal(p.storeActivity))&&!(kind==='channel'&&personalComplete(p.interactions?.[s.taskId]))&&!interactionComplete(kind,p.interactions?.[s.taskId]))return reject(kind==='channel'?'CHANNEL_NAME_REQUIRED':'STORE_PRODUCT_REQUIRED');
   }
   if(screen.automaticMs!==null&&screen.automaticMs!==undefined){if(c.type!=='AUTO_SCREEN')return reject('AUTOMATIC_SCREEN');if(now-s.screenEnteredAt<screen.automaticMs)return reject('SCREEN_NOT_READY');}
@@ -133,6 +133,7 @@ export function dispatchMissionCommand(catalog,model,input,{now=0,internal=false
    else effects.push({type:'TASK_SKIPPED',taskId:s.taskId});
    if(!p.finished.includes(s.taskId))p.finished.push(s.taskId);
    s.status='result';s.resultReadyAt=now+800;
+   if(catalog.kdwBusinessConfirmation?.from===s.screenId){s.screenId=catalog.kdwBusinessConfirmation.screenId;p.currentScreenId=s.screenId;}
    if(taskClock(s)){p.remainingMs=Math.max(0,s.deadlineAt-(s.pausedAt??now));s.deadlineAt=null;}
    if(p.currentTaskIndex===sequence(catalog,s,p).length-1)s.deadlineAt=null;
   }else return reject('INVALID_OUTCOME');

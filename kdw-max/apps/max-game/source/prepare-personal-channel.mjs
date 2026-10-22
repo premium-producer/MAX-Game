@@ -35,5 +35,34 @@ for(const [name,a]of Object.entries(replyParts.parts)){
 const prefixPath=base+'reply/prefix.png',prefix=fs.readFileSync(path.join(source,'client/public',prefixPath));
 assets['kdw.personal.reply-prefix']={assetId:'kdw.personal.reply-prefix',path:prefixPath,mimeType:'image/png',width:360,height:434,sha256:sha(prefix)};
 assets['kdw.personal.underlay-14']={...assets['kdw.personal.reply-background'],assetId:'kdw.personal.underlay-14'};
+// Statistics stays a two-screen task: personalized profile, then the first chart.
+// Remove authored sample data rather than covering it on entering/leaving frames.
+const statistics=path.resolve(pack,'../statistic');
+for(const [n,name]of [[16,'Профиль'],[17,'Статистика_скролл_Подписчики']]){
+ let svg=fs.readFileSync(path.join(statistics,name+'.svg'),'utf8');
+ const sourceSha256=sha(svg);
+ if(n===16){
+  for(const start of ['M706.599 252.217','M548.396 695.216','M113.072 1445.1','M398.098 1517.73','M1070.42 2671.51']){
+   const matches=[...svg.matchAll(/<path\b[^>]*\/>/g)].filter(m=>m[0].includes('d="'+start));
+   if(matches.length!==1)throw Error('Statistics profile region changed: '+start);
+   let replacement='';
+   if(start==='M113.072 1445.1'){
+    // The final three subpaths are the authored ellipsis on its own footer row.
+    // They belong to the chrome, not to the sample description being replaced.
+    const d=matches[0][0].match(/ d="([^"]+)"/)[1];
+    const dots=d.match(/M[^M]*/g).filter(p=>/^M(?:98\.7499|112\.152|124\.879) 1620\.53/.test(p));
+    if(dots.length!==3)throw Error('Statistics description ellipsis changed');
+    replacement=matches[0][0].replace(d,dots.join(''));
+   }
+   svg=svg.replace(matches[0][0],replacement);
+  }
+  svg=svg.replace(/<rect width="376.853" height="376.853"[^>]*\/>/,'');
+  svg=svg.replace(/<pattern id="pattern0_4294_12986"[\s\S]*?<\/pattern>/,'');
+  svg=svg.replace(/<image\b[^>]*id="image0_4294_12986"[^>]*\/>/,'');
+ }
+ const relative=base+'screens/underlay_'+n+'.svg',id='kdw.personal.underlay-'+n;
+ fs.writeFileSync(path.join(source,'client/public',relative),svg);
+ assets[id]={assetId:id,path:relative,mimeType:'image/svg+xml',width:360,height:800,sha256:sha(svg),origin:{path:'UI/new_screens/personal_channel/statistic/'+name+'.svg',sha256:sourceSha256}};
+}
 fs.writeFileSync(path.join(source,'client/src/kdw-personal-channel-assets.mjs'),`// Generated from reviewed assets and exact PNG screen references.\nexport const PERSONAL_ASSET_BASE=${JSON.stringify(base)};\nexport const PERSONAL_ASSETS=${JSON.stringify(assets,null,2)};\n`);
 console.log(JSON.stringify({assets:Object.keys(assets).length,bytes:manifest.totals.preparedAssetBytes}));

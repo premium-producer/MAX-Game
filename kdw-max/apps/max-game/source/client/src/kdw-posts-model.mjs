@@ -6,6 +6,16 @@ import {createPostTimeline} from './kdw-post-stream.mjs';
 export const POSTS_SCREEN='business.channel.result',POSTS_TASK='business.channel';
 export const POSTS_RULES=Object.freeze({version:11,initialAudience:14628,goal:300,good:120,bad:-100,interval:2300,travel:10500,maxPosts:20});
 const banks={
+ auto:[
+  ['service','Подготовим автомобиль к сезону','Проверим тормоза, жидкости и состояние шин. Запись по удобному времени.',0,true,'Понятное предложение помогает спланировать обслуживание.'],
+  ['spam','СРОЧНО В СЕРВИС! СРОЧНО!','Будем присылать это объявление каждый час!',0,false,'Навязчивый спам раздражает подписчиков.'],
+  ['hours','Теперь работаем по субботам','Принимаем автомобили с 9:00 до 18:00. Предварительная запись открыта.',0,true,'Полезная новость помогает выбрать время визита.'],
+  ['care','Когда менять воздушный фильтр','Проверьте регламент своего автомобиля. Покажем состояние фильтра перед заменой.',0,true,'Практический совет помогает ухаживать за автомобилем.'],
+  ['promise','Любой ремонт бесплатно навсегда!','Настоящие условия и стоимость сообщим после ремонта.',0,false,'Скрытые условия подрывают доверие клиентов.'],
+  ['oil','Замена масла по записи','Работа — 900 ₽. Масло и фильтр подбираем и согласуем отдельно до начала работ.',0,true,'Прозрачная цена помогает принять решение.'],
+  ['unrelated','Закажите букет прямо сейчас','Разошлите нашу рекламу цветов всем знакомым!',0,false,'Случайная реклама не связана с обслуживанием автомобиля.'],
+  ['parts','Как мы подбираем запчасти','Проверяем совместимость по VIN и согласуем производителя и цену до заказа.',0,true,'Рассказ о работе мастерской помогает заслужить доверие.'],
+ ],
  sports:[
   ['training','Всё для первой тренировки','Подберём форму, обувь и инвентарь под ваш вид спорта.',0,true,'Понятное предложение помогает выбрать экипировку.'],
   ['spam','КУПИ! КУПИ! КУПИ!','Пришлём эту рекламу ещё десять раз сегодня!',0,false,'Навязчивый спам раздражает подписчиков.'],
@@ -65,7 +75,9 @@ export function applyPostsCatalog(catalog){
  Object.assign(catalog.assets,chrome);
  const screen=catalog.tasks[POSTS_TASK].screens[POSTS_SCREEN];
  screen.assetId='kdw.posts.phone';screen.deviceKind='phone';screen.annotations=[];
- screen.instruction='Выберите полезные публикации для канала';
+ // Keep the reviewed reference copy for the completed feed. During play the
+ // falling cards occupy its area; the phone supplies the gameplay instruction.
+ screen.instruction=catalog.tasks[POSTS_TASK].screens['business.channel.publish'].instruction;
  catalog.kdwPostsActivity=POSTS_RULES.version;
  return catalog;
 }
