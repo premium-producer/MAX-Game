@@ -1,10 +1,11 @@
-param([switch]$NoWindow,[switch]$Verify)
+﻿param([switch]$NoWindow,[switch]$Verify)
 $ErrorActionPreference = 'Stop'
 $appRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 $config = Get-Content -LiteralPath (Join-Path $appRoot 'app.json') -Raw -Encoding UTF8 | ConvertFrom-Json
 $hashProvider = [Security.Cryptography.SHA256]::Create()
 try { $expectedKey = ([BitConverter]::ToString($hashProvider.ComputeHash([Text.Encoding]::UTF8.GetBytes($appRoot.ToLowerInvariant())))).Replace('-','').ToLowerInvariant() } finally { $hashProvider.Dispose() }
 $runtimeExe = Join-Path $appRoot 'runtime/electron.exe'
+if (-not (Test-Path -LiteralPath $runtimeExe)) { $runtimeExe = [IO.Path]::GetFullPath((Join-Path $appRoot '../../runtime/electron/electron.exe')) }
 if (-not (Test-Path -LiteralPath $runtimeExe)) { throw 'Bundled Electron runtime is missing. Copy the complete application folder.' }
 $entryPath = Join-Path $PSScriptRoot 'desktop-main.cjs'
 function Read-OwnedHealth {

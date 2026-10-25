@@ -40,7 +40,7 @@
 .pc-phone[data-reference="7"]{--pc-link-background:#4d4e61}
 .pc-link-input{left:88px;top:351px;width:213px;height:47px;border-radius:0;background:var(--pc-link-background);font-size:14px!important;padding:9px 2px}
 .pc-bound-link-hint{position:absolute;left:36px;top:404px;width:290px;height:24px;background:#25262d;color:#2eb62b;font-size:11px;padding:1px 0}
-.pc-reply-input{background:transparent;color:#111!important;border:0;border-radius:0;font-size:16px!important;padding:8px 0;scrollbar-width:none}
+.pc-reply-input{background:transparent;color:#111!important;border:0;border-radius:0;font-size:16px!important;padding:8px 0;line-height:20px!important;white-space:nowrap;overflow:hidden;scrollbar-width:none}
 .pc-reply-input::-webkit-scrollbar{display:none}
 .pc-send{position:absolute;left:312px;top:470px;width:44px;height:44px;border:0;border-radius:50%;padding:4px;background:transparent}
 .pc-send>span{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#007aff}
@@ -56,7 +56,7 @@
 .pc-outgoing-copy{white-space:pre-wrap;overflow-wrap:anywhere}
 .pc-outgoing-meta{position:absolute;bottom:8px;right:10px;width:48px;height:10px;pointer-events:none}
 #kdw-personal-channel [data-pc-reply-count]{display:inline-block;margin-left:18px;font-size:12px;font-weight:400;color:#b9c5da}
-.pc-forward{position:absolute;top:810px;left:0;width:360px}
+.pc-forward{position:absolute;top:calc(100% + 29.53846px);left:0;width:360px}
 .pc-primary{width:100%;min-height:48px;padding:12px;border:0;border-radius:16px;background:#007aff;color:#fff!important;font-size:16px!important}
 .pc-primary:disabled{opacity:.45}
 .pc-error{position:absolute;bottom:78px;left:12px;right:12px;margin:0;padding:6px!important;background:#292a30;color:#ffacb8!important;font-size:12px!important;line-height:1.3!important;pointer-events:none}

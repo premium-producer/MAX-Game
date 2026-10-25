@@ -1,3 +1,4 @@
+import {production,timing} from '../kdw-production-core.mjs';
 import {assertMissionAssignment} from '../contracts/mission-assignment.mjs';
 import {MISSION_CATALOG} from '../content/mission-catalog.mjs';
 import {createMissionModel,dispatchMissionCommand,restoreMissionModel,MISSION_RULES_REVISION,TASK_CLOCK_RULES_REVISION} from '../core/mission-core.mjs';
@@ -47,7 +48,7 @@ export function createMissionSessionApplication({catalog=MISSION_CATALOG,persist
    missions:Object.values(catalog.missions).map(m=>({missionId:m.missionId,title:m.title,test:m.test,missing:[...m.missing]})),
    result:terminal?{complete:s.status==='completed',title:s.status==='completed'?'Миссия выполнена':s.status==='expired'?'Время миссии истекло':'Миссия просмотрена с пропусками',text:s.status==='completed'?catalog.missions[s.missionId].completionText??'Возможности MAX изучены.':s.status==='expired'?'Миссия завершена по времени. Можно попробовать снова.':'Часть обязательных экранов ещё не предоставлена. Пропущенные задания не засчитаны.'}:null,
    qr:terminal?{...catalog.missions[s.missionId].qr,asset:catalog.assets[catalog.missions[s.missionId].qr.assetId]??catalog.assets['official.max-qr']}:null,
-   resumeRequired:Boolean(p?.scanned),clock:viewClock,remainingMs:s.status==='expired'?0:s.status==='result'&&s.rulesRevision===TASK_CLOCK_RULES_REVISION?p.remainingMs:s.deadlineAt===null?null:Math.max(0,s.deadlineAt-serverTime)};
+   resumeRequired:Boolean(p?.scanned),clock:viewClock,remainingMs:s.status==='expired'?0:s.status==='result'&&s.rulesRevision===TASK_CLOCK_RULES_REVISION?p.remainingMs:s.deadlineAt===null?(production(s)&&["scan","task","completed","incomplete"].includes(s.status)?timing(s,s.status==="scan"?"palmWaitSeconds":s.status==="task"?"taskDurationSeconds":"qrDisplaySeconds"):null):Math.max(0,s.deadlineAt-serverTime)};
   return copy({schemaVersion:2,state:s,layouts:{layoutRevision:entry.record.layouts.layoutRevision,positions:entry.record.layouts.positions},view});
  }
  const report=e=>{try{onObserverError(e);}catch{}};
@@ -74,6 +75,7 @@ export function createMissionSessionApplication({catalog=MISSION_CATALOG,persist
  }
  function internalCommand(e,type,fields={}){return {schemaVersion:1,type,commandId:`internal.${e.record.mission.state.runId}.${e.record.mission.state.revision}.${++internalSerial}`,sessionId:e.record.mission.state.sessionId,contentRevision:catalog.contentRevision,expectedRevision:e.record.mission.state.revision,...fields};}
  async function layout(id,e,c){
+  if(catalog.kdwProduction)return copy({reply:{ok:false,code:'PRODUCTION_CONTROL_FORBIDDEN'},duplicate:false,snapshot:snapshot(e)});
   const allowed=['schemaVersion','type','commandId','sessionId','contentRevision','expectedRevision','expectedLayoutRevision','layoutId','positions'];
   const reject=code=>copy({reply:{ok:false,code},duplicate:false,snapshot:snapshot(e)});
   if(Object.keys(c).some(k=>!allowed.includes(k))||c.schemaVersion!==1||!missionToken(c.commandId)||c.contentRevision!==catalog.contentRevision||c.layoutId&&c.layoutId!=='base'||!validPositions(c.positions)||Object.keys(c.positions).some(key=>!validLayoutNode(key,catalog)))return reject('INVALID_LAYOUT_COMMAND');
@@ -85,11 +87,12 @@ export function createMissionSessionApplication({catalog=MISSION_CATALOG,persist
   e=await commit(id,e,{...e.record,layouts:next},[{type:'LAYOUT_CHANGED',layoutRevision:next.layoutRevision}]);return copy({reply,duplicate:false,snapshot:snapshot(e)});
  }
  async function poll(id,time){const assignment=await managed(id);if(assignment && assignment.lifecycle.status!=='active')return copy({reply:{ok:true,code:'ASSIGNMENT_TERMINAL'},duplicate:false,snapshot:snapshot(await load(id))});let e=await load(id),s=e.record.mission.state;
-  if(s.ownerActive&&s.deadlineAt!==null&&time>=s.deadlineAt&&s.status!=='expired')return dispatch(id,internalCommand(e,'EXPIRE'),time,true);
-  if(!s.ownerActive)return copy({reply:{ok:true,code:'UNCHANGED'},duplicate:false,snapshot:snapshot(e)});
-  const contact=contacts.get(id);if(contact&&s.status==='scan'&&contact.runId===s.runId&&time-contact.startedAt>=0){contacts.delete(id);return dispatch(id,internalCommand(e,'HOLD_CONFIRMED'),time,true);}
+  if(production(s)&&['task','result'].includes(s.status)&&s.lastTouchAt!==null&&time-s.lastTouchAt>=timing(s,'inactivitySeconds'))return dispatch(id,internalCommand(e,'STAND_IDLE'),time,true);
+  if((s.ownerActive||production(s))&&s.deadlineAt!==null&&time>=s.deadlineAt&&s.status!=='expired')return dispatch(id,internalCommand(e,'EXPIRE'),time,true);
+  if(!s.ownerActive&&!production(s))return copy({reply:{ok:true,code:'UNCHANGED'},duplicate:false,snapshot:snapshot(e)});
+  const contact=contacts.get(id);if(contact&&s.status==='scan'&&contact.runId===s.runId&&time-contact.startedAt>=(production(s)?timing(s,'palmHoldSeconds'):0)){contacts.delete(id);return dispatch(id,internalCommand(e,'HOLD_CONFIRMED'),time,true);}
   if(s.status==='result'&&time>=s.resultReadyAt)return dispatch(id,internalCommand(e,'ADVANCE_RESULT'),time,true);
-  if(s.status==='task'){const screen=catalog.tasks[s.taskId].screens[s.screenId];if(screen.automaticMs!==null&&screen.automaticMs!==undefined&&time-s.screenEnteredAt>=screen.automaticMs)return dispatch(id,internalCommand(e,'AUTO_SCREEN',{screenId:s.screenId,actionId:screen.actions[0].actionId}),time,true);}
+  if(s.status==='task'&&(!production(s)||s.standReady)){const screen=catalog.tasks[s.taskId].screens[s.screenId];if(screen.automaticMs!==null&&screen.automaticMs!==undefined&&time-s.screenEnteredAt>=screen.automaticMs)return dispatch(id,internalCommand(e,'AUTO_SCREEN',{screenId:s.screenId,actionId:screen.actions[0].actionId}),time,true);}
   if(['scan','task','result'].includes(s.status)&&time-e.record.clockCheckpointAt>=MISSION_CLOCK_CHECKPOINT_MS)e=await commit(id,e,{...e.record,clockCheckpointAt:time},[]);
   return copy({reply:{ok:true,code:'UNCHANGED'},duplicate:false,snapshot:snapshot(e)});
  }
@@ -152,7 +155,7 @@ export function createMissionSessionApplication({catalog=MISSION_CATALOG,persist
    if(!s.ownerActive||s.status!=='scan'){contacts.delete(id);return snapshot(e);}
    if(value.type==='down'&&value.inside&&!contact)contacts.set(id,{contactId:value.contactId,startedAt:Math.floor(trustedNow),runId:s.runId});
    else if(contact?.contactId===value.contactId&&(!value.inside||['up','cancel'].includes(value.type))){
-    if(value.type==='up'&&value.inside&&Math.floor(trustedNow)-contact.startedAt>=0){await poll(id,Math.floor(trustedNow));return snapshot(await load(id));}
+    if(value.type==='up'&&value.inside&&Math.floor(trustedNow)-contact.startedAt>=(production(s)?timing(s,'palmHoldSeconds'):0)){await poll(id,Math.floor(trustedNow));return snapshot(await load(id));}
     contacts.delete(id);
    }
    await poll(id,Math.floor(trustedNow));return snapshot(await load(id));});},

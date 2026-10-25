@@ -1,6 +1,9 @@
+import {alignPixelKeyboard} from './kdw-pixel-map.mjs';
 import {createTextInputGuard} from './kdw-text-input-guard.mjs';
 import {TEXT_POLICY,TEXT_REMOVED_NOTICE} from './kdw-text-policy.mjs';
 import {KEYBOARD_DISMISS_ICON,updateKeyboardPanel} from './kdw-keyboard-ui.mjs';
+import {typographyText} from './kdw-typography.mjs';
+import {preloadBusinessImages} from './kdw-business-images.mjs';
 import {storeBank,storeGoal,storeRating,STORE_TASK,STORE_SCREEN} from './kdw-store-rating.mjs';
 import {activityGeometry,alignActivityPhone,alignActivityActions,fadeActivityOut} from './kdw-activity-stage.mjs';
 import {createProductStream} from './kdw-product-stream.mjs';
@@ -10,7 +13,7 @@ const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;
 const avatars={cat:'🐱',game:'🎮',island:'🏝️',heart:'♥'};
 const rows={ru:['й ц у к е н г ш щ з х ъ','ф ы в а п р о л д ж э','я ч с м и т ь б ю'],en:['q w e r t y u i o p','a s d f g h j k l','z x c v b n m'],symbols:['1 2 3 4 5 6 7 8 9 0','@ # ₽ % & * ( ) - +','! ? . , : ; / « »']};
 const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
-const photo=product=>{if(!product.crop)return `<span class="kdw-product-photo kdw-product-emoji">${product.emoji}</span>`;const [x,y,w,h]=product.crop;return `<span class="kdw-product-photo" style="background-size:${780/w*100}% ${447/h*100}%;background-position:${x/(780-w)*100}% ${y/(447-h)*100}%" aria-hidden="true"></span>`;};
+const photo=product=>{if(product.image)return `<img class="kdw-product-photo kdw-product-generated" src="./${esc(product.image.path)}" alt="" draggable="false">`;if(!product.crop)return `<span class="kdw-product-photo kdw-product-emoji">${esc(product.emoji)}</span>`;const [x,y,w,h]=product.crop;return `<span class="kdw-product-photo" style="background-size:${780/w*100}% ${447/h*100}%;background-position:${x/(780-w)*100}% ${y/(447-h)*100}%" aria-hidden="true"></span>`;};
 const ratingMarkup=score=>`<small class="kdw-store-score" data-tone="${score==null?'none':score>=5?'gold':score<4?'red':'blue'}" aria-label="Оценка ${score??'нет'}"><span aria-hidden="true">★</span> ${score?.toFixed(1).replace('.',',')??'—'}</small>`;
 function currentScene(snapshot,phase){
  const s=snapshot?.state;if(!s||!['task','result'].includes(s.status)||['business.store.dashboard','business.store.settings'].includes(s.screenId))return null;
@@ -27,11 +30,22 @@ export function mountKdwInteractions({getSession,onMenu}){
  const storeMotion=createStoreMotion(overlay);
  const productStream=createProductStream(overlay,product=>productMarkup(product));
  let latestSnapshot=null,storeStarting=false,storeSignature='',storePending=false,scenePhase='';
+ let storePhotos={key:'',status:'idle'};
+ function ensureStorePhotos(){
+  const business=latestSnapshot?.state.progress.business;if(!business)return false;
+  const activity=business.storeActivity,type=activity?.businessType??business.answers?.businessType??'cafe',version=activity?.version??7,key=type+':'+version;
+  if(storePhotos.key!==key){
+   const state=storePhotos={key,status:'loading'};
+   preloadBusinessImages(storeBank(type,version)).then(()=>{if(!disposed&&storePhotos===state){state.status='ready';if(scene==='store')error('');}})
+    .catch(()=>{if(!disposed&&storePhotos===state)state.status='error';});
+  }
+  return storePhotos.status==='ready';
+ }
  let scene=null,context='',draft=null,dirty=false,saving=null,submitBusy=false,saveTimer=null,disposed=false,activeField='name',keyboardOpen=false,language='ru',shift=true,symbols=false,activeSlot=0,screenId='',noticeTimer=0,noticeText='';
  const storeFinished=()=>storeGoal(latestSnapshot?.state.progress.business?.storeActivity)||screenId!==STORE_SCREEN&&!latestSnapshot?.state.progress.business?.storeActivity&&interactionComplete('store',draft);
  const sameContext=()=>{const s=getSession()?.snapshot?.state;return !disposed&&context===`${s?.runId}:${s?.taskId}`&&s?.status==='task';};
  const error=message=>{const el=overlay.querySelector('[data-kdw-error]');if(el)el.textContent=message;};
- const resize=()=>{const element=overlay.querySelector('.kdw-scene');if(element)element.style.setProperty('--kdw-scale',Math.min(innerWidth/1600,innerHeight/900));};
+ const resize=()=>{const element=overlay.querySelector('.kdw-scene');if(element){element.style.setProperty('--kdw-scale',Math.min(innerWidth/1600,innerHeight/900));alignPixelKeyboard(element);}};
  window.addEventListener('resize',resize);
  function buttonsBusy(value){overlay.querySelectorAll('[data-kdw-submit]').forEach(button=>{button.disabled=value||scene==='store'&&(storeMotion.active()||storePending||scenePhase!=='task')||!(scene==='store'?storeFinished():interactionComplete(scene,draft));button.setAttribute('aria-busy',String(value));});overlay.querySelectorAll('[data-kdw-key],[data-kdw-avatar],[data-kdw-field],[data-kdw-product],[data-kdw-slot],[data-kdw-remove]').forEach(control=>{control.disabled=value||(scene==='store'&&screenId!=='business.store.start');});}
  async function flush({final=true}={}){
@@ -72,11 +86,11 @@ export function mountKdwInteractions({getSession,onMenu}){
   Object.assign(editor.style,{left:rect.left+'px',top:rect.top+'px',height:rect.height/scale+'px',transform:`scale(${scale})`});
  }
  function storeRows(){return latestSnapshot?.state.progress.business?.storeActivity?.published??(screenId!==STORE_SCREEN?(draft?.slots??[]).filter(Boolean).map(postId=>({postId,score:null})):[]);}
- function storeProduct(id){return storeBank(latestSnapshot?.state.progress.business?.storeActivity?.businessType??latestSnapshot?.state.progress.business?.answers?.businessType).find(p=>p.id===id)??COFFEE_PRODUCTS.find(p=>p.id===id);}
- function slotMarkup(){const rows=storeRows(),capacity=Math.max(8,Math.ceil((rows.length+2)/2)*2);return rows.map((row,index)=>{const product=storeProduct(row.postId);return `<article class="kdw-slot" data-filled="true" data-rating="${row.score}"><div data-kdw-slot="${index}" class="kdw-slot-content">${photo(product)}<div class="kdw-store-price"><strong>${product.price} ₽</strong>${ratingMarkup(row.score)}</div><span class="kdw-store-name">${esc(product.name)}</span><span class="kdw-store-more">Подробнее</span></div></article>`;}).join('')+Array.from({length:capacity-rows.length},()=>'<div class="kdw-slot kdw-slot-placeholder" aria-hidden="true"></div>').join('');}
- function productMarkup(product){return `<button type="button" class="kdw-product" data-kdw-product="${product.id}" aria-label="Добавить ${esc(product.name)}">${photo(product)}<span>${esc(product.name)}</span><strong>${product.price} ₽</strong></button>`;}
+ function storeProduct(id){return storeBank(latestSnapshot?.state.progress.business?.storeActivity?.businessType??latestSnapshot?.state.progress.business?.answers?.businessType,latestSnapshot?.state.progress.business?.storeActivity?.version??7).find(p=>p.id===id)??COFFEE_PRODUCTS.find(p=>p.id===id);}
+ function slotMarkup(){const rows=storeRows(),capacity=Math.max(8,Math.ceil((rows.length+2)/2)*2);return rows.map((row,index)=>{const product=storeProduct(row.postId);return `<article class="kdw-slot" data-filled="true" data-rating="${row.score}"><div data-kdw-slot="${index}" class="kdw-slot-content">${photo(product)}<div class="kdw-store-price"><strong>${product.price.toLocaleString('ru-RU')} ₽</strong>${ratingMarkup(row.score)}</div><span class="kdw-store-name">${esc(typographyText(product.name))}</span>${product.description?`<small class="kdw-store-description">${esc(typographyText(product.description))}</small>`:''}<span class="kdw-store-more">Подробнее</span></div></article>`;}).join('')+Array.from({length:capacity-rows.length},()=>'<div class="kdw-slot kdw-slot-placeholder" aria-hidden="true"></div>').join('');}
+ function productMarkup(product){return `<button type="button" class="kdw-product" data-kdw-product="${product.id}" aria-label="Добавить ${esc(product.name)}">${photo(product)}<span class="kdw-product-title">${esc(typographyText(product.name))}</span><strong>${product.price.toLocaleString('ru-RU')} ₽</strong>${product.description?`<small class="kdw-product-description">${esc(typographyText(product.description))}</small>`:''}</button>`;}
  function storeMarkup(){
-  return `<div class="kdw-store-editor kdw-max-store"><header class="kdw-store-header"><img src="./assets/kdw-native/store-header.svg" alt="" draggable="false"><h2>Рейтинг магазина: <span data-store-rating>4,0</span></h2></header><div class="kdw-store-scroll" tabindex="0" aria-label="Каталог магазина"><div class="kdw-store-slots">${slotMarkup()}</div></div></div><footer class="kdw-store-actions"><button type="button" class="kdw-activity-button" data-kdw-submit hidden>Опубликовать витрину</button><p class="kdw-error" data-kdw-error role="status" aria-live="polite"></p><p class="kdw-moderation-notice" data-kdw-moderation role="status" aria-live="polite"></p></footer><section class="kdw-product-stream" aria-label="Товары для витрины"></section>`;
+  return `<div class="kdw-store-editor kdw-max-store"><header class="kdw-store-header"><img src="./assets/kdw-native/store-header.svg" alt="" draggable="false"><h2>Рейтинг магазина: <span data-store-rating>4,0</span></h2></header><div class="kdw-store-scroll" tabindex="0" aria-label="Каталог магазина"><div class="kdw-store-slots">${slotMarkup()}</div></div></div><footer class="kdw-store-actions"><button type="button" class="kdw-activity-button kdw-transition-button" data-kdw-submit hidden>Завершить миссию</button><button type="button" class="kdw-activity-button" data-kdw-image-retry hidden>Повторить загрузку</button><p class="kdw-error" data-kdw-error role="status" aria-live="polite"></p><p class="kdw-moderation-notice" data-kdw-moderation role="status" aria-live="polite"></p></footer><section class="kdw-product-stream" aria-label="Товары для витрины"></section>`;
  }
  function alignStore(){
   if(scene!=='store')return;
@@ -84,8 +98,11 @@ export function mountKdwInteractions({getSession,onMenu}){
   const ready=g&&g.matched&&g.phone.dataset.sceneVersion?.includes(screenId)&&g.phone.querySelector('.task-media-canvas img')?.getAttribute('src')?.endsWith('kdw-native/store-phone.svg');
   const controls=overlay.querySelector('.kdw-store-actions');
   if(!ready){editor.style.opacity='0';field.style.opacity='0';controls.style.opacity='0';editor.inert=field.inert=controls.inert=true;return;}
-  const phoneAlpha=alignActivityPhone(editor,g);editor.inert ||=scenePhase!=='task';if(phoneAlpha>.97&&!editor.inert&&screenId===STORE_SCREEN&&scenePhase==='task')void startStore();productStream.sync(g,latestSnapshot,screenId===STORE_SCREEN,scenePhase==='task'&&phoneAlpha>.97&&!editor.inert);
-  alignActivityActions(controls,g,phoneAlpha,editor.inert);
+  const photosReady=ensureStorePhotos(),phoneAlpha=alignActivityPhone(editor,g);editor.inert ||=scenePhase!=='task'||!photosReady;
+  if(!photosReady){editor.style.opacity='0';error(storePhotos.status==='error'?'Не удалось загрузить фотографии':'Загружаем фотографии…');}
+  const retry=overlay.querySelector('[data-kdw-image-retry]');if(retry)retry.hidden=storePhotos.status!=='error';
+  if(phoneAlpha>.97&&!editor.inert&&screenId===STORE_SCREEN&&scenePhase==='task')void startStore();productStream.sync(g,latestSnapshot,screenId===STORE_SCREEN&&photosReady,scenePhase==='task'&&phoneAlpha>.97&&!editor.inert);
+  alignActivityActions(controls,g,phoneAlpha,editor.inert&&storePhotos.status!=='error');
   for(const node of field.querySelectorAll('[data-kdw-product]'))node.disabled ||=submitBusy||storePending;
  }
  function redraw(){storeMotion.clear();overlay.innerHTML=scene==='channel'?channelMarkup():storeMarkup();resize();alignChannel();alignStore();buttonsBusy(submitBusy);refreshStore();}
@@ -146,6 +163,7 @@ export function mountKdwInteractions({getSession,onMenu}){
   const button=event.target.closest('button');if(!button||button.disabled||button.closest('[inert],[hidden]'))return;
   if(button.hasAttribute('data-kdw-menu')){if(submitBusy)return;void flush().then(()=>onMenu()).catch(cause=>error(cause.message));return;}
   if(button.hasAttribute('data-kdw-submit')){void act();return;}
+  if(button.hasAttribute('data-kdw-image-retry')){storePhotos={key:'',status:'idle'};ensureStorePhotos();return;}
   if(button.hasAttribute('data-kdw-key')){editKey(button.dataset.kdwKey);return;}
   if(submitBusy)return;
   if(button.dataset.kdwAvatar){draft.avatar=button.dataset.kdwAvatar;overlay.querySelectorAll('[data-kdw-avatar]').forEach(el=>el.setAttribute('aria-pressed',String(el===button)));changed();return;}
@@ -160,7 +178,7 @@ export function mountKdwInteractions({getSession,onMenu}){
   flush,
   align(){alignChannel();alignStore();},
   update(next,phase){
-   if(disposed)return;latestSnapshot=next;scenePhase=phase;productStream.accept(next);const kind=currentScene(next,phase);if(!kind){hide();return;}
+   if(disposed)return;latestSnapshot=next;scenePhase=phase;productStream.accept(next);if(next?.state.progress.business?.answers?.businessType)ensureStorePhotos();const kind=currentScene(next,phase);if(!kind){hide();return;}
    const s=next.state,key=`${s.runId}:${s.taskId}`;
    if(key!==context){storeSignature='';productStream.reset();context=key;scene=kind;draft=structuredClone(s.progress[s.missionId]?.interactions?.[s.taskId]??emptyInteraction(kind));dirty=false;screenId=s.screenId;activeSlot=Math.max(0,draft.slots?.findIndex(id=>id===null)??0);activeField='name';keyboardOpen=false;redraw();overlay.hidden=false;document.documentElement.dataset.kdwInteraction=kind;document.querySelector('#circles').inert=false;if(scene==='channel')refreshKeyboard();}
    else if(screenId!==s.screenId){screenId=s.screenId;storeSignature='';redraw();}

@@ -1,0 +1,102 @@
+<!doctype html><html lang="ru"><meta charset="utf-8">
+<style>
+body{margin:20px;font:13px Inter,Arial,sans-serif;color:var(--figma-color-text,#202024);background:var(--figma-color-bg,#fff)}h2{font-size:18px;margin:0 0 12px}label{display:flex;gap:8px;align-items:center;margin:9px 0}fieldset{margin:14px 0;padding:8px 12px;border:1px solid var(--figma-color-border,#ddd);border-radius:8px}input[type=file]{display:block;max-width:100%;margin:10px 0}button{border:0;border-radius:8px;padding:12px;width:100%;font:inherit;margin-top:10px;cursor:pointer;background:#6e1aff;color:white}button:disabled{opacity:.5;cursor:default}#stop,#export{background:var(--figma-color-bg-secondary,#eee);color:var(--figma-color-text,#222)}#status,#packStatus{white-space:pre-wrap;margin-top:12px;line-height:1.45}small{display:block;opacity:.75;line-height:1.5;margin-top:8px}
+</style>
+<style>details{border:1px solid var(--figma-color-border,#ddd);border-radius:8px;padding:12px;margin:14px 0}summary{cursor:pointer;font-weight:600}#figmaFile,#figmaToken{box-sizing:border-box;width:100%;padding:8px;margin:5px 0}#commentStatus,#commentPreview{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.4}#commentPreview{max-height:180px;overflow:auto;font-size:11px}.comment-downloads{display:flex;gap:8px}</style>
+<h2>MAX · Финальные скриншоты</h2><small id="summary">Подготовка…</small>
+<small>Полные PNG 3072×1536 из игры. Текст, кнопки, линки и фон сохранены в изображении. Редактируемых элементов поверх кадра нет.</small>
+<details id="commentTools"><summary>Комментарии → экраны · JSON / MD</summary>
+<small>Выделите общий фрейм «MAX · Финальные скриншоты · 3072×1536». Пакет PNG для этого не нужен. Сопоставляем по текущим координатам и ID экранов, включая ответы в ветках.</small>
+<label for="figmaFile">Ссылка или ключ текущего файла Figma</label><input id="figmaFile" type="text" placeholder="https://www.figma.com/design/…" autocomplete="off">
+<label for="figmaToken">Персональный токен · file_comments:read</label><input id="figmaToken" type="password" autocomplete="off" spellcheck="false">
+<small>Токен отправляется только api.figma.com и очищается после запроса. Не сохраняется в файле, плагине или отчёте. Комментарии только читаются.</small>
+<button id="fetchComments">Загрузить комментарии Figma и сопоставить</button>
+<label for="commentFile">Или импортировать готовый JSON комментариев</label><input id="commentFile" type="file" accept=".json,application/json">
+<label><input id="absolutePage" type="checkbox">Подтверждаю: комментарии без привязки к узлу относятся к текущей странице</label>
+<small>Если страница абсолютных координат неизвестна, привязки остаются на проверке. Область на нескольких экранах или комментарий в промежутке не назначаются ближайшему экрану автоматически.</small>
+<button id="mapComments" disabled>Сопоставить с выделенным фреймом</button>
+<div class="comment-downloads"><button id="commentsJson" disabled>Скачать JSON</button><button id="commentsMd" disabled>Скачать MD</button></div>
+<p id="commentStatus" role="status" aria-live="polite"></p><pre id="commentPreview"></pre>
+</details>
+<fieldset><legend>Пакет экранов</legend><input id="packFile" type="file" accept=".maxscreens" aria-label="Выберите screens.maxscreens"><small>Выберите screens.maxscreens из этой же версии. Читается один кадр за раз; файл остаётся на компьютере.</small><div id="packStatus" role="status">Пакет не выбран</div></fieldset>
+<fieldset><legend>Миссии</legend><div id="missions"></div><label><input id="shared" type="checkbox" checked>Главное меню</label></fieldset>
+<fieldset><legend>Варианты бизнеса</legend><div id="sectors"></div></fieldset>
+<button id="build" disabled>Собрать фреймы со скриншотами</button><button id="export" disabled>Исходные тексты · JSON</button><small>JSON содержит тексты каталога без изменений. Текст внутри скриншота не редактируется.</small><button id="stop" hidden>Остановить</button><div id="status" role="status" aria-live="polite"></div>
+<script>
+// Browser-only, offline reader. Opening retains a File handle and a small index;
+// PNG bytes are read/verified individually, never as one large ArrayBuffer.
+(() => {
+ const MAGIC='MAXSCREENPACK1\n',MAX_IMAGE=8*1024*1024,MAX_INDEX=1024*1024;
+ const primes=[];for(let n=2;primes.length<64;n++){let prime=true;for(let j=2;j*j<=n;j++)if(n%j===0){prime=false;break;}if(prime)primes.push(n);}
+ const word=x=>(x-Math.floor(x))*4294967296|0,K=primes.map(p=>word(Math.cbrt(p))),INITIAL=primes.slice(0,8).map(p=>word(Math.sqrt(p)));
+ const rotate=(x,n)=>(x>>>n)|(x<<(32-n));
+ function sha256(bytes){
+  const size=Math.ceil((bytes.length+9)/64)*64,padded=new Uint8Array(size);padded.set(bytes);padded[bytes.length]=128;
+  const view=new DataView(padded.buffer),bits=bytes.length*8;view.setUint32(size-8,Math.floor(bits/4294967296));view.setUint32(size-4,bits>>>0);
+  const hash=INITIAL.slice(),w=new Int32Array(64);
+  for(let offset=0;offset<size;offset+=64){
+   for(let i=0;i<16;i++)w[i]=view.getInt32(offset+i*4);
+   for(let i=16;i<64;i++){const a=w[i-15],b=w[i-2];w[i]=(w[i-16]+(rotate(a,7)^rotate(a,18)^(a>>>3))+w[i-7]+(rotate(b,17)^rotate(b,19)^(b>>>10)))|0;}
+   let [a,b,c,d,e,f,g,h]=hash;
+   for(let i=0;i<64;i++){const t1=(h+(rotate(e,6)^rotate(e,11)^rotate(e,25))+((e&f)^(~e&g))+K[i]+w[i])|0,t2=((rotate(a,2)^rotate(a,13)^rotate(a,22))+((a&b)^(a&c)^(b&c)))|0;h=g;g=f;f=e;e=(d+t1)|0;d=c;c=b;b=a;a=(t1+t2)|0;}
+   for(const [i,v]of [a,b,c,d,e,f,g,h].entries())hash[i]=(hash[i]+v)|0;
+  }
+  return hash.map(v=>(v>>>0).toString(16).padStart(8,'0')).join('');
+ }
+ async function digest(bytes){return globalThis.crypto?.subtle?Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),v=>v.toString(16).padStart(2,'0')).join(''):sha256(bytes);}
+ async function open(file,expected){
+  const stats={reads:0,maxRead:0,totalRead:0,inFlight:0,maxInFlight:0};
+  async function slice(start,end){const length=end-start;if(length<0||length>MAX_IMAGE)throw Error('Слишком большой блок пакета');stats.reads++;stats.totalRead+=length;stats.maxRead=Math.max(stats.maxRead,length);return new Uint8Array(await file.slice(start,end).arrayBuffer());}
+  const prefix=await slice(0,MAGIC.length+4);if(prefix.length!==MAGIC.length+4||new TextDecoder().decode(prefix.subarray(0,MAGIC.length))!==MAGIC)throw Error('Выберите файл screens.maxscreens из папки плагина');
+  const indexSize=new DataView(prefix.buffer,prefix.byteOffset+MAGIC.length,4).getUint32(0,true);if(indexSize<2||indexSize>MAX_INDEX)throw Error('Повреждён индекс пакета');
+  const start=MAGIC.length+4,indexBytes=await slice(start,start+indexSize);if(await digest(indexBytes)!==expected)throw Error('Пакет другой версии. Выберите screens.maxscreens из этой папки');
+  const index=JSON.parse(new TextDecoder().decode(indexBytes)),dataStart=start+indexSize;if(index.schema!=='max-screen-pack/v1'||!index.assets||!Number.isSafeInteger(index.payloadBytes)||dataStart+index.payloadBytes!==file.size)throw Error('Неполный или повреждённый пакет');
+  for(const a of Object.values(index.assets))if(!Number.isSafeInteger(a.offset)||a.offset<0||!Number.isSafeInteger(a.bytes)||a.bytes<8||a.bytes>MAX_IMAGE||a.offset+a.bytes>index.payloadBytes||!/^[a-f0-9]{64}$/.test(a.sha256))throw Error('Повреждён список кадров');
+  return {stats,count:Object.keys(index.assets).length,async read(id){
+   const a=index.assets[id];if(!Object.hasOwn(index.assets,id)||!a)throw Error('Нет кадра '+id);if(stats.inFlight)throw Error('Предыдущий кадр ещё читается');stats.inFlight++;stats.maxInFlight=Math.max(stats.maxInFlight,stats.inFlight);
+   try{const bytes=await slice(dataStart+a.offset,dataStart+a.offset+a.bytes);if(bytes.length!==a.bytes||await digest(bytes)!==a.sha256)throw Error('Повреждён кадр '+id);return bytes;}finally{stats.inFlight--;}
+  }};
+ }
+ globalThis.MaxScreenPack={open,sha256};
+})();
+
+function installMaxCommentsUI({post,el,setBusy}){
+ let source=null,sourceKey=null,report=null,busy=false,activeAbort=null;
+ const say=s=>el('commentStatus').textContent=s;
+ function controls(value){busy=value;for(const id of ['commentFile','figmaFile','figmaToken','fetchComments','absolutePage'])el(id).disabled=value;el('mapComments').disabled=value||!source;for(const id of ['commentsJson','commentsMd'])el(id).disabled=value||!report;}
+ function validate(value){const rows=Array.isArray(value)?value:value?.comments;if(!Array.isArray(rows))throw Error('Ожидается JSON с массивом comments');if(rows.length>5000)throw Error('Максимум 5000 комментариев');return value;}
+ function fileKey(value){const s=value.trim();if(/^[a-zA-Z0-9]+$/.test(s))return s;let u;try{u=new URL(s)}catch{throw Error('Укажите ссылку на файл Figma или его ключ')};if(!['www.figma.com','figma.com'].includes(u.hostname)||u.protocol!=='https:')throw Error('Нужна https-ссылка figma.com');const parts=u.pathname.split('/'),branch=parts.indexOf('branch');if(branch>=0&&/^[a-zA-Z0-9]+$/.test(parts[branch+1]??''))return parts[branch+1];if(!['file','design'].includes(parts[1])||!/^[a-zA-Z0-9]+$/.test(parts[2]??''))throw Error('Не удалось определить ключ файла');return parts[2];}
+ function run(){if(!source||busy)return;report=null;setBusy(true);say('Читаем геометрию выделенного фрейма и сопоставляем ветки…');post({type:'comments-map',data:source,fileKey:sourceKey,absolutePageConfirmed:el('absolutePage').checked});}
+ el('commentFile').onchange=async()=>{report=null;source=null;sourceKey=null;controls(false);const file=el('commentFile').files[0];if(!file)return;try{if(file.size>10*1024*1024)throw Error('JSON должен быть меньше 10 МБ');source=validate(JSON.parse(await file.text()));sourceKey=source.file_key??null;say('JSON загружен. Выделите общий фрейм и нажмите «Сопоставить».');controls(false);}catch(e){say('Ошибка: '+e.message);}};
+ el('fetchComments').onclick=async()=>{
+  if(busy)return;let token=el('figmaToken').value.trim(),key;try{key=fileKey(el('figmaFile').value);if(!token)throw Error('Введите персональный токен Figma с file_comments:read');}catch(e){say(e.message);return;}
+  source=null;report=null;setBusy(true);say('Получаем комментарии из Figma…');const abort=new AbortController(),timer=setTimeout(()=>abort.abort(),30000);activeAbort=abort;
+  try{
+   const r=await fetch('https://api.figma.com/v1/files/'+encodeURIComponent(key)+'/comments',{method:'GET',headers:{'X-Figma-Token':token},credentials:'omit',redirect:'error',signal:abort.signal});
+   if(!r.ok)throw Error(r.status===429?'Лимит Figma API. Повторите позже.':r.status===403?'Нет доступа: проверьте токен и разрешение file_comments:read.':r.status===404?'Файл не найден или недоступен.':'Figma API: HTTP '+r.status);
+   if(Number(r.headers.get('content-length'))>10*1024*1024)throw Error('Ответ больше 10 МБ');const text=await r.text();if(text.length>10*1024*1024)throw Error('Ответ больше 10 МБ');source=validate(JSON.parse(text));sourceKey=key;
+  }catch(e){say(e.name==='AbortError'?'Время ожидания истекло. Повторите загрузку.':e instanceof TypeError?'Не удалось связаться с Figma API. Можно импортировать JSON.':e.message);}
+  finally{clearTimeout(timer);activeAbort=null;token='';el('figmaToken').value='';setBusy(false);}
+  if(source)run();
+ };
+ el('mapComments').onclick=run;
+ function download(text,name,type){const url=URL.createObjectURL(new Blob([text],{type})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+ el('commentsJson').onclick=()=>report&&download(JSON.stringify(report.data,null,2),'max-screen-comments.json','application/json');
+ el('commentsMd').onclick=()=>report&&download(report.markdown,'max-screen-comments.md','text/markdown;charset=utf-8');
+ return{setBusy:controls,cancel(){activeAbort?.abort();},handle(m){
+  if(m.type==='init'&&m.fileKey&&!el('figmaFile').value)el('figmaFile').value=m.fileKey;
+  if(m.type==='comments-result'){report=m;setBusy(false);const s=m.data.summary;say(`Веток: ${s.threads}; комментариев с ответами: ${s.comments}.\nПривязано: ${s.matched}. Проверить: ${s.review+s.ambiguous+s.unmatched}. Вне выделения: ${s.outside}.\nJSON содержит координаты и ID экранов; MD — правки по экранам.`);el('commentPreview').textContent=m.data.threads.slice(0,100).map(t=>`${t.orderId??t.threadId} · ${t.screen?.fixtureId??t.status+' / '+t.reason}\n${t.comments[0]?.message.slice(0,180)??''}`).join('\n\n');}
+  if(m.type==='comments-error'){report=null;setBusy(false);say('Ошибка: '+m.message);}
+ }};
+}
+
+const post=m=>parent.postMessage({pluginMessage:m},'*'),el=id=>document.getElementById(id);let busy=false,initialised=false,reader=null,transport=null,loadEpoch=0,commentsUi=null;
+function setBusy(value){busy=value;el('build').disabled=value||!reader||!initialised||reader.stats.inFlight>0;el('export').disabled=value||!initialised;el('stop').hidden=!value;el('packFile').disabled=value;for(const c of document.querySelectorAll('input[type=checkbox]'))c.disabled=value;commentsUi?.setBusy(value);}
+commentsUi=installMaxCommentsUI({post,el,setBusy});
+el('packFile').onchange=async()=>{const epoch=++loadEpoch,file=el('packFile').files[0];reader=null;post({type:'media-clear'});setBusy(false);if(!file)return;el('packStatus').textContent='Проверка пакета…';try{if(!transport)throw Error('Дождитесь готовности плагина');const next=await MaxScreenPack.open(file,transport.indexSha256);if(epoch!==loadEpoch)return;reader=next;post({type:'media-ready',indexSha256:transport.indexSha256});el('packStatus').textContent='Готово · '+reader.count+' PNG';}catch(e){el('packStatus').textContent=e.message;}setBusy(false);};
+el('build').onclick=()=>{if(!reader||busy||reader.stats.inFlight)return;setBusy(true);post({type:'build',missionIds:[...document.querySelectorAll('[data-mission]:checked')].map(e=>e.dataset.mission),sectors:[...document.querySelectorAll('[data-sector]:checked')].map(e=>e.dataset.sector),shared:el('shared').checked,mode:'screenshot'})};
+el('export').onclick=()=>post({type:'export'});el('stop').onclick=()=>{loadEpoch++;commentsUi.cancel();post({type:'cancel'});};
+function checks(host,values,key){host.replaceChildren();for(const [id,title]of values){const label=document.createElement('label'),input=document.createElement('input');input.type='checkbox';input.checked=true;input.dataset[key]=id;label.append(input,document.createTextNode(title));host.append(label);}}
+onmessage=async e=>{const m=e.data.pluginMessage;if(!m)return;commentsUi.handle(m);if(m.type==='init'){transport=m.transport;initialised=true;el('summary').textContent=m.summary.frames+' кадров · '+m.summary.uniqueScreens+' этапов · '+m.summary.width+'×'+m.summary.height+' · PNG без потерь';checks(el('missions'),m.missions.map(m=>[m.missionId,m.title]),'mission');checks(el('sectors'),Object.entries(m.sectors),'sector');setBusy(false);}if(m.type==='status'){el('status').textContent=m.text;if(m.done)setBusy(false);}if(m.type==='asset'){const epoch=loadEpoch;try{if(!reader)throw Error('Выберите screens.maxscreens');const bytes=await reader.read(m.id);if(epoch===loadEpoch)post({type:'asset-result',request:m.request,bytes});}catch(e){if(epoch===loadEpoch)post({type:'asset-result',request:m.request,error:e.message});}finally{setBusy(busy);}}if(m.type==='export'){const blob=new Blob([JSON.stringify(m.data,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='max-game-texts-'+m.data.contentRevision+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);el('status').textContent='Экспортированы исходные тексты '+m.data.coverage.screens+' этапов. PNG не изменялись.';}};
+post({type:'ready'});
+</script></html>

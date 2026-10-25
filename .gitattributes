@@ -419,3 +419,14 @@ docs/transfer/REPOSITORY_MANIFEST.json filter=lfs diff=lfs merge=lfs -text
 # KDW-MAX stable portable runtime
 kdw-max/apps/max-game/runtime/** filter=lfs diff=lfs merge=lfs -text
 kdw-max/**/*.svg filter=lfs diff=lfs merge=lfs -text
+
+# Current KDW delivery: large design/media assets use Git LFS.
+*.maxscreens filter=lfs diff=lfs merge=lfs -text
+"kdw-max/apps/max-game/www/assets/reviewed-20261007/business-channel-posts-79f5b66ea857.svg" filter=lfs diff=lfs merge=lfs -text
+"kdw-max/UI/new_screens/busines_channel/screen1.svg" filter=lfs diff=lfs merge=lfs -text
+"kdw-max/UI/new_screens/conversation/screen_2.svg" filter=lfs diff=lfs merge=lfs -text
+"kdw-max/UI/new_screens/conversation/screen_6.svg" filter=lfs diff=lfs merge=lfs -text
+"kdw-max/UI/new_screens/conversation/screen_7.svg" filter=lfs diff=lfs merge=lfs -text
+"kdw-max/UI/new_screens/personal_channel/svg/screen_1.svg" filter=lfs diff=lfs merge=lfs -text
+"kdw-max/UI/new_screens/personal_channel/svg/screen_9.svg" filter=lfs diff=lfs merge=lfs -text
+"kdw-max/UI/stela/final/screen3.svg" filter=lfs diff=lfs merge=lfs -text

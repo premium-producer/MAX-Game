@@ -1,0 +1,42 @@
+// Portable host boundary: the mission core remains the sole game state machine.
+let binding=null;
+export function linkedVisitorAvatar(){return binding?.avatar??'./assets/kdw-native/conversation/visitor-avatar.svg';}
+const api=async(url,options={})=>{const r=await fetch(url,{...options,signal:AbortSignal.timeout(4000),cache:'no-store'});if(!r.ok)throw Error('GAME_LINK_'+r.status);return r.json();};
+export async function loadGameLink(params){
+ if(params.get('backend')==='server'||params.get('test')==='memory'||params.has('interaction')||params.get('link')==='0'||!['127.0.0.1','localhost','[::1]'].includes(location.hostname)&&params.get('link')!=='1')return null;
+ let game;try{({game}=await api('/__kdw/link/active'));}catch{if(params.get('link')==='1'){const message='Нет связи с сохранённой игрой. Перезапустите MAX.';const node=document.querySelector('#loading');if(node)node.textContent=message;throw Error(message);}return null;}
+ if(!game){if(params.get('link')==='1'){params.delete('session');params.delete('link');const u=new URL(location.href);u.search=params.toString();history.replaceState(null,'',u);}return{game:null,assets:[],enabled:true};}
+ const manifest=await api(`/__kdw/link/games/${game.gameId}/assets`);
+ if(manifest.gameId!==game.gameId)throw Error('GAME_LINK_CONTEXT_CONFLICT');
+ params.set('session',game.gameId);params.set('link','1');
+ const u=new URL(location.href);u.search=params.toString();history.replaceState(null,'',u);
+ const avatar=manifest.assets.find(a=>a.original.endsWith('/visitor-avatar.svg'));if(!avatar)throw Error('GAME_LINK_AVATAR_MISSING');
+ binding={game,assets:manifest.assets,enabled:true,avatar:'./'+avatar.path};
+ document.documentElement.dataset.gameId=game.gameId;document.documentElement.dataset.voiceSessionId=game.voiceSessionId;
+ return binding;
+}
+export function linkedCatalog(catalog,link){
+ if(!link?.game)return catalog;
+ const copy=structuredClone(catalog),byPath=new Map(link.assets.map(a=>[a.original,a]));
+ for(const a of Object.values(copy.assets)){const replacement=byPath.get(a.path);if(replacement){a.path=replacement.path;a.sha256=replacement.sha256;}}
+ return copy;
+}
+export async function resumeLinkedMission(session,link){
+ if(!link?.game)return;
+ if(session.snapshot.state.sessionId!==link.game.gameId)throw Error('GAME_LINK_SESSION_CONFLICT');
+ if(session.snapshot.state.status==='menu'&&!session.snapshot.state.missionId){const result=await session.command('SELECT_MISSION',{missionId:link.game.gameMissionId});if(!result?.reply.ok)throw Error('GAME_LINK_SELECTION_FAILED');}
+}
+export function watchGameLink({link,getSession,onChange=()=>location.reload()}){
+ if(!link?.enabled)return()=>{};
+ let stopped=false,running=false,lastRevision=-1;
+ async function tick(){if(stopped||running)return;running=true;try{
+  const session=getSession(),state=session?.snapshot?.state;
+  if(!link.game&&state&&state.status!=='menu')return;
+  if(link.game&&state&&state.sessionId===link.game.gameId&&state.revision!==lastRevision){
+   try{await api(`/__kdw/link/games/${link.game.gameId}/progress`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({gameId:state.sessionId,revision:state.revision,runId:state.runId,status:state.status,missionId:state.missionId,taskId:state.taskId,screenId:state.screenId,contentRevision:state.contentRevision,endReason:state.standEndReason??null})});lastRevision=state.revision;}catch(error){if(error.message!=='GAME_LINK_409')throw error;}
+  }
+  const {game}=await api('/__kdw/link/active');if(!stopped&&(game?.gameId??null)!==(link.game?.gameId??null)){stopped=true;onChange();}
+  if(!stopped&&!game&&document.documentElement.dataset.production==='true'){const policy=await api('/__kdw/settings');if(policy.revision!==document.documentElement.dataset.standSettings){stopped=true;onChange();}}
+ }catch{/* Durable game state and pending delivery survive temporary outages. */}finally{running=false;}}
+ const timer=setInterval(()=>void tick(),1200);void tick();return()=>{stopped=true;clearInterval(timer);};
+}

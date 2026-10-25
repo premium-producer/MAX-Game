@@ -1,0 +1,29 @@
+const {app,BrowserWindow}=require('electron'),fs=require('fs'),path=require('path'),assert=require('node:assert/strict');
+const root=path.resolve(__dirname,'../../../..'),report=root+'/docs/verification-plugin-comments-20261023';fs.mkdirSync(report,{recursive:true});app.setPath('userData',report+'/profile-'+Date.now());app.on('window-all-closed',()=>{});
+app.whenReady().then(async()=>{let win;try{
+ win=new BrowserWindow({width:500,height:1000,show:false,webPreferences:{offscreen:true,backgroundThrottling:false}});
+ const errors=[];win.webContents.on('console-message',e=>{if(e.level===3)errors.push(e.message)});
+ await win.loadURL('data:text/html,<html><script>globalThis.messages=[];onmessage=e=>messages.push(e.data.pluginMessage)</script></html>');
+ const top=s=>win.webContents.executeJavaScript(s),delay=ms=>new Promise(r=>setTimeout(r,ms));
+ await top(`(()=>{const f=document.createElement('iframe');f.sandbox='allow-scripts';f.style='width:100%;height:980px;border:0';f.srcdoc=${JSON.stringify(fs.readFileSync(__dirname+'/../ui.html','utf8'))};document.body.append(f)})()`);
+ let frame;for(let i=0;i<100;i++){frame=win.webContents.mainFrame.frames[0];if(frame&&await frame.executeJavaScript('!!document.querySelector("#commentTools")'))break;await delay(50);}
+ const js=async s=>{try{return await frame.executeJavaScript(s)}catch(e){throw Error(String(e)+' Script: '+s)}},index=JSON.parse(fs.readFileSync(__dirname+'/../content-index.json'));
+ await js(`onmessage({data:{pluginMessage:${JSON.stringify({type:'init',fileKey:'fileA',missions:[],sectors:{},summary:index.summary,transport:index.transport})}}});el('commentTools').open=true;`);
+ assert.equal(await js('reader'),null);assert.equal(await js("el('figmaFile').value"),'fileA');
+ const comment={id:'c1',message:'Канал создан!\nНачинаем делиться самым важным <script>alert(1)</script>',user:{handle:'Клиент'},client_meta:{x:100,y:200},created_at:'2026-10-23T00:00:00Z'};
+ await js(`(()=>{const d=new DataTransfer();d.items.add(new File([${JSON.stringify(JSON.stringify({comments:[comment]}))}],'comments.json',{type:'application/json'}));el('commentFile').files=d.files;return el('commentFile').onchange()})()`);
+ assert.equal(await js("el('mapComments').disabled"),false);await js("el('mapComments').click()");await delay(30);
+ let msg=await top('messages.at(-1)');assert.equal(msg.type,'comments-map');assert.equal(msg.absolutePageConfirmed,false);assert.equal(msg.data.comments[0].message,comment.message);
+ const result={type:'comments-result',data:{schema:'max-screen-comments/v1',summary:{threads:1,comments:1,matched:1,review:0,ambiguous:0,unmatched:0,outside:0},threads:[{threadId:'c1',status:'matched',screen:{fixtureId:'blogger.channel.created'},comments:[{message:comment.message}]}]},markdown:'# MAX\n\n> Текст клиента'};
+ await js(`onmessage({data:{pluginMessage:${JSON.stringify(result)}}})`);assert.equal(await js("el('commentsJson').disabled"),false);assert.ok((await js("el('commentPreview').textContent")).includes('<script>'));assert.equal(await js("el('commentPreview').querySelector('script')"),null);
+ await js("HTMLAnchorElement.prototype.click=function(){globalThis.download=this.download};el('commentsMd').click()");assert.equal(await js('globalThis.download'),'max-screen-comments.md');
+ // Mock only transport: no real token or Figma account is used by verification.
+ await js(`globalThis.requests=[];globalThis.fetch=async(url,options)=>{requests.push({url,method:options.method,credentials:options.credentials,redirect:options.redirect,headerNames:Object.keys(options.headers)});return {ok:true,headers:{get:()=>null},text:async()=>${JSON.stringify(JSON.stringify({comments:[comment]}))}}};el('figmaToken').value='synthetic-test-token';el('fetchComments').onclick();`);
+ await delay(30);msg=await top('messages.at(-1)');assert.equal(msg.type,'comments-map');assert.equal(msg.fileKey,'fileA');assert.equal(await js("el('figmaToken').value"),'');assert.deepEqual(await js('requests[0]'),{url:'https://api.figma.com/v1/files/fileA/comments',method:'GET',credentials:'omit',redirect:'error',headerNames:['X-Figma-Token']});assert.ok(!(await top('JSON.stringify(messages)')).includes('synthetic-test-token'));
+ await js(`onmessage({data:{pluginMessage:${JSON.stringify(result)}}});fetch=async()=>({ok:false,status:403});el('figmaToken').value='synthetic-test-token';el('fetchComments').onclick();`);
+ assert.equal(await js("el('figmaToken').value"),'');assert.match(await js("el('commentStatus').textContent"),/Нет доступа/);assert.equal(await js("el('commentsJson').disabled"),true);
+ // Import can be repeated after errors; unknown absolute page requires explicit acknowledgement.
+ await js(`(()=>{const d=new DataTransfer();d.items.add(new File([${JSON.stringify(JSON.stringify({comments:[comment]}))}],'comments.json'));el('commentFile').files=d.files;return el('commentFile').onchange()})()`);await js("el('absolutePage').checked=true;el('mapComments').click()");await delay(30);assert.equal((await top('messages.at(-1)')).absolutePageConfirmed,true);
+ await js(`onmessage({data:{pluginMessage:${JSON.stringify(result)}}})`);assert.equal(await js('busy'),false);assert.match(await js("el('commentStatus').textContent"),/Привязано: 1/);await delay(150);assert.deepEqual(errors,[]);
+ fs.writeFileSync(report+'/comments-ui.png',(await win.webContents.capturePage()).toPNG());fs.writeFileSync(report+'/ui-checks.json',JSON.stringify({passed:true,errors,checks:['opaque iframe without screenshots pack','JSON upload and remap','literal comment preview','JSON and MD enabled','mock REST GET exact origin, no redirects','token cleared on success and 403, absent from IPC','absolute page confirmation explicit']},null,2));win.destroy();app.exit(0);
+ }catch(e){fs.writeFileSync(report+'/ui-failure.txt',e.stack||String(e));win?.destroy();app.exit(1);}});setTimeout(()=>app.exit(2),60000);

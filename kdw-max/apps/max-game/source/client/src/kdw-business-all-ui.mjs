@@ -1,5 +1,7 @@
+import {externalAction} from './kdw-transition-actions.mjs';
 import {BUSINESS_ALL_ASSETS,businessAllLayout} from './kdw-business-all-model.mjs';
 import {businessProfile} from './kdw-business-profile.mjs';
+import {linkedVisitorAvatar} from './kdw-game-link.mjs';
 import {businessSourceMarkup, businessSourceLayout} from './kdw-business-source-ui.mjs';
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function businessScreenLayout(id,state){
@@ -12,7 +14,7 @@ export function businessScreenMarkup(snapshot){
  const action=snapshot.view.actions[0]?.actionId??'',box=l.box??[0,0,l.width,l.height];
  const pos=([x,y,w,h])=>`left:${x}px;top:${y}px;width:${w}px;height:${h}px`;
  const actions=l.box?[[...l.box,'Профиль подтверждён']]:l.actions;
- return `<div class="bn-source-canvas" data-business-step="${l.number}" style="width:${l.width}px;height:${l.height}px"><img class="bn-original" data-business-asset="${l.assetId}" style="${pos(box)}" alt="${esc(actions[0][4])}" draggable="false">${l.visitor?`<span class="bn-original-field bn-source-photo" style="${pos(l.visitor)}"><img src="./assets/kdw-native/conversation/visitor-avatar.svg" alt="Фото посетителя"></span>`:''}${actions.map(r=>`<button type="button" class="bn-original-action" data-bn-action="${esc(action)}" aria-label="${esc(r[4])}" style="${pos(r)}"></button>`).join('')}</div>${l.forward?`<div class="bn-source-forward"><button type="button" data-bn-action="${esc(action)}">Продолжить</button></div>`:''}`;
+ return `<div class="bn-source-canvas" data-business-step="${l.number}" style="width:${l.width}px;height:${l.height}px"><img class="bn-original" data-business-asset="${l.assetId}" style="${pos(box)}" alt="${esc(actions[0][4])}" draggable="false">${l.visitor?`<span class="bn-original-field bn-source-photo" style="${pos(l.visitor)}"><img src="${linkedVisitorAvatar()}" alt="Фото посетителя"></span>`:''}${actions.map(r=>`<button type="button" class="bn-original-action" data-bn-action="${esc(action)}" aria-label="${esc(r[4])}" style="${pos(r)}"></button>`).join('')}</div>${l.forward?`<div class="bn-source-forward"><button type="button" class="${externalAction(snapshot,action,'Продолжить').className}" data-bn-action="${esc(action)}">${externalAction(snapshot,action,'Продолжить').label}</button></div>`:''}`;
 }
 // One decoded screen at a time enters the presentation. Rasters are shared by
 // hash; never inject the 84 MB export into the JavaScript bundle or fetch all3.
@@ -30,3 +32,4 @@ export function createBusinessScreenLoader(){
   dispose(){disposed=true;for(const c of controllers)c.abort();for(const e of entries.values())if(e.url)URL.revokeObjectURL(e.url);entries.clear();rasters.clear();}
  };
 }
+

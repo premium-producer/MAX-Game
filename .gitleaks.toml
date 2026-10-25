@@ -25,3 +25,10 @@ condition = "AND"
 paths = ['''(^|/)kdw-max/apps/max-game/(source/history/r8-before-oct07|www/webgl-v5)/r[89]-build\.json$''']
 regexTarget = "secret"
 regexes = ['''^[a-f0-9]{64}$''']
+
+[[rules.allowlists]]
+description = "Exact source SHA256 for local-player-auth.mjs in two verified Figma provenance records"
+condition = "AND"
+paths = ['''(^|/)kdw-max/UI/figma-plugins/max-current-screens/(source/final-provenance|content-index)\.json$''']
+regexTarget = "secret"
+regexes = ['''^436837a8a29c2ef74c50bc8df1ec3fba3cc338c6e83109f531c985f10d4359dc$''']

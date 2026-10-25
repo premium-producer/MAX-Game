@@ -1,23 +1,12 @@
-Последняя публикация22.10.2026: [состояние и проверки](docs/kdw-max/CURRENT.md).
+# Игра MAX — KDW-MAX, 25.10.2026
 
-# Игра MAX — текущая разработка KDW-MAX
+Текущая база — проверенный экспорт от 24 октября. История прежнего стенда сохранена в остальных каталогах репозитория. [Состояние поставки](docs/kdw-max/SYNC-20261025.md).
 
-Последнее обновление 22.10.2026: [новые механики и проверки](docs/kdw-max/CURRENT.md). Ветка kdw-max содержит текущие локальные изменения. Тег kdw-max-stable-20261019 сохраняет предыдущую стабильную контрольную точку. Веб-игра и редактор экранов обновлены22.10.2026; актуальные ссылки и проверки — docs/kdw-max/CURRENT.md.
+```sh
+git lfs pull --include="kdw-max/**" --exclude=""
+node kdw-max/docs/kdw-max/verify-source.mjs
+```
 
-# Стабильная контрольная точка 19.10.2026
+Команды выше выполняются из корня репозитория. Исходники: apps/max-game/source; общий запуск: apps/STARTUP/Start-Game.bat. Полный Windows Electron44.4.5 x64 нужно добавить отдельно в runtime/electron, сохранив местные data/ключи. Для разработки Node24+: npm --prefix apps/max-game/source/client ci --ignore-scripts; node apps/max-game/source/build.mjs.
 
-Зафиксирована по подтверждению пользователя 19.10.2026. Ветка: kdw-max. Контрольный тег: kdw-max-stable-20261019.
-
-Исходники и переносимое приложение нового стенда находятся в этой папке. Остальные каталоги в корне репозитория сохраняют прежнюю историю MAX и не являются текущей версией KDW-MAX.
-
-## Запуск
-
-После git clone выполнить git lfs pull. Скопировать apps/max-game и apps/STARTUP рядом, затем запустить apps/STARTUP/Start-Game.bat. Windows x64, Electron включён; Node.js/npm для запуска не нужны. Пользовательские данные создаются локально и в Git не передаются.
-
-## Разработка
-
-Правки вести в apps/max-game/source. Для разработки: npm ci --prefix apps/max-game/source/client; node apps/max-game/source/adapt-stand-main.mjs; node apps/max-game/source/build.mjs. Для веб-экспорта: node apps/max-game/source/export-web.mjs (дополнительно нужен ffmpeg в PATH). После проверки изменений обновить только игровой манифест: node apps/STARTUP/tools/check-package.mjs --app max-game --seal; затем без --seal. Не запускать первоначальный импорт/upgrade поверх локальных изменений.
-
-Точные SHA и границы стабильной версии: releases/max-game/STABLE-20261019/baseline.json. Проверки: docs/verification-standby-20261019/. Публичная игра: https://futuronika.pro/df/max-game-client/ .
-
-Стабильная контрольная версия подтверждена пользователем; это не новая аппаратная приёмка. Физические телефоны/Safari/стенд/второй ПК не проверены, внешняя очередь и связь со стелой не входят в эту поставку.
+Общий STARTUP совместим с соседней apps/stela из VK_Stella/kdw-max. Полные package manifests относятся к переносимому комплекту; очищенный Git-срез проверяется SOURCE_MANIFEST. Теги stable19.10 неизменны; новый аппаратный stable не объявляется.

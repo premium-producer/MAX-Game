@@ -1,3 +1,5 @@
+KDW-MAX-20261025: текущий новый стенд находится в kdw-max/. Для него читать kdw-max/AGENTS.md и kdw-max/docs/kdw-max/CURRENT.md; остальные каталоги — сохранённая история.
+
 # Работа над MAX
 
 Это самостоятельный снимок игры, не корень всего стенда. Прочитать README.md, docs/DEVELOPMENT_CONTEXT.md, последние MAX-записи WORKLOG.md и apps/max-game/docs/TODO.md. Название сервиса всегда MAX.

@@ -1,10 +1,12 @@
 import photos from './kdw-post-assets.json' with {type:'json'};
+import {BUSINESS_CARD_IMAGES,businessCardImage} from './kdw-business-images.mjs';
+import content from './kdw-business-content.json' with {type:'json'};
 import chrome from './kdw-posts-chrome.json' with {type:'json'};
 import {BUSINESS_PROFILES} from './kdw-business-profile.mjs';
 import {activityRemaining} from './kdw-development.mjs';
 import {createPostTimeline} from './kdw-post-stream.mjs';
 export const POSTS_SCREEN='business.channel.result',POSTS_TASK='business.channel';
-export const POSTS_RULES=Object.freeze({version:11,initialAudience:14628,goal:300,good:120,bad:-100,interval:2300,travel:10500,maxPosts:20});
+export const POSTS_RULES=Object.freeze({version:12,initialAudience:14628,goal:300,good:120,bad:-100,interval:2300,travel:10500,maxPosts:20});
 const banks={
  auto:[
   ['service','Подготовим автомобиль к сезону','Проверим тормоза, жидкости и состояние шин. Запись по удобному времени.',0,true,'Понятное предложение помогает спланировать обслуживание.'],
@@ -68,9 +70,14 @@ const banks={
  ],
 };
 export const BUSINESS_CHANNELS=Object.freeze(Object.fromEntries(Object.values(BUSINESS_PROFILES).map(p=>[p.id,p.name])));
-export function postBank(type='cafe'){return (banks[type]??banks.cafe).map(([id,title,body,photo,good,reason])=>({id,title,body,photo,good,reason,delta:good?POSTS_RULES.good:POSTS_RULES.bad,reactions:good?128:34}));}
+export function postBank(type='cafe',version=POSTS_RULES.version){
+ const reviewed=version>=12&&content.banks[type]?.posts;
+ const rows=reviewed?reviewed.map(p=>({...p,body:p.description,image:businessCardImage(p.id)})):(banks[type]??banks.cafe).map(([id,title,body,photo,good,reason])=>({id,title,body,photo,good,reason}));
+ return rows.map(p=>({...p,delta:p.good?POSTS_RULES.good:POSTS_RULES.bad,reactions:p.good?128:34}));
+}
 export const postPhoto=id=>photos.find(a=>a.assetId===`kdw.posts.photo-${id}`);
 export function applyPostsCatalog(catalog){
+ for(const asset of Object.values(BUSINESS_CARD_IMAGES))catalog.assets[asset.assetId]=asset;
  for(const asset of photos)catalog.assets[asset.assetId]=asset;
  Object.assign(catalog.assets,chrome);
  const screen=catalog.tasks[POSTS_TASK].screens[POSTS_SCREEN];
@@ -89,14 +96,14 @@ export function postWave(posts,wave){
  return {first,count,start:wave*POSTS_RULES.travel};
 }
 export function postSpawn(posts,index){
- if(posts.version>=3)return createPostTimeline(posts,postBank(posts.businessType)).spawn(index);
- const bank=postBank(posts.businessType),cycle=Math.floor(index/bank.length),offset=(posts.seed+cycle*3)%bank.length;
+ if(posts.version>=3)return createPostTimeline(posts,postBank(posts.businessType,posts.version)).spawn(index);
+ const bank=postBank(posts.businessType,posts.version??1),cycle=Math.floor(index/bank.length),offset=(posts.seed+cycle*3)%bank.length;
  let wave=0,slot=index;
  if(posts.version>=2){while(slot>=2+(posts.seed+wave*3)%5){slot-=2+(posts.seed+wave*3)%5;wave++;}}
  return {index,spawnId:`${posts.runId}.${index}`,post:bank[(index+offset)%bank.length],lane:slot%2,column:posts.version>=2?Math.floor(slot/2):0,start:posts.version>=2?wave*POSTS_RULES.travel:index*POSTS_RULES.interval};
 }
 export function visiblePosts(posts,elapsed){
- if(posts.version>=3)return createPostTimeline(posts,postBank(posts.businessType)).at(elapsed);
+ if(posts.version>=3)return createPostTimeline(posts,postBank(posts.businessType,posts.version)).at(elapsed);
  const rows=[],wave=postWave(posts,Math.floor(elapsed/POSTS_RULES.travel));
  const first=posts.version>=2?wave.first:Math.max(0,Math.floor((elapsed-POSTS_RULES.travel)/POSTS_RULES.interval)+1),last=posts.version>=2?wave.first+wave.count-1:Math.floor(elapsed/POSTS_RULES.interval);
  const used=new Set(posts.published.map(p=>posts.version>=2?p.spawnId:p.postId));
@@ -108,7 +115,7 @@ export function createPostStreamReader(){
  return (posts,elapsed)=>{
   if(posts.version<3)return visiblePosts(posts,elapsed);
   const next=JSON.stringify([posts.version,posts.runId,posts.seed,posts.businessType,posts.published]);
-  if(next!==signature||elapsed<lastTime){signature=next;timeline=createPostTimeline(posts,postBank(posts.businessType));}
+  if(next!==signature||elapsed<lastTime){signature=next;timeline=createPostTimeline(posts,postBank(posts.businessType,posts.version));}
   lastTime=elapsed;return timeline.at(elapsed);
  };
 }
@@ -137,7 +144,7 @@ export function reducePosts(state,command,now,version=POSTS_RULES.version){
 // Replaying an already accepted legacy completion must not retroactively impose
 // the new activity. Live commands never receive this replay-only catalog.
 export function catalogForPostsReceipt(catalog,r){
- if(r.command.type==='START_POSTS'&&[1,2,3,4,5,6,7,8,9,10].includes(r.reply?.snapshot?.progress?.business?.postsActivity?.version))return {...catalog,kdwPostsActivity:r.reply.snapshot.progress.business.postsActivity.version};
+ if(r.command.type==='START_POSTS'&&[1,2,3,4,5,6,7,8,9,10,11].includes(r.reply?.snapshot?.progress?.business?.postsActivity?.version))return {...catalog,kdwPostsActivity:r.reply.snapshot.progress.business.postsActivity.version};
  if(r.command.type==='ACT'&&r.command.screenId===POSTS_SCREEN&&r.command.actionId==='business.channel.result.continue'&&!r.reply?.snapshot?.progress?.business?.postsActivity)return {...catalog,kdwPostsActivity:null};
  return catalog;
 }

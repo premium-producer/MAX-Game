@@ -1,9 +1,12 @@
-const {app, BrowserWindow, dialog} = require('electron');
+const {app, BrowserWindow, dialog, screen} = require('electron');
 const fs = require('node:fs');
 const path = require('node:path');
 const {createPortableServer} = require('./portable-server.cjs');
 const root = path.resolve(__dirname, '..');
 const config = JSON.parse(fs.readFileSync(path.join(root,'app.json'),'utf8'));
+const pixelMap=config.production===true||process.argv.includes('--pixel-map'),pixelMapDebug=process.argv.includes('--pixel-map-debug');
+if(pixelMapDebug)config.production=false;
+if(pixelMap){const url=new URL(config.entry,'http://127.0.0.1');url.searchParams.set('view','pixel-map');if(pixelMapDebug)url.searchParams.set('pixel-map-debug','1');config.entry=url.pathname+url.search;app.commandLine.appendSwitch('force-device-scale-factor','1');}
 const data = path.join(root,'data');fs.mkdirSync(data,{recursive:true});
 const stateFile = path.join(data,'runtime.json');
 const smoke = process.argv.includes('--verify');
@@ -30,7 +33,8 @@ else {
     fs.writeFileSync(stateFile,JSON.stringify({...host.health,token:host.token},null,2)+'\n');
     log({event:'ready',...host.health});
     if(serveOnly)return;
-    window=new BrowserWindow({title:config.title,width:config.window.width,height:config.window.height,show:false,backgroundColor:'#0D001A',autoHideMenuBar:true,webPreferences:{nodeIntegration:false,contextIsolation:true,sandbox:true,backgroundThrottling:false}});
+    const targetDisplay=pixelMap?screen.getAllDisplays().find(d=>d.size.width===3072&&d.size.height===1536):null;
+    window=new BrowserWindow({title:config.title,width:pixelMap?3072:config.window.width,height:pixelMap?1536:config.window.height,...(targetDisplay?{x:targetDisplay.bounds.x,y:targetDisplay.bounds.y}:{}),fullscreen:pixelMap||config.production===true,show:false,backgroundColor:'#0D001A',autoHideMenuBar:true,webPreferences:{devTools:config.production!==true,nodeIntegration:false,contextIsolation:true,sandbox:true,backgroundThrottling:false}});
     const entry=new URL(config.entry,host.origin).href;
     window.webContents.setWindowOpenHandler(()=>({action:'deny'}));
     window.webContents.on('will-navigate',(event,url)=>{if(new URL(url).origin!==host.origin)event.preventDefault();});
@@ -42,7 +46,8 @@ else {
       if(!allow)log({event:'external-request-blocked',url:url.origin+url.pathname});
       callback({cancel:!allow});
     });
-    window.webContents.on('before-input-event',(event,input)=>{if(input.type==='keyDown'&&input.key==='F11'){window.setFullScreen(!window.isFullScreen());event.preventDefault();}if(input.type==='keyDown'&&input.key==='Escape'&&window.isFullScreen())window.setFullScreen(false);});
+    if(config.production)window.setMenu(null);
+    window.webContents.on('before-input-event',(event,input)=>{if(config.production){if(input.type==='keyDown'&&input.control&&input.shift&&input.key.toLowerCase()==='q'){app.quit();event.preventDefault();}if(['Escape','F11','F12'].includes(input.key))event.preventDefault();return;}if(input.type==='keyDown'&&input.key==='F11'){window.setFullScreen(!window.isFullScreen());event.preventDefault();}if(input.type==='keyDown'&&input.key==='Escape'&&window.isFullScreen())window.setFullScreen(false);});
     window.webContents.on('did-fail-load',(_,code,description)=>log({event:'load-failed',code,description}));
     let loadTimer;
     try { await Promise.race([window.loadURL(entry),new Promise((_,reject)=>{loadTimer=setTimeout(()=>reject(Error('PAGE_LOAD_TIMEOUT')),30000);})]); }

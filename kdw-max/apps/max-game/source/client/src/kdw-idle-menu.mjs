@@ -1,22 +1,24 @@
 import {V5MotionValue} from './journey-v5-inertia.mjs';
 import {V5_MOTION} from './journey-v5-motion-profile.mjs';
 import {v5IconTile} from './journey-v5-icons.mjs';
-import {v5CopyMarkup} from './journey-v5-ui-copy.mjs';
+import {v5CopyMarkup} from './kdw-ui-copy.mjs';
 import {createDeviceVideo} from './journey-v5-video-source.mjs';
 import {IDLE_VIDEO_ASSET,idleMissionChoices,idleLayout} from './journey-v5-idle-layout.mjs';
 
-export function createIdleMenu({host,foreground,catalog,assetCatalog,reduced,changed,onSelect,onError}){
- const choices=idleMissionChoices(catalog),layout=idleLayout(choices.length),buttons=[],parts=[];
+export function createIdleMenu({host,foreground,catalog,assetCatalog,reduced,changed,onSelect,onError,layout:customLayout,hostRect}){
+ const choices=idleMissionChoices(catalog),layout=customLayout??idleLayout(choices.length),buttons=[],parts=[];
+ if(layout.missionOrder){const rank=id=>{const i=layout.missionOrder.indexOf(id);return i<0?layout.missionOrder.length:i;};choices.sort((a,b)=>rank(a.missionId)-rank(b.missionId));}
  const reveal=(el,delay,available)=>{el.dataset.idlePart='true';parts.push({el,delay,available,age:0,alpha:new V5MotionValue(0)});};
  let disposed=false,exiting=false,resolveExit,exitTimer,exitPromise,ready=false,selected=false,videoReady=false;
  const document=host.ownerDocument;
- Object.assign(host.style,{left:'0px',top:'0px',width:'4096px',height:'1280px',overflow:'visible'});
+ Object.assign(host.style,{left:(hostRect?.left??0)+'px',top:(hostRect?.top??0)+'px',width:(hostRect?.w??4096)+'px',height:(hostRect?.h??1280)+'px',overflow:'visible'});
  host.dataset.routePhase='planning';host.dataset.uiPresence='1';host.dataset.contentPresence='1';host.dataset.activeTask='';host.dataset.sharedTask='';host.inert=false;
  const place=(el,r)=>Object.assign(el.style,{position:'absolute',left:r.x+'px',top:r.y+'px',width:r.width+'px',height:r.height+'px'});
  const logo=document.createElement('button');logo.className='object';logo.inert=true;logo.dataset.pathPresence='0';logo.setAttribute('aria-hidden','true');
  logo.innerHTML='<img data-independent-artwork="true" data-gpu-decoded="false" draggable="false" alt="MAX" src="./brand/assets/logos/max-primary-white.svg" style="display:block;width:100%;height:100%;object-fit:contain">';place(logo,layout.logo);host.append(logo);
  const image=logo.querySelector('img');void image.decode().then(()=>{if(disposed)return;image.dataset.gpuDecoded='true';foreground.refreshPart(logo);changed();}).catch(onError);
- reveal(logo,0,()=>image.dataset.gpuReady==='true');
+ // GPU preparation may replace the decoded IMG with its cached clone.
+ reveal(logo,0,()=>logo.querySelector('img')?.dataset.gpuReady==='true');
  const shell=document.createElement('section');shell.className='route-phone client-task';shell.inert=true;shell.dataset.pathPresence='0';place(shell,layout.video);host.append(shell);
  const app=document.createElement('div');app.className='demo-app';app.dataset.device='pc';Object.assign(app.style,{width:'100%',height:'100%',padding:'12px 10px',boxSizing:'border-box'});
  const content=document.createElement('div');content.className='phone-content';content.dataset.taskContent='';Object.assign(content.style,{width:'100%',height:'100%'});app.append(content);shell.append(app);
@@ -28,6 +30,7 @@ export function createIdleMenu({host,foreground,catalog,assetCatalog,reduced,cha
  for(const [index,choice]of choices.entries()){
   const el=document.createElement('button');el.className='object';el.dataset.object='idle-'+choice.missionId;el.dataset.idleMission=choice.missionId;el.dataset.planning='true';el.dataset.pathPresence='0';el.inert=true;
   el.setAttribute('aria-label',choice.title);el.innerHTML=v5IconTile(catalog,choice.taskId,layout.iconSize)+'<span class="object-label icon-caption" style="font-size:32px">'+v5CopyMarkup(choice.title)+'</span>';
+  if(customLayout){const caption=el.querySelector('.object-label');Object.assign(caption.style,{top:(layout.iconSize+16)+'px',left:'-30px',right:'auto',width:(layout.iconSize+60)+'px',maxWidth:(layout.iconSize+60)+'px',fontSize:'26px'});}
   Object.assign(el.style,{position:'absolute',left:layout.icons[index].x+'px',top:layout.icons[index].y+'px',width:layout.iconSize+'px'});host.append(el);foreground.setTarget(host,el.dataset.object,{left:layout.icons[index].x,top:layout.icons[index].y});buttons.push(el);
   reveal(el,.2+index*.09,()=>!!el.dataset.sceneId);
  }
@@ -46,7 +49,7 @@ export function createIdleMenu({host,foreground,catalog,assetCatalog,reduced,cha
    part.el.dataset.pathPresence=String(part.alpha.value);
   }
   ready=buttons.every(el=>Number(el.dataset.pathPresence)>.97);
-  for(const el of buttons)el.inert=exiting||selected||!active||!ready;
+  for(const el of buttons)el.inert=exiting||selected||!active||!ready||document.documentElement.dataset.production==='true'&&document.documentElement.dataset.standEntryMode==='stella';
   video.setPlaying(active&&!exiting&&videoReady&&Number(shell.dataset.pathPresence)>.01);
   const sceneReady=ready&&!exiting&&Number(logo.dataset.pathPresence)>.97&&Number(shell.dataset.pathPresence)>.97&&video.readyForAck(true);
   document.documentElement.dataset.idleMenuReady=sceneReady?document.documentElement.dataset.idleMenuScope??'':'';

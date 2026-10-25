@@ -216,3 +216,8 @@ test('saved v5 store receipts retain prefilled history after empty-start upgrade
  const d=driver({...catalog,kdwStoreActivity:5});d.reach('business','business.store.start');d.storeRound();
  assert.equal(d.model.state.progress.business.storeActivity.version,5);assert.equal(restoreMissionModel(catalog,d.model).ok,true);
 });
+test('saved v6 store keeps its original products and scores after reviewed content update',()=>{
+ const d=driver({...catalog,kdwStoreActivity:6});d.reach('business','business.store.start');d.storeRound();
+ assert.equal(d.model.state.progress.business.storeActivity.version,6);assert.equal(restoreMissionModel(catalog,d.model).ok,true);
+ assert.ok(d.model.state.progress.business.storeActivity.published.every(p=>!p.postId.includes('-product-')));
+});

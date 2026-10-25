@@ -156,8 +156,47 @@ html[data-kdw-interaction=store] #circles .route-phone .client-actions{display:n
 .kdw-max-store .kdw-slot-content>.kdw-store-name{font-size:10px;line-height:13px;font-weight:400;color:#777;padding:2px 0 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .kdw-max-store .kdw-slot-content>.kdw-store-more{display:grid;place-items:center;height:33px;flex:0 0 33px;margin-top:auto;padding:0;border-radius:9px;background:#2c2c2c;color:#fff;font-size:11px;line-height:15px;font-weight:400;pointer-events:none}
 .kdw-store-actions{position:absolute;transform-origin:top left;pointer-events:auto;text-align:center}
-.kdw-activity-button{display:block;border:0;border-radius:25px;background:linear-gradient(110deg,#109bef,#2a61eb);color:white;padding:16px 20px;width:100%;font-size:23px;font-weight:400;line-height:normal;box-shadow:none;transition:filter .12s,transform .12s}
+/* Reviewed cards retain the complete title and put price in its own field. */
+.kdw-product-photo.kdw-product-generated{object-fit:contain;object-position:center;background:#e9e6df;pointer-events:none}
+.kdw-product-title{white-space:normal;text-wrap:balance;overflow-wrap:break-word}
+.kdw-product-description{display:block;padding:4px 16px 16px;font-size:21px;line-height:1.25;font-weight:400;color:#e4d7ee;white-space:normal}
+.kdw-max-store .kdw-slot:has(.kdw-store-description){height:auto;min-height:270px}
+.kdw-max-store .kdw-slot-content>.kdw-store-name{white-space:normal;text-overflow:clip;overflow:visible;font-size:12px;line-height:15px;text-wrap:balance;color:#303039}
+.kdw-max-store .kdw-slot-content>.kdw-store-description{display:block;font-size:10px;line-height:13px;font-weight:400;color:#777;padding:0 0 8px;white-space:normal}
+/* One external action component. Container units keep the same proportions
+   across 360/390/392px authored canvases and the activity phone morph. */
+.kdw-post-actions,.kdw-store-actions,.pc-forward,.bn-source-forward,.client-actions{container-type:inline-size}
+.kdw-activity-button,
+#kdw-personal-channel .pc-forward .kdw-activity-button,
+#kdw-business-native .bn-source-forward .kdw-activity-button,
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .route-phone .demo-app .client-actions .pill.client-action{
+ display:flex;align-items:center;justify-content:center;box-sizing:border-box;flex:none;width:100%;min-width:0;
+ height:16.410256cqw;min-height:16.410256cqw;max-height:16.410256cqw;
+ border:0;border-radius:6.410256cqw;background:linear-gradient(110deg,#109bef,#2a61eb);color:#fff;
+ padding:4.102564cqw 5.128205cqw;font-family:'Max Sans',Arial,sans-serif;font-size:5.897436cqw;font-weight:400;line-height:8.205128cqw;
+ text-align:center;white-space:nowrap;overflow-wrap:normal;box-shadow:none;transition:filter .12s,transform .12s
+}
+html[data-visual=webgl-bfm-v5] #circles .client-actions .client-action .v5-button-label{white-space:nowrap}
+/* Long in-task actions keep their font and width. Grow the blue surface with
+   the label instead of letting a forced single line escape its bounds. */
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .route-phone .demo-app .client-actions .pill.client-action:not(.kdw-transition-button){
+ height:auto;max-height:none;white-space:normal;
+}
+html[data-visual=webgl-bfm-v5] #circles .client-actions .client-action:not(.kdw-transition-button) .v5-button-label{
+ white-space:normal;text-wrap:balance;
+}
+.kdw-activity-button:disabled{opacity:.45}
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .route-phone .demo-app .client-actions{top:calc(100% + 32px)}
 .kdw-activity-button:active:not(:disabled){transform:scale(.98);filter:brightness(1.15)}
+/* Task/mission transitions reuse the original storefront's icon-like gradient.
+   Ordinary actions keep the blue component above, including retry/back buttons. */
+.kdw-activity-button.kdw-transition-button,
+#kdw-personal-channel .pc-forward .kdw-transition-button,
+#kdw-business-native .bn-source-forward .kdw-transition-button,
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .route-phone .demo-app .client-actions .pill.client-action.kdw-transition-button{
+ background:linear-gradient(100deg,#9500ff,#471aff 57%,#00bfff);
+ border:1px solid #9653ff;box-shadow:0 0 20px #6e1aff30;
+}
 .kdw-store-actions .kdw-error{margin:8px 0 0;font-size:14px;min-height:0}
 .kdw-store-actions .kdw-error:empty{display:none}
 
@@ -176,3 +215,11 @@ html[data-visual=webgl-bfm-v5] #circles .v5-mission-qr .v5-qr-restart{position:a
 .kdw-moderation-notice:empty{display:none}
 
 .pc-moderation-keyboard,.kdw-moderation-keyboard{display:inline-block;margin-left:18px;font-size:14px;font-weight:400;color:#bcecff}
+
+/* Authored two-line invitation, centered under the palm without shrinking type. */
+html[data-production=true][data-visual=webgl-bfm-v5] #circles .guided-palm .object-label{width:360px;max-width:360px;white-space:pre;text-align:center}
+
+/* Short reference copy balances within its existing width; authored meaning wins. */
+html[data-visual=webgl-bfm-v5] #circles .task-dialog .instruction-copy p,
+html[data-visual=webgl-bfm-v5] #circles .task-dialog .instruction-copy h2{white-space:pre-line;text-wrap:balance}
+

@@ -1,3 +1,4 @@
+import {production,timing,prepareProductionTask,completeByTimeout,productionCommand} from '../kdw-production-core.mjs';
 import {reduceStore,storeGoal,catalogForStoreReceipt} from '../kdw-store-rating.mjs';
 import {catalogForBusinessReceipt} from '../kdw-business-choice.mjs';
 import {reduceDevelopment,finishDevelopmentState} from '../kdw-development.mjs';
@@ -13,19 +14,20 @@ export const TASK_CLOCK_RULES_REVISION='mission-rules-task-clock-v2';
 export const TASK_CLOCK_BUDGET_MS=60000;
 const taskClock=s=>s.rulesRevision===TASK_CLOCK_RULES_REVISION;
 const initialBudget=s=>taskClock(s)?TASK_CLOCK_BUDGET_MS:180000;
-const INTERNAL=new Set(['HOLD_CONFIRMED','OWNER_CHANGED','EXPIRE','AUTO_SCREEN']);
+const INTERNAL=new Set(['HOLD_CONFIRMED','OWNER_CHANGED','EXPIRE','AUTO_SCREEN','STAND_IDLE']);
 const branchTask=tool=>`business.${tool}`;
 export function createMissionModel(catalog,{sessionId,rulesRevision=MISSION_RULES_REVISION}){
  if(!missionToken(sessionId)||catalog?.schemaVersion!==1)throw new TypeError('Invalid mission session/catalog');
  if(![MISSION_RULES_REVISION,TASK_CLOCK_RULES_REVISION].includes(rulesRevision))throw new TypeError('Invalid mission rules revision');
- return deepFreeze({schemaVersion:1,state:{schemaVersion:1,sessionId,revision:0,contentRevision:catalog.contentRevision,rulesRevision,status:'menu',missionId:null,taskId:null,screenId:null,runId:0,scanned:false,startedAt:null,deadlineAt:null,resultReadyAt:null,ownerActive:false,pausedAt:null,progress:{}},receipts:[]});
+ return deepFreeze({schemaVersion:1,state:{schemaVersion:1,sessionId,revision:0,contentRevision:catalog.contentRevision,rulesRevision,status:'menu',missionId:null,taskId:null,screenId:null,runId:0,scanned:false,startedAt:null,deadlineAt:null,resultReadyAt:null,ownerActive:false,pausedAt:null,progress:{},...(catalog.kdwProduction?{standPolicy:structuredClone(catalog.kdwProduction),standReady:false,lastTouchAt:null,standEndReason:null}:{})},receipts:[]});
 }
 const sequence=(catalog,state,p)=>{const ids=catalog.missions[state.missionId].taskIds;return [...ids,...(p.businessTool&&!ids.includes(branchTask(p.businessTool))?[branchTask(p.businessTool)]:[])];};
 function enterTask(catalog,state,now,freshClock=false){
  const p=state.progress[state.missionId],ids=sequence(catalog,state,p),taskId=ids[p.currentTaskIndex];
- if(!taskId){state.status=p.skipped.length?'incomplete':'completed';state.taskId=null;state.screenId=null;state.resultReadyAt=null;state.deadlineAt=null;state.pausedAt=null;return;}
+ if(!taskId){state.status=p.skipped.length?'incomplete':'completed';if(production(state))state.standReady=false;state.taskId=null;state.screenId=null;state.resultReadyAt=null;state.deadlineAt=null;state.pausedAt=null;return;}
  state.status='task';state.taskId=taskId;state.screenId=p.currentScreenId||catalog.tasks[taskId].startScreenId;state.screenEnteredAt=now;
  if(taskClock(state)&&freshClock){p.remainingMs=TASK_CLOCK_BUDGET_MS;state.startedAt=now;state.deadlineAt=now+TASK_CLOCK_BUDGET_MS;state.pausedAt=state.ownerActive?null:now;}
+ if(production(state))prepareProductionTask(state);
  if(catalog.tasks[taskId].coreCatalog&&!p.channelModel)p.channelModel=createGameModel(catalog.tasks[taskId].coreCatalog,{sessionId:state.sessionId});
  p.currentScreenId=state.screenId;
 }
@@ -42,8 +44,12 @@ export function dispatchMissionCommand(catalog,model,input,{now=0,internal=false
  if(INTERNAL.has(c.type)&&!internal)return reject('TRUSTED_COMMAND_REQUIRED');
  if(!Number.isSafeInteger(now)||now<0||now<(model.receipts.at(-1)?.now??0))return reject('INVALID_TRUSTED_TIME');
  const s=structuredClone(model.state),effects=[];
- if(s.ownerActive&&s.deadlineAt!==null&&now>=s.deadlineAt&&!['DEV_TIMER','RESTART_TASK','RETURN_MENU','RESTART_MISSION','RESET_PROGRESS','EXPIRE','OWNER_CHANGED'].includes(c.type))return reject('MISSION_EXPIRED');
- if(['DEV_TIMER','RESTART_TASK','SKIP_TASK'].includes(c.type)){
+ if(production(s)&&['DEV_TIMER','RESTART_TASK','SKIP_TASK','RESTART_MISSION','RESET_PROGRESS'].includes(c.type))return reject('PRODUCTION_CONTROL_FORBIDDEN');
+ if(production(s)&&c.type==='SELECT_MISSION'&&s.status!=='menu')return reject('MISSION_ALREADY_ACTIVE');
+ if(s.ownerActive&&s.deadlineAt!==null&&now>=s.deadlineAt&&!['DEV_TIMER','RESTART_TASK','RETURN_MENU','RESTART_MISSION','RESET_PROGRESS','EXPIRE','OWNER_CHANGED','STAND_READY','STAND_TOUCH','STAND_IDLE'].includes(c.type))return reject('MISSION_EXPIRED');
+ if(['STAND_READY','STAND_TOUCH'].includes(c.type)){
+  if(!production(s))return reject('PRODUCTION_REQUIRED');const error=productionCommand(s,c,now);if(error)return reject(error);
+ }else if(['DEV_TIMER','RESTART_TASK','SKIP_TASK'].includes(c.type)){
   const error=reduceDevelopment(catalog,s,c,now,{sequence,enterTask,budget:TASK_CLOCK_BUDGET_MS});if(error)return reject(error);
   effects.push({type:c.type==='DEV_TIMER'?'DEV_TIMER_CHANGED':c.type==='SKIP_TASK'?'TASK_SKIPPED':'TASK_RESTARTED',taskId:c.type==='SKIP_TASK'?c.taskId:s.taskId});
  }else if(c.type==='SELECT_MISSION'){
@@ -55,20 +61,27 @@ export function dispatchMissionCommand(catalog,model,input,{now=0,internal=false
   const ids=sequence(catalog,s,p),previousTaskIndex=p.currentTaskIndex;while(p.finished.includes(ids[p.currentTaskIndex])){p.currentTaskIndex++;p.currentScreenId=null;}
   s.startedAt=now;s.deadlineAt=now+p.remainingMs;s.pausedAt=s.ownerActive?null:now;s.scanned=p.scanned;
   if(!p.scanned){s.status='scan';s.taskId=null;s.screenId=null;}else enterTask(catalog,s,now,p.currentTaskIndex!==previousTaskIndex);
+  if(production(s)){s.deadlineAt=null;s.standReady=false;s.lastTouchAt=null;s.standEndReason=null;}
   effects.push({type:'MISSION_SELECTED',missionId:s.missionId});
  }else if(c.type==='HOLD_CONFIRMED'){
   if(s.status!=='scan')return reject('SCAN_UNAVAILABLE');
+  if(production(s)&&(!s.standReady||now>=s.deadlineAt))return reject('PALM_NOT_READY');
+  if(production(s))s.lastTouchAt=now;
   s.scanned=true;currentProgress(s).scanned=true;enterTask(catalog,s,now,true);effects.push({type:'MISSION_SCANNED'});
  }else if(c.type==='OWNER_CHANGED'){
   if(c.active===s.ownerActive)return reject('OWNER_UNCHANGED');
-  if(!c.active&&s.missionId&&['scan','task','result'].includes(s.status)){s.pausedAt=now;if(s.deadlineAt!==null)currentProgress(s).remainingMs=Math.max(0,s.deadlineAt-now);}
-  if(c.active&&s.pausedAt!==null){const duration=now-s.pausedAt;if(s.deadlineAt!==null)s.deadlineAt+=duration;if(s.resultReadyAt!==null)s.resultReadyAt+=duration;if(s.screenEnteredAt!==undefined)s.screenEnteredAt+=duration;s.pausedAt=null;}
-  s.ownerActive=c.active;
+  if(!production(s)&&!c.active&&s.missionId&&['scan','task','result'].includes(s.status)){s.pausedAt=now;if(s.deadlineAt!==null)currentProgress(s).remainingMs=Math.max(0,s.deadlineAt-now);}
+  if(!production(s)&&c.active&&s.pausedAt!==null){const duration=now-s.pausedAt;if(s.deadlineAt!==null)s.deadlineAt+=duration;if(s.resultReadyAt!==null)s.resultReadyAt+=duration;if(s.screenEnteredAt!==undefined)s.screenEnteredAt+=duration;s.pausedAt=null;}
+  s.ownerActive=c.active;if(production(s))s.pausedAt=null;
  }else if(c.type==='EXPIRE'){
-  if(!s.ownerActive||s.deadlineAt===null||now<s.deadlineAt)return reject('TIMER_NOT_EXPIRED');
-  s.status='expired';currentProgress(s).remainingMs=0;effects.push({type:'MISSION_EXPIRED'});
-  if(taskClock(s)){s.taskId=null;s.screenId=null;s.resultReadyAt=null;}
- }else if(c.type==='RETURN_MENU'){
+  if((!production(s)&&!s.ownerActive)||s.deadlineAt===null||now<s.deadlineAt)return reject('TIMER_NOT_EXPIRED');
+  if(production(s)){
+   if(s.status==='task'){completeByTimeout(s,now);effects.push({type:'TASK_COMPLETED',taskId:s.taskId,reason:'timeout'});}
+   else{s.standEndReason=s.status==='scan'?'no-show':'qr';s.status='menu';s.missionId=null;s.taskId=null;s.screenId=null;s.deadlineAt=null;s.resultReadyAt=null;s.standReady=false;s.runId++;}
+  }else{s.status='expired';currentProgress(s).remainingMs=0;effects.push({type:'MISSION_EXPIRED'});if(taskClock(s)){s.taskId=null;s.screenId=null;s.resultReadyAt=null;}}
+ }else if(c.type==='RETURN_MENU'||c.type==='STAND_IDLE'){
+  if(c.type==='STAND_IDLE'){if(!production(s)||!['task','result'].includes(s.status)||s.lastTouchAt===null||now-s.lastTouchAt<timing(s,'inactivitySeconds'))return reject('INACTIVITY_NOT_EXPIRED');s.standEndReason='inactivity';}
+  else if(production(s))return reject('PRODUCTION_CONTROL_FORBIDDEN');
   if(s.missionId&&s.deadlineAt!==null){currentProgress(s).remainingMs=Math.max(0,s.deadlineAt-(s.pausedAt??now));}
   s.status='menu';s.missionId=null;s.taskId=null;s.screenId=null;s.deadlineAt=null;s.pausedAt=null;s.resultReadyAt=null;s.scanned=false;s.runId++;
  }else if(c.type==='RESET_PROGRESS'){
@@ -89,7 +102,7 @@ export function dispatchMissionCommand(catalog,model,input,{now=0,internal=false
   effects.push({type:c.type==='START_POSTS'?'POSTS_STARTED':'POST_PUBLISHED'});
  }else if(['START_STORE','PICK_PRODUCT'].includes(c.type)){
   if(!catalog.kdwStoreActivity)return reject('STORE_UNAVAILABLE');
-  const error=reduceStore(s,c,now,[1,2,3,4,5].includes(catalog.kdwStoreActivity)?catalog.kdwStoreActivity:6);if(error)return reject(error);
+  const error=reduceStore(s,c,now,[1,2,3,4,5,6].includes(catalog.kdwStoreActivity)?catalog.kdwStoreActivity:7);if(error)return reject(error);
   effects.push({type:c.type==='START_STORE'?'STORE_STARTED':'PRODUCT_ADDED'});
  }else if(c.type==='SAVE_INTERACTION'){
   if(!catalog.kdwInteractions||s.status!=='task')return reject('INTERACTION_UNAVAILABLE');
@@ -132,13 +145,13 @@ export function dispatchMissionCommand(catalog,model,input,{now=0,internal=false
    if(!p.skipped.includes(s.taskId)&&!p.completed.includes(s.taskId)){p.completed.push(s.taskId);effects.push({type:'TASK_COMPLETED',taskId:s.taskId});}
    else effects.push({type:'TASK_SKIPPED',taskId:s.taskId});
    if(!p.finished.includes(s.taskId))p.finished.push(s.taskId);
-   s.status='result';s.resultReadyAt=now+800;
+   s.status='result';s.resultReadyAt=now+(production(s)?timing(s,'resultSeconds'):800);
    if(catalog.kdwBusinessConfirmation?.from===s.screenId){s.screenId=catalog.kdwBusinessConfirmation.screenId;p.currentScreenId=s.screenId;}
    if(taskClock(s)){p.remainingMs=Math.max(0,s.deadlineAt-(s.pausedAt??now));s.deadlineAt=null;}
    if(p.currentTaskIndex===sequence(catalog,s,p).length-1)s.deadlineAt=null;
   }else return reject('INVALID_OUTCOME');
  }else return reject('INVALID_COMMAND');
- finishDevelopmentState(model.state,s,c,now,TASK_CLOCK_BUDGET_MS);
+ if(!production(s))finishDevelopmentState(model.state,s,c,now,TASK_CLOCK_BUDGET_MS);
  s.revision++;const reply=deepFreeze({ok:true,code:'APPLIED',commandId:c.commandId,snapshot:s});
  return {model:deepFreeze({schemaVersion:1,state:s,receipts:[...model.receipts,{command:c,now,internal,reply}]}),reply,effects:deepFreeze(effects),duplicate:false};
 }

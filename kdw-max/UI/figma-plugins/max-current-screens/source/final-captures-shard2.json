@@ -1,0 +1,4213 @@
+[
+  {
+    "id": "blogger.blogger.channel.menu.screen",
+    "missionId": "blogger",
+    "taskId": "blogger.channel",
+    "screenId": "blogger.channel.menu",
+    "variant": "screen",
+    "sector": null,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "blogger.channel.menu",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1315.2884521484375,
+          "y": 497.705810546875,
+          "width": 249.46533203125,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1564.7537841796875,
+          "bottom": 1038.2772216796875,
+          "left": 1315.2884521484375
+        },
+        "media": "1:blogger.channel:blogger.channel.menu:task",
+        "gpu": "1:blogger.channel:blogger.channel.menu:task"
+      },
+      "reference": {
+        "x": 1608.010009765625,
+        "y": 688.5950927734375,
+        "width": 513.54296875,
+        "height": 158.79290771484375,
+        "top": 688.5950927734375,
+        "right": 2121.552978515625,
+        "bottom": 847.3880004882812,
+        "left": 1608.010009765625
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:57",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Канал",
+          "lines": [
+            "Канал"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Приступаем к созданию канала в MAX",
+          "lines": [
+            "Приступаем к созданию канала в MAX"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "blogger.blogger.channel.menu.screen.png",
+    "sha256": "a26e4b1ef4b4a640895823aaec3cc1edd79f178a6ba7a7a1fa0baaf76eba28fa",
+    "bytes": 771986
+  },
+  {
+    "id": "blogger.blogger.channel.name.keyboard",
+    "missionId": "blogger",
+    "taskId": "blogger.channel",
+    "screenId": "blogger.channel.name",
+    "variant": "keyboard",
+    "sector": null,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "blogger.channel.name",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1315.299072265625,
+          "y": 497.705810546875,
+          "width": 249.4652099609375,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1564.7642822265625,
+          "bottom": 1038.2772216796875,
+          "left": 1315.299072265625
+        },
+        "media": "1:blogger.channel:blogger.channel.name:task",
+        "gpu": "1:blogger.channel:blogger.channel.name:task"
+      },
+      "reference": {
+        "x": 1608.010009765625,
+        "y": 675.418701171875,
+        "width": 513.54296875,
+        "height": 185.14569091796875,
+        "top": 675.418701171875,
+        "right": 2121.552978515625,
+        "bottom": 860.5643920898438,
+        "left": 1608.010009765625
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:57",
+      "keyboard": true,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Канал",
+          "lines": [
+            "Канал"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Придумаем название канала и расскажем, о чем он будет",
+          "lines": [
+            "Придумаем название канала",
+            "и расскажем, о чем он будет"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "blogger.blogger.channel.name.keyboard.png",
+    "sha256": "e9570a039d9eb572b32f53e8a985f43a2829c30110773899436239b271ed3332",
+    "bytes": 945242
+  },
+  {
+    "id": "blogger.blogger.channel.public-link.screen",
+    "missionId": "blogger",
+    "taskId": "blogger.channel",
+    "screenId": "blogger.channel.public-link",
+    "variant": "screen",
+    "sector": null,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "blogger.channel.public-link",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1315.2884521484375,
+          "y": 497.705810546875,
+          "width": 249.46533203125,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1564.7537841796875,
+          "bottom": 1038.2772216796875,
+          "left": 1315.2884521484375
+        },
+        "media": "1:blogger.channel:blogger.channel.public-link:task",
+        "gpu": "1:blogger.channel:blogger.channel.public-link:task"
+      },
+      "reference": {
+        "x": 1608.010009765625,
+        "y": 675.418701171875,
+        "width": 513.54296875,
+        "height": 185.14569091796875,
+        "top": 675.418701171875,
+        "right": 2121.552978515625,
+        "bottom": 860.5643920898438,
+        "left": 1608.010009765625
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:58",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Канал",
+          "lines": [
+            "Канал"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Настроим тип канала –\nприватный или публичный",
+          "lines": [
+            "Настроим тип канала –",
+            "приватный или публичный"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "blogger.blogger.channel.public-link.screen.png",
+    "sha256": "2274a1e0980498411f6475593f089a838065917c9256b0a5c77d81967cdab119",
+    "bytes": 760949
+  },
+  {
+    "id": "blogger.blogger.comments.post.screen",
+    "missionId": "blogger",
+    "taskId": "blogger.comments",
+    "screenId": "blogger.comments.post",
+    "variant": "screen",
+    "sector": null,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "blogger.comments.post",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1315.2884521484375,
+          "y": 497.705810546875,
+          "width": 249.46533203125,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1564.7537841796875,
+          "bottom": 1038.2772216796875,
+          "left": 1315.2884521484375
+        },
+        "media": "1:blogger.comments:blogger.comments.post:task",
+        "gpu": "1:blogger.comments:blogger.comments.post:task"
+      },
+      "reference": {
+        "x": 1608.010009765625,
+        "y": 675.418701171875,
+        "width": 513.54296875,
+        "height": 185.14569091796875,
+        "top": 675.418701171875,
+        "right": 2121.552978515625,
+        "bottom": 860.5643920898438,
+        "left": 1608.010009765625
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:58",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Общение с подписчиками",
+          "lines": [
+            "Общение с подписчиками"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Начинаем общение с подписчиками – переходим к комментариям!",
+          "lines": [
+            "Начинаем общение с подписчиками –",
+            "переходим к комментариям!"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "blogger.blogger.comments.post.screen.png",
+    "sha256": "0c822e115bc4627850413f63221a63a6a7f790e556988110bf3594121720f9ec",
+    "bytes": 900899
+  },
+  {
+    "id": "blogger.blogger.comments.input.keyboard",
+    "missionId": "blogger",
+    "taskId": "blogger.comments",
+    "screenId": "blogger.comments.input",
+    "variant": "keyboard",
+    "sector": null,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "blogger.comments.input",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1315.2884521484375,
+          "y": 497.705810546875,
+          "width": 249.46533203125,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1564.7537841796875,
+          "bottom": 1038.2772216796875,
+          "left": 1315.2884521484375
+        },
+        "media": "1:blogger.comments:blogger.comments.input:task",
+        "gpu": "1:blogger.comments:blogger.comments.input:task"
+      },
+      "reference": {
+        "x": 1608.010009765625,
+        "y": 675.418701171875,
+        "width": 513.54296875,
+        "height": 185.14569091796875,
+        "top": 675.418701171875,
+        "right": 2121.552978515625,
+        "bottom": 860.5643920898438,
+        "left": 1608.010009765625
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:57",
+      "keyboard": true,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Общение с подписчиками",
+          "lines": [
+            "Общение с подписчиками"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Ответим на вопрос подписчика в комментариях",
+          "lines": [
+            "Ответим на вопрос",
+            "подписчика в комментариях"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "blogger.blogger.comments.input.keyboard.png",
+    "sha256": "7a307b22f97b1ad9a5d5639768e63fab5c6d02e1d122b688e11decdc31cebd1a",
+    "bytes": 1099343
+  },
+  {
+    "id": "blogger.blogger.statistics.menu.screen",
+    "missionId": "blogger",
+    "taskId": "blogger.statistics",
+    "screenId": "blogger.statistics.menu",
+    "variant": "screen",
+    "sector": null,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "blogger.statistics.menu",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1315.2884521484375,
+          "y": 497.705810546875,
+          "width": 249.46533203125,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1564.7537841796875,
+          "bottom": 1038.2772216796875,
+          "left": 1315.2884521484375
+        },
+        "media": "1:blogger.statistics:blogger.statistics.menu:task",
+        "gpu": "1:blogger.statistics:blogger.statistics.menu:task"
+      },
+      "reference": {
+        "x": 1608.010009765625,
+        "y": 675.418701171875,
+        "width": 513.54296875,
+        "height": 185.14569091796875,
+        "top": 675.418701171875,
+        "right": 2121.552978515625,
+        "bottom": 860.5643920898438,
+        "left": 1608.010009765625
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:57",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Статистика",
+          "lines": [
+            "Статистика"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Посмотрим, как растет канал – изучим статистику!",
+          "lines": [
+            "Посмотрим, как растет",
+            "канал – изучим статистику!"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [
+        {
+          "label": "Статистика",
+          "font": "\"Max Sans\", Arial, sans-serif",
+          "background": "linear-gradient(110deg, rgb(16, 155, 239), rgb(42, 97, 235))",
+          "height": 0.1640625,
+          "radius": 0.06410249999999999,
+          "fontSize": 0.05897444444444444,
+          "lineHeight": 0.08205138888888888,
+          "lines": 1,
+          "transition": false,
+          "textOverflow": 0,
+          "horizontalInset": 0.3369355013942708,
+          "verticalInset": 0.04934942651235701
+        }
+      ],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "blogger.blogger.statistics.menu.screen.png",
+    "sha256": "7a11a967f4d240e86cf5121ce2db27c46b05e60a66f791c810cdc30658e63d7d",
+    "bytes": 802414
+  },
+  {
+    "id": "digital-id.scan.palm",
+    "missionId": "digital-id",
+    "taskId": null,
+    "screenId": "scan",
+    "variant": "palm",
+    "sector": null,
+    "diagnostics": {
+      "state": {
+        "phase": "palm",
+        "screen": null,
+        "phonePresence": 0,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": null,
+      "reference": null,
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:29",
+      "keyboard": false,
+      "typography": [],
+      "palmCaption": {
+        "lines": [
+          "Приложи ладонь,",
+          "чтобы начать"
+        ],
+        "overflow": 0,
+        "centerDelta": 0,
+        "rect": {
+          "x": 1318.3714599609375,
+          "y": 832.9154052734375,
+          "width": 243.257080078125,
+          "height": 57.83685302734375,
+          "top": 832.9154052734375,
+          "right": 1561.6285400390625,
+          "bottom": 890.7522583007812,
+          "left": 1318.3714599609375
+        },
+        "fontSize": "32px"
+      },
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "digital-id.scan.palm.png",
+    "sha256": "7ce4705afb7407c471e12a68d7c936ff674f4f68f7a294a4104e6fd7a7324d5b",
+    "bytes": 616508
+  },
+  {
+    "id": "digital-id.digital-id.create-id.confirm.screen",
+    "missionId": "digital-id",
+    "taskId": "digital-id.create-id",
+    "screenId": "digital-id.create-id.confirm",
+    "variant": "screen",
+    "sector": null,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "digital-id.create-id.confirm",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1315.2039794921875,
+          "y": 497.705810546875,
+          "width": 249.644775390625,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1564.8487548828125,
+          "bottom": 1038.2772216796875,
+          "left": 1315.2039794921875
+        },
+        "media": "1:digital-id.create-id:digital-id.create-id.confirm:task",
+        "gpu": "1:digital-id.create-id:digital-id.create-id.confirm:task"
+      },
+      "reference": {
+        "x": 1608.094482421875,
+        "y": 688.5950927734375,
+        "width": 513.54296875,
+        "height": 158.79290771484375,
+        "top": 688.5950927734375,
+        "right": 2121.637451171875,
+        "bottom": 847.3880004882812,
+        "left": 1608.094482421875
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:58",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Создать Цифровой ID",
+          "lines": [
+            "Создать Цифровой ID"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Подтвердим вход в MAX через Госуслуги",
+          "lines": [
+            "Подтвердим вход в MAX через Госуслуги"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "digital-id.digital-id.create-id.confirm.screen.png",
+    "sha256": "46bc2ba3fe4e4d74043427a9a54e330b9b0ac3957b4e38d9b23d1e5586526847",
+    "bytes": 785662
+  },
+  {
+    "id": "digital-id.digital-id.create-id.ready.screen",
+    "missionId": "digital-id",
+    "taskId": "digital-id.create-id",
+    "screenId": "digital-id.create-id.ready",
+    "variant": "screen",
+    "sector": null,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "digital-id.create-id.ready",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1315.2884521484375,
+          "y": 497.705810546875,
+          "width": 249.46533203125,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1564.7537841796875,
+          "bottom": 1038.2772216796875,
+          "left": 1315.2884521484375
+        },
+        "media": "1:digital-id.create-id:digital-id.create-id.ready:task",
+        "gpu": "1:digital-id.create-id:digital-id.create-id.ready:task"
+      },
+      "reference": {
+        "x": 1608.010009765625,
+        "y": 647.9519653320312,
+        "width": 513.54296875,
+        "height": 185.14569091796875,
+        "top": 647.9519653320312,
+        "right": 2121.552978515625,
+        "bottom": 833.09765625,
+        "left": 1608.010009765625
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:57",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Создать Цифровой ID",
+          "lines": [
+            "Создать Цифровой ID"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Цифровой ID готов!\nНужные подтверждения всегда рядом",
+          "lines": [
+            "Цифровой ID готов!",
+            "Нужные подтверждения всегда рядом"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [
+        {
+          "label": "Следующее задание",
+          "font": "\"Max Sans\", Arial, sans-serif",
+          "background": "linear-gradient(100deg, rgb(149, 0, 255), rgb(71, 26, 255) 57%, rgb(0, 191, 255))",
+          "height": 0.16408610834278384,
+          "radius": 0.06410243192778675,
+          "fontSize": 0.05897424882871118,
+          "lineHeight": 0.08205121596389338,
+          "lines": 1,
+          "transition": true,
+          "textOverflow": 0,
+          "horizontalInset": 0.205208726738441,
+          "verticalInset": 0.04676032510566969
+        }
+      ],
+      "transitionLayout": [
+        {
+          "label": "Следующее задание",
+          "reference": {
+            "x": 1608.010009765625,
+            "y": 647.9519653320312,
+            "width": 513.54296875,
+            "height": 185.14569091796875,
+            "top": 647.9519653320312,
+            "right": 2121.552978515625,
+            "bottom": 833.09765625,
+            "left": 1608.010009765625
+          },
+          "device": {
+            "x": 1315.2884521484375,
+            "y": 497.705810546875,
+            "width": 249.46533203125,
+            "height": 540.5714111328125,
+            "top": 497.705810546875,
+            "right": 1564.7537841796875,
+            "bottom": 1038.2772216796875,
+            "left": 1315.2884521484375
+          },
+          "button": {
+            "x": 1746.581298828125,
+            "y": 849.4266967773438,
+            "width": 235.950927734375,
+            "height": 38.71630859375,
+            "top": 849.4266967773438,
+            "right": 1982.5322265625,
+            "bottom": 888.1430053710938,
+            "left": 1746.581298828125
+          },
+          "centreError": 0.05596923828125,
+          "gap": 16.32904052734375,
+          "expectedGap": 16.217146381578946,
+          "hit": true,
+          "inert": false,
+          "disabled": false
+        }
+      ]
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "digital-id.digital-id.create-id.ready.screen.png",
+    "sha256": "3cede1a60e027b4ec1de30d101d1d9d4489d6792b2f507710d6db2647160bae7",
+    "bytes": 827643
+  },
+  {
+    "id": "digital-id.digital-id.hotel.result.screen",
+    "missionId": "digital-id",
+    "taskId": "digital-id.hotel",
+    "screenId": "digital-id.hotel.result",
+    "variant": "screen",
+    "sector": null,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "digital-id.hotel.result",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1285.7681884765625,
+          "y": 497.705810546875,
+          "width": 308.516357421875,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1594.2845458984375,
+          "bottom": 1038.2772216796875,
+          "left": 1285.7681884765625
+        },
+        "media": "1:digital-id.hotel:digital-id.hotel.result:task",
+        "gpu": "1:digital-id.hotel:digital-id.hotel.result:task"
+      },
+      "reference": {
+        "x": 1637.5302734375,
+        "y": 645.576416015625,
+        "width": 513.54296875,
+        "height": 185.14569091796875,
+        "top": 645.576416015625,
+        "right": 2151.0732421875,
+        "bottom": 830.7221069335938,
+        "left": 1637.5302734375
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:58",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Заселиться в отель",
+          "lines": [
+            "Заселиться в отель"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Мишка заселился в отель!\nТеперь можно отдохнуть",
+          "lines": [
+            "Мишка заселился в отель!",
+            "Теперь можно отдохнуть"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [
+        {
+          "label": "Следующее задание",
+          "font": "\"Max Sans\", Arial, sans-serif",
+          "background": "linear-gradient(100deg, rgb(149, 0, 255), rgb(71, 26, 255) 57%, rgb(0, 191, 255))",
+          "height": 0.16410229591836736,
+          "radius": 0.06410255102040817,
+          "fontSize": 0.058974234693877546,
+          "lineHeight": 0.08205127551020408,
+          "lines": 1,
+          "transition": true,
+          "textOverflow": 0,
+          "horizontalInset": 0.20527748552120215,
+          "verticalInset": 0.048668669526710256
+        }
+      ],
+      "transitionLayout": [
+        {
+          "label": "Следующее задание",
+          "reference": {
+            "x": 1637.5302734375,
+            "y": 645.576416015625,
+            "width": 513.54296875,
+            "height": 185.14569091796875,
+            "top": 645.576416015625,
+            "right": 2151.0732421875,
+            "bottom": 830.7221069335938,
+            "left": 1637.5302734375
+          },
+          "device": {
+            "x": 1285.7681884765625,
+            "y": 497.705810546875,
+            "width": 308.516357421875,
+            "height": 540.5714111328125,
+            "top": 497.705810546875,
+            "right": 1594.2845458984375,
+            "bottom": 1038.2772216796875,
+            "left": 1285.7681884765625
+          },
+          "button": {
+            "x": 1761.861572265625,
+            "y": 846.9392700195312,
+            "width": 264.8800048828125,
+            "height": 43.4674072265625,
+            "top": 846.9392700195312,
+            "right": 2026.7415771484375,
+            "bottom": 890.4066772460938,
+            "left": 1761.861572265625
+          },
+          "centreError": 0.000030517578125,
+          "gap": 16.2171630859375,
+          "expectedGap": 16.217146381578946,
+          "hit": true,
+          "inert": false,
+          "disabled": false
+        }
+      ]
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "digital-id.digital-id.hotel.result.screen.png",
+    "sha256": "3fa4c6d04af6a9fbce6a0d7fc4f94550eff87b9caf872df0bb9f43753e313092",
+    "bytes": 1091881
+  },
+  {
+    "id": "digital-id.digital-id.benefit.result.screen",
+    "missionId": "digital-id",
+    "taskId": "digital-id.benefit",
+    "screenId": "digital-id.benefit.result",
+    "variant": "screen",
+    "sector": null,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "digital-id.benefit.result",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1285.7681884765625,
+          "y": 497.705810546875,
+          "width": 308.516357421875,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1594.2845458984375,
+          "bottom": 1038.2772216796875,
+          "left": 1285.7681884765625
+        },
+        "media": "1:digital-id.benefit:digital-id.benefit.result:task",
+        "gpu": "1:digital-id.benefit:digital-id.benefit.result:task"
+      },
+      "reference": {
+        "x": 1637.5408935546875,
+        "y": 645.576416015625,
+        "width": 513.5428466796875,
+        "height": 185.14569091796875,
+        "top": 645.576416015625,
+        "right": 2151.083740234375,
+        "bottom": 830.7221069335938,
+        "left": 1637.5408935546875
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:57",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Подтвердить льготу",
+          "lines": [
+            "Подтвердить льготу"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Льгота подтверждена!\nМишке доступен студенческий билет",
+          "lines": [
+            "Льгота подтверждена!",
+            "Мишке доступен студенческий билет"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [
+        {
+          "label": "Следующее задание",
+          "font": "\"Max Sans\", Arial, sans-serif",
+          "background": "linear-gradient(100deg, rgb(149, 0, 255), rgb(71, 26, 255) 57%, rgb(0, 191, 255))",
+          "height": 0.16410229591836736,
+          "radius": 0.06410255102040817,
+          "fontSize": 0.058974234693877546,
+          "lineHeight": 0.08205127551020408,
+          "lines": 1,
+          "transition": true,
+          "textOverflow": 0,
+          "horizontalInset": 0.20527702466983455,
+          "verticalInset": 0.048668669526710256
+        }
+      ],
+      "transitionLayout": [
+        {
+          "label": "Следующее задание",
+          "reference": {
+            "x": 1637.5408935546875,
+            "y": 645.576416015625,
+            "width": 513.5428466796875,
+            "height": 185.14569091796875,
+            "top": 645.576416015625,
+            "right": 2151.083740234375,
+            "bottom": 830.7221069335938,
+            "left": 1637.5408935546875
+          },
+          "device": {
+            "x": 1285.7681884765625,
+            "y": 497.705810546875,
+            "width": 308.516357421875,
+            "height": 540.5714111328125,
+            "top": 497.705810546875,
+            "right": 1594.2845458984375,
+            "bottom": 1038.2772216796875,
+            "left": 1285.7681884765625
+          },
+          "button": {
+            "x": 1761.8720703125,
+            "y": 846.9392700195312,
+            "width": 264.8800048828125,
+            "height": 43.4674072265625,
+            "top": 846.9392700195312,
+            "right": 2026.7520751953125,
+            "bottom": 890.4066772460938,
+            "left": 1761.8720703125
+          },
+          "centreError": 0.000030517578125,
+          "gap": 16.2171630859375,
+          "expectedGap": 16.217142526726974,
+          "hit": true,
+          "inert": false,
+          "disabled": false
+        }
+      ]
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "digital-id.digital-id.benefit.result.screen.png",
+    "sha256": "3c1062cee2799770b1c51f64f475fbd3359b78a35029c06c04bb57afc1210f89",
+    "bytes": 1075520
+  },
+  {
+    "id": "digital-id.digital-id.age.result.screen",
+    "missionId": "digital-id",
+    "taskId": "digital-id.age",
+    "screenId": "digital-id.age.result",
+    "variant": "screen",
+    "sector": null,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "digital-id.age.result",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1285.7681884765625,
+          "y": 497.705810546875,
+          "width": 308.516357421875,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1594.2845458984375,
+          "bottom": 1038.2772216796875,
+          "left": 1285.7681884765625
+        },
+        "media": "1:digital-id.age:digital-id.age.result:task",
+        "gpu": "1:digital-id.age:digital-id.age.result:task"
+      },
+      "reference": {
+        "x": 1637.5408935546875,
+        "y": 619.2235107421875,
+        "width": 513.5428466796875,
+        "height": 237.8514404296875,
+        "top": 619.2235107421875,
+        "right": 2151.083740234375,
+        "bottom": 857.074951171875,
+        "left": 1637.5408935546875
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:58",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Подтвердить возраст",
+          "lines": [
+            "Подтвердить возраст"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Миссия пройдена!\nТеперь вы знаете, как создавать Цифровой ID, заселяться в отель, подтверждать льготу и возраст",
+          "lines": [
+            "Миссия пройдена!",
+            "Теперь вы знаете, как создавать",
+            "Цифровой ID, заселяться в отель,",
+            "подтверждать льготу и возраст"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [
+        {
+          "label": "Завершить миссию",
+          "font": "\"Max Sans\", Arial, sans-serif",
+          "background": "linear-gradient(100deg, rgb(149, 0, 255), rgb(71, 26, 255) 57%, rgb(0, 191, 255))",
+          "height": 0.16410229591836736,
+          "radius": 0.06410255102040817,
+          "fontSize": 0.058974234693877546,
+          "lineHeight": 0.08205127551020408,
+          "lines": 1,
+          "transition": true,
+          "textOverflow": 0,
+          "horizontalInset": 0.22704073050471982,
+          "verticalInset": 0.048668669526710256
+        }
+      ],
+      "transitionLayout": [
+        {
+          "label": "Завершить миссию",
+          "reference": {
+            "x": 1637.5408935546875,
+            "y": 619.2235107421875,
+            "width": 513.5428466796875,
+            "height": 237.8514404296875,
+            "top": 619.2235107421875,
+            "right": 2151.083740234375,
+            "bottom": 857.074951171875,
+            "left": 1637.5408935546875
+          },
+          "device": {
+            "x": 1285.7681884765625,
+            "y": 497.705810546875,
+            "width": 308.516357421875,
+            "height": 540.5714111328125,
+            "top": 497.705810546875,
+            "right": 1594.2845458984375,
+            "bottom": 1038.2772216796875,
+            "left": 1285.7681884765625
+          },
+          "button": {
+            "x": 1761.8720703125,
+            "y": 873.2921142578125,
+            "width": 264.8800048828125,
+            "height": 43.46746826171875,
+            "top": 873.2921142578125,
+            "right": 2026.7520751953125,
+            "bottom": 916.7595825195312,
+            "left": 1761.8720703125
+          },
+          "centreError": 0.000030517578125,
+          "gap": 16.2171630859375,
+          "expectedGap": 16.217142526726974,
+          "hit": true,
+          "inert": false,
+          "disabled": false
+        }
+      ]
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "digital-id.digital-id.age.result.screen.png",
+    "sha256": "c6aa84515ee057d95f46dbbd5669adae620bed71a8358f8ae7df95ba2fe79354",
+    "bytes": 1074333
+  },
+  {
+    "id": "communication.communication.call.chat.screen",
+    "missionId": "communication",
+    "taskId": "communication.call",
+    "screenId": "communication.call.chat",
+    "variant": "screen",
+    "sector": null,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "communication.call.chat",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1315.2039794921875,
+          "y": 497.705810546875,
+          "width": 249.644775390625,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1564.8487548828125,
+          "bottom": 1038.2772216796875,
+          "left": 1315.2039794921875
+        },
+        "media": "1:communication.call:communication.call.chat:task",
+        "gpu": "1:communication.call:communication.call.chat:task"
+      },
+      "reference": {
+        "x": 1608.094482421875,
+        "y": 688.5950927734375,
+        "width": 513.54296875,
+        "height": 158.79290771484375,
+        "top": 688.5950927734375,
+        "right": 2121.637451171875,
+        "bottom": 847.3880004882812,
+        "left": 1608.094482421875
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:57",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Видеозвонок",
+          "lines": [
+            "Видеозвонок"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Совершим удобный звонок на максимум!",
+          "lines": [
+            "Совершим удобный звонок на максимум!"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "communication.communication.call.chat.screen.png",
+    "sha256": "261902a2efae2d8edda4a39c9849ef730656d3611308c4c85676f6305f6bf522",
+    "bytes": 853426
+  },
+  {
+    "id": "communication.communication.message.voice-start.screen",
+    "missionId": "communication",
+    "taskId": "communication.message",
+    "screenId": "communication.message.voice-start",
+    "variant": "screen",
+    "sector": null,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "communication.message.voice-start",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1315.2039794921875,
+          "y": 497.705810546875,
+          "width": 249.644775390625,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1564.8487548828125,
+          "bottom": 1038.2772216796875,
+          "left": 1315.2039794921875
+        },
+        "media": "1:communication.message:communication.message.voice-start:task",
+        "gpu": "1:communication.message:communication.message.voice-start:task"
+      },
+      "reference": {
+        "x": 1608.094482421875,
+        "y": 670.6886596679688,
+        "width": 513.54296875,
+        "height": 194.60577392578125,
+        "top": 670.6886596679688,
+        "right": 2121.637451171875,
+        "bottom": 865.29443359375,
+        "left": 1608.094482421875
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:58",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Голосовое / видеосообщение",
+          "lines": [
+            "Голосовое /",
+            "видеосообщение"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Отправим голосовое сообщение!",
+          "lines": [
+            "Отправим голосовое сообщение!"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "communication.communication.message.voice-start.screen.png",
+    "sha256": "94b6ef3a041ea7f633044905c853379fd91bde60abb0a05102f9c61daf4e3e01",
+    "bytes": 844032
+  },
+  {
+    "id": "communication.communication.message.voice-sent.screen",
+    "missionId": "communication",
+    "taskId": "communication.message",
+    "screenId": "communication.message.voice-sent",
+    "variant": "screen",
+    "sector": null,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "communication.message.voice-sent",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1315.2039794921875,
+          "y": 497.705810546875,
+          "width": 249.644775390625,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1564.8487548828125,
+          "bottom": 1038.2772216796875,
+          "left": 1315.2039794921875
+        },
+        "media": "1:communication.message:communication.message.voice-sent:task",
+        "gpu": "1:communication.message:communication.message.voice-sent:task"
+      },
+      "reference": {
+        "x": 1608.1051025390625,
+        "y": 670.6886596679688,
+        "width": 513.5428466796875,
+        "height": 194.60577392578125,
+        "top": 670.6886596679688,
+        "right": 2121.64794921875,
+        "bottom": 865.29443359375,
+        "left": 1608.1051025390625
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:58",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Голосовое / видеосообщение",
+          "lines": [
+            "Голосовое /",
+            "видеосообщение"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Голосовое сообщение отправлено!",
+          "lines": [
+            "Голосовое сообщение отправлено!"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [
+        {
+          "label": "Продолжить",
+          "font": "\"Max Sans\", Arial, sans-serif",
+          "background": "linear-gradient(110deg, rgb(16, 155, 239), rgb(42, 97, 235))",
+          "height": 0.16409588700054087,
+          "radius": 0.06410246871539235,
+          "fontSize": 0.05897445436153074,
+          "lineHeight": 0.08205137743845382,
+          "lines": 1,
+          "transition": false,
+          "textOverflow": 0,
+          "horizontalInset": 0.3256428416340119,
+          "verticalInset": 0.04672453189135537
+        }
+      ],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "communication.communication.message.voice-sent.screen.png",
+    "sha256": "340a33d856ac3194faf3b0612d49ee4a2adc854e8a980f177e48374ac30d993b",
+    "bytes": 930604
+  },
+  {
+    "id": "communication.communication.message.video-preview.screen",
+    "missionId": "communication",
+    "taskId": "communication.message",
+    "screenId": "communication.message.video-preview",
+    "variant": "screen",
+    "sector": null,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "communication.message.video-preview",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1315.2884521484375,
+          "y": 497.705810546875,
+          "width": 249.46533203125,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1564.7537841796875,
+          "bottom": 1038.2772216796875,
+          "left": 1315.2884521484375
+        },
+        "media": "1:communication.message:communication.message.video-preview:task",
+        "gpu": "1:communication.message:communication.message.video-preview:task"
+      },
+      "reference": {
+        "x": 1608.010009765625,
+        "y": 670.6886596679688,
+        "width": 513.54296875,
+        "height": 194.60577392578125,
+        "top": 670.6886596679688,
+        "right": 2121.552978515625,
+        "bottom": 865.29443359375,
+        "left": 1608.010009765625
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:58",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Голосовое / видеосообщение",
+          "lines": [
+            "Голосовое /",
+            "видеосообщение"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Отправим видеосообщение в диалог",
+          "lines": [
+            "Отправим видеосообщение в диалог"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "communication.communication.message.video-preview.screen.png",
+    "sha256": "92e19d0488556bccdfb9577a51f073c3ee9536828ad47e0d8f5cad568db381b7",
+    "bytes": 902139
+  },
+  {
+    "id": "communication.communication.reaction.stickers.screen",
+    "missionId": "communication",
+    "taskId": "communication.reaction",
+    "screenId": "communication.reaction.stickers",
+    "variant": "screen",
+    "sector": null,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "communication.reaction.stickers",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1315.2884521484375,
+          "y": 497.705810546875,
+          "width": 249.46533203125,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1564.7537841796875,
+          "bottom": 1038.2772216796875,
+          "left": 1315.2884521484375
+        },
+        "media": "1:communication.reaction:communication.reaction.stickers:task",
+        "gpu": "1:communication.reaction:communication.reaction.stickers:task"
+      },
+      "reference": {
+        "x": 1608.010009765625,
+        "y": 675.418701171875,
+        "width": 513.54296875,
+        "height": 185.14569091796875,
+        "top": 675.418701171875,
+        "right": 2121.552978515625,
+        "bottom": 860.5643920898438,
+        "left": 1608.010009765625
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:58",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Стикеры",
+          "lines": [
+            "Стикеры"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Выберем стикер и отправим – прямо в диалог",
+          "lines": [
+            "Выберем стикер",
+            "и отправим – прямо в диалог"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "communication.communication.reaction.stickers.screen.png",
+    "sha256": "99a7636b127d597c7a4f0d91522b6674935776bfb762a76745fd6e06e5b0dc1c",
+    "bytes": 856889
+  },
+  {
+    "id": "communication.communication.story.start.screen",
+    "missionId": "communication",
+    "taskId": "communication.story",
+    "screenId": "communication.story.start",
+    "variant": "screen",
+    "sector": null,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "communication.story.start",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1315.2884521484375,
+          "y": 497.705810546875,
+          "width": 249.46533203125,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1564.7537841796875,
+          "bottom": 1038.2772216796875,
+          "left": 1315.2884521484375
+        },
+        "media": "1:communication.story:communication.story.start:task",
+        "gpu": "1:communication.story:communication.story.start:task"
+      },
+      "reference": {
+        "x": 1608.010009765625,
+        "y": 675.418701171875,
+        "width": 513.54296875,
+        "height": 185.14569091796875,
+        "top": 675.418701171875,
+        "right": 2121.552978515625,
+        "bottom": 860.5643920898438,
+        "left": 1608.010009765625
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:58",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "История",
+          "lines": [
+            "История"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Поделимся моментами жизни – выложим историю в MAX",
+          "lines": [
+            "Поделимся моментами жизни –",
+            "выложим историю в MAX"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "communication.communication.story.start.screen.png",
+    "sha256": "c65d06a9c6350d30dea629c75e8cb71a7c8b182a2a988e56265b3e3a609d77e6",
+    "bytes": 909288
+  },
+  {
+    "id": "communication.communication.story.ready.screen",
+    "missionId": "communication",
+    "taskId": "communication.story",
+    "screenId": "communication.story.ready",
+    "variant": "screen",
+    "sector": null,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "communication.story.ready",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1309.5660400390625,
+          "y": 497.705810546875,
+          "width": 260.91015625,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1570.4761962890625,
+          "bottom": 1038.2772216796875,
+          "left": 1309.5660400390625
+        },
+        "media": "1:communication.story:communication.story.ready:task",
+        "gpu": "1:communication.story:communication.story.ready:task"
+      },
+      "reference": {
+        "x": 1613.732421875,
+        "y": 607.4830322265625,
+        "width": 513.54296875,
+        "height": 264.20428466796875,
+        "top": 607.4830322265625,
+        "right": 2127.275390625,
+        "bottom": 871.6873168945312,
+        "left": 1613.732421875
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:58",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "История",
+          "lines": [
+            "История"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Миссия пройдена!\nТеперь вы знаете, как совершать видеозвонки, отправлять голосовые и видеосообщения, делиться стикерами и историями",
+          "lines": [
+            "Миссия пройдена!",
+            "Теперь вы знаете, как совершать",
+            "видеозвонки, отправлять голосовые",
+            "и видеосообщения, делиться стикерами",
+            "и историями"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [
+        {
+          "label": "Завершить миссию",
+          "font": "\"Max Sans\", Arial, sans-serif",
+          "background": "linear-gradient(100deg, rgb(149, 0, 255), rgb(71, 26, 255) 57%, rgb(0, 191, 255))",
+          "height": 0.16409177193581426,
+          "radius": 0.064102424035507,
+          "fontSize": 0.058974393991123246,
+          "lineHeight": 0.0820512120177535,
+          "lines": 1,
+          "transition": true,
+          "textOverflow": 0,
+          "horizontalInset": 0.2269544034614468,
+          "verticalInset": 0.04920615967003953
+        }
+      ],
+      "transitionLayout": [
+        {
+          "label": "Завершить миссию",
+          "reference": {
+            "x": 1613.732421875,
+            "y": 607.4830322265625,
+            "width": 513.54296875,
+            "height": 264.20428466796875,
+            "top": 607.4830322265625,
+            "right": 2127.275390625,
+            "bottom": 871.6873168945312,
+            "left": 1613.732421875
+          },
+          "device": {
+            "x": 1309.5660400390625,
+            "y": 497.705810546875,
+            "width": 260.91015625,
+            "height": 540.5714111328125,
+            "top": 497.705810546875,
+            "right": 1570.4761962890625,
+            "bottom": 1038.2772216796875,
+            "left": 1309.5660400390625
+          },
+          "button": {
+            "x": 1746.6610107421875,
+            "y": 887.9625244140625,
+            "width": 247.3958740234375,
+            "height": 40.59564208984375,
+            "top": 887.9625244140625,
+            "right": 1994.056884765625,
+            "bottom": 928.5581665039062,
+            "left": 1746.6610107421875
+          },
+          "centreError": 0.029083251953125,
+          "gap": 16.27520751953125,
+          "expectedGap": 16.217146381578946,
+          "hit": true,
+          "inert": false,
+          "disabled": false
+        }
+      ]
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "communication.communication.story.ready.screen.png",
+    "sha256": "2ec8f43b9815478b8c1f026195449e0bf2fb8ec2002c35941d30937dfd7b40f7",
+    "bytes": 1026923
+  },
+  {
+    "id": "business.cafe.business.platform.business-type.screen",
+    "missionId": "business",
+    "taskId": "business.platform",
+    "screenId": "business.platform.business-type",
+    "variant": "screen",
+    "sector": "cafe",
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.platform.business-type",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1013.793212890625,
+          "y": 497.705810546875,
+          "width": 852.4769287109375,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1866.2701416015625,
+          "bottom": 1038.2772216796875,
+          "left": 1013.793212890625
+        },
+        "media": "1:business.platform:business.platform.business-type:task",
+        "gpu": "1:business.platform:business.platform.business-type:task"
+      },
+      "reference": {
+        "x": 1909.515869140625,
+        "y": 675.418701171875,
+        "width": 513.54296875,
+        "height": 185.14569091796875,
+        "top": 675.418701171875,
+        "right": 2423.058837890625,
+        "bottom": 860.5643920898438,
+        "left": 1909.515869140625
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:58",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Регистрация",
+          "lines": [
+            "Регистрация"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Выберите бизнес, который будете развивать с MAX",
+          "lines": [
+            "Выберите бизнес, который",
+            "будете развивать с MAX"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "business.cafe.business.platform.business-type.screen.png",
+    "sha256": "a0aedfa8fbe691fede9f45e0178aeecd167ee9dea6ffd90b98fca08fa8f92f34",
+    "bytes": 976332
+  },
+  {
+    "id": "business.cafe.business.platform.verification.screen",
+    "missionId": "business",
+    "taskId": "business.platform",
+    "screenId": "business.platform.verification",
+    "variant": "screen",
+    "sector": "cafe",
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.platform.verification",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1013.7826538085938,
+          "y": 497.705810546875,
+          "width": 852.4769897460938,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1866.2596435546875,
+          "bottom": 1038.2772216796875,
+          "left": 1013.7826538085938
+        },
+        "media": "1:business.platform:business.platform.verification:task",
+        "gpu": "1:business.platform:business.platform.verification:task"
+      },
+      "reference": {
+        "x": 1909.515869140625,
+        "y": 688.5950927734375,
+        "width": 513.54296875,
+        "height": 158.79290771484375,
+        "top": 688.5950927734375,
+        "right": 2423.058837890625,
+        "bottom": 847.3880004882812,
+        "left": 1909.515869140625
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:58",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Регистрация",
+          "lines": [
+            "Регистрация"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Верифицируем организацию",
+          "lines": [
+            "Верифицируем организацию"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "business.cafe.business.platform.verification.screen.png",
+    "sha256": "2cd421a8632d3291a9e5528fe38c93e2081789e62d22e050fcaf035927cffbc2",
+    "bytes": 766118
+  },
+  {
+    "id": "business.cafe.business.channel.continue.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.continue",
+    "variant": "screen",
+    "sector": "cafe",
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.continue",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1013.58203125,
+          "y": 497.705810546875,
+          "width": 852.8992919921875,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1866.4813232421875,
+          "bottom": 1038.2772216796875,
+          "left": 1013.58203125
+        },
+        "media": "1:business.channel:business.channel.continue:task",
+        "gpu": "1:business.channel:business.channel.continue:task"
+      },
+      "reference": {
+        "x": 1909.72705078125,
+        "y": 688.5950927734375,
+        "width": 513.54296875,
+        "height": 158.79290771484375,
+        "top": 688.5950927734375,
+        "right": 2423.27001953125,
+        "bottom": 847.3880004882812,
+        "left": 1909.72705078125
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:57",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Канал",
+          "lines": [
+            "Канал"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Выберем опцию создания канала",
+          "lines": [
+            "Выберем опцию создания канала"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "business.cafe.business.channel.continue.screen.png",
+    "sha256": "2afa402ca246e0b553b11e02a1cef8837a9428bafaae55e5663b36df1266870f",
+    "bytes": 728359
+  },
+  {
+    "id": "business.cafe.business.channel.details.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.details",
+    "variant": "screen",
+    "sector": "cafe",
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.details",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1314.401611328125,
+          "y": 497.705810546875,
+          "width": 251.24951171875,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1565.651123046875,
+          "bottom": 1038.2772216796875,
+          "left": 1314.401611328125
+        },
+        "media": "1:business.channel:business.channel.details:task",
+        "gpu": "1:business.channel:business.channel.details:task"
+      },
+      "reference": null,
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:58",
+      "keyboard": false,
+      "typography": [],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "business.cafe.business.channel.details.screen.png",
+    "sha256": "dbbc5614afc38e6ce0db8e33abb6e5ba5512aed1c52fd5345a62c9870637c7aa",
+    "bytes": 816764
+  },
+  {
+    "id": "business.cafe.business.channel.publish.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.publish",
+    "variant": "screen",
+    "sector": "cafe",
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.publish",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1314.401611328125,
+          "y": 497.705810546875,
+          "width": 251.24951171875,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1565.651123046875,
+          "bottom": 1038.2772216796875,
+          "left": 1314.401611328125
+        },
+        "media": "1:business.channel:business.channel.publish:task",
+        "gpu": "1:business.channel:business.channel.publish:task"
+      },
+      "reference": {
+        "x": 1608.8968505859375,
+        "y": 675.418701171875,
+        "width": 513.5428466796875,
+        "height": 185.14569091796875,
+        "top": 675.418701171875,
+        "right": 2122.439697265625,
+        "bottom": 860.5643920898438,
+        "left": 1608.8968505859375
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:58",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Канал",
+          "lines": [
+            "Канал"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Канал создан, теперь можно поделиться новостями вашего бизнеса",
+          "lines": [
+            "Канал создан, теперь можно",
+            "поделиться новостями вашего бизнеса"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "business.cafe.business.channel.publish.screen.png",
+    "sha256": "8d2b970745aee37218383a54534b33c49d3ee78c4b0861ba16f232aaa995add8",
+    "bytes": 860955
+  },
+  {
+    "id": "business.cafe.business.bot.create.screen",
+    "missionId": "business",
+    "taskId": "business.bot",
+    "screenId": "business.bot.create",
+    "variant": "screen",
+    "sector": "cafe",
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.bot.create",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1030.6966552734375,
+          "y": 497.705810546875,
+          "width": 818.64892578125,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1849.3455810546875,
+          "bottom": 1038.2772216796875,
+          "left": 1030.6966552734375
+        },
+        "media": "1:business.bot:business.bot.create:task",
+        "gpu": "1:business.bot:business.bot.create:task"
+      },
+      "reference": {
+        "x": 1892.6019287109375,
+        "y": 644.3358154296875,
+        "width": 513.5428466796875,
+        "height": 247.31146240234375,
+        "top": 644.3358154296875,
+        "right": 2406.144775390625,
+        "bottom": 891.6472778320312,
+        "left": 1892.6019287109375
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:57",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Чат-бот для приема заказов",
+          "lines": [
+            "Чат-бот",
+            "для приема заказов"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Подключим чат-бот для приема заказов, сбора обратной связи и быстрых ответов для клиентов",
+          "lines": [
+            "Подключим чат-бот для приема",
+            "заказов, сбора обратной связи",
+            "и быстрых ответов для клиентов"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "business.cafe.business.bot.create.screen.png",
+    "sha256": "7900958383f82377885538c69b87428ca7c842ac308be8552d064cd48aa16b56",
+    "bytes": 784895
+  },
+  {
+    "id": "business.cafe.business.bot.result.screen",
+    "missionId": "business",
+    "taskId": "business.bot",
+    "screenId": "business.bot.result",
+    "variant": "screen",
+    "sector": "cafe",
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.bot.result",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1313.1029052734375,
+          "y": 497.705810546875,
+          "width": 253.8363037109375,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1566.939208984375,
+          "bottom": 1038.2772216796875,
+          "left": 1313.1029052734375
+        },
+        "media": "1:business.bot:business.bot.result:task",
+        "gpu": "1:business.bot:business.bot.result:task"
+      },
+      "reference": {
+        "x": 1610.195556640625,
+        "y": 657.5122680664062,
+        "width": 513.54296875,
+        "height": 220.95855712890625,
+        "top": 657.5122680664062,
+        "right": 2123.738525390625,
+        "bottom": 878.4708251953125,
+        "left": 1610.195556640625
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:57",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Чат-бот для приема заказов",
+          "lines": [
+            "Чат-бот",
+            "для приема заказов"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Чат-бот готов!\nПоможет с заказами и вопросами",
+          "lines": [
+            "Чат-бот готов!",
+            "Поможет с заказами и вопросами"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "business.cafe.business.bot.result.screen.png",
+    "sha256": "5f46d325533015610b32977530afa59b964aa1dd483feed2c4cf02f9bd1078f7",
+    "bytes": 924828
+  },
+  {
+    "id": "business.cafe.business.store.start.activity",
+    "missionId": "business",
+    "taskId": "business.store",
+    "screenId": "business.store.start",
+    "variant": "activity",
+    "sector": "cafe",
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.store.start",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        },
+        {
+          "width": 3072,
+          "height": 1536
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1313.113525390625,
+          "y": 497.705810546875,
+          "width": 253.815185546875,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1566.9287109375,
+          "bottom": 1038.2772216796875,
+          "left": 1313.113525390625
+        },
+        "media": "1:business.store:business.store.start:task",
+        "gpu": "1:business.store:business.store.start:task"
+      },
+      "reference": {
+        "x": 1610.1849365234375,
+        "y": 662.2422485351562,
+        "width": 513.5428466796875,
+        "height": 211.49859619140625,
+        "top": 662.2422485351562,
+        "right": 2123.727783203125,
+        "bottom": 873.7408447265625,
+        "left": 1610.1849365234375
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:50",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Мини-приложение",
+          "lines": [
+            "Мини-приложение"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Подключим витрину товаров и услуг, чтобы клиенты могли совершать покупки, не выходя из мессенджера",
+          "lines": [
+            "Подключим витрину товаров и услуг,",
+            "чтобы клиенты могли совершать",
+            "покупки, не выходя из мессенджера"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "business.cafe.business.store.start.activity.png",
+    "sha256": "0ffab78f53edcee4c92d97cfcfefe75b2bf950b73382a0a773313442e5d57faa",
+    "bytes": 943832
+  },
+  {
+    "id": "business.flowers.scan.palm",
+    "missionId": "business",
+    "taskId": null,
+    "screenId": "scan",
+    "variant": "palm",
+    "sector": "flowers",
+    "diagnostics": {
+      "state": {
+        "phase": "palm",
+        "screen": null,
+        "phonePresence": 0,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": null,
+      "reference": null,
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:29",
+      "keyboard": false,
+      "typography": [],
+      "palmCaption": {
+        "lines": [
+          "Приложи ладонь,",
+          "чтобы начать"
+        ],
+        "overflow": 0,
+        "centerDelta": 0.00006103515625,
+        "rect": {
+          "x": 1318.3714599609375,
+          "y": 833.9287719726562,
+          "width": 243.2569580078125,
+          "height": 57.83697509765625,
+          "top": 833.9287719726562,
+          "right": 1561.62841796875,
+          "bottom": 891.7657470703125,
+          "left": 1318.3714599609375
+        },
+        "fontSize": "32px"
+      },
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "business.flowers.scan.palm.png",
+    "sha256": "9d4d0fb38f221f4b7ae2b4d5e13f732d4d3c0be7bc6ecbaf4e77492d6f508797",
+    "bytes": 643853
+  },
+  {
+    "id": "business.flowers.business.platform.profile.screen",
+    "missionId": "business",
+    "taskId": "business.platform",
+    "screenId": "business.platform.profile",
+    "variant": "screen",
+    "sector": "flowers",
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.platform.profile",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1013.5081176757812,
+          "y": 497.705810546875,
+          "width": 853.0365600585938,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1866.544677734375,
+          "bottom": 1038.2772216796875,
+          "left": 1013.5081176757812
+        },
+        "media": "1:business.platform:business.platform.profile:task",
+        "gpu": "1:business.platform:business.platform.profile:task"
+      },
+      "reference": {
+        "x": 1909.8009033203125,
+        "y": 688.5950927734375,
+        "width": 513.5428466796875,
+        "height": 158.79290771484375,
+        "top": 688.5950927734375,
+        "right": 2423.34375,
+        "bottom": 847.3880004882812,
+        "left": 1909.8009033203125
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:58",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Регистрация",
+          "lines": [
+            "Регистрация"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Выберем тип профиля для регистрации",
+          "lines": [
+            "Выберем тип профиля для регистрации"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "business.flowers.business.platform.profile.screen.png",
+    "sha256": "ec0e82e11de9e0fb894e195d1c5c3590c2567f975085b77a9bb550c3403b7c7a",
+    "bytes": 666924
+  },
+  {
+    "id": "business.flowers.business.channel.create.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.create",
+    "variant": "screen",
+    "sector": "flowers",
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.create",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1030.6966552734375,
+          "y": 497.705810546875,
+          "width": 818.64892578125,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1849.3455810546875,
+          "bottom": 1038.2772216796875,
+          "left": 1030.6966552734375
+        },
+        "media": "1:business.channel:business.channel.create:task",
+        "gpu": "1:business.channel:business.channel.create:task"
+      },
+      "reference": {
+        "x": 1892.6019287109375,
+        "y": 662.2422485351562,
+        "width": 513.5428466796875,
+        "height": 211.49859619140625,
+        "top": 662.2422485351562,
+        "right": 2406.144775390625,
+        "bottom": 873.7408447265625,
+        "left": 1892.6019287109375
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:58",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Канал",
+          "lines": [
+            "Канал"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Создадим канал для вашего бизнеса и поделимся важными обновлениями, акциями и новостями",
+          "lines": [
+            "Создадим канал для вашего",
+            "бизнеса и поделимся важными",
+            "обновлениями, акциями и новостями"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "business.flowers.business.channel.create.screen.png",
+    "sha256": "85860e878f32eddb25ebaf29187bf674617662121f321fe3caea6bbb737db6e0",
+    "bytes": 835299
+  },
+  {
+    "id": "business.flowers.business.channel.setup.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.setup",
+    "variant": "screen",
+    "sector": "flowers",
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.setup",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1314.401611328125,
+          "y": 497.705810546875,
+          "width": 251.24951171875,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1565.651123046875,
+          "bottom": 1038.2772216796875,
+          "left": 1314.401611328125
+        },
+        "media": "1:business.channel:business.channel.setup:task",
+        "gpu": "1:business.channel:business.channel.setup:task"
+      },
+      "reference": {
+        "x": 1608.907470703125,
+        "y": 675.418701171875,
+        "width": 513.54296875,
+        "height": 185.14569091796875,
+        "top": 675.418701171875,
+        "right": 2122.450439453125,
+        "bottom": 860.5643920898438,
+        "left": 1608.907470703125
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:58",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Канал",
+          "lines": [
+            "Канал"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Пройдем все необходимые шаги и начнем публикации",
+          "lines": [
+            "Пройдем все необходимые",
+            "шаги и начнем публикации"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "business.flowers.business.channel.setup.screen.png",
+    "sha256": "da9d5dca8f0c4a6b1c168d010b3a9320db550ded76a5835a58be937fd600066a",
+    "bytes": 898254
+  },
+  {
+    "id": "business.flowers.business.channel.type.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.type",
+    "variant": "screen",
+    "sector": "flowers",
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.type",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1314.401611328125,
+          "y": 497.705810546875,
+          "width": 251.24951171875,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1565.651123046875,
+          "bottom": 1038.2772216796875,
+          "left": 1314.401611328125
+        },
+        "media": "1:business.channel:business.channel.type:task",
+        "gpu": "1:business.channel:business.channel.type:task"
+      },
+      "reference": null,
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:58",
+      "keyboard": false,
+      "typography": [],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "business.flowers.business.channel.type.screen.png",
+    "sha256": "0c0b9bd614bae3034adb0d8eeb0592e4d0558b2959e0a6e296cfbb46d4f0d23b",
+    "bytes": 817214
+  },
+  {
+    "id": "business.flowers.business.channel.result.success",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.result",
+    "variant": "success",
+    "sector": "flowers",
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.result",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        },
+        {
+          "width": 300,
+          "height": 150
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1288.57666015625,
+          "y": 443.648681640625,
+          "width": 302.888916015625,
+          "height": 648.685791015625,
+          "top": 443.648681640625,
+          "right": 1591.465576171875,
+          "bottom": 1092.33447265625,
+          "left": 1288.57666015625
+        },
+        "media": "1:business.channel:business.channel.result:task",
+        "gpu": "1:business.channel:business.channel.result:task"
+      },
+      "reference": {
+        "x": 1634.7218017578125,
+        "y": 630.4906616210938,
+        "width": 513.5428466796875,
+        "height": 211.49853515625,
+        "top": 630.4906616210938,
+        "right": 2148.2646484375,
+        "bottom": 841.9891967773438,
+        "left": 1634.7218017578125
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:54",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Канал",
+          "lines": [
+            "Канал"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Поздравляем!\nО вас узнало больше людей и выросло количество заказов",
+          "lines": [
+            "Поздравляем!",
+            "О вас узнало больше людей и выросло",
+            "количество заказов"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [
+        {
+          "label": "Следующее задание",
+          "font": "\"Max Sans\", sans-serif",
+          "background": "linear-gradient(100deg, rgb(149, 0, 255), rgb(71, 26, 255) 57%, rgb(0, 191, 255))",
+          "height": 0.1641025641025641,
+          "radius": 0.0641025641025641,
+          "fontSize": 0.05897435897435897,
+          "lineHeight": 0.08205128205128205,
+          "lines": 1,
+          "transition": true,
+          "textOverflow": 0,
+          "horizontalInset": 0.20516800507006072,
+          "verticalInset": 0.04871778469526258
+        }
+      ],
+      "transitionLayout": [
+        {
+          "label": "Следующее задание",
+          "reference": {
+            "x": 1634.7218017578125,
+            "y": 630.4906616210938,
+            "width": 513.5428466796875,
+            "height": 211.49853515625,
+            "top": 630.4906616210938,
+            "right": 2148.2646484375,
+            "bottom": 841.9891967773438,
+            "left": 1634.7218017578125
+          },
+          "device": {
+            "x": 1288.57666015625,
+            "y": 443.648681640625,
+            "width": 302.888916015625,
+            "height": 648.685791015625,
+            "top": 443.648681640625,
+            "right": 1591.465576171875,
+            "bottom": 1092.33447265625,
+            "left": 1288.57666015625
+          },
+          "button": {
+            "x": 1747.418212890625,
+            "y": 858.2064208984375,
+            "width": 288.14990234375,
+            "height": 47.2861328125,
+            "top": 858.2064208984375,
+            "right": 2035.568115234375,
+            "bottom": 905.4925537109375,
+            "left": 1747.418212890625
+          },
+          "centreError": 0.000030517578125,
+          "gap": 16.21722412109375,
+          "expectedGap": 16.217142526726974,
+          "hit": true,
+          "inert": false,
+          "disabled": false
+        }
+      ]
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "business.flowers.business.channel.result.success.png",
+    "sha256": "2088a3b1747e4a79d3ece46f529624a8a8a5d9b8f6bf2c5d85149d8377d982a7",
+    "bytes": 843168
+  },
+  {
+    "id": "business.flowers.business.bot.ready.screen",
+    "missionId": "business",
+    "taskId": "business.bot",
+    "screenId": "business.bot.ready",
+    "variant": "screen",
+    "sector": "flowers",
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.bot.ready",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1013.539794921875,
+          "y": 497.705810546875,
+          "width": 852.9837646484375,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1866.5235595703125,
+          "bottom": 1038.2772216796875,
+          "left": 1013.539794921875
+        },
+        "media": "1:business.bot:business.bot.ready:task",
+        "gpu": "1:business.bot:business.bot.ready:task"
+      },
+      "reference": {
+        "x": 1909.769287109375,
+        "y": 657.5122680664062,
+        "width": 513.542724609375,
+        "height": 220.95855712890625,
+        "top": 657.5122680664062,
+        "right": 2423.31201171875,
+        "bottom": 878.4708251953125,
+        "left": 1909.769287109375
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:57",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Чат-бот для приема заказов",
+          "lines": [
+            "Чат-бот",
+            "для приема заказов"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Чат-бот почти готов!\nОсталось только дождаться публикации",
+          "lines": [
+            "Чат-бот почти готов!",
+            "Осталось только дождаться публикации"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "business.flowers.business.bot.ready.screen.png",
+    "sha256": "2be0df83e5263fd01756be4f37fa883ac69386a602c28a1902ee4ff5c366faf9",
+    "bytes": 753767
+  },
+  {
+    "id": "business.flowers.business.store.settings.screen",
+    "missionId": "business",
+    "taskId": "business.store",
+    "screenId": "business.store.settings",
+    "variant": "screen",
+    "sector": "flowers",
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.store.settings",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1013.7826538085938,
+          "y": 497.705810546875,
+          "width": 852.4769897460938,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1866.2596435546875,
+          "bottom": 1038.2772216796875,
+          "left": 1013.7826538085938
+        },
+        "media": "1:business.store:business.store.settings:task",
+        "gpu": "1:business.store:business.store.settings:task"
+      },
+      "reference": {
+        "x": 1909.515869140625,
+        "y": 662.2422485351562,
+        "width": 513.54296875,
+        "height": 211.49859619140625,
+        "top": 662.2422485351562,
+        "right": 2423.058837890625,
+        "bottom": 873.7408447265625,
+        "left": 1909.515869140625
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:58",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Мини-приложение",
+          "lines": [
+            "Мини-приложение"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Подключим витрину товаров и услуг, чтобы клиенты могли совершать покупки, не выходя из мессенджера",
+          "lines": [
+            "Подключим витрину товаров и услуг,",
+            "чтобы клиенты могли совершать",
+            "покупки, не выходя из мессенджера"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "business.flowers.business.store.settings.screen.png",
+    "sha256": "e3adc7fdead226f56b3858896feebbee29c0467b210ed1c36a37b1f4b5609f63",
+    "bytes": 876524
+  },
+  {
+    "id": "business.flowers.completed.final",
+    "missionId": "business",
+    "taskId": null,
+    "screenId": "completed",
+    "variant": "final",
+    "sector": "flowers",
+    "diagnostics": {
+      "state": {
+        "phase": "complete",
+        "screen": null,
+        "phonePresence": 0,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": null,
+      "reference": null,
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:15",
+      "keyboard": false,
+      "typography": [],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "business.flowers.completed.final.png",
+    "sha256": "9cedfd333c845d1b782a5bbaa9976721fcf91c9aae0cf902fe45ba1fba8b248a",
+    "bytes": 743395
+  },
+  {
+    "id": "business.auto.business.platform.login.screen",
+    "missionId": "business",
+    "taskId": "business.platform",
+    "screenId": "business.platform.login",
+    "variant": "screen",
+    "sector": "auto",
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.platform.login",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 983.8189086914062,
+          "y": 497.705810546875,
+          "width": 912.4043579101562,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1896.2232666015625,
+          "bottom": 1038.2772216796875,
+          "left": 983.8189086914062
+        },
+        "media": "1:business.platform:business.platform.login:task",
+        "gpu": "1:business.platform:business.platform.login:task"
+      },
+      "reference": {
+        "x": 1939.4796142578125,
+        "y": 675.418701171875,
+        "width": 513.5428466796875,
+        "height": 185.14569091796875,
+        "top": 675.418701171875,
+        "right": 2453.0224609375,
+        "bottom": 860.5643920898438,
+        "left": 1939.4796142578125
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:58",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Регистрация",
+          "lines": [
+            "Регистрация"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Войдем на платформу MAX для бизнеса и пройдем верификацию",
+          "lines": [
+            "Войдем на платформу MAX",
+            "для бизнеса и пройдем верификацию"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "business.auto.business.platform.login.screen.png",
+    "sha256": "b42a7d14f02bbbcf5a55aeefa4965a929252b57ba2648232ea323e37193dfa07",
+    "bytes": 873726
+  },
+  {
+    "id": "business.auto.business.platform.ready.result",
+    "missionId": "business",
+    "taskId": "business.platform",
+    "screenId": "business.platform.ready",
+    "variant": "result",
+    "sector": "auto",
+    "diagnostics": {
+      "state": {
+        "phase": "result",
+        "screen": "business.platform.ready",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1013.5081176757812,
+          "y": 497.705810546875,
+          "width": 853.0365600585938,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1866.544677734375,
+          "bottom": 1038.2772216796875,
+          "left": 1013.5081176757812
+        },
+        "media": "1:business.platform:business.platform.ready:result",
+        "gpu": "1:business.platform:business.platform.ready:result"
+      },
+      "reference": {
+        "x": 1909.8009033203125,
+        "y": 675.4398193359375,
+        "width": 513.5428466796875,
+        "height": 185.08233642578125,
+        "top": 675.4398193359375,
+        "right": 2423.34375,
+        "bottom": 860.5221557617188,
+        "left": 1909.8009033203125
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "1:00",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Регистрация",
+          "lines": [
+            "Регистрация"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Профиль подтверждён!\nНачинаем знакомить клиентов с бизнесом",
+          "lines": [
+            "Профиль подтверждён!",
+            "Начинаем знакомить клиентов с бизнесом"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "business.auto.business.platform.ready.result.png",
+    "sha256": "a8b4e4985591cad75056006bdbf024bc456314955314e062e995d332855fe2aa",
+    "bytes": 708363
+  },
+  {
+    "id": "business.auto.business.channel.open.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.open",
+    "variant": "screen",
+    "sector": "auto",
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.open",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1314.401611328125,
+          "y": 497.705810546875,
+          "width": 251.24951171875,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1565.651123046875,
+          "bottom": 1038.2772216796875,
+          "left": 1314.401611328125
+        },
+        "media": "1:business.channel:business.channel.open:task",
+        "gpu": "1:business.channel:business.channel.open:task"
+      },
+      "reference": {
+        "x": 1608.907470703125,
+        "y": 688.5950927734375,
+        "width": 513.54296875,
+        "height": 158.79290771484375,
+        "top": 688.5950927734375,
+        "right": 2122.450439453125,
+        "bottom": 847.3880004882812,
+        "left": 1608.907470703125
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:57",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Канал",
+          "lines": [
+            "Канал"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Приступим к созданию канала",
+          "lines": [
+            "Приступим к созданию канала"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "business.auto.business.channel.open.screen.png",
+    "sha256": "91a1416d002fe95e07d9e103a9d70cb227f92edebfbf9d9da6a76d99aec8bf25",
+    "bytes": 842421
+  },
+  {
+    "id": "business.auto.business.channel.description.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.description",
+    "variant": "screen",
+    "sector": "auto",
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.description",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1314.401611328125,
+          "y": 497.705810546875,
+          "width": 251.24951171875,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1565.651123046875,
+          "bottom": 1038.2772216796875,
+          "left": 1314.401611328125
+        },
+        "media": "1:business.channel:business.channel.description:task",
+        "gpu": "1:business.channel:business.channel.description:task"
+      },
+      "reference": null,
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:58",
+      "keyboard": false,
+      "typography": [],
+      "actionButtons": [
+        {
+          "label": "Продолжить",
+          "font": "\"Max Sans\", Arial, sans-serif",
+          "background": "linear-gradient(110deg, rgb(16, 155, 239), rgb(42, 97, 235))",
+          "height": 0.1640625,
+          "radius": 0.06410249999999999,
+          "fontSize": 0.05897444444444444,
+          "lineHeight": 0.08205138888888888,
+          "lines": 1,
+          "transition": false,
+          "textOverflow": 0,
+          "horizontalInset": 0.32556399702597344,
+          "verticalInset": 0.049349226301239314
+        }
+      ],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "business.auto.business.channel.description.screen.png",
+    "sha256": "ab6a1d48986d429db2ec686ada9ecb724e85080a4420aad87b8e4b95b48e780e",
+    "bytes": 798519
+  },
+  {
+    "id": "business.auto.business.channel.result.activity",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.result",
+    "variant": "activity",
+    "sector": "auto",
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.result",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        },
+        {
+          "width": 3072,
+          "height": 1536
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1288.57666015625,
+          "y": 443.648681640625,
+          "width": 302.888916015625,
+          "height": 648.685791015625,
+          "top": 443.648681640625,
+          "right": 1591.465576171875,
+          "bottom": 1092.33447265625,
+          "left": 1288.57666015625
+        },
+        "media": "1:business.channel:business.channel.result:task",
+        "gpu": "1:business.channel:business.channel.result:task"
+      },
+      "reference": {
+        "x": 1634.7218017578125,
+        "y": 662.2422485351562,
+        "width": 513.5428466796875,
+        "height": 211.49859619140625,
+        "top": 662.2422485351562,
+        "right": 2148.2646484375,
+        "bottom": 873.7408447265625,
+        "left": 1634.7218017578125
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:50",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Канал",
+          "lines": [
+            "Канал"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Поздравляем!\nО вас узнало больше людей и выросло количество заказов",
+          "lines": [
+            "Поздравляем!",
+            "О вас узнало больше людей и выросло",
+            "количество заказов"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "business.auto.business.channel.result.activity.png",
+    "sha256": "8b3e73dbe55c0a0301893aa03553bce370aacda181bb2bb999b3e86b78170201",
+    "bytes": 907713
+  },
+  {
+    "id": "business.auto.business.bot.filled.screen",
+    "missionId": "business",
+    "taskId": "business.bot",
+    "screenId": "business.bot.filled",
+    "variant": "screen",
+    "sector": "auto",
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.bot.filled",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1013.9093017578125,
+          "y": 497.705810546875,
+          "width": 852.2447509765625,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1866.154052734375,
+          "bottom": 1038.2772216796875,
+          "left": 1013.9093017578125
+        },
+        "media": "1:business.bot:business.bot.filled:task",
+        "gpu": "1:business.bot:business.bot.filled:task"
+      },
+      "reference": {
+        "x": 1909.3997802734375,
+        "y": 644.3358154296875,
+        "width": 513.5428466796875,
+        "height": 247.31146240234375,
+        "top": 644.3358154296875,
+        "right": 2422.942626953125,
+        "bottom": 891.6472778320312,
+        "left": 1909.3997802734375
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:57",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Чат-бот для приема заказов",
+          "lines": [
+            "Чат-бот",
+            "для приема заказов"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Заполним данные о чат-боте — логотип, название, и выберем задачи, которые он будет решать",
+          "lines": [
+            "Заполним данные о чат-боте —",
+            "логотип, название, и выберем",
+            "задачи, которые он будет решать"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "business.auto.business.bot.filled.screen.png",
+    "sha256": "6f4ca2594e86790827bdb23c4fe124d416ba0d13c4ab9a5d7da50cb2a7ef5205",
+    "bytes": 819817
+  },
+  {
+    "id": "business.auto.business.store.dashboard.screen",
+    "missionId": "business",
+    "taskId": "business.store",
+    "screenId": "business.store.dashboard",
+    "variant": "screen",
+    "sector": "auto",
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.store.dashboard",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1030.6966552734375,
+          "y": 497.705810546875,
+          "width": 818.64892578125,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1849.3455810546875,
+          "bottom": 1038.2772216796875,
+          "left": 1030.6966552734375
+        },
+        "media": "1:business.store:business.store.dashboard:task",
+        "gpu": "1:business.store:business.store.dashboard:task"
+      },
+      "reference": {
+        "x": 1892.6019287109375,
+        "y": 662.2422485351562,
+        "width": 513.5428466796875,
+        "height": 211.49859619140625,
+        "top": 662.2422485351562,
+        "right": 2406.144775390625,
+        "bottom": 873.7408447265625,
+        "left": 1892.6019287109375
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:58",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Мини-приложение",
+          "lines": [
+            "Мини-приложение"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Подключим витрину товаров и услуг, чтобы клиенты могли совершать покупки, не выходя из мессенджера",
+          "lines": [
+            "Подключим витрину товаров и услуг,",
+            "чтобы клиенты могли совершать",
+            "покупки, не выходя из мессенджера"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [],
+      "transitionLayout": []
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "business.auto.business.store.dashboard.screen.png",
+    "sha256": "19b4cebed4d9fdfffc837079adfbf8271b23f6891a15d902e647fef13cdcd8a6",
+    "bytes": 808233
+  },
+  {
+    "id": "business.auto.business.store.start.success",
+    "missionId": "business",
+    "taskId": "business.store",
+    "screenId": "business.store.start",
+    "variant": "success",
+    "sector": "auto",
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.store.start",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 3072,
+          "height": 1536
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "canvas": [
+        {
+          "width": 3072,
+          "height": 1536
+        },
+        {
+          "width": 3071,
+          "height": 1535
+        },
+        {
+          "width": 300,
+          "height": 150
+        }
+      ],
+      "device": {
+        "rect": {
+          "x": 1313.1240234375,
+          "y": 497.705810546875,
+          "width": 253.815185546875,
+          "height": 540.5714111328125,
+          "top": 497.705810546875,
+          "right": 1566.939208984375,
+          "bottom": 1038.2772216796875,
+          "left": 1313.1240234375
+        },
+        "media": "1:business.store:business.store.start:task",
+        "gpu": "1:business.store:business.store.start:task"
+      },
+      "reference": {
+        "x": 1610.1849365234375,
+        "y": 621.240234375,
+        "width": 513.5428466796875,
+        "height": 237.8514404296875,
+        "top": 621.240234375,
+        "right": 2123.727783203125,
+        "bottom": 859.0916748046875,
+        "left": 1610.1849365234375
+      },
+      "pixelMap": "true",
+      "forbidden": [],
+      "timer": "0:51",
+      "keyboard": false,
+      "typography": [
+        {
+          "tag": "H2",
+          "text": "Мини-приложение",
+          "lines": [
+            "Мини-приложение"
+          ],
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Миссия пройдена!\nТеперь вы знаете, как регистрировать бизнес в MAX, создавать канал и чат-бота, собирать витрину товаров",
+          "lines": [
+            "Миссия пройдена!",
+            "Теперь вы знаете, как регистрировать",
+            "бизнес в MAX, создавать канал и чат-бота,",
+            "собирать витрину товаров"
+          ],
+          "overflow": 0
+        }
+      ],
+      "actionButtons": [
+        {
+          "label": "Завершить миссию",
+          "font": "\"Max Sans\", sans-serif",
+          "background": "linear-gradient(100deg, rgb(149, 0, 255), rgb(71, 26, 255) 57%, rgb(0, 191, 255))",
+          "height": 0.1641025641025641,
+          "radius": 0.0641025641025641,
+          "fontSize": 0.05897435897435897,
+          "lineHeight": 0.08205128205128205,
+          "lines": 1,
+          "transition": true,
+          "textOverflow": 0,
+          "horizontalInset": 0.2269229303876721,
+          "verticalInset": 0.048717961743318036
+        }
+      ],
+      "transitionLayout": [
+        {
+          "label": "Завершить миссию",
+          "reference": {
+            "x": 1610.1849365234375,
+            "y": 621.240234375,
+            "width": 513.5428466796875,
+            "height": 237.8514404296875,
+            "top": 621.240234375,
+            "right": 2123.727783203125,
+            "bottom": 859.0916748046875,
+            "left": 1610.1849365234375
+          },
+          "device": {
+            "x": 1313.1240234375,
+            "y": 497.705810546875,
+            "width": 253.815185546875,
+            "height": 540.5714111328125,
+            "top": 497.705810546875,
+            "right": 1566.939208984375,
+            "bottom": 1038.2772216796875,
+            "left": 1313.1240234375
+          },
+          "button": {
+            "x": 1746.805908203125,
+            "y": 875.308837890625,
+            "width": 240.3009033203125,
+            "height": 39.4339599609375,
+            "top": 875.308837890625,
+            "right": 1987.1068115234375,
+            "bottom": 914.7427978515625,
+            "left": 1746.805908203125
+          },
+          "centreError": 0,
+          "gap": 16.2171630859375,
+          "expectedGap": 16.217142526726974,
+          "hit": true,
+          "inert": false,
+          "disabled": false
+        }
+      ]
+    },
+    "width": 3072,
+    "height": 1536,
+    "image": "business.auto.business.store.start.success.png",
+    "sha256": "f0172a607f4852a56d82c15378802731de60388ac5bd5cd8858c821c35ce5b63",
+    "bytes": 886559
+  }
+]

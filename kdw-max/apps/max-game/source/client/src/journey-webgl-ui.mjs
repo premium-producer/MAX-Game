@@ -70,7 +70,14 @@ if(referenceRole>.5){
   float lightPool=exp(-length((vUv-vec2(.80,.10))*vec2(2.,2.7))*2.);
   c=mix(vec3(.06,.025,.13),vec3(.43,.10,.95),lightPool*.95);a=inside*.86+rim*.12;
  }else if(referenceRole<3.5){c=vec3(.055,.026,.12);a=inside*.96+rim*.10;}
- else{c=mix(vec3(.04,.65,.98),vec3(.25,.3,.98),vUv.x*.6);a=inside*.88+rim*.16;}
+ else if(referenceRole<4.5){c=mix(vec3(.04,.65,.98),vec3(.25,.3,.98),vUv.x*.6);a=inside*.88+rim*.16;}
+ else{
+  // Match the CSS 100deg storefront gradient, including its 57% middle stop.
+  float t=clamp(.5+dot(p,vec2(.98480775,-.17364818))/(size.x*.98480775+size.y*.17364818),0.,1.);
+  c=t<.57?mix(vec3(.5843137,0.,1.),vec3(.2784314,.1019608,1.),t/.57):mix(vec3(.2784314,.1019608,1.),vec3(0.,.7490196,1.),(t-.57)/.43);
+  c=mix(c,vec3(.5882353,.3254902,1.),rim*.65);
+  a=inside+rim*.16+glow*.4;
+ }
 }
 gl_FragColor=vec4(c,clamp(a*alpha,0.,1.));
 #ifdef BFM_COLOR_MANAGED
@@ -93,7 +100,7 @@ export function webglTextRasterBounds(metrics,width,height){
  return {left,top,width:right-left,height:bottom-top};
 }
 
-export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startup=null,gradients=null}){
+export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,onLayout,startup=null,gradients=null}){
  const confirmationPanel=el=>!BUSINESS_ORIGINAL&&el?.matches('.demo-app')&&el.closest('.route-phone')?.dataset.sceneVersion?.includes(':business.platform.ready:');
  const referenceVisual=document.documentElement.dataset.visual==='reference';
  const bfmVisual=document.documentElement.dataset.visual==='webgl-bfm-v5';
@@ -179,7 +186,7 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startu
   const optical=el.matches('.glass-control,.pill'),cover=el.matches('.task-cover,.reset-cover');
   const fill=el.matches('.field-success')?.30:el.matches('.demo-app')?.98:el.matches('.reset-popup')?.9:cover?.15:optical?.035:.7;
   const mat=new THREE.ShaderMaterial({defines:bfmVisual?{BFM_COLOR_MANAGED:1}:{},vertexShader:vertex,fragmentShader:fragment,transparent:true,depthTest:false,depthWrite:false,side:THREE.DoubleSide,uniforms:{size:{value:new THREE.Vector2(r.w,r.h)},radius:{value:radius},fill:{value:fill},clock:{value:time},energy:{value:0},alpha:{value:opacity}}});
-  mat.uniforms.referenceRole={value:(referenceVisual||bfmVisual)?(el.matches('.tile,.medallion')?1:el.matches('.instruction,.v5-device-timer,.field-success,.mission-card')?2:el.matches('.demo-app')?3:el.matches('.pill')?4:0):0};
+  mat.uniforms.referenceRole={value:(referenceVisual||bfmVisual)?(el.matches('.tile,.medallion')?1:el.matches('.instruction,.v5-device-timer,.field-success,.mission-card')?2:el.matches('.demo-app')?3:el.matches('.pill.kdw-transition-button')?5:el.matches('.pill')?4:0):0};
   mat.uniforms.dark={value:el.matches('.field-success')?.65:el.matches('.demo-app,.phone-camera')?.96:0};
   mat.uniforms.selection={value:0};
   mat.uniforms.deviceFrame={value:!referenceVisual&&!bfmVisual&&el.matches('.demo-app')&&document.documentElement.dataset.experiment==='guided'?1:0};
@@ -786,6 +793,9 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,startu
    // Apply all DOM motion writes first. Measuring after each object used to
    // force synchronous style/layout repeatedly, stalling every icon together.
    // Icon geometry still comes from scenePose; DOM is only the input mirror.
+   // Layout extensions run after device/reference motion and before GPU bounds
+   // are measured. DOM hit areas and rendered groups therefore use one pose.
+   onLayout?.();
    for(const {item,visual,fade}of preparedGroups){
     const {el,group,base}=item;
     const r=visual||rect(el);group.position.set(r.x,r.y,0);group.scale.set(r.w/base.w,r.h/base.h,1);

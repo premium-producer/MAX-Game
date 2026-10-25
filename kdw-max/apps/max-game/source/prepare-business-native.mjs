@@ -5,7 +5,7 @@ import {createRequire} from 'node:module';
 import {fileURLToPath} from 'node:url';
 const source=path.dirname(fileURLToPath(import.meta.url)),project=path.resolve(source,'../../..');
 const input=path.join(project,'UI/new_screens/busines_no_sort'),base='assets/kdw-native/business-ui/',out=path.join(source,'client/public',base);
-const sharp=createRequire(import.meta.url)(process.argv[2]??'D:/job/production/FUTURONIKA/VK_DigitalProducts/artifacts/max-game/node_modules/sharp');
+const sharp=createRequire(import.meta.url)(process.argv[2]??'./client/node_modules/sharp');
 const sha=b=>createHash('sha256').update(b).digest('hex');fs.mkdirSync(out,{recursive:true});
 const assets={},origins=[];
 function save(name,bytes,width,height,mimeType){const assetId='kdw.business-ui.'+name.replace(/\.[^.]+$/,'');fs.writeFileSync(path.join(out,name),bytes);assets[assetId]={assetId,path:base+name,width,height,mimeType,sha256:sha(bytes)};return assetId;}

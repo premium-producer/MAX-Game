@@ -5,7 +5,10 @@ const source=path.dirname(fileURLToPath(import.meta.url));
 const file=path.join(source,'client/src/journey-guided-main.js');
 let text=fs.readFileSync(path.join(source,'stand-base/src/journey-guided-main.js'),'utf8').replaceAll('\r\n','\n');
 const replace=(from,to)=>{if(!text.includes(from))throw Error('Stand adapter anchor missing: '+from.slice(0,100));text=text.replace(from,to);};
-text=`import {KdwTaskJourney} from './kdw-task-journey.mjs';
+text=`import {createTransitionLayout} from './kdw-transition-layout.mjs';
+import {createPixelMapPlan,pixelMapEnabled,pixelIdleLayout,installPixelMapInput,installPixelMapDebug} from './kdw-pixel-map.mjs';
+import {loadGameLink,linkedCatalog,resumeLinkedMission,watchGameLink} from './kdw-game-link.mjs';
+import {KdwTaskJourney} from './kdw-task-journey.mjs';
 import {mountKdwInteractions} from './kdw-interactions.mjs';
 import {screenContinuationTarget} from './kdw-screen-continue.mjs';
 import {mountPersonalChannel} from './kdw-personal-channel.mjs';
@@ -13,14 +16,19 @@ import {mountBusinessNative} from './kdw-business-native.mjs';
 import {mountTaskSkip} from './kdw-task-skip.mjs';
 import {mountPostActivity} from './kdw-posts.mjs';
 import {CalmLinkMotion,CALM_LINK_STYLE} from './kdw-link-motion.mjs';
+import {businessDeviceLinkRect} from './kdw-business-native-model.mjs';
+import {BUSINESS_ORIGINAL} from './kdw-business-original.mjs';
 import {prepareInteractionPreview} from './kdw-preview.mjs';
 import {createMemoryPersistencePort} from './application/memory-persistence.mjs';
 import {createStandBrowserHost,LocalStandAdmission,createBrowserScenePlan,browserDeviceCenter,BROWSER_ROUTE_GAP} from './kdw-stand-adapter.mjs';
 import {v5DeviceMetrics} from './journey-v5-device-morph.mjs';
 `+text;
+replace('onFrame:tick,','onFrame:tick,onLayout:createTransitionLayout({document,params}),');
+replace("phone=bounds(host.querySelector('.route-phone .demo-app'))","phone=businessDeviceLinkRect(bounds(host.querySelector('.route-phone .demo-app')),{screenId:controller.displayedState?.screenId,original:BUSINESS_ORIGINAL,mediaRect:bounds(host.querySelector('.route-phone .task-media-image'))})");
 replace('new V5RevealJourney(content,sharedSession,v5RouteMeasure)', "new (portable?KdwTaskJourney:V5RevealJourney)(content,sharedSession,v5RouteMeasure)");
+replace("from './journey-v5-idle-menu.mjs'", "from './kdw-idle-menu.mjs'");
 replace('controller.snapshot.state.runId}`', '(controller.sceneRunId??controller.snapshot.state.runId)}`');
-replace('const MISSION_CATALOG=bfmVisual?V5_MISSION_CATALOG:PREVIOUS_MISSION_CATALOG;', 'const MISSION_CATALOG=bfmVisual?V5_MISSION_CATALOG:PREVIOUS_MISSION_CATALOG;\nconst browserScenePlan=createBrowserScenePlan(MISSION_CATALOG,v5DeviceMetrics);');
+replace('const MISSION_CATALOG=bfmVisual?V5_MISSION_CATALOG:PREVIOUS_MISSION_CATALOG;', 'const gameLink=await loadGameLink(params);let stopGameLink=()=>{};\nconst MISSION_CATALOG=linkedCatalog(bfmVisual?V5_MISSION_CATALOG:PREVIOUS_MISSION_CATALOG,gameLink);\nconst browserScenePlan=createBrowserScenePlan(MISSION_CATALOG,v5DeviceMetrics);');
 replace("if((!managedShell&&(!managedAssignment||!params.get('session')))||params.get('backend')!=='server')throw Error('Managed MAX requires an explicit assignment and session');","if(params.get('backend')==='server'&&!managedShell&&(!managedAssignment||!params.get('session')))throw Error('Managed MAX requires an explicit assignment and session');");
 replace('function managedSnapshot(snapshot){','function managedSnapshot(snapshot){if(params.get(\'backend\')!==\'server\'){managedNotice.hidden=true;return;}');
 replace('let sharedSession,v5Tools,missionContinuation',"const interactionPreview=['channel','store','posts'].includes(params.get('interaction'))?params.get('interaction'):null;\nconst portable=params.get('backend')!=='server';\nconst kdwInteractions=mountKdwInteractions({getSession:()=>sharedSession,onMenu:()=>navigate()});\nconst personalChannel=mountPersonalChannel({getSession:()=>sharedSession});\nconst kdwPosts=mountPostActivity({getSession:()=>sharedSession});\nlet standBrowser;\nconst localAdmission=new LocalStandAdmission({active:()=>inputActive()});\nlet sharedSession,v5Tools,missionContinuation");
@@ -39,15 +47,16 @@ replace("if(bfmVisual&&!service&&!automaticPresentation)v5Tools=createV5Tools", 
 replace('const persistence=bfmVisual?createIndexedDBPersistence',"const persistence=interactionPreview||params.get('test')==='memory'?createMemoryPersistencePort():bfmVisual?createIndexedDBPersistence");
 replace("if(!controller||snapshot.assignment?.lifecycle.status!=='active')return;controller.accept(snapshot);", "if(!controller||!portable&&snapshot.assignment?.lifecycle.status!=='active')return;controller.accept(snapshot);");
 replace("if(localRecovery)recoveryChoice=await showV5Recovery", "if(localRecovery&&!standPresentation&&!interactionPreview&&params.get('test')!=='memory')recoveryChoice=await showV5Recovery");
-replace('await sharedSession.start();\n  if(pageDisposed)', "await sharedSession.start();\n  if(standPresentation&&!interactionPreview&&sharedSession.snapshot.state.status!=='menu')await sharedSession.command('RETURN_MENU');\n  if(pageDisposed)");
+replace('await sharedSession.start();\n  if(pageDisposed)', "await sharedSession.start();\n  await resumeLinkedMission(sharedSession,gameLink);\n  if(!gameLink?.game&&standPresentation&&!interactionPreview&&sharedSession.snapshot.state.status!=='menu')await sharedSession.command('RETURN_MENU');\n  if(pageDisposed)");
 replace("document.documentElement.dataset.sessionStorage=profile==='server'", "if(interactionPreview){loading.textContent='Подготавливаем активность MAX…';try{await prepareInteractionPreview(sharedSession,MISSION_CATALOG,interactionPreview);}finally{preparingInteractionPreview=false;}}\n  document.documentElement.dataset.sessionStorage=profile==='server'");
 replace('controller=createController(saved);','controller=createController(saved);\n if(interactionPreview&&controller.phase===\'paused\')controller.resume(controller.activeId);');
 text=text.replaceAll('v5Tools?.fit(innerWidth,innerHeight);','v5Tools?.fit(innerWidth,innerHeight);standBrowser?.fit(innerWidth,innerHeight);');
+
 replace('function sceneSize(){',"function sceneSize(){\n if(portable&&params.get('view')!=='wall')return browserScenePlan(innerWidth,innerHeight);");
 replace('visible:!!instruction&&!instruction.hidden','visible:portable&&params.get(\'view\')!==\'wall\'||!!instruction&&!instruction.hidden');
 replace('host.style.cssText=referenceVisual?',"host.style.cssText=portable&&params.get('view')!=='wall'?`left:32px;top:128px;width:${size.width-64}px;height:${size.height-192}px`:referenceVisual?");
 replace('createV5RouteMeasure(arena):null','createV5RouteMeasure(arena,{gap:params.get(\'backend\')!==\'server\'&&params.get(\'view\')!==\'wall\'?BROWSER_ROUTE_GAP:REVEAL_ELEMENT_GAP}):null');
-replace('const deviceCenter=()=>referenceVisual?',"const deviceCenter=()=>portable&&params.get('view')!=='wall'?browserDeviceCenter(host.clientWidth,deviceMetrics().width):referenceVisual?");
+replace('const deviceCenter=()=>referenceVisual?',"const deviceCenter=()=>pixelPlan?host.clientWidth/2:portable&&params.get('view')!=='wall'?browserDeviceCenter(host.clientWidth,deviceMetrics().width):referenceVisual?");
 replace('controller.nodeWidth??240,REVEAL_ELEMENT_GAP);setStyleValue(timer',"controller.nodeWidth??240,portable&&params.get('view')!=='wall'?BROWSER_ROUTE_GAP:REVEAL_ELEMENT_GAP);setStyleValue(timer");
 replace('function render(preserveTransition=false){',"function render(preserveTransition=false){\n if(portable&&params.get('view')!=='wall'){const geometry=sceneSize();if(geometry.width!==size.width||geometry.height!==size.height){fit();return;}}");
 replace(' if(!controller)return;\n if(referenceVisual)', " if(!controller)return;\n if(standPresentation&&controller.snapshot?.state.status==='menu'){renderLocalStandby();return;}\n if(referenceVisual)");
@@ -161,5 +170,69 @@ text=text.replace('if(!personalChannel.ready(controller?.displaySnapshot))return
 text=text.replace('&&personalChannel.ready(controller.displaySnapshot)}:undefined;','&&personalChannel.ready(controller.displaySnapshot)&&businessNative.ready(controller.displaySnapshot)}:undefined;');
 text=text.replace('personalChannel.align();','personalChannel.align();businessNative.align();');
 text=text.replace('personalChannel.dispose();','personalChannel.dispose();businessNative.dispose();');
+replace("document.documentElement.dataset.gameReady='true';", "document.documentElement.dataset.gameReady='true';\n stopGameLink=watchGameLink({link:gameLink,getSession:()=>sharedSession});");
+replace('if(portable&&!standPresentation&&!navigating)', 'if(portable&&(gameLink?.game||!standPresentation)&&!navigating)');
+replace('function navigate(id,restart=false){', 'function navigate(id,restart=false){\n if(gameLink?.game&&id&&!restart)return;');
+replace('async function selectIdleMission(missionId){', 'async function selectIdleMission(missionId){\n if(gameLink?.game)return;');
+replace("window.addEventListener('pagehide',()=>{", "window.addEventListener('pagehide',()=>{stopGameLink();");
+replace('const browserScenePlan=createBrowserScenePlan(MISSION_CATALOG,v5DeviceMetrics);',`const browserScenePlan=createBrowserScenePlan(MISSION_CATALOG,v5DeviceMetrics);
+const pixelPlan=pixelMapEnabled(params)&&params.get('backend')!=='server'?createPixelMapPlan(MISSION_CATALOG,v5DeviceMetrics):null;
+const clearPixelInput=pixelPlan?installPixelMapInput():()=>{};
+const clearPixelDebug=pixelPlan&&params.get('pixel-map-debug')==='1'?installPixelMapDebug():()=>{};`);
+replace('const target=v5InstructionShift({','const target=pixelPlan?0:v5InstructionShift({');
+replace('function sceneSize(){', 'function sceneSize(){\n if(pixelPlan)return pixelPlan;');
+replace('host.style.cssText=portable', "host.style.cssText=pixelPlan?`left:${pixelPlan.zone.left}px;top:${pixelPlan.zone.top}px;width:${pixelPlan.zone.w}px;height:${pixelPlan.zone.h}px`:portable");
+replace('createStandBrowserHost({arena,params,onMenu:', 'createStandBrowserHost({arena,params,pixelPlan,onMenu:');
+text=text.replaceAll('createIdleMenu({host,foreground,catalog:MISSION_CATALOG,','createIdleMenu({host,foreground,catalog:MISSION_CATALOG,layout:pixelPlan?pixelIdleLayout(pixelPlan.zone):undefined,hostRect:pixelPlan?.zone,');
+replace("window.addEventListener('pagehide',()=>{", "window.addEventListener('pagehide',()=>{clearPixelInput();clearPixelDebug();");
+// Production host policy is supplied by the local server, never by a query flag.
+text="import {readStandSettings,productionCatalog,startProduction,selectManualMission} from './kdw-production.mjs';\n"+text;
+replace("const params=new URLSearchParams(location.search),service=params.get('service')==='1';", "const params=new URLSearchParams(location.search);const standSettings=await readStandSettings(params),productionMode=!!standSettings;const service=params.get('service')==='1';let stopProduction=()=>{};");
+replace('const MISSION_CATALOG=linkedCatalog(bfmVisual?V5_MISSION_CATALOG:PREVIOUS_MISSION_CATALOG,gameLink);','const productionPolicy=gameLink?.game?.standPolicy??standSettings;const MISSION_CATALOG=productionCatalog(linkedCatalog(bfmVisual?V5_MISSION_CATALOG:PREVIOUS_MISSION_CATALOG,gameLink),productionPolicy);');
+replace("const localDevelopment=portable&&", "const localDevelopment=!productionMode&&portable&&");
+replace('if(portable&&(gameLink?.game||!standPresentation)&&!navigating)', 'if(!productionMode&&portable&&(gameLink?.game||!standPresentation)&&!navigating)');
+replace('createStandBrowserHost({arena,params,pixelPlan,onMenu:', 'createStandBrowserHost({arena,params,pixelPlan,production:productionMode,onMenu:');
+replace("const palmCopy=bfmVisual?'Открой возможности'", "const palmCopy=bfmVisual?(productionMode?'Приложи ладонь, чтобы начать':'Открой возможности')");
+replace("const wait=scanWaitClock.view(controller?.snapshot,performance.now()),scan=", "const state=controller?.snapshot?.state;const wait=productionMode?{visible:state?.status==='scan',remainingMs:state?.deadlineAt?Math.max(0,state.deadlineAt-Date.now()):productionPolicy.value.max.timings.palmWaitSeconds*1000,queueCount:null}:scanWaitClock.view(controller?.snapshot,performance.now()),scan=");
+replace("const labels=[revealTimerLabel(wait.remainingMs/1000)", "if(productionMode)queue.hidden=true;const labels=[revealTimerLabel(wait.remainingMs/1000)");
+replace("if(portable&&b.dataset.object==='open-max')", "if(portable&&!productionMode&&b.dataset.object==='open-max')");
+replace("if(b.hasAttribute('data-restart-mission'))", "if(productionMode&&['data-menu','data-restart-mission','data-reset-progress','data-confirm-reset-progress'].some(a=>b.hasAttribute(a)))return;\n if(b.hasAttribute('data-restart-mission'))");
+replace("if(e.key==='Escape'){if(resetPrompt)", "if(!productionMode&&e.key==='Escape'){if(resetPrompt)");
+replace("${portable?'<button class=\"pill v5-qr-restart\"", "${portable&&!productionMode?'<button class=\"pill v5-qr-restart\"");
+replace("if(bfmVisual)root.insertAdjacentHTML('beforeend','<div class=\"v5-brand\"", "if(bfmVisual&&!productionMode)root.insertAdjacentHTML('beforeend','<div class=\"v5-brand\"");
+replace('if(referenceVisual){root.insertAdjacentHTML(', 'if(referenceVisual&&!productionMode){root.insertAdjacentHTML(');
+replace("if(!gameLink?.game&&standPresentation", "if(!productionMode&&!gameLink?.game&&standPresentation");
+replace("const menu=idleMenu;idleSelecting=true;navigating=true;", "if(productionMode){if(!['manual','combined'].includes(standSettings.value.max.entryMode))return;idleSelecting=true;try{await selectManualMission(missionId);}catch(error){idleSelecting=false;feedback('Экран уже занят. Ожидайте свою миссию.');}return;}\n  const menu=idleMenu;idleSelecting=true;navigating=true;");
+replace("window.addEventListener('pagehide',()=>{", "window.addEventListener('pagehide',()=>{stopProduction();");
+// A readiness acknowledgement starts each budget after the corresponding pixels can be used.
+replace("if(!managedShell)configureController(saved);", "if(!managedShell)configureController(saved);if(productionMode)stopProduction=startProduction({getSession:()=>sharedSession,ready:s=>{if(s.status==='scan')return ['palm','holding'].includes(controller?.phase)&&palmPresence.value>.95;if(s.status==='task')return controller?.phase==='task'&&controller.displayedState?.screenId===s.screenId&&phoneContentReady()&&phonePresence.value>.97;if(['completed','incomplete'].includes(s.status)){const image=host.querySelector('.v5-mission-qr img');return image?.complete&&image.naturalWidth>0&&foreground?.qrReady(image.closest('.v5-mission-qr'))===true&&Number(host.dataset.finalGamePresence??1)<.005;}return false;}});");
+
+// Typography is a presentation adapter; keep the authored stand modules intact.
+text=text.replace("from './journey-v5-ui-copy.mjs';","from './kdw-ui-copy.mjs';").replace("from './journey-shared-ui.mjs';","from './kdw-shared-ui.mjs';");
+// Fixed production palm caption; accessibility copy stays a normal sentence.
+text=text.replace('const palmCopy=', "const palmLabelCopy=productionMode?'Приложи ладонь,\\nчтобы начать':null;\nconst palmCopy=")
+ .replaceAll('${palmCopy}<small>','${palmLabelCopy??palmCopy}<small>')
+ .replace('label=bfmVisual?palmCopy:','label=bfmVisual?(palmLabelCopy??palmCopy):')
+ .replace('${bfmVisual?palmCopy:','${bfmVisual?(palmLabelCopy??palmCopy):');
+// All accepted contact sources must emit the original scan jets, not just autoplay.
+replace('function tapAt(e){', `function beginPalmContact(id){
+ const scan=host.querySelector('[data-palm]');if(!scan||!controller.down(id))return false;
+ render();foreground?.startPalmScan(host,scan.querySelector('.tile'));return true;
+}
+function tapAt(e){`);
+replace("if(active&&controller.phase==='palm'&&palmPresence.value>.97&&!sharedSession.busy&&!foreground?.busy(host,true)){const scan=host.querySelector('[data-palm]');if(scan&&controller.down('autoplay')){render();foreground?.startPalmScan(host,scan.querySelector('.tile'));}}", "if(active&&controller.phase==='palm'&&palmPresence.value>.97&&!sharedSession.busy&&!foreground?.busy(host,true))beginPalmContact('autoplay');");
+replace('if(controller.down(e.pointerId))latch();','if(beginPalmContact(e.pointerId))latch();');
+replace("if(!e.repeat&&controller.down('keyboard')){render();}","if(!e.repeat)beginPalmContact('keyboard');");
+// Keep both axes and the native overlays on the renderer's one morph clock.
+replace('from:deviceMetrics().width,to:target.width,', 'from:deviceMetrics().width,to:target.width,fromHeight:deviceMetrics().height,toHeight:target.height,');
+replace('resize:width=>{if(epoch!==screenEpoch||!shell.isConnected)return;controller.presentedDevice={...target,width};updateTargets();}', 'resize:(width,height)=>{if(epoch!==screenEpoch||!shell.isConnected)return;controller.presentedDevice={...target,width,height};updateTargets();}');
+replace('onMotion:()=>{changed();syncScene();}', 'onMotion:()=>{kdwInteractions.align();personalChannel.align();businessNative.align();kdwPosts.align();changed();syncScene();}');
+// Confirmation has no device links; fade the previous anchor instead of
+// re-targeting a visible fan to the short registration snack.
+replace("import {businessDeviceLinkRect} from './kdw-business-native-model.mjs';", "import {RegistrationLinks} from './kdw-registration-links.mjs';");
+replace('function syncScene(){', 'const registrationLinks=new RegistrationLinks();\nfunction syncScene(){');
+replace("phone=businessDeviceLinkRect(bounds(host.querySelector('.route-phone .demo-app')),{screenId:controller.displayedState?.screenId,original:BUSINESS_ORIGINAL,mediaRect:bounds(host.querySelector('.route-phone .task-media-image'))})", "linkPose=registrationLinks.update(bounds(host.querySelector('.route-phone .demo-app')),{screenId:controller.displayedState?.screenId,runKey:`${controller.snapshot?.state.sessionId}:${controller.snapshot?.state.runId}`,time:performance.now()/1000,reduced:reduced.matches,original:BUSINESS_ORIGINAL}),phone=linkPose.rect");
+replace('visibility:phonePresence.value*(bfmVisual', 'visibility:linkPose.opacity*phonePresence.value*(bfmVisual');
+replace('handoff:controller.handoff?.stage,links:network.links.map', 'handoff:controller.handoff?.stage,screenId:controller.displayedState?.screenId,phoneRect:rects.get(199998),links:network.links.map');
 fs.writeFileSync(file,text);
 console.log('Stand main adapted only at local host boundaries');

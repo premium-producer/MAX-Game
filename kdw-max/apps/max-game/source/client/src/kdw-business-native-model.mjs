@@ -12,6 +12,9 @@ export const BUSINESS_NATIVE_SCREENS=Object.freeze({
 });
 export const BUSINESS_UI_ASSETS={...assets,...original.assets,...confirmation.assets,...BUSINESS_ALL_ASSETS};
 export function businessConfirmationLinkRect(rect){if(!rect)return rect;const h=rect.w*78/455;return {...rect,y:rect.y+(rect.h-h)/2,h};}
+export function businessDeviceLinkRect(rect,{screenId,original=false,mediaRect}={}){
+ return screenId==='business.platform.ready'&&!original?businessConfirmationLinkRect(mediaRect??rect):rect;
+}
 export function ownsBusinessScreen(state){return !!state&&['task','result'].includes(state.status)&&(Object.hasOwn(BUSINESS_NATIVE_SCREENS,state.screenId)||Object.hasOwn(BUSINESS_ALL_ROUTE,state.screenId));}
 export function applyBusinessNative(catalog){
  Object.assign(catalog.assets,Object.fromEntries(Object.entries(BUSINESS_UI_ASSETS).filter(([,a])=>a.mimeType==='image/svg+xml')));

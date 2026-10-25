@@ -38,7 +38,7 @@ test('legacy component renderer retains dynamic business bindings and all resour
    if(id==='business.channel.setup')assert.ok(!html.includes('+7 912 000-00-00')&&!html.includes('data-bn-binding="number"'));
    if(id!=='business.platform.business-type'){assert.ok(html.includes('data-bn-source='));assert.ok(!/bn-brand|bn-icon|bn-nav/.test(html));}
   }
-  const posts=postBank(type),goods=storeBank(type);assert.equal(posts.length,8);assert.equal(posts.filter(p=>p.good).length,5);assert.equal(goods.filter(p=>p.good).length,4);assert.equal(goods.filter(p=>!p.good).length,2);
+  const posts=postBank(type,11),goods=storeBank(type,6);assert.equal(posts.length,8);assert.equal(posts.filter(p=>p.good).length,5);assert.equal(goods.filter(p=>p.good).length,4);assert.equal(goods.filter(p=>!p.good).length,2);
  }
  assert.equal(businessProfile('hotel').name,'Отель');assert.equal(businessProfile('theater').name,'Театр');
  for(const a of Object.values(BUSINESS_UI_ASSETS)){const bytes=fs.readFileSync(new URL('../public/'+a.path,import.meta.url));assert.equal(createHash('sha256').update(bytes).digest('hex'),a.sha256,a.path);}

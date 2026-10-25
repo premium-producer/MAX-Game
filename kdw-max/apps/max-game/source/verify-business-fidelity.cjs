@@ -1,5 +1,5 @@
 const {app,BrowserWindow}=require('electron'),fs=require('fs'),path=require('path'),assert=require('node:assert/strict');
-const sharp=require('D:/job/production/FUTURONIKA/VK_DigitalProducts/artifacts/max-game/node_modules/sharp');
+const sharp=require('./client/node_modules/sharp');
 const project=path.resolve(__dirname,'../../..'),pub=path.join(__dirname,'client/public'),report=path.join(project,'docs/verification-business-fidelity-20261021'),registry=require('./client/src/kdw-business-components.json');
 app.setPath('userData',path.join(report,'pixel-runtime'));app.on('window-all-closed',()=>{});let w;
 function resolved(a){let s=fs.readFileSync(path.join(pub,a.path),'utf8');for(const name of a.dependencies??[])s=s.replaceAll('./'+name,'data:image/'+path.extname(name).slice(1)+';base64,'+fs.readFileSync(path.join(pub,path.dirname(a.path),name)).toString('base64'));return s;}

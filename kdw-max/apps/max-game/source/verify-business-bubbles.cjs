@@ -1,5 +1,5 @@
 const {app,BrowserWindow}=require('electron'),fs=require('fs'),path=require('path'),assert=require('node:assert/strict'),{pathToFileURL}=require('url');
-const sharp=require('D:/job/production/FUTURONIKA/VK_DigitalProducts/artifacts/max-game/node_modules/sharp');
+const sharp=require('./client/node_modules/sharp');
 const {createPortableServer}=require('../launcher/portable-server.cjs'),root=path.resolve(__dirname,'..'),report=path.resolve(root,'../../docs/verification-business-bubbles-20261021');
 app.setPath('userData',path.join(report,'test-runtime'));app.on('window-all-closed',()=>{});const delay=ms=>new Promise(r=>setTimeout(r,ms)),checks=[],errors=[];let w,server,fit;
 const js=s=>w.webContents.executeJavaScript(s);

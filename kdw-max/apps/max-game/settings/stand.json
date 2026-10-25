@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "max": {
+    "entryMode": "stella",
+    "timings": {
+      "palmWaitSeconds": 30,
+      "palmHoldSeconds": 0.8,
+      "taskDurationSeconds": 60,
+      "inactivitySeconds": 120,
+      "qrDisplaySeconds": 15,
+      "standbyAfterIdleSeconds": 3,
+      "resultSeconds": 0.8
+    }
+  },
+  "stella": {
+    "timings": {
+      "inactivitySeconds": 30,
+      "deliveryRetrySeconds": 2,
+      "resultReturnSeconds": 15
+    }
+  },
+  "defaults": {
+    "businessType": "cafe",
+    "channelName": "Мой канал",
+    "channelDescription": "Новости и события",
+    "channelSlug": "my_channel",
+    "commentReply": "Спасибо за интерес!"
+  }
+}

@@ -1,10 +1,11 @@
-param([switch]$NoWindow,[switch]$Verify)
+﻿param([switch]$NoWindow,[switch]$Verify,[switch]$PixelMap,[switch]$PixelMapDebug)
 $ErrorActionPreference = 'Stop'
 $appRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 $config = Get-Content -LiteralPath (Join-Path $appRoot 'app.json') -Raw -Encoding UTF8 | ConvertFrom-Json
 $hashProvider = [Security.Cryptography.SHA256]::Create()
 try { $expectedKey = ([BitConverter]::ToString($hashProvider.ComputeHash([Text.Encoding]::UTF8.GetBytes($appRoot.ToLowerInvariant())))).Replace('-','').ToLowerInvariant() } finally { $hashProvider.Dispose() }
 $runtimeExe = Join-Path $appRoot 'runtime/electron.exe'
+if (-not (Test-Path -LiteralPath $runtimeExe)) { $runtimeExe = [IO.Path]::GetFullPath((Join-Path $appRoot '../../runtime/electron/electron.exe')) }
 if (-not (Test-Path -LiteralPath $runtimeExe)) { throw 'Bundled Electron runtime is missing. Copy the complete application folder.' }
 $entryPath = Join-Path $PSScriptRoot 'desktop-main.cjs'
 function Read-OwnedHealth {
@@ -19,8 +20,13 @@ $already = Read-OwnedHealth
 $processArgs = @('"' + $entryPath + '"')
 if ($NoWindow) { $processArgs += '--serve-only' }
 if ($Verify) { $processArgs += '--verify' }
+if ($PixelMap -or $PixelMapDebug) { $processArgs += '--pixel-map' }
+if ($PixelMapDebug) { $processArgs += '--pixel-map-debug' }
 Remove-Item Env:ELECTRON_RUN_AS_NODE -ErrorAction SilentlyContinue
 if ($already) {
+    if ($PixelMapDebug -and $already.entry -notlike '*pixel-map-debug=1*') { throw 'Stop MAX before starting operator calibration.' }
+    if (-not $PixelMapDebug -and $already.entry -like '*pixel-map-debug=1*') { throw 'Stop calibration before starting production MAX.' }
+    if (($PixelMap -or $PixelMapDebug) -and $already.entry -notlike '*view=pixel-map*') { throw 'Close the existing MAX window before starting pixel-map mode.' }
     if ($Verify) { throw 'Close this application before running verification.' }
     if (-not $NoWindow) { Start-Process -FilePath $runtimeExe -ArgumentList $processArgs -WorkingDirectory $appRoot -WindowStyle Hidden | Out-Null }
     Write-Output "$($config.title) is already running: $($already.origin)"

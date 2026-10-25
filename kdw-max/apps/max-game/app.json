@@ -1,12 +1,13 @@
 {
   "id": "kdw-max-game",
   "title": "MAX — игра",
-  "version": "KDW-MAX-R9-STAND-20261018",
+  "version": "KDW-MAX-STAND-PRODUCTION-20261023",
   "port": 18752,
-  "entry": "/webgl-v5/client.html?backend=local&view=game&v=kdw-r9-stand",
+  "entry": "/webgl-v5/client.html?backend=local&view=pixel-map&v=stand-production-v1",
   "window": {
     "width": 1280,
     "height": 800
   },
-  "verifyExpression": "document.documentElement.dataset.gameReady === 'true'"
+  "verifyExpression": "document.documentElement.dataset.gameReady === 'true'",
+  "production": true
 }

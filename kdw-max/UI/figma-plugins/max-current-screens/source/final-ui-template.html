@@ -1,0 +1,37 @@
+<!doctype html><html lang="ru"><meta charset="utf-8">
+<style>
+body{margin:20px;font:13px Inter,Arial,sans-serif;color:var(--figma-color-text,#202024);background:var(--figma-color-bg,#fff)}h2{font-size:18px;margin:0 0 12px}label{display:flex;gap:8px;align-items:center;margin:9px 0}fieldset{margin:14px 0;padding:8px 12px;border:1px solid var(--figma-color-border,#ddd);border-radius:8px}input[type=file]{display:block;max-width:100%;margin:10px 0}button{border:0;border-radius:8px;padding:12px;width:100%;font:inherit;margin-top:10px;cursor:pointer;background:#6e1aff;color:white}button:disabled{opacity:.5;cursor:default}#stop,#export{background:var(--figma-color-bg-secondary,#eee);color:var(--figma-color-text,#222)}#status,#packStatus{white-space:pre-wrap;margin-top:12px;line-height:1.45}small{display:block;opacity:.75;line-height:1.5;margin-top:8px}
+</style>
+<style>details{border:1px solid var(--figma-color-border,#ddd);border-radius:8px;padding:12px;margin:14px 0}summary{cursor:pointer;font-weight:600}#figmaFile,#figmaToken{box-sizing:border-box;width:100%;padding:8px;margin:5px 0}#commentStatus,#commentPreview{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.4}#commentPreview{max-height:180px;overflow:auto;font-size:11px}.comment-downloads{display:flex;gap:8px}</style>
+<h2>MAX · Финальные скриншоты</h2><small id="summary">Подготовка…</small>
+<small>Полные PNG 3072×1536 из игры. Текст, кнопки, линки и фон сохранены в изображении. Редактируемых элементов поверх кадра нет.</small>
+<details id="commentTools"><summary>Комментарии → экраны · JSON / MD</summary>
+<small>Выделите общий фрейм «MAX · Финальные скриншоты · 3072×1536». Пакет PNG для этого не нужен. Сопоставляем по текущим координатам и ID экранов, включая ответы в ветках.</small>
+<label for="figmaFile">Ссылка или ключ текущего файла Figma</label><input id="figmaFile" type="text" placeholder="https://www.figma.com/design/…" autocomplete="off">
+<label for="figmaToken">Персональный токен · file_comments:read</label><input id="figmaToken" type="password" autocomplete="off" spellcheck="false">
+<small>Токен отправляется только api.figma.com и очищается после запроса. Не сохраняется в файле, плагине или отчёте. Комментарии только читаются.</small>
+<button id="fetchComments">Загрузить комментарии Figma и сопоставить</button>
+<label for="commentFile">Или импортировать готовый JSON комментариев</label><input id="commentFile" type="file" accept=".json,application/json">
+<label><input id="absolutePage" type="checkbox">Подтверждаю: комментарии без привязки к узлу относятся к текущей странице</label>
+<small>Если страница абсолютных координат неизвестна, привязки остаются на проверке. Область на нескольких экранах или комментарий в промежутке не назначаются ближайшему экрану автоматически.</small>
+<button id="mapComments" disabled>Сопоставить с выделенным фреймом</button>
+<div class="comment-downloads"><button id="commentsJson" disabled>Скачать JSON</button><button id="commentsMd" disabled>Скачать MD</button></div>
+<p id="commentStatus" role="status" aria-live="polite"></p><pre id="commentPreview"></pre>
+</details>
+<fieldset><legend>Пакет экранов</legend><input id="packFile" type="file" accept=".maxscreens" aria-label="Выберите screens.maxscreens"><small>Выберите screens.maxscreens из этой же версии. Читается один кадр за раз; файл остаётся на компьютере.</small><div id="packStatus" role="status">Пакет не выбран</div></fieldset>
+<fieldset><legend>Миссии</legend><div id="missions"></div><label><input id="shared" type="checkbox" checked>Главное меню</label></fieldset>
+<fieldset><legend>Варианты бизнеса</legend><div id="sectors"></div></fieldset>
+<button id="build" disabled>Собрать фреймы со скриншотами</button><button id="export" disabled>Исходные тексты · JSON</button><small>JSON содержит тексты каталога без изменений. Текст внутри скриншота не редактируется.</small><button id="stop" hidden>Остановить</button><div id="status" role="status" aria-live="polite"></div>
+<script>
+/*PACK_READER*/
+/*COMMENTS_UI*/
+const post=m=>parent.postMessage({pluginMessage:m},'*'),el=id=>document.getElementById(id);let busy=false,initialised=false,reader=null,transport=null,loadEpoch=0,commentsUi=null;
+function setBusy(value){busy=value;el('build').disabled=value||!reader||!initialised||reader.stats.inFlight>0;el('export').disabled=value||!initialised;el('stop').hidden=!value;el('packFile').disabled=value;for(const c of document.querySelectorAll('input[type=checkbox]'))c.disabled=value;commentsUi?.setBusy(value);}
+commentsUi=installMaxCommentsUI({post,el,setBusy});
+el('packFile').onchange=async()=>{const epoch=++loadEpoch,file=el('packFile').files[0];reader=null;post({type:'media-clear'});setBusy(false);if(!file)return;el('packStatus').textContent='Проверка пакета…';try{if(!transport)throw Error('Дождитесь готовности плагина');const next=await MaxScreenPack.open(file,transport.indexSha256);if(epoch!==loadEpoch)return;reader=next;post({type:'media-ready',indexSha256:transport.indexSha256});el('packStatus').textContent='Готово · '+reader.count+' PNG';}catch(e){el('packStatus').textContent=e.message;}setBusy(false);};
+el('build').onclick=()=>{if(!reader||busy||reader.stats.inFlight)return;setBusy(true);post({type:'build',missionIds:[...document.querySelectorAll('[data-mission]:checked')].map(e=>e.dataset.mission),sectors:[...document.querySelectorAll('[data-sector]:checked')].map(e=>e.dataset.sector),shared:el('shared').checked,mode:'screenshot'})};
+el('export').onclick=()=>post({type:'export'});el('stop').onclick=()=>{loadEpoch++;commentsUi.cancel();post({type:'cancel'});};
+function checks(host,values,key){host.replaceChildren();for(const [id,title]of values){const label=document.createElement('label'),input=document.createElement('input');input.type='checkbox';input.checked=true;input.dataset[key]=id;label.append(input,document.createTextNode(title));host.append(label);}}
+onmessage=async e=>{const m=e.data.pluginMessage;if(!m)return;commentsUi.handle(m);if(m.type==='init'){transport=m.transport;initialised=true;el('summary').textContent=m.summary.frames+' кадров · '+m.summary.uniqueScreens+' этапов · '+m.summary.width+'×'+m.summary.height+' · PNG без потерь';checks(el('missions'),m.missions.map(m=>[m.missionId,m.title]),'mission');checks(el('sectors'),Object.entries(m.sectors),'sector');setBusy(false);}if(m.type==='status'){el('status').textContent=m.text;if(m.done)setBusy(false);}if(m.type==='asset'){const epoch=loadEpoch;try{if(!reader)throw Error('Выберите screens.maxscreens');const bytes=await reader.read(m.id);if(epoch===loadEpoch)post({type:'asset-result',request:m.request,bytes});}catch(e){if(epoch===loadEpoch)post({type:'asset-result',request:m.request,error:e.message});}finally{setBusy(busy);}}if(m.type==='export'){const blob=new Blob([JSON.stringify(m.data,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='max-game-texts-'+m.data.contentRevision+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);el('status').textContent='Экспортированы исходные тексты '+m.data.coverage.screens+' этапов. PNG не изменялись.';}};
+post({type:'ready'});
+</script></html>

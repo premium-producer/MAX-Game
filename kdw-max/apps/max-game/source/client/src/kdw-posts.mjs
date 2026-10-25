@@ -1,3 +1,5 @@
+import {typographyText} from './kdw-typography.mjs';
+import {preloadBusinessImages} from './kdw-business-images.mjs';
 import {activityGeometry,alignActivityPhone,alignActivityActions,createRightCardLayout,fadeActivityOut} from './kdw-activity-stage.mjs';
 import {activityRemaining} from './kdw-development.mjs';
 import {createStoreMotion} from './kdw-store-motion.mjs';
@@ -13,7 +15,7 @@ const number=n=>n.toLocaleString('ru-RU');
 const chrome=name=>`./assets/kdw-native/posts-chrome/${name}.svg`;
 async function decodeImage(image){let timer;try{await Promise.race([image.decode(),new Promise((_,reject)=>{timer=setTimeout(()=>reject(Error('Изображения пока недоступны')),10000);})]);}finally{clearTimeout(timer);}}
 const art=(type)=>`<span class="kdw-post-art" data-theme="${type}"><svg viewBox="0 0 120 80" aria-hidden="true">${type==='hotel'?'<path d="M16 52V20h8v20h72V20h8v48h-8V56H24v12h-8Zm12-16V20h28v16Zm36 0V20h28v16Z"/>':'<path d="M15 15q23 12 45 0v28q-23 30-45 0Zm12 14 10 4m8-4 9-2M29 43q9 9 18 0M66 26q20 8 40-1v28q-20 22-40 0Zm10 11 7 2m9 0 7-2M78 56q8-7 16 0"/>'}</svg></span>`;
-function photo(post,type){const a=postPhoto(post.photo);return a?`<img src="./${a.path}" alt="" draggable="false">`:['sports','flowers','auto'].includes(type)?`<span class="kdw-post-art kdw-post-theme-symbol" data-theme="${type}">${businessProfile(type).symbol}</span>`:art(type);}
+function photo(post,type){const a=post.image??postPhoto(post.photo);return a?`<img src="./${esc(a.path)}" alt="" draggable="false">`:['sports','flowers','auto'].includes(type)?`<span class="kdw-post-art kdw-post-theme-symbol" data-theme="${type}">${esc(post.emoji??businessProfile(type).symbol)}</span>`:art(type);}
 export function mountPostActivity({getSession}){
  const root=document.createElement('section');root.id='kdw-posts';root.hidden=true;root.setAttribute('aria-label','Публикации канала');document.body.append(root);
  const clock=createPresentationClock({smooth:true}),reduced=matchMedia('(prefers-reduced-motion: reduce)'),readStream=createPostStreamReader();
@@ -32,7 +34,7 @@ export function mountPostActivity({getSession}){
  async function preload(kind){
   if(loadedType===kind)return true;if(loading)return loading;
   loading=(async()=>{
-   try{await Promise.all([...new Set(postBank(kind).map(p=>p.photo).filter(Boolean))].map(async id=>{
+   try{const bank=postBank(kind,posts()?.version??POSTS_RULES.version);await preloadBusinessImages(bank);await Promise.all([...new Set(bank.filter(p=>!p.image).map(p=>p.photo).filter(Boolean))].map(async id=>{
     if(images.has(id))return;const asset=postPhoto(id),image=new Image();image.src='./'+asset.path;
     await decodeImage(image);images.set(id,image);
    }));const profile=businessProfile(kind);if(profile.logo&&!images.has('avatar:'+kind)){const avatar=new Image();avatar.src='./'+profile.logo;await decodeImage(avatar);images.set('avatar:'+kind,avatar);}await Promise.all(['header','composer','fire','heart','views','verified'].map(async name=>{
@@ -44,7 +46,7 @@ export function mountPostActivity({getSession}){
  }
  function build(){
   placement.clear();
-  root.innerHTML=`<div class="kdw-post-phone"><header><img class="kdw-post-header-art" src="${chrome('header')}" alt=""><div class="kdw-post-identity"><strong><span class="kdw-post-channel-name">${esc(BUSINESS_CHANNELS[type()]??'Кофейня')}</span><img src="${chrome('verified')}" alt="Подтверждённый канал"></strong><small data-post-audience></small></div></header><div class="kdw-post-feed" tabindex="0" aria-label="Публикации канала"></div><button class="kdw-post-new" hidden>Новые публикации ↓</button><footer aria-label="Панель публикации MAX"><img src="${chrome('composer')}" alt="Пост · Вложения · Камера · Микрофон"></footer></div><div class="kdw-post-actions"><p data-post-hint></p><button class="kdw-activity-button" data-post-finish hidden>К следующему заданию →</button><button class="kdw-activity-button" data-post-retry hidden>Повторить загрузку</button><p data-post-error role="status" aria-live="polite"></p></div><div class="kdw-post-cards"></div>`;
+  root.innerHTML=`<div class="kdw-post-phone"><header><img class="kdw-post-header-art" src="${chrome('header')}" alt=""><div class="kdw-post-identity"><strong><span class="kdw-post-channel-name">${esc(BUSINESS_CHANNELS[type()]??'Кофейня')}</span><img src="${chrome('verified')}" alt="Подтверждённый канал"></strong><small data-post-audience></small></div></header><div class="kdw-post-feed" tabindex="0" aria-label="Публикации канала"></div><button class="kdw-post-new" hidden>Новые публикации ↓</button><footer aria-label="Панель публикации MAX"><img src="${chrome('composer')}" alt="Пост · Вложения · Камера · Микрофон"></footer></div><div class="kdw-post-actions"><p data-post-hint></p><button class="kdw-activity-button kdw-transition-button" data-post-finish hidden>Следующее задание</button><button class="kdw-activity-button" data-post-retry hidden>Повторить загрузку</button><p data-post-error role="status" aria-live="polite"></p></div><div class="kdw-post-cards"></div>`;
   const profile=businessProfile(type()),avatar=document.createElement('span');avatar.className='kdw-post-bound-avatar';avatar.style.background=profile.accent;avatar.innerHTML=profile.logo?`<img src="./${profile.logo}" alt="">`:esc(profile.symbol);root.querySelector('.kdw-post-phone header').append(avatar);
   const trailCanvas=document.createElement('canvas');trailCanvas.className='kdw-post-trails';trailCanvas.setAttribute('aria-hidden','true');root.prepend(trailCanvas);trails=createPostTrails(trailCanvas);
   // The full header participates in entry; do not pop the counter in only
@@ -67,11 +69,11 @@ export function mountPostActivity({getSession}){
   const p=posts();if(!p)return;const signature=p.published.map(row=>row.spawnId).join(',');
   if(signature!==feedSignature){
    const feed=root.querySelector('.kdw-post-feed');let appended=false;
-   const bank=postBank(p.businessType);
+   const bank=postBank(p.businessType,p.version);
    for(const row of p.published){if(feed.querySelector(`[data-published="${row.spawnId}"]`)||(motion.has(row.spawnId)&&row.spawnId!==approaching))continue;const post=bank.find(item=>item.id===row.postId),node=document.createElement('article');
     node.className='kdw-feed-post';node.dataset.published=row.spawnId;node.dataset.good=String(row.good);
     if(motion.has(row.spawnId)&&!reduced.matches)reactionStarts.set(row.spawnId,null);
-    node.innerHTML=`<div class="kdw-feed-photo">${photo(post,p.businessType)}</div><div class="kdw-feed-copy"><strong>${esc(post.title)}</strong><p>${esc(post.body)}</p><div class="kdw-feed-reactions">${['fire','heart'].map((kind,i)=>`<button class="kdw-feed-reaction" data-reaction="${kind}" aria-label="${i?'Нравится':'Огонь'}" aria-pressed="false"><img src="${chrome(kind)}" alt=""><span data-count="${kind}">0</span></button>`).join('')}</div><div class="kdw-feed-meta"><img src="${chrome('views')}" alt="Просмотры"><span data-views>1</span><span>·</span><time>${postMetrics(row,0).time}</time></div></div>`;feed.append(node);appended=true;
+    node.innerHTML=`<div class="kdw-feed-photo">${photo(post,p.businessType)}</div><div class="kdw-feed-copy"><strong>${esc(typographyText(post.title))}</strong><p>${esc(typographyText(post.body))}</p><div class="kdw-feed-reactions">${['fire','heart'].map((kind,i)=>`<button class="kdw-feed-reaction" data-reaction="${kind}" aria-label="${i?'Нравится':'Огонь'}" aria-pressed="false"><img src="${chrome(kind)}" alt=""><span data-count="${kind}">0</span></button>`).join('')}</div><div class="kdw-feed-meta"><img src="${chrome('views')}" alt="Просмотры"><span data-views>1</span><span>·</span><time>${postMetrics(row,0).time}</time></div></div>`;feed.append(node);appended=true;
    }
    feedSignature=signature;motion.sync();if(appended){feed.querySelector('.kdw-post-empty')?.remove();scrollToBottom();}
   }
@@ -134,7 +136,7 @@ export function mountPostActivity({getSession}){
   for(const spawn of shown){
    let node=cards.get(spawn.spawnId);
    if(!node){node=document.createElement('button');node.type='button';node.className='kdw-falling-post';node.dataset.spawn=spawn.spawnId;node.dataset.post=spawn.post.id;node.setAttribute('aria-label','Опубликовать: '+spawn.post.title);
-    node.innerHTML=`<span class="kdw-fall-photo">${photo(spawn.post,p.businessType)}</span><span class="kdw-fall-title">${esc(spawn.post.title)}</span><span class="kdw-fall-body">${esc(spawn.post.body)}</span><span class="kdw-fall-reactions">♡ <span>Опубликовать</span></span>`;
+    node.innerHTML=`<span class="kdw-fall-photo">${photo(spawn.post,p.businessType)}</span><span class="kdw-fall-title">${esc(typographyText(spawn.post.title))}</span><span class="kdw-fall-body">${esc(typographyText(spawn.post.body))}</span><span class="kdw-fall-reactions">♡ <span>Опубликовать</span></span>`;
     node.dataset.lane=String(spawn.lane);node.dataset.start=String(spawn.start);node.dataset.travel=String(spawn.travel??POSTS_RULES.travel);
     root.querySelector('.kdw-post-cards').append(node);cards.set(spawn.spawnId,node);
    }
@@ -212,3 +214,4 @@ export function mountPostActivity({getSession}){
   dispose(){disposed=true;clear();images.clear();root.remove();},
  };
 }
+

@@ -1,17 +1,22 @@
+import {readStandSettings,productionCatalog,startProduction,selectManualMission} from './kdw-production.mjs';
+import {createTransitionLayout} from './kdw-transition-layout.mjs';
+import {createPixelMapPlan,pixelMapEnabled,pixelIdleLayout,installPixelMapInput,installPixelMapDebug} from './kdw-pixel-map.mjs';
+import {loadGameLink,linkedCatalog,resumeLinkedMission,watchGameLink} from './kdw-game-link.mjs';
 import {KdwTaskJourney} from './kdw-task-journey.mjs';
 import {mountKdwInteractions} from './kdw-interactions.mjs';
 import {screenContinuationTarget} from './kdw-screen-continue.mjs';
 import {mountPersonalChannel} from './kdw-personal-channel.mjs';
 import {mountBusinessNative} from './kdw-business-native.mjs';
-import {businessConfirmationLinkRect} from './kdw-business-native-model.mjs';
 import {mountTaskSkip} from './kdw-task-skip.mjs';
 import {mountPostActivity} from './kdw-posts.mjs';
 import {CalmLinkMotion,CALM_LINK_STYLE} from './kdw-link-motion.mjs';
+import {RegistrationLinks} from './kdw-registration-links.mjs';
+import {BUSINESS_ORIGINAL} from './kdw-business-original.mjs';
 import {prepareInteractionPreview} from './kdw-preview.mjs';
 import {createMemoryPersistencePort} from './application/memory-persistence.mjs';
 import {createStandBrowserHost,LocalStandAdmission,createBrowserScenePlan,browserDeviceCenter,BROWSER_ROUTE_GAP} from './kdw-stand-adapter.mjs';
 import {v5DeviceMetrics} from './journey-v5-device-morph.mjs';
-import {v5CopyMarkup,v5ButtonMarkup,installV5CopyStyles,syncV5InstructionVisibility} from './journey-v5-ui-copy.mjs';
+import {v5CopyMarkup,v5ButtonMarkup,installV5CopyStyles,syncV5InstructionVisibility} from './kdw-ui-copy.mjs';
 import {v5DeviceTimerRect,v5PalmWaitRects,createV5ScanWaitClock,installV5DeviceTimerStyles} from './journey-v5-device-timer.mjs';
 import {v5InstructionShift} from './journey-v5-instruction-fit.mjs';
 import {v5QrAsset,v5QrFinaleEligible,installV5QrFinaleStyles,V5_QR_CAPTION} from './journey-v5-qr-finale.mjs';
@@ -58,7 +63,7 @@ import {createBrowserPersistence} from './application/browser-persistence.mjs';
 import {createIndexedDBPersistence} from './application/indexeddb-persistence.mjs';
 import {createWebGLSession,WEBGL_SHARED_KEY} from './application/webgl-session.mjs';
 import {SharedRevealJourney,sharedRevealContent} from './journey-shared-reveal.mjs';
-import {sharedTaskMarkup,sharedInstructionBody,sharedInstructionRetention,sharedAssetUrl,warmSharedAssets} from './journey-shared-ui.mjs';
+import {sharedTaskMarkup,sharedInstructionBody,sharedInstructionRetention,sharedAssetUrl,warmSharedAssets} from './kdw-shared-ui.mjs';
 import {guidedIconGeometry,GUIDED_ICON_SIZE} from './journey-icon-scale.mjs';
 import {ReferenceRevealJourney,REFERENCE_UI} from './journey-reference-presentation.mjs';
 import {referenceIcons} from './journey-reference-icons.mjs';
@@ -72,15 +77,19 @@ import {createIdleMenu} from './kdw-idle-menu.mjs';
 import independentAssetCatalog from './independent-assets-catalog.json' with {type:'json'};
 
 const arena=document.querySelector('#arena'),root=document.querySelector('#circles'),loading=document.querySelector('#loading');
-const params=new URLSearchParams(location.search),service=params.get('service')==='1';
+const params=new URLSearchParams(location.search);const standSettings=await readStandSettings(params),productionMode=!!standSettings;const service=params.get('service')==='1';let stopProduction=()=>{};
 let mobileWall=false,mobileBridge=null;
 function configureMobile(context){const enabled=context?.active===true&&context?.show?.automatic!==true&&(context?.mobileControl?.enabled===true||params.get('mobile')==='1');mobileWall=enabled;if(enabled&&!mobileBridge)mobileBridge=installMobileWallBridge();if(!enabled&&mobileBridge){mobileBridge.close();mobileBridge=null;}}
 const revealMode=document.documentElement.dataset.reveal==='true',inlinePhone=revealMode||document.documentElement.dataset.phoneLayout==='path',storage=revealMode?REVEAL_STORAGE:inlinePhone?LINE_STORAGE:GUIDED_STORAGE;
 const referenceVisual=document.documentElement.dataset.visual==='reference';
 const bfmVisual=document.documentElement.dataset.visual==='webgl-bfm-v5';
 if(bfmVisual){installV5CopyStyles(document);installV5DeviceTimerStyles(document);installV5QrFinaleStyles(document);}
-const MISSION_CATALOG=bfmVisual?V5_MISSION_CATALOG:PREVIOUS_MISSION_CATALOG;
+const gameLink=await loadGameLink(params);let stopGameLink=()=>{};
+const productionPolicy=gameLink?.game?.standPolicy??standSettings;const MISSION_CATALOG=productionCatalog(linkedCatalog(bfmVisual?V5_MISSION_CATALOG:PREVIOUS_MISSION_CATALOG,gameLink),productionPolicy);
 const browserScenePlan=createBrowserScenePlan(MISSION_CATALOG,v5DeviceMetrics);
+const pixelPlan=pixelMapEnabled(params)&&params.get('backend')!=='server'?createPixelMapPlan(MISSION_CATALOG,v5DeviceMetrics):null;
+const clearPixelInput=pixelPlan?installPixelMapInput():()=>{};
+const clearPixelDebug=pixelPlan&&params.get('pixel-map-debug')==='1'?installPixelMapDebug():()=>{};
 const managedAssignment=params.get('assignment'),managedShell=params.get('shell')==='1'&&params.get('backend')==='server';
 let bindingGeneration=0,bindingKey='',contextTimer=null,managedVisible=!managedShell;
 let idleMenu=null,idleContext=null,idleSelecting=false;
@@ -100,11 +109,11 @@ const interactionPreview=['channel','store','posts'].includes(params.get('intera
 let preparingInteractionPreview=!!interactionPreview;
 const portable=params.get('backend')!=='server';
 const standPresentation=portable&&bfmVisual&&params.get('debug')!=='1';
-const localDevelopment=portable&&params.get('dev')!=='0'&&(params.get('dev')==='1'||['127.0.0.1','localhost','[::1]'].includes(location.hostname));
+const localDevelopment=!productionMode&&portable&&params.get('dev')!=='0'&&(params.get('dev')==='1'||['127.0.0.1','localhost','[::1]'].includes(location.hostname));
 if(localDevelopment)document.documentElement.dataset.kdwDevelopment='true';
 const kdwInteractions=mountKdwInteractions({getSession:()=>sharedSession,onMenu:()=>navigate()});
 const personalChannel=mountPersonalChannel({getSession:()=>sharedSession});
-const businessNative=mountBusinessNative({getSession:()=>sharedSession,enabled:!!MISSION_CATALOG.kdwBusinessNative});
+const businessNative=mountBusinessNative({getSession:()=>sharedSession});
 const kdwPosts=mountPostActivity({getSession:()=>sharedSession});
 let standBrowser;
 const localAdmission=new LocalStandAdmission({active:()=>inputActive()});
@@ -132,7 +141,8 @@ let phoneLoadingAge=0;
 const reviewMission=new URLSearchParams(location.search).get('review');
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const button=(label,attr='',cls='')=>`<button class="pill ${cls}" ${attr}>${v5ButtonMarkup(label)}</button>`;
-const palmCopy=bfmVisual?'Открой возможности':'Приложи ладонь, чтобы открыть возможности';
+const palmLabelCopy=productionMode?'Приложи ладонь,\nчтобы начать':null;
+const palmCopy=bfmVisual?(productionMode?'Приложи ладонь, чтобы начать':'Открой возможности'):'Приложи ладонь, чтобы открыть возможности';
 const palmHint=bfmVisual?'':'Удерживай 0,8 секунды';
 const palm='<svg class="glyph" viewBox="0 0 64 64" aria-hidden="true"><path d="M16 33V17c0-6 7-6 7 0v14-21c0-6 7-6 7 0v20-24c0-6 7-6 7 0v24-19c0-6 7-6 7 0v23l4-8c3-6 10-2 7 4l-9 22c-3 7-8 11-16 11-8 0-13-4-17-10L5 39c-4-6 2-10 6-6l5 5Z"/></svg>';
 let size={width:1600,height:1000},controller,content,catalog,field,assets,foreground,ambient,view='';
@@ -147,7 +157,7 @@ function fieldDimensions(){return {w:host.clientWidth,h:host.clientHeight-140};}
 const routeRow=()=>inlinePhone&&controller?.current?.step ? .68 : .44;
 const deviceMetrics=()=>sharedBackend?controller.phoneMetrics:taskDevice(controller?.current);
 const displayPhoneKey=()=>bfmVisual&&controller.startupLogo?controller.startupKey:controller.phoneContentKey;
-const deviceCenter=()=>portable&&params.get('view')!=='wall'?browserDeviceCenter(host.clientWidth,deviceMetrics().width):referenceVisual?(deviceMetrics().kind==='pc'?520:584):Math.min(host.clientWidth/2,host.clientWidth-540-32-deviceMetrics().width/2);
+const deviceCenter=()=>pixelPlan?host.clientWidth/2:portable&&params.get('view')!=='wall'?browserDeviceCenter(host.clientWidth,deviceMetrics().width):referenceVisual?(deviceMetrics().kind==='pc'?520:584):Math.min(host.clientWidth/2,host.clientWidth-540-32-deviceMetrics().width/2);
 const revealPresence=o=>controller.presence(o)*((o.step==='business-tool'||o.step.startsWith('business-'))?Number(host.dataset.contentPresence??1):1);
 function position(o,palmNode=false){const {w,h}=fieldDimensions(),y=revealMode?host.clientHeight/2-100:h*routeRow();return {x:(o.worldX-layoutCamera()-120)/(w-240),y:(y+o.worldY-(palmNode?80:64))/(h-300)};}
 function placeElement(el,o,palmNode=false){
@@ -192,10 +202,10 @@ function updateTargets(){
 function updateScanWaitDisplays(delta=0){
  if(!bfmVisual)return;
  const timer=host.querySelector('[data-scan-wait-timer]'),queue=host.querySelector('[data-scan-queue-count]');if(!timer||!queue)return;
- const wait=scanWaitClock.view(controller?.snapshot,performance.now()),scan=host.querySelector('[data-palm]');
+ const state=controller?.snapshot?.state;const wait=productionMode?{visible:state?.status==='scan',remainingMs:state?.deadlineAt?Math.max(0,state.deadlineAt-Date.now()):productionPolicy.value.max.timings.palmWaitSeconds*1000,queueCount:null}:scanWaitClock.view(controller?.snapshot,performance.now()),scan=host.querySelector('[data-palm]');
  scanWaitPresence.step(wait.visible&&!!scan?1:0,Math.min(delta,.05),V5_MOTION.presenceOmega,reduced.matches);
  for(const element of [timer,queue])element.dataset.pathPresence=String(scanWaitPresence.value);
- const labels=[revealTimerLabel(wait.remainingMs/1000),`Ожидают: ${wait.queueCount??'—'}`];
+ if(productionMode)queue.hidden=true;const labels=[revealTimerLabel(wait.remainingMs/1000),`Ожидают: ${wait.queueCount??'—'}`];
  if(wait.visible)for(const [index,element] of [timer,queue].entries())if(element.textContent!==labels[index]){element.textContent=labels[index];foreground?.refreshPart(element);changed();}
  if(scan){const tile=bounds(scan.querySelector('.tile')),origin=bounds(host);if(tile&&origin){const rects=v5PalmWaitRects({left:tile.x-origin.x,top:tile.y-origin.y,width:tile.w,height:tile.h});for(const [element,rect] of [[timer,rects.timer],[queue,rects.queue]]){setStyleValue(element,'left',`${rect.left}px`);setStyleValue(element,'top',`${rect.top}px`);}}}
 }
@@ -266,13 +276,13 @@ function render(preserveTransition=false){
   palmVisible=!(portable&&bfmVisual&&!standPresentation)&&['palm','holding',...(revealMode?['burst']:[])].includes(controller.phase);
   if(palmVisible)warmMissionEntry(controller.session.mission);
   if(palmVisible&&!host.querySelector('[data-palm]')){
-   fieldEl.insertAdjacentHTML('beforeend',`<button class="object guided-palm" data-route-next="guided-palm" data-palm data-touch-minimum="500" data-planning="true" aria-label="${palmCopy}${palmHint?`. ${palmHint}`:''}">${bfmVisual?v5IconTile(MISSION_CATALOG,'scan',160):`<span class="tile glass-control">${palm}</span>`}<span class="object-label icon-caption">${palmCopy}<small>${palmHint}</small></span></button>`);foreground?.invalidate();
+   fieldEl.insertAdjacentHTML('beforeend',`<button class="object guided-palm" data-route-next="guided-palm" data-palm data-touch-minimum="500" data-planning="true" aria-label="${palmCopy}${palmHint?`. ${palmHint}`:''}">${bfmVisual?v5IconTile(MISSION_CATALOG,'scan',160):`<span class="tile glass-control">${palm}</span>`}<span class="object-label icon-caption">${palmLabelCopy??palmCopy}<small>${palmHint}</small></span></button>`);foreground?.invalidate();
   }
   if(bfmVisual&&palmVisible&&!host.querySelector('[data-scan-wait-timer]')){
    host.insertAdjacentHTML('beforeend','<div class="v5-device-timer v5-scan-wait-timer" data-scan-wait-timer data-path-presence="0" role="timer" aria-live="off" aria-label="Время ожидания ладони">0:30</div><div class="v5-device-timer v5-scan-queue" data-scan-queue-count data-path-presence="0" aria-live="off" aria-label="Миссии в очереди">Ожидают: —</div>');foreground?.invalidate();
   }
   const palmLabel=host.querySelector('[data-palm] .object-label');
-  if(palmLabel&&revealMode){const revealing=controller.phase==='burst',label=bfmVisual?palmCopy:revealing?'Открываем возможности':palmCopy,small=revealing?'':palmHint;
+  if(palmLabel&&revealMode){const revealing=controller.phase==='burst',label=bfmVisual?(palmLabelCopy??palmCopy):revealing?'Открываем возможности':palmCopy,small=revealing?'':palmHint;
    if(palmLabel.firstChild.textContent!==label){palmLabel.firstChild.textContent=label;palmLabel.querySelector('small').textContent=small;foreground?.refreshPart(palmLabel);}
   }
   for(const o of controller.nodes){const el=host.querySelector(`[data-object="${o.step}"]`);if(!el)continue;const small=el.querySelector('[data-node-status]');
@@ -291,7 +301,7 @@ function render(preserveTransition=false){
    const qr=sharedBackend?controller.snapshot.view.qr&&{...controller.snapshot.view.qr,image:sharedAssetUrl(controller.snapshot.view.qr.asset)}:controller.mission.qr;
    if(bfmVisual&&v5QrFinaleEligible(controller.snapshot,videoFinale)){
     const asset=v5QrAsset(MISSION_CATALOG,qr);
-    host.insertAdjacentHTML('beforeend',`<section class="field-success v5-mission-qr" role="status" aria-label="QR-код MAX"><img class="presentation-qr" draggable="false" src="${esc(sharedAssetUrl(asset))}" alt="QR-код MAX с логотипом: ${esc(qr.url)}"><p class="v5-qr-caption">${V5_QR_CAPTION}</p>${portable?'<button class="pill v5-qr-restart" data-restart-mission>Запустить заново</button>':''}</section>`);
+    host.insertAdjacentHTML('beforeend',`<section class="field-success v5-mission-qr" role="status" aria-label="QR-код MAX"><img class="presentation-qr" draggable="false" src="${esc(sharedAssetUrl(asset))}" alt="QR-код MAX с логотипом: ${esc(qr.url)}"><p class="v5-qr-caption">${V5_QR_CAPTION}</p>${portable&&!productionMode?'<button class="pill v5-qr-restart" data-restart-mission>Запустить заново</button>':''}</section>`);
     host.inert=true;cancelGesture();void sharedSession?.owner(false);
    }else if(!videoFinale)host.insertAdjacentHTML('beforeend',resultMarkup(sharedBackend?controller.snapshot.view.result:{title:'Миссия выполнена',text:controller.mission.result},qr,controller.mission.presentation));
    foreground?.invalidate();
@@ -419,10 +429,9 @@ function syncLinePhone(){
   else if(phoneStep&&(phoneStep!==o.step||sharedBackend)&&foreground&&!foreground.busy(host)){
    phonePending=key;const epoch=screenEpoch;
    const target=bfmVisual?controller.targetPhoneMetrics:null;
-   const morph=bfmVisual?{from:deviceMetrics().width,to:target.width,
-    fromHeight:deviceMetrics().height,toHeight:target.height,
+   const morph=bfmVisual?{from:deviceMetrics().width,to:target.width,fromHeight:deviceMetrics().height,toHeight:target.height,
     resize:(width,height)=>{if(epoch!==screenEpoch||!shell.isConnected)return;controller.presentedDevice={...target,width,height};updateTargets();},
-    ready:()=>epoch!==screenEpoch||displayPhoneKey()!==key||shell.dataset.sceneVersion===key&&shell.dataset.mediaReadyKey===key&&shell.dataset.gpuReadyKey===key&&personalChannel.ready(controller.displaySnapshot)&&businessNative.ready(controller.displaySnapshot)&&kdwPosts.ready(controller.displaySnapshot)}:undefined;
+    ready:()=>epoch!==screenEpoch||displayPhoneKey()!==key||shell.dataset.sceneVersion===key&&shell.dataset.mediaReadyKey===key&&shell.dataset.gpuReadyKey===key&&personalChannel.ready(controller.displaySnapshot)&&businessNative.ready(controller.displaySnapshot)}:undefined;
    if(!foreground.transitionContent(host,()=>{if(epoch===screenEpoch)commit();else if(phonePending===key)phonePending='';},morph))phonePending='';
   }else if(!phonePending)commit();
  }
@@ -565,7 +574,7 @@ function tick(delta){
  kdwPosts.update(controller?.displaySnapshot,controller?.phase);
  if(controller?.snapshot?.state)document.documentElement.dataset.kdwScreen=controller.snapshot.state.screenId??controller.snapshot.state.status;document.documentElement.dataset.kdwRun=controller?.snapshot?.state.runId??'';
  standBrowser?.update(controller?.snapshot);
- if(portable&&!standPresentation&&!navigating)void localAdmission.update(sharedSession)?.catch(error=>console.error('MAX local admission',error));
+ if(!productionMode&&portable&&(gameLink?.game||!standPresentation)&&!navigating)void localAdmission.update(sharedSession)?.catch(error=>console.error('MAX local admission',error));
  if(idleMenu){ambient?.tick?.(delta,{active:presentationActive(),reduced:reduced.matches});idleMenu.tick(delta,presentationActive());return;}
  if(independent){independent.tick(presentationActive()?delta:0);return;}
  syncGameAudio();
@@ -607,7 +616,7 @@ function tick(delta){
  if(revealMode&&controller.phase==='phone-enter'&&phoneReady&&phonePresence.value>.55&&!host.querySelector('.task-dialog'))syncPopup();
  if(bfmVisual&&active){
   const instruction=host.querySelector('.task-dialog .instruction');
-  const target=v5InstructionShift({phoneX:phoneX.value,cameraX:camera.value,deviceWidth:deviceMetrics().width,hostWidth:host.clientWidth,visible:portable&&params.get('view')!=='wall'||!!instruction&&!instruction.hidden});
+  const target=pixelPlan?0:v5InstructionShift({phoneX:phoneX.value,cameraX:camera.value,deviceWidth:deviceMetrics().width,hostWidth:host.clientWidth,visible:portable&&params.get('view')!=='wall'||!!instruction&&!instruction.hidden});
   instructionShift.step(target,Math.min(delta,.05),V5_MOTION.travelOmega,reduced.matches);
  }
  if(active&&!gesture)camera.step(focusTarget,Math.min(delta,.05),bfmVisual?V5_MOTION.travelOmega:revealMode?REVEAL_MOTION.cameraOmega:10,reduced.matches);
@@ -632,7 +641,7 @@ function tick(delta){
    const action=automaticRoutes.tasks[snapshot.state.taskId]?.screens[snapshot.state.screenId]?.actions[0];
    if(action){answerPending=true;const generation=bindingGeneration;void sharedSession.act(snapshot.state.screenId,action.actionId,snapshot.state.revision).finally(()=>{if(generation===bindingGeneration)answerPending=false;});}
   }
-  if(active&&controller.phase==='palm'&&palmPresence.value>.97&&!sharedSession.busy&&!foreground?.busy(host,true)){const scan=host.querySelector('[data-palm]');if(scan&&controller.down('autoplay')){render();foreground?.startPalmScan(host,scan.querySelector('.tile'));}}
+  if(active&&controller.phase==='palm'&&palmPresence.value>.97&&!sharedSession.busy&&!foreground?.busy(host,true))beginPalmContact('autoplay');
  }
  controller.tick(delta,{active,deviceShown:phonePresence.at(1,.005,.05)&&!!controller.phone&&phoneX.at(controller.phone.x)&&phoneY.at(controller.phone.y),deviceHidden:phonePresence.at(0,.005,.05),deviceReady:phoneReady&&(!bfmVisual||waitingPhone?.dataset.gpuReadyKey===displayPhoneKey()),dragging:!!gesture,busy:bfmVisual&&(controller.handoff||controller.startup)?foreground?.contentBusy(host):foreground?.busy(host,bfmVisual||!revealMode),reduced:reduced.matches,settled:referenceVisual?referenceReady:camera.at(focusTarget,.1,.5)&&settled&&(!calmLinks||reduced.matches||controller.startup||controller.handoff||controller.phase!=='phone-enter'||controller.elapsed>=V5_MOTION.fanSeconds)});
  if(bfmVisual&&(controller.paths||controller.startup))updateTargets();
@@ -684,6 +693,7 @@ function warmMissionEntry(id){
  foreground?.prewarmDeviceAssets(screens.filter(s=>s&&!s.missing).map(s=>MISSION_CATALOG.assets[s.assetId]));
 }
 function navigate(id,restart=false){
+ if(gameLink?.game&&id&&!restart)return;
  if(navigating)return;
  cancelGesture();const epoch=++screenEpoch;answerPending=false;pendingResume=null;foreground?.cancelContent(host);navigating=true;
  const commit=()=>{if(epoch!==screenEpoch)return;resetPrompt=false;if(restart){controller.restart();view='';}else{if(sharedBackend&&id)controller.select(id);else{controller.menu();if(id)controller.select(id);}}popupPage=0;popupToken='';render(true);navigating=false;};
@@ -740,6 +750,7 @@ function activateButton(b){
  }
  if(b.dataset.mission){navigate(b.dataset.mission);return;}
  if((managedAssignment||managedShell)&&['data-restart-mission','data-menu','data-continue-mission'].some(a=>b.hasAttribute(a)))return;
+ if(productionMode&&['data-menu','data-restart-mission','data-reset-progress','data-confirm-reset-progress'].some(a=>b.hasAttribute(a)))return;
  if(b.hasAttribute('data-restart-mission')){if(!navigating)navigate(controller.session.mission,true);return;}
  if(b.hasAttribute('data-menu')){navigate();return;}
  if(navigating){feedback('Переходим к выбранному экрану');return;}
@@ -752,7 +763,7 @@ function activateButton(b){
  if(b.dataset.branch){if(foreground?.busy(host)){feedback('Завершаем переход');return;}if(revealMode){const epoch=screenEpoch;foreground.transitionContent(host,()=>{if(epoch===screenEpoch&&controller.choose(b.dataset.branch)){popupPage=0;render();}});}else if(controller.choose(b.dataset.branch))render();return;}
  if(b.hasAttribute('data-answer')){answer(sharedBackend?b.dataset.answer:Number(b.dataset.answer),b.dataset.answerToken);return;}
  if(b.dataset.object){
-  if(portable&&b.dataset.object==='open-max'){if(!sharedSession.busy)navigate(controller.session.mission,true);return;}
+  if(portable&&!productionMode&&b.dataset.object==='open-max'){if(!sharedSession.busy)navigate(controller.session.mission,true);return;}
   if(localDevelopment&&b.dataset.object!=='open-max'){
    void changeLocalTask('RESTART_TASK',b.dataset.object);return;
   }
@@ -770,6 +781,10 @@ function cancelGesture({keepTouch=false}={}){
 }
 // A real contact enters a target once. A newly rendered screen beneath the
 // same stationary hand cannot advance itself: leave this hit area or lift first.
+function beginPalmContact(id){
+ const scan=host.querySelector('[data-palm]');if(!scan||!controller.down(id))return false;
+ render();foreground?.startPalmScan(host,scan.querySelector('.tile'));return true;
+}
 function tapAt(e){
  if(!tapHand||tapHand.id!==e.pointerId||!inputActive()||(!controller&&!idleMenu))return;
  const screenTap=portable&&sharedBackend?screenContinuationTarget(root,e.target,e.clientX,e.clientY,controller?.snapshot?.state?.screenId):null;
@@ -790,7 +805,7 @@ function tapAt(e){
  if(idleMenu){latch();activateButton(b);return;}
  if(b.hasAttribute('data-palm')){
   if(controller.phase!=='palm'||controller.contact!==null)return;
-  if(controller.down(e.pointerId))latch();
+  if(beginPalmContact(e.pointerId))latch();
   return;
  }
  if(bfmVisual&&controller.startup||foreground?.busy(host)||navigating)return;
@@ -811,14 +826,15 @@ root.addEventListener('pointerup',e=>{
 });
 root.addEventListener('pointercancel',cancelGesture);
 // Keyboard and physical touch share the same trusted immediate contact.
-root.addEventListener('keydown',e=>{if(!controller||!inputActive())return;if(e.target.closest('[data-palm]')&&[' ','Enter'].includes(e.key)){e.preventDefault();if(!e.repeat&&controller.down('keyboard')){render();}}});
+root.addEventListener('keydown',e=>{if(!controller||!inputActive())return;if(e.target.closest('[data-palm]')&&[' ','Enter'].includes(e.key)){e.preventDefault();if(!e.repeat)beginPalmContact('keyboard');}});
 root.addEventListener('keyup',e=>{if(!controller||!inputActive())return;if([' ','Enter'].includes(e.key))(sharedBackend?controller.up('keyboard'):controller.cancelContact('keyboard'));});
 window.addEventListener('blur',()=>{windowFocused=false;gameAudio?.setActive(presentationActive()&&!localRecovery);cancelGesture();if(!preparingInteractionPreview)sharedSession?.owner(portable&&inputActive());});window.addEventListener('focus',()=>{windowFocused=true;if(!preparingInteractionPreview&&inputActive())sharedSession?.owner(true);});document.addEventListener('visibilitychange',()=>{cancelGesture();independent?.setActive(presentationActive());if(!preparingInteractionPreview)sharedSession?.owner(inputActive());});
 window.addEventListener('max-service-pointer-cancel',cancelGesture);
-window.addEventListener('keydown',e=>{if(!controller||!inputActive())return;if(e.key==='Escape'){if(resetPrompt){changeResetPrompt(false);return;}cancelGesture();close();}});
+window.addEventListener('keydown',e=>{if(!controller||!inputActive())return;if(!productionMode&&e.key==='Escape'){if(resetPrompt){changeResetPrompt(false);return;}cancelGesture();close();}});
 document.addEventListener('dragstart',e=>e.preventDefault(),true);
 installTaskDismiss({root:document,enabled:()=>!revealMode,getOpen:()=>{const popup=host.querySelector('.task-dialog');return popup?[{popup,panels:[...popup.querySelectorAll('.instruction,.demo-app,.close'),...(inlinePhone?[host.querySelector('.route-phone')].filter(Boolean):[])]}]:[];},close});
 
+const registrationLinks=new RegistrationLinks();
 function syncScene(){
  if(idleMenu||independent)calmLinks?.update([],1,performance.now()/1000);
  if(idleMenu||independent){field?.update({placements:[],network:{states:{},links:[]},endpoints:{},selectedItem:null});return;}
@@ -844,9 +860,7 @@ function syncScene(){
   network.links.push({a,b,screen:inlinePhone,scope:'guided',correct:true,visibility,reveal:edge.reveal??(edge.revealing&&!reduced.matches?revealTracePresence(controller.elapsed/(controller.revealTiming?.trace??REVEAL_TIMING.trace)):1),edgeCurve:{start:world(curve.start),end:world(curve.end),c1:world(curve.c1),c2:world(curve.c2),bowX:curve.bowX*scale,bowY:-curve.bowY*scale,frames,flipBow:true}});
  }
  if(inlinePhone&&controller.current&&controller.session.screen==='field'){
-  const confirmation=!!MISSION_CATALOG.kdwBusinessConfirmation&&host.querySelector('.route-phone')?.dataset.sceneVersion?.includes(':business.platform.ready:');
-  const phone=confirmation?businessConfirmationLinkRect(bounds(host.querySelector('.route-phone .task-media-canvas'))):bounds(host.querySelector('.route-phone .demo-app'));
-  const current=ids.get(controller.current.step),next=revealMode?rects.get(ids.get(controller.next?.id)):bounds(host.querySelector('[data-line-next] .tile'));
+  const current=ids.get(controller.current.step),linkPose=registrationLinks.update(bounds(host.querySelector('.route-phone .demo-app')),{screenId:controller.displayedState?.screenId,runKey:`${controller.snapshot?.state.sessionId}:${controller.snapshot?.state.runId}`,time:performance.now()/1000,reduced:reduced.matches,original:BUSINESS_ORIGINAL}),phone=linkPose.rect,next=revealMode?rects.get(ids.get(controller.next?.id)):bounds(host.querySelector('[data-line-next] .tile'));
   const type=placements.at(-1)?.type;
   const addAnchor=(id,r)=>{rects.set(id,{...r,radius:30});placements.push({id,type,longitude:(r.x+r.w/2-size.width/2)*scale/.03,latitude:(size.height/2-r.y-r.h/2)*scale/.03,altitude:.08,droppedAt:0,signalRadius:.15});network.states[id]='link';};
   if(current!==undefined&&phone&&(next||revealMode)){
@@ -855,17 +869,18 @@ function syncScene(){
    for(const [a,b]of pairs){
     const key=`line:${a}:${b}`,lanes=phoneLaneCurves(rects.get(a),rects.get(b),edgePorts.get(key));edgePorts.set(key,lanes.base);
     const frames=[a,b].map(id=>{const r=rects.get(id);return {...world({x:r.x+r.w/2,y:r.y+r.h/2}),w:r.w*scale,h:r.h*scale,radius:r.radius*scale};});
-    for(const [lane,curve]of lanes.curves.entries())network.links.push({a,b,lane,style:deviceLinkStyle,screen:true,scope:'guided-line',correct:true,visibility:phonePresence.value*(bfmVisual&&controller.handoff?.stage!=='link'?controller.deviceLinkPresence:1),reveal:bfmVisual&&(controller.handoff||controller.startup)?(controller.deviceLinkReveal??1):referenceVisual?phonePresence.value:revealMode&&controller.phase==='phone-enter'&&!reduced.matches?revealTracePresence((controller.elapsed-lane*(bfmVisual?V5_MOTION.fanStagger:.05))/(bfmVisual?V5_MOTION.fanSeconds:REVEAL_TIMING.phoneEnter-.2)):1,edgeCurve:{start:world(curve.start),end:world(curve.end),c1:world(curve.c1),c2:world(curve.c2),bowX:curve.bowX*scale,bowY:-curve.bowY*scale,frames,flipBow:true}});
+    for(const [lane,curve]of lanes.curves.entries())network.links.push({a,b,lane,style:deviceLinkStyle,screen:true,scope:'guided-line',correct:true,visibility:linkPose.opacity*phonePresence.value*(bfmVisual&&controller.handoff?.stage!=='link'?controller.deviceLinkPresence:1),reveal:bfmVisual&&(controller.handoff||controller.startup)?(controller.deviceLinkReveal??1):referenceVisual?phonePresence.value:revealMode&&controller.phase==='phone-enter'&&!reduced.matches?revealTracePresence((controller.elapsed-lane*(bfmVisual?V5_MOTION.fanStagger:.05))/(bfmVisual?V5_MOTION.fanSeconds:REVEAL_TIMING.phoneEnter-.2)):1,edgeCurve:{start:world(curve.start),end:world(curve.end),c1:world(curve.c1),c2:world(curve.c2),bowX:curve.bowX*scale,bowY:-curve.bowY*scale,frames,flipBow:true}});
    }
   }
   host.dataset.phoneInputLinks=String(network.links.filter(e=>e.b===199998&&e.visibility>.01).length);host.dataset.phoneOutputLinks=String(network.links.filter(e=>e.a===199998&&e.visibility>.01).length);
  }
  for(const link of network.links)link.visibility*=Number(host.dataset.finalGamePresence??1);
  calmLinks?.update(network.links,scale,performance.now()/1000,reduced.matches);
- if(params.get('test')==='link-motion'){const frames=window.__kdwLinkFrames??=[];frames.push({time:performance.now(),phase:controller.phase,elapsed:controller.elapsed,startup:controller.startup?.stage,handoff:controller.handoff?.stage,links:network.links.map(({a,b,lane,reveal,visibility})=>({a,b,lane,reveal,visibility}))});if(frames.length>1200)frames.shift();}
+ if(params.get('test')==='link-motion'){const frames=window.__kdwLinkFrames??=[];frames.push({time:performance.now(),phase:controller.phase,elapsed:controller.elapsed,startup:controller.startup?.stage,handoff:controller.handoff?.stage,screenId:controller.displayedState?.screenId,phoneRect:rects.get(199998),links:network.links.map(({a,b,lane,reveal,visibility})=>({a,b,lane,reveal,visibility}))});if(frames.length>1200)frames.shift();}
  field.update({placements,network,endpoints:{},selectedItem:null});
 }
 function sceneSize(){
+ if(pixelPlan)return pixelPlan;
  if(portable&&params.get('view')!=='wall')return browserScenePlan(innerWidth,innerHeight);
  if(referenceVisual)return {width:REFERENCE_UI.width,height:REFERENCE_UI.height};
  if(service||bfmVisual||params.get('layout')==='wall')return {width:4096,height:1280};
@@ -882,7 +897,7 @@ function fit({viewportOnly=false}={}){
  if(independent){independent.fit();foreground?.invalidate({layout:true});field?.resize();changed();return;}
  if(viewportOnly){field?.resize();changed();return;}
  const zone=zonesForLayout('single')[0];
- host.style.cssText=portable&&params.get('view')!=='wall'?`left:32px;top:128px;width:${size.width-64}px;height:${size.height-192}px`:referenceVisual?'left:1984px;top:168px;width:1543px;height:804px':service||bfmVisual||params.get('layout')==='wall'?`left:${zone.left}px;top:${zone.top}px;width:${zone.w}px;height:${zone.h}px`:`left:24px;top:24px;width:${size.width-48}px;height:${size.height-48}px`;
+ host.style.cssText=pixelPlan?`left:${pixelPlan.zone.left}px;top:${pixelPlan.zone.top}px;width:${pixelPlan.zone.w}px;height:${pixelPlan.zone.h}px`:portable&&params.get('view')!=='wall'?`left:32px;top:128px;width:${size.width-64}px;height:${size.height-192}px`:referenceVisual?'left:1984px;top:168px;width:1543px;height:804px':service||bfmVisual||params.get('layout')==='wall'?`left:${zone.left}px;top:${zone.top}px;width:${zone.w}px;height:${zone.h}px`:`left:24px;top:24px;width:${size.width-48}px;height:${size.height-48}px`;
  if(revealMode)host.style.overflow='visible';
  if(controller){if(revealMode)controller.configure(host.clientWidth,host.clientHeight,adjustableIcons?referenceTile:240);focusCurrent(true);popupToken='';render();}foreground?.invalidate({layout:true});field?.resize();changed();
 }
@@ -1022,12 +1037,14 @@ function renderLocalStandby(){
  if(!foreground){host.replaceChildren();return;}
  clearManagedScene();view='';host.dataset.screen='standby';
  idleContext={scope:'kdw-local-standby'};document.documentElement.dataset.idleMenuScope=idleContext.scope;
- idleMenu=createIdleMenu({host,foreground,catalog:MISSION_CATALOG,assetCatalog:independentAssetCatalog,reduced,changed,onSelect:selectIdleMission,onError:error=>console.error('MAX standby media',error)});
+ idleMenu=createIdleMenu({host,foreground,catalog:MISSION_CATALOG,layout:pixelPlan?pixelIdleLayout(pixelPlan.zone):undefined,hostRect:pixelPlan?.zone,assetCatalog:independentAssetCatalog,reduced,changed,onSelect:selectIdleMission,onError:error=>console.error('MAX standby media',error)});
  fit();syncScene();
 }
 async function selectIdleMission(missionId){
+ if(gameLink?.game)return;
  if(standPresentation){
   if(!idleMenu||idleSelecting||!inputActive())return;
+  if(productionMode){if(!['manual','combined'].includes(standSettings.value.max.entryMode))return;idleSelecting=true;try{await selectManualMission(missionId);}catch(error){idleSelecting=false;feedback('Экран уже занят. Ожидайте свою миссию.');}return;}
   const menu=idleMenu;idleSelecting=true;navigating=true;
   try{
    await menu.exit();if(idleMenu!==menu)return;
@@ -1081,7 +1098,7 @@ async function refreshManagedBinding(){
   if(idle){
    if(!idleMenu){
     const wasVisible=managedVisible;await detachManagedSession();if(pageDisposed)return;managedVisible=wasVisible;clearManagedScene();configureMobile(null);
-    idleMenu=createIdleMenu({host,foreground,catalog:MISSION_CATALOG,assetCatalog:independentAssetCatalog,reduced,changed,onSelect:selectIdleMission,onError:error=>console.error('MAX idle media',error)});
+    idleMenu=createIdleMenu({host,foreground,catalog:MISSION_CATALOG,layout:pixelPlan?pixelIdleLayout(pixelPlan.zone):undefined,hostRect:pixelPlan?.zone,assetCatalog:independentAssetCatalog,reduced,changed,onSelect:selectIdleMission,onError:error=>console.error('MAX idle media',error)});
     document.documentElement.dataset.idleMenuScope=context.idleMenu.scope;syncScene();
    }
    idleContext=context.idleMenu;document.documentElement.dataset.idleMenuScope=context.idleMenu.scope;applyManagedActivity();return;
@@ -1136,7 +1153,7 @@ async function boot(){
 
  if(bfmVisual&&(globalThis.STAND_AUDIO_MODE==='master'||document.documentElement.dataset.managedAudio==='true'))gameAudio=mountV5Audio();
  document.documentElement.dataset.service=String(service);document.documentElement.dataset.layout='single';
- if(portable)standBrowser=createStandBrowserHost({arena,params,onMenu:()=>{void Promise.all([kdwInteractions.flush(),personalChannel.flush()]).then(()=>navigate()).catch(error=>feedback(error.message));}});
+ if(portable)standBrowser=createStandBrowserHost({arena,params,pixelPlan,production:productionMode,onMenu:()=>{void Promise.all([kdwInteractions.flush(),personalChannel.flush()]).then(()=>navigate()).catch(error=>feedback(error.message));}});
  if(bfmVisual&&!service&&!automaticPresentation&&params.get('debug')==='1')v5Tools=createV5Tools({arena,params,onViewport:()=>fit({viewportOnly:true})});
  const [loaded,shell,client,contours]=await Promise.all([loadMissionCatalog('./config/client-webgl.json'),loadUiShellConfig(),fetch('./config/client-missions.json').then(r=>r.json()),loadEarthContours()]);
  content=sharedBackend?sharedRevealContent(MISSION_CATALOG):clientContent(client);
@@ -1150,17 +1167,18 @@ async function boot(){
   sharedSession=profile==='server'?managedSession(managedAssignment,params.get('session')):createWebGLSession({port,catalog:MISSION_CATALOG,initialOwnerActive:false,assignmentId:managedAssignment,sessionId:params.get('session')||(bfmVisual?(localDevelopment?'webgl-v5-development':'webgl-v5'):'site-shared'),profile,onSnapshot:snapshot=>{managedSnapshot(snapshot);if(!controller||!portable&&snapshot.assignment?.lifecycle.status!=='active')return;controller.accept(snapshot);if(foreground&&!navigating){if((controller.phase==='burst'||bfmVisual&&controller.startup&&controller.snapshot.state.scanned)&&gesture?.kind==='palm')cancelGesture();if(!gesture)focusCurrent();render();}},onError:error=>{console.error('MAX backend',error);if(foreground)feedback('Нет связи с backend. Экран сохранён.');}});
   await sharedSession.start();
   if(localDevelopment&&sharedSession.snapshot.state.devTimerEnabled===undefined)await sharedSession.command('DEV_TIMER',{active:false});
-  if(standPresentation&&!interactionPreview&&sharedSession.snapshot.state.status!=='menu')await sharedSession.command('RETURN_MENU');
+  await resumeLinkedMission(sharedSession,gameLink);
+  if(!productionMode&&!gameLink?.game&&standPresentation&&!interactionPreview&&sharedSession.snapshot.state.status!=='menu')await sharedSession.command('RETURN_MENU');
   if(pageDisposed){await sharedSession.close();return;}
   if(localRecovery&&!standPresentation&&!interactionPreview&&params.get('test')!=='memory')recoveryChoice=await showV5Recovery({snapshot:sharedSession.snapshot,catalog:MISSION_CATALOG,document,onChoose:choice=>applyRecoveryChoice(sharedSession,choice)});
   if(interactionPreview){loading.textContent='Подготавливаем активность MAX…';try{await prepareInteractionPreview(sharedSession,MISSION_CATALOG,interactionPreview);}finally{preparingInteractionPreview=false;}}
   document.documentElement.dataset.sessionStorage=profile==='server'?'server':bfmVisual?'indexeddb':'localStorage';
  }
  let saved;if(!sharedBackend&&!reviewMission)try{saved=localStorage.getItem(storage);}catch{}
- if(!managedShell)configureController(saved);
+ if(!managedShell)configureController(saved);if(productionMode)stopProduction=startProduction({getSession:()=>sharedSession,ready:s=>{if(s.status==='scan')return ['palm','holding'].includes(controller?.phase)&&palmPresence.value>.95;if(s.status==='task')return controller?.phase==='task'&&controller.displayedState?.screenId===s.screenId&&phoneContentReady()&&phonePresence.value>.97;if(['completed','incomplete'].includes(s.status)){const image=host.querySelector('.v5-mission-qr img');return image?.complete&&image.naturalWidth>0&&foreground?.qrReady(image.closest('.v5-mission-qr'))===true&&Number(host.dataset.finalGamePresence??1)<.005;}return false;}});
  const raw=serializeMissionCatalog(loaded);for(const value of Object.values(raw.system.objectSettings)){value.size=.42;value.signalRadius=.15;}catalog=parseMissionCatalog(raw);configureMissions(catalog);
- if(referenceVisual){root.insertAdjacentHTML("beforeend",`<div class="reference-brand-left"><img src="./brand/assets/logos/max-primary-white.svg" alt="MAX"><p>Миссия</p><strong data-reference-mission></strong></div><div class="reference-brand-right"><img src="./brand/assets/logos/max-primary-white.svg" alt="MAX"></div>`);}
- if(bfmVisual)root.insertAdjacentHTML('beforeend','<div class="v5-brand"><img src="./brand/assets/logos/max-primary-white.svg" alt="MAX"></div>');
+ if(referenceVisual&&!productionMode){root.insertAdjacentHTML("beforeend",`<div class="reference-brand-left"><img src="./brand/assets/logos/max-primary-white.svg" alt="MAX"><p>Миссия</p><strong data-reference-mission></strong></div><div class="reference-brand-right"><img src="./brand/assets/logos/max-primary-white.svg" alt="MAX"></div>`);}
+ if(bfmVisual&&!productionMode)root.insertAdjacentHTML('beforeend','<div class="v5-brand"><img src="./brand/assets/logos/max-primary-white.svg" alt="MAX"></div>');
  fit();if(!service&&!managedAssignment&&!managedShell){const mode=new URLSearchParams(location.search).get('background');ambient=bfmVisual?lumiReferenceBackground(document.querySelector('#ambient'),{standMask:true}):(revealMode?(mode==='live'?commonMapBackground:mode==='svg'?referenceBackground:lumiReferenceBackground):background)(document.querySelector('#ambient'));}assets=new PreparedAssets();
  v5Tools?.fit(innerWidth,innerHeight);standBrowser?.fit(innerWidth,innerHeight);
  if(bfmVisual&&sharedBackend){
@@ -1174,11 +1192,11 @@ async function boot(){
  document.documentElement.dataset.graphicsBootCount=String(Number(document.documentElement.dataset.graphicsBootCount||0)+1);
  field=await createWebGLField({container:document.querySelector('#world'),planar:true,hideNodes:true,preparedAssets:assets,contourCatalog:contours,startPaused:true,placements:[],network:{states:{},links:[]},itemTypes:ITEM_TYPES,endpoints:{},selectedItem:null,maxDrawingBufferPixels:MAX_DRAWING_BUFFER_PIXELS,earthStyle:shell.rendering.earth,nodeIconBackdropStyle:shell.rendering.nodeIconBackdrop,signalLinkStyle:{...shell.rendering.signalLinks,...routeLinkStyle},onPlace:()=>{},onMove:()=>{},onRemove:()=>{}});
  if(pageDisposed){field.dispose();return;}
- foreground=createJourneyWebGLUI({root,arena,getSize:()=>size,onFrame:tick,gradients:standBrowser?.gradients??v5Tools?.gradients,onMotion:()=>{kdwPosts.align();changed();syncScene();},startup:startupAssets?{
+ foreground=createJourneyWebGLUI({root,arena,getSize:()=>size,onFrame:tick,onLayout:createTransitionLayout({document,params}),gradients:standBrowser?.gradients??v5Tools?.gradients,onMotion:()=>{kdwInteractions.align();personalChannel.align();businessNative.align();kdwPosts.align();changed();syncScene();},startup:startupAssets?{
   assets:startupAssets,host,frames:[v5SplashWarmup(),v5SplashWarmup(360)],
   icons:content.missions.flatMap(m=>m.steps.flatMap(step=>['','Следующий шаг','Выполнено','Продолжить задание'].map(status=>referenceNodeMarkup(step.id,step.iconId,step.label,true,status)))).concat(referenceNodeMarkup('open-max','open-max','Открыть MAX')),
-  palm:`<button class="object guided-palm" data-route-next="guided-palm" data-palm data-touch-minimum="500">${bfmVisual?v5IconTile(MISSION_CATALOG,'scan',160):`<span class="tile glass-control">${palm}</span>`}<span class="object-label icon-caption">${palmCopy}<small>${palmHint}</small></span></button>`,
-  palmBurst:`<button class="object guided-palm" data-route-next="guided-palm" data-palm data-touch-minimum="500">${bfmVisual?v5IconTile(MISSION_CATALOG,'scan',160):`<span class="tile glass-control">${palm}</span>`}<span class="object-label icon-caption">${bfmVisual?palmCopy:'Открываем возможности'}<small></small></span></button>`,
+  palm:`<button class="object guided-palm" data-route-next="guided-palm" data-palm data-touch-minimum="500">${bfmVisual?v5IconTile(MISSION_CATALOG,'scan',160):`<span class="tile glass-control">${palm}</span>`}<span class="object-label icon-caption">${palmLabelCopy??palmCopy}<small>${palmHint}</small></span></button>`,
+  palmBurst:`<button class="object guided-palm" data-route-next="guided-palm" data-palm data-touch-minimum="500">${bfmVisual?v5IconTile(MISSION_CATALOG,'scan',160):`<span class="tile glass-control">${palm}</span>`}<span class="object-label icon-caption">${bfmVisual?(palmLabelCopy??palmCopy):'Открываем возможности'}<small></small></span></button>`,
   finals:[],
   progress:(done,total)=>{loading.textContent=`Подготовка графики MAX: ${done} / ${total}`;}
  }:null});field.setScreenForeground(foreground);field.setScreenConnections(true);field.setTapControls({enabled:false});await field.prepareGPU();
@@ -1186,7 +1204,8 @@ async function boot(){
  if(startupAssets)for(const image of root.querySelectorAll('img'))if(startupAssets.takeImage(image))foreground.refreshPart(image.closest('.route-phone')||image);
  if(localRecovery){recoveryBlocked=false;const active=inputActive(),snapshot=await sharedSession.owner(active);if(!snapshot){recoveryBlocked=true;throw Error('SESSION_UNAVAILABLE');}if(inputActive()!==active&&!await sharedSession.owner(inputActive())){recoveryBlocked=true;throw Error('SESSION_UNAVAILABLE');}}
  fit();syncScene();field.start();field.setServicePaused(servicePaused||managedShell);loading.hidden=true;root.inert=false;document.documentElement.dataset.assetPreparation=startupAssets?'ready':'legacy';document.documentElement.dataset.gameReady='true';
+ stopGameLink=watchGameLink({link:gameLink,getSession:()=>sharedSession});
  if(managedShell){document.documentElement.dataset.managedBinding='';managedNotice.hidden=true;applyManagedActivity();void refreshManagedBinding();}
 }
 boot().catch(e=>{if(pageDisposed)return;console.error(e);startupAssets?.dispose();document.documentElement.dataset.assetPreparation='failed';loading.textContent=startupErrorText(e);document.body.append(loading);Object.assign(loading.style,{position:'fixed',inset:'0',zIndex:'10000',padding:'32px',whiteSpace:'pre-line',fontSize:'clamp(16px,2vw,28px)',lineHeight:'1.5',background:'#10091e',overflow:'auto',transform:'none'});});
-window.addEventListener('pagehide',()=>{taskSkip.dispose();localAdmission.dispose();standBrowser?.dispose();kdwInteractions.dispose();personalChannel.dispose();businessNative.dispose();kdwPosts.dispose();pageDisposed=true;bindingGeneration++;clearTimeout(contextTimer);screenEpoch++;gameAudio?.dispose();missionContinuation?.cancel();cancelGesture();save();sharedSession?.close();idleMenu?.dispose();independent?.dispose();field?.dispose();foreground?.dispose();assets?.dispose();startupAssets?.dispose();ambient?.dispose();v5Tools?.dispose();},{once:true});
+window.addEventListener('pagehide',()=>{stopProduction();clearPixelInput();clearPixelDebug();stopGameLink();taskSkip.dispose();localAdmission.dispose();standBrowser?.dispose();kdwInteractions.dispose();personalChannel.dispose();businessNative.dispose();kdwPosts.dispose();pageDisposed=true;bindingGeneration++;clearTimeout(contextTimer);screenEpoch++;gameAudio?.dispose();missionContinuation?.cancel();cancelGesture();save();sharedSession?.close();idleMenu?.dispose();independent?.dispose();field?.dispose();foreground?.dispose();assets?.dispose();startupAssets?.dispose();ambient?.dispose();v5Tools?.dispose();},{once:true});

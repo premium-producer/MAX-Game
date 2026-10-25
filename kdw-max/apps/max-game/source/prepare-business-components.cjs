@@ -4,7 +4,7 @@ const {app,BrowserWindow}=require('electron'),fs=require('fs'),path=require('pat
 const source=__dirname,project=path.resolve(source,'../../..'),input=path.join(project,'UI/new_screens/busines_no_sort'),out=path.join(source,'client/public/assets/kdw-native/business-components');
 const report=path.join(project,'docs/verification-business-fidelity-20261021');fs.mkdirSync(report,{recursive:true});fs.mkdirSync(out,{recursive:true});app.setPath('userData',path.join(report,'extract-runtime'));app.on('window-all-closed',()=>{});
 const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
-const sharp=require('D:/job/production/FUTURONIKA/VK_DigitalProducts/artifacts/max-game/node_modules/sharp');
+const sharp=require('./client/node_modules/sharp');
 const screens={
  'business.platform.login':{file:'Вход на платформу.svg',parts:[[0,0,1440,140],[0,140,800,700],[800,140,640,700]]},
  'business.platform.profile':{file:'Frame 2087330771.svg'},

@@ -156,8 +156,47 @@ html[data-kdw-interaction=store] #circles .route-phone .client-actions{display:n
 .kdw-max-store .kdw-slot-content>.kdw-store-name{font-size:10px;line-height:13px;font-weight:400;color:#777;padding:2px 0 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .kdw-max-store .kdw-slot-content>.kdw-store-more{display:grid;place-items:center;height:33px;flex:0 0 33px;margin-top:auto;padding:0;border-radius:9px;background:#2c2c2c;color:#fff;font-size:11px;line-height:15px;font-weight:400;pointer-events:none}
 .kdw-store-actions{position:absolute;transform-origin:top left;pointer-events:auto;text-align:center}
-.kdw-activity-button{display:block;border:0;border-radius:25px;background:linear-gradient(110deg,#109bef,#2a61eb);color:white;padding:16px 20px;width:100%;font-size:23px;font-weight:400;line-height:normal;box-shadow:none;transition:filter .12s,transform .12s}
+/* Reviewed cards retain the complete title and put price in its own field. */
+.kdw-product-photo.kdw-product-generated{object-fit:contain;object-position:center;background:#e9e6df;pointer-events:none}
+.kdw-product-title{white-space:normal;text-wrap:balance;overflow-wrap:break-word}
+.kdw-product-description{display:block;padding:4px 16px 16px;font-size:21px;line-height:1.25;font-weight:400;color:#e4d7ee;white-space:normal}
+.kdw-max-store .kdw-slot:has(.kdw-store-description){height:auto;min-height:270px}
+.kdw-max-store .kdw-slot-content>.kdw-store-name{white-space:normal;text-overflow:clip;overflow:visible;font-size:12px;line-height:15px;text-wrap:balance;color:#303039}
+.kdw-max-store .kdw-slot-content>.kdw-store-description{display:block;font-size:10px;line-height:13px;font-weight:400;color:#777;padding:0 0 8px;white-space:normal}
+/* One external action component. Container units keep the same proportions
+   across 360/390/392px authored canvases and the activity phone morph. */
+.kdw-post-actions,.kdw-store-actions,.pc-forward,.bn-source-forward,.client-actions{container-type:inline-size}
+.kdw-activity-button,
+#kdw-personal-channel .pc-forward .kdw-activity-button,
+#kdw-business-native .bn-source-forward .kdw-activity-button,
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .route-phone .demo-app .client-actions .pill.client-action{
+ display:flex;align-items:center;justify-content:center;box-sizing:border-box;flex:none;width:100%;min-width:0;
+ height:16.410256cqw;min-height:16.410256cqw;max-height:16.410256cqw;
+ border:0;border-radius:6.410256cqw;background:linear-gradient(110deg,#109bef,#2a61eb);color:#fff;
+ padding:4.102564cqw 5.128205cqw;font-family:'Max Sans',Arial,sans-serif;font-size:5.897436cqw;font-weight:400;line-height:8.205128cqw;
+ text-align:center;white-space:nowrap;overflow-wrap:normal;box-shadow:none;transition:filter .12s,transform .12s
+}
+html[data-visual=webgl-bfm-v5] #circles .client-actions .client-action .v5-button-label{white-space:nowrap}
+/* Long in-task actions keep their font and width. Grow the blue surface with
+   the label instead of letting a forced single line escape its bounds. */
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .route-phone .demo-app .client-actions .pill.client-action:not(.kdw-transition-button){
+ height:auto;max-height:none;white-space:normal;
+}
+html[data-visual=webgl-bfm-v5] #circles .client-actions .client-action:not(.kdw-transition-button) .v5-button-label{
+ white-space:normal;text-wrap:balance;
+}
+.kdw-activity-button:disabled{opacity:.45}
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .route-phone .demo-app .client-actions{top:calc(100% + 32px)}
 .kdw-activity-button:active:not(:disabled){transform:scale(.98);filter:brightness(1.15)}
+/* Task/mission transitions reuse the original storefront's icon-like gradient.
+   Ordinary actions keep the blue component above, including retry/back buttons. */
+.kdw-activity-button.kdw-transition-button,
+#kdw-personal-channel .pc-forward .kdw-transition-button,
+#kdw-business-native .bn-source-forward .kdw-transition-button,
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .route-phone .demo-app .client-actions .pill.client-action.kdw-transition-button{
+ background:linear-gradient(100deg,#9500ff,#471aff 57%,#00bfff);
+ border:1px solid #9653ff;box-shadow:0 0 20px #6e1aff30;
+}
 .kdw-store-actions .kdw-error{margin:8px 0 0;font-size:14px;min-height:0}
 .kdw-store-actions .kdw-error:empty{display:none}
 
@@ -176,6 +215,14 @@ html[data-visual=webgl-bfm-v5] #circles .v5-mission-qr .v5-qr-restart{position:a
 .kdw-moderation-notice:empty{display:none}
 
 .pc-moderation-keyboard,.kdw-moderation-keyboard{display:inline-block;margin-left:18px;font-size:14px;font-weight:400;color:#bcecff}
+
+/* Authored two-line invitation, centered under the palm without shrinking type. */
+html[data-production=true][data-visual=webgl-bfm-v5] #circles .guided-palm .object-label{width:360px;max-width:360px;white-space:pre;text-align:center}
+
+/* Short reference copy balances within its existing width; authored meaning wins. */
+html[data-visual=webgl-bfm-v5] #circles .task-dialog .instruction-copy p,
+html[data-visual=webgl-bfm-v5] #circles .task-dialog .instruction-copy h2{white-space:pre-line;text-wrap:balance}
+
 
 #kdw-posts{position:fixed;inset:0;z-index:101;pointer-events:none;overflow:hidden;color:#fff;font-family:'Max Sans',sans-serif}
 .kdw-post-bound-avatar{position:absolute;left:52px;top:65.2px;width:42.95px;height:42.95px;border-radius:50%;display:grid;place-items:center;overflow:hidden;font-size:28px;line-height:1}.kdw-post-bound-avatar img{width:100%;height:100%;object-fit:cover}.kdw-post-theme-symbol{font-size:100px;line-height:1}
@@ -286,7 +333,7 @@ html[data-kdw-posts=active] .route-phone .client-actions{visibility:hidden!impor
 .pc-phone[data-reference="7"]{--pc-link-background:#4d4e61}
 .pc-link-input{left:88px;top:351px;width:213px;height:47px;border-radius:0;background:var(--pc-link-background);font-size:14px!important;padding:9px 2px}
 .pc-bound-link-hint{position:absolute;left:36px;top:404px;width:290px;height:24px;background:#25262d;color:#2eb62b;font-size:11px;padding:1px 0}
-.pc-reply-input{background:transparent;color:#111!important;border:0;border-radius:0;font-size:16px!important;padding:8px 0;scrollbar-width:none}
+.pc-reply-input{background:transparent;color:#111!important;border:0;border-radius:0;font-size:16px!important;padding:8px 0;line-height:20px!important;white-space:nowrap;overflow:hidden;scrollbar-width:none}
 .pc-reply-input::-webkit-scrollbar{display:none}
 .pc-send{position:absolute;left:312px;top:470px;width:44px;height:44px;border:0;border-radius:50%;padding:4px;background:transparent}
 .pc-send>span{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#007aff}
@@ -302,7 +349,7 @@ html[data-kdw-posts=active] .route-phone .client-actions{visibility:hidden!impor
 .pc-outgoing-copy{white-space:pre-wrap;overflow-wrap:anywhere}
 .pc-outgoing-meta{position:absolute;bottom:8px;right:10px;width:48px;height:10px;pointer-events:none}
 #kdw-personal-channel [data-pc-reply-count]{display:inline-block;margin-left:18px;font-size:12px;font-weight:400;color:#b9c5da}
-.pc-forward{position:absolute;top:810px;left:0;width:360px}
+.pc-forward{position:absolute;top:calc(100% + 29.53846px);left:0;width:360px}
 .pc-primary{width:100%;min-height:48px;padding:12px;border:0;border-radius:16px;background:#007aff;color:#fff!important;font-size:16px!important}
 .pc-primary:disabled{opacity:.45}
 .pc-error{position:absolute;bottom:78px;left:12px;right:12px;margin:0;padding:6px!important;background:#292a30;color:#ffacb8!important;font-size:12px!important;line-height:1.3!important;pointer-events:none}
@@ -355,8 +402,7 @@ html[data-personal-channel=true] #circles .route-phone .client-actions{display:n
 #kdw-business-native .bn-channel-name .bn-message-meta{right:9px;bottom:5px}
 #kdw-business-native .bn-channel-tail{position:relative;flex:none;width:360px}
 #kdw-business-native .bn-channel-tail>.bn-original{left:0;top:0}
-#kdw-business-native .bn-source-forward{position:absolute;left:0;right:0;top:calc(100% + 22px);display:flex;justify-content:center}
-#kdw-business-native .bn-source-forward button{font-family:'Max Sans',Arial,sans-serif;font-size:28px;color:white;border:0;border-radius:35px;padding:16px 32px;background:linear-gradient(110deg,#009cff,#3458f5);cursor:pointer}
+#kdw-business-native .bn-source-forward{position:absolute;left:0;right:0;top:calc(100% + 29.53846px);display:flex;justify-content:center}
 #kdw-business-native .bn-error{position:absolute;bottom:10px;left:10px;right:10px;margin:0;padding:5px;font:14px Arial,sans-serif;color:#f2789d;text-align:center;background:#17181c}
 #kdw-business-native .bn-error:empty{display:none}
 #kdw-business-native .bn-choice{height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;background:radial-gradient(ellipse at 70% 20%,#48169b,#150b2c);color:white;font-family:'Max Sans',Arial,sans-serif;border-radius:12px}
@@ -365,8 +411,8 @@ html[data-personal-channel=true] #circles .route-phone .client-actions{display:n
 #kdw-business-native .bn-choice>div{display:flex;gap:30px;margin-top:65px}
 #kdw-business-native .bn-choice-card{cursor:pointer;border:0;color:white;font:500 26px/1.25 'Max Sans',Arial,sans-serif;width:340px;height:310px;border-radius:40px;background:#ffffff0c;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px}
 #kdw-business-native .bn-choice-card:hover{background:#ffffff19}
-#kdw-business-native .bn-business-logo{width:140px;height:140px;background:var(--business-color);border-radius:50%;display:grid;place-items:center;overflow:hidden;font-size:80px}
-#kdw-business-native .bn-business-logo img{width:100%;height:100%;object-fit:cover}
+#kdw-business-native .bn-business-logo{width:140px;height:140px;background:transparent;border-radius:50%;display:grid;place-items:center;overflow:hidden;font-size:80px;flex:none}
+#kdw-business-native .bn-business-logo img{display:block;width:100%;height:100%;object-fit:contain;object-position:center}
 #kdw-business-native .bn-choice-card strong{max-width:260px;font:inherit}
 html[data-business-native=true] .route-phone .client-actions,html[data-business-native=true] .route-phone .task-media-canvas .media-hotspot{visibility:hidden!important;pointer-events:none!important}
 html[data-business-native=true] .route-phone .client-actions{height:0!important;min-height:0!important;margin:0!important;padding:0!important;overflow:hidden!important}

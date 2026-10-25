@@ -9,6 +9,9 @@ import {applyPersonalChannel} from './kdw-personal-channel-model.mjs';
 import {applyPostsCatalog} from './kdw-posts-model.mjs';
 import {applyNativeStore} from './kdw-native-store.mjs';
 import {applyReviewedTexts} from './kdw-text-updates.mjs';
+import {applyTransitionActions} from './kdw-transition-actions.mjs';
+import {applyCompletionCopy} from './kdw-completion-copy.mjs';
+import {applyClientCopy} from './kdw-client-copy.mjs';
 export const KDW_ITERATION='KDW-MAX-R9-STAND-20261018';
 export const CHANNEL_LIMITS=Object.freeze({name:64,description:160});
 export const COFFEE_PRODUCTS=Object.freeze([
@@ -39,7 +42,7 @@ export function placeProduct(slots,productId,index){
  if(!Number.isInteger(index)||index<0||index>=STORE_SLOTS||!COFFEE_PRODUCTS.some(p=>p.id===productId))return [...slots];
  const next=[...slots],previous=next.indexOf(productId);if(previous!==-1&&previous!==index)next[previous]=null;next[index]=productId;return next;
 }
-export function createKdwCatalog(base,{businessScreens='custom'}={}){const catalog=applyBusinessNative(applyVisitorDetails(applyConversationScreens(applyBusinessScreens(applyPersonalChannel(applyPostsCatalog(applyBusinessChoice(applyNativeStore(applyReviewedTexts(structuredClone(base))))))))));if(businessScreens==='original')applyOriginalCafe(catalog,base);else applyBusinessAll(catalog);catalog.contentRevision=base.contentRevision+'.kdw-r9-stand'+(businessScreens==='original'?'.cafe-original-v1':'.business-all-v1');catalog.kdwInteractions=KDW_ITERATION;return catalog;}
+export function createKdwCatalog(base,{businessScreens='custom'}={}){const catalog=applyBusinessNative(applyVisitorDetails(applyConversationScreens(applyBusinessScreens(applyPersonalChannel(applyPostsCatalog(applyBusinessChoice(applyNativeStore(applyReviewedTexts(structuredClone(base))))))))));if(businessScreens==='original')applyOriginalCafe(catalog,base);else applyBusinessAll(catalog);applyClientCopy(catalog);applyTransitionActions(catalog);applyCompletionCopy(catalog);catalog.contentRevision=base.contentRevision+'.kdw-r9-stand'+(businessScreens==='original'?'.cafe-original-v1':'.business-all-v1');catalog.kdwInteractions=KDW_ITERATION;return catalog;}
 export function keyboardEdit(value,start,end,key,{limit=160}={}){
  start=Math.min(value.length,Math.max(0,start));end=Math.min(value.length,Math.max(start,end));
  if(key==='backspace'&&start===end&&start>0){const segments=[...new Intl.Segmenter(undefined,{granularity:'grapheme'}).segment(value.slice(0,start))];start=segments.at(-1)?.index??0;key='';}

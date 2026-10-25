@@ -6,7 +6,7 @@ export function assertMissionCatalog(c){
  if(!Object.keys(c.missions).length||!Object.keys(c.tasks).length||!Object.keys(c.assets).length)fail('empty registry');
  const seen=new Set(),ancestor=new Set();
  const json=v=>{if(v===null||['string','boolean'].includes(typeof v)||typeof v==='number'&&Number.isFinite(v))return;if(!v||typeof v!=='object'||!Array.isArray(v)&&![Object.prototype,null].includes(Object.getPrototypeOf(v))||ancestor.has(v))fail('non JSON data');ancestor.add(v);Object.values(v).forEach(json);ancestor.delete(v);};json(c);
- for(const [id,a] of Object.entries(c.assets)){if(a.assetId!==id||!missionToken(id)||!/^assets\/[a-zA-Z0-9/_-]+\.(png|svg)$/.test(a.path)||!['image/png','image/svg+xml'].includes(a.mimeType)||!Number.isSafeInteger(a.width)||!Number.isSafeInteger(a.height)||a.width<=0||a.height<=0||!/^[a-f0-9]{64}$/.test(a.sha256))fail(`invalid asset ${id}`);}
+ for(const [id,a] of Object.entries(c.assets)){if(a.assetId!==id||!missionToken(id)||!/^assets\/[a-zA-Z0-9/_-]+\.(png|svg|webp)$/.test(a.path)||!['image/png','image/svg+xml','image/webp'].includes(a.mimeType)||!Number.isSafeInteger(a.width)||!Number.isSafeInteger(a.height)||a.width<=0||a.height<=0||!/^[a-f0-9]{64}$/.test(a.sha256))fail(`invalid asset ${id}`);}
  for(const [id,t] of Object.entries(c.tasks)){
   if(t.taskId!==id||!missionToken(id)||typeof t.title!=='string'||!t.screens?.[t.startScreenId])fail(`invalid task ${id}`);
   if(t.coreCatalog)assertTaskCatalog(t.coreCatalog);

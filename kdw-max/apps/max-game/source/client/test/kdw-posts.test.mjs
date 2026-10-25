@@ -28,8 +28,9 @@ test('activity is a phone in the existing scene; three business banks contain us
 test('core requires a real goal; accepts good/bad, rejects duplicated publication and forged audience',()=>{
  const d=driver();assert.equal(d.finish().reply.code,'POSTS_GOAL_REQUIRED');assert.equal(d.start().reply.ok,true);assert.equal(d.start().reply.code,'POSTS_ALREADY_STARTED');
  let total=POSTS_RULES.initialAudience;
- for(let i=0;i<8&&!postsGoal(d.posts);i++){
-  const spawn=postSpawn(d.posts,i),r=d.publish(i);assert.equal(r.reply.ok,true);total+=spawn.post.delta;assert.equal(d.posts.audience,total);
+ for(let i=0;i<40&&!postsGoal(d.posts);i++){
+  const spawn=postSpawn(d.posts,i);if(i>1&&!spawn.post.good)continue;
+  const r=d.publish(i);assert.equal(r.reply.ok,true);total+=spawn.post.delta;assert.equal(d.posts.audience,total);
   const duplicate=dispatchMissionCommand(catalog,d.model,r.command,{now:d.time});assert.equal(duplicate.duplicate,true);assert.equal(duplicate.model.state.progress.business.postsActivity.audience,total);
   if(!postsGoal(d.posts))assert.equal(d.send('PUBLISH_POST',{taskId:'business.channel',screenId:POSTS_SCREEN,spawnId:spawn.spawnId}).reply.code,'POST_ALREADY_PUBLISHED');
  }
@@ -80,7 +81,7 @@ test('legacy looped waves have 2–6 simultaneous posts on both sides, remain bo
  assert.equal(restoreMissionModel(catalog,d.model).ok,true);
 });
 test('saved P1 activity keeps its original rules and replays under the new catalog',()=>{
- for(const version of [1,2,3,4,5,6,7,8,9,10]){
+ for(const version of [1,2,3,4,5,6,7,8,9,10,11]){
  const old={...catalog,kdwPostsActivity:version},d=driver(old);d.start();assert.equal(d.posts.version,version);
  for(let i=0;i<8&&!postsGoal(d.posts);i++)d.publish(i);
  assert.equal(d.finish().reply.ok,true);assert.equal(restoreMissionModel(catalog,d.model).ok,true);

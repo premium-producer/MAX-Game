@@ -1,3 +1,4 @@
+import {pixelActivityViewport} from './kdw-pixel-map.mjs';
 // Sibling overlay: never nest a button in the task icon's existing button.
 export function mountTaskSkip({host,onSkip}){
  const button=document.createElement('button');
@@ -24,6 +25,7 @@ export function mountTaskSkip({host,onSkip}){
    button.dataset.skipTask=state.taskId;button.setAttribute('aria-label',`Пропустить задание ${label.textContent.trim()}`);
    button.disabled=pending||!state.ownerActive;
    Object.assign(button.style,{left:`${r.left+r.width/2}px`,top:`${caption.bottom+12*scale}px`,fontSize:`${Math.max(14,28*scale)}px`,padding:`${Math.max(8,12*scale)}px ${Math.max(16,28*scale)}px`});
+   const area=pixelActivityViewport();if(area)Object.assign(button.style,{left:(area.left+16+button.offsetWidth/2)+'px',top:(area.bottom-16-button.offsetHeight)+'px'});
   },
   suspend(){button.hidden=true;},
   dispose(){button.remove();},

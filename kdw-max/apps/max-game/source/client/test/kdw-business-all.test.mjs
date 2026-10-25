@@ -36,7 +36,7 @@ test('SVG hotspots stay within source geometry; shared dashboard has distinct ac
  assert.equal(businessAllLayout('business.channel.setup').number,8);assert.equal(businessAllLayout('business.channel.details').number,9);
 });
 test('auto has distinct educational content; legacy sports and café semantics remain',()=>{
- assert.equal(postBank('auto').filter(p=>p.good).length,5);assert.equal(storeBank('auto').find(p=>p.id==='auto-oil').good,true);
- assert.equal(storeBank('auto').find(p=>p.id==='coffee').good,false);assert.equal(storeBank('cafe').find(p=>p.id==='engine-oil').good,false);
+ assert.equal(postBank('auto').filter(p=>p.good).length,5);assert.equal(storeBank('auto',6).find(p=>p.id==='auto-oil').good,true);
+ assert.equal(storeBank('auto',6).find(p=>p.id==='coffee').good,false);assert.equal(storeBank('cafe',6).find(p=>p.id==='engine-oil').good,false);
  assert.ok(storeBank('sports').some(p=>p.id==='ball'));assert.notDeepEqual(postBank('auto'),postBank('cafe'));
 });
