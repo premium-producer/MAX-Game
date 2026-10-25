@@ -1,7 +1,7 @@
 // Capture the final renderer, without CSS/text/opacity substitutions.
 const {app,BrowserWindow}=require('electron'),fs=require('fs'),path=require('path'),http=require('http'),crypto=require('crypto');
 const legacyLayout=process.argv.includes('--layout=device');
-const dir=__dirname,plugin=path.resolve(dir,'..'),root=path.resolve(dir,'../../../..'),web=root+'/apps/max-game/www',report=root+'/docs/verification-figma-final-20261023'+(legacyLayout?'/transition-layout-v1':''),W=3072,H=1536;
+const dir=__dirname,plugin=path.resolve(dir,'..'),root=path.resolve(dir,'../../../..'),web=(fs.existsSync(root+'/production/startup-one-pc/max-game/www')?root+'/production/startup-one-pc/max-game':root+'/apps/max-game')+'/www',report=root+'/docs/verification-figma-final-20261023'+(legacyLayout?'/transition-layout-v1':''),W=3072,H=1536;
 const assetDir=legacyLayout?report+'/screens':plugin+'/final-assets';
 fs.mkdirSync(report,{recursive:true});fs.mkdirSync(assetDir,{recursive:true});
 app.setPath('userData',report+'/profile-'+process.pid+'-'+Date.now());app.commandLine.appendSwitch('force-device-scale-factor','1');app.on('window-all-closed',()=>{});

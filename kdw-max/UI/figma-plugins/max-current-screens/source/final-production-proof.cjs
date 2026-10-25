@@ -1,6 +1,6 @@
 // Independent check: unmodified production bundle and real palm input.
 const {app,BrowserWindow}=require('electron'),fs=require('fs'),path=require('path'),crypto=require('crypto'),assert=require('assert/strict');
-const root=path.resolve(__dirname,'../../../..'),report=root+'/docs/verification-figma-final-20261023',fixture=report+'/original-production-'+Date.now(),production=root+'/apps/max-game',delay=ms=>new Promise(r=>setTimeout(r,ms)),errors=[];let w,host;
+const root=path.resolve(__dirname,'../../../..'),report=root+'/docs/verification-figma-final-20261023',fixture=report+'/original-production-'+Date.now(),production=fs.existsSync(root+'/production/startup-one-pc/max-game/app.json')?root+'/production/startup-one-pc/max-game':root+'/apps/max-game',delay=ms=>new Promise(r=>setTimeout(r,ms)),errors=[];let w,host;
 fs.mkdirSync(fixture+'/settings',{recursive:true});fs.copyFileSync(production+'/settings/stand.json',fixture+'/settings/stand.json');fs.symlinkSync(production+'/www',fixture+'/www','junction');app.setPath('userData',fixture+'/profile');app.commandLine.appendSwitch('force-device-scale-factor','1');app.on('window-all-closed',()=>{});
 app.whenReady().then(async()=>{try{
  const config=JSON.parse(fs.readFileSync(production+'/app.json'));config.port=18979;host=require(root+'/apps/max-game/launcher/portable-server.cjs').createPortableServer({root:fixture,config});await host.listen();

@@ -2,7 +2,16 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {CalmLinkMotion} from '../src/kdw-link-motion.mjs';
 import {sampleTileEdgeCurve,TileEdgeMotion} from '../src/journey-links.mjs';
+import {businessDeviceLinkRect} from '../src/kdw-business-native-model.mjs';
 const scale=.00312;
+test('confirmation fan attaches to visible snack inside canvas; phones and original iteration retain shell',()=>{
+ const shell={x:100,y:200,w:1280,h:800},media={x:110,y:212,w:1242.4,h:776};
+ const rect=businessDeviceLinkRect(shell,{screenId:'business.platform.ready',mediaRect:media});
+ assert.equal(rect.x,media.x);assert.equal(rect.w,media.w);assert.equal(rect.h,media.w*78/455);assert.equal(rect.y+rect.h/2,media.y+media.h/2);
+ assert.equal(businessDeviceLinkRect(shell,{screenId:'business.channel.publish',mediaRect:media}),shell);
+ assert.equal(businessDeviceLinkRect(shell,{screenId:'business.platform.ready',mediaRect:media,original:true}),shell);
+ const motion=new CalmLinkMotion(),input=links(rect.w,rect.h);motion.update(input,scale,0);for(const l of input)assert.ok(Math.abs(l.edgeCurve.end.y)<=rect.h*.27*scale+1e-9);
+});
 function links(width=392,height=800,y=0){
  const frame=(x,y,w,h,r)=>({x:x*scale,y:y*scale,w:w*scale,h:h*scale,radius:r*scale});
  return Array.from({length:5},(_,lane)=>({a:1,b:2,lane,scope:'guided-line',visibility:1,edgeCurve:{frames:[frame(0,0,256,256,59),frame(256/2+128+width/2,y,width,height,30)]}}));

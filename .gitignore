@@ -31,3 +31,11 @@ Thumbs.db
 /kdw-max/apps/*/data/
 /kdw-max/apps/*/runtime/
 /kdw-max/apps/max-game/source/fixtures/visitor-photo.png
+
+# Public workspace sync tools; other untracked operator files stay local.
+!/kdw-max/ops/
+/kdw-max/ops/*
+!/kdw-max/ops/sync-workspace.mjs
+!/kdw-max/ops/sync/
+/kdw-max/ops/sync/*
+!/kdw-max/ops/sync/paths.json

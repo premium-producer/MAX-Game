@@ -1,0 +1,23 @@
+{
+  "name": "kdw-max-workspace",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Рабочий корень MAX и Стеллы",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "setup:max": "npm --prefix apps/max-game/source/client ci --ignore-scripts",
+    "setup:stela": "npm --prefix apps/stela/source/artifacts/stella-prototype ci --ignore-scripts",
+    "setup": "npm run setup:max && npm run setup:stela",
+    "build:shared": "node apps/STARTUP/tools/sync-game-link.mjs",
+    "build:max": "node apps/max-game/source/adapt-stand-main.mjs && node apps/max-game/source/build.mjs",
+    "build:stela": "node apps/stela/source/typecheck.mjs && node apps/stela/source/build.mjs",
+    "build": "npm run build:shared && npm run build:max && npm run build:stela",
+    "check": "node apps/STARTUP/tools/check-package.mjs",
+    "test:max": "npm --prefix apps/max-game/source/client test",
+    "test:stela": "npm --prefix apps/stela/source/artifacts/stella-prototype test",
+    "sync:check": "node ops/sync-workspace.mjs check",
+    "sync:prepare": "node ops/sync-workspace.mjs prepare"
+  }
+}

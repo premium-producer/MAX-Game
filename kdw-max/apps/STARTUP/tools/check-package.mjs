@@ -8,6 +8,8 @@ const selectedIndex=process.argv.indexOf('--app');
 const selected=selectedIndex<0?null:process.argv[selectedIndex+1];
 if(selected!==null&&!['stela','max-game'].includes(selected))throw Error('Use --app stela or --app max-game');
 const sha=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
+// Windows and macOS enumerate mixed-case filenames in different orders.
+const orderedFiles=files=>JSON.stringify(Object.entries(files).sort(([a],[b])=>a<b?-1:a>b?1:0));
 for(const name of ['stela','max-game']){
  if(selected!==null&&name!==selected)continue;
  const root=path.join(apps,name);if(!fs.existsSync(root))continue;
@@ -17,7 +19,7 @@ for(const name of ['stela','max-game']){
  const manifestPath=path.join(root,'package-manifest.json');
  const manifest={application:JSON.parse(fs.readFileSync(path.join(root,'app.json'))).id,platform:'win32-x64',electron:fs.readFileSync((fs.existsSync(path.join(root,'runtime/version'))?path.join(root,'runtime/version'):path.resolve(apps,'../runtime/electron/version')),'utf8').trim(),files};
  if(seal)fs.writeFileSync(manifestPath,JSON.stringify(manifest,null,2)+'\n');
- else {const expected=JSON.parse(fs.readFileSync(manifestPath));if(JSON.stringify(expected.files)!==JSON.stringify(files))throw Error('Package files differ from manifest: '+name);}
+ else {const expected=JSON.parse(fs.readFileSync(manifestPath));if(orderedFiles(expected.files)!==orderedFiles(files))throw Error('Package files differ from manifest: '+name);}
  if(name==='max-game'){
   const catalog=JSON.parse(fs.readFileSync(path.join(root,'source/client/src/reviewed-content/mission-catalog.json')));
   for(const asset of Object.values(catalog.assets))if(sha(fs.readFileSync(path.join(root,'www',asset.path)))!==asset.sha256)throw Error('Game catalog resource differs: '+asset.path);

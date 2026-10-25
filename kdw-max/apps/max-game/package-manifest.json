@@ -3,10 +3,6 @@
   "platform": "win32-x64",
   "electron": "44.4.5",
   "files": {
-    "app.json": {
-      "bytes": 382,
-      "sha256": "ad4705f24dfbd003930cae8f8a2584870ba04b597a42f5c5d122785cd3e54eae"
-    },
     "Calibrate-Pixel-Map.bat": {
       "bytes": 105,
       "sha256": "c5bcadec14e7861fc76418c4cc28d2b96e93bde934b76997d58b6247d0130261"
@@ -23,9 +19,45 @@
       "bytes": 122,
       "sha256": "f87a432e8021b44cd6af4809ded5767b28d12c884fb1d47d4bd0fb322f9b76df"
     },
+    "README.md": {
+      "bytes": 29133,
+      "sha256": "8e9ded03f3949b4fe2f29cf6b33fdf7f2f7a25f5fb7f8c09099d2c9cd1cac0be"
+    },
+    "Start-Manual.bat": {
+      "bytes": 215,
+      "sha256": "f3358a9287981706318768b3f2a4d3f55d87b44f8363d25c1e7fa405e0d83749"
+    },
+    "Start-Pixel-Map.bat": {
+      "bytes": 100,
+      "sha256": "6dfce99e9594a2998b77f3f5afb1c5bceba2b8e28903118603081aed602b3122"
+    },
+    "Start-With-Stella.bat": {
+      "bytes": 215,
+      "sha256": "f06acc66b9e4934d2b64fe06a86c1d8ee9cbe9e2997b13ad42a8c1f4e3654e7b"
+    },
+    "Start.bat": {
+      "bytes": 163,
+      "sha256": "066afea104817da2852b7ca4616dfd15697e633b36990bd620a7d11254ef354a"
+    },
+    "Stop.bat": {
+      "bytes": 176,
+      "sha256": "481f45ce5459ffcf993101adc03f3c139cf73e52c20e525fa1114906b97db83e"
+    },
+    "app.json": {
+      "bytes": 382,
+      "sha256": "ad4705f24dfbd003930cae8f8a2584870ba04b597a42f5c5d122785cd3e54eae"
+    },
     "launcher/Control.ps1": {
       "bytes": 1726,
       "sha256": "282ad898ee7f4ab220e0dd3f4ad3c083c694458c72d8efb05da4df852321c497"
+    },
+    "launcher/Launch.ps1": {
+      "bytes": 3250,
+      "sha256": "d80316f4743299e6cccdc7e1eaf3e91b2d09c61a8abd47086af1e85b5c771889"
+    },
+    "launcher/Stand-Settings.ps1": {
+      "bytes": 1383,
+      "sha256": "d0affe630907a30e9d0221973a26c4b2f5289afd918255d9c0f089d4b717c1c2"
     },
     "launcher/desktop-main.cjs": {
       "bytes": 5794,
@@ -39,10 +71,6 @@
       "bytes": 17306,
       "sha256": "dc030c6acecbc1c63e54cb0d6fd48f5faa076832fe0a913b1ffe4c864719dc17"
     },
-    "launcher/Launch.ps1": {
-      "bytes": 3250,
-      "sha256": "d80316f4743299e6cccdc7e1eaf3e91b2d09c61a8abd47086af1e85b5c771889"
-    },
     "launcher/portable-server.cjs": {
       "bytes": 4729,
       "sha256": "47276f8d81ad9459e25fad4d152437586a060e3d0640a721fe3d99e043d9be2b"
@@ -51,17 +79,9 @@
       "bytes": 3293,
       "sha256": "be3ddb20a4ae4cdb77d066c07bc8d276d5446cb69d5b237e1ad4887f9b072812"
     },
-    "launcher/Stand-Settings.ps1": {
-      "bytes": 1383,
-      "sha256": "d0affe630907a30e9d0221973a26c4b2f5289afd918255d9c0f089d4b717c1c2"
-    },
     "provenance.json": {
       "bytes": 30123,
       "sha256": "248448c42c9ac57439c93c4a34b2bbadd02eb9b332de9d2cb3c42605f2d230cd"
-    },
-    "README.md": {
-      "bytes": 29133,
-      "sha256": "8e9ded03f3949b4fe2f29cf6b33fdf7f2f7a25f5fb7f8c09099d2c9cd1cac0be"
     },
     "settings/stand.json": {
       "bytes": 688,
@@ -2896,8 +2916,8 @@
       "sha256": "b6225c64c89c1f1d744731001f140b86927e8c76ccb42eba710a1a7d72e75f37"
     },
     "source/client/test/kdw-link-motion.test.mjs": {
-      "bytes": 2600,
-      "sha256": "9c3fbc387e5ac96274c2706e261a599c1e0720783213b10fce7bd709be26f79e"
+      "bytes": 3511,
+      "sha256": "70e274765d324baa132ceaad0701dacd302fdf17c448cd45de013a4492eb1d82"
     },
     "source/client/test/kdw-personal-channel.test.mjs": {
       "bytes": 11936,
@@ -4243,13 +4263,13 @@
       "bytes": 10177,
       "sha256": "d56a6edc0d6d685ee2014fb9d05aeee61ffd1a0f8ef9c918d729d580fc401df1"
     },
-    "source/vendor/howler/dist/howler.js": {
-      "bytes": 107970,
-      "sha256": "81343a465947066ec1cd91a1ab88fe83591234159f4f55bcdf44073822c0bd9e"
-    },
     "source/vendor/howler/LICENSE.md": {
       "bytes": 1088,
       "sha256": "0ad5aef7beeb552832fe01db1c46933f948dfe5da35017bd0efa0006ffd2ced9"
+    },
+    "source/vendor/howler/dist/howler.js": {
+      "bytes": 107970,
+      "sha256": "81343a465947066ec1cd91a1ab88fe83591234159f4f55bcdf44073822c0bd9e"
     },
     "source/vendor/howler/package.json": {
       "bytes": 1931,
@@ -4630,26 +4650,6 @@
     "source/web/touch.mjs": {
       "bytes": 12568,
       "sha256": "f73af3a9124c0638b8e1da21b015ee39f9bf42fddeb89bdf6df36e81415ac702"
-    },
-    "Start-Manual.bat": {
-      "bytes": 215,
-      "sha256": "f3358a9287981706318768b3f2a4d3f55d87b44f8363d25c1e7fa405e0d83749"
-    },
-    "Start-Pixel-Map.bat": {
-      "bytes": 100,
-      "sha256": "6dfce99e9594a2998b77f3f5afb1c5bceba2b8e28903118603081aed602b3122"
-    },
-    "Start-With-Stella.bat": {
-      "bytes": 215,
-      "sha256": "f06acc66b9e4934d2b64fe06a86c1d8ee9cbe9e2997b13ad42a8c1f4e3654e7b"
-    },
-    "Start.bat": {
-      "bytes": 163,
-      "sha256": "066afea104817da2852b7ca4616dfd15697e633b36990bd620a7d11254ef354a"
-    },
-    "Stop.bat": {
-      "bytes": 176,
-      "sha256": "481f45ce5459ffcf993101adc03f3c139cf73e52c20e525fa1114906b97db83e"
     },
     "www/assets/backgrounds/figma-game-background.json": {
       "bytes": 4380,
@@ -7855,14 +7855,6 @@
       "bytes": 894,
       "sha256": "808937310d88e4e6eb056dfed64a8d8695b3d29fa0a613bab971d2679648712c"
     },
-    "www/earth/contours/decorative-2026/Russia_Border_Mask_6K.svg": {
-      "bytes": 118521,
-      "sha256": "7cbe7235fc6d6bef85c7ff6d0947228d792b2b2a66f67f097e687c3042858c8a"
-    },
-    "www/earth/contours/decorative-2026/Russia_Fill_Mask_6K.svg": {
-      "bytes": 118532,
-      "sha256": "75add7711cad7dc9d83c17e81533e789ad8ae9ec5157e358a4545a2297fa4186"
-    },
     "www/earth/Earth_Clouds_4K.webp": {
       "bytes": 2747422,
       "sha256": "aa11b35010eedb2dfbd65c4bb60f2aae65adbbf1a83ec7fab2ae96d23bf99a37"
@@ -7898,6 +7890,14 @@
     "www/earth/Russia_Fill_Mask_6K.svg": {
       "bytes": 549728,
       "sha256": "eced47a294aed730439cca4db28ccd1e2675a348f0f53b1bcc8c4a7d2a6c8869"
+    },
+    "www/earth/contours/decorative-2026/Russia_Border_Mask_6K.svg": {
+      "bytes": 118521,
+      "sha256": "7cbe7235fc6d6bef85c7ff6d0947228d792b2b2a66f67f097e687c3042858c8a"
+    },
+    "www/earth/contours/decorative-2026/Russia_Fill_Mask_6K.svg": {
+      "bytes": 118532,
+      "sha256": "75add7711cad7dc9d83c17e81533e789ad8ae9ec5157e358a4545a2297fa4186"
     },
     "www/icons/core.svg": {
       "bytes": 3424,
@@ -7963,6 +7963,10 @@
       "bytes": 1081,
       "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
     },
+    "www/webgl-v5/THIRD-PARTY-NOTICES.txt": {
+      "bytes": 1453,
+      "sha256": "e2a134c52a5a782b3d663a285b1a6d1337abd605cf3fd059e6f7166b5961b630"
+    },
     "www/webgl-v5/annotation-source.json": {
       "bytes": 20485,
       "sha256": "b48786a30ca872537820e41d4950b408068e8ab61c81562ab607aa4cd73734b6"
@@ -8019,14 +8023,6 @@
       "bytes": 24404,
       "sha256": "5e0dd254b8518d931748d9e53f65f4fb1e0ca9447334e08545a6fbec903c26d6"
     },
-    "www/webgl-v5/audio/audio/game_icons_deselect.mp3": {
-      "bytes": 32301,
-      "sha256": "0ca75f721b60ba722f8f88d40787b780478d9bd34ae1cabd748a15890f93a5fb"
-    },
-    "www/webgl-v5/audio/audio/game_icons_deselect.ogg": {
-      "bytes": 30666,
-      "sha256": "eac450eabe50e4d4adb6b77efc98e5413daf170236a143bc6dcf80676dde6737"
-    },
     "www/webgl-v5/audio/audio/game_icon_grab_1.mp3": {
       "bytes": 22701,
       "sha256": "376011df9f68bdd44ccfdfeba4f38c4d577af38b1d6ad8786166881f0a8ac9af"
@@ -8059,6 +8055,22 @@
       "bytes": 17004,
       "sha256": "7528c00225890a83e007b7afbef2622023afe7c211ac281c75ffadb26297e678"
     },
+    "www/webgl-v5/audio/audio/game_icons_deselect.mp3": {
+      "bytes": 32301,
+      "sha256": "0ca75f721b60ba722f8f88d40787b780478d9bd34ae1cabd748a15890f93a5fb"
+    },
+    "www/webgl-v5/audio/audio/game_icons_deselect.ogg": {
+      "bytes": 30666,
+      "sha256": "eac450eabe50e4d4adb6b77efc98e5413daf170236a143bc6dcf80676dde6737"
+    },
+    "www/webgl-v5/audio/audio/game_phone_grab_1.mp3": {
+      "bytes": 29613,
+      "sha256": "a87ef5bf01e670ef462b1abbc57dbad8b550d5905c98cce11401514c0da5f5e8"
+    },
+    "www/webgl-v5/audio/audio/game_phone_grab_1.ogg": {
+      "bytes": 29959,
+      "sha256": "83121cdbc3cf49efe0f8a2392a024bad9fab1a762391cf7c0cd6e1620a3bcc7f"
+    },
     "www/webgl-v5/audio/audio/game_phonescreen_activate.mp3": {
       "bytes": 32301,
       "sha256": "c8f2d1a3e4e7622e8d3ef12a15bdbe155d8c006bf643e8343b92cfc830462531"
@@ -8074,14 +8086,6 @@
     "www/webgl-v5/audio/audio/game_phonescreen_reactivate.ogg": {
       "bytes": 28671,
       "sha256": "a8e45b20ac1fbfad55961a5d525bf47541f93f6ef7188a4e735d90c2373a66b6"
-    },
-    "www/webgl-v5/audio/audio/game_phone_grab_1.mp3": {
-      "bytes": 29613,
-      "sha256": "a87ef5bf01e670ef462b1abbc57dbad8b550d5905c98cce11401514c0da5f5e8"
-    },
-    "www/webgl-v5/audio/audio/game_phone_grab_1.ogg": {
-      "bytes": 29959,
-      "sha256": "83121cdbc3cf49efe0f8a2392a024bad9fab1a762391cf7c0cd6e1620a3bcc7f"
     },
     "www/webgl-v5/audio/audio/game_transition_handscreen.mp3": {
       "bytes": 58413,
@@ -8147,14 +8151,6 @@
       "bytes": 24404,
       "sha256": "5e0dd254b8518d931748d9e53f65f4fb1e0ca9447334e08545a6fbec903c26d6"
     },
-    "www/webgl-v5/audio/game_icons_deselect.mp3": {
-      "bytes": 32301,
-      "sha256": "0ca75f721b60ba722f8f88d40787b780478d9bd34ae1cabd748a15890f93a5fb"
-    },
-    "www/webgl-v5/audio/game_icons_deselect.ogg": {
-      "bytes": 30666,
-      "sha256": "eac450eabe50e4d4adb6b77efc98e5413daf170236a143bc6dcf80676dde6737"
-    },
     "www/webgl-v5/audio/game_icon_grab_1.mp3": {
       "bytes": 22701,
       "sha256": "376011df9f68bdd44ccfdfeba4f38c4d577af38b1d6ad8786166881f0a8ac9af"
@@ -8187,6 +8183,22 @@
       "bytes": 17004,
       "sha256": "7528c00225890a83e007b7afbef2622023afe7c211ac281c75ffadb26297e678"
     },
+    "www/webgl-v5/audio/game_icons_deselect.mp3": {
+      "bytes": 32301,
+      "sha256": "0ca75f721b60ba722f8f88d40787b780478d9bd34ae1cabd748a15890f93a5fb"
+    },
+    "www/webgl-v5/audio/game_icons_deselect.ogg": {
+      "bytes": 30666,
+      "sha256": "eac450eabe50e4d4adb6b77efc98e5413daf170236a143bc6dcf80676dde6737"
+    },
+    "www/webgl-v5/audio/game_phone_grab_1.mp3": {
+      "bytes": 29613,
+      "sha256": "a87ef5bf01e670ef462b1abbc57dbad8b550d5905c98cce11401514c0da5f5e8"
+    },
+    "www/webgl-v5/audio/game_phone_grab_1.ogg": {
+      "bytes": 29959,
+      "sha256": "83121cdbc3cf49efe0f8a2392a024bad9fab1a762391cf7c0cd6e1620a3bcc7f"
+    },
     "www/webgl-v5/audio/game_phonescreen_activate.mp3": {
       "bytes": 32301,
       "sha256": "c8f2d1a3e4e7622e8d3ef12a15bdbe155d8c006bf643e8343b92cfc830462531"
@@ -8202,14 +8214,6 @@
     "www/webgl-v5/audio/game_phonescreen_reactivate.ogg": {
       "bytes": 28671,
       "sha256": "a8e45b20ac1fbfad55961a5d525bf47541f93f6ef7188a4e735d90c2373a66b6"
-    },
-    "www/webgl-v5/audio/game_phone_grab_1.mp3": {
-      "bytes": 29613,
-      "sha256": "a87ef5bf01e670ef462b1abbc57dbad8b550d5905c98cce11401514c0da5f5e8"
-    },
-    "www/webgl-v5/audio/game_phone_grab_1.ogg": {
-      "bytes": 29959,
-      "sha256": "83121cdbc3cf49efe0f8a2392a024bad9fab1a762391cf7c0cd6e1620a3bcc7f"
     },
     "www/webgl-v5/audio/game_transition_handscreen.mp3": {
       "bytes": 58413,
@@ -8438,10 +8442,6 @@
     "www/webgl-v5/third-party-notices.html": {
       "bytes": 3971,
       "sha256": "b38ba0977ab49e21791268e53203c97f664464dfde8f49bf89356c832dd88d9d"
-    },
-    "www/webgl-v5/THIRD-PARTY-NOTICES.txt": {
-      "bytes": 1453,
-      "sha256": "e2a134c52a5a782b3d663a285b1a6d1337abd605cf3fd059e6f7166b5961b630"
     },
     "www/webgl-v5/v5.css": {
       "bytes": 8986,
