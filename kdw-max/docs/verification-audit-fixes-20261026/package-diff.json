@@ -1,0 +1,49 @@
+{
+  "max-game": {
+    "changed": [
+      "launcher/desktop-main.cjs",
+      "launcher/game-link-network.cjs",
+      "launcher/game-link.cjs",
+      "source/adapt-stand-main.mjs",
+      "source/build.mjs",
+      "source/client/src/kdw-game-link.mjs",
+      "source/client/src/kdw-production.mjs",
+      "source/client/src/kdw-task-journey.mjs",
+      "source/client/src/journey-guided-main.js",
+      "source/client/src/application/indexeddb-persistence.mjs",
+      "source/client/src/application/mission-session.mjs",
+      "source/client/src/application/webgl-session.mjs",
+      "www/webgl-v5/r9-build.json",
+      "www/webgl-v5/app.js",
+      "www/webgl-v5/build.json"
+    ],
+    "added": [
+      "launcher/renderer-recovery.cjs",
+      "source/client/test/kdw-retention.test.mjs",
+      "source/client/test/kdw-audit-fixes.test.mjs",
+      "source/client/src/kdw-runtime-health.mjs",
+      "source/client/src/application/trusted-clock.mjs"
+    ],
+    "removed": [],
+    "ignoredOSMetadata": [
+      ".DS_Store"
+    ]
+  },
+  "stela": {
+    "changed": [
+      "launcher/game-link-network.cjs",
+      "launcher/game-link.cjs",
+      "source/artifacts/stella-prototype/src/features/voice/use-omni-prototype.ts",
+      "source/artifacts/stella-prototype/src/features/voice/OmniPrototype.tsx",
+      "www/stella/assets/app.js"
+    ],
+    "added": [
+      "source/artifacts/stella-prototype/src/features/voice/delivery-status.test.ts",
+      "source/artifacts/stella-prototype/src/features/voice/delivery-status.ts"
+    ],
+    "removed": [],
+    "ignoredOSMetadata": [
+      ".DS_Store"
+    ]
+  }
+}

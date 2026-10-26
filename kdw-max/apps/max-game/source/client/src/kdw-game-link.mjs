@@ -1,12 +1,13 @@
+import {readWithRecovery} from './kdw-runtime-health.mjs';
 // Portable host boundary: the mission core remains the sole game state machine.
 let binding=null;
 export function linkedVisitorAvatar(){return binding?.avatar??'./assets/kdw-native/conversation/visitor-avatar.svg';}
 const api=async(url,options={})=>{const r=await fetch(url,{...options,signal:AbortSignal.timeout(4000),cache:'no-store'});if(!r.ok)throw Error('GAME_LINK_'+r.status);return r.json();};
 export async function loadGameLink(params){
  if(params.get('backend')==='server'||params.get('test')==='memory'||params.has('interaction')||params.get('link')==='0'||!['127.0.0.1','localhost','[::1]'].includes(location.hostname)&&params.get('link')!=='1')return null;
- let game;try{({game}=await api('/__kdw/link/active'));}catch{if(params.get('link')==='1'){const message='Нет связи с сохранённой игрой. Перезапустите MAX.';const node=document.querySelector('#loading');if(node)node.textContent=message;throw Error(message);}return null;}
+ let game;try{({game}=await (document.documentElement.dataset.production==='true'?readWithRecovery(()=>api('/__kdw/link/active')):api('/__kdw/link/active')));}catch{if(params.get('link')==='1'){const message='Нет связи с сохранённой игрой. Перезапустите MAX.';const node=document.querySelector('#loading');if(node)node.textContent=message;throw Error(message);}return null;}
  if(!game){if(params.get('link')==='1'){params.delete('session');params.delete('link');const u=new URL(location.href);u.search=params.toString();history.replaceState(null,'',u);}return{game:null,assets:[],enabled:true};}
- const manifest=await api(`/__kdw/link/games/${game.gameId}/assets`);
+ const manifest=await readWithRecovery(()=>api(`/__kdw/link/games/${game.gameId}/assets`));
  if(manifest.gameId!==game.gameId)throw Error('GAME_LINK_CONTEXT_CONFLICT');
  params.set('session',game.gameId);params.set('link','1');
  const u=new URL(location.href);u.search=params.toString();history.replaceState(null,'',u);
@@ -28,15 +29,17 @@ export async function resumeLinkedMission(session,link){
 }
 export function watchGameLink({link,getSession,onChange=()=>location.reload()}){
  if(!link?.enabled)return()=>{};
- let stopped=false,running=false,lastRevision=-1;
+ let stopped=false,running=false;
  async function tick(){if(stopped||running)return;running=true;try{
   const session=getSession(),state=session?.snapshot?.state;
   if(!link.game&&state&&state.status!=='menu')return;
-  if(link.game&&state&&state.sessionId===link.game.gameId&&state.revision!==lastRevision){
-   try{await api(`/__kdw/link/games/${link.game.gameId}/progress`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({gameId:state.sessionId,revision:state.revision,runId:state.runId,status:state.status,missionId:state.missionId,taskId:state.taskId,screenId:state.screenId,contentRevision:state.contentRevision,endReason:state.standEndReason??null})});lastRevision=state.revision;}catch(error){if(error.message!=='GAME_LINK_409')throw error;}
+  if(link.game&&state&&state.sessionId===link.game.gameId){
+   try{await api(`/__kdw/link/games/${link.game.gameId}/progress`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({gameId:state.sessionId,revision:state.revision,runId:state.runId,status:state.status,missionId:state.missionId,taskId:state.taskId,screenId:state.screenId,contentRevision:state.contentRevision,endReason:state.standEndReason??null})});}catch(error){if(error.message!=='GAME_LINK_409')throw error;}
   }
   const {game}=await api('/__kdw/link/active');if(!stopped&&(game?.gameId??null)!==(link.game?.gameId??null)){stopped=true;onChange();}
   if(!stopped&&!game&&document.documentElement.dataset.production==='true'){const policy=await api('/__kdw/settings');if(policy.revision!==document.documentElement.dataset.standSettings){stopped=true;onChange();}}
  }catch{/* Durable game state and pending delivery survive temporary outages. */}finally{running=false;}}
  const timer=setInterval(()=>void tick(),1200);void tick();return()=>{stopped=true;clearInterval(timer);};
 }
+
+export async function claimLinkedMission(link){if(!link?.game)return;try{await api(`/__kdw/link/games/${link.game.gameId}/claim`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({gameId:link.game.gameId})});}catch(error){if(error.message==='GAME_LINK_409')location.reload();throw error;}}

@@ -1,5 +1,7 @@
+import {readWithRecovery,monitorPreparation} from './kdw-runtime-health.mjs';
 export async function readStandSettings(params){
- let settings;try{const r=await fetch('/__kdw/settings',{cache:'no-store',signal:AbortSignal.timeout(5000)});if(!r.ok)throw Error('STAND_SETTINGS_UNAVAILABLE');settings=await r.json();}catch(error){if(['127.0.0.1','localhost','[::1]'].includes(location.hostname))throw error;return null;}
+ const read=async()=>{const r=await fetch('/__kdw/settings',{cache:'no-store',signal:AbortSignal.timeout(5000)});if(!r.ok)throw Error('STAND_SETTINGS_UNAVAILABLE');return r.json();};
+ let settings;if(['127.0.0.1','localhost','[::1]'].includes(location.hostname))settings=await readWithRecovery(read);else try{settings=await read();}catch{return null;}
  if(!settings.production)return null;
  // The fixed shell watermark is excluded from every production scene/variant.
  const brandingStyle=document.createElement('style');brandingStyle.dataset.standBranding='true';
@@ -20,8 +22,8 @@ export function startProduction({getSession,ready}){
  function move(e){if(e.buttons)touch(e);}
  async function tick(){if(disposed||busy)return;const session=getSession(),s=session?.snapshot?.state;if(!s?.standPolicy)return;busy=true;try{
   if(!s.standReady&&ready(s))await session.command('STAND_READY',{screenId:s.screenId??s.status});
-  await session.poll(Date.now());
+  await session.poll(Date.now(),{pauseResult:true});
  }catch(error){console.error('MAX production clock',error);}finally{busy=false;}}
- const timer=setInterval(()=>void tick(),100);
- return()=>{disposed=true;clearInterval(timer);document.removeEventListener('pointerdown',touch);document.removeEventListener('pointermove',move);};
+ const timer=setInterval(()=>void tick(),100),stopHealth=monitorPreparation(()=>getSession()?.snapshot?.state);
+ return()=>{disposed=true;clearInterval(timer);stopHealth();document.removeEventListener('pointerdown',touch);document.removeEventListener('pointermove',move);};
 }

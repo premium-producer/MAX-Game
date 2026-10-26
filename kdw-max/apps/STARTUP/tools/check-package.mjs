@@ -14,7 +14,7 @@ for(const name of ['stela','max-game']){
  if(selected!==null&&name!==selected)continue;
  const root=path.join(apps,name);if(!fs.existsSync(root))continue;
  const files={};
- function walk(folder){for(const e of fs.readdirSync(folder,{withFileTypes:true})){if(['data','node_modules','package-manifest.json'].includes(e.name))continue;const filename=path.join(folder,e.name);if(e.isDirectory())walk(filename);else if(e.isFile()){const bytes=fs.readFileSync(filename);files[path.relative(root,filename).replaceAll('\\','/')]={bytes:bytes.length,sha256:sha(bytes)};}else throw Error('Nonportable filesystem entry: '+filename);}}
+ function walk(folder){for(const e of fs.readdirSync(folder,{withFileTypes:true})){if(['data','node_modules','package-manifest.json','.DS_Store','Thumbs.db'].includes(e.name))continue;const filename=path.join(folder,e.name);if(e.isDirectory())walk(filename);else if(e.isFile()){const bytes=fs.readFileSync(filename);files[path.relative(root,filename).replaceAll('\\','/')]={bytes:bytes.length,sha256:sha(bytes)};}else throw Error('Nonportable filesystem entry: '+filename);}}
  walk(root);
  const manifestPath=path.join(root,'package-manifest.json');
  const manifest={application:JSON.parse(fs.readFileSync(path.join(root,'app.json'))).id,platform:'win32-x64',electron:fs.readFileSync((fs.existsSync(path.join(root,'runtime/version'))?path.join(root,'runtime/version'):path.resolve(apps,'../runtime/electron/version')),'utf8').trim(),files};

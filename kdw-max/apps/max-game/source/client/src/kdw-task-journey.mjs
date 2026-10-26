@@ -76,12 +76,12 @@ export class KdwTaskJourney extends V5RevealJourney{
   // dwell as other results, starting after decoding/morphing, not the command.
   const confirmation=this.displayedState?.screenId==='business.platform.ready'&&this.displayedState?.status==='result'&&
    this.snapshot?.state.status==='result'&&this.snapshot.state.screenId===this.displayedState.screenId&&this.snapshot.state.runId===this.displayedState.runId;
-  const key=confirmation?`${this.displayedState.runId}:${this.displayedState.revision}`:null;
+  const key=confirmation?`${this.displayedState.sessionId}:${this.displayedState.runId}:${this.displayedState.taskId}:${this.displayedState.screenId}`:null;
   if(key!==this.confirmationKey){this.confirmationKey=key;this.confirmationVisibleMs=0;}
   if(confirmation){
    const visible=options.active!==false&&!options.busy&&!options.dragging&&options.deviceReady&&options.deviceShown;
    if(visible)this.confirmationVisibleMs+=Math.max(0,Math.min(.1,dt))*1000;
-   if(this.confirmationVisibleMs<800)options={...options,busy:true};
+   if(this.confirmationVisibleMs<(this.snapshot.state.standPolicy?.value.max.timings.resultSeconds??.8)*1000)options={...options,busy:true};
    this._displayView={...this._displayView,preserveAuthoredCompletion:true};
   }
   super.tick(dt,options);

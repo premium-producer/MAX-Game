@@ -23,7 +23,7 @@ def copy_app(name,parent,dev=False):
  src=source/'apps'/name; dst=parent/name
  pins=json.loads((src/'package-manifest.json').read_text(encoding='utf-8'))['files']
  def ignore(folder,names):
-  omitted={'data','node_modules'} if dev else {'data','node_modules','package-manifest.json'}
+  omitted=({'data','node_modules'} if dev else {'data','node_modules','package-manifest.json'})|{'.DS_Store','Thumbs.db'}
   if Path(folder)==src and not dev: omitted.add('source')
   return [n for n in names if n in omitted or not dev and '(2)' in n and n in {'app (2).json','package-manifest (2).json','app (2).js','kdw-business-native-model (2).mjs'}]
  shutil.copytree(src,dst,ignore=ignore)
@@ -31,6 +31,12 @@ def copy_app(name,parent,dev=False):
   if f.is_file() and f.name!='package-manifest.json':
    relative=f.relative_to(dst).as_posix()
    if relative not in pins or hashlib.sha256(f.read_bytes()).hexdigest()!=pins[relative]['sha256']: raise SystemExit('Source changed during packaging: '+name+'/'+relative)
+ # The explicit packaging command selects a profile only in the new output.
+ config=json.loads((dst/'app.json').read_text(encoding='utf-8'))
+ config['production']=not dev
+ if name=='max-game' and not dev: config['entry']='/webgl-v5/client.html?backend=local&view=pixel-map'
+ if dev and not config['version'].endswith('-DEV'): config['version']+='-DEV'
+ save(dst/'app.json',config)
  if not (dst/'runtime').exists(): shutil.copytree(source/'runtime/electron',dst/'runtime')
  if name=='stela':
   for n in ['omni.local.json','audio.local.json','audio-profile.json']:

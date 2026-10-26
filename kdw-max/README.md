@@ -41,3 +41,9 @@ npm run check
 [Доступ к основному ПК и правила GitHub-синхронизации](docs/DEVELOPMENT_AND_SYNC.md).
 
 Папка прежнего переносимого экспорта разобрана. Его контрольные документы и исходный SHA-манифест сохранены в `.sync/archive/export-20261024/`; второй полной копии приложений не создано. [Квитанция переноса](.sync/workspace-migration-20261025.json).
+
+## Исправления и регрессии 26.10
+
+[Аудит и список задач](docs/GAMEPLAY_AUDIT_TASKS.md), [реализованные исправления и проверка](docs/verification-audit-fixes-20261026/README.md), [ТЗ на звук](docs/SOUND_DESIGN_SPEC.md).
+
+После `npm run setup` и `npm run setup:browser`: `npm run build`, затем `npm run test:audit:all`. Браузерный прогон требует свободных портов 18781/18782, использует временные данные и не обращается к AI. Для быстрой программной регрессии без Chromium — `npm run test:audit`. Обычная сборка сохраняет профиль запуска; новые Windows-комплекты формирует явный `ops/production-build/build.py --output НОВАЯ_ПАПКА`.

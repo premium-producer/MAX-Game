@@ -1,0 +1,33 @@
+{
+  "synthetic": true,
+  "indexedDBEngine": "fake-indexeddb; not a browser disk benchmark",
+  "count": 5000,
+  "serializedFixtureBytes": 5680000,
+  "idbPrune": {
+    "ms": 486.73,
+    "result": 5000
+  },
+  "create": {
+    "ms": 0.66,
+    "result": 0
+  },
+  "commit": {
+    "ms": 0.28,
+    "result": 1
+  },
+  "restore": {
+    "ms": 0.1,
+    "result": "task"
+  },
+  "outboxBytesBefore": 1045000,
+  "filesBefore": 5000,
+  "relayStartupAndCleanup": {
+    "ms": 368.6,
+    "result": 0
+  },
+  "steadyFlush": {
+    "ms": 0.12,
+    "result": 100
+  },
+  "passed": true
+}

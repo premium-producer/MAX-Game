@@ -1,3 +1,5 @@
+import {createTrustedClock} from './trusted-clock.mjs';
+const wallClock=()=>Date.now();
 import {production,timing} from '../kdw-production-core.mjs';
 import {assertMissionAssignment} from '../contracts/mission-assignment.mjs';
 import {MISSION_CATALOG} from '../content/mission-catalog.mjs';
@@ -11,19 +13,20 @@ const freshLayouts=()=>({layoutRevision:0,positions:{},receipts:[]});
 export const MISSION_CLOCK_CHECKPOINT_MS=500;
 export const MISSION_CLOCK_EXTRAPOLATION_MS=1000;
 /** One authority per session. now is host time, never a field of client commands. */
-export function createMissionSessionApplication({catalog=MISSION_CATALOG,persistence,now=()=>Date.now(),onObserverError=()=>{},missionRulesRevision=MISSION_RULES_REVISION}){
+export function createMissionSessionApplication({catalog=MISSION_CATALOG,persistence,now=wallClock,monotonic=now===wallClock?()=>performance.now():now,admit=null,onObserverError=()=>{},missionRulesRevision=MISSION_RULES_REVISION}){
  catalog=copy(assertMissionCatalog(structuredClone(catalog)));
  if(!persistence||['load','create','commit'].some(k=>typeof persistence[k]!=='function'))throw new TypeError('Explicit PersistencePort required');
  if(typeof now!=='function'||typeof onObserverError!=='function')throw new TypeError('Clock and diagnostic handler required');
  if(![MISSION_RULES_REVISION,TASK_CLOCK_RULES_REVISION].includes(missionRulesRevision))throw new TypeError('Invalid mission rules revision');
  const cache=new Map(),queues=new Map(),listeners=new Map(),contacts=new Map(),sequences=new Map();let closed=false,internalSerial=0;
- const clock=()=>{const time=Math.floor(now());if(!Number.isSafeInteger(time)||time<0)throw err('INVALID_TRUSTED_TIME');return time;};
+ const clock=createTrustedClock({wall:now,monotonic});
  const queue=(id,fn)=>{if(closed)return Promise.reject(err('APPLICATION_CLOSED'));if(!missionToken(id))return Promise.reject(err('INVALID_SESSION_ID'));const task=(queues.get(id)??Promise.resolve()).catch(()=>{}).then(()=>{if(closed)throw err('APPLICATION_CLOSED');return fn();});const tail=task.catch(()=>{});queues.set(id,tail);tail.then(()=>{if(queues.get(id)===tail)queues.delete(id);});return task;};
  async function load(id){if(cache.has(id))return cache.get(id);const saved=await persistence.load(id);if(!saved)throw err('SESSION_NOT_FOUND');
   const r=saved.record,restored=restoreMissionModel(catalog,r?.mission);
   if(r?.schemaVersion!==2||!['clockCheckpointAt,layouts,mission,schemaVersion','layouts,mission,schemaVersion'].includes(Object.keys(r).sort().join(','))||!restored.ok||restored.model.state.sessionId!==id||!Number.isSafeInteger(saved.version)||saved.version<0||!validLayouts(r.layouts)||Object.keys(r.layouts.positions).some(key=>!validLayoutNode(key,catalog)))throw err('INVALID_SAVED_SESSION');
   const lastConfirmed=restored.model.receipts.at(-1)?.now??0,checkpoint=r.clockCheckpointAt??lastConfirmed;
-  if(!Number.isSafeInteger(checkpoint)||checkpoint<lastConfirmed||checkpoint>clock())throw err('INVALID_SAVED_CLOCK');
+  if(!Number.isSafeInteger(checkpoint)||checkpoint<lastConfirmed)throw err('INVALID_SAVED_CLOCK');
+  clock.recover(checkpoint);
   let entry={version:saved.version,record:copy({...r,mission:restored.model,clockCheckpointAt:checkpoint})};
   // A process restart cannot restore an expired transport lease. Preserve the
   // timer only to the last committed checkpoint, then pause before returning.
@@ -86,12 +89,12 @@ export function createMissionSessionApplication({catalog=MISSION_CATALOG,persist
   const reply={ok:true,code:'APPLIED',commandId:c.commandId,layoutRevision:next.layoutRevision};next.receipts.push({command:structuredClone(c),reply});
   e=await commit(id,e,{...e.record,layouts:next},[{type:'LAYOUT_CHANGED',layoutRevision:next.layoutRevision}]);return copy({reply,duplicate:false,snapshot:snapshot(e)});
  }
- async function poll(id,time){const assignment=await managed(id);if(assignment && assignment.lifecycle.status!=='active')return copy({reply:{ok:true,code:'ASSIGNMENT_TERMINAL'},duplicate:false,snapshot:snapshot(await load(id))});let e=await load(id),s=e.record.mission.state;
+ async function poll(id,time,{allowResult=false}={}){const assignment=await managed(id);if(assignment && assignment.lifecycle.status!=='active')return copy({reply:{ok:true,code:'ASSIGNMENT_TERMINAL'},duplicate:false,snapshot:snapshot(await load(id))});let e=await load(id),s=e.record.mission.state;
   if(production(s)&&['task','result'].includes(s.status)&&s.lastTouchAt!==null&&time-s.lastTouchAt>=timing(s,'inactivitySeconds'))return dispatch(id,internalCommand(e,'STAND_IDLE'),time,true);
   if((s.ownerActive||production(s))&&s.deadlineAt!==null&&time>=s.deadlineAt&&s.status!=='expired')return dispatch(id,internalCommand(e,'EXPIRE'),time,true);
   if(!s.ownerActive&&!production(s))return copy({reply:{ok:true,code:'UNCHANGED'},duplicate:false,snapshot:snapshot(e)});
-  const contact=contacts.get(id);if(contact&&s.status==='scan'&&contact.runId===s.runId&&time-contact.startedAt>=(production(s)?timing(s,'palmHoldSeconds'):0)){contacts.delete(id);return dispatch(id,internalCommand(e,'HOLD_CONFIRMED'),time,true);}
-  if(s.status==='result'&&time>=s.resultReadyAt)return dispatch(id,internalCommand(e,'ADVANCE_RESULT'),time,true);
+  const contact=contacts.get(id);if(contact&&s.status==='scan'&&contact.runId===s.runId&&time-contact.startedAt>=(production(s)?timing(s,'palmHoldSeconds'):0)){if(admit)await admit(s);contacts.delete(id);return dispatch(id,internalCommand(e,'HOLD_CONFIRMED'),Math.max(time,clock()),true);}
+  if(s.status==='result'&&time>=s.resultReadyAt&&(!production(s)||allowResult))return dispatch(id,internalCommand(e,'ADVANCE_RESULT'),time,true);
   if(s.status==='task'&&(!production(s)||s.standReady)){const screen=catalog.tasks[s.taskId].screens[s.screenId];if(screen.automaticMs!==null&&screen.automaticMs!==undefined&&time-s.screenEnteredAt>=screen.automaticMs)return dispatch(id,internalCommand(e,'AUTO_SCREEN',{screenId:s.screenId,actionId:screen.actions[0].actionId}),time,true);}
   if(['scan','task','result'].includes(s.status)&&time-e.record.clockCheckpointAt>=MISSION_CLOCK_CHECKPOINT_MS)e=await commit(id,e,{...e.record,clockCheckpointAt:time},[]);
   return copy({reply:{ok:true,code:'UNCHANGED'},duplicate:false,snapshot:snapshot(e)});
@@ -147,8 +150,8 @@ export function createMissionSessionApplication({catalog=MISSION_CATALOG,persist
   });},
   sendCommand(input){const c=structuredClone(input);return queue(c?.sessionId,async()=>{const e=await load(c.sessionId);if(e.record.layouts.receipts.some(r=>r.command.commandId===c.commandId)&&c.type!=='SET_LAYOUT')return copy({reply:{ok:false,code:'COMMAND_ID_REUSED'},duplicate:false,snapshot:snapshot(e)});return dispatch(c.sessionId,c,clock());});},
   subscribe(id,callback){if(typeof callback!=='function')return Promise.reject(new TypeError('Callback required'));return queue(id,async()=>{const e=await load(id);if(closed)throw err('APPLICATION_CLOSED');const set=listeners.get(id)??new Set();listeners.set(id,set);set.add(callback);deliver(callback,copy({snapshot:{...snapshot(e),assignment:await managed(id)},effects:[]}));return()=>{set.delete(callback);};});},
-  inputOwnerChanged(id,{active},trustedNow=clock()){return queue(id,async()=>{await guardManaged(id,'OWNER_CHANGED');contacts.delete(id);for(const key of sequences.keys())if(key.startsWith(`${id}:`))sequences.delete(key);const e=await load(id);if(e.record.mission.state.ownerActive===active)return snapshot(e);await dispatch(id,internalCommand(e,'OWNER_CHANGED',{active}),Math.floor(trustedNow),true);return snapshot(await load(id));});},
-  handleContact(id,event,trustedNow=clock()){const value=structuredClone(event);return queue(id,async()=>{await guardManaged(id,'CONTACT');const e=await load(id),s=e.record.mission.state;
+  inputOwnerChanged(id,{active},trustedNow=clock()){return queue(id,async()=>{await guardManaged(id,'OWNER_CHANGED');contacts.delete(id);for(const key of sequences.keys())if(key.startsWith(`${id}:`))sequences.delete(key);const e=await load(id);if(e.record.mission.state.ownerActive===active)return snapshot(e);await dispatch(id,internalCommand(e,'OWNER_CHANGED',{active}),Math.max(Math.floor(trustedNow),clock()),true);return snapshot(await load(id));});},
+  handleContact(id,event,trustedNow=clock()){const value=structuredClone(event);return queue(id,async()=>{await guardManaged(id,'CONTACT');const e=await load(id),s=e.record.mission.state;trustedNow=Math.max(Math.floor(trustedNow),clock());
    if(!missionToken(value.contactId)||!Number.isSafeInteger(value.sequence)||value.sequence<0||!['down','move','up','cancel'].includes(value.type)||typeof value.inside!=='boolean')throw err('INVALID_CONTACT');
    const key=`${id}:${value.contactId}`,last=sequences.get(key)??-1;if(value.sequence<=last)throw err('CONTACT_SEQUENCE_CONFLICT');sequences.set(key,value.sequence);
    const contact=contacts.get(id);
@@ -159,7 +162,7 @@ export function createMissionSessionApplication({catalog=MISSION_CATALOG,persist
     contacts.delete(id);
    }
    await poll(id,Math.floor(trustedNow));return snapshot(await load(id));});},
-  pollTime(id,trustedNow=clock()){return queue(id,()=>poll(id,Math.floor(trustedNow)));},
+  pollTime(id,trustedNow=clock(),options={}){return queue(id,async()=>{await load(id);return poll(id,Math.max(Math.floor(trustedNow),clock()),options);});},
   async close(){closed=true;contacts.clear();sequences.clear();listeners.clear();await Promise.all([...queues.values()]);cache.clear();}
  };
 }

@@ -19,6 +19,7 @@ function createNetworkReceiver({root,hub}){
   if(req.headers.origin||req.headers['x-kdw-relay-key']!==hub.key)return respond(403,{error:'UNAUTHORIZED'});
   if(req.url==='/__kdw/settings'&&req.method==='GET')return respond(200,hub.settings());
   if(req.url==='/__kdw/link/status'&&req.method==='GET')return respond(200,{application:'kdw-max-link',protocol:1});
+  if(/^\/__kdw\/link\/games\/[a-f0-9-]{36}\/status$/.test(req.url)&&req.method==='GET'){hub.handle(req,res);return;}
   if(req.url==='/__kdw/link/ingest'&&req.method==='POST'&&req.headers['content-type']==='application/json'){hub.handle(req,res);return;}
   respond(404,{error:'NOT_FOUND'});
  });

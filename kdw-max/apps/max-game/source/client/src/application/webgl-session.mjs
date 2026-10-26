@@ -80,9 +80,9 @@ export function createWebGLSession({port,catalog,sessionId,profile='local',initi
   },
   async owner(active){if(closed||!snapshot)return null;try{accept(await ownership(active));return closed?null:snapshot;}catch(error){report(error);return null;}},
   poll(time,{pauseResult=false}={}){
-   if(profile!=='local'||closed||polling||!snapshot||time-lastPoll<100||pauseResult&&snapshot.state.status==='result')return Promise.resolve(null);
+   if(profile!=='local'||closed||polling||!snapshot||time-lastPoll<100&&!(snapshot.state.standPolicy&&snapshot.state.status==='result'&&!pauseResult)||pauseResult&&snapshot.state.status==='result'&&!snapshot.state.standPolicy)return Promise.resolve(null);
    lastPoll=time;polling=true;
-   return port.pollTime(sessionId).then(value=>{accept(value);return closed?null:snapshot;},error=>{report(error);return null;}).finally(()=>{polling=false;});
+   return port.pollTime(sessionId,undefined,{allowResult:!pauseResult}).then(value=>{accept(value);return closed?null:snapshot;},error=>{report(error);return null;}).finally(()=>{polling=false;});
   },
   async layout(positions){
    if(closed||!snapshot||profile==='server'&&!connected)return null;

@@ -36,6 +36,7 @@ else {
     const targetDisplay=pixelMap?screen.getAllDisplays().find(d=>d.size.width===3072&&d.size.height===1536):null;
     window=new BrowserWindow({title:config.title,width:pixelMap?3072:config.window.width,height:pixelMap?1536:config.window.height,...(targetDisplay?{x:targetDisplay.bounds.x,y:targetDisplay.bounds.y}:{}),fullscreen:pixelMap||config.production===true,show:false,backgroundColor:'#0D001A',autoHideMenuBar:true,webPreferences:{devTools:config.production!==true,nodeIntegration:false,contextIsolation:true,sandbox:true,backgroundThrottling:false}});
     const entry=new URL(config.entry,host.origin).href;
+    require('./renderer-recovery.cjs').attachRendererRecovery({window,entry,log});
     window.webContents.setWindowOpenHandler(()=>({action:'deny'}));
     window.webContents.on('will-navigate',(event,url)=>{if(new URL(url).origin!==host.origin)event.preventDefault();});
     window.webContents.on('render-process-gone',(_,details)=>log({event:'renderer-gone',details}));

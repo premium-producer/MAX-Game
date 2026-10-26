@@ -1,7 +1,8 @@
+import {gameAudioActive,showRuntimeRecovery,monitorPreparation} from './kdw-runtime-health.mjs';
 import {readStandSettings,productionCatalog,startProduction,selectManualMission} from './kdw-production.mjs';
 import {createTransitionLayout} from './kdw-transition-layout.mjs';
 import {createPixelMapPlan,pixelMapEnabled,pixelIdleLayout,installPixelMapInput,installPixelMapDebug} from './kdw-pixel-map.mjs';
-import {loadGameLink,linkedCatalog,resumeLinkedMission,watchGameLink} from './kdw-game-link.mjs';
+import {loadGameLink,linkedCatalog,resumeLinkedMission,watchGameLink,claimLinkedMission} from './kdw-game-link.mjs';
 import {KdwTaskJourney} from './kdw-task-journey.mjs';
 import {mountKdwInteractions} from './kdw-interactions.mjs';
 import {screenContinuationTarget} from './kdw-screen-continue.mjs';
@@ -673,7 +674,7 @@ function syncGameAudio(){
   screen:visible&&controller.phase==='task'&&phoneContentReady()?displayPhoneKey():'',
   nodes:visible?controller.nodes.filter(n=>controller.presence(n)>.1).map(n=>n.step):[],
   holding:visible&&(controller.phase==='holding'||['node','phone'].includes(gesture?.kind)),
-  active:sharedSession?.connected===true&&sharedSession?.snapshot?.assignment?.lifecycle.status==='active'&&presentationActive()&&(!localRecovery||windowFocused)});
+  active:gameAudioActive({connected:sharedSession?.connected===true,assignment:sharedSession?.snapshot?.assignment,local:portable,presented:visible&&presentationActive()&&(!localRecovery||windowFocused)})});
 }
 function answer(choice,token){
  if(sharedBackend){if(!controller||answerPending||sharedSession.busy||foreground?.contentBusy(host)||controller.phase!=='task')return;answerPending=true;const generation=bindingGeneration;Promise.resolve(controller.answer(choice,token)).catch(error=>{if(generation===bindingGeneration)feedback(error.message);}).finally(()=>{if(generation===bindingGeneration)answerPending=false;});return;}
@@ -1148,10 +1149,13 @@ function publishIndependentApplied(){
  if(!state||!command||!independentAuthority||independentKey(state)!==independentKey(command)||independentKey(state)!==independentKey(independentAuthority))return;
  parent.postMessage({type:'max-assets:applied',owner:state.owner,revision:state.revision,modeEpoch:state.modeEpoch,settingsRevision:state.settingsRevision??0,sceneKey:independentKey(state)},location.origin);
 }
+const stopBootHealth=monitorPreparation(()=>document.documentElement.dataset.gameReady==='true'?{status:'menu'}:null);
+window.addEventListener('pagehide',stopBootHealth,{once:true});
+window.render_game_to_text=()=>JSON.stringify({coordinates:'viewport pixels, origin top-left, x right, y down',phase:controller?.phase??'loading',status:sharedSession?.snapshot?.state.status??'loading',mission:sharedSession?.snapshot?.state.missionId,screen:sharedSession?.snapshot?.state.screenId,ready:sharedSession?.snapshot?.state.standReady,remainingMs:sharedSession?.snapshot?.view.remainingMs,connected:sharedSession?.connected??false,presentation:{startup:controller?.startup?.stage,pathsDone:controller?.paths?.done,pathTime:[controller?.paths?.elapsed,controller?.paths?.duration],gesture:gesture?.kind,geometry:controller?.geometry,deviceReady:phoneContentReady(),presence:phonePresence.value,position:[phoneX.value,phoneY.value],target:controller?.phone,settled:controller?.settlingNodes?.map(n=>[n.step,foreground?.isSettled(host,n.step)]),camera:[camera.value,focusTarget],busy:foreground?.contentBusy(host),phoneData:host.querySelector('.route-phone')?.dataset}});
 async function boot(){
  if(!managedShell&&!portable){const initialContext=await readManagedContext();configureMobile(initialContext);if(initialContext.assignmentId===managedAssignment&&initialContext.sessionId===params.get('session'))configureAutomatic(initialContext);}
 
- if(bfmVisual&&(globalThis.STAND_AUDIO_MODE==='master'||document.documentElement.dataset.managedAudio==='true'))gameAudio=mountV5Audio();
+ if(bfmVisual&&(portable||globalThis.STAND_AUDIO_MODE==='master'||document.documentElement.dataset.managedAudio==='true')){if(portable)document.documentElement.dataset.localAudio='true';gameAudio=mountV5Audio();}
  document.documentElement.dataset.service=String(service);document.documentElement.dataset.layout='single';
  if(portable)standBrowser=createStandBrowserHost({arena,params,pixelPlan,production:productionMode,onMenu:()=>{void Promise.all([kdwInteractions.flush(),personalChannel.flush()]).then(()=>navigate()).catch(error=>feedback(error.message));}});
  if(bfmVisual&&!service&&!automaticPresentation&&params.get('debug')==='1')v5Tools=createV5Tools({arena,params,onViewport:()=>fit({viewportOnly:true})});
@@ -1162,7 +1166,7 @@ async function boot(){
   if(profile!=='server'){
    const key=`${WEBGL_SHARED_KEY}${bfmVisual?':v5':''}:${MISSION_CATALOG.contentRevision}`;
    const persistence=interactionPreview||params.get('test')==='memory'?createMemoryPersistencePort():bfmVisual?createIndexedDBPersistence({legacyStorage:localStorage,key}):createBrowserPersistence({storage:localStorage,key});
-   port=(bfmVisual?createV5MissionSessionApplication:createMissionSessionApplication)({catalog:MISSION_CATALOG,persistence,development:localDevelopment});
+   port=(bfmVisual?createV5MissionSessionApplication:createMissionSessionApplication)({catalog:MISSION_CATALOG,persistence,development:localDevelopment,admit:()=>claimLinkedMission(gameLink)});
   }
   sharedSession=profile==='server'?managedSession(managedAssignment,params.get('session')):createWebGLSession({port,catalog:MISSION_CATALOG,initialOwnerActive:false,assignmentId:managedAssignment,sessionId:params.get('session')||(bfmVisual?(localDevelopment?'webgl-v5-development':'webgl-v5'):'site-shared'),profile,onSnapshot:snapshot=>{managedSnapshot(snapshot);if(!controller||!portable&&snapshot.assignment?.lifecycle.status!=='active')return;controller.accept(snapshot);if(foreground&&!navigating){if((controller.phase==='burst'||bfmVisual&&controller.startup&&controller.snapshot.state.scanned)&&gesture?.kind==='palm')cancelGesture();if(!gesture)focusCurrent();render();}},onError:error=>{console.error('MAX backend',error);if(foreground)feedback('Нет связи с backend. Экран сохранён.');}});
   await sharedSession.start();
@@ -1207,5 +1211,5 @@ async function boot(){
  stopGameLink=watchGameLink({link:gameLink,getSession:()=>sharedSession});
  if(managedShell){document.documentElement.dataset.managedBinding='';managedNotice.hidden=true;applyManagedActivity();void refreshManagedBinding();}
 }
-boot().catch(e=>{if(pageDisposed)return;console.error(e);startupAssets?.dispose();document.documentElement.dataset.assetPreparation='failed';loading.textContent=startupErrorText(e);document.body.append(loading);Object.assign(loading.style,{position:'fixed',inset:'0',zIndex:'10000',padding:'32px',whiteSpace:'pre-line',fontSize:'clamp(16px,2vw,28px)',lineHeight:'1.5',background:'#10091e',overflow:'auto',transform:'none'});});
+boot().catch(e=>{if(pageDisposed)return;showRuntimeRecovery();console.error(e);startupAssets?.dispose();document.documentElement.dataset.assetPreparation='failed';loading.textContent=startupErrorText(e);document.body.append(loading);Object.assign(loading.style,{position:'fixed',inset:'0',zIndex:'10000',padding:'32px',whiteSpace:'pre-line',fontSize:'clamp(16px,2vw,28px)',lineHeight:'1.5',background:'#10091e',overflow:'auto',transform:'none'});});
 window.addEventListener('pagehide',()=>{stopProduction();clearPixelInput();clearPixelDebug();stopGameLink();taskSkip.dispose();localAdmission.dispose();standBrowser?.dispose();kdwInteractions.dispose();personalChannel.dispose();businessNative.dispose();kdwPosts.dispose();pageDisposed=true;bindingGeneration++;clearTimeout(contextTimer);screenEpoch++;gameAudio?.dispose();missionContinuation?.cancel();cancelGesture();save();sharedSession?.close();idleMenu?.dispose();independent?.dispose();field?.dispose();foreground?.dispose();assets?.dispose();startupAssets?.dispose();ambient?.dispose();v5Tools?.dispose();},{once:true});

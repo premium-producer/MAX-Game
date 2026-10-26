@@ -30,6 +30,9 @@
     "UI/figma-plugins/max-current-screens/COMMENTS.md": [
       "MAX-Game"
     ],
+    "UI/figma-plugins/max-current-screens/README.md": [
+      "MAX-Game"
+    ],
     "UI/figma-plugins/max-current-screens/code.js": [
       "MAX-Game"
     ],
@@ -1403,11 +1406,19 @@
       "MAX-Game",
       "VK_Stella"
     ],
+    "apps/STARTUP/tools/game-link.test.cjs": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
     "apps/STARTUP/tools/portable-server.cjs": [
       "MAX-Game",
       "VK_Stella"
     ],
     "apps/STARTUP/tools/portable-server.test.cjs": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "apps/STARTUP/tools/renderer-recovery.cjs": [
       "MAX-Game",
       "VK_Stella"
     ],
@@ -1471,6 +1482,9 @@
       "MAX-Game"
     ],
     "apps/max-game/launcher/portable-server.cjs": [
+      "MAX-Game"
+    ],
+    "apps/max-game/launcher/renderer-recovery.cjs": [
       "MAX-Game"
     ],
     "apps/max-game/launcher/stand-settings.cjs": [
@@ -2784,6 +2798,9 @@
     "apps/max-game/source/client/src/application/session-port.mjs": [
       "MAX-Game"
     ],
+    "apps/max-game/source/client/src/application/trusted-clock.mjs": [
+      "MAX-Game"
+    ],
     "apps/max-game/source/client/src/application/vendor/idb.LICENSE": [
       "MAX-Game"
     ],
@@ -3375,6 +3392,9 @@
     "apps/max-game/source/client/src/kdw-reviewed-texts.json": [
       "MAX-Game"
     ],
+    "apps/max-game/source/client/src/kdw-runtime-health.mjs": [
+      "MAX-Game"
+    ],
     "apps/max-game/source/client/src/kdw-screen-continue.mjs": [
       "MAX-Game"
     ],
@@ -3558,6 +3578,9 @@
     "apps/max-game/source/client/src/wording.mjs": [
       "MAX-Game"
     ],
+    "apps/max-game/source/client/test/kdw-audit-fixes.test.mjs": [
+      "MAX-Game"
+    ],
     "apps/max-game/source/client/test/kdw-business-all.test.mjs": [
       "MAX-Game"
     ],
@@ -3622,6 +3645,9 @@
       "MAX-Game"
     ],
     "apps/max-game/source/client/test/kdw-production.test.mjs": [
+      "MAX-Game"
+    ],
+    "apps/max-game/source/client/test/kdw-retention.test.mjs": [
       "MAX-Game"
     ],
     "apps/max-game/source/client/test/kdw-stand-adapter.test.mjs": [
@@ -8355,6 +8381,12 @@
     "apps/stela/source/artifacts/stella-prototype/src/features/voice/browser-journal.ts": [
       "VK_Stella"
     ],
+    "apps/stela/source/artifacts/stella-prototype/src/features/voice/delivery-status.test.ts": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/src/features/voice/delivery-status.ts": [
+      "VK_Stella"
+    ],
     "apps/stela/source/artifacts/stella-prototype/src/features/voice/gain-ramp.ts": [
       "VK_Stella"
     ],
@@ -11971,6 +12003,10 @@
       "MAX-Game",
       "VK_Stella"
     ],
+    "docs/GAMEPLAY_AUDIT_TASKS.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
     "docs/GAME_BUSINESS_CHANNEL_POSTS_20261020.md": [
       "MAX-Game",
       "VK_Stella"
@@ -12020,6 +12056,10 @@
       "VK_Stella"
     ],
     "docs/PRODUCTION_KITS.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/SOUND_DESIGN_SPEC.md": [
       "MAX-Game",
       "VK_Stella"
     ],
@@ -12147,11 +12187,207 @@
       "MAX-Game",
       "VK_Stella"
     ],
+    "docs/analysis-business-export-20261021/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/analysis-business-variants-20261021/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/audit-20261025/documentation-links.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/audit-20261025/max-tests.txt": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/audit-20261025/reproduce.mjs": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/audit-20261025/results.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/audit-20261025/source-fingerprints.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
     "docs/sync/FINAL-SYNC-PROPOSAL.md": [
       "MAX-Game",
       "VK_Stella"
     ],
+    "docs/sync/RELEASE-20261026.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
     "docs/sync/WORKSPACE.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-20261021/stela-camera-animation/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-20261021/stela-camera-touch-layout/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-20261021/stela-consistent-badges/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-20261021/stela-final-design/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-20261021/stela-inactivity/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-20261021/stela-stand-trails/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-20261022/stela-particle-performance/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-20261022/stela-result-narration/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-20261022/stela-startup/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-20261022/stela-voice-selection/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-activity-reveal-20261020/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-audit-fixes-20261026/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-audit-fixes-20261026/browser/errors.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-audit-fixes-20261026/browser/max-menu.png": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-audit-fixes-20261026/browser/max-scan.png": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-audit-fixes-20261026/browser/max-state.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-audit-fixes-20261026/browser/max-task.png": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-audit-fixes-20261026/browser/results.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-audit-fixes-20261026/browser/stela-delivered.png": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-audit-fixes-20261026/browser/stela-entry.png": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-audit-fixes-20261026/browser/stela-offline-audience.png": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-audit-fixes-20261026/browser/stela-offline-intro.png": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-audit-fixes-20261026/browser/stela-offline-result.png": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-audit-fixes-20261026/build-profile.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-audit-fixes-20261026/documentation-links.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-audit-fixes-20261026/final-integrity.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-audit-fixes-20261026/package-diff.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-audit-fixes-20261026/restored-reports.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-audit-fixes-20261026/retention-load.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-audit-fixes-20261026/skill-smoke/state-0.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-audit-fixes-20261026/skill-smoke/state-1.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-audit-fixes-20261026/tests.txt": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-business-all-20261022/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-business-all-20261022/motion/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-business-bubbles-20261021/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-business-channel-name-20261021/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-business-fidelity-20261021/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-business-native-20261021/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-business-original-20261022/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-card-motion-20261022/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-default-photo-20261021/README.md": [
       "MAX-Game",
       "VK_Stella"
     ],
@@ -12163,9 +12399,112 @@
       "MAX-Game",
       "VK_Stella"
     ],
+    "docs/verification-figma-final-20261023/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-flow-start-20261021/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-id-photo-20261022/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-idle-reveal-20261022/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-linked-builds-20261023/browser-checks.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-linked-builds-20261023/link.test.cjs": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
     "docs/verification-palm-fluid-20261023/README.md": [
       "MAX-Game",
       "VK_Stella"
+    ],
+    "docs/verification-personal-field-20261020/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-personal-statistics-20261022/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-phone-sharing-20261022/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-post-corners-20261022/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-post-reference-20261022/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-publication-20261022/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-registration-snack-auto-20261022/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-saved-registration-20261022/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-screen-exit-20261020/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-stand-production-20261023/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-stela-web-20261022/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-stela-web-no-photo-20261022/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-store-publish-20261021/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-text-filter-20261021/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-text-filter-v2-20261021/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-visitor-details-20261020/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "ops/audit-fixes/browser-check.mjs": [
+      "MAX-Game"
+    ],
+    "ops/audit-fixes/check-build-profile.mjs": [
+      "MAX-Game"
+    ],
+    "ops/audit-fixes/check-retention.mjs": [
+      "MAX-Game"
+    ],
+    "ops/audit-fixes/run-browser.mjs": [
+      "MAX-Game"
+    ],
+    "ops/audit-fixes/serve-fixtures.cjs": [
+      "MAX-Game"
     ],
     "ops/deployment/README.md": [
       "MAX-Game"
@@ -12264,6 +12603,9 @@
       "MAX-Game"
     ],
     "ops/sync/paths.json": [
+      "MAX-Game"
+    ],
+    "package-lock.json": [
       "MAX-Game"
     ],
     "package.json": [

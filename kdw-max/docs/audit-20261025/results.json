@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-25",
+  "mode": "source modules; in-memory session; temporary disk; mocked HTTP; no browser/hardware/network",
+  "checks": [
+    {
+      "id": "AUD-03",
+      "observed": "production advanced business.platform.ready after 900 ms despite ready=false",
+      "nextScreen": "business.channel.create"
+    },
+    {
+      "id": "AUD-04",
+      "observed": "scan stays active after one hour without STAND_READY",
+      "status": "scan",
+      "deadlineAt": null
+    },
+    {
+      "id": "AUD-02",
+      "observed": "choosing another mission in one voice session retains both assignments",
+      "statuses": [
+        "assigned",
+        "queued"
+      ],
+      "sameVisitorSession": true
+    },
+    {
+      "id": "AUD-05",
+      "observed": "delivery receipt remains queued after MAX assigns the visitor",
+      "actualStatus": "assigned",
+      "receiptStatus": "queued"
+    },
+    {
+      "id": "AUD-04-hub",
+      "observed": "hub does not release assigned visitor after one hour without renderer progress"
+    },
+    {
+      "id": "AUD-08",
+      "observed": "5-second backward wall-clock step rejects command and session restore",
+      "command": "INVALID_TRUSTED_TIME",
+      "restore": "INVALID_SAVED_CLOCK"
+    },
+    {
+      "id": "AUD-01",
+      "evidence": "static cross-check only",
+      "observed": "offline error is set by hook but OmniPrototype does not render voice.error; available screen buttons continue sending through closed socket"
+    }
+  ]
+}

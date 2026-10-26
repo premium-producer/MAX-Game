@@ -3,7 +3,7 @@ import {createBrowserPersistence} from './browser-persistence.mjs';
 
 // Native IndexedDB owns serialization, atomicity and rollback. This adapter only
 // maps PersistencePort to its transactions. Legacy storage is a read-only backup.
-export function createIndexedDBPersistence({key,legacyStorage,databaseName='max-game-local-v1'}){
+export function createIndexedDBPersistence({key,legacyStorage,databaseName='max-game-local-v1',now=()=>Date.now(),retentionMs=30*86400000}){
  if(!key||!legacyStorage)throw new TypeError('Explicit profile and legacy storage required');
  const legacy=createBrowserPersistence({storage:legacyStorage,key});
  const failure=code=>Object.assign(new Error(code),{code});
@@ -39,9 +39,23 @@ export function createIndexedDBPersistence({key,legacyStorage,databaseName='max-
    await store.add(previous,recordKey);return previous;
   });
  }
+ async function prune(keepId){
+  const db=await database();return transaction(db,async store=>{
+   let cursor=await store.openCursor(),removed=0;
+   while(cursor){
+    const saved=cursor.value,s=saved?.record?.mission?.state,stamp=saved?.record?.clockCheckpointAt;
+    // Only explicitly released production sessions. Preserve active/legacy data,
+    // all photo-independent receipt chains and the currently requested visitor.
+    if(Array.isArray(cursor.key)&&cursor.key[1]!==keepId&&s?.standPolicy&&s.status==='menu'&&['qr','no-show','inactivity'].includes(s.standEndReason)&&Number.isSafeInteger(stamp)&&now()-stamp>retentionMs){await cursor.delete();removed++;}
+    cursor=await cursor.continue();
+   }
+   return removed;
+  });
+ }
  return {
-  load,
+  load,prune,
   async create(id,record){
+   await prune(id);
    if(await load(id)!==null)throw failure('STORE_CONFLICT');
    const db=await database();return transaction(db,async store=>{
     const recordKey=[key,id];if(await store.get(recordKey)!==undefined)throw failure('STORE_CONFLICT');
