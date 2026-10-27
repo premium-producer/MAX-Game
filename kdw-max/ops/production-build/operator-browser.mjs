@@ -1,0 +1,32 @@
+import assert from 'node:assert/strict';import fs from 'node:fs';import {chromium} from 'playwright';
+const out='docs/verification-operator-rc4-20261027';fs.mkdirSync(out,{recursive:true});
+const browser=await chromium.launch({headless:true,args:['--use-gl=angle','--use-angle=swiftshader','--autoplay-policy=no-user-gesture-required','--use-fake-device-for-media-stream','--use-fake-ui-for-media-stream']});
+const errors=[],checks=[];
+try{
+ const page=await browser.newPage({viewport:{width:1280,height:1000}});page.on('pageerror',e=>errors.push(e.message));
+ await page.goto('http://127.0.0.1:18782/admin/');await page.waitForFunction(()=>document.querySelector('#notice').textContent.includes('Подключено'));
+ await page.locator('[data-key="max.taskDurationSeconds"]').fill('73');await page.getByRole('button',{name:'Сохранить для следующих игр'}).click();await page.waitForFunction(()=>document.querySelector('#notice').textContent==='Готово');
+ assert.equal((await page.evaluate(()=>fetch('/__kdw/operator/state').then(r=>r.json()))).settings.max.timings.taskDurationSeconds,73);
+ await page.locator('#cursor').check();await page.waitForFunction(async()=>!!(await fetch('/__kdw/operator/state').then(r=>r.json())).presentation.cursorVisible);
+ await page.screenshot({path:out+'/max-admin.png',fullPage:true});checks.push('MAX browser: settings persist, lidar cursor persists, no runtime controls enabled without Spout');
+ await page.goto('http://127.0.0.1:18781/stella/admin/');await page.waitForFunction(()=>document.querySelector('#notice').textContent.includes('Подключено'));
+ await page.locator('#musicVolume').fill('21');await page.getByRole('button',{name:'Сохранить',exact:true}).click();await page.waitForFunction(()=>document.querySelector('#notice').textContent.includes('Громкость сохранена'));
+ assert.equal((await page.evaluate(()=>fetch('/__kdw/operator/state').then(r=>r.json()))).sound.musicVolume,.21);
+ await page.locator('#cue').selectOption('Click.wav');await page.getByRole('button',{name:'Прослушать',exact:true}).click();await page.waitForFunction(()=>document.querySelector('#cue-info').textContent.includes('Click'));await page.getByRole('button',{name:'Остановить',exact:true}).click();
+ await page.screenshot({path:out+'/stella-admin.png',fullPage:true});checks.push('Stella browser: music setting persists, original effect preview plays, display form available');
+ await page.getByRole('link',{name:'Открыть настройки голоса и VST3 →'}).click();await page.getByRole('heading',{name:'Стела MAX · управление звуком'}).waitFor();checks.push('Existing native VST panel reachable');await page.close();
+ const stella=await browser.newPage({viewport:{width:1080,height:1920},permissions:['camera','microphone']});stella.on('pageerror',e=>errors.push(e.message));
+ const sounds=[];stella.on('response',r=>{if(r.url().includes('/soundtrack/')&&r.url().endsWith('.wav')){assert.equal(r.status(),200);sounds.push(r.url().split('/').pop());}});
+ await stella.addInitScript(()=>{const Original=window.AudioContext;window.__soundContexts=[];window.AudioContext=class extends Original{constructor(...args){super(...args);window.__soundContexts.push(this);this.__sources=[];}createBufferSource(){const source=super.createBufferSource();this.__sources.push(source);return source;}createMediaStreamDestination(){const dest=super.createMediaStreamDestination();this.__meter=this.createAnalyser();this.__meter.fftSize=2048;this.createMediaStreamSource(dest.stream).connect(this.__meter);return dest;}};});
+ await stella.goto('http://127.0.0.1:18781/stella/pixels/?voice=off');await stella.getByRole('button',{name:'Начать разговор с MAX'}).click();await stella.locator('[data-screen="omni-intro"]').waitFor();
+ await stella.waitForFunction(()=>window.__soundContexts.some(c=>c.__sources.some(s=>s.buffer?.duration>20)),{},{timeout:30000});
+ await stella.waitForFunction(()=>window.__soundContexts.some(c=>{if(!c.__meter)return false;const b=new Float32Array(2048);c.__meter.getFloatTimeDomainData(b);return b.some(v=>Math.abs(v)>.0001)}),{},{timeout:30000});checks.push('Actual pixel Stella: original ambience decoded and nonzero PCM reaches soundtrack output');
+ await stella.getByRole('button',{name:'Начать',exact:true}).click();await stella.locator('[data-screen="omni-audience"]').waitFor();await stella.getByRole('button',{name:'Развитие бизнеса',exact:true}).click();await stella.locator('[data-screen="omni-photo"]').waitFor({timeout:30000});
+ await stella.getByRole('button',{name:'Сфотографироваться',exact:true}).click();await stella.locator('[data-photo-phase=review]').waitFor({timeout:20000});assert.ok(sounds.includes('Scan.wav'));assert.ok(sounds.includes('ScanStart1.wav'));assert.ok(sounds.includes('ScanEnd1.wav'));checks.push('Photo capture plays original scan start, loop and accepted-photo end');
+ await stella.getByRole('button',{name:'Без фото',exact:true}).click();await stella.locator('[data-screen="omni-result"]').waitFor();
+ assert.ok(sounds.includes('AmbienceMain.wav'));assert.ok(sounds.includes('Click.wav'));assert.ok(sounds.some(s=>s.startsWith('ChangeScreen')));assert.ok(sounds.includes('Tags.wav'));
+ assert.equal(sounds.filter(s=>s==='AmbienceMain.wav').length,1);assert.ok(!sounds.some(s=>s.startsWith('Screen')));
+ await stella.screenshot({path:out+'/stella-sound-result.png'});checks.push('Manual flow reaches result, click/transition/tags original cues, ambience loaded once, old voice bank excluded');
+ await stella.close();
+ fs.writeFileSync(out+'/browser.json',JSON.stringify({checks,sounds,errors},null,2));assert.deepEqual(errors,[]);
+}finally{await browser.close();}
