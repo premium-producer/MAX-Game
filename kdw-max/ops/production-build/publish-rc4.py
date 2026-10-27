@@ -37,6 +37,7 @@ for repo,app in [('MAX-Game','max-game'),('VK_Stella','stela')]:
         assert actual[f.name]['size']==f.stat().st_size
         assert actual[f.name]['digest']=='sha256:'+hashlib.sha256(f.read_bytes()).hexdigest()
     subprocess.run(['gh','release','edit',TAG,'--repo',repoArg,'--draft=false','--prerelease','--latest=false'],check=True)
-    receipts.append({'repository':repoArg,'commit':commit,'url':release['html_url'],'assetsVerified':len(assets)})
+    published=json.loads(run(['gh','api',f'repos/{repoArg}/releases/{release_id}']))
+    receipts.append({'repository':repoArg,'commit':commit,'url':published['html_url'],'assetsVerified':len(assets)})
 (REL/'github-publication.json').write_text(json.dumps(receipts,indent=2),encoding='utf-8')
 print(json.dumps(receipts))

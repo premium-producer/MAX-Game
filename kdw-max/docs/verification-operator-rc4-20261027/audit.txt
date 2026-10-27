@@ -1,0 +1,220 @@
+
+> kdw-max-workspace@0.0.0 test:audit:all
+> npm run test:audit && npm run test:audit:profile && npm run test:audit:retention && npm run test:audit:browser
+
+
+> kdw-max-workspace@0.0.0 test:audit
+> npm run check:generated && npm run test:max && npm run test:link && npm run test:stela && node apps/stela/source/typecheck.mjs
+
+
+> kdw-max-workspace@0.0.0 check:generated
+> node apps/max-game/source/adapt-stand-main.mjs --check
+
+Stand main adapted only at local host boundaries
+
+> kdw-max-workspace@0.0.0 test:max
+> npm --prefix apps/max-game/source/client test
+
+
+> max-space-game@0.1.0 test
+> node --test --test-isolation=none test/*.test.mjs
+
+✔ production ticker preserves registration result until renderer allows advancement; inactivity still runs (24.6822ms)
+✔ server admission refusal cannot start the task, retry succeeds on the same visitor (5.6738ms)
+✔ clock correction preserves elapsed time and valid saved deadlines (11.6755ms)
+✔ preparation watchdog reports once per stalled scene and respects ready state (0.1311ms)
+✔ portable audio is active without managed assignment and stops outside presentation (0.0767ms)
+✔ five-second and five-minute wall corrections survive command and restart without a fresh budget (42.8112ms)
+✔ three branches traverse 1–20, retain their business, and replay after each accepted command (30.3217ms)
+✔ SVG hotspots stay within source geometry; shared dashboard has distinct actions (0.6756ms)
+✔ auto has distinct educational content; legacy sports and café semantics remain (0.3134ms)
+✔ all 60 approved cards reach live banks with exact copy, classification and prices (0.4059ms)
+✔ old activity versions retain original banks, IDs and order (0.8327ms)
+✔ each reviewed store can reach its goal after a mistake within the task time (3.3801ms)
+✔ each reviewed channel reaches its audience goal after a mistake within the task time (1.7271ms)
+✔ all sixty current cards have distinct, intact photographic assets; legacy banks stay unchanged (5.5718ms)
+✔ image preload shares decoding and allows retry after failure (0.3216ms)
+✔ every authored business position uses native components or an existing native activity; actions retain identity (1.8992ms)
+✔ legacy component renderer retains dynamic business bindings and all resources keep their hashes (50.779ms)
+✔ immutable SVG geometry and source provenance are retained, including the original bank tile (15.2962ms)
+✔ changing a new business resets downstream progress and replays the exact accepted history (0.6679ms)
+✔ a presented channel with pending START_POSTS has no goal and never dereferences a missing activity (0.0398ms)
+✔ standalone confirmation ends registration; both historical routes still replay (16.1489ms)
+✔ original cafe iteration uses archived PNGs and correctly scales original hotspots (6.6912ms)
+✔ original route enters cafe without selection, completes registration and replays after reload (0.6932ms)
+✔ every current task ending uses authored copy and every mission ends with whole-route learning (12.0097ms)
+✔ store summary appears at the actual score goal, not while playing or configuring (0.1361ms)
+✔ one circular capture region is reused by round messages and avatars; call crop remains inside the full portrait (0.1271ms)
+✔ photo replacement accepts data only and preserves the rest of the screen template (0.2384ms)
+✔ seven photo screens keep action identity, outcomes, instructions and normalized hotspots (4.0264ms)
+✔ development countdown is off, can run for 60 seconds, switch off, and remain off across task changes (1.5279ms)
+✔ posts keep moving after a minute with countdown off; timer toggles and owner pauses do not jump their clock (2.7344ms)
+✔ restart a completed or current task clears only its own progress, rejects future tasks, and survives replay (2.3755ms)
+✔ normal catalog rejects local development commands and retains its deadline (0.171ms)
+✔ skip moves only the current task forward, records skipped rather than completed, restores and can be restarted (0.81ms)
+✔ retained bezel keeps square corner/light patches through phone/PC and height changes (0.3326ms)
+✔ small device clamps radius without inverted patches (0.0783ms)
+✔ a delayed reveal skips in-flight cards and admits the next complete card above the viewport (0.1514ms)
+✔ admitted flights survive pause and resize; task replay clears all admission state (0.0672ms)
+✔ posts and products cross display edges without clipping at the layout inset (0.6586ms)
+✔ v11 starts empty and admits every card at the top, with sequential startup and deterministic refill (12.6583ms)
+✔ v10 doubles fall and refill speed exactly, with accepted choices and legacy replay (5.9504ms)
+✔ forecast catches a faster follower before contact and chooses the free horizontal interval (0.2989ms)
+✔ unavoidable collision chooses minimum overlap rather than the preferred occupied position (0.0797ms)
+✔ continuous search is no worse than a dense pixel scan, including multiple unavoidable collisions (3.1771ms)
+✔ ten-card admission is deterministic, diverse and refills without teleporting surviving cards (685.884ms)
+✔ placement is continuous across selections and never rearranges surviving flights (5.282ms)
+✔ fresh standby entry resets only the selected mission and waits for palm, including durable replay (4.9562ms)
+✔ real channel input required; commands preserve draft through creation and replay (6.6039ms)
+✔ empty/invalid channel name cannot advance; stale and oversized edits rejected (1.2129ms)
+✔ legacy store selections still validate and replay under the new catalog (3.2364ms)
+✔ removal/move and restart retain semantic ownership of the current run (1.0796ms)
+✔ application persistence restores the draft after closing and reopening the authority (10.8852ms)
+✔ saved store selection from the separate scene restores in the native device without progress reset (3.849ms)
+✔ business registration begins with three explicit choices; every choice persists and advances to login (1.256ms)
+✔ old accepted business receipts restore; a restarted run requires the new choice and mixed history remains valid (3.7824ms)
+✔ keyboard edits at caret, replaces selection, handles emoji deletion and length (6.9685ms)
+✔ legacy stand rules still replay without requiring KDW draft data (1.0111ms)
+✔ installed task clock grants one minute per task, never per internal screen, and expires the mission (0.3512ms)
+✔ all four stand missions and all fifteen tasks complete through the local authority (6.0635ms)
+✔ rated store rejects early completion, scores wrong goods below four, recovers to4.9 and replays (19.8584ms)
+✔ native store publishes directly from its current screen, once, with the same catalogue and replayable completion (12.8116ms)
+✔ saved v1 rated store receipts retain their old timeline after density upgrade (4.7887ms)
+✔ saved v2 store receipts retain the density timeline after lane upgrade (6.6188ms)
+✔ saved v3 store receipts retain the lane timeline after free-flight upgrade (6.4125ms)
+✔ saved v4 store receipts retain their speed after the double-speed upgrade (3.9323ms)
+✔ saved v5 store receipts retain prefilled history after empty-start upgrade (3.7044ms)
+✔ saved v6 store keeps its original products and scores after reviewed content update (3.5026ms)
+✔ v8: all business banks preserve lane clearance, forward motion and four-card capacity for ten minutes (589.9128ms)
+✔ v8: repeated selections from one lane never invade the other; refill after a burst is bounded (84.5337ms)
+✔ v8: exact replay, backwards reads, and frame partition independence through selection (2.6326ms)
+✔ confirmation fan attaches to visible snack inside canvas; phones and original iteration retain shell (0.3915ms)
+✔ fan stays on facing side edges with monotone, loop-free curves over device morph and resize (0.6646ms)
+✔ small physical bend survives retarget then settles without moving either attachment (0.7786ms)
+✔ reduced motion and removed links clear inertia; overlapping tiles do not draw a reversed fan (0.1205ms)
+✔ comment limit applies to new commands and restores accepted historical long replies (7.7945ms)
+✔ one custom profile, private/public setup, reply and returned post persist and restore (22.5754ms)
+✔ invalid custom payloads, paused owner and stale context cannot change profile (0.9397ms)
+✔ restart comments clears only reply; restarting creation edits same channel identity (5.7859ms)
+✔ old completed comments replay unchanged under extended catalog; new reply tampering fails (7.5575ms)
+✔ native confirmation commits one transition per form and replays without legacy previews (3.9952ms)
+✔ native back from a saved legacy preview skips only the equivalent input screen (2.447ms)
+✔ PDF pixel bounds and seven percent safe inset on all central edges (0.1099ms)
+✔ production menu keeps logo above video and a separate two-by-two mission grid (0.1909ms)
+✔ preview preserves native mapping and letterboxes without stretching (0.0762ms)
+✔ one projection fits widest device plus reference; history does not affect scale (0.1632ms)
+✔ publication counters grow, settle, and reconstruct from the publication clock (0.1492ms)
+✔ reactions finish in 700ms and can wait for a queued thumbnail to land (0.065ms)
+✔ v6 keeps all new posts on the right with at most four live cards (112.0377ms)
+✔ v5 doubles launch intervals and varies travel time while respecting per-side capacity and expiry (24.3937ms)
+✔ compact stream uses two columns, close staggered starts, and preserves the accepted v3 schedule (4.3439ms)
+✔ global arrivals vary, never coincide, preserve vertical order and cap each side at four (41.0643ms)
+✔ missed posts retire below the scene; full sides wait, accepted selections release capacity without bursts (15.715ms)
+✔ snapshot replay, different frame rates and backwards clock reads reproduce the same stream (0.5239ms)
+✔ v7 fills the field on entry and bounds empty height over two minutes without clicks (285.3845ms)
+✔ v7 accepted choice refills capacity within 300 ms and closes its height gap smoothly (0.5421ms)
+✔ v7 clock partitions, snapshot reload, backwards reads and multiple choices reproduce exact positions (11.17ms)
+✔ v7 interpolation remains continuous at every simulation boundary during refill (12.7658ms)
+✔ activity is a phone in the existing scene; three business banks contain useful and harmful copy (1.2758ms)
+✔ core requires a real goal; accepts good/bad, rejects duplicated publication and forged audience (2.0723ms)
+✔ schedule is time-based, bounded and stable; stale/paused/late choices cannot change state (0.8726ms)
+✔ accepted history restores exactly, tampering is rejected, and older completed channels remain valid (4.6947ms)
+✔ return and resume preserve the activity and remaining budget instead of rerolling cards (1.1059ms)
+✔ storage failure cannot award audience; reconciliation and retry commit once and survive reopening (12.5491ms)
+✔ legacy looped waves have 2–6 simultaneous posts on both sides, remain bounded and continue after twenty (3.1876ms)
+✔ saved P1 activity keeps its original rules and replays under the new catalog (16.4025ms)
+✔ production rejects debug/reset commands; palm no-show releases only after ready + 30 seconds (0.6958ms)
+✔ every mission times out tasks as completed, retains data defaults and shows QR for 15 seconds (7.9522ms)
+✔ inactivity is independent of automatic task completion and has precedence at 120 seconds (0.5917ms)
+✔ application requires actual held contact; production session recovers pinned deadlines (9.7598ms)
+✔ production deadlines continue while input ownership is inactive (0.2453ms)
+✔ changed JSON isolates standby persistence; diagnostic metadata does not change the game policy (0.2301ms)
+✔ retention prunes only old released visitors and preserves active, recent and legacy sessions (5.2426ms)
+✔ portable admission confirms the existing contact once without a palm UI (0.2394ms)
+✔ hidden or disposed host cannot confirm a scan (0.0877ms)
+✔ changed run cancels the old admission instead of confirming a new run (0.0497ms)
+✔ responsive route reserves wide device and full instruction without fitting accumulated left history (0.1538ms)
+✔ all missions share one catalog scale and reserve every device/copy; old icons may leave the left edge (1.2512ms)
+✔ RU/EN dictionaries remove whole words, inflections, repetitions, homoglyphs and split forms (1.4573ms)
+✔ normal text, names, emoji and channel vocabulary survive unchanged (0.2427ms)
+✔ strict roots remove the entire token immediately, including benign overlaps requested by the user (1.2505ms)
+✔ deletion maps selection offsets to original UTF-16 ranges without changing surrounding whitespace (0.1744ms)
+✔ authority rejects raw bad text in every field even without a client policy flag; clean data persists (5.8923ms)
+✔ old accepted names replay unchanged; new confirmation must clean the historical draft first (1.5368ms)
+✔ invalid policy identifiers cannot bypass validation (0.3941ms)
+✔ V1 accepted receipts keep their exact policy, but old or missing client markers cannot downgrade new commands (7.6669ms)
+✔ reviewed copy applies exactly six changes without changing saved-game revision or mutating donor (3.3366ms)
+✔ unexpected future source changes fail instead of silently overwriting new copy (1.5952ms)
+✔ all mission exits and task completions use semantic transition labels without changing outcomes or hotspots (3.1669ms)
+✔ shared markup marks only transition controls; private overlays reuse the same decision (0.3234ms)
+✔ reference plus button is centred for phone and landscape device, at any scale (0.1606ms)
+✔ navigation stays inside the physical touch area when the help panel extends right (0.0428ms)
+✔ iteration 1 restores placement without changing event ownership or transforms (0.0709ms)
+✔ Russian short words, particles, dashes and units have meaningful nonbreaking groups (0.1108ms)
+✔ explicit newlines, URLs, word boundaries and idempotence survive (0.0745ms)
+✔ trusted markup preserves attributes, existing breaks and escaping (0.3637ms)
+✔ shared panels format output without mutating state or restarting retained text (0.2498ms)
+✔ authored reference lines preserve semantic breaks, source data and panel retention (0.2577ms)
+✔ first decoded video frame is not invalidated by an unnecessary seek before GPU preparation (0.4965ms)
+✔ visual clock absorbs checkpoint jitter without a one-frame position jump (0.3573ms)
+✔ visual clock respects hold, disconnect, stale bounds and new runs (0.0945ms)
+✔ default clock retains immediate authoritative corrections (0.0447ms)
+ℹ tests 140
+ℹ suites 0
+ℹ pass 140
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2513.5698
+
+> kdw-max-workspace@0.0.0 test:link
+> node --test apps/STARTUP/tools/game-link.test.cjs
+
+✔ replacement is durable, keeps other visitors FIFO, never revives a superseded ID (21.9897ms)
+✔ crash recovery completes an interrupted replacement journal before exposing the queue (7.7064ms)
+✔ relay exposes current assignment separately from immutable delivery receipt (15.0294ms)
+✔ offline relay supersedes only pending choices from the same visitor and prunes terminal history (5.7358ms)
+✔ renderer recovery reloads at most three times then shows an operator retry (1.0221ms)
+✔ simultaneous palm and replacement have a single winner in either arrival order (14.815ms)
+✔ unchanged heartbeat refreshes availability without rewriting visitor data (5.9942ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 113.2437
+
+> kdw-max-workspace@0.0.0 test:stela
+> npm --prefix apps/stela/source/artifacts/stella-prototype test
+
+
+> kdw-max-stela@0.0.0 test
+> vitest run
+
+
+ RUN  v5.0.2 D:/job/production/FUTURONIKA/KDW-MAX/apps/stela/source/artifacts/stella-prototype
+
+
+ Test Files  4 passed (4)
+      Tests  9 passed (9)
+   Start at  12:33:44
+   Duration  105ms (transform 63%, import 21%, tests 8%, worker 7%)
+
+PASS: Stella TypeScript
+
+> kdw-max-workspace@0.0.0 test:audit:profile
+> node ops/audit-fixes/check-build-profile.mjs
+
+PASS: build preserves custom dev launch profile
+
+> kdw-max-workspace@0.0.0 test:audit:retention
+> node ops/audit-fixes/check-retention.mjs
+
+{"synthetic":true,"indexedDBEngine":"fake-indexeddb; not a browser disk benchmark","count":5000,"serializedFixtureBytes":5680000,"idbPrune":{"ms":281.27,"result":5000},"create":{"ms":1.07,"result":0},"commit":{"ms":0.22,"result":1},"restore":{"ms":0.06,"result":"task"},"outboxBytesBefore":1045000,"filesBefore":5000,"relayStartupAndCleanup":{"ms":536.29,"result":0},"steadyFlush":{"ms":0.11,"result":100},"passed":true}
+
+> kdw-max-workspace@0.0.0 test:audit:browser
+> node ops/audit-fixes/run-browser.mjs
+

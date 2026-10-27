@@ -1,0 +1,70 @@
+{
+  "phase": "complete",
+  "time": "2026-10-27T09:37:55.3753598Z",
+  "device": "chuwi",
+  "mode": "probe",
+  "results": [
+    {
+      "output": {
+        "bootId": "f0489c23-dc18-4d9c-b6bd-d9323c8ca1c3",
+        "armed": false,
+        "active": false,
+        "backgroundReady": true,
+        "contentReady": true,
+        "frames": [
+          6444,
+          6473
+        ],
+        "senders": [
+          "KDW_MAX_BACKGROUND",
+          "KDW_MAX_CONTENT"
+        ],
+        "width": 3072,
+        "height": 1536,
+        "bridge": {
+          "adapter": "AMD Radeon(TM) Graphics [00000000:0000a7b5]",
+          "inflight": 1
+        },
+        "lidar": {
+          "enabled": false
+        },
+        "cursorVisible": false,
+        "calibration": null
+      },
+      "soundFiles": 13,
+      "maxPanel": 200,
+      "stellaPanel": 200,
+      "displayCount": 1,
+      "stellaRenderer": "pixels",
+      "stellaBusy": false
+    },
+    {
+      "calibrationStarted": true,
+      "target": [
+        640,
+        160
+      ],
+      "inputBlocked": true
+    },
+    {
+      "calibrationFilePreserved": true,
+      "calibrationCancelled": true,
+      "armed": false
+    },
+    {
+      "frames": [
+        750,
+        766
+      ],
+      "lastSeenMs": [
+        14996.8,
+        14992.9
+      ],
+      "snapshots": true,
+      "elapsedMs": 15136,
+      "requestedSeconds": 15,
+      "completed": true,
+      "headless": true
+    }
+  ]
+}
