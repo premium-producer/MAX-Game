@@ -26,6 +26,7 @@ try {
  New-Item -ItemType Directory -Force "$release/apps","$release/runtime"|Out-Null
  Expand-Archive "$base/stand-tools-KDW-Stand-20261027-RC4-1.zip" $release
  Copy-Item -LiteralPath "$base/OPERATOR_PANELS.md" -Destination "$release/OPERATOR_PANELS.md"
+ Copy-Item -LiteralPath "$base/Configure-LidarFirewall.ps1" -Destination "$release/tools/Configure-LidarFirewall.ps1"
  $preserved=@()
  foreach($name in @('max-game','stela')){
   Copy-Item -LiteralPath "$old/apps/$name" -Destination "$release/apps/$name" -Recurse
@@ -67,6 +68,7 @@ try {
    New-NetFirewallRule -Name 'KDW-RC4-1-Link-Peer' -DisplayName 'KDW RC4-1 encrypted link from paired PC only' -Direction Inbound -Action Allow -Protocol TCP -LocalAddress $local -LocalPort 18753 -RemoteAddress $peer -Profile Any -Program ([IO.Path]::GetFullPath("$release/runtime/electron/electron.exe"))|Out-Null
   }
  }
+ & "$release/tools/Configure-LidarFirewall.ps1"|Out-Null
  @{preservedFiles=$preserved.Count;profilesPreserved=$true;runtimeVerified=$true;applications=@('max-game','stela')}|ConvertTo-Json|Set-Content "$base/integrity.json" -Encoding UTF8
  Status 'installed-verified'
 }catch{Status ('failed: '+$_.Exception.Message+'; '+$_.ScriptStackTrace);exit 1}

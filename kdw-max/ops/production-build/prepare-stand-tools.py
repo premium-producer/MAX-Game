@@ -4,7 +4,7 @@ p=argparse.ArgumentParser();p.add_argument('directory',type=Path);a=p.parse_args
 root=Path(__file__).resolve().parents[2];out=a.directory.resolve()
 meta=json.loads((out/'release-set.json').read_text(encoding='utf-8'))
 sha=lambda f:hashlib.sha256(f.read_bytes()).hexdigest()
-for name in ['Install-Runtime.ps1','Output-Control.ps1']:shutil.copy2(root/'ops/production-build'/name,out/'tools'/name)
+for name in ['Install-Runtime.ps1','Output-Control.ps1','Configure-LidarFirewall.ps1']:shutil.copy2(root/'ops/production-build'/name,out/'tools'/name)
 shutil.copy2(root/'docs/STAND_RELEASE.md',out/'README.md')
 shutil.copy2(root/'docs/OPERATOR_PANELS.md',out/'OPERATOR_PANELS.md')
 (out/'tools/licenses').mkdir(exist_ok=True)
