@@ -1,9 +1,24 @@
 import {createHokuyoReceiver} from './hokuyo-osc.mjs';
 import {solveCalibration} from './calibration.mjs';
+import {isIP} from 'node:net';
+export {solveCalibration};
+export function validateLidarConfig(value){
+ const keys=['enabled','bindAddress','sourceAddress','port','timeoutMs','width','height','rawPoints','targetPoints'];
+ if(!value||Object.keys(value).some(k=>!keys.includes(k))||typeof value.enabled!=='boolean'||!isIP(value.bindAddress)||!isIP(value.sourceAddress)||value.sourceAddress==='0.0.0.0'||!Number.isInteger(value.port)||value.port<1024||value.port>65535||!Number.isFinite(value.timeoutMs)||value.timeoutMs<100||value.timeoutMs>3000||value.width!==3072||value.height!==1536)throw Error('Проверьте IP, порт, watchdog и размер 3072×1536');
+ if(value.rawPoints!==null||value.targetPoints!==null){solveCalibration(value.rawPoints,value.targetPoints,[value.width,value.height]);if(value.targetPoints.some(([x,y])=>x<0||x>value.width||y<0||y>value.height)||value.rawPoints.some(p=>p.some(n=>Math.abs(n)>10000)))throw Error('Точки вне допустимого диапазона');}
+ else if(value.enabled)throw Error('Сначала выполните калибровку');
+ return structuredClone(value);
+}
 
 // Native CDP touch events generate trusted DOM PointerEvents and preserve the
 // existing game admission/hold/hotspot path. OSC never calls mission commands.
-export async function startLidar({config,contents,active,log,width=3072,height=1536}){
+export async function startLidar({config,contents,active,log,width=3072,height=1536,calibrating=false,onPoint=()=>{}}){
+ if(calibrating){
+  validateLidarConfig({...config,enabled:false});
+  const receiver=createHokuyoReceiver({port:config.port,address:config.bindAddress,sourceAddress:config.sourceAddress,timeoutMs:config.timeoutMs,onContact:onPoint,onDiagnostic:(event,details)=>log({event,...details})});
+  try{await receiver.start();}catch(error){receiver.close();throw error;}
+  return{snapshot:()=>({enabled:false,calibrating:true,...receiver.snapshot()}),reset:()=>receiver.reset(),close:()=>receiver.close()};
+ }
  if(!config?.enabled)return {snapshot:()=>({enabled:false}),reset(){},close(){}};
  if(!config.sourceAddress||!config.bindAddress||!config.rawPoints||!config.targetPoints)
   throw Error('LiDAR requires an explicit source, bind address and measured calibration');
@@ -24,6 +39,8 @@ export async function startLidar({config,contents,active,log,width=3072,height=1
   onDiagnostic:(event,details)=>log({event,...details}),
   onContact:event=>{
    if(closed)return;
+     let cursor=null;try{if(event.phase==='down'||event.phase==='move')cursor=mapping.map(event.x,event.y);}catch{}
+     onPoint({...event,mapped:cursor});
    if(!active()){cancel();return;}
    if(event.phase==='cancel'){cancel();return;}
    if(event.phase==='up'){pendingMove=null;if(down){down=false;send('touchEnd');}return;}
@@ -35,5 +52,5 @@ export async function startLidar({config,contents,active,log,width=3072,height=1
   }});
  await receiver.start();
  return {snapshot:()=>({enabled:true,...receiver.snapshot(),cornerErrorPx:mapping.cornerErrorPx}),
-  reset(){cancel();receiver.reset();},async close(){cancel();receiver.close();await chain.catch(()=>{});closed=true;}};
+  reset(){cancel();receiver.reset();},async close(){cancel();await receiver.close();await chain.catch(()=>{});closed=true;}};
 }

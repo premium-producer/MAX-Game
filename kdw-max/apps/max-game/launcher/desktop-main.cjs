@@ -22,7 +22,7 @@ const errors=[],missing=[];
 function log(value){fs.appendFileSync(path.join(data,'desktop.log'),JSON.stringify({time:new Date().toISOString(),...value})+'\n');}
 if(!app.requestSingleInstanceLock()){app.quit();}
 else {
-  app.on('second-instance',()=>{if(window){if(window.isMinimized())window.restore();window.show();window.focus();}});
+  app.on('second-instance',(_event,args)=>{if(serveOnly&&!args.includes('--serve-only')){app.relaunch({args:process.argv.slice(1).filter(a=>a!=='--serve-only')});app.quit();return;}if(window){if(window.isMinimized())window.restore();window.show();window.focus();}});
   app.on('window-all-closed',()=>app.quit());
   app.on('before-quit',event=>{
     if(closing)return;
@@ -30,7 +30,7 @@ else {
     void (async()=>{try{await output?.close();await host?.close();try{if(JSON.parse(fs.readFileSync(stateFile)).pid===process.pid)fs.unlinkSync(stateFile);}catch{}app.exit(fatalExit?1:0);}catch(error){log({event:'shutdown-error',message:error.message});app.exit(1);}})();
   });
   app.whenReady().then(async()=>{
-    host=createPortableServer({root,config,onStop:()=>app.quit(),onMissing:url=>missing.push(url)});
+    host=createPortableServer({root,config,onStop:()=>app.quit(),onMissing:url=>missing.push(url),getOutput:()=>output});
     await host.listen();
     fs.writeFileSync(stateFile,JSON.stringify({...host.health,token:host.token},null,2)+'\n');
     log({event:'ready',...host.health});

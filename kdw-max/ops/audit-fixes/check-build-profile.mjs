@@ -5,7 +5,7 @@ const copy=(from,to)=>{fs.mkdirSync(path.dirname(to),{recursive:true});fs.copyFi
 try{
  fs.mkdirSync(path.join(app,'source'),{recursive:true});fs.mkdirSync(path.join(app,'launcher'));
  fs.symlinkSync(path.join(root,'apps/STARTUP'),path.join(temp,'STARTUP'),'dir');
- for(const name of ['client','stand-base','vendor','stand-output'])fs.symlinkSync(path.join(original,'source',name),path.join(app,'source',name),'dir');
+ for(const name of ['client','stand-base','vendor','stand-output','operator'])fs.symlinkSync(path.join(original,'source',name),path.join(app,'source',name),'dir');
  copy(path.join(original,'source/build.mjs'),path.join(app,'source/build.mjs'));
  for(const name of Object.keys(JSON.parse(fs.readFileSync(path.join(original,'source/stand-base/manifest.json'))).files).filter(n=>n.startsWith('public/'))){const relative=name.slice(7);copy(path.join(original,'www',relative),path.join(app,'www',relative));}
  for(const name of ['r6-app.js','build.json'])copy(path.join(original,'www/webgl-v5',name),path.join(app,'www/webgl-v5',name));

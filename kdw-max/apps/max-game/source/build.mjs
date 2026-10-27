@@ -14,6 +14,7 @@ const networkLink=path.join(path.dirname(sharedLink),'game-link-network.cjs');if
 const packages=process.argv[2]?path.resolve(process.argv[2]):path.join(source,'client/node_modules');
 if(!fs.existsSync(path.join(packages,'esbuild/lib/main.js')))throw Error('Pass an existing development node_modules directory. Runtime startup does not need this toolchain.');
 const {build,transform}=await import(pathToFileURL(path.join(packages,'esbuild/lib/main.js')));
+fs.cpSync(path.join(source,'operator'),path.join(root,'www/admin'),{recursive:true});
 const sha=value=>createHash('sha256').update(value).digest('hex');
 const web=path.join(root,'www/webgl-v5'),originalBundle=path.join(web,'r6-app.js');
 if(!fs.existsSync(originalBundle)){

@@ -55,7 +55,7 @@ export function createHokuyoReceiver({port=9001,address='0.0.0.0',sourceAddress=
   },
   snapshot(){return {bound,port,sourceAddress,...stats,lastPacketAgeMs:lastPacketAt?Math.max(0,now()-lastPacketAt):null,addresses:[...addresses],activeContactId:gesture,selectedContactId:primary===null?null:String(primary),selection:'topmost',selectionSpace,selectedY,contactCount:contacts.size};},
   reset,
-  close(){if(closed)return;closed=true;clearInterval(timer);reset();transport?.close();},
+  close(){if(closed)return;closed=true;clearInterval(timer);reset();if(!transport)return;const wasBound=bound;return new Promise(resolve=>{transport.once('close',resolve);try{transport.close();}catch{resolve();}if(!wasBound)resolve();});},
   decodePacket(bytes,info){packet(osc.readPacket(bytes,{metadata:true}),info);},
   expire,
  };

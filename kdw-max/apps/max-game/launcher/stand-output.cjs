@@ -7,8 +7,10 @@ exports.startStandOutput=async function({root,host,config,log,onFatal}){
  const width=3072,height=1536,bootId=randomUUID(),data=path.join(root,'data');
  const bridge=require('./kdw_spout.node'),windows=[],pending=new Map(),frames=[0,0];
  let closed=false,armed=false,backgroundBusy=false,lastBackgroundAck=performance.now(),delta=0,epoch='',lidar,backgroundReady=false,contentReady=false;
+ const {read,atomic}=require('./operator-http.cjs');
+ let lidarConfig=read(path.join(data,'lidar.local.json'),null),calibrationConfig=null,cursorVisible=read(path.join(data,'operator.local.json'),{cursorVisible:false}).cursorVisible===true,calibration=null,calibrationAt=0,lastPoint=null;
  const statePath=path.join(data,'output-state.json'),armPath=path.join(data,'output-arm.json');
- const active=()=>!closed&&armed&&backgroundReady&&contentReady&&frames.every(n=>n>0);
+ const active=()=>!closed&&!calibration&&armed&&backgroundReady&&contentReady&&frames.every(n=>n>0);
  const notify=()=>{for(const w of windows)if(!w.isDestroyed())w.webContents.send('kdw:output-state',active());};
  function drain(){
   for(const token of bridge.poll()){const frame=pending.get(token);if(!frame)throw Error('Unknown GPU completion');frame.texture.release();pending.delete(token);}
@@ -41,6 +43,14 @@ exports.startStandOutput=async function({root,host,config,log,onFatal}){
   windows.push(win);install(win,channel);
  }
  const [background,content]=windows;
+ const operatorStatus=()=>({bootId,armed,active:active(),backgroundReady,contentReady,frames:[...frames],senders:['KDW_MAX_BACKGROUND','KDW_MAX_CONTENT'],width,height,bridge:bridge.status(),lidar:lidar?.snapshot()??null,cursorVisible,calibration:calibration?.status()??null});
+ function setArmed(value){if(value&&(calibration||!contentReady||!backgroundReady||!frames.every(n=>n>0)))throw Error('Оба слоя должны быть готовы; завершите калибровку');armed=value;atomic(armPath,{bootId,armed});lidar?.reset();notify();}
+ const onPoint=event=>{if(calibration)calibration.point(event);lastPoint=event.mapped?.inside&&['down','move'].includes(event.phase)?{x:event.mapped.x,y:event.mapped.y,at:Date.now()}:null;};
+ async function configureLidar(value,calibrating=false){const previous=lidarConfig;await lidar?.close();lidar=null;lastPoint=null;const start=(config,raw=false)=>require('./lidar.cjs').startLidar({config,contents:content.webContents,active,log,width,height,calibrating:raw,onPoint});try{lidar=await start(value,calibrating);if(!calibrating)lidarConfig=value;}catch(error){setArmed(false);try{lidar=await start(previous);}catch(rollback){log({event:'lidar-rollback-failed',message:rollback.message});}throw error;}}
+ async function beginCalibration(value){if(calibration)throw Error('Калибровка уже запущена');setArmed(false);calibrationConfig=value;calibration=require('./operator-calibration.cjs').createCalibration(require('./lidar.cjs').solveCalibration);calibrationAt=Date.now();try{await configureLidar(value,true);}catch(error){calibration=null;await configureLidar(lidarConfig);throw error;}notify();}
+ async function cancelCalibration(){if(!calibration)return;calibration=null;setArmed(false);await configureLidar(lidarConfig);notify();}
+ async function saveCalibration(){if(!calibration)throw Error('Калибровка не запущена');const value={...calibrationConfig,...calibration.result(),enabled:true};require('./lidar.cjs').validateLidarConfig(value);setArmed(false);await configureLidar(value);calibration=null;notify();return value;}
+ const overlayTimer=setInterval(()=>{if(!closed&&!content.isDestroyed())content.webContents.send('kdw:operator-overlay',{calibration:calibration?.status()??null,cursor:!calibration&&cursorVisible&&active()&&lastPoint&&Date.now()-lastPoint.at<350?lastPoint:null});},33);
  content.webContents.session.webRequest.onBeforeRequest((details,callback)=>{
   const url=new URL(details.url);callback({cancel:!(['data:','blob:'].includes(url.protocol)||url.origin===host.origin)});
  });
@@ -61,14 +71,15 @@ exports.startStandOutput=async function({root,host,config,log,onFatal}){
   if(closed)return;
   try{
    let request;try{request=JSON.parse(fs.readFileSync(armPath,'utf8').replace(/^\uFEFF/,''));}catch{}
-   const next=request?.bootId===bootId&&request?.armed===true;
+   const next=!calibration&&request?.bootId===bootId&&request?.armed===true;
    if(next!==armed){armed=next;lidar?.reset();notify();log({event:'spout-armed',armed,bootId});}
    const state={schemaVersion:1,bootId,pid:process.pid,armed,active:active(),backgroundReady,contentReady,width,height,fps:60,senders:['KDW_MAX_BACKGROUND','KDW_MAX_CONTENT'],frames,pending:pending.size,bridge:bridge.status(),lidar:lidar?.snapshot()??null,updatedAt:new Date().toISOString()};
    const tmp=statePath+'.tmp';fs.writeFileSync(tmp,JSON.stringify(state,null,2));fs.renameSync(tmp,statePath);
+   if(calibration&&Date.now()-calibrationAt>10*60*1000){calibrationAt=Date.now();void cancelCalibration().catch(fail);}
   }catch(error){fail(error);}
  },500);
  async function close(){
-  if(closed)return;closed=true;armed=false;notify();clearInterval(timer);clearInterval(monitor);
+  if(closed)return;closed=true;armed=false;notify();clearInterval(timer);clearInterval(monitor);clearInterval(overlayTimer);
   ipcMain.removeListener('kdw:background-tick',tick);ipcMain.removeListener('kdw:background-ack',ack);
   await lidar?.close();for(const w of windows)if(!w.isDestroyed())w.webContents.stopPainting();
   const deadline=performance.now()+5000;while(pending.size&&performance.now()<deadline){drain();await new Promise(r=>setTimeout(r,2));}
@@ -79,10 +90,9 @@ exports.startStandOutput=async function({root,host,config,log,onFatal}){
  try{
   await background.loadURL(host.origin+'/webgl-v5/stand-background.html');
   await content.loadURL(new URL(config.entry,host.origin).href);
-  let input;try{input=JSON.parse(fs.readFileSync(path.join(data,'lidar.local.json'),'utf8').replace(/^\uFEFF/,''));}catch(e){if(e.code!=='ENOENT')throw e;}
-  lidar=await require('./lidar.cjs').startLidar({config:input,contents:content.webContents,active,log,width,height});
+  await configureLidar(lidarConfig);
   for(const w of windows)w.webContents.startPainting();
   log({event:'spout-started',bootId,width,height});
-  return {close,content,background,active,bootId};
+  return {close,content,background,active,bootId,operatorStatus,setArmed,configureLidar,beginCalibration,cancelCalibration,saveCalibration,captureCalibration(){if(!calibration)throw Error('Калибровка не запущена');return calibration.capture();},setCursor(value){cursorVisible=value;}};
  }catch(error){await close();throw error;}
 };

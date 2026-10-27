@@ -51,3 +51,6 @@ npm run check
 [Аудит и список задач](docs/GAMEPLAY_AUDIT_TASKS.md), [реализованные исправления и проверка](docs/verification-audit-fixes-20261026/README.md), [ТЗ на звук](docs/SOUND_DESIGN_SPEC.md).
 
 После `npm run setup` и `npm run setup:browser`: `npm run build`, затем `npm run test:audit:all`. Браузерный прогон требует свободных портов 18781/18782, использует временные данные и не обращается к AI. Для быстрой программной регрессии без Chromium — `npm run test:audit`. Обычная сборка сохраняет профиль запуска; новые Windows-комплекты формирует явный `ops/production-build/build.py --output НОВАЯ_ПАПКА`.
+
+
+Операторские панели MAX/Стеллы и оригинальные музыка/эффекты: [инструкция](docs/OPERATOR_PANELS.md). Запуск без сцены — `apps/<программа>/Start-Admin.bat`.

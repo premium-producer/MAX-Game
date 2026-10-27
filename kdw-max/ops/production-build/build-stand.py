@@ -11,7 +11,7 @@ def save(f,v):f.parent.mkdir(parents=True,exist_ok=True);f.write_text(json.dumps
 def copy(src,dst):
  dst.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(src,dst)
  if sha(src)!=sha(dst):raise RuntimeError('Copy verification failed')
-shared={n:sha(root/'apps/STARTUP/tools'/n) for n in ['game-link.cjs','game-link-network.cjs','stand-settings.cjs','renderer-recovery.cjs']}
+shared={n:sha(root/'apps/STARTUP/tools'/n) for n in ['game-link.cjs','game-link-network.cjs','stand-settings.cjs','renderer-recovery.cjs','operator-http.cjs']}
 shared_revision=hashlib.sha256(json.dumps(shared,sort_keys=True).encode()).hexdigest()
 native=root/'.cache/spout-prototype/build/Release/kdw_spout.node'
 if not native.exists():raise SystemExit('Build the pinned native bridge first: ops/spout-prototype/build.ps1')

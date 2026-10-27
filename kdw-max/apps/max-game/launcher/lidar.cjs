@@ -5962,7 +5962,9 @@ var require_perspective_transform = __commonJS({
 // apps/max-game/source/stand-output/lidar.mjs
 var lidar_exports = {};
 __export(lidar_exports, {
-  startLidar: () => startLidar
+  solveCalibration: () => solveCalibration,
+  startLidar: () => startLidar,
+  validateLidarConfig: () => validateLidarConfig
 });
 module.exports = __toCommonJS(lidar_exports);
 
@@ -6117,7 +6119,17 @@ function createHokuyoReceiver({ port = 9001, address = "0.0.0.0", sourceAddress 
       closed = true;
       clearInterval(timer);
       reset();
-      transport?.close();
+      if (!transport) return;
+      const wasBound = bound;
+      return new Promise((resolve) => {
+        transport.once("close", resolve);
+        try {
+          transport.close();
+        } catch {
+          resolve();
+        }
+        if (!wasBound) resolve();
+      });
     },
     decodePacket(bytes, info) {
       packet(import_osc.default.readPacket(bytes, { metadata: true }), info);
@@ -6175,7 +6187,29 @@ function solveCalibration(rawPoints, targetPoints, logicalSize = DEFAULT_LOGICAL
 }
 
 // apps/max-game/source/stand-output/lidar.mjs
-async function startLidar({ config, contents, active, log, width = 3072, height = 1536 }) {
+var import_node_net = require("node:net");
+function validateLidarConfig(value) {
+  const keys = ["enabled", "bindAddress", "sourceAddress", "port", "timeoutMs", "width", "height", "rawPoints", "targetPoints"];
+  if (!value || Object.keys(value).some((k) => !keys.includes(k)) || typeof value.enabled !== "boolean" || !(0, import_node_net.isIP)(value.bindAddress) || !(0, import_node_net.isIP)(value.sourceAddress) || value.sourceAddress === "0.0.0.0" || !Number.isInteger(value.port) || value.port < 1024 || value.port > 65535 || !Number.isFinite(value.timeoutMs) || value.timeoutMs < 100 || value.timeoutMs > 3e3 || value.width !== 3072 || value.height !== 1536) throw Error("\u041F\u0440\u043E\u0432\u0435\u0440\u044C\u0442\u0435 IP, \u043F\u043E\u0440\u0442, watchdog \u0438 \u0440\u0430\u0437\u043C\u0435\u0440 3072\xD71536");
+  if (value.rawPoints !== null || value.targetPoints !== null) {
+    solveCalibration(value.rawPoints, value.targetPoints, [value.width, value.height]);
+    if (value.targetPoints.some(([x, y]) => x < 0 || x > value.width || y < 0 || y > value.height) || value.rawPoints.some((p) => p.some((n) => Math.abs(n) > 1e4))) throw Error("\u0422\u043E\u0447\u043A\u0438 \u0432\u043D\u0435 \u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u043E\u0433\u043E \u0434\u0438\u0430\u043F\u0430\u0437\u043E\u043D\u0430");
+  } else if (value.enabled) throw Error("\u0421\u043D\u0430\u0447\u0430\u043B\u0430 \u0432\u044B\u043F\u043E\u043B\u043D\u0438\u0442\u0435 \u043A\u0430\u043B\u0438\u0431\u0440\u043E\u0432\u043A\u0443");
+  return structuredClone(value);
+}
+async function startLidar({ config, contents, active, log, width = 3072, height = 1536, calibrating = false, onPoint = () => {
+} }) {
+  if (calibrating) {
+    validateLidarConfig({ ...config, enabled: false });
+    const receiver2 = createHokuyoReceiver({ port: config.port, address: config.bindAddress, sourceAddress: config.sourceAddress, timeoutMs: config.timeoutMs, onContact: onPoint, onDiagnostic: (event, details) => log({ event, ...details }) });
+    try {
+      await receiver2.start();
+    } catch (error) {
+      receiver2.close();
+      throw error;
+    }
+    return { snapshot: () => ({ enabled: false, calibrating: true, ...receiver2.snapshot() }), reset: () => receiver2.reset(), close: () => receiver2.close() };
+  }
   if (!config?.enabled) return { snapshot: () => ({ enabled: false }), reset() {
   }, close() {
   } };
@@ -6215,6 +6249,12 @@ async function startLidar({ config, contents, active, log, width = 3072, height 
     onDiagnostic: (event, details) => log({ event, ...details }),
     onContact: (event) => {
       if (closed) return;
+      let cursor = null;
+      try {
+        if (event.phase === "down" || event.phase === "move") cursor = mapping.map(event.x, event.y);
+      } catch {
+      }
+      onPoint({ ...event, mapped: cursor });
       if (!active()) {
         cancel();
         return;
@@ -6269,7 +6309,7 @@ async function startLidar({ config, contents, active, log, width = 3072, height 
     },
     async close() {
       cancel();
-      receiver.close();
+      await receiver.close();
       await chain.catch(() => {
       });
       closed = true;
@@ -6278,5 +6318,7 @@ async function startLidar({ config, contents, active, log, width = 3072, height 
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  startLidar
+  solveCalibration,
+  startLidar,
+  validateLidarConfig
 });

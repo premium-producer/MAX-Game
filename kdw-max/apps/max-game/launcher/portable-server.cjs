@@ -5,17 +5,19 @@ const crypto = require('node:crypto');
 
 const MIME = {'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.mjs':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.gif':'image/gif','.woff':'font/woff','.woff2':'font/woff2','.ttf':'font/ttf','.mp4':'video/mp4','.webm':'video/webm','.mp3':'audio/mpeg','.wav':'audio/wav','.ogg':'audio/ogg','.bin':'application/octet-stream','.txt':'text/plain; charset=utf-8','.ico':'image/x-icon'};
 
-function createPortableServer({root, config, onStop = () => {}, onMissing = () => {}}) {
+function createPortableServer({root, config, onStop = () => {}, onMissing = () => {}, getOutput = () => null}) {
   const publicRoot = fs.realpathSync(path.join(root, 'www'));
   const instanceKey = crypto.createHash('sha256').update(fs.realpathSync(root).toLowerCase()).digest('hex');
   const token = crypto.randomBytes(32).toString('hex');
   const origin = `http://127.0.0.1:${config.port}`;
   const link=require('./game-link.cjs').createGameHub({root,origin,production:config.production===true});
   const network=require('./game-link-network.cjs').createNetworkReceiver({root,hub:link});
+  const operator=require('./operator.cjs').createOperator({root,origin,link,getOutput});
   const health = {application:config.id, version:config.version, instanceKey, pid:process.pid, origin, entry:config.entry};
   const json = (res, code, value) => {res.writeHead(code, {'Content-Type':'application/json','Cache-Control':'no-store'});res.end(JSON.stringify(value));};
   const server = http.createServer((req, res) => {
     if (req.headers.host !== `127.0.0.1:${config.port}`) return json(res, 403, {error:'INVALID_HOST'});
+    if(operator.handle(req,res))return;
     if(link.handle(req,res))return;
     if (req.url === '/__kdw/health' && req.method === 'GET') return json(res, 200, health);
     if (req.url === '/__kdw/stop' && req.method === 'POST') {
