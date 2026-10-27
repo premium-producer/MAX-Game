@@ -1,0 +1,199 @@
+{
+  "passed": true,
+  "cold": {
+    "state": {
+      "coordinates": "viewport pixels, origin top-left, x right, y down",
+      "phase": "menu",
+      "status": "menu",
+      "mission": null,
+      "screen": null,
+      "ready": false,
+      "remainingMs": null,
+      "connected": true,
+      "presentation": {
+        "pathTime": [
+          null,
+          null
+        ],
+        "geometry": {
+          "width": 2240,
+          "height": 1280
+        },
+        "deviceReady": false,
+        "presence": 0,
+        "position": [
+          0,
+          0
+        ],
+        "target": null,
+        "settled": [],
+        "camera": [
+          0,
+          0
+        ],
+        "busy": false,
+        "phoneData": {
+          "pathPresence": "0",
+          "idlePart": "true",
+          "sceneVersion": "idle-video",
+          "mediaReadyKey": "idle-video",
+          "sceneId": "620",
+          "uiFade": "0",
+          "gpuReadyKey": "idle-video"
+        }
+      }
+    },
+    "active": false,
+    "alpha": "rgba(0, 0, 0, 0)"
+  },
+  "warm": {
+    "coordinates": "viewport pixels, origin top-left, x right, y down",
+    "phase": "menu",
+    "status": "menu",
+    "mission": null,
+    "screen": null,
+    "ready": false,
+    "remainingMs": null,
+    "connected": true,
+    "presentation": {
+      "pathTime": [
+        null,
+        null
+      ],
+      "geometry": {
+        "width": 2240,
+        "height": 1280
+      },
+      "deviceReady": false,
+      "presence": 0,
+      "position": [
+        0,
+        0
+      ],
+      "target": null,
+      "settled": [],
+      "camera": [
+        0,
+        0
+      ],
+      "busy": false,
+      "phoneData": {
+        "pathPresence": "1",
+        "idlePart": "true",
+        "sceneVersion": "idle-video",
+        "mediaReadyKey": "idle-video",
+        "sceneId": "620",
+        "uiFade": "1",
+        "gpuReadyKey": "idle-video"
+      }
+    }
+  },
+  "task": {
+    "coordinates": "viewport pixels, origin top-left, x right, y down",
+    "phase": "arrange",
+    "status": "task",
+    "mission": "communication",
+    "screen": "communication.call.chat",
+    "ready": false,
+    "remainingMs": 60000,
+    "connected": true,
+    "presentation": {
+      "startup": "shell",
+      "pathsDone": false,
+      "pathTime": [
+        0,
+        1.9700000000000002
+      ],
+      "geometry": {
+        "width": 2240,
+        "height": 1280
+      },
+      "deviceReady": true,
+      "presence": 0.9895347850257629,
+      "position": [
+        1120,
+        0
+      ],
+      "target": {
+        "x": 1120,
+        "y": 0
+      },
+      "settled": [
+        [
+          "open-max",
+          false
+        ],
+        [
+          "communication.call",
+          false
+        ]
+      ],
+      "camera": [
+        0,
+        0
+      ],
+      "busy": false,
+      "phoneData": {
+        "device": "phone",
+        "sceneVersion": "startup:1:1",
+        "pathPresence": "0.9895347850257629",
+        "mediaReadyKey": "startup:1:1",
+        "sceneId": "639",
+        "uiFade": "0.9895347850257629",
+        "gpuReadyKey": "startup:1:1"
+      }
+    }
+  },
+  "final": {
+    "schemaVersion": 1,
+    "bootId": "7a35df72-113f-4139-87bf-9ba5b4073980",
+    "pid": 34212,
+    "armed": false,
+    "active": false,
+    "backgroundReady": true,
+    "contentReady": true,
+    "width": 3072,
+    "height": 1536,
+    "fps": 60,
+    "senders": [
+      "KDW_MAX_BACKGROUND",
+      "KDW_MAX_CONTENT"
+    ],
+    "frames": [
+      1206,
+      904
+    ],
+    "pending": 1,
+    "bridge": {
+      "adapter": "NVIDIA GeForce RTX 5070 Ti [00000000:00018cd2]",
+      "inflight": 1
+    },
+    "lidar": {
+      "enabled": true,
+      "bound": true,
+      "port": 19001,
+      "sourceAddress": "127.0.0.1",
+      "packetCount": 20,
+      "decodeErrors": 0,
+      "rejectedSources": 0,
+      "acceptedUpdates": 12,
+      "ignoredContacts": 6,
+      "selectionChanges": 0,
+      "lastPacketAgeMs": 12012,
+      "addresses": [
+        "/create",
+        "/delete",
+        "/update"
+      ],
+      "activeContactId": null,
+      "selectedContactId": null,
+      "selection": "topmost",
+      "selectionSpace": "calibrated-screen-y",
+      "selectedY": null,
+      "contactCount": 0,
+      "cornerErrorPx": 0
+    },
+    "updatedAt": "2026-10-27T07:12:31.163Z"
+  },
+  "nativeOscMenuAndPalm": true
+}

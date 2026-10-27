@@ -1,6 +1,7 @@
 import {createGradientController} from './bfm-gradient-controller.mjs';
 import {FLAT_SCREEN,WALL} from './circle-model.mjs';
 import {pixelMapViewport} from './kdw-pixel-map.mjs';
+import {outputHidden} from './kdw-stand-output.mjs';
 
 export const BROWSER_ROUTE_GAP=128;
 export function browserSceneSize(width,height,{deviceWidth=392}={}){return {width:Math.ceil(Math.max(2480,1280*width/height,2*(256+BROWSER_ROUTE_GAP)+deviceWidth+968)/64)*64,height:1280};}
@@ -21,8 +22,8 @@ export function browserDeviceCenter(hostWidth,deviceWidth){return Math.min(hostW
 // Authored stand geometry, motion, assets and game transitions are unchanged.
 export function createStandBrowserHost({arena,params,onMenu,pixelPlan,production=false}){
  const gradients=createGradientController(),reduced=matchMedia('(prefers-reduced-motion: reduce)');
- const configure=()=>gradients.configure({speed:30,spread:.15,phaseSpread:360,paused:document.hidden||reduced.matches});
- configure();document.addEventListener('visibilitychange',configure);reduced.addEventListener('change',configure);
+ const configure=()=>gradients.configure({speed:30,spread:.15,phaseSpread:360,paused:outputHidden()||reduced.matches});
+ configure();document.addEventListener('visibilitychange',configure);window.addEventListener('kdw-output-state',configure);reduced.addEventListener('change',configure);
  const back=document.createElement('button');back.className='kdw-browser-back';back.textContent='Назад';back.hidden=true;back.addEventListener('click',onMenu);if(!production)document.body.append(back);
  return {gradients,
   fit(width,height){
@@ -35,7 +36,7 @@ export function createStandBrowserHost({arena,params,onMenu,pixelPlan,production
    if(pixelPlan){const brand=arena.querySelector('.v5-brand'),v=pixelMapViewport(width,height);if(brand)Object.assign(brand.style,{left:(pixelPlan.zone.left+pixelPlan.zone.w-360)+'px',right:'auto',top:((1536*.07)/pixelPlan.scale)+'px'});if(ambient)Object.assign(ambient.style,{left:v.left+'px',top:v.top+'px',width:v.width+'px',height:v.height+'px'});}
   },
   update(snapshot){back.hidden=!snapshot||snapshot.state.status==='menu';if(pixelPlan){const brand=arena.querySelector('.v5-brand');if(brand)brand.hidden=snapshot?.state.status==='menu';}},
-  dispose(){back.remove();gradients.dispose();document.removeEventListener('visibilitychange',configure);reduced.removeEventListener('change',configure);}
+  dispose(){back.remove();gradients.dispose();document.removeEventListener('visibilitychange',configure);window.removeEventListener('kdw-output-state',configure);reduced.removeEventListener('change',configure);}
  };
 }
 

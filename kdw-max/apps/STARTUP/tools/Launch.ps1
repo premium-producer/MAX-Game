@@ -28,6 +28,7 @@ if ($already) {
     exit 0
 }
 $process = Start-Process -FilePath $runtimeExe -ArgumentList $processArgs -WorkingDirectory $appRoot -WindowStyle Hidden -PassThru
+$null = $process.Handle
 if ($Verify) { $process.WaitForExit(); exit $process.ExitCode }
 $deadline = [DateTime]::UtcNow.AddSeconds(25)
 do {

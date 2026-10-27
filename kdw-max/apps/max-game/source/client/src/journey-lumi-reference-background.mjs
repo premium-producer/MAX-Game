@@ -4,7 +4,7 @@ import {FIELD_GLSL,COMPOSITE_GLSL,REFERENCE_CONFIG,referenceMetrics,referenceMot
 
 // The game foreground owns the frame loop. Cells and gradients share LumiCells'
 // bounded clock; no second RAF, catch-up after hidden, or per-frame asset work.
-export function lumiReferenceBackground(canvas){
+export function lumiReferenceBackground(canvas,{offscreen=false}={}){
   canvas.style.background='#0D001A';
   const query=new URLSearchParams(location.search);
   // User explicitly requested animated scenery. The game's reduced-motion
@@ -30,7 +30,7 @@ export function lumiReferenceBackground(canvas){
     paramsVec4Count:controller.layout.vec4Count,sceneProfile:{field:FIELD_GLSL,composite:COMPOSITE_GLSL}});
   let disposed=false,paused=false,failed=false,started=performance.now(),dirty=true,ready=false;
   const render=(delta=0,{active=true,reduced=false}={})=>{
-    if(disposed||failed||paused||!active||document.hidden){started=performance.now();return;}
+    if(disposed||failed||paused||!active||(!offscreen&&document.hidden)){started=performance.now();return;}
     const dt=referenceMotionDelta(delta,true,followSystemMotion&&reduced);
     if(ready&&!dirty&&dt===0){report(followSystemMotion&&reduced?'Системная пауза':'Нет delta',controller.clock.seconds);return;}
     try{

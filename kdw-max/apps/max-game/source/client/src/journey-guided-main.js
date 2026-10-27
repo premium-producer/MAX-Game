@@ -1,3 +1,4 @@
+import {standOutput,outputHidden,remoteBackground} from './kdw-stand-output.mjs';
 import {gameAudioActive,showRuntimeRecovery,monitorPreparation} from './kdw-runtime-health.mjs';
 import {readStandSettings,productionCatalog,startProduction,selectManualMission} from './kdw-production.mjs';
 import {createTransitionLayout} from './kdw-transition-layout.mjs';
@@ -120,9 +121,9 @@ let standBrowser;
 const localAdmission=new LocalStandAdmission({active:()=>inputActive()});
 let sharedSession,v5Tools,missionContinuation,continuationContext,automaticPresentation=null,automaticRoutes=null,showScreenDelayMs=1000;
 const localRecovery=bfmVisual&&sharedBackend&&!service&&params.get('backend')==='local';
-let recoveryBlocked=localRecovery,recoveryChoice=null,windowFocused=document.hasFocus();
-const presentationActive=()=>!document.hidden&&!servicePaused&&(!managedShell||managedVisible&&(!!idleMenu||!!independent||!!controller&&sharedSession?.snapshot?.assignment?.lifecycle.status==='active'));
-const inputActive=()=>!independent&&!mobileWall&&(portable||!host.querySelector('.v5-mission-qr'))&&presentationActive()&&!recoveryBlocked&&!document.hidden&&!servicePaused&&(portable||!localRecovery||windowFocused);
+let recoveryBlocked=localRecovery,recoveryChoice=null,windowFocused=(standOutput?true:document.hasFocus());
+const presentationActive=()=>!outputHidden()&&!servicePaused&&(!managedShell||managedVisible&&(!!idleMenu||!!independent||!!controller&&sharedSession?.snapshot?.assignment?.lifecycle.status==='active'));
+const inputActive=()=>!independent&&!mobileWall&&(portable||!host.querySelector('.v5-mission-qr'))&&presentationActive()&&!recoveryBlocked&&!outputHidden()&&!servicePaused&&(portable||!localRecovery||windowFocused);
 let startupAssets,startupPlan;
 const adjustableIcons=revealMode&&!service;
 const host=document.createElement('section');host.className='circle journey-zone guided-zone';host.dataset.zone='0';root.append(host);
@@ -528,7 +529,7 @@ function syncPopup(){
  }
 }
 function markInstructionPresented(){
- if(!bfmVisual||!controller?.markInstructionPresented||controller.phase!=='task'||document.hidden||servicePaused)return;
+ if(!bfmVisual||!controller?.markInstructionPresented||controller.phase!=='task'||outputHidden()||servicePaused)return;
  if(controller.snapshot?.assignment&&controller.snapshot.assignment.lifecycle.status!=='active')return;
  if(host.querySelector('.route-phone .phone-media-error,.route-phone .media-missing,.route-phone .phone-loading,.route-phone[data-gpu-upload-error]'))return;
  const instruction=host.querySelector('.task-dialog .instruction');
@@ -829,8 +830,9 @@ root.addEventListener('pointercancel',cancelGesture);
 // Keyboard and physical touch share the same trusted immediate contact.
 root.addEventListener('keydown',e=>{if(!controller||!inputActive())return;if(e.target.closest('[data-palm]')&&[' ','Enter'].includes(e.key)){e.preventDefault();if(!e.repeat)beginPalmContact('keyboard');}});
 root.addEventListener('keyup',e=>{if(!controller||!inputActive())return;if([' ','Enter'].includes(e.key))(sharedBackend?controller.up('keyboard'):controller.cancelContact('keyboard'));});
-window.addEventListener('blur',()=>{windowFocused=false;gameAudio?.setActive(presentationActive()&&!localRecovery);cancelGesture();if(!preparingInteractionPreview)sharedSession?.owner(portable&&inputActive());});window.addEventListener('focus',()=>{windowFocused=true;if(!preparingInteractionPreview&&inputActive())sharedSession?.owner(true);});document.addEventListener('visibilitychange',()=>{cancelGesture();independent?.setActive(presentationActive());if(!preparingInteractionPreview)sharedSession?.owner(inputActive());});
+window.addEventListener('blur',()=>{if(standOutput)return;windowFocused=false;gameAudio?.setActive(presentationActive()&&!localRecovery);cancelGesture();if(!preparingInteractionPreview)sharedSession?.owner(portable&&inputActive());});window.addEventListener('focus',()=>{windowFocused=true;if(!preparingInteractionPreview&&inputActive())sharedSession?.owner(true);});document.addEventListener('visibilitychange',()=>{cancelGesture();independent?.setActive(presentationActive());if(!preparingInteractionPreview)sharedSession?.owner(inputActive());});
 window.addEventListener('max-service-pointer-cancel',cancelGesture);
+window.addEventListener('kdw-output-state',()=>{cancelGesture();windowFocused=standOutput?.active()===true;if(!preparingInteractionPreview)sharedSession?.owner(inputActive());});
 window.addEventListener('keydown',e=>{if(!controller||!inputActive())return;if(!productionMode&&e.key==='Escape'){if(resetPrompt){changeResetPrompt(false);return;}cancelGesture();close();}});
 document.addEventListener('dragstart',e=>e.preventDefault(),true);
 installTaskDismiss({root:document,enabled:()=>!revealMode,getOpen:()=>{const popup=host.querySelector('.task-dialog');return popup?[{popup,panels:[...popup.querySelectorAll('.instruction,.demo-app,.close'),...(inlinePhone?[host.querySelector('.route-phone')].filter(Boolean):[])]}]:[];},close});
@@ -1179,11 +1181,11 @@ async function boot(){
   document.documentElement.dataset.sessionStorage=profile==='server'?'server':bfmVisual?'indexeddb':'localStorage';
  }
  let saved;if(!sharedBackend&&!reviewMission)try{saved=localStorage.getItem(storage);}catch{}
- if(!managedShell)configureController(saved);if(productionMode)stopProduction=startProduction({getSession:()=>sharedSession,ready:s=>{if(s.status==='scan')return ['palm','holding'].includes(controller?.phase)&&palmPresence.value>.95;if(s.status==='task')return controller?.phase==='task'&&controller.displayedState?.screenId===s.screenId&&phoneContentReady()&&phonePresence.value>.97;if(['completed','incomplete'].includes(s.status)){const image=host.querySelector('.v5-mission-qr img');return image?.complete&&image.naturalWidth>0&&foreground?.qrReady(image.closest('.v5-mission-qr'))===true&&Number(host.dataset.finalGamePresence??1)<.005;}return false;}});
+ if(!managedShell)configureController(saved);if(productionMode)stopProduction=startProduction({getSession:()=>sharedSession,ready:s=>{if(!presentationActive())return false;if(s.status==='scan')return ['palm','holding'].includes(controller?.phase)&&palmPresence.value>.95;if(s.status==='task')return controller?.phase==='task'&&controller.displayedState?.screenId===s.screenId&&phoneContentReady()&&phonePresence.value>.97;if(['completed','incomplete'].includes(s.status)){const image=host.querySelector('.v5-mission-qr img');return image?.complete&&image.naturalWidth>0&&foreground?.qrReady(image.closest('.v5-mission-qr'))===true&&Number(host.dataset.finalGamePresence??1)<.005;}return false;}});
  const raw=serializeMissionCatalog(loaded);for(const value of Object.values(raw.system.objectSettings)){value.size=.42;value.signalRadius=.15;}catalog=parseMissionCatalog(raw);configureMissions(catalog);
  if(referenceVisual&&!productionMode){root.insertAdjacentHTML("beforeend",`<div class="reference-brand-left"><img src="./brand/assets/logos/max-primary-white.svg" alt="MAX"><p>Миссия</p><strong data-reference-mission></strong></div><div class="reference-brand-right"><img src="./brand/assets/logos/max-primary-white.svg" alt="MAX"></div>`);}
  if(bfmVisual&&!productionMode)root.insertAdjacentHTML('beforeend','<div class="v5-brand"><img src="./brand/assets/logos/max-primary-white.svg" alt="MAX"></div>');
- fit();if(!service&&!managedAssignment&&!managedShell){const mode=new URLSearchParams(location.search).get('background');ambient=bfmVisual?lumiReferenceBackground(document.querySelector('#ambient'),{standMask:true}):(revealMode?(mode==='live'?commonMapBackground:mode==='svg'?referenceBackground:lumiReferenceBackground):background)(document.querySelector('#ambient'));}assets=new PreparedAssets();
+ fit();if(!service&&!managedAssignment&&!managedShell){const mode=new URLSearchParams(location.search).get('background');ambient=standOutput?remoteBackground(document.querySelector('#ambient')):bfmVisual?lumiReferenceBackground(document.querySelector('#ambient'),{standMask:true}):(revealMode?(mode==='live'?commonMapBackground:mode==='svg'?referenceBackground:lumiReferenceBackground):background)(document.querySelector('#ambient'));}assets=new PreparedAssets();
  v5Tools?.fit(innerWidth,innerHeight);standBrowser?.fit(innerWidth,innerHeight);
  if(bfmVisual&&sharedBackend){
   root.inert=true;document.documentElement.dataset.assetPreparation='loading';

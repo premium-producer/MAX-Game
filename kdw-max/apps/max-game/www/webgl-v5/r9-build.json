@@ -1,9 +1,10 @@
 {
-  "buildId": "fefe7a0fe2b1466b9587",
+  "buildId": "b0e614535777c37caf83",
   "iteration": "KDW-MAX-STAND-PRODUCTION-20261023",
-  "bundleSha256": "fefe7a0fe2b1466b95871430aede6abeb2404c0dd43f3b1c97f638d054d7feea",
+  "bundleSha256": "b0e614535777c37caf83096e4d19d818cb2bf9cf8e7933038d4a5daeb7ad05e8",
   "cssSha256": "dc610e1ba6859244b750cf761461f56e06ce2310359e74a89ad371bf2db16f0e",
   "inputs": {
+    "client/src/kdw-stand-output.mjs": "8ba88dd5f8bfbcb930aba155f4e9d00c66d47f5e22163c28ba1f33fd4b3373ad",
     "client/src/kdw-runtime-health.mjs": "3f056adcc1aebcdbd96a7305b8bdcb9226cb8b9ce3ebabe990ef81dffdaef88d",
     "client/src/kdw-production.mjs": "fd577b0fa1c246694b1b677b1bcd4a964b5e15c50fcbb9f7b7eebca8df61162e",
     "client/src/kdw-pixel-map.mjs": "71c94c2764a53a100c05288bab55cd891ef4d4cdda33a60486a0c2256f4b5b84",
@@ -120,7 +121,7 @@
     "client/src/application/memory-persistence.mjs": "d173df1234d20645a758fe334617516da3d88f2078e22f026d6e0038348ca13c",
     "client/src/bfm-gradient-controller.mjs": "efa4f1525a9abe44a74b38ca45996b82fe6483a0c54d9a4ac79b33bcc8edece9",
     "client/src/circle-model.mjs": "30655cc53189c50931a983f2871834ced41a78a5c0a5bc1d46ff4af41cf9dfae",
-    "client/src/kdw-stand-adapter.mjs": "9f7a33f7f2c84a0d527972430ea9e7842ce73d9f329681a654f4711a5a72d69c",
+    "client/src/kdw-stand-adapter.mjs": "2c371b3e7556c2985ae02a888df3af64db90657e4bc064bd1163bc4fd47f1ad7",
     "client/src/kdw-ui-copy.mjs": "00b3951db3e21a85d635c9af2ae48da35b98c137188d84719eb36e53462a7f9a",
     "client/src/journey-v5-device-timer.mjs": "f810154608b9ee408f323a8aff2f1fcd90d54ebe80fc00dd67a99633730e378f",
     "client/src/journey-v5-instruction-fit.mjs": "1b96e70b3bbd60265e0e31884ab521ba25efe39e69268e1cd6aee20d4f1c1d29",
@@ -277,7 +278,7 @@
     "ribbon/vendor/lumicells/src/core/engine/engine.ts": "6e068782b3c3c89794b4d5b00a930acdb6fe2d825da19f52fc0402aeef98737e",
     "ribbon/max-reference-profile.js": "855fb4f12dbf88b69501de60dffe88fe8e431d13c7f9b2af9dd001645c0c5949",
     "client/src/journey-lumi-reference-profile.mjs": "68be003c8ffd4bbda2722b6c3cff7374fff50957eec2b2cdac76d2f48d2bc7a2",
-    "client/src/journey-lumi-reference-background.mjs": "7339251db51c45a3398734ff64c5e8cebdf234376533e736292782061ec9f213",
+    "client/src/journey-lumi-reference-background.mjs": "6b35abf3629f981ef7c5428c858f5ec7d4bd762e949b449b404f0e396ef11ee3",
     "client/media-audio-observer.mjs": "885dd609c2e8608646ee430a80e18366b5636e9492caead570ec1fe5328228c6",
     "client/src/journey-v5-video-source.mjs": "f7b6b515d286edb3dec62ce0b83f8114107fc5abcafc849bb3849a0541b6f8d0",
     "client/src/journey-fiber-glass.mjs": "04c2f3831e109c8ad804f42cba71437e902fe0720a85dbc82e063ccf840997d4",
@@ -329,7 +330,7 @@
     "client/src/journey-v5-idle-layout.mjs": "53586b9febd2bf77a68261e376fbfd188fb3698e8244c4040ea022bfe6cb5443",
     "client/src/kdw-idle-menu.mjs": "494fe704ec13b40852e229c5bf80c31664d5cc8b87211b9b10eea48023bb252f",
     "client/src/independent-assets-catalog.json": "2ee934eaf2968375205b9b8296fbe2d541d9105a6993cf57777d001452116cc0",
-    "client/src/journey-guided-main.js": "af953395b6101ea25dcecc8d6df2d193208a1c854e5f4b0ddaa9493231e27a4e"
+    "client/src/journey-guided-main.js": "aa0ac259d89ad0ba2cab95ab2c489be775b22ede270e62217d6989207096caac"
   },
   "standBaseline": "MAX-PALM-WAIT-TIMER-20261007",
   "standRuntimeSha256": "ec7e7029961fee7d765c6edf9ab5bdceefb38d47f3510420ed6a3aedd371f706",
@@ -342,6 +343,7 @@
     "src/contracts/mission-command.mjs",
     "src/core/mission-core.mjs",
     "src/journey-guided-main.js",
+    "src/journey-lumi-reference-background.mjs",
     "src/journey-v5-backend.mjs",
     "src/journey-v5-route-layout.mjs",
     "src/journey-v5-video-source.mjs",

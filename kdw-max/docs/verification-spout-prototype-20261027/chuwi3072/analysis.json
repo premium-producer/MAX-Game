@@ -1,0 +1,128 @@
+{
+  "sender": [
+    {
+      "channel": 0,
+      "samples": 10514,
+      "fps": 60.003,
+      "intervalP50Ms": 16.069,
+      "intervalP95Ms": 25.405,
+      "intervalP99Ms": 27.005,
+      "gapsOver50Ms": 1,
+      "maxGapMs": 51.093800000000556,
+      "submitP95Ms": 0.355
+    },
+    {
+      "channel": 1,
+      "samples": 10515,
+      "fps": 60.003,
+      "intervalP50Ms": 16.691,
+      "intervalP95Ms": 19.024,
+      "intervalP99Ms": 20.654,
+      "gapsOver50Ms": 1,
+      "maxGapMs": 58.89629999999306,
+      "submitP95Ms": 0.43
+    }
+  ],
+  "receiver": [
+    {
+      "channel": 0,
+      "samples": 10501,
+      "fps": 59.934,
+      "intervalP50Ms": 16.0,
+      "intervalP95Ms": 25.1,
+      "intervalP99Ms": 27.2,
+      "gapsOver50Ms": 2,
+      "maxGapMs": 52.0,
+      "sourceFrameGaps": 12
+    },
+    {
+      "channel": 1,
+      "samples": 10506,
+      "fps": 59.963,
+      "intervalP50Ms": 16.0,
+      "intervalP95Ms": 20.0,
+      "intervalP99Ms": 21.0,
+      "gapsOver50Ms": 1,
+      "maxGapMs": 57.0,
+      "sourceFrameGaps": 7
+    }
+  ],
+  "background": {
+    "width": 3072,
+    "height": 1536,
+    "dxgiFormat": 87,
+    "alphaZero": 0,
+    "alphaPartial": 0,
+    "alphaOpaque": 4718592,
+    "cornerRGBA": [
+      16,
+      0,
+      39,
+      255
+    ],
+    "redPatchRGBA": [
+      56,
+      18,
+      131,
+      255
+    ],
+    "halfWhiteRGBA": [
+      60,
+      21,
+      142,
+      255
+    ]
+  },
+  "content": {
+    "width": 3072,
+    "height": 1536,
+    "dxgiFormat": 87,
+    "alphaZero": 3903487,
+    "alphaPartial": 782516,
+    "alphaOpaque": 32589,
+    "cornerRGBA": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "redPatchRGBA": [
+      255,
+      0,
+      0,
+      255
+    ],
+    "halfWhiteRGBA": [
+      128,
+      128,
+      128,
+      128
+    ]
+  },
+  "composite": {
+    "width": 1280,
+    "height": 640,
+    "dxgiFormat": 87,
+    "alphaZero": 0,
+    "alphaPartial": 0,
+    "alphaOpaque": 819200,
+    "cornerRGBA": [
+      16,
+      0,
+      39,
+      255
+    ],
+    "redPatchRGBA": [
+      255,
+      0,
+      0,
+      255
+    ],
+    "halfWhiteRGBA": [
+      158,
+      138,
+      199,
+      255
+    ]
+  }
+}
