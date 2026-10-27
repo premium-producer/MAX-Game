@@ -12,8 +12,8 @@ try {
   $archive=$root+'/'+$spec.releaseId+'.zip'
   Status 'downloading'
   if(-not(Test-Path $archive) -or (Get-FileHash $archive).Hash -ne $spec.sha256){
-    & curl.exe --fail --location --connect-timeout 15 --max-time 120 --retry 3 --output $archive $url 2> ($root+'/release-download.log')
-    if($LASTEXITCODE -ne 0){throw "curl release: $LASTEXITCODE"}
+    $curl=Start-Process -FilePath 'curl.exe' -WindowStyle Hidden -PassThru -Wait -ArgumentList @('--silent','--show-error','--fail','--location','--connect-timeout','15','--max-time','120','--retry','3','--output',$archive,$url) -RedirectStandardError ($root+'/release-download.log')
+    if($curl.ExitCode -ne 0){throw "curl release: $($curl.ExitCode)"}
   }
   if((Get-FileHash $archive).Hash -ne $spec.sha256){throw 'Release archive SHA mismatch'}
   $release=$root+'/releases/'+$spec.releaseId
