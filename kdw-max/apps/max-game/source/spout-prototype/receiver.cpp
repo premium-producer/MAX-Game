@@ -51,6 +51,7 @@ int main(int argc,char** argv) {
  struct TimerResolution { TimerResolution(){timeBeginPeriod(1);} ~TimerResolution(){timeEndPeriod(1);} } timerResolution;
  try {
   std::filesystem::path out=argc>1?argv[1]:"receiver-results"; int seconds=argc>2?atoi(argv[2]):180;
+  bool headless=argc>3 && std::string(argv[3])=="headless";
   if(seconds<10 || seconds>14400) throw std::runtime_error("duration must be 10..14400 seconds");
   std::filesystem::create_directories(out);
   std::ofstream log(out/"receiver.csv"); log<<"elapsedMs,channel,frame,width,height,format\n";
@@ -76,7 +77,7 @@ int main(int argc,char** argv) {
   std::array<ComPtr<ID3D11Texture2D>,2> textures; std::array<ComPtr<ID3D11ShaderResourceView>,2> views;
   std::array<long,2> last={-1,-1}; std::array<uint64_t,2> count={0,0}; std::array<double,2> lastSeen={0,0}; bool snapshots=false;
   for(int i=0;i<2;i++) { if(!receivers[i].OpenDirectX11(device.Get())) throw std::runtime_error("Receiver OpenDirectX11 failed"); receivers[i].SetReceiverName(names[i]); }
-  ShowWindow(window,SW_SHOWNOACTIVATE);
+  if(!headless) ShowWindow(window,SW_SHOWNOACTIVATE);
   auto start=Clock::now(),lastPresent=start; bool quit=false;
   while(!quit) {
     MSG msg; while(PeekMessage(&msg,nullptr,0,0,PM_REMOVE)) { if(msg.message==WM_QUIT) quit=true; TranslateMessage(&msg); DispatchMessage(&msg); }
@@ -114,7 +115,9 @@ int main(int argc,char** argv) {
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
   }
   for(auto& r:receivers) r.ReleaseReceiver();
-  std::ofstream result(out/"receiver-summary.json"); result<<"{\"frames\":["<<count[0]<<","<<count[1]<<"],\"lastSeenMs\":["<<lastSeen[0]<<","<<lastSeen[1]<<"],\"snapshots\":"<<(snapshots?"true":"false")<<"}";
-  return count[0]>30 && count[1]>30 && snapshots?0:2;
+  double elapsed=std::chrono::duration<double,std::milli>(Clock::now()-start).count();
+  bool completed=elapsed>=seconds*1000 && !quit;
+  std::ofstream result(out/"receiver-summary.json"); result<<"{\"frames\":["<<count[0]<<","<<count[1]<<"],\"lastSeenMs\":["<<lastSeen[0]<<","<<lastSeen[1]<<"],\"snapshots\":"<<(snapshots?"true":"false")<<",\"elapsedMs\":"<<elapsed<<",\"requestedSeconds\":"<<seconds<<",\"completed\":"<<(completed?"true":"false")<<",\"headless\":"<<(headless?"true":"false")<<"}";
+  return count[0]>30 && count[1]>30 && snapshots && completed?0:2;
  } catch(const std::exception& ex) { std::cerr<<ex.what()<<std::endl; return 1; }
 }

@@ -1,4 +1,4 @@
-param([int]$Seconds=180,[int]$Width=3072,[string]$RunId='probe',[string]$RuntimePath='')
+param([int]$Seconds=180,[int]$Width=3072,[string]$RunId='probe',[string]$RuntimePath='',[switch]$Preview)
 $ErrorActionPreference='Stop'
 if($RunId -notmatch '^[a-zA-Z0-9_-]+$'){throw 'Invalid RunId'}
 if($Width -notin @(1920,3072) -or $Seconds -lt 20 -or $Seconds -gt 14400){throw 'Invalid probe settings'}
@@ -11,7 +11,10 @@ New-Item -ItemType Directory -Force -Path $out | Out-Null
 Remove-Item Env:ELECTRON_RUN_AS_NODE -ErrorAction SilentlyContinue
 $senderArgs=@(('"'+(Join-Path $root 'app/main.cjs')+'"'),"--seconds=$Seconds","--width=$Width",("--height="+($Width/2)),('"--out='+(Join-Path $out 'sender')+'"'))
 $sender=Start-Process -FilePath (Join-Path $RuntimePath 'electron.exe') -ArgumentList $senderArgs -WorkingDirectory $root -WindowStyle Hidden -PassThru -RedirectStandardError (Join-Path $out 'sender-stderr.log')
-$receiver=Start-Process -FilePath (Join-Path $root 'kdw_spout_receiver.exe') -ArgumentList ('"'+(Join-Path $out 'receiver')+'"'),($Seconds+5) -WorkingDirectory $root -WindowStyle Hidden -PassThru -RedirectStandardError (Join-Path $out 'receiver-stderr.log')
+$null=$sender.Handle # Retain the process handle: Windows PowerShell 5 otherwise loses ExitCode.
+$mode=if($Preview){'preview'}else{'headless'}
+$receiver=Start-Process -FilePath (Join-Path $root 'kdw_spout_receiver.exe') -ArgumentList ('"'+(Join-Path $out 'receiver')+'"'),($Seconds+5),$mode -WorkingDirectory $root -WindowStyle Hidden -PassThru -RedirectStandardError (Join-Path $out 'receiver-stderr.log')
+$null=$receiver.Handle
 @{sender=$sender.Id;receiver=$receiver.Id;session=[Diagnostics.Process]::GetCurrentProcess().SessionId;started=(Get-Date).ToUniversalTime().ToString('o')} | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $out 'processes.json') -Encoding utf8
 $samples=@()
 $deadline=(Get-Date).AddSeconds($Seconds+45)
@@ -26,4 +29,5 @@ while(-not $sender.HasExited -or -not $receiver.HasExited){
   $sender.Refresh();$receiver.Refresh()
 }
 $samples | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Path $out 'process-samples.json') -Encoding utf8
+$sender.WaitForExit();$receiver.WaitForExit()
 @{senderExit=$sender.ExitCode;receiverExit=$receiver.ExitCode;finished=(Get-Date).ToUniversalTime().ToString('o')} | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $out 'exit.json') -Encoding utf8
