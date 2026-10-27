@@ -16,6 +16,9 @@ def analyze(root):
             dt=[b-a for a,b in zip(times,times[1:])]
             item={'channel':int(channel),'samples':len(samples),'fps':round(1000*(len(times)-1)/(times[-1]-times[0]),3) if len(times)>1 else 0,'intervalP50Ms':percentile(dt,.5),'intervalP95Ms':percentile(dt,.95),'intervalP99Ms':percentile(dt,.99),'gapsOver50Ms':sum(x>50 for x in dt),'maxGapMs':max(dt,default=0)}
             if kind=='sender': item['submitP95Ms']=percentile([float(r['submitMs']) for r in samples],.95)
+            if kind=='receiver':
+                frames=[int(r['frame']) for r in samples]
+                item['sourceFrameGaps']=sum(max(0,b-a-1) for a,b in zip(frames,frames[1:]))
             report[kind].append(item)
     for name in ['background','content','composite']:
         p=root/'receiver'/name
