@@ -34,6 +34,7 @@ def copy_app(name,parent,dev=False):
  # The explicit packaging command selects a profile only in the new output.
  config=json.loads((dst/'app.json').read_text(encoding='utf-8'))
  config['production']=not dev
+ if name=='stela' and not dev: config['entry']='/stella/pixels/'
  if name=='max-game' and not dev: config['entry']='/webgl-v5/client.html?backend=local&view=pixel-map'
  if dev and not config['version'].endswith('-DEV'): config['version']+='-DEV'
  save(dst/'app.json',config)
