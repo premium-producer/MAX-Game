@@ -22,8 +22,25 @@ test('settings: CAS, strict validation, backup, hostile Origin and GET mutation 
  assert.equal((await f.request('presentation',{cursorVisible:true})).status,200);assert.equal(f.cursor(),true);
  }finally{await f.close();}
 });
+test('enabled input does not block editing lidar settings or calibration targets',async()=>{
+ const f=await fixture();try{
+  f.output.setArmed(true);const s=(await f.request('state')).body;assert.equal(s.output.armed,true);
+  assert.equal((await f.request('lidar',{value:s.lidar,revision:s.lidarRevision})).status,200);
+  assert.equal((await f.request('calibration/targets',{targets:s.calibrationTargets,revision:s.calibrationTargetsRevision})).status,200);
+ }finally{await f.close();}
+});
+
 test('active visitor blocks calibration and lidar changes; missing runtime is explicit',async()=>{
  const f=await fixture();try{const dir=path.join(f.root,'data/link');fs.mkdirSync(path.join(dir,'games'),{recursive:true});fs.writeFileSync(path.join(dir,'active.json'),JSON.stringify({gameId:'fixture'}));fs.writeFileSync(path.join(dir,'games/fixture.json'),JSON.stringify({status:'playing'}));assert.equal((await f.request('calibration/start',{})).status,409);const s=(await f.request('state')).body;assert.equal((await f.request('lidar',{value:s.lidar,revision:s.lidarRevision})).status,409);}finally{await f.close();}
+});
+test('factory diamond becomes corner targets without rewriting measured calibration or custom targets',async()=>{
+ const f=await fixture();try{
+  const data=path.join(f.root,'data');fs.mkdirSync(data,{recursive:true});
+  const legacy=[[1000,768],[1440,500],[1880,768],[1440,1036],[1440,768]],file=path.join(data,'calibration-targets.local.json');fs.writeFileSync(file,JSON.stringify({targets:legacy}));
+  const lidarFile=path.join(data,'lidar.local.json'),saved=JSON.stringify({rawPoints:[[0,0],[1,0],[1,1],[0,1]],targetPoints:legacy.slice(0,4)});fs.writeFileSync(lidarFile,saved);
+  let s=(await f.request('state')).body;assert.deepEqual(s.calibrationTargets,[[1000,500],[1880,500],[1880,1036],[1000,1036],[1440,768]]);assert.equal(fs.readFileSync(lidarFile,'utf8'),saved);assert.deepEqual(JSON.parse(fs.readFileSync(file)).targets,legacy);
+  const custom=[[1100,600],[1800,600],[1800,1000],[1100,1000],[1450,800]];assert.equal((await f.request('calibration/targets',{targets:custom,revision:s.calibrationTargetsRevision})).status,200);s=(await f.request('state')).body;assert.deepEqual(s.calibrationTargets,custom);assert.equal(fs.readFileSync(lidarFile,'utf8'),saved);
+ }finally{await f.close();}
 });
 test('Stella sound settings and display validation preserve private voice files',async()=>{
  const f=await fixture('stela');try{let s=(await f.request('state')).body;assert.equal(s.renderer,'pixels');assert.equal((await f.request('sound',{value:{...s.sound,musicVolume:2},revision:s.revision})).status,400);assert.equal((await f.request('sound',{value:{...s.sound,musicVolume:.3},revision:s.revision})).status,200);assert.equal((await f.request('sound',{value:s.sound,revision:s.revision})).status,409);assert.equal((await f.request('display',{displayId:10})).status,400);f.setBusy(true);assert.equal((await f.request('display',{displayId:9})).status,409);f.setBusy(false);assert.equal((await f.request('display',{displayId:9})).status,200);assert.equal((await f.request('display',{displayId:null})).status,200);assert.deepEqual(JSON.parse(fs.readFileSync(path.join(f.root,'data/display.local.json'))),{});}finally{await f.close();}

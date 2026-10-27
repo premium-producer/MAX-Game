@@ -5,6 +5,19 @@ const origin='http://127.0.0.1:1';
 const payload=(voiceSessionId=randomUUID())=>({schemaVersion:1,gameId:randomUUID(),voiceSessionId,missionId:'blogger',audience:'blogger',goal:null,photo:null});
 function request(handler,url,body={},method='POST',headers={}){return new Promise((resolve,reject)=>{const req=Readable.from([Buffer.from(JSON.stringify(body))]);Object.assign(req,{url,method,headers:{origin,'content-type':'application/json',...headers}});const res={writeHead(status){this.status=status;},end(value){resolve({status:this.status,value:JSON.parse(value)});}};try{assert.equal(handler.handle(req,res),true);}catch(e){reject(e);}});}
 async function release(hub,game,revision=1){const out=await request(hub,`/__kdw/link/games/${game.gameId}/progress`,{gameId:game.gameId,revision,runId:1,status:'menu',missionId:null,taskId:null,screenId:null,contentRevision:'audit',endReason:'qr'});assert.equal(out.status,200);}
+test('queue counter excludes the active visitor and follows FIFO releases',async()=>{
+ const root=fs.mkdtempSync(path.join(os.tmpdir(),'kdw-queue-count-'));
+ try{const hub=createGameHub({root,origin,production:true}),a=payload(),b=payload(),c=payload();
+  assert.equal((await request(hub,'/__kdw/link/active',{},'GET')).value.queueCount,0);
+  hub.ingest(a);hub.ingest(b);hub.ingest(c);
+  const first=(await request(hub,'/__kdw/link/active',{},'GET')).value;
+  assert.equal(first.game.gameId,a.gameId);assert.equal(first.queueCount,2);
+  await release(hub,a);
+  const next=(await request(hub,'/__kdw/link/active',{},'GET')).value;
+  assert.equal(next.game.gameId,b.gameId);assert.equal(next.queueCount,1);
+ }finally{fs.rmSync(root,{recursive:true,force:true});}
+});
+
 test('replacement is durable, keeps other visitors FIFO, never revives a superseded ID',async()=>{
  const root=fs.mkdtempSync(path.join(os.tmpdir(),'kdw-link-test-'));let time=1000000;
  try{let hub=createGameHub({root,origin,production:true,now:()=>time});const a=payload(),b=payload(),a2=payload(a.voiceSessionId);hub.ingest(a);time++;hub.ingest(b);time++;hub.ingest(a2);
@@ -66,5 +79,14 @@ test('unchanged heartbeat refreshes availability without rewriting visitor data'
   const progress={gameId:a.gameId,revision:1,runId:1,status:'task',missionId:'blogger',taskId:'blogger.channel',screenId:'blogger.channel.menu',contentRevision:'test'};
   await request(hub,`/__kdw/link/games/${a.gameId}/progress`,progress);const file=path.join(root,'data/link/games',a.gameId+'.json'),before=fs.readFileSync(file);
   time+=91000;await request(hub,`/__kdw/link/games/${a.gameId}/progress`,progress);assert.deepEqual(fs.readFileSync(file),before);const current=await request(hub,`/__kdw/link/games/${a.gameId}/status`,{},'GET');assert.equal(current.value.assignment.status,'playing');
+ }finally{fs.rmSync(root,{recursive:true,force:true});}
+});
+
+test('explicit output startup cancels prior visitors and queue, preserves receipts, and admits a fresh visitor',async()=>{
+ const root=fs.mkdtempSync(path.join(os.tmpdir(),'kdw-idle-boot-'));
+ try{const hub=createGameHub({root,origin,production:true}),a=payload(),b=payload();hub.ingest(a);await request(hub,`/__kdw/link/games/${a.gameId}/claim`,{gameId:a.gameId});hub.ingest(b);
+ const file=path.join(root,'data/link/games',a.gameId+'.json'),before=JSON.parse(fs.readFileSync(file));assert.equal(hub.active().gameId,a.gameId);
+ assert.equal((await hub.resetForStartup()).cancelled,2);assert.equal(hub.active(),null);const after=JSON.parse(fs.readFileSync(file));assert.equal(after.signature,before.signature);assert.equal(after.claimedAt,before.claimedAt);assert.deepEqual(after.standPolicy,before.standPolicy);assert.equal(after.endReason,'startup-reset');assert.equal(hub.ingest(a).status,'cancelled');assert.equal(hub.active(),null);
+ const restarted=createGameHub({root,origin,production:true});assert.equal(restarted.active(),null);const fresh=payload();restarted.ingest(fresh);assert.equal(restarted.active().gameId,fresh.gameId);
  }finally{fs.rmSync(root,{recursive:true,force:true});}
 });

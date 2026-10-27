@@ -1,3 +1,4 @@
+import {STANDBY_COVER_CSS} from './client/src/kdw-standby-cover.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
@@ -16,6 +17,15 @@ if(!fs.existsSync(path.join(packages,'esbuild/lib/main.js')))throw Error('Pass a
 const {build,transform}=await import(pathToFileURL(path.join(packages,'esbuild/lib/main.js')));
 fs.cpSync(path.join(source,'operator'),path.join(root,'www/admin'),{recursive:true});
 const sha=value=>createHash('sha256').update(value).digest('hex');
+// Two filled SVG glyphs show internal diagonal cracks in production Electron.
+// Ship their deterministic CPU rasters; keep the original vector and source pins.
+const iconGlyphs=JSON.parse(fs.readFileSync(path.join(source,'client/public/webgl-v5/icon-glyphs/manifest.json')));
+for(const glyph of Object.values(iconGlyphs).filter(g=>g.vectorPath)){
+ const bytes=fs.readFileSync(path.join(source,'client/public',glyph.path));
+ if(sha(bytes)!==glyph.sha256)throw Error('Raster icon differs: '+glyph.path);
+ fs.mkdirSync(path.dirname(path.join(root,'www',glyph.path)),{recursive:true});
+ fs.writeFileSync(path.join(root,'www',glyph.path),bytes);
+}
 const web=path.join(root,'www/webgl-v5'),originalBundle=path.join(web,'r6-app.js');
 if(!fs.existsSync(originalBundle)){
  const bytes=fs.readFileSync(path.join(web,'app.js'));
@@ -41,7 +51,7 @@ await transform(css,{loader:'css',sourcefile:'kdw-interactions.css'});
 fs.writeFileSync(path.join(web,'app.js'),result.outputFiles[0].contents);
 fs.writeFileSync(path.join(web,'kdw-interactions.css'),css);
 const styles=['brand/tokens/brand.css',...['journey.css','journey-guided.css','journey-guided-line.css','journey-guided-reveal.css','v5.css','kdw-interactions.css'].map(n=>'webgl-v5/'+n)];
-const html=`<!doctype html><html lang="ru" data-edition="client" data-experiment="guided" data-reveal="true" data-phone-layout="path" data-visual="webgl-bfm-v5" data-browser-stand="true" data-timer-policy="stand-device-timer"><head><base href="../"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0D001A"><title>MAX — стендовая игра</title><link rel="icon" href="data:,">${styles.map(p=>`<link rel="stylesheet" href="./${p}">`).join('')}<style>[hidden]{display:none!important}.guided-restart,[data-menu],[data-continue-mission]{display:none!important}#managed-status{display:none!important}#version-label{display:none!important}</style></head><body><canvas id="ambient" aria-hidden="true"></canvas><div id="arena"><div id="world" aria-hidden="true"></div><main id="circles"></main><div id="loading" role="status">Готовим пространство MAX…</div></div><script type="module" src="./webgl-v5/app.js"></script></body></html>`;
+const html=`<!doctype html><html lang="ru" data-edition="client" data-experiment="guided" data-reveal="true" data-phone-layout="path" data-visual="webgl-bfm-v5" data-browser-stand="true" data-timer-policy="stand-device-timer"><head><base href="../"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0D001A"><title>MAX — стендовая игра</title><link rel="icon" href="data:,">${styles.map(p=>`<link rel="stylesheet" href="./${p}">`).join('')}<style>${STANDBY_COVER_CSS}[hidden]{display:none!important}.guided-restart,[data-menu],[data-continue-mission]{display:none!important}#managed-status{display:none!important}#version-label{display:none!important}</style></head><body><div id="loading" hidden aria-hidden="true"></div><canvas id="ambient" aria-hidden="true"></canvas><div id="arena"><div id="world" aria-hidden="true"></div><main id="circles"></main></div><script type="module" src="./webgl-v5/app.js"></script></body></html>`;
 for(const name of ['client.html','index.html'])fs.writeFileSync(path.join(web,name),html);
 fs.writeFileSync(path.join(web,'cafe-original.html'),html.replace('<title>MAX — стендовая игра</title>','<title>MAX — кофейня · исходные экраны</title>'));
 const config=JSON.parse(fs.readFileSync(path.join(root,'app.json'))); // Building assets preserves the operator's launch profile.
@@ -53,7 +63,7 @@ for(const [name,pin]of Object.entries(stand.files)){
  if(sha(fs.readFileSync(target))!==pin)adaptations.push(name);
 }
 const manifest={buildId:sha(result.outputFiles[0].contents).slice(0,20),iteration:config.version,bundleSha256:sha(result.outputFiles[0].contents),cssSha256:sha(css),inputs:files,standBaseline:stand.id,standRuntimeSha256:stand.runtimeSha256,standFileCount:Object.keys(stand.files).length,standAdaptations:adaptations,interactionRenderer:'Shared stand rendering, motion, catalog and styles; local host admission, measured responsive composition and persistent SessionPort. KDW channel keyboard and store interactions retained.'};
-if(adaptations.some(name=>!['src/journey-guided-main.js','src/journey-v5-backend.mjs','src/core/mission-core.mjs','src/application/mission-session.mjs','src/application/webgl-session.mjs','src/application/indexeddb-persistence.mjs','src/contracts/mission-command.mjs','src/contracts/mission-catalog.mjs','src/journey-v5-route-layout.mjs','src/journey-webgl-ui.mjs','src/journey-v5-video-source.mjs','src/journey-lumi-reference-background.mjs'].includes(name)))throw Error('Unexpected stand baseline drift: '+adaptations.join(', '));
+if(adaptations.some(name=>!['src/journey-guided-main.js','src/journey-v5-backend.mjs','src/core/mission-core.mjs','src/application/mission-session.mjs','src/application/webgl-session.mjs','src/application/indexeddb-persistence.mjs','src/contracts/mission-command.mjs','src/contracts/mission-catalog.mjs','src/journey-v5-route-layout.mjs','src/journey-v5-device-timer.mjs','src/journey-webgl-ui.mjs','src/journey-v5-video-source.mjs','src/journey-lumi-reference-background.mjs'].includes(name)))throw Error('Unexpected stand baseline drift: '+adaptations.join(', '));
 fs.writeFileSync(path.join(web,'r9-build.json'),JSON.stringify(manifest,null,2)+'\n');
 const runtimeBuild=JSON.parse(fs.readFileSync(path.join(web,'build.json')));runtimeBuild.profile='KDW-MAX-R9-STAND';runtimeBuild.files['app.js']=manifest.bundleSha256;runtimeBuild.files['kdw-interactions.css']=manifest.cssSha256;runtimeBuild.entry=config.entry;fs.writeFileSync(path.join(web,'build.json'),JSON.stringify(runtimeBuild,null,2)+'\n');
 console.log(JSON.stringify({iteration:config.version,bundleBytes:result.outputFiles[0].contents.length,modules:Object.keys(files).length,bundleSha256:manifest.bundleSha256}));

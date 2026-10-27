@@ -1,0 +1,200 @@
+[
+  {
+    "tag": "iab-posts-exact",
+    "kind": "posts",
+    "viewport": {
+      "width": 1280,
+      "height": 720,
+      "dpr": 1.25
+    },
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 Ti (0x00002C05) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "samples": 2001,
+    "uniqueFrames": 2001,
+    "duplicateFrames": 0,
+    "durationMs": 20010.40000001192,
+    "frameMs": {
+      "median": 10,
+      "p95": 10.100000000002183,
+      "p99": 10.10000000000582,
+      "max": 10.200000000000728,
+      "over25": 0,
+      "over50": 0
+    },
+    "motion": {
+      "pairs": 1187,
+      "backward": 0,
+      "horizontalJumps": 0,
+      "maxHorizontalPxAt3072": 0,
+      "velocityChangeP99": 0.000604567865157557,
+      "maxVelocityChange": 0.000624600883243176,
+      "anomalies": [],
+      "flightSamples": 97,
+      "maxFlightStepPxAt3072": 25.526994363983185
+    },
+    "longTasks": [],
+    "visibility": [],
+    "errors": [],
+    "metrics": {
+      "kind": "posts",
+      "backend": "webgl",
+      "frameId": 3468,
+      "frame": {
+        "count": 600,
+        "p95": 10.099999999998545,
+        "p99": 10.10000000000582,
+        "max": 10.10000000000582
+      },
+      "update": {
+        "count": 600,
+        "p95": 0.20000001788139343,
+        "p99": 0.29999998211860657,
+        "max": 0.5999999940395355
+      },
+      "resources": {
+        "bytes": 36340000,
+        "rasters": 40,
+        "uploads": 40,
+        "uploadMs": 0.8000000417232513,
+        "fallbacks": 0
+      },
+      "falling": 0,
+      "flights": 0,
+      "published": 1,
+      "stale": false
+    },
+    "exactFrameTimes": true,
+    "passed": true
+  },
+  {
+    "tag": "iab-posts",
+    "kind": "posts",
+    "viewport": {
+      "width": 1280,
+      "height": 720,
+      "dpr": 1.25
+    },
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 Ti (0x00002C05) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "samples": 2001,
+    "uniqueFrames": 2001,
+    "duplicateFrames": 0,
+    "durationMs": 20011.20000000596,
+    "frameMs": {
+      "median": 10,
+      "p95": 10.100000000002183,
+      "p99": 10.10000000000582,
+      "max": 10.200000000004366,
+      "over25": 0,
+      "over50": 0
+    },
+    "motion": {
+      "pairs": 1301,
+      "backward": 0,
+      "horizontalJumps": 0,
+      "maxHorizontalPxAt3072": 0,
+      "velocityChangeP99": 0.015451879981167038,
+      "maxVelocityChange": 0.020457779239708984,
+      "anomalies": [],
+      "flightSamples": 0,
+      "maxFlightStepPxAt3072": 0
+    },
+    "longTasks": [],
+    "visibility": [],
+    "errors": [],
+    "metrics": {
+      "kind": "posts",
+      "backend": "webgl",
+      "frameId": 3457,
+      "frame": {
+        "count": 600,
+        "p95": 10.099999999998545,
+        "p99": 10.10000000000582,
+        "max": 10.200000000004366
+      },
+      "update": {
+        "count": 600,
+        "p95": 0.20000001788139343,
+        "p99": 0.20000001788139343,
+        "max": 0.30000001192092896
+      },
+      "resources": {
+        "bytes": 36340000,
+        "rasters": 40,
+        "uploads": 40,
+        "uploadMs": 1.3000000417232513,
+        "fallbacks": 0
+      },
+      "falling": 0,
+      "flights": 0,
+      "published": 0,
+      "stale": false
+    },
+    "exactFrameTimes": false,
+    "passed": true
+  },
+  {
+    "tag": "iab-store-exact",
+    "kind": "store",
+    "viewport": {
+      "width": 1280,
+      "height": 720,
+      "dpr": 1.25
+    },
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 Ti (0x00002C05) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "samples": 2001,
+    "uniqueFrames": 2001,
+    "duplicateFrames": 0,
+    "durationMs": 20010.300000005962,
+    "frameMs": {
+      "median": 10,
+      "p95": 10.100000000002183,
+      "p99": 10.100000000002183,
+      "max": 10.30000000000291,
+      "over25": 0,
+      "over50": 0
+    },
+    "motion": {
+      "pairs": 6318,
+      "backward": 0,
+      "horizontalJumps": 0,
+      "maxHorizontalPxAt3072": 0,
+      "velocityChangeP99": 0.00047070984905125957,
+      "maxVelocityChange": 0.0006088939624458445,
+      "anomalies": [],
+      "flightSamples": 97,
+      "maxFlightStepPxAt3072": 16.241872404757064
+    },
+    "longTasks": [],
+    "visibility": [],
+    "errors": [],
+    "metrics": {
+      "kind": "store",
+      "backend": "webgl",
+      "frameId": 2468,
+      "frame": {
+        "count": 600,
+        "p95": 10.100000000002183,
+        "p99": 10.200000000000728,
+        "max": 10.30000000000291
+      },
+      "update": {
+        "count": 600,
+        "p95": 0.20000001788139343,
+        "p99": 0.29999998211860657,
+        "max": 0.30000001192092896
+      },
+      "resources": {
+        "bytes": 31275411,
+        "rasters": 34,
+        "uploads": 34,
+        "uploadMs": 0.8999999463558197,
+        "fallbacks": 0
+      },
+      "falling": 5,
+      "flights": 0,
+      "published": 1,
+      "stale": false
+    },
+    "exactFrameTimes": true,
+    "passed": true
+  }
+]

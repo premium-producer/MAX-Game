@@ -11,7 +11,7 @@ export function activityGeometry(){
  const host=phone.closest('.journey-zone');
  const area=pixelActivityViewport(),flowArea=area?pixelFlowViewport(innerWidth,innerHeight):null;
  for(const field of document.querySelectorAll('.kdw-post-cards,.kdw-product-stream'))field.style.clipPath=flowArea?`inset(${flowArea.top}px ${innerWidth-flowArea.right}px ${innerHeight-flowArea.bottom}px ${flowArea.left}px)`:'none';
- return {phone,rect,scale,playArea:area,flowArea,alpha:Math.max(0,Math.min(1,Number(phone.dataset.pathPresence??0),Number(host?.dataset.contentPresence??1),Number(host?.dataset.uiPresence??1))),
+ return {phone,rect,scale,playArea:area,flowArea,layoutRevision:host?.dataset.compositionRevision??'',alpha:Math.max(0,Math.min(1,Number(phone.dataset.pathPresence??0),Number(host?.dataset.contentPresence??1),Number(host?.dataset.uiPresence??1))),
   matched:phone.dataset.mediaReadyKey===phone.dataset.sceneVersion};
 }
 export function rightCardRect(g,spawn){
@@ -26,25 +26,25 @@ export function rightCardRect(g,spawn){
  return {x,y,w,unit:w/440};
 }
 export function createRightCardLayout(){
- const planner=createFlightPlacement(),heights=new Map();
+ const planner=createFlightPlacement(),heights=new Map();let geometryKey='',geometry=null;
+ const height=(s,w,unit,measure)=>{const key=w.toFixed(3)+':'+(s.post?.id??''),cached=heights.get(s.spawnId);if(cached?.key===key)return cached.h;const h=measure(s,w,unit);heights.set(s.spawnId,{key,h});return h;};
  return {
-  clear(){planner.clear();heights.clear();},
+  clear(){planner.clear();heights.clear();geometryKey='';geometry=null;},
   layout(g,rows,measure){
    if(!rows.length){planner.clear();heights.clear();return new Map();}
-   if(rows[0].flow!=='free')return new Map(rows.map(s=>[s.spawnId,rightCardRect(g,s)]));
+   if(rows[0].flow!=='free')return new Map(rows.map(s=>{const r=rightCardRect(g,s);return[s.spawnId,{...r,h:height(s,r.w,r.unit,measure)}];}));
    const area=g.playArea??{left:0,top:0,right:innerWidth,bottom:innerHeight,height:innerHeight};
    const flow=g.flowArea??area;
-   const left=Math.min(area.right-20,g.rect.right+64*g.scale),available=Math.max(1,area.right-20-left);
-   const width=Math.max(1,Math.min(440*g.scale,available*.43,area.height*FREE_FLOW.maxHeight/FREE_FLOW.envelope*440));
+   // The phone floats a few pixels by design. Its drift must never resize text,
+   // rerun collision search, or change a card's established flight geometry.
+   const key=JSON.stringify([area.left,area.right,area.height,flow.top,flow.bottom,Math.round(g.rect.width*4),g.layoutRevision]);
+   if(key!==geometryKey){geometryKey=key;const left=Math.min(area.right-20,g.rect.right+64*g.scale),available=Math.max(1,area.right-20-left),width=Math.max(1,Math.min(440*g.scale,available*.43,area.height*FREE_FLOW.maxHeight/FREE_FLOW.envelope*440));geometry={left,right:left+Math.min(available,width*2.1),width,entry:width*FREE_FLOW.envelope/440,path:flow.height+width*FREE_FLOW.envelope/440+64*g.scale};}
+   const {left,right,width,entry,path}=geometry;
    // One compact continuous field beside the phone, not the whole remaining
    // viewport. Keep card sizing independent of the new horizontal boundary.
-   const right=left+Math.min(available,width*2.1);
-   const entry=width*FREE_FLOW.envelope/440,path=flow.height+entry+64*g.scale;
    const ids=new Set(rows.map(r=>r.spawnId));for(const id of heights.keys())if(!ids.has(id))heights.delete(id);
    const cards=rows.map(s=>{
-    const w=width*s.size,unit=w/440,key=w.toFixed(3),cached=heights.get(s.spawnId);
-    const h=cached?.key===key?cached.h:measure(s,w,unit);
-    heights.set(s.spawnId,{key,h});
+    const w=width*s.size,unit=w/440,h=height(s,w,unit,measure);
     return {id:s.spawnId,w,h,unit,entry,y:flow.top-entry+path*s.progress,v:path/s.travel,offset:s.offset};
    });
    return planner.layout(cards,{left,right,height:flow.bottom});

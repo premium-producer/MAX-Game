@@ -56,6 +56,10 @@ export function createWebGLSession({port,catalog,sessionId,profile='local',initi
    return startPromise;
   },
   command,
+  async operatorGoto(target){
+   if(closed||managed||profile!=='local'||busy||!snapshot||!port.operatorCommand)throw Error('OPERATOR_UNAVAILABLE');
+   busy=true;try{const result=await port.operatorCommand(make('OPERATOR_GOTO',target));accept(result);if(!result.reply.ok)throw Error(result.reply.code);return result;}finally{busy=false;}
+  },
   restart(){
    // Finish a previously sent answer, then restart against its confirmed revision.
    // Repeated restart clicks share one command instead of restarting twice.

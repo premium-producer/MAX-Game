@@ -1,0 +1,35 @@
+{
+  "phase": "complete",
+  "patch": "RESILIENCE-20261027-1",
+  "time": "2026-10-27T13:28:38.4619184Z",
+  "computer": "DESKTOP-64J4BMN",
+  "details": {
+    "preservedFiles": 10,
+    "files": 36,
+    "apps": [
+      {
+        "serveOnly": true,
+        "version": "KDW-Stand-20261027-RC4-1",
+        "files": 32,
+        "audioFolder": "C:\\KDW-Stand\\releases\\KDW-Stand-20261027-RC4-1\\apps\\max-game\\data\\audio",
+        "events": 16,
+        "app": "max-game",
+        "pid": 7368,
+        "outputReady": false,
+        "panel": 200
+      },
+      {
+        "serveOnly": true,
+        "version": "KDW-Stand-20261027-RC4-1",
+        "files": 13,
+        "audioFolder": "C:\\KDW-Stand\\releases\\KDW-Stand-20261027-RC4-1\\apps\\stela\\data\\audio",
+        "events": 11,
+        "app": "stela",
+        "pid": 10968,
+        "outputReady": false,
+        "panel": 200
+      }
+    ],
+    "rollback": "C:\\KDW-Stand\\deploy\\RESILIENCE-20261027-1/backup"
+  }
+}

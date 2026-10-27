@@ -27,13 +27,15 @@ export function createStoreMotion(root,{duration=680,revealDuration=300,getSlot=
  }
  function tick(now){frame=0;for(const [index,f] of flights){
   if(!f.committed)continue;
+  if(root.hidden){f.pausedAt??=now;continue;}
+  if(f.pausedAt!==undefined){const gap=now-f.pausedAt;f.start+=gap;if(f.approachAt!==undefined)f.approachAt+=gap;if(f.landingStart!==undefined)f.landingStart+=gap;delete f.pausedAt;}
   if(sequence&&!f.approached){
    const preceding=[...flights.values()].some(other=>other!==f&&other.committed&&other.order<f.order);
    if(preceding||now<f.approachAt||now<nextApproach){
     // Await the previous card's reveal outside the device. Do not aim at an
     // offscreen future feed row or create blank scroll space for it.
     const feed=root.querySelector(scrollerSelector);
-    if(!feed||root.hidden){cancel(index);continue;}
+    if(!feed){cancel(index);continue;}
     const bounds=feed.getBoundingClientRect(),from=f.from;
     const t=Math.min(1,(now-f.start)/Math.max(duration,f.approachAt-f.start)),ease=t*t*(3-2*t);
     const toX=Math.max(bounds.right+24,from.x-100),toY=Math.max(bounds.top,Math.min(bounds.bottom-from.height,from.y));
@@ -48,7 +50,7 @@ export function createStoreMotion(root,{duration=680,revealDuration=300,getSlot=
    if(!flights.has(index))continue;
   }
   const target=slot(index),photo=target?.querySelector(photoSelector);
-  if(!photo||root.hidden){cancel(index);continue;}
+  if(!photo){cancel(index);continue;}
   const from=f.from,to=photo.getBoundingClientRect(),t=Math.min(1,(now-f.start)/duration),ease=t*t*t*(t*(t*6-15)+10),arc=Math.sin(Math.PI*ease)*Math.min(100,Math.abs(from.x-to.x)*.16);
   const x=from.x+(to.x-from.x)*ease,y=from.y+(to.y-from.y)*ease-arc,w=from.width+(to.width-from.width)*ease,h=from.height+(to.height-from.height)*ease;
   if(t<1){const corners=screenCorners(photo,to).map((end,i)=>from.corners[i]+(end-from.corners[i])*ease);
@@ -88,15 +90,14 @@ export function createStoreMotion(root,{duration=680,revealDuration=300,getSlot=
    const element=source.cloneNode(true);element.classList.add('kdw-product-flight');element.setAttribute('aria-hidden','true');
    Object.assign(element.style,{left:from.x+'px',top:from.y+'px',width:from.width+'px',height:from.height+'px',borderRadius:from.corners.map(r=>r+'px').join(' '),fontSize:from.fontSizePx+'px',opacity:'1'});
    root.append(shell,element);button.style.visibility='hidden';
-   const shellAnimation=shell.animate([{opacity:1},{opacity:0}],{duration:180,easing:'ease-out',fill:'forwards'});
-   shellAnimation.finished.then(()=>shell.remove(),()=>{});
-   const flight={element,from,button,shell,shellAnimation,committed:false};flights.set(index,flight);
+   const flight={element,from,button,shell,committed:false};flights.set(index,flight);
   },
   add(product,index,button,origin){
    if(reduced.matches){cancel(index);return;}
    if(!flights.has(index))this.begin(index,button??root.querySelector(`[data-kdw-product="${product}"]`));
    const f=flights.get(index);if(!f)return;
    f.product=product;f.committed=true;f.start=performance.now();
+   if(f.shell){f.shellAnimation=f.shell.animate([{opacity:1},{opacity:0}],{duration:180,easing:'ease-out',fill:'forwards'});f.shellAnimation.finished.then(()=>f.shell.remove(),()=>{});}
    if(sequence){
     const previous=[...flights.values()].filter(other=>other!==f&&other.committed);
     f.order=Math.max(0,...previous.map(other=>other.order))+1;

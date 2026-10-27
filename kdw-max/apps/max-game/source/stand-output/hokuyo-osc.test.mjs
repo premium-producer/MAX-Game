@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import osc from 'osc';
+import {createSocket} from 'node:dgram';
 import {createHokuyoReceiver} from './hokuyo-osc.mjs';
 import {solveCalibration,calibrationTargets} from './calibration.mjs';
 const source={address:'10.0.0.11'},msg=(address,args)=>({address,args:args.map((value,i)=>({type:typeof value==='string'?'s':i?'f':'i',value}))});
@@ -56,4 +57,50 @@ test('reentrant cancel/reset and release/new create commit state before callback
 });
 test('closing in a source-timeout callback prevents late packet from reopening contact',()=>{
  let t=1000,r;const events=[];r=createHokuyoReceiver({now:()=>t,onContact:e=>{events.push(e);if(e.phase==='cancel')r.close();}});feed(r,msg('/create',[1,.1,.2]));t=1400;feed(r,msg('/create',[2,.2,.1]));assert.deepEqual(events.map(e=>e.phase),['down','cancel']);assert.equal(r.snapshot().contactCount,0);
+});
+
+function reconnectFixture({initialError=false,throwOnce=false}={}){
+ const ports=[],jobs=[],events=[];let cleared=0;
+ const r=createHokuyoReceiver({onContact:e=>events.push(e),setRetryTimer:(fn,ms)=>{const job={fn,ms,cancelled:false};jobs.push(job);return job;},clearRetryTimer:job=>{job.cancelled=true;cleared++;},makePort:()=>{
+  if(throwOnce){throwOnce=false;throw Object.assign(Error('Socket construction'),{code:'ENOBUFS'});}
+  const p=new osc.Port({metadata:true});p.open=()=>{if(initialError){initialError=false;p.emit('error',Object.assign(Error('Address in use'),{code:'EADDRINUSE'}));}else p.emit('ready');};p.close=()=>p.emit('close');ports.push(p);return p;
+ }});return{r,ports,jobs,events,cleared:()=>cleared};
+}
+
+test('OSC listener retries initial bind failure and resumes without operator intervention',async()=>{
+ const f=reconnectFixture({initialError:true});await f.r.start();assert.equal(f.r.snapshot().bound,false);assert.equal(f.r.snapshot().reconnecting,true);assert.equal(f.jobs[0].ms,250);
+ f.jobs.shift().fn();assert.equal(f.r.snapshot().bound,true);assert.equal(f.r.snapshot().lastTransportError,null);
+ f.ports.at(-1).emit('data',bytes(msg('/create',[3,.5,.5])),source);assert.equal(f.events.at(-1).phase,'down');assert.equal(f.r.snapshot().connectionAttempts,2);await f.r.close();
+});
+
+test('unexpected socket close cancels a held gesture and restores the receiver automatically',async()=>{
+ const f=reconnectFixture();await f.r.start();f.ports[0].emit('data',bytes(msg('/create',[1,.5,.5])),source);f.ports[0].emit('close');assert.equal(f.events.at(-1).phase,'cancel');assert.equal(f.r.snapshot().reconnecting,true);
+ f.jobs.shift().fn();assert.equal(f.r.snapshot().bound,true);const n=f.events.length;
+ f.ports[0].emit('data',bytes(msg('/create',[9,.2,.2])),source);assert.equal(f.events.length,n);
+ f.ports[1].emit('data',bytes(msg('/create',[2,.3,.3])),source);assert.equal(f.events.at(-1).phase,'down');await f.r.close();
+});
+
+test('decoder errors keep a healthy socket; network errors retry; shutdown prevents late reopening',async()=>{
+ const f=reconnectFixture();await f.r.start();f.ports[0].emit('error',Object.assign(Error('Malformed packet'),{code:'ERR_OUT_OF_RANGE'}));assert.equal(f.jobs.length,0);assert.equal(f.r.snapshot().bound,true);
+ f.ports[0].emit('error',Object.assign(Error('Network down'),{code:'ENETDOWN'}));assert.equal(f.jobs.length,1);const job=f.jobs[0];await f.r.close();assert.equal(f.cleared(),1);
+ job.fn();assert.equal(f.ports.length,1);assert.equal(f.r.snapshot().bound,false);assert.equal(f.r.snapshot().reconnecting,false);
+});
+
+test('a synchronous socket construction error is retried rather than leaving opening latched',async()=>{
+ const f=reconnectFixture({throwOnce:true});await f.r.start();assert.equal(f.r.snapshot().reconnecting,true);f.jobs.shift().fn();assert.equal(f.r.snapshot().bound,true);await f.r.close();
+});
+
+test('real UDP port conflict recovers and accepts OSC once the port becomes available',async()=>{
+ const busy=createSocket('udp4'),sender=createSocket('udp4');let receiver;
+ try{
+  await new Promise(resolve=>busy.bind(0,'127.0.0.1',resolve));const port=busy.address().port;const events=[];
+  receiver=createHokuyoReceiver({port,address:'127.0.0.1',sourceAddress:'127.0.0.1',onContact:e=>events.push(e)});
+  await receiver.start();assert.equal(receiver.snapshot().bound,false);assert.equal(receiver.snapshot().lastTransportError,'EADDRINUSE');
+  await new Promise(resolve=>busy.close(resolve));
+  const until=Date.now()+3000;while(!receiver.snapshot().bound&&Date.now()<until)await new Promise(resolve=>setTimeout(resolve,20));
+  assert.equal(receiver.snapshot().bound,true);
+  await new Promise((resolve,reject)=>sender.send(Buffer.from(bytes(msg('/create',[7,.5,.5]))),port,'127.0.0.1',e=>e?reject(e):resolve()));
+  const deadline=Date.now()+1000;while(!events.length&&Date.now()<deadline)await new Promise(resolve=>setTimeout(resolve,10));
+  assert.equal(events[0]?.phase,'down');assert.equal(events[0]?.sourceContactId,'7');
+ }finally{await receiver?.close();try{busy.close();}catch{}try{sender.close();}catch{}}
 });

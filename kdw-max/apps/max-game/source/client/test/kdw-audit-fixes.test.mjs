@@ -35,8 +35,8 @@ test('production ticker preserves registration result until renderer allows adva
 });
 test('server admission refusal cannot start the task, retry succeeds on the same visitor',async()=>{
  let fail=true,calls=0;const d=await driver(async()=>{calls++;if(fail)throw Error('GAME_NO_LONGER_ACTIVE');});
- await d.send('STAND_READY',{screenId:'scan'});await d.app.handleContact(d.id,{contactId:'palm',sequence:0,type:'down',inside:true});d.advance(800);
- await assert.rejects(d.app.pollTime(d.id),/GAME_NO_LONGER_ACTIVE/);assert.equal((await d.snap()).state.status,'scan');fail=false;await d.app.pollTime(d.id);assert.equal((await d.snap()).state.status,'task');assert.equal(calls,2);await d.app.close();
+ await d.send('STAND_READY',{screenId:'scan'});await assert.rejects(d.app.handleContact(d.id,{contactId:'palm',sequence:0,type:'down',inside:true}),/GAME_NO_LONGER_ACTIVE/);
+ assert.equal((await d.snap()).state.status,'scan');fail=false;await d.app.pollTime(d.id);assert.equal((await d.snap()).state.status,'task');assert.equal(calls,2);await d.app.close();
 });
 test('clock correction preserves elapsed time and valid saved deadlines',async()=>{
  let wall=1000000,mono=0;const c=createTrustedClock({wall:()=>wall,monotonic:()=>mono});assert.equal(c(),1000000);wall-=300000;mono+=1000;assert.equal(c(),1001000);c.recover(1005000);mono+=2000;assert.equal(c(),1007000);assert.throws(()=>c.recover(1007000+86400001),{code:'CLOCK_CORRECTION_REQUIRED'});
@@ -47,6 +47,19 @@ test('preparation watchdog reports once per stalled scene and respects ready sta
  globalThis.setInterval=fn=>(tick=fn,1);globalThis.clearInterval=()=>{};
  try{const stop=monitorPreparation(()=>state,{now:()=>time,timeoutMs:1000,onFailure:()=>calls++});time=1000;tick();tick();assert.equal(calls,1);state={...state,status:'task',screenId:'a',standReady:true};tick();time=3000;tick();assert.equal(calls,1);stop();}finally{globalThis.setInterval=set;globalThis.clearInterval=clear;}
 });
+test('paused output cannot trigger preparation failure before palm reveal; resumed stalls still time out',()=>{
+ const set=globalThis.setInterval,clear=globalThis.clearInterval;let tick,time=0,calls=0,active=false;
+ globalThis.setInterval=fn=>(tick=fn,1);globalThis.clearInterval=()=>{};
+ const state={sessionId:'linked',runId:1,status:'scan',screenId:null,standReady:false};
+ try{
+  const stop=monitorPreparation(()=>state,{now:()=>time,timeoutMs:1000,active:()=>active,onFailure:()=>calls++});
+  time=120000;tick();assert.equal(calls,0);
+  active=true;time+=500;tick();assert.equal(calls,0);
+  time+=500;tick();assert.equal(calls,1);tick();assert.equal(calls,1);
+  state.standReady=true;time+=5000;tick();assert.equal(calls,1);stop();
+ }finally{globalThis.setInterval=set;globalThis.clearInterval=clear;}
+});
+
 test('portable audio is active without managed assignment and stops outside presentation',()=>{
  assert.equal(gameAudioActive({connected:true,local:true,presented:true}),true);
  assert.equal(gameAudioActive({connected:true,local:true,presented:false}),false);

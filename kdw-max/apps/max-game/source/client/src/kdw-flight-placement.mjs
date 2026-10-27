@@ -45,18 +45,16 @@ export function chooseFlightX(card,peers,field,preferred=.5){
 }
 
 export function createFlightPlacement(){
- let placements=new Map(),signature='';
+ const placements=new Map();
  return {
-  clear(){placements.clear();signature='';},
+  clear(){placements.clear();},
   layout(cards,field){
-   const next=[field.left,field.right,field.height,cards[0]?.entry].map(n=>Math.round(n??0)).join(':');
-   if(next!==signature){placements.clear();signature=next;}
    const ids=new Set(cards.map(c=>c.id));
    for(const id of placements.keys())if(!ids.has(id))placements.delete(id);
-   const placed=cards.filter(c=>placements.has(c.id)).map(c=>({...c,x:placements.get(c.id)}));
+   const placed=cards.filter(c=>placements.has(c.id)).map(c=>{const p=placements.get(c.id);if(p.left!==field.left||p.right!==field.right||p.w!==c.w){p.x=field.left+Math.max(0,field.right-field.left-c.w)*p.fraction;p.left=field.left;p.right=field.right;p.w=c.w;}return{...c,x:p.x};});
    for(const c of cards.filter(c=>!placements.has(c.id))){
     const choice=chooseFlightX(c,placed,field,c.offset);
-    placements.set(c.id,choice.x);placed.push({...c,x:choice.x});
+    const span=Math.max(0,field.right-field.left-c.w);placements.set(c.id,{x:choice.x,w:c.w,left:field.left,right:field.right,fraction:span?(choice.x-field.left)/span:0});placed.push({...c,x:choice.x});
    }
    return new Map(placed.map(c=>[c.id,c]));
   },

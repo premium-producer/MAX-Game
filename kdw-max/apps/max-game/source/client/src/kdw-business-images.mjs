@@ -8,7 +8,7 @@ export function preloadBusinessImages(cards){
   if(!decoded.has(asset.path)){
    const image=new Image();image.src='./'+asset.path;
    let timeout;
-   const ready=Promise.race([image.decode(),new Promise((_,reject)=>{timeout=setTimeout(()=>reject(Error('Не удалось загрузить фотографии')),10000);})])
+   const ready=Promise.race([image.decode(),new Promise((_,reject)=>{timeout=setTimeout(()=>reject(Error('Не удалось загрузить фотографии')),1500);})])
     .then(()=>image).catch(error=>{decoded.delete(asset.path);throw error;}).finally(()=>clearTimeout(timeout));
    decoded.set(asset.path,ready);
   }

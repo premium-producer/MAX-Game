@@ -13,7 +13,7 @@ const freshLayouts=()=>({layoutRevision:0,positions:{},receipts:[]});
 export const MISSION_CLOCK_CHECKPOINT_MS=500;
 export const MISSION_CLOCK_EXTRAPOLATION_MS=1000;
 /** One authority per session. now is host time, never a field of client commands. */
-export function createMissionSessionApplication({catalog=MISSION_CATALOG,persistence,now=wallClock,monotonic=now===wallClock?()=>performance.now():now,admit=null,onObserverError=()=>{},missionRulesRevision=MISSION_RULES_REVISION}){
+export function createMissionSessionApplication({catalog=MISSION_CATALOG,persistence,now=wallClock,monotonic=now===wallClock?()=>performance.now():now,admit=null,operatorControls=false,onObserverError=()=>{},missionRulesRevision=MISSION_RULES_REVISION}){
  catalog=copy(assertMissionCatalog(structuredClone(catalog)));
  if(!persistence||['load','create','commit'].some(k=>typeof persistence[k]!=='function'))throw new TypeError('Explicit PersistencePort required');
  if(typeof now!=='function'||typeof onObserverError!=='function')throw new TypeError('Clock and diagnostic handler required');
@@ -93,7 +93,9 @@ export function createMissionSessionApplication({catalog=MISSION_CATALOG,persist
   if(production(s)&&['task','result'].includes(s.status)&&s.lastTouchAt!==null&&time-s.lastTouchAt>=timing(s,'inactivitySeconds'))return dispatch(id,internalCommand(e,'STAND_IDLE'),time,true);
   if((s.ownerActive||production(s))&&s.deadlineAt!==null&&time>=s.deadlineAt&&s.status!=='expired')return dispatch(id,internalCommand(e,'EXPIRE'),time,true);
   if(!s.ownerActive&&!production(s))return copy({reply:{ok:true,code:'UNCHANGED'},duplicate:false,snapshot:snapshot(e)});
-  const contact=contacts.get(id);if(contact&&s.status==='scan'&&contact.runId===s.runId&&time-contact.startedAt>=(production(s)?timing(s,'palmHoldSeconds'):0)){if(admit)await admit(s);contacts.delete(id);return dispatch(id,internalCommand(e,'HOLD_CONFIRMED'),Math.max(time,clock()),true);}
+  // The visible palm starts on touch-down. Readiness/ownership/deadline still
+  // gate admission; the old pinned palmHoldSeconds setting no longer delays it.
+  const contact=contacts.get(id);if(contact&&s.status==='scan'&&contact.runId===s.runId&&(!production(s)||s.standReady)){if(admit)await admit(s);contacts.delete(id);return dispatch(id,internalCommand(e,'HOLD_CONFIRMED'),Math.max(time,clock()),true);}
   if(s.status==='result'&&time>=s.resultReadyAt&&(!production(s)||allowResult))return dispatch(id,internalCommand(e,'ADVANCE_RESULT'),time,true);
   if(s.status==='task'&&(!production(s)||s.standReady)){const screen=catalog.tasks[s.taskId].screens[s.screenId];if(screen.automaticMs!==null&&screen.automaticMs!==undefined&&time-s.screenEnteredAt>=screen.automaticMs)return dispatch(id,internalCommand(e,'AUTO_SCREEN',{screenId:s.screenId,actionId:screen.actions[0].actionId}),time,true);}
   if(['scan','task','result'].includes(s.status)&&time-e.record.clockCheckpointAt>=MISSION_CLOCK_CHECKPOINT_MS)e=await commit(id,e,{...e.record,clockCheckpointAt:time},[]);
@@ -148,6 +150,7 @@ export function createMissionSessionApplication({catalog=MISSION_CATALOG,persist
    const receipt=[...saved.record.mission.receipts,...saved.record.layouts.receipts].find(r=>r.command.commandId===commandId)??null;
    return copy({schemaVersion:1,sessionId:id,commandId,status:receipt?'committed':'unknown',receipt});
   });},
+  operatorCommand(input){if(!operatorControls||input?.type!=='OPERATOR_GOTO')return Promise.reject(err('OPERATOR_UNAVAILABLE'));const c=structuredClone(input);return queue(c?.sessionId,async()=>{const result=await dispatch(c.sessionId,c,clock(),true);if(result.reply.ok){contacts.delete(c.sessionId);for(const key of sequences.keys())if(key.startsWith(c.sessionId+':'))sequences.delete(key);}return result;});},
   sendCommand(input){const c=structuredClone(input);return queue(c?.sessionId,async()=>{const e=await load(c.sessionId);if(e.record.layouts.receipts.some(r=>r.command.commandId===c.commandId)&&c.type!=='SET_LAYOUT')return copy({reply:{ok:false,code:'COMMAND_ID_REUSED'},duplicate:false,snapshot:snapshot(e)});return dispatch(c.sessionId,c,clock());});},
   subscribe(id,callback){if(typeof callback!=='function')return Promise.reject(new TypeError('Callback required'));return queue(id,async()=>{const e=await load(id);if(closed)throw err('APPLICATION_CLOSED');const set=listeners.get(id)??new Set();listeners.set(id,set);set.add(callback);deliver(callback,copy({snapshot:{...snapshot(e),assignment:await managed(id)},effects:[]}));return()=>{set.delete(callback);};});},
   inputOwnerChanged(id,{active},trustedNow=clock()){return queue(id,async()=>{await guardManaged(id,'OWNER_CHANGED');contacts.delete(id);for(const key of sequences.keys())if(key.startsWith(`${id}:`))sequences.delete(key);const e=await load(id);if(e.record.mission.state.ownerActive===active)return snapshot(e);await dispatch(id,internalCommand(e,'OWNER_CHANGED',{active}),Math.max(Math.floor(trustedNow),clock()),true);return snapshot(await load(id));});},
@@ -158,7 +161,7 @@ export function createMissionSessionApplication({catalog=MISSION_CATALOG,persist
    if(!s.ownerActive||s.status!=='scan'){contacts.delete(id);return snapshot(e);}
    if(value.type==='down'&&value.inside&&!contact)contacts.set(id,{contactId:value.contactId,startedAt:Math.floor(trustedNow),runId:s.runId});
    else if(contact?.contactId===value.contactId&&(!value.inside||['up','cancel'].includes(value.type))){
-    if(value.type==='up'&&value.inside&&Math.floor(trustedNow)-contact.startedAt>=(production(s)?timing(s,'palmHoldSeconds'):0)){await poll(id,Math.floor(trustedNow));return snapshot(await load(id));}
+    if(value.type==='up'&&value.inside&&(!production(s)||s.standReady)){await poll(id,Math.floor(trustedNow));return snapshot(await load(id));}
     contacts.delete(id);
    }
    await poll(id,Math.floor(trustedNow));return snapshot(await load(id));});},

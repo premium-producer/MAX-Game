@@ -1,4 +1,4 @@
-export const MISSION_COMMAND_TYPES=['SELECT_MISSION','ACT','SAVE_INTERACTION','START_POSTS','PUBLISH_POST','START_STORE','PICK_PRODUCT','DEV_TIMER','RESTART_TASK','SKIP_TASK','ADVANCE_RESULT','RETURN_MENU','RESTART_MISSION','RESET_PROGRESS','STAND_READY','STAND_TOUCH','STAND_IDLE','HOLD_CONFIRMED','OWNER_CHANGED','EXPIRE','AUTO_SCREEN'];
+export const MISSION_COMMAND_TYPES=['OPERATOR_GOTO','SELECT_MISSION','ACT','SAVE_INTERACTION','START_POSTS','PUBLISH_POST','START_STORE','PICK_PRODUCT','DEV_TIMER','RESTART_TASK','SKIP_TASK','ADVANCE_RESULT','RETURN_MENU','RESTART_MISSION','RESET_PROGRESS','STAND_READY','STAND_TOUCH','STAND_IDLE','HOLD_CONFIRMED','OWNER_CHANGED','EXPIRE','AUTO_SCREEN'];
 export const missionToken=v=>typeof v==='string'&&/^[a-zA-Z0-9][a-zA-Z0-9._:-]{0,127}$/.test(v);
 export function assertMissionCommand(input){
  if(!input||typeof input!=='object'||Array.isArray(input))throw new TypeError('Command required');
@@ -6,6 +6,7 @@ export function assertMissionCommand(input){
  if(Object.keys(input).some(k=>!keys.includes(k))||input.schemaVersion!==1||!MISSION_COMMAND_TYPES.includes(input.type))throw new TypeError('Invalid command');
  for(const k of ['commandId','sessionId','contentRevision'])if(!missionToken(input[k]))throw new TypeError(`Invalid ${k}`);
  if(!Number.isSafeInteger(input.expectedRevision)||input.expectedRevision<0)throw new TypeError('Invalid revision');
+ if(input.type==='OPERATOR_GOTO'&&(!missionToken(input.missionId)||!missionToken(input.screenId)||(input.taskId!==null&&!missionToken(input.taskId))||Object.keys(input).some(k=>!['schemaVersion','type','commandId','sessionId','contentRevision','expectedRevision','missionId','taskId','screenId'].includes(k))))throw new TypeError('Invalid operator target');
  if(input.type==='SELECT_MISSION'&&!missionToken(input.missionId))throw new TypeError('Invalid mission');
  if(Object.hasOwn(input,'fresh')&&(input.type!=='SELECT_MISSION'||typeof input.fresh!=='boolean'))throw new TypeError('Invalid fresh mission flag');
  if(['ACT','AUTO_SCREEN'].includes(input.type)&&(!missionToken(input.screenId)||!missionToken(input.actionId)))throw new TypeError('Invalid screen/action');

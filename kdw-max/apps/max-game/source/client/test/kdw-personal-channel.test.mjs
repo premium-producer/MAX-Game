@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {createKdwCatalog} from '../src/kdw-interactions-model.mjs';
 import {createMissionModel,dispatchMissionCommand,restoreMissionModel} from '../src/core/mission-core.mjs';
-import {personalProfile,personalDraft,validPersonalDraft,validSlug,PERSONAL_LIMITS,limitPersonalReply} from '../src/kdw-personal-channel-model.mjs';
+import {personalProfile,personalDraft,validPersonalDraft,validSlug,PERSONAL_AVATARS,PERSONAL_LIMITS,limitPersonalReply} from '../src/kdw-personal-channel-model.mjs';
 import {createMissionSessionApplication} from '../src/application/mission-session.mjs';
 import {createMemoryPersistencePort} from '../src/application/memory-persistence.mjs';
 const base=JSON.parse(fs.readFileSync(new URL('../src/reviewed-content/mission-catalog.json',import.meta.url))),catalog=createKdwCatalog(base);
@@ -79,4 +79,13 @@ test('native confirmation commits one transition per form and replays without le
 
 test('native back from a saved legacy preview skips only the equivalent input screen',()=>{
  const d=driver();create(d);assert.equal(d.act('personal.back.blogger.channel.privacy').reply.ok,true);assert.equal(d.model.state.screenId,'blogger.channel.filled');assert.equal(d.act('personal.direct-back.blogger.channel.filled').reply.ok,true);assert.equal(d.model.state.screenId,'blogger.channel.menu');assert.equal(personalDraft(d.model.state).name,value.name);assert.equal(restoreMissionModel(catalog,d.model).ok,true);
+});
+
+test('Stella portrait is the first choice, survives channel creation and replay; heart is legacy-only in the picker',()=>{
+ assert.deepEqual(PERSONAL_AVATARS,['visitor','cinema','cat','game','island']);assert.equal(PERSONAL_AVATARS.includes('heart'),false);
+ const d=driver();d.begin();assert.equal(d.save({...value,avatar:'visitor'}).reply.ok,true);assert.equal(d.act('personal.channel.create').reply.ok,true);
+ assert.equal(personalProfile(d.model.state).avatar,'visitor');finishChannel(d);assert.equal(personalProfile(d.model.state).avatar,'visitor');
+ const restored=restoreMissionModel(catalog,d.model);assert.equal(restored.ok,true);assert.equal(personalProfile(restored.model.state).avatar,'visitor');
+ assert.equal(personalDraft({progress:{blogger:{personalChannel:{...value,avatar:'heart'}}}}).avatar,'heart');
+ assert.equal(validPersonalDraft({...value,avatar:'heart'}),true);
 });

@@ -1,0 +1,168 @@
+{
+  "curlExit": 0,
+  "utc": "2026-10-27T21:02:30.0420651Z",
+  "health": {
+    "application": "kdw-max-game",
+    "version": "KDW-Stand-20261027-RC4-1",
+    "instanceKey": "[REDACTED_INSTALLATION_ID]",
+    "pid": 4100,
+    "origin": "http://127.0.0.1:18752",
+    "entry": "/webgl-v5/client.html?backend=local&view=pixel-map",
+    "runtime": {
+      "application": "kdw-max-game",
+      "version": "KDW-Stand-20261027-RC4-1",
+      "bootId": "be37741a-8c9e-4b8e-9ae0-3ce97a6da97b",
+      "supervisorPid": 24188,
+      "state": "running",
+      "outputEnabled": true,
+      "api": {
+        "pid": 4100,
+        "generation": 1,
+        "status": "ready",
+        "memoryBytes": 67899392,
+        "lastHeartbeatAgeMs": 741,
+        "error": null,
+        "attempts": {
+          "attempts": 0,
+          "limit": 3
+        },
+        "output": null
+      },
+      "output": {
+        "pid": 17432,
+        "generation": 4,
+        "status": "ready",
+        "memoryBytes": 179699712,
+        "lastHeartbeatAgeMs": 222,
+        "error": null,
+        "attempts": {
+          "attempts": 2,
+          "limit": 3
+        },
+        "output": {
+          "bootId": "6251e2cf-ed66-46d1-b584-8b6bb806e51e",
+          "armed": true,
+          "inputMode": "automatic",
+          "active": true,
+          "presenting": true,
+          "backgroundReady": true,
+          "contentReady": true,
+          "frames": [
+            38,
+            342
+          ],
+          "lastGoodFrameAgeMs": [
+            11190,
+            27
+          ],
+          "badFrames": [
+            25,
+            25
+          ],
+          "fresh": false,
+          "senders": [
+            "KDW_MAX_BACKGROUND",
+            "KDW_MAX_CONTENT"
+          ],
+          "width": 3072,
+          "height": 1536,
+          "bridge": {
+            "adapter": "NVIDIA GeForce RTX 3080 [00000000:0000b709]",
+            "inflight": 1,
+            "deviceRemovedReason": 0
+          },
+          "lidar": {
+            "bound": true,
+            "reconnecting": false,
+            "lastTransportError": null,
+            "port": 3000,
+            "sourceAddress": "127.0.0.1",
+            "packetCount": 0,
+            "decodeErrors": 0,
+            "rejectedSources": 0,
+            "acceptedUpdates": 0,
+            "ignoredContacts": 0,
+            "selectionChanges": 0,
+            "connectionAttempts": 1,
+            "transportErrors": 0,
+            "lastPacketAgeMs": null,
+            "addresses": [],
+            "activeContactId": null,
+            "selectedContactId": null,
+            "selection": "topmost",
+            "selectionSpace": "calibrated-screen-y",
+            "selectedY": null,
+            "contactCount": 0,
+            "enabled": true,
+            "calibrating": false,
+            "cornerErrorPx": 3.618021195979625e-7
+          },
+          "cursorVisible": true,
+          "calibration": null,
+          "ui": {
+            "at": 1793134949174,
+            "screen": "menu",
+            "phase": null,
+            "entry": "combined",
+            "menuReady": false,
+            "selection": "ready",
+            "error": null,
+            "rootInert": false,
+            "pointerCount": 0,
+            "lastPointer": null,
+            "buttons": [
+              {
+                "id": "digital-id",
+                "inert": false,
+                "presence": 1,
+                "rect": [
+                  1772,
+                  641,
+                  135,
+                  216
+                ]
+              },
+              {
+                "id": "business",
+                "inert": false,
+                "presence": 1,
+                "rect": [
+                  2010,
+                  640,
+                  135,
+                  216
+                ]
+              },
+              {
+                "id": "blogger",
+                "inert": false,
+                "presence": 1,
+                "rect": [
+                  1772,
+                  884,
+                  135,
+                  216
+                ]
+              },
+              {
+                "id": "communication",
+                "inert": false,
+                "presence": 1,
+                "rect": [
+                  2010,
+                  884,
+                  135,
+                  216
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "logWriteError": null
+    }
+  },
+  "computer": "DESKTOP-DBD624H",
+  "targetHost": "10.0.0.13",
+  "publicationNote": "Installation path fingerprint removed from the public snapshot; runtime measurements unchanged."
+}

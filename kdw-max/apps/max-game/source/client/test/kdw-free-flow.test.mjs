@@ -1,3 +1,4 @@
+import {createRightCardLayout} from '../src/kdw-activity-stage.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createPostTimeline} from '../src/kdw-post-stream.mjs';
@@ -101,3 +102,11 @@ test('placement is continuous across selections and never rearranges surviving f
  }
  assert.ok(unique.size>10,'continuous horizontal positions, not two fixed columns');
 });
+
+test('phone drift never remeasures or rearranges existing falling cards',()=>{
+ const planner=createRightCardLayout(),area={left:0,right:1920,top:0,bottom:960,height:960},g={rect:{right:1000,width:390},scale:1,playArea:area,flowArea:area,layoutRevision:'1'};let measures=0,old;
+ const make=t=>Array.from({length:5},(_,i)=>({spawnId:'card.'+i,post:{id:'post.'+i},flow:'free',size:.9,progress:.1+i*.12+t*.00002,travel:8000,offset:i*.2}));
+ for(let frame=0;frame<180;frame++){g.rect.right=1000+Math.sin(frame/8)*4;const poses=planner.layout(g,make(frame*16),()=>{measures++;return 180;});if(old)for(const [id,p]of poses){assert.equal(p.x,old.get(id).x);assert.equal(p.w,old.get(id).w);assert.ok(p.y>old.get(id).y);}old=poses;}
+ assert.equal(measures,5);g.layoutRevision='2';g.rect.right=1600;const changed=planner.layout(g,make(3000),()=>{measures++;return 170;});assert.notEqual(changed.get('card.0').w,old.get('card.0').w);assert.equal(measures,10);
+});
+test('a real field resize preserves horizontal allocation instead of rerunning placement',()=>{const p=createFlightPlacement(),cards=[{id:'a',x:0,y:-100,h:140,w:100,v:.1,offset:.7}],a=p.layout(cards,{left:0,right:500,height:960}).get('a');const b=p.layout(cards,{left:50,right:650,height:960}).get('a');assert.equal(b.x,50+a.x/400*500);});

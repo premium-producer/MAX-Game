@@ -1,0 +1,33 @@
+[
+  {
+    "app": "max-game",
+    "nativeObservation": {
+      "adapter": "NVIDIA GeForce RTX 5070 Ti [00000000:00018cd2]",
+      "framesBefore": [
+        72,
+        47
+      ],
+      "framesAfter": [
+        253,
+        229
+      ],
+      "badFrames": [
+        11,
+        9
+      ],
+      "fresh": true
+    },
+    "checks": [
+      "separate supervisor and API PIDs",
+      "output kill retains API PID",
+      "API kill restarts API and replaces output owner",
+      "blocked worker recovered with bounded retries and degraded state",
+      "API survives output recovery exhaustion",
+      "diagnostic bundle contains heartbeat timeout",
+      "restart API acknowledges before closing its HTTP server",
+      "foreign Origin rejected",
+      "intentional Stop is durable and watchdog respects it"
+    ],
+    "passed": true
+  }
+]

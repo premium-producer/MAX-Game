@@ -16,9 +16,9 @@ test('visual clock absorbs checkpoint jitter without a one-frame position jump',
 test('visual clock respects hold, disconnect, stale bounds and new runs',()=>{
  let now=0;const clock=createPresentationClock({now:()=>now,smooth:true});
  clock.accept(snapshot(1000));clock.read();now=100;clock.read();
- clock.accept(snapshot(1050,2,{clock:{held:true}}));assert.equal(clock.read().time,1050);
- now=300;assert.equal(clock.read().time,1050);
- clock.accept(snapshot(1050,3));clock.read();now=400;const paused=clock.read(false);assert.equal(paused.time,1050);assert.equal(paused.stale,true);
+ clock.accept(snapshot(1050,2,{clock:{held:true}}));assert.equal(clock.read().time,1100);
+ now=300;assert.equal(clock.read().time,1100);
+ clock.accept(snapshot(1050,3));clock.read();now=400;const paused=clock.read(false);assert.equal(paused.time,1100);assert.equal(paused.stale,true);
  clock.accept(snapshot(1400,4));clock.read();now=2000;const stale=clock.read();assert.equal(stale.stale,true);assert.ok(stale.time<=2400);
  clock.accept(snapshot(50,5,{state:{runId:2}}));assert.equal(clock.read().time,50);
  clock.accept({});assert.deepEqual(clock.read(),{time:null,stale:true});
@@ -27,4 +27,12 @@ test('visual clock respects hold, disconnect, stale bounds and new runs',()=>{
 test('default clock retains immediate authoritative corrections',()=>{
  let now=0;const clock=createPresentationClock({now:()=>now});clock.accept(snapshot(1000));clock.read();now=100;
  assert.equal(clock.read().time,1100);clock.accept(snapshot(1070,2));assert.equal(clock.read().time,1070);
+});
+
+test('a stale or delayed checkpoint cannot rewind the same card flight',()=>{let now=0;const clock=createPresentationClock({now:()=>now,smooth:true});clock.accept(snapshot(1000));clock.read();now=1100;const capped=clock.read().time;assert.ok(capped>=1990&&capped<=2000);clock.accept(snapshot(1900,2));assert.equal(clock.read().time,capped);now+=16;const moved=clock.read().time;assert.ok(moved>=capped&&moved-capped<=17.6);clock.accept(snapshot(1900,3,{clock:{held:true}}));assert.equal(clock.read().time,moved);now+=100;assert.equal(clock.read().time,moved);});
+
+
+test('checkpoint correction changes card velocity gradually instead of alternating speeds',()=>{
+ let now=0;const clock=createPresentationClock({now:()=>now,smooth:true});clock.accept(snapshot(1000));let last=clock.read().time,previousStep=16;
+ for(let i=1;i<80;i++){now=i*16;if(i%5===0)clock.accept(snapshot(1000+now+(i%10===0?-80:80),i));const value=clock.read().time,step=value-last;assert.ok(Math.abs(step-previousStep)<.4);assert.ok(step>=14.4&&step<=17.6);last=value;previousStep=step;}
 });

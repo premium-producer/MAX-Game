@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "checks": [
+    "Standby actual GPU scene: video 80%, +100px; preview uses volatile memory",
+    "PC unified block: device, reference and route icon scale 75% and move -80px around the device; independent controls removed",
+    "Scaled native hotspot activates on real touchStart before release, and release does not advance the next screen",
+    "Save: shared / PC / screen profile persisted; no game assignment created",
+    "Live preview lease, cancel rollback and persistent settings",
+    "ARM blocks live geometry changes",
+    "Named profiles: save once, live unsaved draft, switch without save restores saved values",
+    "Calibration targets can be dragged on the large map and adjusted numerically",
+    "Corner sequence and live pink hand cursor shown on the admin map using the new transform",
+    "Manual target coordinates → five simulated hand holds → independent center check → saved mapping",
+    "Phone unified block: device, reference and route icon scale 60% and move +40px together",
+    "Scaled phone keeps visible device connectors with finite GPU bounds",
+    "Personal channel real touch path: open name keyboard, type Ко, open description keyboard, type д, bottom Create opens privacy",
+    "Standalone renderer receives live SSE geometry without parent messages, reload or profile save",
+    "Production restart clears old task and queue, reload opens idle, next visitor can select a new mission"
+  ],
+  "errors": []
+}

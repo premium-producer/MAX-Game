@@ -1,0 +1,32 @@
+[
+  {
+    "app": "max-game",
+    "checks": [
+      "separate supervisor and API PIDs",
+      "output kill retains API PID",
+      "API kill restarts API and replaces output owner",
+      "blocked worker recovered with bounded retries and degraded state",
+      "API survives output recovery exhaustion",
+      "diagnostic bundle contains heartbeat timeout",
+      "restart API acknowledges before closing its HTTP server",
+      "foreign Origin rejected",
+      "intentional Stop is durable and watchdog respects it"
+    ],
+    "passed": true
+  },
+  {
+    "app": "stela",
+    "checks": [
+      "separate supervisor and API PIDs",
+      "output kill retains API PID",
+      "API kill restarts API and replaces output owner",
+      "blocked worker recovered with bounded retries and degraded state",
+      "API survives output recovery exhaustion",
+      "diagnostic bundle contains heartbeat timeout",
+      "restart API acknowledges before closing its HTTP server",
+      "foreign Origin rejected",
+      "intentional Stop is durable and watchdog respects it"
+    ],
+    "passed": true
+  }
+]

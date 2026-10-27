@@ -2,7 +2,7 @@ import {activityRemaining} from './kdw-development.mjs';
 const sleep=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 import {POSTS_SCREEN,POSTS_TASK,visiblePosts,postsElapsed,postsGoal} from './kdw-posts-model.mjs';
 /** Isolated memory-session preview; follows real commands, never writes the player's IndexedDB. */
-export async function prepareInteractionPreview(session,catalog,kind){
+export async function prepareInteractionPreview(session,catalog,kind,businessType='cafe'){
  const missionId=kind==='channel'?'blogger':'business',target=kind==='channel'?'blogger.channel.name':kind==='posts'?POSTS_SCREEN:'business.store.start';
  await session.owner(true);await session.command('SELECT_MISSION',{missionId});
  await session.contact('kdw-preview','down',true);await sleep(825);await session.contact('kdw-preview','up',true);
@@ -17,7 +17,8 @@ export async function prepareInteractionPreview(session,catalog,kind){
   if(s.status!=='task')throw Error('PREVIEW_FLOW_UNAVAILABLE');
   const screen=catalog.tasks[s.taskId].screens[s.screenId];
   if(screen.automaticMs!==null){await sleep(Math.min(screen.automaticMs,2000));await session.poll(Date.now());continue;}
-  const action=screen.actions.find(a=>a.outcome.kind!=='incorrect'&&a.outcome.screenId!==s.screenId);
+  const choice=s.screenId==='business.platform.business-type'&&['cafe','flowers','auto'].includes(businessType)?screen.actions.find(a=>a.actionId==='business.platform.choose-'+businessType):null;
+  const action=choice??screen.actions.find(a=>a.outcome.kind!=='incorrect'&&a.outcome.screenId!==s.screenId);
   if(!action)throw Error('PREVIEW_ACTION_UNAVAILABLE');
   const response=await session.act(s.screenId,action.actionId);if(!response?.reply.ok)throw Error('PREVIEW_COMMAND_REJECTED');
  }

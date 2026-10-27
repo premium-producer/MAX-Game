@@ -18,7 +18,7 @@ extern "C" const PfnDliHook __pfnDliNotifyHook2=nodeDelayHook;
 using Microsoft::WRL::ComPtr;
 namespace {
 struct Flight { uint32_t token; ComPtr<ID3D11Texture2D> input; ComPtr<ID3D11Query> done; };
-struct Channel { std::unique_ptr<spoutDX> sender; std::vector<Flight> flights; };
+struct Channel { std::unique_ptr<spoutDX> sender; std::vector<Flight> flights; ComPtr<ID3D11Texture2D> lastGood; };
 ComPtr<ID3D11Device1> device;
 ComPtr<ID3D11DeviceContext> context;
 std::array<Channel,2> channels;
@@ -68,9 +68,17 @@ napi_value send(napi_env e,napi_callback_info info) {
   check(device->OpenSharedResource1(handle,IID_PPV_ARGS(&f.input)),"OpenSharedResource1");
   D3D11_TEXTURE2D_DESC desc{}; f.input->GetDesc(&desc);
   if(desc.Format!=DXGI_FORMAT_B8G8R8A8_UNORM && desc.Format!=DXGI_FORMAT_R8G8B8A8_UNORM) throw std::runtime_error("Unsupported texture format (SDR RGBA/BGRA required)");
+  // A retained frame belongs to this bridge, never to a borrowed Electron paint.
+  D3D11_TEXTURE2D_DESC previous{}; if(c.lastGood) c.lastGood->GetDesc(&previous);
+  if(!c.lastGood || previous.Width!=desc.Width || previous.Height!=desc.Height || previous.Format!=desc.Format) {
+    D3D11_TEXTURE2D_DESC owned=desc; owned.Usage=D3D11_USAGE_DEFAULT; owned.CPUAccessFlags=0; owned.MiscFlags=0; owned.BindFlags=D3D11_BIND_SHADER_RESOURCE|D3D11_BIND_RENDER_TARGET;
+    ComPtr<ID3D11Texture2D> replacement; check(device->CreateTexture2D(&owned,nullptr,&replacement),"Create owned frame");c.lastGood=replacement;
+  }
+  c.flights.reserve(3); // Allocate before any GPU submission.
   D3D11_QUERY_DESC q{D3D11_QUERY_EVENT,0}; check(device->CreateQuery(&q,&f.done),"CreateQuery");
+  context->CopyResource(c.lastGood.Get(),f.input.Get());
   c.sender->SetSenderFormat(desc.Format);
-  if(!c.sender->SendTexture(f.input.Get())) throw std::runtime_error("Spout SendTexture failed");
+  if(!c.sender->SendTexture(c.lastGood.Get())) throw std::runtime_error("Spout SendTexture failed");
   context->End(f.done.Get()); context->Flush();
   auto token=f.token; c.flights.push_back(std::move(f)); return num(e,token);
  } catch(const std::exception& ex) { napi_throw_error(e,nullptr,ex.what()); return nullptr; }
@@ -89,12 +97,13 @@ napi_value poll(napi_env e,napi_callback_info) {
 napi_value status(napi_env e,napi_callback_info) {
   napi_value out; napi_create_object(e,&out); napi_set_named_property(e,out,"adapter",str(e,adapter));
   napi_set_named_property(e,out,"inflight",num(e,channels[0].flights.size()+channels[1].flights.size()));
+  napi_set_named_property(e,out,"deviceRemovedReason",num(e,device?static_cast<unsigned long>(device->GetDeviceRemovedReason()):0));
   return out;
 }
 napi_value close(napi_env e,napi_callback_info) {
   // JS drains completions before closing. Never release a borrowed texture early.
   if(!channels[0].flights.empty() || !channels[1].flights.empty()) { napi_throw_error(e,nullptr,"Cannot close with GPU work in flight"); return nullptr; }
-  for(auto& c:channels) { if(c.sender) c.sender->ReleaseSender(); c.sender.reset(); }
+  for(auto& c:channels) { if(c.sender) c.sender->ReleaseSender(); c.sender.reset(); c.lastGood.Reset(); }
   context.Reset(); device.Reset(); return undef(e);
 }
 napi_value init(napi_env e,napi_value exports) {

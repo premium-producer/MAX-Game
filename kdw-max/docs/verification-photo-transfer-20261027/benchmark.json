@@ -1,0 +1,175 @@
+{
+  "startedAt": "2026-10-27T21:08:14.740Z",
+  "synthetic": true,
+  "samples": [
+    {
+      "index": 0,
+      "gameId": "ebca15cf-6329-4299-914e-69067ea2c001",
+      "voiceSessionId": "59190c77-d6fb-480c-91c7-f67917936831",
+      "bytes": 732405,
+      "sha256": "3a5cf1d2e8054b54b4146fad6c28216bc3ba04b9d2b5af4770a7cbafeb1c8331",
+      "submitMs": 3,
+      "localPhotoQueueMs": 15,
+      "fromSubmitToStoredMs": 125,
+      "fromPhotoUploadToStoredMs": 122,
+      "maxPhotoStatus": "stored",
+      "assignment": "unavailable",
+      "wrongSessionStatus": 409,
+      "duplicateStatus": 200,
+      "observedAt": "2026-10-27T21:08:14.932Z"
+    },
+    {
+      "index": 1,
+      "gameId": "b425926c-f7aa-4488-82b5-3c889b12e792",
+      "voiceSessionId": "6857b96c-1399-4d88-ad53-8e36117da93a",
+      "bytes": 732028,
+      "sha256": "bec7b98e76efdde31af73b5fccfacf7870e263191e6d3d010fcf7a1674793fbb",
+      "submitMs": 2,
+      "localPhotoQueueMs": 8,
+      "fromSubmitToStoredMs": 320,
+      "fromPhotoUploadToStoredMs": 317,
+      "maxPhotoStatus": "stored",
+      "assignment": "unavailable",
+      "wrongSessionStatus": 409,
+      "duplicateStatus": 200,
+      "observedAt": "2026-10-27T21:08:15.917Z"
+    }
+  ],
+  "checks": [
+    {
+      "gameId": "ebca15cf-6329-4299-914e-69067ea2c001",
+      "cancelStatus": 200
+    },
+    {
+      "gameId": "b425926c-f7aa-4488-82b5-3c889b12e792",
+      "cancelStatus": 200
+    }
+  ],
+  "trace": [
+    {
+      "type": "state",
+      "stage": "intro",
+      "revision": 0
+    },
+    {
+      "type": "status"
+    },
+    {
+      "type": "status"
+    },
+    {
+      "type": "cancel"
+    },
+    {
+      "type": "state",
+      "stage": "audience",
+      "revision": 1
+    },
+    {
+      "type": "status"
+    },
+    {
+      "type": "cancel"
+    },
+    {
+      "type": "state",
+      "stage": "photo",
+      "revision": 2
+    },
+    {
+      "type": "status"
+    },
+    {
+      "type": "cancel"
+    },
+    {
+      "type": "state",
+      "stage": "photo",
+      "revision": 3
+    },
+    {
+      "type": "cancel"
+    },
+    {
+      "type": "state",
+      "stage": "photo",
+      "revision": 4
+    },
+    {
+      "type": "status"
+    },
+    {
+      "type": "cancel"
+    },
+    {
+      "type": "state",
+      "stage": "result",
+      "revision": 5
+    },
+    {
+      "wsClose": 1000
+    },
+    {
+      "type": "state",
+      "stage": "intro",
+      "revision": 0
+    },
+    {
+      "type": "status"
+    },
+    {
+      "type": "status"
+    },
+    {
+      "type": "cancel"
+    },
+    {
+      "type": "state",
+      "stage": "audience",
+      "revision": 1
+    },
+    {
+      "type": "status"
+    },
+    {
+      "type": "cancel"
+    },
+    {
+      "type": "state",
+      "stage": "photo",
+      "revision": 2
+    },
+    {
+      "type": "status"
+    },
+    {
+      "type": "cancel"
+    },
+    {
+      "type": "state",
+      "stage": "photo",
+      "revision": 3
+    },
+    {
+      "type": "cancel"
+    },
+    {
+      "type": "state",
+      "stage": "photo",
+      "revision": 4
+    },
+    {
+      "type": "status"
+    },
+    {
+      "type": "cancel"
+    },
+    {
+      "type": "state",
+      "stage": "result",
+      "revision": 5
+    }
+  ],
+  "passed": true,
+  "finishedAt": "2026-10-27T21:08:15.937Z"
+}

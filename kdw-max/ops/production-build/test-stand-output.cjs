@@ -12,13 +12,13 @@ app.whenReady().then(async()=>{
  try{
   const stateFile=path.join(fixture,'data/output-state.json');
   const state=await until(()=>{try{const s=JSON.parse(fs.readFileSync(stateFile));return s.pid===process.pid&&s.frames?.every(x=>x>2)&&s;}catch{}});
-  assert.equal(state.active,false);assert.equal(state.armed,false);
+  assert.equal(state.armed,true);
   const content=BrowserWindow.getAllWindows().find(w=>w.webContents.getURL().includes('client.html'));
   assert(content);assert.deepEqual(content.getContentSize(),[3072,1536]);
   await until(()=>content.webContents.executeJavaScript("document.documentElement.dataset.gameReady==='true'"));
   const cold=await content.webContents.executeJavaScript("({state:JSON.parse(render_game_to_text()),active:kdwStandOutput.active(),alpha:getComputedStyle(document.body).backgroundColor})");
-  assert.equal(cold.active,false);assert.equal(cold.alpha,'rgba(0, 0, 0, 0)');
-  fs.writeFileSync(path.join(fixture,'data/output-arm.json'),JSON.stringify({bootId:state.bootId,armed:true}));
+  await until(()=>content.webContents.executeJavaScript('kdwStandOutput.active()'));assert.equal((await content.webContents.executeJavaScript('kdwStandOutput.active()')),true);assert.equal(cold.alpha,'rgba(0, 0, 0, 0)');
+  fs.writeFileSync(path.join(fixture,'data/output-arm.json'),JSON.stringify({bootId:state.bootId,armed:false}));
   await until(()=>content.webContents.executeJavaScript('kdwStandOutput.active()'));
   await sleep(4000);
   const warm=await content.webContents.executeJavaScript("JSON.parse(render_game_to_text())");
@@ -37,7 +37,7 @@ app.whenReady().then(async()=>{
   // The real receiver samples after this point; background and content must both render.
   await sleep(12000);
   fs.writeFileSync(path.join(fixture,'data/output-arm.json'),JSON.stringify({bootId:state.bootId,armed:false}));
-  await until(()=>content.webContents.executeJavaScript('!kdwStandOutput.active()'));
+  await sleep(600);assert.equal(await content.webContents.executeJavaScript('kdwStandOutput.active()'),true);
   const final=JSON.parse(fs.readFileSync(stateFile));
   assert(final.frames[0]>100&&final.frames[1]>100);
   fs.writeFileSync(path.join(fixture,'data/stand-test.json'),JSON.stringify({passed:true,cold,warm,task,final,nativeOscMenuAndPalm:true},null,2));

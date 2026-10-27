@@ -1,0 +1,18 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:,"><title>Настройка звука</title><link rel="stylesheet" href="./panel.css"></head><body>
+<header><a id="back" href="#">← Панель оператора</a><p class="eyebrow">МУЗЫКА И ЭФФЕКТЫ</p><h1 id="title">Звук</h1><p>Выберите файл и громкость для каждого события. Общая громкость и выключатель действуют на звуки этого приложения</p></header>
+<div id="notice" role="status" aria-live="polite">Подключение…</div>
+<form id="settings"><section><h2>Общие настройки</h2><label class="check"><input type="checkbox" id="enabled"> Звук включён</label><div class="controls">
+<label>Общая громкость, %<input type="number" id="masterVolume" min="0" max="100" step="1" required></label>
+<label>Fade in, мс<input type="number" id="fadeInMs" min="0" max="10000" step="1" required><small>Нарастание в начале каждой дорожки</small></label>
+<label>Fade out, мс<input type="number" id="fadeOutMs" min="0" max="10000" step="1" required><small>Затухание в конце или при остановке</small></label></div>
+<p>0 мс — без плавного перехода. У коротких эффектов fade автоматически сокращается, чтобы сохранить слышимую часть. Голос и VST Стеллы настраиваются отдельно</p></section>
+<section id="video-settings" hidden><h2>Звук видео</h2><p>Встроенные аудиодорожки роликов. Громкость каждого вида видео умножается на общую громкость MAX. Выключение звука не останавливает изображение</p><div class="controls">
+<div><h3>Видео Standby</h3><label class="check"><input type="checkbox" id="video-standby-enabled"> Звук включён</label><label>Громкость, %<input type="number" id="video-standby-volume" min="0" max="100" step="1" required></label></div>
+<div><h3>Видео в заданиях</h3><label class="check"><input type="checkbox" id="video-tasks-enabled"> Звук включён</label><label>Громкость, %<input type="number" id="video-tasks-volume" min="0" max="100" step="1" required></label></div>
+</div><p>Уровень меняется после сохранения без перезапуска ролика. Fade in/out выше относятся к музыке и эффектам; видео останавливает звук вместе с воспроизведением</p></section>
+<div class="savebar"><button type="submit" id="save" disabled>Сохранить настройки</button><button type="button" id="reload" class="secondary">Перечитать</button><button type="button" id="stop" class="secondary">Остановить прослушивание</button><span id="dirty"></span></div>
+<section><h2>События</h2><p>«Без звука» отключает отдельное событие. Прослушивание учитывает введённые значения и играет на компьютере этого браузера</p><div class="table"><table><thead><tr><th>Событие</th><th>Аудиофайл</th><th>Громкость, %</th><th>Проверка</th></tr></thead><tbody id="events"></tbody></table></div></section>
+</form>
+<section><h2>Папка аудиофайлов</h2><p><code id="folder"></code></p><p>WAV, MP3, OGG, WebM · до 50 МБ на файл. Можно скопировать файлы в эту папку вручную и нажать «Обновить список». Новая версия дорожки загружается под новым именем; существующие файлы не перезаписываются</p>
+<div class="upload"><input type="file" id="files" accept=".wav,.mp3,.ogg,.webm" multiple aria-label="Аудиофайлы для загрузки"><button type="button" id="upload">Загрузить в папку</button><button type="button" id="refresh" class="secondary">Обновить список</button></div><ul id="bank"></ul></section>
+<footer>Настройки и аудиофайлы принадлежат только этому приложению. Изменения применяются после сохранения, без пересборки. Замена файла вступает в силу со следующего события; активные фоновые циклы переключаются плавно</footer><script src="./panel.js"></script></body></html>

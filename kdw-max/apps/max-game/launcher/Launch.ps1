@@ -27,14 +27,26 @@ if ($already) {
     Write-Output "$($config.title) is already running: $($already.origin)"
     exit 0
 }
-$process = Start-Process -FilePath $runtimeExe -ArgumentList $processArgs -WorkingDirectory $appRoot -WindowStyle Hidden -PassThru
-$null = $process.Handle
+$process=$null
+$taskName='KDW-Runtime-'+$config.id
+$task=Get-ScheduledTask -TaskName $taskName -ErrorAction SilentlyContinue
+if($task -and -not $Verify){
+    if($task.Actions.Count -ne 1 -or $task.Actions[0].Execute -ne $runtimeExe -or $task.Actions[0].Arguments -notlike ('*'+$appRoot+'/launcher/desktop-main.cjs*')){throw 'Scheduled task belongs to another installation'}
+    if($task.State -eq 'Running'){Start-Sleep -Milliseconds 500;$task=Get-ScheduledTask -TaskName $taskName}
+    if($task.State -eq 'Running'){throw "Supervisor is running; use the recovery panel on port $($config.port+100)"}
+    $desired=Join-Path $appRoot 'data/runtime-desired.json';New-Item -ItemType Directory -Force (Split-Path $desired)|Out-Null
+    [IO.File]::WriteAllText($desired,(@{state='running';outputEnabled=(-not $NoWindow)}|ConvertTo-Json -Compress),[Text.UTF8Encoding]::new($false))
+    Start-ScheduledTask -TaskName $taskName
+}else{
+    $process = Start-Process -FilePath $runtimeExe -ArgumentList $processArgs -WorkingDirectory $appRoot -WindowStyle Hidden -PassThru
+    $null = $process.Handle
+}
 if ($Verify) { $process.WaitForExit(); exit $process.ExitCode }
 $deadline = [DateTime]::UtcNow.AddSeconds(25)
 do {
     Start-Sleep -Milliseconds 200
     $health = Read-OwnedHealth
-    if ($health -and $health.pid -eq $process.Id) { Write-Output "$($config.title): $($health.origin)$($config.entry)"; exit 0 }
-    if ($process.HasExited) { throw "Application exited before startup. See $appRoot/data/desktop.log" }
+    if ($health -and (-not $process -or $health.pid -eq $process.Id -or (Get-Content -LiteralPath (Join-Path $appRoot 'data/runtime.json') -Raw|ConvertFrom-Json).supervisorPid -eq $process.Id)) { Write-Output "$($config.title): $($health.origin)$($config.entry)"; exit 0 }
+    if ($process -and $process.HasExited) { throw "Application exited before startup. See $appRoot/data/runtime-logs" }
 } while ([DateTime]::UtcNow -lt $deadline)
-throw "Startup timed out. See $appRoot/data/desktop.log"
+throw "Startup timed out. See $appRoot/data/runtime-logs"

@@ -1,0 +1,18 @@
+{
+  "scope": "local-only",
+  "maxUnitTests": {"passed": 174, "failed": 0},
+  "buildMax": "passed",
+  "checkGenerated": "passed",
+  "activityBrowser": "passed; see browser.json",
+  "fullAudit": {
+    "command": "npm run test:audit:all",
+    "exitCode": 1,
+    "failedStage": "test:audit:browser",
+    "errors": [
+      {"app": "stela-audience", "httpStatus": 409, "count": 14},
+      {"app": "stela-result", "httpStatus": 409, "count": 3}
+    ]
+  },
+  "hardwareAcceptance": {"electronSpout": "not run", "physicalLidar": "not run"},
+  "standDeployment": "not performed"
+}

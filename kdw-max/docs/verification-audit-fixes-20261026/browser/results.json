@@ -1,12 +1,70 @@
 {
   "checks": [
     "MAX actual production menu at 3072×1536",
-    "Stella intro disconnect → visible local recovery → new session",
-    "Stella audience disconnect → visible local recovery → new session",
-    "Stella manual selection → no photo → delivery with current invitation",
-    "Stella result disconnect → visible local recovery → new session",
+    "Stella intro disconnect → silent resume → Home → new session",
+    "Stella audience disconnect → silent resume → Home → new session",
+    "Stella manual selection → no photo → accepted without a false invitation on a serve-only receiver",
+    "Stella result disconnect → silent resume → Home → new session",
     "Portable audio: 16 resources loaded, active during scan/task, no load errors",
     "Stella handoff → MAX palm claim → first business task"
   ],
-  "errors": []
+  "errors": [
+    {
+      "app": "stela-audience",
+      "message": "Failed to load resource: the server responded with a status of 409 (Conflict)"
+    },
+    {
+      "app": "stela-audience",
+      "message": "Failed to load resource: the server responded with a status of 409 (Conflict)"
+    },
+    {
+      "app": "stela-audience",
+      "message": "Failed to load resource: the server responded with a status of 409 (Conflict)"
+    },
+    {
+      "app": "stela-audience",
+      "message": "Failed to load resource: the server responded with a status of 409 (Conflict)"
+    },
+    {
+      "app": "stela-audience",
+      "message": "Failed to load resource: the server responded with a status of 409 (Conflict)"
+    },
+    {
+      "app": "stela-audience",
+      "message": "Failed to load resource: the server responded with a status of 409 (Conflict)"
+    },
+    {
+      "app": "stela-audience",
+      "message": "Failed to load resource: the server responded with a status of 409 (Conflict)"
+    },
+    {
+      "app": "stela-audience",
+      "message": "Failed to load resource: the server responded with a status of 409 (Conflict)"
+    },
+    {
+      "app": "stela-audience",
+      "message": "Failed to load resource: the server responded with a status of 409 (Conflict)"
+    },
+    {
+      "app": "stela-audience",
+      "message": "Failed to load resource: the server responded with a status of 409 (Conflict)"
+    },
+    {
+      "app": "stela-audience",
+      "message": "Failed to load resource: the server responded with a status of 409 (Conflict)"
+    },
+    {
+      "app": "stela-result",
+      "message": "Failed to load resource: the server responded with a status of 409 (Conflict)"
+    },
+    {
+      "app": "stela-result",
+      "message": "Failed to load resource: the server responded with a status of 409 (Conflict)"
+    },
+    {
+      "app": "stela-result",
+      "message": "Failed to load resource: the server responded with a status of 409 (Conflict)"
+    }
+  ],
+  "diagnostics": []
 }

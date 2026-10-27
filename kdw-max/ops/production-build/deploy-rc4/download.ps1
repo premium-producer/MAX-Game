@@ -8,11 +8,11 @@ try {
   $zip=Join-Path $base $a.name;$total=[long]$a.bytes
   if(-not(Test-Path -LiteralPath $zip)){[IO.File]::WriteAllBytes($zip,[byte[]]@())}
   while((Get-Item -LiteralPath $zip).Length -lt $total){
-   $start=(Get-Item -LiteralPath $zip).Length;$end=[Math]::Min($start+8MB-1,$total-1)
+   $start=(Get-Item -LiteralPath $zip).Length;$end=[Math]::Min($start+1MB-1,$total-1)
    Status 'download' $a.name $start
    $part=$zip+'.part';$headers=$zip+'.headers';$ok=$false
-   for($attempt=0;$attempt -lt 5;$attempt++){
-    $curl=Start-Process -FilePath 'curl.exe' -WindowStyle Hidden -PassThru -ArgumentList @('--silent','--show-error','--fail','--location','--connect-timeout','15','--max-time','75','--range',"$start-$end",'--dump-header',('"'+$headers+'"'),'--output',('"'+$part+'"'),('"'+$a.url+'"')) -RedirectStandardError ($zip+'.log')
+   for($attempt=0;$attempt -lt 2;$attempt++){
+    $curl=Start-Process -FilePath 'curl.exe' -WindowStyle Hidden -PassThru -ArgumentList @('--silent','--show-error','--fail','--location','--connect-timeout','5','--max-time','20','--speed-limit','32768','--speed-time','8','--range',"$start-$end",'--dump-header',('"'+$headers+'"'),'--output',('"'+$part+'"'),('"'+$a.url+'"')) -RedirectStandardError ($zip+'.log')
     $null=$curl.Handle;$curl.WaitForExit()
     if($curl.ExitCode -eq 0 -and (Get-Item -LiteralPath $part).Length -eq ($end-$start+1) -and ([IO.File]::ReadAllText($headers) -match "(?im)^content-range:\s*bytes $start-$end/$total\s*$")){$ok=$true;break}
    }

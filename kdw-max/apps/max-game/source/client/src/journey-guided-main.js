@@ -1,9 +1,12 @@
+import {guardImage,fallbackForImage,fallbackImageSource,useImageFallback,retireDetachedMedia,visitorMessage} from './kdw-graceful-media.mjs';
+import {showStandbyCover,dismissStandbyCover,installSceneTransition,transitionReload} from './kdw-standby-cover.mjs';
+import {installNativeTouch} from './kdw-native-touch.mjs';
 import {standOutput,outputHidden,remoteBackground} from './kdw-stand-output.mjs';
 import {gameAudioActive,showRuntimeRecovery,monitorPreparation} from './kdw-runtime-health.mjs';
 import {readStandSettings,productionCatalog,startProduction,selectManualMission} from './kdw-production.mjs';
-import {createTransitionLayout} from './kdw-transition-layout.mjs';
+import {createCompositionLayout} from './kdw-composition-layout.mjs';
 import {createPixelMapPlan,pixelMapEnabled,pixelIdleLayout,installPixelMapInput,installPixelMapDebug} from './kdw-pixel-map.mjs';
-import {loadGameLink,linkedCatalog,resumeLinkedMission,watchGameLink,claimLinkedMission} from './kdw-game-link.mjs';
+import {loadGameLink,linkedCatalog,resumeLinkedMission,watchGameLink,claimLinkedMission,linkedQueueCount} from './kdw-game-link.mjs';
 import {KdwTaskJourney} from './kdw-task-journey.mjs';
 import {mountKdwInteractions} from './kdw-interactions.mjs';
 import {screenContinuationTarget} from './kdw-screen-continue.mjs';
@@ -25,7 +28,7 @@ import {v5QrAsset,v5QrFinaleEligible,installV5QrFinaleStyles,V5_QR_CAPTION} from
 import {touchContains,touchPick,touchEligible,touchBounds} from './journey-v5-touch-area.mjs';
 import {createV5AutomaticCatalog,V5AutoplayPresentation} from './journey-v5-autoplay.mjs';
 import {synchronizeManagedAutoplay} from './journey-v5-managed-autoplay.mjs';
-import {mountV5Audio} from './journey-v5-audio.mjs';
+import {mountV5Audio} from './kdw-event-audio.mjs';
 import {showV5Recovery,applyRecoveryChoice} from './journey-v5-recovery.mjs';
 import {V5_MOTION} from './journey-v5-motion-profile.mjs';
 import {startupErrorText} from './startup-error.mjs';
@@ -86,8 +89,8 @@ const revealMode=document.documentElement.dataset.reveal==='true',inlinePhone=re
 const referenceVisual=document.documentElement.dataset.visual==='reference';
 const bfmVisual=document.documentElement.dataset.visual==='webgl-bfm-v5';
 if(bfmVisual){installV5CopyStyles(document);installV5DeviceTimerStyles(document);installV5QrFinaleStyles(document);}
-const gameLink=await loadGameLink(params);let stopGameLink=()=>{};
-const productionPolicy=gameLink?.game?.standPolicy??standSettings;const MISSION_CATALOG=productionCatalog(linkedCatalog(bfmVisual?V5_MISSION_CATALOG:PREVIOUS_MISSION_CATALOG,gameLink),productionPolicy);
+let gameLink=await loadGameLink(params);let stopGameLink=()=>{};
+let productionPolicy=gameLink?.game?.standPolicy??standSettings;let MISSION_CATALOG=productionCatalog(linkedCatalog(bfmVisual?V5_MISSION_CATALOG:PREVIOUS_MISSION_CATALOG,gameLink),productionPolicy);
 const browserScenePlan=createBrowserScenePlan(MISSION_CATALOG,v5DeviceMetrics);
 const pixelPlan=pixelMapEnabled(params)&&params.get('backend')!=='server'?createPixelMapPlan(MISSION_CATALOG,v5DeviceMetrics):null;
 const clearPixelInput=pixelPlan?installPixelMapInput():()=>{};
@@ -113,17 +116,18 @@ const portable=params.get('backend')!=='server';
 const standPresentation=portable&&bfmVisual&&params.get('debug')!=='1';
 const localDevelopment=!productionMode&&portable&&params.get('dev')!=='0'&&(params.get('dev')==='1'||['127.0.0.1','localhost','[::1]'].includes(location.hostname));
 if(localDevelopment)document.documentElement.dataset.kdwDevelopment='true';
-const kdwInteractions=mountKdwInteractions({getSession:()=>sharedSession,onMenu:()=>navigate()});
-const personalChannel=mountPersonalChannel({getSession:()=>sharedSession});
-const businessNative=mountBusinessNative({getSession:()=>sharedSession});
+const kdwInteractions=mountKdwInteractions({getSession:()=>sharedSession,deferAlignment:true,onMenu:()=>navigate()});
+const personalChannel=mountPersonalChannel({getSession:()=>sharedSession,deferAlignment:true});
+const businessNative=mountBusinessNative({getSession:()=>sharedSession,deferAlignment:true});
 const kdwPosts=mountPostActivity({getSession:()=>sharedSession});
 let standBrowser;
 const localAdmission=new LocalStandAdmission({active:()=>inputActive()});
+const stopNativeTouch=installNativeTouch({document,active:()=>inputActive()});
 let sharedSession,v5Tools,missionContinuation,continuationContext,automaticPresentation=null,automaticRoutes=null,showScreenDelayMs=1000;
 const localRecovery=bfmVisual&&sharedBackend&&!service&&params.get('backend')==='local';
 let recoveryBlocked=localRecovery,recoveryChoice=null,windowFocused=(standOutput?true:document.hasFocus());
 const presentationActive=()=>!outputHidden()&&!servicePaused&&(!managedShell||managedVisible&&(!!idleMenu||!!independent||!!controller&&sharedSession?.snapshot?.assignment?.lifecycle.status==='active'));
-const inputActive=()=>!independent&&!mobileWall&&(portable||!host.querySelector('.v5-mission-qr'))&&presentationActive()&&!recoveryBlocked&&!outputHidden()&&!servicePaused&&(portable||!localRecovery||windowFocused);
+const inputActive=()=>(!standOutput||standOutput.active())&&!independent&&!mobileWall&&(portable||!host.querySelector('.v5-mission-qr'))&&presentationActive()&&!recoveryBlocked&&!outputHidden()&&!servicePaused&&(portable||!localRecovery||windowFocused);
 let startupAssets,startupPlan;
 const adjustableIcons=revealMode&&!service;
 const host=document.createElement('section');host.className='circle journey-zone guided-zone';host.dataset.zone='0';root.append(host);
@@ -185,6 +189,14 @@ function focusCurrent(immediate=false){
  if(immediate){camera.value=focusTarget;camera.velocity=0;}updateTargets();
 }
 function setStyleValue(el,key,value){if(el.style.getPropertyValue(key)!==value)el.style.setProperty(key,value);}
+function updateMissionQueue(timer,rect){
+ let queue=host.querySelector('[data-mission-queue-count]');
+ if(!queue){timer.insertAdjacentHTML('afterend','<div class="v5-device-timer v5-scan-queue" data-mission-queue-count data-path-presence="0" aria-live="off" aria-label="Очередь">очередь: —</div>');queue=host.querySelector('[data-mission-queue-count]');foreground?.invalidate();}
+ setStyleValue(queue,'left',String(rect.left-rect.width-48)+'px');setStyleValue(queue,'top',String(rect.top)+'px');
+ queue.dataset.pathPresence=timer.dataset.pathPresence;
+ const count=productionMode?linkedQueueCount():scanWaitClock.view(controller?.snapshot,performance.now()).queueCount,label='очередь: '+(count??'—');
+ if(queue.textContent!==label){queue.textContent=label;foreground?.refreshPart(queue);changed();}
+}
 function updateTargets(){
  host.dataset.synchronizedRoute=String(portable&&params.get('view')!=='wall'&&controller?.spread&&!gesture);
  if(controller?.session.screen!=='field')return;
@@ -195,7 +207,7 @@ function updateTargets(){
  const scan=host.querySelector('[data-palm]');if(scan)placeElement(scan,revealMode?{worldX:referenceVisual?566:host.clientWidth/2,worldY:0}:{worldX:(controller.nodes[0]?.worldX||0)+320,worldY:controller.nodes[0]?.worldY||0},true);
  if(inlinePhone){
   const phone=host.querySelector('.route-phone');if(phone){const metrics=deviceMetrics(),centerY=host.clientHeight/2+phoneY.value;if(bfmVisual){setStyleValue(phone,'width',`${metrics.width}px`);setStyleValue(phone,'height',`${metrics.height}px`);}setStyleValue(phone,'left',`${phoneX.value-layoutCamera()-metrics.width/2}px`);setStyleValue(phone,'top',`${centerY-metrics.height/2}px`);host.style.setProperty('--guided-device-center-y',`${centerY}px`);phone.dataset.pathPresence=String(phonePresence.value);phone.inert=phonePresence.value<.05||bfmVisual&&!!controller.startup;
-   const timer=host.querySelector('[data-mission-timer]');if(timer){const r=v5DeviceTimerRect({left:phoneX.value-layoutCamera()-metrics.width/2,top:centerY-metrics.height/2},controller.nodeWidth??240,portable&&params.get('view')!=='wall'?BROWSER_ROUTE_GAP:REVEAL_ELEMENT_GAP);setStyleValue(timer,'left',`${r.left}px`);setStyleValue(timer,'top',`${r.top}px`);timer.dataset.pathPresence=String(phonePresence.value*(controller.snapshot?.state.scanned===false?0:1));}
+   const timer=host.querySelector('[data-mission-timer]');if(timer){const r=v5DeviceTimerRect({left:phoneX.value-layoutCamera()-metrics.width/2,top:centerY-metrics.height/2},controller.nodeWidth??240,portable&&params.get('view')!=='wall'?BROWSER_ROUTE_GAP:REVEAL_ELEMENT_GAP);setStyleValue(timer,'left',`${r.left}px`);setStyleValue(timer,'top',`${r.top}px`);timer.dataset.pathPresence=String(phonePresence.value*(controller.snapshot?.state.scanned===false?0:1));updateMissionQueue(timer,r);}
   }
   const next=host.querySelector('[data-line-next]');if(next&&controller.continuation)placeElement(next,{...controller.continuation,step:'route-add:line-next'});
  }
@@ -204,10 +216,10 @@ function updateTargets(){
 function updateScanWaitDisplays(delta=0){
  if(!bfmVisual)return;
  const timer=host.querySelector('[data-scan-wait-timer]'),queue=host.querySelector('[data-scan-queue-count]');if(!timer||!queue)return;
- const state=controller?.snapshot?.state;const wait=productionMode?{visible:state?.status==='scan',remainingMs:state?.deadlineAt?Math.max(0,state.deadlineAt-Date.now()):productionPolicy.value.max.timings.palmWaitSeconds*1000,queueCount:null}:scanWaitClock.view(controller?.snapshot,performance.now()),scan=host.querySelector('[data-palm]');
+ const state=controller?.snapshot?.state;const wait=productionMode?{visible:state?.status==='scan',remainingMs:state?.deadlineAt?Math.max(0,state.deadlineAt-Date.now()):productionPolicy.value.max.timings.palmWaitSeconds*1000,queueCount:linkedQueueCount()}:scanWaitClock.view(controller?.snapshot,performance.now()),scan=host.querySelector('[data-palm]');
  scanWaitPresence.step(wait.visible&&!!scan?1:0,Math.min(delta,.05),V5_MOTION.presenceOmega,reduced.matches);
  for(const element of [timer,queue])element.dataset.pathPresence=String(scanWaitPresence.value);
- if(productionMode)queue.hidden=true;const labels=[revealTimerLabel(wait.remainingMs/1000),`Ожидают: ${wait.queueCount??'—'}`];
+ const labels=[revealTimerLabel(wait.remainingMs/1000),`очередь: ${wait.queueCount??'—'}`];
  if(wait.visible)for(const [index,element] of [timer,queue].entries())if(element.textContent!==labels[index]){element.textContent=labels[index];foreground?.refreshPart(element);changed();}
  if(scan){const tile=bounds(scan.querySelector('.tile')),origin=bounds(host);if(tile&&origin){const rects=v5PalmWaitRects({left:tile.x-origin.x,top:tile.y-origin.y,width:tile.w,height:tile.h});for(const [element,rect] of [[timer,rects.timer],[queue,rects.queue]]){setStyleValue(element,'left',`${rect.left}px`);setStyleValue(element,'top',`${rect.top}px`);}}}
 }
@@ -225,7 +237,7 @@ function resultMarkup(result,qr,presentation){
  result??={};
  return `<div class="field-center"><section class="field-success glass-control" role="dialog" aria-label="${esc(result.title)}"><h2>${v5CopyMarkup(result.title)}</h2><p>${v5CopyMarkup(result.text)}</p>${qr?`<img class="presentation-qr" draggable="false" src="${esc(qr.image)}" alt="QR-код: ${esc(qr.url)}"><p>${esc(qr.label)}</p>`:''}${presentation?'<p>Тестовая миссия</p>':''}${button(bfmVisual&&sharedBackend?'Продолжить':'К миссиям',bfmVisual&&sharedBackend?'data-continue-mission':'data-menu')}</section></div>`;
 }
-function feedback(text){foreground?.showTapFeedback(host,{x:host.clientWidth/2,y:host.clientHeight*.65},text);}
+function feedback(text){text=visitorMessage(text);if(!text)return;foreground?.showTapFeedback(host,{x:host.clientWidth/2,y:host.clientHeight*.65},text);}
 function render(preserveTransition=false){
  if(portable&&params.get('view')!=='wall'){const geometry=sceneSize();if(geometry.width!==size.width||geometry.height!==size.height){fit();return;}}
  if(!controller)return;
@@ -281,7 +293,7 @@ function render(preserveTransition=false){
    fieldEl.insertAdjacentHTML('beforeend',`<button class="object guided-palm" data-route-next="guided-palm" data-palm data-touch-minimum="500" data-planning="true" aria-label="${palmCopy}${palmHint?`. ${palmHint}`:''}">${bfmVisual?v5IconTile(MISSION_CATALOG,'scan',160):`<span class="tile glass-control">${palm}</span>`}<span class="object-label icon-caption">${palmLabelCopy??palmCopy}<small>${palmHint}</small></span></button>`);foreground?.invalidate();
   }
   if(bfmVisual&&palmVisible&&!host.querySelector('[data-scan-wait-timer]')){
-   host.insertAdjacentHTML('beforeend','<div class="v5-device-timer v5-scan-wait-timer" data-scan-wait-timer data-path-presence="0" role="timer" aria-live="off" aria-label="Время ожидания ладони">0:30</div><div class="v5-device-timer v5-scan-queue" data-scan-queue-count data-path-presence="0" aria-live="off" aria-label="Миссии в очереди">Ожидают: —</div>');foreground?.invalidate();
+   host.insertAdjacentHTML('beforeend','<div class="v5-device-timer v5-scan-wait-timer" data-scan-wait-timer data-path-presence="0" role="timer" aria-live="off" aria-label="Время ожидания ладони">0:30</div><div class="v5-device-timer v5-scan-queue" data-scan-queue-count data-path-presence="0" aria-live="off" aria-label="Очередь">очередь: —</div>');foreground?.invalidate();
   }
   const palmLabel=host.querySelector('[data-palm] .object-label');
   if(palmLabel&&revealMode){const revealing=controller.phase==='burst',label=bfmVisual?(palmLabelCopy??palmCopy):revealing?'Открываем возможности':palmCopy,small=revealing?'':palmHint;
@@ -370,7 +382,7 @@ function syncLinePhone(){
   }catch(error){console.error('MAX phone screen preparation failed',error);}
   if(!next){
    const message=document.createElement('div');message.className='demo-app';
-   message.innerHTML='<p class="phone-media-error">Экран задания недоступен. Перезапустите миссию.</p>';
+   message.innerHTML='<div class="phone-content"><img alt="MAX" class="task-media-image" src="'+fallbackImageSource()+'"></div>';console.error('MAX_SCREEN_MARKUP_FALLBACK',key);
    const metrics=deviceMetrics();shell.dataset.device=metrics.kind;shell.style.width=`${metrics.width}px`;shell.style.height=`${metrics.height}px`;
    shell.querySelector('.demo-app')?.remove();shell.append(message);
    shell.dataset.sceneVersion=key;shell.dataset.mediaReadyKey=key;
@@ -401,18 +413,11 @@ function syncLinePhone(){
   if(images.length&&phoneContent){phoneContent.style.opacity='0';phoneContent.inert=true;}
   phoneLoadingAge=0;
   const showContent=()=>{next.querySelector('.phone-loading')?.remove();if(phoneContent){phoneContent.style.opacity='1';phoneContent.inert=false;}};
-  const decoded=images.map(image=>{
-   if(image.dataset.preparedPhone==='true'&&image.complete&&image.naturalWidth){image.dataset.gpuDecoded='true';return Promise.resolve();}
-   image.dataset.gpuDecoded='false';
-   const failed=()=>{
-    if(generation!==bindingGeneration||!image.isConnected)return;
-    const message=document.createElement('p');message.className='phone-media-error';
-    message.textContent='Кадр задания не загрузился. Перезапустите миссию.';
-    image.replaceWith(message);foreground?.refreshPart(shell);changed();
-   };
-   image.addEventListener('error',failed,{once:true});
-   return image.decode().then(()=>{if(generation===bindingGeneration&&image.isConnected)image.dataset.gpuDecoded='true';}).catch(failed);
-  });
+  const decoded=images.filter(image=>!image.dataset.mediaGhost).map(image=>guardImage(image,{
+   fallback:fallbackForImage(image,controller.displaySnapshot),
+   onChange:()=>{if(generation!==bindingGeneration||!shell.isConnected||shell.dataset.sceneVersion!==key)return;delete shell.dataset.gpuUploadError;delete shell.dataset.gpuReadyKey;foreground?.refreshPart(shell);changed();},
+   onFault:details=>console.error('MAX_SCREEN_MEDIA_FALLBACK',JSON.stringify({key,...details}))
+  }).ready);
   // An adjoining node/popup may request a full rebuild on this same frame.
   // Invalidate this retained owner too, otherwise it would keep detached content.
   shell.dataset.sceneVersion=key;
@@ -448,23 +453,18 @@ function syncLinePhone(){
  if(label&&label.textContent!==text){label.textContent=text;foreground?.refreshPart(label);}
 }
 function phoneContentReady(){
+ if(kdwPosts.gpuActivity&&!kdwPosts.ready(controller?.displaySnapshot))return false;
+ if(kdwInteractions.gpuActivity&&!kdwInteractions.ready(controller?.displaySnapshot))return false;
  if(!personalChannel.ready(controller?.displaySnapshot)||!businessNative.ready(controller?.displaySnapshot))return false;
  const shell=host.querySelector('.route-phone');
  if(!shell?.querySelector('.demo-app')||revealMode&&(shell.dataset.sceneVersion!==displayPhoneKey()||shell.dataset.mediaReadyKey!==displayPhoneKey()))return false;
  return [...shell.querySelectorAll('.demo-app img')].every(image=>image.complete&&image.naturalWidth>0);
 }
 function recoverPendingPhoneMedia(){
+ retireDetachedMedia();
  if(!revealMode||controller.phase!=='phone-enter'||controller.elapsed<PHONE_MEDIA_DEADLINE)return;
- const shell=host.querySelector('.route-phone'),key=controller.phoneContentKey;
- if(!shell||shell.dataset.sceneVersion!==key||shell.dataset.mediaReadyKey===key)return;
- for(const image of shell.querySelectorAll('.demo-app img[data-gpu-decoded="false"]')){
-  const message=document.createElement('p');message.className='phone-media-error';
-  message.textContent='Кадр задания не загрузился. Перезапустите миссию.';
-  image.replaceWith(message);
- }
- shell.querySelector('.phone-loading')?.remove();const content=shell.querySelector('.demo-app .phone-content');if(content){content.style.opacity='1';content.inert=false;}
- shell.dataset.mediaReadyKey=key;foreground?.refreshPart(shell);changed();
- console.warn('MAX phone media decode deadline',key);
+ const shell=host.querySelector('.route-phone');if(!shell)return;
+ for(const image of shell.querySelectorAll('.demo-app img[data-gpu-decoded="false"]'))void useImageFallback(image,'preparation-deadline');
 }
 function popupContentToken(displayTask){
  const s=controller.session;
@@ -577,7 +577,7 @@ function tick(delta){
  if(controller?.snapshot?.state)document.documentElement.dataset.kdwScreen=controller.snapshot.state.screenId??controller.snapshot.state.status;document.documentElement.dataset.kdwRun=controller?.snapshot?.state.runId??'';
  standBrowser?.update(controller?.snapshot);
  if(!productionMode&&portable&&(gameLink?.game||!standPresentation)&&!navigating)void localAdmission.update(sharedSession)?.catch(error=>console.error('MAX local admission',error));
- if(idleMenu){ambient?.tick?.(delta,{active:presentationActive(),reduced:reduced.matches});idleMenu.tick(delta,presentationActive());return;}
+ if(idleMenu){ambient?.tick?.(delta,{active:presentationActive(),reduced:reduced.matches});idleMenu.tick(delta,standOutput?!servicePaused:presentationActive());return;}
  if(independent){independent.tick(presentationActive()?delta:0);return;}
  syncGameAudio();
  if(bfmVisual){root.dataset.presentationPaused=String(!presentationActive());if(!presentationActive())delta=0;}
@@ -961,13 +961,13 @@ function managedSession(assignmentId,sessionId){
    controller.accept(snapshot);
    if(foreground&&!navigating){if((controller.phase==='burst'||bfmVisual&&controller.startup&&controller.snapshot.state.scanned)&&gesture?.kind==='palm')cancelGesture();if(!gesture)focusCurrent();render();}
   },
-  onError:async error=>{if(pageDisposed||generation!==bindingGeneration)return;if(await confirmedManagedRevocation(error,assignmentId,sessionId))return;if(pageDisposed||generation!==bindingGeneration)return;console.error('MAX backend',error);if(foreground)feedback('Нет связи с backend. Экран сохранён.');}
+  onError:async error=>{if(pageDisposed||generation!==bindingGeneration)return;if(await confirmedManagedRevocation(error,assignmentId,sessionId))return;if(pageDisposed||generation!==bindingGeneration)return;console.error('MAX backend',error);if(foreground)console.error('MAX_BACKEND_RETRY');}
  });
 }
 function configureController(saved){
  const generation=bindingGeneration;
  controller=createController(saved);
- if(interactionPreview&&controller.phase==='paused')controller.resume(controller.activeId);
+ if((interactionPreview||document.documentElement.dataset.layoutPreview==='true')&&controller.phase==='paused')controller.resume(controller.activeId);
  if((mobileWall||recoveryChoice==='continue')&&controller.phase==='paused')controller.resume(controller.activeId);
  if(controller.session.screen==='cta')controller.session.screen='missions';
  if(bfmVisual&&sharedBackend){
@@ -1047,7 +1047,7 @@ async function selectIdleMission(missionId){
  if(gameLink?.game)return;
  if(standPresentation){
   if(!idleMenu||idleSelecting||!inputActive())return;
-  if(productionMode){if(!['manual','combined'].includes(standSettings.value.max.entryMode))return;idleSelecting=true;try{await selectManualMission(missionId);}catch(error){idleSelecting=false;feedback('Экран уже занят. Ожидайте свою миссию.');}return;}
+  if(productionMode){if(!['manual','combined'].includes(productionPolicy.value.max.entryMode))return;idleSelecting=true;document.documentElement.dataset.idleSelection='submitting';delete document.documentElement.dataset.idleSelectionError;try{await idleMenu.exit();await selectManualMission(missionId);}catch(error){idleSelecting=false;idleMenu?.restore();document.documentElement.dataset.idleSelection='error';document.documentElement.dataset.idleSelectionError=String(error.message).slice(0,160);console.error('MAX manual mission selection',error);console.error('MAX_MANUAL_RETRY');}return;}
   const menu=idleMenu;idleSelecting=true;navigating=true;
   try{
    await menu.exit();if(idleMenu!==menu)return;
@@ -1154,15 +1154,8 @@ function publishIndependentApplied(){
 const stopBootHealth=monitorPreparation(()=>document.documentElement.dataset.gameReady==='true'?{status:'menu'}:null);
 window.addEventListener('pagehide',stopBootHealth,{once:true});
 window.render_game_to_text=()=>JSON.stringify({coordinates:'viewport pixels, origin top-left, x right, y down',phase:controller?.phase??'loading',status:sharedSession?.snapshot?.state.status??'loading',mission:sharedSession?.snapshot?.state.missionId,screen:sharedSession?.snapshot?.state.screenId,ready:sharedSession?.snapshot?.state.standReady,remainingMs:sharedSession?.snapshot?.view.remainingMs,connected:sharedSession?.connected??false,presentation:{startup:controller?.startup?.stage,pathsDone:controller?.paths?.done,pathTime:[controller?.paths?.elapsed,controller?.paths?.duration],gesture:gesture?.kind,geometry:controller?.geometry,deviceReady:phoneContentReady(),presence:phonePresence.value,position:[phoneX.value,phoneY.value],target:controller?.phone,settled:controller?.settlingNodes?.map(n=>[n.step,foreground?.isSettled(host,n.step)]),camera:[camera.value,focusTarget],busy:foreground?.contentBusy(host),phoneData:host.querySelector('.route-phone')?.dataset}});
-async function boot(){
- if(!managedShell&&!portable){const initialContext=await readManagedContext();configureMobile(initialContext);if(initialContext.assignmentId===managedAssignment&&initialContext.sessionId===params.get('session'))configureAutomatic(initialContext);}
-
- if(bfmVisual&&(portable||globalThis.STAND_AUDIO_MODE==='master'||document.documentElement.dataset.managedAudio==='true')){if(portable)document.documentElement.dataset.localAudio='true';gameAudio=mountV5Audio();}
- document.documentElement.dataset.service=String(service);document.documentElement.dataset.layout='single';
- if(portable)standBrowser=createStandBrowserHost({arena,params,pixelPlan,production:productionMode,onMenu:()=>{void Promise.all([kdwInteractions.flush(),personalChannel.flush()]).then(()=>navigate()).catch(error=>feedback(error.message));}});
- if(bfmVisual&&!service&&!automaticPresentation&&params.get('debug')==='1')v5Tools=createV5Tools({arena,params,onViewport:()=>fit({viewportOnly:true})});
- const [loaded,shell,client,contours]=await Promise.all([loadMissionCatalog('./config/client-webgl.json'),loadUiShellConfig(),fetch('./config/client-missions.json').then(r=>r.json()),loadEarthContours()]);
- content=sharedBackend?sharedRevealContent(MISSION_CATALOG):clientContent(client);
+async function preparePortableSession(){
+ const generation=bindingGeneration;
  if(sharedBackend&&!managedShell){
   const profile=params.get('backend');let port;
   if(profile!=='server'){
@@ -1170,18 +1163,77 @@ async function boot(){
    const persistence=interactionPreview||params.get('test')==='memory'?createMemoryPersistencePort():bfmVisual?createIndexedDBPersistence({legacyStorage:localStorage,key}):createBrowserPersistence({storage:localStorage,key});
    port=(bfmVisual?createV5MissionSessionApplication:createMissionSessionApplication)({catalog:MISSION_CATALOG,persistence,development:localDevelopment,admit:()=>claimLinkedMission(gameLink)});
   }
-  sharedSession=profile==='server'?managedSession(managedAssignment,params.get('session')):createWebGLSession({port,catalog:MISSION_CATALOG,initialOwnerActive:false,assignmentId:managedAssignment,sessionId:params.get('session')||(bfmVisual?(localDevelopment?'webgl-v5-development':'webgl-v5'):'site-shared'),profile,onSnapshot:snapshot=>{managedSnapshot(snapshot);if(!controller||!portable&&snapshot.assignment?.lifecycle.status!=='active')return;controller.accept(snapshot);if(foreground&&!navigating){if((controller.phase==='burst'||bfmVisual&&controller.startup&&controller.snapshot.state.scanned)&&gesture?.kind==='palm')cancelGesture();if(!gesture)focusCurrent();render();}},onError:error=>{console.error('MAX backend',error);if(foreground)feedback('Нет связи с backend. Экран сохранён.');}});
+  sharedSession=profile==='server'?managedSession(managedAssignment,params.get('session')):createWebGLSession({port,catalog:MISSION_CATALOG,initialOwnerActive:false,assignmentId:managedAssignment,sessionId:params.get('session')||(bfmVisual?(localDevelopment?'webgl-v5-development':'webgl-v5'):'site-shared'),profile,onSnapshot:snapshot=>{if(generation!==bindingGeneration||pageDisposed)return;managedSnapshot(snapshot);if(!controller||!portable&&snapshot.assignment?.lifecycle.status!=='active')return;controller.accept(snapshot);if(foreground&&!navigating){if((controller.phase==='burst'||bfmVisual&&controller.startup&&controller.snapshot.state.scanned)&&gesture?.kind==='palm')cancelGesture();if(!gesture)focusCurrent();render();}},onError:error=>{console.error('MAX backend',error);if(foreground)feedback('Нет связи с backend. Экран сохранён.');}});
   await sharedSession.start();
   if(localDevelopment&&sharedSession.snapshot.state.devTimerEnabled===undefined)await sharedSession.command('DEV_TIMER',{active:false});
+  if(document.documentElement.dataset.layoutPreview==='true'){
+   const mission=params.get('layout-scene');
+   if(MISSION_CATALOG.missions[mission]){
+    await sharedSession.owner(true);await sharedSession.command('SELECT_MISSION',{missionId:mission,fresh:true});
+    await sharedSession.contact('layout-preview','down',true);await new Promise(r=>setTimeout(r,850));await sharedSession.contact('layout-preview','up',true);
+   }
+  }
   await resumeLinkedMission(sharedSession,gameLink);
-  if(!productionMode&&!gameLink?.game&&standPresentation&&!interactionPreview&&sharedSession.snapshot.state.status!=='menu')await sharedSession.command('RETURN_MENU');
+  if(document.documentElement.dataset.layoutPreview!=='true'&&!productionMode&&!gameLink?.game&&standPresentation&&!interactionPreview&&sharedSession.snapshot.state.status!=='menu')await sharedSession.command('RETURN_MENU');
   if(pageDisposed){await sharedSession.close();return;}
   if(localRecovery&&!standPresentation&&!interactionPreview&&params.get('test')!=='memory')recoveryChoice=await showV5Recovery({snapshot:sharedSession.snapshot,catalog:MISSION_CATALOG,document,onChoose:choice=>applyRecoveryChoice(sharedSession,choice)});
-  if(interactionPreview){loading.textContent='Подготавливаем активность MAX…';try{await prepareInteractionPreview(sharedSession,MISSION_CATALOG,interactionPreview);}finally{preparingInteractionPreview=false;}}
+  if(interactionPreview){loading.dataset.preparing='activity';try{await prepareInteractionPreview(sharedSession,MISSION_CATALOG,interactionPreview,params.get('preview-business')??'cafe');}finally{preparingInteractionPreview=false;}}
   document.documentElement.dataset.sessionStorage=profile==='server'?'server':bfmVisual?'indexeddb':'localStorage';
  }
+}
+async function transitionPortableSession(){
+ if(!portable||!productionMode)return location.reload();
+ // A terminal snapshot may already have revealed standby before the link poll
+ // acknowledges release. Rebinding that idle session must not retire it again.
+ const shownStandby=idleMenu&&gameLink?.game&&sharedSession?.snapshot?.state.status==='menu'?idleMenu:null;
+ stopGameLink();stopGameLink=()=>{};cancelGesture();navigating=true;idleSelecting=true;
+ document.documentElement.dataset.sceneTransition='retiring';
+ try{
+  if(idleMenu){if(idleMenu!==shownStandby)await idleMenu.exit();}
+  else if(foreground)await new Promise(resolve=>foreground.transition(host,resolve,{interrupt:true,exitOnly:true}));
+  document.documentElement.dataset.sceneTransition='preparing';
+  const nextLink=await loadGameLink(params);
+  const nextPolicy=nextLink?.game?.standPolicy??await readStandSettings(params)??standSettings;
+  const retainStandby=!!shownStandby&&idleMenu===shownStandby&&!nextLink?.game;
+  if(shownStandby&&!retainStandby&&idleMenu===shownStandby)await shownStandby.exit();
+  // Refresh the parameter binding after readStandSettings strips old link data.
+  if(nextLink?.game){params.set('session',nextLink.game.gameId);params.set('link','1');}
+  else params.set('session','idle.'+crypto.randomUUID());
+  ++bindingGeneration;screenEpoch++;missionContinuation?.cancel();missionContinuation=null;
+  const previous=sharedSession;sharedSession=null;controller=null;
+  await previous?.close();
+  if(pageDisposed)return;
+  if(!retainStandby){await disposeIdleMenu();clearManagedScene();}
+  gameLink=nextLink;productionPolicy=nextPolicy;
+  MISSION_CATALOG=productionCatalog(linkedCatalog(bfmVisual?V5_MISSION_CATALOG:PREVIOUS_MISSION_CATALOG,gameLink),productionPolicy);
+  content=sharedRevealContent(MISSION_CATALOG);
+  await preparePortableSession();if(pageDisposed)return;
+  if(localRecovery&&!await sharedSession.owner(inputActive()))throw Error('SESSION_UNAVAILABLE');
+  configureController();popupPage=0;popupToken='';view='';phoneStep='';phoneToken='';phonePending='';answerPending=false;pendingResume=null;
+  navigating=false;idleSelecting=false;fit();render();syncScene();
+  document.documentElement.dataset.sceneTransition='revealing';
+ }catch(error){
+  console.error('MAX_SCENE_TRANSITION_RETRY',error);idleMenu?.restore();
+  document.documentElement.dataset.sceneTransition='retrying';
+  if(!pageDisposed)setTimeout(()=>void transitionReload(),1500);
+ }finally{
+  navigating=false;idleSelecting=false;
+  if(!pageDisposed)stopGameLink=watchGameLink({link:gameLink,getSession:()=>sharedSession,onPhotoChange:()=>foreground?.invalidate()});
+ }
+}
+async function boot(){
+ showStandbyCover();
+ if(!managedShell&&!portable){const initialContext=await readManagedContext();configureMobile(initialContext);if(initialContext.assignmentId===managedAssignment&&initialContext.sessionId===params.get('session'))configureAutomatic(initialContext);}
+
+ if(document.documentElement.dataset.layoutPreview!=='true'&&bfmVisual&&(portable||globalThis.STAND_AUDIO_MODE==='master'||document.documentElement.dataset.managedAudio==='true')){if(portable)document.documentElement.dataset.localAudio='true';gameAudio=mountV5Audio();}
+ document.documentElement.dataset.service=String(service);document.documentElement.dataset.layout='single';
+ if(portable)standBrowser=createStandBrowserHost({arena,params,pixelPlan,production:productionMode||document.documentElement.dataset.layoutPreview==='true',onMenu:()=>{void Promise.all([kdwInteractions.flush(),personalChannel.flush()]).then(()=>navigate()).catch(error=>feedback(error.message));}});
+ if(bfmVisual&&!service&&!automaticPresentation&&params.get('debug')==='1')v5Tools=createV5Tools({arena,params,onViewport:()=>fit({viewportOnly:true})});
+ const [loaded,shell,client,contours]=await Promise.all([loadMissionCatalog('./config/client-webgl.json'),loadUiShellConfig(),fetch('./config/client-missions.json').then(r=>r.json()),loadEarthContours()]);
+ content=sharedBackend?sharedRevealContent(MISSION_CATALOG):clientContent(client);
+ await preparePortableSession();
  let saved;if(!sharedBackend&&!reviewMission)try{saved=localStorage.getItem(storage);}catch{}
- if(!managedShell)configureController(saved);if(productionMode)stopProduction=startProduction({getSession:()=>sharedSession,ready:s=>{if(!presentationActive())return false;if(s.status==='scan')return ['palm','holding'].includes(controller?.phase)&&palmPresence.value>.95;if(s.status==='task')return controller?.phase==='task'&&controller.displayedState?.screenId===s.screenId&&phoneContentReady()&&phonePresence.value>.97;if(['completed','incomplete'].includes(s.status)){const image=host.querySelector('.v5-mission-qr img');return image?.complete&&image.naturalWidth>0&&foreground?.qrReady(image.closest('.v5-mission-qr'))===true&&Number(host.dataset.finalGamePresence??1)<.005;}return false;}});
+ if(!managedShell)configureController(saved);if(productionMode)stopProduction=startProduction({getSession:()=>sharedSession,active:()=>presentationActive(),ready:s=>{if(!presentationActive())return false;if(s.status==='scan')return ['palm','holding'].includes(controller?.phase)&&palmPresence.value>.95;if(s.status==='task')return controller?.phase==='task'&&controller.displayedState?.screenId===s.screenId&&phoneContentReady()&&phonePresence.value>.97;if(['completed','incomplete'].includes(s.status)){const image=host.querySelector('.v5-mission-qr img');return image?.complete&&image.naturalWidth>0&&foreground?.qrReady(image.closest('.v5-mission-qr'))===true&&Number(host.dataset.finalGamePresence??1)<.005;}return false;}});
  const raw=serializeMissionCatalog(loaded);for(const value of Object.values(raw.system.objectSettings)){value.size=.42;value.signalRadius=.15;}catalog=parseMissionCatalog(raw);configureMissions(catalog);
  if(referenceVisual&&!productionMode){root.insertAdjacentHTML("beforeend",`<div class="reference-brand-left"><img src="./brand/assets/logos/max-primary-white.svg" alt="MAX"><p>Миссия</p><strong data-reference-mission></strong></div><div class="reference-brand-right"><img src="./brand/assets/logos/max-primary-white.svg" alt="MAX"></div>`);}
  if(bfmVisual&&!productionMode)root.insertAdjacentHTML('beforeend','<div class="v5-brand"><img src="./brand/assets/logos/max-primary-white.svg" alt="MAX"></div>');
@@ -1192,26 +1244,28 @@ async function boot(){
   startupPlan=v5StartupPlan(MISSION_CATALOG,['./brand/assets/logos/max-primary-white.svg','./brand/assets/logos/max-symbol-white.svg',sharedAssetUrl(v5QrAsset(MISSION_CATALOG)),...v5IconUrls()]);
   startupAssets=new V5StartupAssets(document.baseURI);
  }
- await Promise.all([startupAssets?startupAssets.load(startupPlan.urls,(done,total)=>{loading.textContent=`Загрузка ресурсов MAX: ${done} / ${total}`;}):sharedBackend?warmSharedAssets(Object.values(MISSION_CATALOG.tasks).flatMap(t=>Object.values(t.screens).slice(0,2).filter(s=>!s.missing).map(s=>MISSION_CATALOG.assets[s.assetId])).filter(Boolean)):preloadTaskMedia(),prepareFonts(document.fonts),...(!startupAssets?[...((referenceVisual||bfmVisual)?['./brand/assets/logos/max-primary-white.svg']:[]),'./brand/assets/logos/max-symbol-white.svg',...(sharedBackend?[]:ID_IMAGES),...content.missions.flatMap(m=>m.qr?[m.qr.image]:[])].map(src=>{const image=new Image();image.src=src;return image.decode();}):[]),assets.load(collectAssetSources(catalog,ITEM_TYPES,contours,shell.rendering.earth.russiaContour,true))]);
+ await Promise.all([startupAssets?startupAssets.load(startupPlan.urls,(done,total)=>{loading.dataset.progress=String(done)+"/"+String(total);}):sharedBackend?warmSharedAssets(Object.values(MISSION_CATALOG.tasks).flatMap(t=>Object.values(t.screens).slice(0,2).filter(s=>!s.missing).map(s=>MISSION_CATALOG.assets[s.assetId])).filter(Boolean)):preloadTaskMedia(),prepareFonts(document.fonts),...(!startupAssets?[...((referenceVisual||bfmVisual)?['./brand/assets/logos/max-primary-white.svg']:[]),'./brand/assets/logos/max-symbol-white.svg',...(sharedBackend?[]:ID_IMAGES),...content.missions.flatMap(m=>m.qr?[m.qr.image]:[])].map(src=>{const image=new Image();image.src=src;return image.decode();}):[]),assets.load(collectAssetSources(catalog,ITEM_TYPES,contours,shell.rendering.earth.russiaContour,true))]);
  if(pageDisposed)return;
  document.documentElement.dataset.graphicsBootId=globalThis.crypto?.randomUUID?.()??`${Date.now()}-${Math.random().toString(36).slice(2)}`;
  document.documentElement.dataset.graphicsBootCount=String(Number(document.documentElement.dataset.graphicsBootCount||0)+1);
  field=await createWebGLField({container:document.querySelector('#world'),planar:true,hideNodes:true,preparedAssets:assets,contourCatalog:contours,startPaused:true,placements:[],network:{states:{},links:[]},itemTypes:ITEM_TYPES,endpoints:{},selectedItem:null,maxDrawingBufferPixels:MAX_DRAWING_BUFFER_PIXELS,earthStyle:shell.rendering.earth,nodeIconBackdropStyle:shell.rendering.nodeIconBackdrop,signalLinkStyle:{...shell.rendering.signalLinks,...routeLinkStyle},onPlace:()=>{},onMove:()=>{},onRemove:()=>{}});
  if(pageDisposed){field.dispose();return;}
- foreground=createJourneyWebGLUI({root,arena,getSize:()=>size,onFrame:tick,onLayout:createTransitionLayout({document,params}),gradients:standBrowser?.gradients??v5Tools?.gradients,onMotion:()=>{kdwInteractions.align();personalChannel.align();businessNative.align();kdwPosts.align();changed();syncScene();},startup:startupAssets?{
+ const compositionLayout=createCompositionLayout({document,params,arena,getSize:()=>size,getHost:()=>host});await compositionLayout.ready;
+ foreground=createJourneyWebGLUI({root,arena,getSize:()=>size,onFrame:tick,onLayout:compositionLayout,gradients:standBrowser?.gradients??v5Tools?.gradients,onActivityFrame:()=>{kdwInteractions.align();personalChannel.align();businessNative.align();kdwPosts.align();},onMotion:()=>{changed();syncScene();},startup:startupAssets?{
   assets:startupAssets,host,frames:[v5SplashWarmup(),v5SplashWarmup(360)],
   icons:content.missions.flatMap(m=>m.steps.flatMap(step=>['','Следующий шаг','Выполнено','Продолжить задание'].map(status=>referenceNodeMarkup(step.id,step.iconId,step.label,true,status)))).concat(referenceNodeMarkup('open-max','open-max','Открыть MAX')),
   palm:`<button class="object guided-palm" data-route-next="guided-palm" data-palm data-touch-minimum="500">${bfmVisual?v5IconTile(MISSION_CATALOG,'scan',160):`<span class="tile glass-control">${palm}</span>`}<span class="object-label icon-caption">${palmLabelCopy??palmCopy}<small>${palmHint}</small></span></button>`,
   palmBurst:`<button class="object guided-palm" data-route-next="guided-palm" data-palm data-touch-minimum="500">${bfmVisual?v5IconTile(MISSION_CATALOG,'scan',160):`<span class="tile glass-control">${palm}</span>`}<span class="object-label icon-caption">${bfmVisual?(palmLabelCopy??palmCopy):'Открываем возможности'}<small></small></span></button>`,
   finals:[],
-  progress:(done,total)=>{loading.textContent=`Подготовка графики MAX: ${done} / ${total}`;}
+  progress:(done,total)=>{loading.dataset.progress=String(done)+"/"+String(total);}
  }:null});field.setScreenForeground(foreground);field.setScreenConnections(true);field.setTapControls({enabled:false});await field.prepareGPU();
  if(pageDisposed)return;
  if(startupAssets)for(const image of root.querySelectorAll('img'))if(startupAssets.takeImage(image))foreground.refreshPart(image.closest('.route-phone')||image);
  if(localRecovery){recoveryBlocked=false;const active=inputActive(),snapshot=await sharedSession.owner(active);if(!snapshot){recoveryBlocked=true;throw Error('SESSION_UNAVAILABLE');}if(inputActive()!==active&&!await sharedSession.owner(inputActive())){recoveryBlocked=true;throw Error('SESSION_UNAVAILABLE');}}
- fit();syncScene();field.start();field.setServicePaused(servicePaused||managedShell);loading.hidden=true;root.inert=false;document.documentElement.dataset.assetPreparation=startupAssets?'ready':'legacy';document.documentElement.dataset.gameReady='true';
- stopGameLink=watchGameLink({link:gameLink,getSession:()=>sharedSession});
+ fit();syncScene();field.start();field.setServicePaused(servicePaused||managedShell);dismissStandbyCover(loading);root.inert=false;document.documentElement.dataset.assetPreparation=startupAssets?'ready':'legacy';document.documentElement.dataset.gameReady='true';
+ installSceneTransition(transitionPortableSession);
+ stopGameLink=watchGameLink({link:gameLink,getSession:()=>sharedSession,onPhotoChange:()=>foreground?.invalidate()});
  if(managedShell){document.documentElement.dataset.managedBinding='';managedNotice.hidden=true;applyManagedActivity();void refreshManagedBinding();}
 }
-boot().catch(e=>{if(pageDisposed)return;showRuntimeRecovery();console.error(e);startupAssets?.dispose();document.documentElement.dataset.assetPreparation='failed';loading.textContent=startupErrorText(e);document.body.append(loading);Object.assign(loading.style,{position:'fixed',inset:'0',zIndex:'10000',padding:'32px',whiteSpace:'pre-line',fontSize:'clamp(16px,2vw,28px)',lineHeight:'1.5',background:'#10091e',overflow:'auto',transform:'none'});});
-window.addEventListener('pagehide',()=>{stopProduction();clearPixelInput();clearPixelDebug();stopGameLink();taskSkip.dispose();localAdmission.dispose();standBrowser?.dispose();kdwInteractions.dispose();personalChannel.dispose();businessNative.dispose();kdwPosts.dispose();pageDisposed=true;bindingGeneration++;clearTimeout(contextTimer);screenEpoch++;gameAudio?.dispose();missionContinuation?.cancel();cancelGesture();save();sharedSession?.close();idleMenu?.dispose();independent?.dispose();field?.dispose();foreground?.dispose();assets?.dispose();startupAssets?.dispose();ambient?.dispose();v5Tools?.dispose();},{once:true});
+boot().catch(e=>{if(pageDisposed)return;console.error('MAX_BOOT_RECOVERY',e);startupAssets?.dispose();document.documentElement.dataset.assetPreparation='failed';showRuntimeRecovery();});
+window.addEventListener('pagehide',()=>{stopNativeTouch();stopProduction();clearPixelInput();clearPixelDebug();stopGameLink();taskSkip.dispose();localAdmission.dispose();standBrowser?.dispose();kdwInteractions.dispose();personalChannel.dispose();businessNative.dispose();kdwPosts.dispose();pageDisposed=true;bindingGeneration++;clearTimeout(contextTimer);screenEpoch++;gameAudio?.dispose();missionContinuation?.cancel();cancelGesture();save();sharedSession?.close();idleMenu?.dispose();independent?.dispose();field?.dispose();foreground?.dispose();assets?.dispose();startupAssets?.dispose();ambient?.dispose();v5Tools?.dispose();},{once:true});

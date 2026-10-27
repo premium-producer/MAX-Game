@@ -1,5 +1,5 @@
 """Finish already staged RC4.1 update, preserving logged-in session and stop gates."""
-import concurrent.futures,json,pathlib,subprocess,sys,time
+import argparse,concurrent.futures,json,pathlib,subprocess,sys,time
 HERE=pathlib.Path(__file__).resolve().parent;ROOT=HERE.parents[2]
 sys.path.insert(0,str(HERE.parent/'deploy-rc2'));import remote
 BASE='C:/KDW-Stand/deploy/RC4-1'
@@ -29,5 +29,7 @@ def apply(device):
    print(device+': '+phase+' passed',flush=True)
   return {'device':device,'updated':True}
  except Exception as e:return {'device':device,'updated':False,'error':str(e)}
-with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
- for result in pool.map(apply,sys.argv[1:] or ['chuwi','max_right','stella']):print(json.dumps(result,ensure_ascii=False),flush=True)
+if __name__=='__main__':
+ parser=argparse.ArgumentParser();parser.add_argument('devices',nargs='+',choices=['max_right','stella']);args=parser.parse_args()
+ with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
+  for result in pool.map(apply,args.devices):print(json.dumps(result,ensure_ascii=False),flush=True)

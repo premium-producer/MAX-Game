@@ -1,0 +1,226 @@
+{
+  "id": "RESILIENCE-20261027-1",
+  "release": "C:/KDW-Stand/releases/KDW-Stand-20261027-RC4-1",
+  "applications": [
+    "max-game",
+    "stela"
+  ],
+  "files": [
+    {
+      "path": "apps/max-game/launcher/desktop-main.cjs",
+      "before": "06c64d9c511411ad5924451710a44c2e63d49ed114d09e858cc30266b9f7ff85",
+      "sha256": "7f83f1c6f9ca9b0f5e2f92bdb22be97794f18c9cef847f3f41618bde4f7bb749",
+      "bytes": 104
+    },
+    {
+      "path": "apps/max-game/launcher/display-worker.cjs",
+      "before": null,
+      "sha256": "179a7e33e6058fc3bd7a89a3ddd8d32996e4b30d45035dd0a2e51f852a2554f4",
+      "bytes": 8148
+    },
+    {
+      "path": "apps/max-game/launcher/portable-server.cjs",
+      "before": "6fcd664812edf4d8ec6cf804614dbafa8ac2ebfbceff410ea3455dea0c9fc048",
+      "sha256": "d6843b7f5543069e252af14fc4a296fbfa494fc3d1c9cd9e84ecf8e2a9e9dbce",
+      "bytes": 5569
+    },
+    {
+      "path": "apps/max-game/launcher/Launch.ps1",
+      "before": "030084729b6b99b0590c69dffb1c59a3a9b84a114431e3e91017c8cc1937d5c3",
+      "sha256": "03c699f56da188684208dd9b60b193e4ebcec1f8d246670012915d27dcd74065",
+      "bytes": 3775
+    },
+    {
+      "path": "apps/max-game/launcher/Control.ps1",
+      "before": "282ad898ee7f4ab220e0dd3f4ad3c083c694458c72d8efb05da4df852321c497",
+      "sha256": "fb8e21773bdabdf433efe543447284837465541fc5cfe4e2fa0f0fa35135c54f",
+      "bytes": 2819
+    },
+    {
+      "path": "apps/max-game/launcher/Install-RuntimeWatchdog.ps1",
+      "before": null,
+      "sha256": "fa4a22006d41b29c00dca8bfd520be13bd21d89a607e1d7cd43f6665302da22d",
+      "bytes": 1785
+    },
+    {
+      "path": "apps/max-game/launcher/runtime-main.cjs",
+      "before": null,
+      "sha256": "d147482d7bb208c45ac1c9f9779eb0270a290d4bab9b4d40d497c7dfca3c9689",
+      "bytes": 12517
+    },
+    {
+      "path": "apps/max-game/launcher/runtime-worker-host.cjs",
+      "before": null,
+      "sha256": "f4ad188a4dab4273991aced617ba8174df16f1c465cb8eed245d2e6f24eba706",
+      "bytes": 2402
+    },
+    {
+      "path": "apps/max-game/launcher/runtime-ipc.cjs",
+      "before": null,
+      "sha256": "c087bcace6b6f0bf0fc407661a0749940d5c0244f9ee7a93a5a247be9b0ab78d",
+      "bytes": 1484
+    },
+    {
+      "path": "apps/max-game/launcher/runtime-http.cjs",
+      "before": null,
+      "sha256": "47e92acabf0c7f877037ace7dd377d5591406396e547a53cb2c7da4a9d42c38d",
+      "bytes": 1653
+    },
+    {
+      "path": "apps/max-game/launcher/runtime-panel.html",
+      "before": null,
+      "sha256": "3cda998bdd35fcba27a8b902a2827594d0ce99390c13e7db7b570900e6a5c79b",
+      "bytes": 2582
+    },
+    {
+      "path": "apps/max-game/launcher/runtime-policy.cjs",
+      "before": null,
+      "sha256": "539aeea4eab55bc89eaaf9e151d742be2ce5af22e5029308fe88fd2810114e95",
+      "bytes": 1005
+    },
+    {
+      "path": "apps/max-game/launcher/runtime-journal.cjs",
+      "before": null,
+      "sha256": "faf7a6ca3f8e3e872b53d3fa420f3898e117aa5e57d53a0b0e33e9b5f77457c3",
+      "bytes": 2931
+    },
+    {
+      "path": "apps/max-game/launcher/runtime-crashes.cjs",
+      "before": null,
+      "sha256": "bde0aa47c023b011d781fe438aa44dcee6de31c4b9b490e56f9178ade7294976",
+      "bytes": 1180
+    },
+    {
+      "path": "apps/stela/launcher/desktop-main.cjs",
+      "before": "370782e48f7412be1e6395415edc622f34e99a59b338568d2efc3e725e695081",
+      "sha256": "7f83f1c6f9ca9b0f5e2f92bdb22be97794f18c9cef847f3f41618bde4f7bb749",
+      "bytes": 104
+    },
+    {
+      "path": "apps/stela/launcher/display-worker.cjs",
+      "before": null,
+      "sha256": "dbeb1cb235ed232feba4c696534d436ca8be0b2eac228aaf4968cc312f419363",
+      "bytes": 8435
+    },
+    {
+      "path": "apps/stela/launcher/portable-server.cjs",
+      "before": "7ffa9cf355749ab94dda844969f4aff9ac9bc04640799afb48f9f2e6049943a2",
+      "sha256": "221e51da7188076018e3341435c7199d118b21f32dce41eb40f5159c9353f2a9",
+      "bytes": 6573
+    },
+    {
+      "path": "apps/stela/launcher/Launch.ps1",
+      "before": "030084729b6b99b0590c69dffb1c59a3a9b84a114431e3e91017c8cc1937d5c3",
+      "sha256": "03c699f56da188684208dd9b60b193e4ebcec1f8d246670012915d27dcd74065",
+      "bytes": 3775
+    },
+    {
+      "path": "apps/stela/launcher/Control.ps1",
+      "before": "282ad898ee7f4ab220e0dd3f4ad3c083c694458c72d8efb05da4df852321c497",
+      "sha256": "fb8e21773bdabdf433efe543447284837465541fc5cfe4e2fa0f0fa35135c54f",
+      "bytes": 2819
+    },
+    {
+      "path": "apps/stela/launcher/Install-RuntimeWatchdog.ps1",
+      "before": null,
+      "sha256": "fa4a22006d41b29c00dca8bfd520be13bd21d89a607e1d7cd43f6665302da22d",
+      "bytes": 1785
+    },
+    {
+      "path": "apps/stela/launcher/runtime-main.cjs",
+      "before": null,
+      "sha256": "d147482d7bb208c45ac1c9f9779eb0270a290d4bab9b4d40d497c7dfca3c9689",
+      "bytes": 12517
+    },
+    {
+      "path": "apps/stela/launcher/runtime-worker-host.cjs",
+      "before": null,
+      "sha256": "f4ad188a4dab4273991aced617ba8174df16f1c465cb8eed245d2e6f24eba706",
+      "bytes": 2402
+    },
+    {
+      "path": "apps/stela/launcher/runtime-ipc.cjs",
+      "before": null,
+      "sha256": "c087bcace6b6f0bf0fc407661a0749940d5c0244f9ee7a93a5a247be9b0ab78d",
+      "bytes": 1484
+    },
+    {
+      "path": "apps/stela/launcher/runtime-http.cjs",
+      "before": null,
+      "sha256": "47e92acabf0c7f877037ace7dd377d5591406396e547a53cb2c7da4a9d42c38d",
+      "bytes": 1653
+    },
+    {
+      "path": "apps/stela/launcher/runtime-panel.html",
+      "before": null,
+      "sha256": "3cda998bdd35fcba27a8b902a2827594d0ce99390c13e7db7b570900e6a5c79b",
+      "bytes": 2582
+    },
+    {
+      "path": "apps/stela/launcher/runtime-policy.cjs",
+      "before": null,
+      "sha256": "539aeea4eab55bc89eaaf9e151d742be2ce5af22e5029308fe88fd2810114e95",
+      "bytes": 1005
+    },
+    {
+      "path": "apps/stela/launcher/runtime-journal.cjs",
+      "before": null,
+      "sha256": "faf7a6ca3f8e3e872b53d3fa420f3898e117aa5e57d53a0b0e33e9b5f77457c3",
+      "bytes": 2931
+    },
+    {
+      "path": "apps/stela/launcher/runtime-crashes.cjs",
+      "before": null,
+      "sha256": "bde0aa47c023b011d781fe438aa44dcee6de31c4b9b490e56f9178ade7294976",
+      "bytes": 1180
+    },
+    {
+      "path": "apps/stela/launcher/renderer-recovery.cjs",
+      "before": null,
+      "sha256": "d6e77a4ccbc0e0bbb0383590dcfff2291ebc78aa9ef7aa2ce57437667fbf6b0f",
+      "bytes": 1538
+    },
+    {
+      "path": "apps/max-game/launcher/stand-output.cjs",
+      "before": "7f54ea7ab70bf22254519b9030c82c255c737419756a5391f0a2253a2c374140",
+      "sha256": "98d62ee72785e5cc797704579bbb61b61c1b80732304ea6d26ba2031b9b1d28e",
+      "bytes": 12485
+    },
+    {
+      "path": "apps/max-game/launcher/kdw_spout.node",
+      "before": "9b33a36e6ceb6c85f079261f84d25bdad352b547ad3526139c92a10cc2d23905",
+      "sha256": "cf48b36a4bdd5370fb27eb81f5ba9d4ac3b8a6c632fda20a80690a9095c1d915",
+      "bytes": 395776
+    },
+    {
+      "path": "apps/max-game/launcher/operator.cjs",
+      "before": "65dd667fbd0418b1bf7602611be87d5f287cedf01bb48823738b1b9049cea117",
+      "sha256": "64af913682fb539a1466e64dcbebeac4d67f9784a5be2b4f1fce47d9030d6f79",
+      "bytes": 3150
+    },
+    {
+      "path": "apps/max-game/www/webgl-v5/stand-background.js",
+      "before": "603b295db22d7af0d68cd25cb8fca4ce019d23fd131d8b9d122ace59f65d1594",
+      "sha256": "8f59e82e4251d7ebe0f3eae0db04416f1e1f7b8ddd032aa35af473cbc41bfdba",
+      "bytes": 207183
+    },
+    {
+      "path": "apps/max-game/www/admin/index.html",
+      "before": "21e0d50e66d34ece2f98b73bba78985481b0453fe4a16d5f8cc3664c733ddef4",
+      "sha256": "69bc3bf1f1bd8cd1f318864e922d236a217e5f2752bbcfaa6d04fd765f615025",
+      "bytes": 4902
+    },
+    {
+      "path": "apps/stela/www/stella/admin/index.html",
+      "before": "5d3658456ec983732ede5f13b6e2dfcfbc6626967336d687216bed0ed81a0184",
+      "sha256": "41cc88b776533fe30edb289ad3a81e1b20be56c29badf655a01b71c94c7091ba",
+      "bytes": 2954
+    },
+    {
+      "path": "apps/stela/www/stella/operator/index.html",
+      "before": "5d3658456ec983732ede5f13b6e2dfcfbc6626967336d687216bed0ed81a0184",
+      "sha256": "41cc88b776533fe30edb289ad3a81e1b20be56c29badf655a01b71c94c7091ba",
+      "bytes": 2954
+    }
+  ]
+}

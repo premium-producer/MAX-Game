@@ -27,6 +27,7 @@ replace('onFrame:tick,','onFrame:tick,onLayout:createTransitionLayout({document,
 replace("phone=bounds(host.querySelector('.route-phone .demo-app'))","phone=businessDeviceLinkRect(bounds(host.querySelector('.route-phone .demo-app')),{screenId:controller.displayedState?.screenId,original:BUSINESS_ORIGINAL,mediaRect:bounds(host.querySelector('.route-phone .task-media-image'))})");
 replace('new V5RevealJourney(content,sharedSession,v5RouteMeasure)', "new (portable?KdwTaskJourney:V5RevealJourney)(content,sharedSession,v5RouteMeasure)");
 replace("from './journey-v5-idle-menu.mjs'", "from './kdw-idle-menu.mjs'");
+replace("from './journey-v5-audio.mjs'", "from './kdw-event-audio.mjs'");
 replace('controller.snapshot.state.runId}`', '(controller.sceneRunId??controller.snapshot.state.runId)}`');
 replace('const MISSION_CATALOG=bfmVisual?V5_MISSION_CATALOG:PREVIOUS_MISSION_CATALOG;', 'const gameLink=await loadGameLink(params);let stopGameLink=()=>{};\nconst MISSION_CATALOG=linkedCatalog(bfmVisual?V5_MISSION_CATALOG:PREVIOUS_MISSION_CATALOG,gameLink);\nconst browserScenePlan=createBrowserScenePlan(MISSION_CATALOG,v5DeviceMetrics);');
 replace("if((!managedShell&&(!managedAssignment||!params.get('session')))||params.get('backend')!=='server')throw Error('Managed MAX requires an explicit assignment and session');","if(params.get('backend')==='server'&&!managedShell&&(!managedAssignment||!params.get('session')))throw Error('Managed MAX requires an explicit assignment and session');");
@@ -36,7 +37,7 @@ replace("const portable=params.get('backend')!=='server';", "const portable=para
 replace('(!localRecovery||windowFocused);','(portable||!localRecovery||windowFocused);');
 replace("palmVisible=['palm','holding',...(revealMode?['burst']:[])].includes(controller.phase);","palmVisible=!(portable&&bfmVisual&&!standPresentation)&&['palm','holding',...(revealMode?['burst']:[])].includes(controller.phase);");
 replace('function tick(delta){',"function tick(delta){\n kdwInteractions.update(controller?.displaySnapshot,controller?.phase);\n personalChannel.update(controller?.displaySnapshot,controller?.phase);\n kdwPosts.update(controller?.displaySnapshot,controller?.phase);\n if(controller?.snapshot?.state)document.documentElement.dataset.kdwScreen=controller.snapshot.state.screenId??controller.snapshot.state.status;document.documentElement.dataset.kdwRun=controller?.snapshot?.state.runId??'';\n standBrowser?.update(controller?.snapshot);\n if(portable&&!standPresentation&&!navigating)void localAdmission.update(sharedSession)?.catch(error=>console.error('MAX local admission',error));");
-replace('function phoneContentReady(){', 'function phoneContentReady(){\n if(!personalChannel.ready(controller?.displaySnapshot))return false;');
+replace('function phoneContentReady(){', 'function phoneContentReady(){\n if(kdwPosts.gpuActivity&&!kdwPosts.ready(controller?.displaySnapshot))return false;\n if(kdwInteractions.gpuActivity&&!kdwInteractions.ready(controller?.displaySnapshot))return false;\n if(!personalChannel.ready(controller?.displaySnapshot))return false;');
 replace("old.dataset.closing='true';const epoch=screenEpoch;foreground?.cancelContent(host);",
  "old.dataset.closing='true';const epoch=screenEpoch;foreground?.cancelContent(host,{departing:portable});");
 replace("if(bfmVisual&&(controller.handoff?.stage==='pack'||controller.startupLogo)){commit();}",
@@ -48,7 +49,7 @@ replace('const persistence=bfmVisual?createIndexedDBPersistence',"const persiste
 replace("if(!controller||snapshot.assignment?.lifecycle.status!=='active')return;controller.accept(snapshot);", "if(!controller||!portable&&snapshot.assignment?.lifecycle.status!=='active')return;controller.accept(snapshot);");
 replace("if(localRecovery)recoveryChoice=await showV5Recovery", "if(localRecovery&&!standPresentation&&!interactionPreview&&params.get('test')!=='memory')recoveryChoice=await showV5Recovery");
 replace('await sharedSession.start();\n  if(pageDisposed)', "await sharedSession.start();\n  await resumeLinkedMission(sharedSession,gameLink);\n  if(!gameLink?.game&&standPresentation&&!interactionPreview&&sharedSession.snapshot.state.status!=='menu')await sharedSession.command('RETURN_MENU');\n  if(pageDisposed)");
-replace("document.documentElement.dataset.sessionStorage=profile==='server'", "if(interactionPreview){loading.textContent='Подготавливаем активность MAX…';try{await prepareInteractionPreview(sharedSession,MISSION_CATALOG,interactionPreview);}finally{preparingInteractionPreview=false;}}\n  document.documentElement.dataset.sessionStorage=profile==='server'");
+replace("document.documentElement.dataset.sessionStorage=profile==='server'", "if(interactionPreview){loading.textContent='Подготавливаем активность MAX…';try{await prepareInteractionPreview(sharedSession,MISSION_CATALOG,interactionPreview,params.get('preview-business')??'cafe');}finally{preparingInteractionPreview=false;}}\n  document.documentElement.dataset.sessionStorage=profile==='server'");
 replace('controller=createController(saved);','controller=createController(saved);\n if(interactionPreview&&controller.phase===\'paused\')controller.resume(controller.activeId);');
 text=text.replaceAll('v5Tools?.fit(innerWidth,innerHeight);','v5Tools?.fit(innerWidth,innerHeight);standBrowser?.fit(innerWidth,innerHeight);');
 
@@ -170,7 +171,7 @@ text=text.replace('if(!personalChannel.ready(controller?.displaySnapshot))return
 text=text.replace('&&personalChannel.ready(controller.displaySnapshot)}:undefined;','&&personalChannel.ready(controller.displaySnapshot)&&businessNative.ready(controller.displaySnapshot)}:undefined;');
 text=text.replace('personalChannel.align();','personalChannel.align();businessNative.align();');
 text=text.replace('personalChannel.dispose();','personalChannel.dispose();businessNative.dispose();');
-replace("document.documentElement.dataset.gameReady='true';", "document.documentElement.dataset.gameReady='true';\n stopGameLink=watchGameLink({link:gameLink,getSession:()=>sharedSession});");
+replace("document.documentElement.dataset.gameReady='true';", "document.documentElement.dataset.gameReady='true';\n stopGameLink=watchGameLink({link:gameLink,getSession:()=>sharedSession,onPhotoChange:()=>foreground?.invalidate()});");
 replace('if(portable&&!standPresentation&&!navigating)', 'if(portable&&(gameLink?.game||!standPresentation)&&!navigating)');
 replace('function navigate(id,restart=false){', 'function navigate(id,restart=false){\n if(gameLink?.game&&id&&!restart)return;');
 replace('async function selectIdleMission(missionId){', 'async function selectIdleMission(missionId){\n if(gameLink?.game)return;');
@@ -202,10 +203,10 @@ replace("${portable?'<button class=\"pill v5-qr-restart\"", "${portable&&!produc
 replace("if(bfmVisual)root.insertAdjacentHTML('beforeend','<div class=\"v5-brand\"", "if(bfmVisual&&!productionMode)root.insertAdjacentHTML('beforeend','<div class=\"v5-brand\"");
 replace('if(referenceVisual){root.insertAdjacentHTML(', 'if(referenceVisual&&!productionMode){root.insertAdjacentHTML(');
 replace("if(!gameLink?.game&&standPresentation", "if(!productionMode&&!gameLink?.game&&standPresentation");
-replace("const menu=idleMenu;idleSelecting=true;navigating=true;", "if(productionMode){if(!['manual','combined'].includes(standSettings.value.max.entryMode))return;idleSelecting=true;try{await selectManualMission(missionId);}catch(error){idleSelecting=false;feedback('Экран уже занят. Ожидайте свою миссию.');}return;}\n  const menu=idleMenu;idleSelecting=true;navigating=true;");
+replace("const menu=idleMenu;idleSelecting=true;navigating=true;", "if(productionMode){if(!['manual','combined'].includes(standSettings.value.max.entryMode))return;idleSelecting=true;document.documentElement.dataset.idleSelection='submitting';delete document.documentElement.dataset.idleSelectionError;try{await selectManualMission(missionId);}catch(error){idleSelecting=false;idleMenu?.restore();document.documentElement.dataset.idleSelection='error';document.documentElement.dataset.idleSelectionError=String(error.message).slice(0,160);console.error('MAX manual mission selection',error);feedback('Не удалось открыть миссию. Нажмите ещё раз.');}return;}\n  const menu=idleMenu;idleSelecting=true;navigating=true;");
 replace("window.addEventListener('pagehide',()=>{", "window.addEventListener('pagehide',()=>{stopProduction();");
 // A readiness acknowledgement starts each budget after the corresponding pixels can be used.
-replace("if(!managedShell)configureController(saved);", "if(!managedShell)configureController(saved);if(productionMode)stopProduction=startProduction({getSession:()=>sharedSession,ready:s=>{if(s.status==='scan')return ['palm','holding'].includes(controller?.phase)&&palmPresence.value>.95;if(s.status==='task')return controller?.phase==='task'&&controller.displayedState?.screenId===s.screenId&&phoneContentReady()&&phonePresence.value>.97;if(['completed','incomplete'].includes(s.status)){const image=host.querySelector('.v5-mission-qr img');return image?.complete&&image.naturalWidth>0&&foreground?.qrReady(image.closest('.v5-mission-qr'))===true&&Number(host.dataset.finalGamePresence??1)<.005;}return false;}});");
+replace("if(!managedShell)configureController(saved);", "if(!managedShell)configureController(saved);if(productionMode)stopProduction=startProduction({getSession:()=>sharedSession,active:()=>presentationActive(),ready:s=>{if(s.status==='scan')return ['palm','holding'].includes(controller?.phase)&&palmPresence.value>.95;if(s.status==='task')return controller?.phase==='task'&&controller.displayedState?.screenId===s.screenId&&phoneContentReady()&&phonePresence.value>.97;if(['completed','incomplete'].includes(s.status)){const image=host.querySelector('.v5-mission-qr img');return image?.complete&&image.naturalWidth>0&&foreground?.qrReady(image.closest('.v5-mission-qr'))===true&&Number(host.dataset.finalGamePresence??1)<.005;}return false;}});");
 
 // Typography is a presentation adapter; keep the authored stand modules intact.
 text=text.replace("from './journey-v5-ui-copy.mjs';","from './kdw-ui-copy.mjs';").replace("from './journey-shared-ui.mjs';","from './kdw-shared-ui.mjs';");
@@ -245,11 +246,127 @@ replace('async function boot(){', "const stopBootHealth=monitorPreparation(()=>d
 // Production OSR remains one game owner. Visibility comes from the desktop
 // output gate, not focus of its hidden offscreen window.
 text="import {standOutput,outputHidden,remoteBackground} from './kdw-stand-output.mjs';\n"+text;
+text=text.replace('const inputActive=()=>', 'const inputActive=()=>(!standOutput||standOutput.active())&&');
 text=text.replaceAll('document.hidden','outputHidden()').replaceAll('document.hasFocus()','(standOutput?true:document.hasFocus())');
+// The standby picture must be visible before ARM. Input admission and all
+// mission clocks retain the original presentationActive/outputHidden gates.
+replace('idleMenu.tick(delta,presentationActive());', 'idleMenu.tick(delta,standOutput?!servicePaused:presentationActive());');
 replace('ambient=bfmVisual?lumiReferenceBackground', 'ambient=standOutput?remoteBackground(document.querySelector(\'#ambient\')):bfmVisual?lumiReferenceBackground');
 replace("window.addEventListener('blur',()=>{windowFocused=false;", "window.addEventListener('blur',()=>{if(standOutput)return;windowFocused=false;");
 replace("window.addEventListener('max-service-pointer-cancel',cancelGesture);", "window.addEventListener('max-service-pointer-cancel',cancelGesture);\nwindow.addEventListener('kdw-output-state',()=>{cancelGesture();windowFocused=standOutput?.active()===true;if(!preparingInteractionPreview)sharedSession?.owner(inputActive());});");
 replace('ready:s=>{if(s.status', 'ready:s=>{if(!presentationActive())return false;if(s.status');
+text=text.replace("import {createTransitionLayout} from './kdw-transition-layout.mjs';","import {createCompositionLayout} from './kdw-composition-layout.mjs';");
+replace('foreground=createJourneyWebGLUI({', 'const compositionLayout=createCompositionLayout({document,params,arena,getSize:()=>size,getHost:()=>host});await compositionLayout.ready;\n foreground=createJourneyWebGLUI({');
+replace('onLayout:createTransitionLayout({document,params})','onLayout:compositionLayout');
+replace('pixelPlan,production:productionMode,onMenu:', "pixelPlan,production:productionMode||document.documentElement.dataset.layoutPreview==='true',onMenu:");
+replace('  await resumeLinkedMission(sharedSession,gameLink);',`  if(document.documentElement.dataset.layoutPreview==='true'){
+   const mission=params.get('layout-scene');
+   if(MISSION_CATALOG.missions[mission]){
+    await sharedSession.owner(true);await sharedSession.command('SELECT_MISSION',{missionId:mission,fresh:true});
+    await sharedSession.contact('layout-preview','down',true);await new Promise(r=>setTimeout(r,850));await sharedSession.contact('layout-preview','up',true);
+   }
+  }
+  await resumeLinkedMission(sharedSession,gameLink);`);
+replace("if(interactionPreview&&controller.phase==='paused')", "if((interactionPreview||document.documentElement.dataset.layoutPreview==='true')&&controller.phase==='paused')");
+replace("if(!productionMode&&!gameLink?.game&&standPresentation&&!interactionPreview&&", "if(document.documentElement.dataset.layoutPreview!=='true'&&!productionMode&&!gameLink?.game&&standPresentation&&!interactionPreview&&");
+replace("if(bfmVisual&&(portable||globalThis.STAND_AUDIO_MODE", "if(document.documentElement.dataset.layoutPreview!=='true'&&bfmVisual&&(portable||globalThis.STAND_AUDIO_MODE");
+text="import {installNativeTouch} from './kdw-native-touch.mjs';\n"+text;
+replace('const localAdmission=new LocalStandAdmission({active:()=>inputActive()});', 'const localAdmission=new LocalStandAdmission({active:()=>inputActive()});\nconst stopNativeTouch=installNativeTouch({document,active:()=>inputActive()});');
+replace("window.addEventListener('pagehide',()=>{stopProduction();", "window.addEventListener('pagehide',()=>{stopNativeTouch();stopProduction();");
+// Native activities consume the final device pose exactly once per rendered frame.
+replace('mountKdwInteractions({getSession:()=>sharedSession,onMenu:', 'mountKdwInteractions({getSession:()=>sharedSession,deferAlignment:true,onMenu:');
+replace('mountPersonalChannel({getSession:()=>sharedSession})', 'mountPersonalChannel({getSession:()=>sharedSession,deferAlignment:true})');
+replace('mountBusinessNative({getSession:()=>sharedSession})', 'mountBusinessNative({getSession:()=>sharedSession,deferAlignment:true})');
+replace('onMotion:()=>{kdwInteractions.align();personalChannel.align();businessNative.align();kdwPosts.align();changed();syncScene();}', 'onActivityFrame:()=>{kdwInteractions.align();personalChannel.align();businessNative.align();kdwPosts.align();},onMotion:()=>{changed();syncScene();}');
+// Visitor surfaces never expose preparation counters or technical failure panels.
+text="import {guardImage,fallbackForImage,fallbackImageSource,useImageFallback,retireDetachedMedia,visitorMessage} from './kdw-graceful-media.mjs';\nimport {showStandbyCover,dismissStandbyCover} from './kdw-standby-cover.mjs';\n"+text;
+replace("  const decoded=images.map(image=>{\n   if(image.dataset.preparedPhone==='true'&&image.complete&&image.naturalWidth){image.dataset.gpuDecoded='true';return Promise.resolve();}\n   image.dataset.gpuDecoded='false';\n   const failed=()=>{\n    if(generation!==bindingGeneration||!image.isConnected)return;\n    const message=document.createElement('p');message.className='phone-media-error';\n    message.textContent='Кадр задания не загрузился. Перезапустите миссию.';\n    image.replaceWith(message);foreground?.refreshPart(shell);changed();\n   };\n   image.addEventListener('error',failed,{once:true});\n   return image.decode().then(()=>{if(generation===bindingGeneration&&image.isConnected)image.dataset.gpuDecoded='true';}).catch(failed);\n  });\n","  const decoded=images.filter(image=>!image.dataset.mediaGhost).map(image=>guardImage(image,{\n   fallback:fallbackForImage(image,controller.displaySnapshot),\n   onChange:()=>{if(generation!==bindingGeneration||!shell.isConnected||shell.dataset.sceneVersion!==key)return;delete shell.dataset.gpuUploadError;delete shell.dataset.gpuReadyKey;foreground?.refreshPart(shell);changed();},\n   onFault:details=>console.error('MAX_SCREEN_MEDIA_FALLBACK',JSON.stringify({key,...details}))\n  }).ready);\n");
+replace("function recoverPendingPhoneMedia(){\n if(!revealMode||controller.phase!=='phone-enter'||controller.elapsed<PHONE_MEDIA_DEADLINE)return;\n const shell=host.querySelector('.route-phone'),key=controller.phoneContentKey;\n if(!shell||shell.dataset.sceneVersion!==key||shell.dataset.mediaReadyKey===key)return;\n for(const image of shell.querySelectorAll('.demo-app img[data-gpu-decoded=\"false\"]')){\n  const message=document.createElement('p');message.className='phone-media-error';\n  message.textContent='Кадр задания не загрузился. Перезапустите миссию.';\n  image.replaceWith(message);\n }\n shell.querySelector('.phone-loading')?.remove();const content=shell.querySelector('.demo-app .phone-content');if(content){content.style.opacity='1';content.inert=false;}\n shell.dataset.mediaReadyKey=key;foreground?.refreshPart(shell);changed();\n console.warn('MAX phone media decode deadline',key);\n}\n","function recoverPendingPhoneMedia(){\n retireDetachedMedia();\n if(!revealMode||controller.phase!=='phone-enter'||controller.elapsed<PHONE_MEDIA_DEADLINE)return;\n const shell=host.querySelector('.route-phone');if(!shell)return;\n for(const image of shell.querySelectorAll('.demo-app img[data-gpu-decoded=\"false\"]'))void useImageFallback(image,'preparation-deadline');\n}\n");
+replace('async function boot(){', 'async function boot(){\n showStandbyCover();');
+replace('loading.hidden=true;root.inert=false;', 'dismissStandbyCover(loading);root.inert=false;');
+text=text.replace(/loading\.textContent=`Загрузка ресурсов MAX: \$\{done\} \/ \$\{total\}`/g, 'loading.dataset.progress=String(done)+\"/\"+String(total)');
+text=text.replace(/loading\.textContent=`Подготовка графики MAX: \$\{done\} \/ \$\{total\}`/g, 'loading.dataset.progress=String(done)+\"/\"+String(total)');
+text=text.replace("loading.textContent='Подготавливаем активность MAX…';", "loading.dataset.preparing='activity';");
+text=text.replace(/boot\(\)\.catch\(e=>\{if\(pageDisposed\)return;[\s\S]*?\}\);\nwindow\.addEventListener\('pagehide'/, "boot().catch(e=>{if(pageDisposed)return;console.error('MAX_BOOT_RECOVERY',e);startupAssets?.dispose();document.documentElement.dataset.assetPreparation='failed';showRuntimeRecovery();});\nwindow.addEventListener('pagehide'");
+text=text.replace("message.innerHTML='<p class=\"phone-media-error\">Экран задания недоступен. Перезапустите миссию.</p>';", "message.innerHTML='<div class=\"phone-content\"><img alt=\"MAX\" class=\"task-media-image\" src=\"'+fallbackImageSource()+'\"></div>';console.error('MAX_SCREEN_MARKUP_FALLBACK',key);");
+text=text.replace("feedback('Нет связи с backend. Экран сохранён.');", "console.error('MAX_BACKEND_RETRY');");
+text=text.replace("feedback('Не удалось открыть миссию. Нажмите ещё раз.');", "console.error('MAX_MANUAL_RETRY');");
+replace('function feedback(text){foreground?', 'function feedback(text){text=visitorMessage(text);if(!text)return;foreground?');
+// Keep the running GPU scene while exchanging the portable visitor/session.
+// Only foreground elements retire; no loading page and no background restart.
+replace('import {showStandbyCover,dismissStandbyCover}', 'import {showStandbyCover,dismissStandbyCover,installSceneTransition,transitionReload}');
+replace('const gameLink=await loadGameLink(params);', 'let gameLink=await loadGameLink(params);');
+replace('const productionPolicy=gameLink?.game?.standPolicy??standSettings;const MISSION_CATALOG=', 'let productionPolicy=gameLink?.game?.standPolicy??standSettings;let MISSION_CATALOG=');
+const sessionStart=text.indexOf(' if(sharedBackend&&!managedShell){',text.indexOf('async function boot(){'));
+const sessionEnd=text.indexOf('\n let saved;',sessionStart);
+if(sessionStart<0||sessionEnd<0)throw Error('Portable session preparation anchor missing');
+const sessionBlock=text.slice(sessionStart,sessionEnd);
+text=text.slice(0,sessionStart)+' await preparePortableSession();'+text.slice(sessionEnd);
+const sessionFunction=`async function preparePortableSession(){
+ const generation=bindingGeneration;
+${sessionBlock.replace('onSnapshot:snapshot=>{managedSnapshot(snapshot);','onSnapshot:snapshot=>{if(generation!==bindingGeneration||pageDisposed)return;managedSnapshot(snapshot);')}
+}
+async function transitionPortableSession(){
+ if(!portable||!productionMode)return location.reload();
+ // A terminal snapshot may already have revealed standby before the link poll
+ // acknowledges release. Rebinding that idle session must not retire it again.
+ const shownStandby=idleMenu&&gameLink?.game&&sharedSession?.snapshot?.state.status==='menu'?idleMenu:null;
+ stopGameLink();stopGameLink=()=>{};cancelGesture();navigating=true;idleSelecting=true;
+ document.documentElement.dataset.sceneTransition='retiring';
+ try{
+  if(idleMenu){if(idleMenu!==shownStandby)await idleMenu.exit();}
+  else if(foreground)await new Promise(resolve=>foreground.transition(host,resolve,{interrupt:true,exitOnly:true}));
+  document.documentElement.dataset.sceneTransition='preparing';
+  const nextLink=await loadGameLink(params);
+  const nextPolicy=nextLink?.game?.standPolicy??await readStandSettings(params)??standSettings;
+  const retainStandby=!!shownStandby&&idleMenu===shownStandby&&!nextLink?.game;
+  if(shownStandby&&!retainStandby&&idleMenu===shownStandby)await shownStandby.exit();
+  // Refresh the parameter binding after readStandSettings strips old link data.
+  if(nextLink?.game){params.set('session',nextLink.game.gameId);params.set('link','1');}
+  else params.set('session','idle.'+crypto.randomUUID());
+  ++bindingGeneration;screenEpoch++;missionContinuation?.cancel();missionContinuation=null;
+  const previous=sharedSession;sharedSession=null;controller=null;
+  await previous?.close();
+  if(pageDisposed)return;
+  if(!retainStandby){await disposeIdleMenu();clearManagedScene();}
+  gameLink=nextLink;productionPolicy=nextPolicy;
+  MISSION_CATALOG=productionCatalog(linkedCatalog(bfmVisual?V5_MISSION_CATALOG:PREVIOUS_MISSION_CATALOG,gameLink),productionPolicy);
+  content=sharedRevealContent(MISSION_CATALOG);
+  await preparePortableSession();if(pageDisposed)return;
+  if(localRecovery&&!await sharedSession.owner(inputActive()))throw Error('SESSION_UNAVAILABLE');
+  configureController();popupPage=0;popupToken='';view='';phoneStep='';phoneToken='';phonePending='';answerPending=false;pendingResume=null;
+  navigating=false;idleSelecting=false;fit();render();syncScene();
+  document.documentElement.dataset.sceneTransition='revealing';
+ }catch(error){
+  console.error('MAX_SCENE_TRANSITION_RETRY',error);idleMenu?.restore();
+  document.documentElement.dataset.sceneTransition='retrying';
+  if(!pageDisposed)setTimeout(()=>void transitionReload(),1500);
+ }finally{
+  navigating=false;idleSelecting=false;
+  if(!pageDisposed)stopGameLink=watchGameLink({link:gameLink,getSession:()=>sharedSession,onPhotoChange:()=>foreground?.invalidate()});
+ }
+}
+`;
+replace('async function boot(){',sessionFunction+'async function boot(){');
+replace("document.documentElement.dataset.gameReady='true';", "document.documentElement.dataset.gameReady='true';\n installSceneTransition(transitionPortableSession);");
+replace("try{await selectManualMission(missionId);}", "try{await idleMenu.exit();await selectManualMission(missionId);}");
+replace("['manual','combined'].includes(standSettings.value.max.entryMode)","['manual','combined'].includes(productionPolicy.value.max.entryMode)");
+// Reuse the existing timer material and queue feed; one non-interactive sibling.
+replace('resumeLinkedMission,watchGameLink,claimLinkedMission}', 'resumeLinkedMission,watchGameLink,claimLinkedMission,linkedQueueCount}');
+replace('function updateTargets(){', `function updateMissionQueue(timer,rect){
+ let queue=host.querySelector('[data-mission-queue-count]');
+ if(!queue){timer.insertAdjacentHTML('afterend','<div class="v5-device-timer v5-scan-queue" data-mission-queue-count data-path-presence="0" aria-live="off" aria-label="Очередь">очередь: —</div>');queue=host.querySelector('[data-mission-queue-count]');foreground?.invalidate();}
+ setStyleValue(queue,'left',String(rect.left-rect.width-48)+'px');setStyleValue(queue,'top',String(rect.top)+'px');
+ queue.dataset.pathPresence=timer.dataset.pathPresence;
+ const count=productionMode?linkedQueueCount():scanWaitClock.view(controller?.snapshot,performance.now()).queueCount,label='очередь: '+(count??'—');
+ if(queue.textContent!==label){queue.textContent=label;foreground?.refreshPart(queue);changed();}
+}
+function updateTargets(){`);
+replace("timer.dataset.pathPresence=String(phonePresence.value*(controller.snapshot?.state.scanned===false?0:1));", "timer.dataset.pathPresence=String(phonePresence.value*(controller.snapshot?.state.scanned===false?0:1));updateMissionQueue(timer,r);");
+replace('queueCount:null}:scanWaitClock.view', 'queueCount:linkedQueueCount()}:scanWaitClock.view');
+replace('if(productionMode)queue.hidden=true;const labels=', 'const labels=');
+replace('`Ожидают: ${wait.queueCount??\'—\'}`', '`очередь: ${wait.queueCount??\'—\'}`');
+replace('aria-label="Миссии в очереди">Ожидают: —', 'aria-label="Очередь">очередь: —');
 if(process.argv.includes('--check')){if(fs.readFileSync(file,'utf8').replaceAll('\r\n','\n')!==text.replaceAll('\r\n','\n'))throw Error('Generated stand main differs; run the adapter and review its diff.');}
 else fs.writeFileSync(file,text);
 console.log('Stand main adapted only at local host boundaries');

@@ -1,0 +1,41 @@
+{
+  "at": "2026-10-27T13:25:03.823195+00:00",
+  "status": "deployed to both production PCs; APIs running, output disabled",
+  "checks": {
+    "buildShared": true,
+    "buildMax": true,
+    "buildStela": true,
+    "nativeReleaseBuild": true,
+    "auditAll": true,
+    "runtimeUnitTests": 10,
+    "processTests": [
+      "max-game",
+      "stela"
+    ],
+    "nativeSpoutSender": true,
+    "productionDeployment": true,
+    "taskSchedulerOnStand": true,
+    "hardwareSoak": false,
+    "dualStream55Fps": false,
+    "shortSampleApprox60Fps": true
+  },
+  "files": {
+    "apps/STARTUP/tools/runtime-crashes.cjs": "bde0aa47c023b011d781fe438aa44dcee6de31c4b9b490e56f9178ade7294976",
+    "apps/STARTUP/tools/runtime-http.cjs": "47e92acabf0c7f877037ace7dd377d5591406396e547a53cb2c7da4a9d42c38d",
+    "apps/STARTUP/tools/runtime-ipc.cjs": "c087bcace6b6f0bf0fc407661a0749940d5c0244f9ee7a93a5a247be9b0ab78d",
+    "apps/STARTUP/tools/runtime-journal.cjs": "faf7a6ca3f8e3e872b53d3fa420f3898e117aa5e57d53a0b0e33e9b5f77457c3",
+    "apps/STARTUP/tools/runtime-main.cjs": "d147482d7bb208c45ac1c9f9779eb0270a290d4bab9b4d40d497c7dfca3c9689",
+    "apps/STARTUP/tools/runtime-policy.cjs": "539aeea4eab55bc89eaaf9e151d742be2ce5af22e5029308fe88fd2810114e95",
+    "apps/STARTUP/tools/runtime-resilience.test.cjs": "c0b06f2e562ea03b4f99617a0d2f98aac930a29b29a661d84f4acae75189d68b",
+    "apps/STARTUP/tools/runtime-worker-host.cjs": "f4ad188a4dab4273991aced617ba8174df16f1c465cb8eed245d2e6f24eba706",
+    "apps/max-game/launcher/stand-output.cjs": "98d62ee72785e5cc797704579bbb61b61c1b80732304ea6d26ba2031b9b1d28e",
+    "apps/max-game/launcher/display-worker.cjs": "179a7e33e6058fc3bd7a89a3ddd8d32996e4b30d45035dd0a2e51f852a2554f4",
+    "apps/stela/launcher/display-worker.cjs": "dbeb1cb235ed232feba4c696534d436ca8be0b2eac228aaf4968cc312f419363",
+    "apps/max-game/launcher/kdw_spout.node": "cf48b36a4bdd5370fb27eb81f5ba9d4ac3b8a6c632fda20a80690a9095c1d915",
+    "ops/production-build/deploy-sound/install.ps1": "b193f066742c7cb3e54bea724a289a5a2e3fccfe89f1774f7d7ea686c840cecd",
+    "apps/max-game/source/client/src/kdw-stand-background.mjs": "511e453c84a9f5bf7b7974b566af8362eecb901a1d92e998c9b3b61494a086ce",
+    "apps/max-game/www/webgl-v5/stand-background.js": "8f59e82e4251d7ebe0f3eae0db04416f1e1f7b8ddd032aa35af473cbc41bfdba",
+    "apps/STARTUP/tools/spout-resilience.test.cjs": "d266c35e4b1ea43b6df0aedc45d36cb0a6cfa946e125822a18f5223c49fbf9f8"
+  },
+  "deploymentReport": "../stand-patches/RESILIENCE-20261027-1/README.md"
+}

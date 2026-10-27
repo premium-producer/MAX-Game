@@ -39,6 +39,10 @@ def copy_app(name,parent,dev=False):
  if dev and not config['version'].endswith('-DEV'): config['version']+='-DEV'
  save(dst/'app.json',config)
  if not (dst/'runtime').exists(): shutil.copytree(source/'runtime/electron',dst/'runtime')
+ # Local sound libraries are operator data, separate from immutable application assets.
+ for n in ['sound-events.local.json','soundtrack.local.json']:
+  if (src/'data'/n).exists(): (dst/'data').mkdir(exist_ok=True); shutil.copy2(src/'data'/n,dst/'data'/n)
+ if (src/'data/audio').exists(): shutil.copytree(src/'data/audio',dst/'data/audio',ignore=shutil.ignore_patterns('.upload-*'))
  if name=='stela':
   for n in ['omni.local.json','audio.local.json','audio-profile.json']:
    if (src/'data'/n).exists(): (dst/'data').mkdir(exist_ok=True); shutil.copy2(src/'data'/n,dst/'data'/n)

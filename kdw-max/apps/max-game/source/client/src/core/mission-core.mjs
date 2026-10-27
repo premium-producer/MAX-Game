@@ -1,3 +1,4 @@
+import {operatorGoto} from '../kdw-operator-model.mjs';
 import {production,timing,prepareProductionTask,completeByTimeout,productionCommand} from '../kdw-production-core.mjs';
 import {reduceStore,storeGoal,catalogForStoreReceipt} from '../kdw-store-rating.mjs';
 import {catalogForBusinessReceipt} from '../kdw-business-choice.mjs';
@@ -14,7 +15,7 @@ export const TASK_CLOCK_RULES_REVISION='mission-rules-task-clock-v2';
 export const TASK_CLOCK_BUDGET_MS=60000;
 const taskClock=s=>s.rulesRevision===TASK_CLOCK_RULES_REVISION;
 const initialBudget=s=>taskClock(s)?TASK_CLOCK_BUDGET_MS:180000;
-const INTERNAL=new Set(['HOLD_CONFIRMED','OWNER_CHANGED','EXPIRE','AUTO_SCREEN','STAND_IDLE']);
+const INTERNAL=new Set(['OPERATOR_GOTO','HOLD_CONFIRMED','OWNER_CHANGED','EXPIRE','AUTO_SCREEN','STAND_IDLE']);
 const branchTask=tool=>`business.${tool}`;
 export function createMissionModel(catalog,{sessionId,rulesRevision=MISSION_RULES_REVISION}){
  if(!missionToken(sessionId)||catalog?.schemaVersion!==1)throw new TypeError('Invalid mission session/catalog');
@@ -46,8 +47,9 @@ export function dispatchMissionCommand(catalog,model,input,{now=0,internal=false
  const s=structuredClone(model.state),effects=[];
  if(production(s)&&['DEV_TIMER','RESTART_TASK','SKIP_TASK','RESTART_MISSION','RESET_PROGRESS'].includes(c.type))return reject('PRODUCTION_CONTROL_FORBIDDEN');
  if(production(s)&&c.type==='SELECT_MISSION'&&s.status!=='menu')return reject('MISSION_ALREADY_ACTIVE');
- if(s.ownerActive&&s.deadlineAt!==null&&now>=s.deadlineAt&&!['DEV_TIMER','RESTART_TASK','RETURN_MENU','RESTART_MISSION','RESET_PROGRESS','EXPIRE','OWNER_CHANGED','STAND_READY','STAND_TOUCH','STAND_IDLE'].includes(c.type))return reject('MISSION_EXPIRED');
- if(['STAND_READY','STAND_TOUCH'].includes(c.type)){
+ if(s.ownerActive&&s.deadlineAt!==null&&now>=s.deadlineAt&&!['OPERATOR_GOTO','DEV_TIMER','RESTART_TASK','RETURN_MENU','RESTART_MISSION','RESET_PROGRESS','EXPIRE','OWNER_CHANGED','STAND_READY','STAND_TOUCH','STAND_IDLE'].includes(c.type))return reject('MISSION_EXPIRED');
+ if(c.type==='OPERATOR_GOTO'){const error=operatorGoto(catalog,s,c,now);if(error)return reject(error);effects.push({type:'OPERATOR_SCREEN_CHANGED',screenId:s.screenId});}
+ else if(['STAND_READY','STAND_TOUCH'].includes(c.type)){
   if(!production(s))return reject('PRODUCTION_REQUIRED');const error=productionCommand(s,c,now);if(error)return reject(error);
  }else if(['DEV_TIMER','RESTART_TASK','SKIP_TASK'].includes(c.type)){
   const error=reduceDevelopment(catalog,s,c,now,{sequence,enterTask,budget:TASK_CLOCK_BUDGET_MS});if(error)return reject(error);

@@ -47,12 +47,12 @@ html[data-kdw-interaction] #kdw-interactions{pointer-events:none}
 .kdw-keyboard{position:absolute;left:28px;right:28px;bottom:0;padding:16px 24px 24px;display:flex;flex-direction:column;gap:12px;z-index:5;pointer-events:auto;border:1px solid #a583e360;border-bottom:0;border-radius:28px 28px 0 0;background:linear-gradient(180deg,#230b46ed,#16042df7);box-shadow:0 -8px 44px #0d001a80;backdrop-filter:blur(20px);transform:translate3d(0,0,0) scale(1);transform-origin:bottom center;opacity:1;visibility:visible;transition:transform .52s cubic-bezier(.16,1,.3,1),opacity .28s ease-out,visibility 0s}
 .kdw-channel-scene[data-keyboard=false] .kdw-keyboard{opacity:0;transform:translate3d(0,110%,0) scale(.985);pointer-events:none;visibility:hidden;transition:transform .28s cubic-bezier(.4,0,.7,.2),opacity .2s ease-in,visibility 0s .28s}
 .kdw-keyboard:before{content:"";position:absolute;top:0;left:28px;right:28px;height:2px;pointer-events:none;background:linear-gradient(90deg,transparent,#00bfff90,#9500ffb0,transparent);border-radius:2px}
-.kdw-keyboard-tools{display:flex;justify-content:space-between;align-items:center;padding:0 8px;font-size:18px;color:#c8b7e6}.kdw-keyboard-tools button{display:grid;place-items:center;width:56px;height:44px;padding:0;border:0;border-radius:14px;background:#471aff50;line-height:1;transition:background .18s ease,transform .18s ease}
+
 .kdw-keyboard-chevron{display:block;width:28px;height:28px;pointer-events:none}
 @media(hover:hover){.kdw-keyboard-dismiss:hover{background:#6e1aff90;transform:translateY(2px)}}
 .kdw-keyboard-dismiss:active{background:#6e1affb0;transform:translateY(4px)}
 .kdw-key-row{display:flex;justify-content:center;gap:11px}.kdw-key-row button{display:grid;place-items:center;flex:1 1 0;min-width:0;height:70px;border:1px solid #a583e3a0;border-radius:20px;background:linear-gradient(145deg,#7356aa70,#321063a6 75%);backdrop-filter:blur(15px);box-shadow:inset 0 1px 2px #ffffff28,0 4px 15px #10001e40;font-size:32px!important;transition:background .08s,box-shadow .08s}
-.kdw-key-row button:active{background:linear-gradient(140deg,#6e1aff,#471aff);box-shadow:0 0 22px #b465ff,inset 0 0 8px #fff9;border-color:#e2c9ff}
+.kdw-key-row button:active,.kdw-key-row button[data-keyboard-pressed=true]{background:linear-gradient(140deg,#6e1aff,#471aff);box-shadow:0 0 22px #b465ff,inset 0 0 8px #fff9;border-color:#e2c9ff}
 .kdw-key-row button:not(.kdw-key-wide):not(.kdw-key-space):not(.kdw-key-enter){text-transform:uppercase}
 .kdw-key-row button.kdw-key-wide{flex:1.55}.kdw-key-row button.kdw-key-space{flex:10}.kdw-key-row button.kdw-key-enter{flex:2.2;font-size:25px!important}
 .kdw-error{min-height:26px;line-height:1.3;font-size:18px;margin:0;color:#ffbddb}.kdw-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
@@ -223,6 +223,16 @@ html[data-production=true][data-visual=webgl-bfm-v5] #circles .guided-palm .obje
 html[data-visual=webgl-bfm-v5] #circles .task-dialog .instruction-copy p,
 html[data-visual=webgl-bfm-v5] #circles .task-dialog .instruction-copy h2{white-space:pre-line;text-wrap:balance}
 
+
+/* Navigation owns a stable hit/layout rectangle. CSS transform transitions used
+   to chase the frame-by-frame GPU pose and restart when a command disabled it.
+   Keep contact feedback optical, including while the accepted action is busy. */
+.kdw-activity-button.kdw-transition-button,
+#kdw-personal-channel .pc-forward .kdw-transition-button,
+#kdw-business-native .bn-source-forward .kdw-transition-button,
+html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .route-phone .demo-app .client-actions .pill.client-action.kdw-transition-button{transition:filter .12s ease,opacity .16s ease}
+.kdw-activity-button.kdw-transition-button:active{transform:none}
+.kdw-transition-button[data-transition-contact=true]{filter:brightness(1.15);opacity:1}
 
 #kdw-posts{position:fixed;inset:0;z-index:101;pointer-events:none;overflow:hidden;color:#fff;font-family:'Max Sans',sans-serif}
 .kdw-post-bound-avatar{position:absolute;left:52px;top:65.2px;width:42.95px;height:42.95px;border-radius:50%;display:grid;place-items:center;overflow:hidden;font-size:28px;line-height:1}.kdw-post-bound-avatar img{width:100%;height:100%;object-fit:cover}.kdw-post-theme-symbol{font-size:100px;line-height:1}

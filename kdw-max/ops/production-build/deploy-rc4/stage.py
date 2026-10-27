@@ -1,5 +1,6 @@
 """Get short-lived asset URLs locally; remote PCs download pinned GitHub overlays."""
-import concurrent.futures,hashlib,json,pathlib,subprocess,sys,urllib.request,urllib.error
+import argparse,concurrent.futures,hashlib,json,pathlib,subprocess,sys,urllib.request,urllib.error
+parser=argparse.ArgumentParser();parser.add_argument('devices',nargs='+',choices=['max_right','stella']);args=parser.parse_args()
 HERE=pathlib.Path(__file__).resolve().parent;ROOT=HERE.parents[2];REL=ROOT/'production/KDW-Stand-20261027-RC4-1';OUT=ROOT/'.cache/rc4-deploy';OUT.mkdir(parents=True,exist_ok=True)
 sys.path.insert(0,str(HERE.parent/'deploy-rc2'));import remote
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
@@ -24,5 +25,5 @@ def stage(device):
   remote.upload(device,local,'C:/KDW-Stand/deploy/RC4-1/'+local.name)
  remote.run(device,"$name='KDW-RC4-1-Download';if(Get-ScheduledTask -TaskName $name -ErrorAction SilentlyContinue){throw 'Task already exists'};$action=New-ScheduledTaskAction -Execute 'powershell.exe' -Argument '-NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File C:/KDW-Stand/deploy/RC4-1/download.ps1 -Device "+device+"';$principal=New-ScheduledTaskPrincipal -UserId ([Security.Principal.WindowsIdentity]::GetCurrent().Name) -LogonType Interactive -RunLevel Limited;Register-ScheduledTask -TaskName $name -Action $action -Principal $principal|Out-Null;Start-ScheduledTask $name")
  return device,'downloads-started'
-with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
- for r in pool.map(stage,['chuwi','max_right','stella']):print(json.dumps(r))
+with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
+ for r in pool.map(stage,args.devices):print(json.dumps(r))

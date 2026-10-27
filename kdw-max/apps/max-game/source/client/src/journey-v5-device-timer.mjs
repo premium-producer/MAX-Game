@@ -33,7 +33,7 @@ export function createV5ScanWaitClock(){
   view(snapshot,at){
    const state=snapshot?.state,assignmentId=snapshot?.assignment?.receipt?.assignmentId;
    const visible=!!state&&state.scanned!==true&&state.status==='scan';
-   const matches=visible&&assignmentId===context?.assignmentId&&state.sessionId===context?.sessionId;
+   const matches=!!state&&assignmentId===context?.assignmentId&&state.sessionId===context?.sessionId;
    const wait=matches?context?.scanWait:null;
    const armed=!!(wait?.protocol==='max-scan-wait-v1'&&wait.runId===state?.runId&&[wait.startedAtMs,wait.untilMs,wait.serverNowMs].every(Number.isFinite)&&wait.untilMs>=wait.startedAtMs);
    return {visible,remainingMs:armed?Math.max(0,Math.min(V5_SCAN_WAIT_MS,wait.untilMs-wait.serverNowMs-Math.max(0,at-receivedAt))):V5_SCAN_WAIT_MS,queueCount:matches&&at-queueAt<=5000?queue:null,armed};

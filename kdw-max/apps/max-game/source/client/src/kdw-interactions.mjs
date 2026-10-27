@@ -1,3 +1,6 @@
+import {webglActivitiesEnabled} from './activity-webgl/activity-runtime.mjs';
+import {mountWebGLActivity} from './activity-webgl/activity-controller.mjs';
+import {guardImage,fallbackImageSource,visitorMessage} from './kdw-graceful-media.mjs';
 import {alignPixelKeyboard} from './kdw-pixel-map.mjs';
 import {createTextInputGuard} from './kdw-text-input-guard.mjs';
 import {TEXT_POLICY,TEXT_REMOVED_NOTICE} from './kdw-text-policy.mjs';
@@ -25,7 +28,14 @@ function currentScene(snapshot,phase){
  return null;
 }
 /** Native inputs own selection/IME. Only SAVE_INTERACTION and existing ACT commands change durable gameplay. */
-export function mountKdwInteractions({getSession,onMenu}){
+export function mountKdwInteractions(options){
+ if(!webglActivitiesEnabled())return mountLegacyInteractions(options);
+ const legacy=mountLegacyInteractions(options),gpu=mountWebGLActivity({kind:'store',getSession:options.getSession});let gpuOwns=false;
+ return {gpuActivity:true,ready:next=>gpu.ready(next),flush:opts=>gpuOwns?gpu.flush(opts):legacy.flush(opts),align(){if(!gpuOwns)legacy.align();},
+  update(next,phase){gpuOwns=next?.state?.taskId===STORE_TASK&&next.state.screenId===STORE_SCREEN;legacy.update(gpuOwns?null:next,phase);gpu.update(next,phase);},
+  dispose(){legacy.dispose();gpu.dispose();}};
+}
+function mountLegacyInteractions({getSession,onMenu,deferAlignment=false}){
  const overlay=document.createElement('section');overlay.id='kdw-interactions';overlay.hidden=true;overlay.setAttribute('aria-label','Интерактивное задание MAX');document.body.append(overlay);
  const storeMotion=createStoreMotion(overlay);
  const productStream=createProductStream(overlay,product=>productMarkup(product));
@@ -37,14 +47,14 @@ export function mountKdwInteractions({getSession,onMenu}){
   if(storePhotos.key!==key){
    const state=storePhotos={key,status:'loading'};
    preloadBusinessImages(storeBank(type,version)).then(()=>{if(!disposed&&storePhotos===state){state.status='ready';if(scene==='store')error('');}})
-    .catch(()=>{if(!disposed&&storePhotos===state)state.status='error';});
+    .catch(cause=>{console.error('MAX_STORE_MEDIA_FALLBACK',cause?.name);if(!disposed&&storePhotos===state)state.status='ready';});
   }
   return storePhotos.status==='ready';
  }
  let scene=null,context='',draft=null,dirty=false,saving=null,submitBusy=false,saveTimer=null,disposed=false,activeField='name',keyboardOpen=false,language='ru',shift=true,symbols=false,activeSlot=0,screenId='',noticeTimer=0,noticeText='';
  const storeFinished=()=>storeGoal(latestSnapshot?.state.progress.business?.storeActivity)||screenId!==STORE_SCREEN&&!latestSnapshot?.state.progress.business?.storeActivity&&interactionComplete('store',draft);
  const sameContext=()=>{const s=getSession()?.snapshot?.state;return !disposed&&context===`${s?.runId}:${s?.taskId}`&&s?.status==='task';};
- const error=message=>{const el=overlay.querySelector('[data-kdw-error]');if(el)el.textContent=message;};
+ const error=message=>{const el=overlay.querySelector('[data-kdw-error]');if(el)el.textContent=visitorMessage(message);};
  const resize=()=>{const element=overlay.querySelector('.kdw-scene');if(element){element.style.setProperty('--kdw-scale',Math.min(innerWidth/1600,innerHeight/900));alignPixelKeyboard(element);}};
  window.addEventListener('resize',resize);
  function buttonsBusy(value){overlay.querySelectorAll('[data-kdw-submit]').forEach(button=>{button.disabled=value||scene==='store'&&(storeMotion.active()||storePending||scenePhase!=='task')||!(scene==='store'?storeFinished():interactionComplete(scene,draft));button.setAttribute('aria-busy',String(value));});overlay.querySelectorAll('[data-kdw-key],[data-kdw-avatar],[data-kdw-field],[data-kdw-product],[data-kdw-slot],[data-kdw-remove]').forEach(control=>{control.disabled=value||(scene==='store'&&screenId!=='business.store.start');});}
@@ -69,7 +79,7 @@ export function mountKdwInteractions({getSession,onMenu}){
  function changed(){dirty=true;error('');buttonsBusy(submitBusy);clearTimeout(saveTimer);saveTimer=setTimeout(()=>{if(!textInputs.pending())void flush({final:false}).catch(cause=>error(cause.message));},180);}
  function keyboard(){
   const layout=symbols?'symbols':language;
-  return `<div class="kdw-keyboard" aria-label="Экранная клавиатура"><div class="kdw-keyboard-tools"><span data-kdw-editing>${activeField==='name'?'Название канала':'Описание канала'}<small class="kdw-moderation-keyboard" data-kdw-moderation-keyboard aria-hidden="true">${esc(noticeText)}</small></span><button type="button" data-kdw-key="dismiss" class="kdw-keyboard-dismiss" aria-label="Скрыть клавиатуру">${KEYBOARD_DISMISS_ICON}</button></div>${rows[layout].map((row,index)=>`<div class="kdw-key-row">${index===2?'<button type="button" class="kdw-key-wide" data-kdw-key="shift" aria-label="Регистр" aria-pressed="'+shift+'">⇧</button>':''}${row.split(' ').map(key=>`<button type="button" data-kdw-key="${esc(key)}">${esc(shift?key.toUpperCase():key)}</button>`).join('')}${index===0?'<button type="button" class="kdw-key-wide" data-kdw-key="backspace" aria-label="Удалить символ">⌫</button>':''}${index===2?`<button type="button" class="kdw-key-wide" data-kdw-key="symbols">${symbols?'АБВ':'123'}</button>`:''}</div>`).join('')}<div class="kdw-key-row"><button type="button" class="kdw-key-wide" data-kdw-key="language">${language==='ru'?'EN':'РУ'}</button><button type="button" class="kdw-key-space" data-kdw-key=" ">Пробел</button><button type="button" class="kdw-key-enter" data-kdw-key="enter" aria-label="${activeField==='name'?'К описанию':'Готово'}">${activeField==='name'?'↵':'Готово'}</button></div></div>`;
+  return `<div class="kdw-keyboard" aria-label="Экранная клавиатура"><small class="kdw-sr-only" data-kdw-moderation-keyboard aria-hidden="true">${esc(noticeText)}</small>${rows[layout].map((row,index)=>`<div class="kdw-key-row">${index===2?'<button type="button" class="kdw-key-wide" data-kdw-key="shift" aria-label="Регистр" aria-pressed="'+shift+'">⇧</button>':''}${row.split(' ').map(key=>`<button type="button" data-kdw-key="${esc(key)}">${esc(shift?key.toUpperCase():key)}</button>`).join('')}${index===0?'<button type="button" class="kdw-key-wide" data-kdw-key="backspace" aria-label="Удалить символ">⌫</button>':''}${index===2?`<button type="button" class="kdw-key-wide" data-kdw-key="symbols">${symbols?'АБВ':'123'}</button>`:''}</div>`).join('')}<div class="kdw-key-row"><button type="button" class="kdw-key-wide" data-kdw-key="language">${language==='ru'?'EN':'РУ'}</button><button type="button" class="kdw-key-space" data-kdw-key=" ">Пробел</button><button type="button" data-kdw-key="dismiss" class="kdw-keyboard-dismiss kdw-key-wide" aria-label="Скрыть клавиатуру">${KEYBOARD_DISMISS_ICON}</button><button type="button" class="kdw-key-enter" data-kdw-key="enter" aria-label="${activeField==='name'?'К описанию':'Готово'}">${activeField==='name'?'↵':'Готово'}</button></div></div>`;
  }
  function channelMarkup(){
   // Only the editable display occupies the existing phone's screen. Its shell,
@@ -105,7 +115,7 @@ export function mountKdwInteractions({getSession,onMenu}){
   alignActivityActions(controls,g,phoneAlpha,editor.inert&&storePhotos.status!=='error');
   for(const node of field.querySelectorAll('[data-kdw-product]'))node.disabled ||=submitBusy||storePending;
  }
- function redraw(){storeMotion.clear();overlay.innerHTML=scene==='channel'?channelMarkup():storeMarkup();resize();alignChannel();alignStore();buttonsBusy(submitBusy);refreshStore();}
+ function redraw(){storeMotion.clear();overlay.innerHTML=scene==='channel'?channelMarkup():storeMarkup();for(const image of overlay.querySelectorAll('img'))guardImage(image,{fallback:fallbackImageSource()});resize();alignChannel();alignStore();buttonsBusy(submitBusy);refreshStore();}
  function refreshStore(){
   if(scene!=='store')return;
   const activity=latestSnapshot?.state.progress.business?.storeActivity,signature=JSON.stringify(activity?.published??[]),slots=overlay.querySelector('.kdw-store-slots');
@@ -116,7 +126,7 @@ export function mountKdwInteractions({getSession,onMenu}){
    scroller.scrollTo({top:Math.max(0,bottom-scroller.clientHeight),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});}
   const finished=storeFinished();document.documentElement.dataset.kdwStorePlaying=String(!finished);
   overlay.querySelector('[data-kdw-submit]').hidden=!finished;
-  overlay.querySelector('[data-store-rating]').textContent=storeRating(activity).toFixed(1).replace('.',',');
+  const rating=overlay.querySelector('[data-store-rating]'),ratingText=storeRating(activity).toFixed(1).replace('.',',');if(rating.textContent!==ratingText)rating.textContent=ratingText;
   storeMotion.sync();buttonsBusy(submitBusy);
  }
  async function startStore(){const session=getSession();if(storeStarting||session.snapshot?.state.progress.business?.storeActivity||session.busy||!session.snapshot?.state.ownerActive)return;storeStarting=true;const key=context;try{const r=await session.command('START_STORE',{taskId:STORE_TASK,screenId:STORE_SCREEN});if(key===context){latestSnapshot=session.snapshot;if(!r?.reply.ok)error('Не удалось начать каталог.');}}finally{storeStarting=false;}}
@@ -178,12 +188,12 @@ export function mountKdwInteractions({getSession,onMenu}){
   flush,
   align(){alignChannel();alignStore();},
   update(next,phase){
-   if(disposed)return;latestSnapshot=next;scenePhase=phase;productStream.accept(next);if(next?.state.progress.business?.answers?.businessType)ensureStorePhotos();const kind=currentScene(next,phase);if(!kind){hide();return;}
+   if(disposed)return;if(next===latestSnapshot&&phase===scenePhase)return;latestSnapshot=next;scenePhase=phase;productStream.accept(next);if(next?.state.progress.business?.answers?.businessType)ensureStorePhotos();const kind=currentScene(next,phase);if(!kind){hide();return;}
    const s=next.state,key=`${s.runId}:${s.taskId}`;
    if(key!==context){storeSignature='';productStream.reset();context=key;scene=kind;draft=structuredClone(s.progress[s.missionId]?.interactions?.[s.taskId]??emptyInteraction(kind));dirty=false;screenId=s.screenId;activeSlot=Math.max(0,draft.slots?.findIndex(id=>id===null)??0);activeField='name';keyboardOpen=false;redraw();overlay.hidden=false;document.documentElement.dataset.kdwInteraction=kind;document.querySelector('#circles').inert=false;if(scene==='channel')refreshKeyboard();}
    else if(screenId!==s.screenId){screenId=s.screenId;storeSignature='';redraw();}
    if(scene==='store')refreshStore();
-   alignChannel();alignStore();
+   if(!deferAlignment){alignChannel();alignStore();}
 
   },
   dispose(){disposed=true;textInputs.dispose();hide();clearTimeout(saveTimer);window.removeEventListener('resize',resize);overlay.remove();},

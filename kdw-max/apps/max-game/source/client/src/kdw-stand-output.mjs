@@ -1,7 +1,7 @@
 // Only the sandboxed desktop preload can supply this capability. URL parameters
 // alone cannot enable an offscreen owner or acknowledge a visible output.
 export const standOutput=globalThis.kdwStandOutput??null;
-export const outputHidden=()=>standOutput?!standOutput.active():document.hidden;
+export const outputHidden=()=>standOutput?!(standOutput.presenting?.()??true):document.hidden;
 export function remoteBackground(canvas){
  canvas.hidden=true;
  document.documentElement.dataset.spoutContent='true';

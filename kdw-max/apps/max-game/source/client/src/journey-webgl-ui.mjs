@@ -1,3 +1,6 @@
+import {activityFrame} from './activity-webgl/activity-runtime.mjs';
+import {createActivityLayer} from './activity-webgl/activity-layer.mjs';
+import {useImageFallback,fallbackForImage} from './kdw-graceful-media.mjs';
 import {V5_MOTION} from './journey-v5-motion-profile.mjs';
 import {BUSINESS_ORIGINAL} from './kdw-business-original.mjs';
 import {createDeviceVideoTexture} from './journey-v5-video-source.mjs';
@@ -100,14 +103,23 @@ export function webglTextRasterBounds(metrics,width,height){
  return {left,top,width:right-left,height:bottom-top};
 }
 
-export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,onLayout,startup=null,gradients=null}){
+export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,onLayout,onActivityFrame,startup=null,gradients=null}){
  const confirmationPanel=el=>!BUSINESS_ORIGINAL&&el?.matches('.demo-app')&&el.closest('.route-phone')?.dataset.sceneVersion?.includes(':business.platform.ready:');
  const referenceVisual=document.documentElement.dataset.visual==='reference';
  const bfmVisual=document.documentElement.dataset.visual==='webgl-bfm-v5';
  const scene=new THREE.Scene(),camera=new THREE.OrthographicCamera(0,1,0,1,-10,10);
+ // A separate scene in the SAME renderer/canvas keeps activity textures out
+ // of the route rebuild/retirement and material-opacity traversal.
+ const activityLayer=createActivityLayer(new THREE.Scene(),arena,getSize);
  const fiberGlass=new JourneyFiberGlass(getSize),contextGlass=new JourneyContextGlass();
  const introBurst=new JourneyIntroBurst();
  const plane=new THREE.PlaneGeometry(1,1),svgLoader=new SVGLoader(),shellGeometry=new Set();
+ // One triangle avoids an internal raster edge through filled glyphs. Their
+ // transparent texture border clamps to zero outside the original unit square.
+ const glyphTriangle=new THREE.BufferGeometry();
+ glyphTriangle.setAttribute('position',new THREE.Float32BufferAttribute([-.5,-.5,0,1.5,-.5,0,-.5,1.5,0],3));
+ glyphTriangle.setAttribute('uv',new THREE.Float32BufferAttribute([0,0,2,0,0,2],2));
+ shellGeometry.add(glyphTriangle);
  const cache=new Map(),births=new WeakMap(),flights=new Map(),rotatingMaps=new Map();let groups=new Map();
  const textMeasure=document.createElement('canvas').getContext('2d');
  const warmPhoneImages=new Map(),warmPhoneUploads=new Map();let warmPhoneKeys=new Set();
@@ -251,6 +263,19 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,onLayo
   return {key:`${el.src}:${rasterW}:${rasterH}:${scale}:${radius}:${shadow}`,rasterW,rasterH,rounded,pad,radius,deviceImage,scale,shadow};
  }
  function imageTexture(el,r,source,spec=imageRasterSpec(el,r)){
+  // Keep pre-rasterized glyphs out of accelerated Canvas2D drawImage: the
+  // production GPU exposes a diagonal crack even when its source is a PNG.
+  if(el.matches('.v5-catalog-glyph')&&/\/max-icon\.(channel|call)\.png(?:[?#]|$)/.test(el.src)){
+   const key=`direct-glyph:${el.src}`;
+   if(captureStartup)startupTextureKeys.add(key);
+   used.add(key);
+   if(!cache.has(key)){
+    const map=new THREE.Texture(source);map.colorSpace=THREE.SRGBColorSpace;
+    map.generateMipmaps=false;map.minFilter=THREE.LinearFilter;map.needsUpdate=true;
+    cache.set(key,map);
+   }
+   return cache.get(key);
+  }
   const {key,rasterW,rasterH,rounded,pad,radius,deviceImage,scale,shadow}=spec;
   const missing=!cache.has(key),start=performance.now();
   const map=texture(key,c=>{
@@ -300,7 +325,8 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,onLayo
   if(bfmVisual&&spec.deviceImage){if(cache.has(spec.key)&&uploadedPhoneTextures.has(cache.get(spec.key)))preparationStats.warmHits++;else preparationStats.visibleMisses++;reportPreparation();}
   if(el.dataset.gpuRetry==='true'){const old=cache.get(spec.key);if(old&&failedPhoneTextures.has(old)){cache.delete(spec.key);old.dispose();}delete el.dataset.gpuRetry;}
   const map=imageTexture(el,r,source,spec);
-  const mesh=add(new THREE.Mesh(plane,basic(map,opacity)),parent,r.x-origin.x-pad,r.y-origin.y-pad,r.w+pad*2,r.h+pad*2);mesh.scale.y=-(r.h+pad*2);
+  const directGlyph=el.matches('.v5-catalog-glyph')&&/\/max-icon\.(channel|call)\.png(?:[?#]|$)/.test(el.src);
+  const mesh=add(new THREE.Mesh(directGlyph?glyphTriangle:plane,basic(map,opacity)),parent,r.x-origin.x-pad,r.y-origin.y-pad,r.w+pad*2,r.h+pad*2);mesh.scale.y=-(r.h+pad*2);
   if(el.matches('.route-brand'))mesh.userData.logoSize={w:r.w,h:r.h};
  }
  function video(el,r,parent,origin,opacity){
@@ -648,6 +674,7 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,onLayo
    if(disposed)return;
    const profiling=root.dataset.profileUi==='true',started=profiling?performance.now():0;
    timingFrame=profiling?{intervalMs:lastPrepareAt?started-lastPrepareAt:0}:null;if(profiling)lastPrepareAt=started;else lastPrepareAt=0;
+   onLayout?.before?.();
    onFrame?.(delta);if(timingFrame)timingFrame.callbackMs=performance.now()-started;
    arenaFrame=arena.getBoundingClientRect();
    if(bfmVisual&&(document.hidden||root.dataset.presentationPaused==='true'))delta=0;time+=Math.min(delta,.05);let moving=false;
@@ -795,10 +822,12 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,onLayo
    // Icon geometry still comes from scenePose; DOM is only the input mirror.
    // Layout extensions run after device/reference motion and before GPU bounds
    // are measured. DOM hit areas and rendered groups therefore use one pose.
-   onLayout?.();
+   const composition=onLayout?.();
+   if(composition?.changed)moving=true;
    for(const {item,visual,fade}of preparedGroups){
     const {el,group,base}=item;
-    const r=visual||rect(el);group.position.set(r.x,r.y,0);group.scale.set(r.w/base.w,r.h/base.h,1);
+    const r=visual?(composition?.project(el,visual)??visual):rect(el);group.position.set(r.x,r.y,0);group.scale.set(r.w/base.w,r.h/base.h,1);
+    if(visual&&composition)for(const [part,local]of item.bounds)if(part.isConnected)poses.set(part,projectBounds(local,r));
     // The retained shell may be changing aspect ratio during a device morph.
     // Compensate its parent scale: corner/light patches keep their shape while
     // only the straight spans stretch. Content keeps its existing motion.
@@ -816,7 +845,7 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,onLayo
     // The copy box can flex-shrink while its shell is resizing, but its text
     // children keep their font metrics. Follow the box's position, never stretch
     // retained glyphs from that temporary height to the settled card height.
-    if(el.matches('.task-dialog .instruction-copy'))group.scale.set(1,1,1);
+    if(el.matches('.task-dialog .instruction-copy')){const k=composition?.scale(el)??1;group.scale.set(k,k,1);}
     if(el.matches('.task-dialog .instruction')){
      // Resize the SDF surface itself, never scale its text, radius or halo.
      group.scale.set(1,1,1);
@@ -895,6 +924,8 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,onLayo
    publishGlassFrame(document,controls);
    if(timingFrame)timingFrame.opticsMs=performance.now()-opticsStarted;
    const linksStarted=timingFrame?performance.now():0;
+   onActivityFrame?.();
+   activityFrame();
    if(moving)onMotion();
    if(timingFrame){timingFrame.linksMs=performance.now()-linksStarted;timingFrame.prepareMs=performance.now()-started;}
    arenaFrame=null;
@@ -939,12 +970,14 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,onLayo
      failedPhoneTextures.add(material.map);(phone??image).dataset.gpuUploadError=String(error?.message||error);console.error('MAX phone texture upload failed',error);
      if(artwork)continue;
      if(qr){image.dataset.gpuUploadError='MAX_QR_GPU_UPLOAD_FAILED';console.error('MAX QR texture upload failed',error);continue;}
-     queueMicrotask(()=>{if(!image.isConnected)return;const message=document.createElement('p');message.className='phone-media-error';message.textContent='Кадр задания не загрузился. Перезапустите миссию.';image.replaceWith(message);pendingParts.add(phone);partsDirty=true;onMotion();});
+     queueMicrotask(()=>{if(!image.isConnected)return;void useImageFallback(image,'gpu-upload',{fallback:fallbackForImage(image),onChange:()=>{if(phone){delete phone.dataset.gpuUploadError;delete phone.dataset.gpuReadyKey;pendingParts.add(phone);}partsDirty=true;onMotion();}}).then(()=>{if(phone){delete phone.dataset.gpuUploadError;pendingParts.add(phone);}partsDirty=true;onMotion();});});
     }
     if(artwork&&uploadedPhoneTextures.has(material.map))image.dataset.gpuReady='true';
    }
    const panes=[...root.querySelectorAll('.context-popup .instruction,.context-popup .demo-app,.field-success,.v5-device-timer')].filter(el=>!el.closest('[hidden]')&&!confirmationPanel(el)).map(el=>({...rect(el),radius:parseFloat(getComputedStyle(el).borderTopLeftRadius),opacity:glassControlPresence(el,document)*(el.closest('.context-popup')?Number(getComputedStyle(el.closest('.context-popup')).opacity):1)*(el.matches('.v5-mission-qr')?1:Number(el.closest('.journey-zone')?.dataset.finalGamePresence??1))})).filter(pane=>pane.opacity>.001);
+   activityLayer.render(renderer);
    contextGlass.render(renderer,scene,camera,panes,getSize());
+   activityLayer.draw(renderer,camera);
    for(const phone of root.querySelectorAll('.route-phone[data-media-ready-key]')){
     const key=phone.dataset.sceneVersion;
     if(phone.dataset.gpuReadyKey===key||phone.dataset.mediaReadyKey!==key)continue;
@@ -967,6 +1000,6 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,onLayo
     if(++timingSamples%15===0)root.dataset.uiTiming=JSON.stringify(timingHistory);timingFrame=null;
    }
   },
-  dispose(){disposed=true;for(const cleanup of pendingVideoFrames.values())cleanup();for(const patch of shellGeometry)patch.dispose();shellGeometry.clear();for(const texture of videoTextures.values())texture.dispose();videoTextures.clear();preparedDevices.clear();preparedDeviceKeys.clear();rotatingMaps.forEach(t=>t.dispose());rotatingMaps.clear();warmPhoneImages.clear();warmPhoneUploads.clear();warmPhoneKeys.clear();startupTextureKeys.clear();startupProgramPins.forEach(m=>m.dispose());startupProgramPins.length=0;reconnections.clear();clearGlassFrame(document);introBurst.dispose();for(const m of contentTransitions.values())m.cancel();contentTransitions.clear();instructionMotions.clear();for(const m of transitions.values())m.cancel();transitions.clear();feedbacks.clear();completionMotions.clear();motions.clear();for(const shapes of vectorCache.values())for(const shape of shapes)shape.dispose();vectorCache.clear();fiberGlass.dispose();contextGlass.dispose();flights.clear();materials.forEach(m=>m.dispose());retiredMaterials.forEach(m=>m.dispose());retiredMaterials.length=0;geometry.forEach(g=>g.dispose());cache.forEach(t=>t.dispose());plane.dispose();scene.clear();}
+  dispose(){disposed=true;activityLayer.dispose();for(const cleanup of pendingVideoFrames.values())cleanup();for(const patch of shellGeometry)patch.dispose();shellGeometry.clear();for(const texture of videoTextures.values())texture.dispose();videoTextures.clear();preparedDevices.clear();preparedDeviceKeys.clear();rotatingMaps.forEach(t=>t.dispose());rotatingMaps.clear();warmPhoneImages.clear();warmPhoneUploads.clear();warmPhoneKeys.clear();startupTextureKeys.clear();startupProgramPins.forEach(m=>m.dispose());startupProgramPins.length=0;reconnections.clear();clearGlassFrame(document);introBurst.dispose();for(const m of contentTransitions.values())m.cancel();contentTransitions.clear();instructionMotions.clear();for(const m of transitions.values())m.cancel();transitions.clear();feedbacks.clear();completionMotions.clear();motions.clear();for(const shapes of vectorCache.values())for(const shape of shapes)shape.dispose();vectorCache.clear();fiberGlass.dispose();contextGlass.dispose();flights.clear();materials.forEach(m=>m.dispose());retiredMaterials.forEach(m=>m.dispose());retiredMaterials.length=0;geometry.forEach(g=>g.dispose());cache.forEach(t=>t.dispose());plane.dispose();scene.clear();}
  };
 }

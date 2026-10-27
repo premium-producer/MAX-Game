@@ -14,6 +14,13 @@
       "prefix": "",
       "retainedMetadata": [
         "apps/stela/package-manifest.json"
+      ],
+      "retired": [
+        "apps/stela/www/stella/assets/business.svg",
+        "apps/stela/www/stella/assets/connection.svg",
+        "apps/stela/www/stella/assets/identity.svg",
+        "apps/stela/www/stella/assets/personal.svg",
+        "apps/stela/www/stella/assets/visibility.svg"
       ]
     }
   },
@@ -8363,6 +8370,12 @@
     "apps/stela/source/artifacts/stella-prototype/src/components/RingScene.tsx": [
       "VK_Stella"
     ],
+    "apps/stela/source/artifacts/stella-prototype/src/components/load-renderer.ts": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/src/components/load-renderer.test.ts": [
+      "VK_Stella"
+    ],
     "apps/stela/source/artifacts/stella-prototype/src/components/RingTag.tsx": [
       "VK_Stella"
     ],
@@ -11864,15 +11877,6 @@
     "apps/stela/www/stella/assets/app.js": [
       "VK_Stella"
     ],
-    "apps/stela/www/stella/assets/business.svg": [
-      "VK_Stella"
-    ],
-    "apps/stela/www/stella/assets/connection.svg": [
-      "VK_Stella"
-    ],
-    "apps/stela/www/stella/assets/identity.svg": [
-      "VK_Stella"
-    ],
     "apps/stela/www/stella/assets/index.css": [
       "VK_Stella"
     ],
@@ -11883,12 +11887,6 @@
       "VK_Stella"
     ],
     "apps/stela/www/stella/assets/max-symbol-color.svg": [
-      "VK_Stella"
-    ],
-    "apps/stela/www/stella/assets/personal.svg": [
-      "VK_Stella"
-    ],
-    "apps/stela/www/stella/assets/visibility.svg": [
       "VK_Stella"
     ],
     "apps/stela/www/stella/audio-settings.html": [
@@ -12161,6 +12159,12 @@
     ],
     "docs/STELA_AUDIO_PIPELINE.md": [
       "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/STELA_VOICE_SCRIPT.md": [
+      "VK_Stella"
+    ],
+    "docs/STELA_VOICE_RECORDING.txt": [
       "VK_Stella"
     ],
     "docs/STELA_FINAL_MISSIONS.md": [
@@ -13640,6 +13644,1625 @@
     ],
     "docs/verification-operator-rc4-20261027/stella-lidar-firewall.json": [
       "MAX-Game",
+      "VK_Stella"
+    ],
+    "apps/STARTUP/tools/sound-library.cjs": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "apps/STARTUP/tools/sound-events.cjs": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "ops/production-build/sound-library.test.cjs": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "ops/production-build/sound-panel-browser.mjs": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/SOUND_EVENT_PANEL.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-sound-panel-20261027/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-sound-panel-20261027/checks.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-sound-panel-20261027/max-sound-panel.png": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-sound-panel-20261027/stela-sound-panel.png": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "apps/STARTUP/tools/sound-panel/index.html": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "apps/STARTUP/tools/sound-panel/panel.css": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "apps/STARTUP/tools/sound-panel/panel.js": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "apps/max-game/launcher/sound-library.cjs": [
+      "MAX-Game"
+    ],
+    "apps/max-game/launcher/sound-events.cjs": [
+      "MAX-Game"
+    ],
+    "apps/max-game/launcher/sound-panel/index.html": [
+      "MAX-Game"
+    ],
+    "apps/max-game/launcher/sound-panel/panel.js": [
+      "MAX-Game"
+    ],
+    "apps/max-game/launcher/sound-panel/panel.css": [
+      "MAX-Game"
+    ],
+    "apps/stela/launcher/sound-library.cjs": [
+      "VK_Stella"
+    ],
+    "apps/stela/launcher/sound-events.cjs": [
+      "VK_Stella"
+    ],
+    "apps/stela/launcher/sound-panel/index.html": [
+      "VK_Stella"
+    ],
+    "apps/stela/launcher/sound-panel/panel.js": [
+      "VK_Stella"
+    ],
+    "apps/stela/launcher/sound-panel/panel.css": [
+      "VK_Stella"
+    ],
+    "apps/max-game/source/client/src/kdw-event-audio.mjs": [
+      "MAX-Game"
+    ],
+    "ops/production-build/deploy-sound/deploy.py": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "ops/production-build/deploy-sound/install.ps1": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "ops/production-build/deploy-sound/preflight.ps1": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "ops/production-build/deploy-sound/prepare.py": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-sound-deploy-20261027/max_right-delivery.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-sound-deploy-20261027/max_right-preflight.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-sound-deploy-20261027/max_right-status.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-sound-deploy-20261027/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-sound-deploy-20261027/stella-delivery.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-sound-deploy-20261027/stella-preflight.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-sound-deploy-20261027/stella-status.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "ops/stela-boot-hotfix-build.mjs": [
+      "VK_Stella"
+    ],
+    "ops/stela-boot-recovery-probe.cjs": [
+      "VK_Stella"
+    ],
+    "ops/stela-boot-deploy.py": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-safari-20261027/README.md": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-safari-20261027/hotfix.json": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-safari-20261027/deployment.json": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-safari-20261027/deploy-scope.json": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-safari-20261027/recovery.json": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-safari-20261027/export-after.json": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-safari-20261027/public-after.json": [
+      "VK_Stella"
+    ],
+    "ops/production-build/deploy-sound/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "ops/production-build/deploy-sound/prepare-patch.py": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "ops/production-build/deploy-sound/test_prepare.py": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-sound-deploy-20261027/plan.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/STAND_FAST_ITERATION.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "ops/production-build/desktop-startup/inventory.ps1": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "ops/production-build/desktop-startup/organize.ps1": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "ops/production-build/desktop-startup/run.py": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-desktop-startup-20261027/max_right-after.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-desktop-startup-20261027/max_right-before.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-desktop-startup-20261027/max_right-plan.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-desktop-startup-20261027/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-desktop-startup-20261027/stella-after.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-desktop-startup-20261027/stella-before.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-desktop-startup-20261027/stella-plan.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "ops/production-build/stand-roles.json": [
+      "MAX-Game"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/src/features/voice/audio-startup.ts": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/src/features/voice/audio-startup.test.ts": [
+      "VK_Stella"
+    ],
+    "ops/stela-audio-start-probe.cjs": [
+      "VK_Stella"
+    ],
+    "ops/stela-audio-native-probe.cjs": [
+      "VK_Stella"
+    ],
+    "ops/stela-web-preview.cjs": [
+      "VK_Stella"
+    ],
+    "ops/stela-audio-start-deploy.py": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-safari-20261027/audio-hotfix.json": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-safari-20261027/audio-export.json": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-safari-20261027/audio-public.json": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-safari-20261027/native-audio-export.json": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-safari-20261027/native-audio-public.json": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-safari-20261027/audio-deployment.json": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-safari-20261027/audio-deploy-scope.json": [
+      "VK_Stella"
+    ],
+    "docs/STELA_MAX_ASYNC_ARCHITECTURE.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "apps/STARTUP/tools/async-link.cjs": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "apps/STARTUP/tools/async-link.test.cjs": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "ops/production-build/async-link-browser.mjs": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-async-link-20261027/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "apps/max-game/launcher/async-link.cjs": [
+      "MAX-Game"
+    ],
+    "apps/stela/launcher/async-link.cjs": [
+      "VK_Stella"
+    ],
+    "ops/production-build/verify-async-link.ps1": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "ops/audit-fixes/spout-idle-check.mjs": [
+      "MAX-Game"
+    ],
+    "docs/verification-spout-idle-20261027/README.md": [
+      "MAX-Game"
+    ],
+    "docs/PRODUCTION_RESILIENCE_ARCHITECTURE.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "apps/STARTUP/tools/runtime-main.cjs": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "apps/max-game/launcher/runtime-main.cjs": [
+      "MAX-Game"
+    ],
+    "apps/stela/launcher/runtime-main.cjs": [
+      "VK_Stella"
+    ],
+    "apps/STARTUP/tools/runtime-worker-host.cjs": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "apps/max-game/launcher/runtime-worker-host.cjs": [
+      "MAX-Game"
+    ],
+    "apps/stela/launcher/runtime-worker-host.cjs": [
+      "VK_Stella"
+    ],
+    "apps/STARTUP/tools/runtime-ipc.cjs": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "apps/max-game/launcher/runtime-ipc.cjs": [
+      "MAX-Game"
+    ],
+    "apps/stela/launcher/runtime-ipc.cjs": [
+      "VK_Stella"
+    ],
+    "apps/STARTUP/tools/runtime-http.cjs": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "apps/max-game/launcher/runtime-http.cjs": [
+      "MAX-Game"
+    ],
+    "apps/stela/launcher/runtime-http.cjs": [
+      "VK_Stella"
+    ],
+    "apps/STARTUP/tools/runtime-panel.html": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "apps/max-game/launcher/runtime-panel.html": [
+      "MAX-Game"
+    ],
+    "apps/stela/launcher/runtime-panel.html": [
+      "VK_Stella"
+    ],
+    "apps/STARTUP/tools/runtime-policy.cjs": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "apps/max-game/launcher/runtime-policy.cjs": [
+      "MAX-Game"
+    ],
+    "apps/stela/launcher/runtime-policy.cjs": [
+      "VK_Stella"
+    ],
+    "apps/STARTUP/tools/runtime-journal.cjs": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "apps/max-game/launcher/runtime-journal.cjs": [
+      "MAX-Game"
+    ],
+    "apps/stela/launcher/runtime-journal.cjs": [
+      "VK_Stella"
+    ],
+    "apps/STARTUP/tools/runtime-crashes.cjs": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "apps/max-game/launcher/runtime-crashes.cjs": [
+      "MAX-Game"
+    ],
+    "apps/stela/launcher/runtime-crashes.cjs": [
+      "VK_Stella"
+    ],
+    "apps/STARTUP/tools/Install-RuntimeWatchdog.ps1": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "apps/max-game/launcher/Install-RuntimeWatchdog.ps1": [
+      "MAX-Game"
+    ],
+    "apps/stela/launcher/Install-RuntimeWatchdog.ps1": [
+      "VK_Stella"
+    ],
+    "apps/max-game/launcher/display-worker.cjs": [
+      "MAX-Game"
+    ],
+    "apps/stela/launcher/display-worker.cjs": [
+      "VK_Stella"
+    ],
+    "apps/STARTUP/tools/runtime-resilience.test.cjs": [
+      "MAX-Game"
+    ],
+    "apps/STARTUP/tools/spout-resilience.test.cjs": [
+      "MAX-Game"
+    ],
+    "ops/production-build/runtime-resilience-integration.cjs": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "ops/production-build/audit-runtime-host.ps1": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-runtime-resilience-20261027/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-runtime-resilience-20261027/process-tests.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-runtime-resilience-20261027/spout-process-tests.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-runtime-resilience-20261027/pc-audit.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-runtime-resilience-20261027/verification.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/stand-patches/RESILIENCE-20261027-1/max-game-pc-diagnostics.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/stand-patches/RESILIENCE-20261027-1/max_right-delivery.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/stand-patches/RESILIENCE-20261027-1/max_right-preflight.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/stand-patches/RESILIENCE-20261027-1/max_right-status.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/stand-patches/RESILIENCE-20261027-1/plan.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/stand-patches/RESILIENCE-20261027-1/stela-pc-diagnostics.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/stand-patches/RESILIENCE-20261027-1/stella-delivery.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/stand-patches/RESILIENCE-20261027-1/stella-preflight.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/stand-patches/RESILIENCE-20261027-1/stella-status.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/stand-patches/RESILIENCE-20261027-1/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "apps/max-game/source/client/src/kdw-video-audio.mjs": [
+      "MAX-Game"
+    ],
+    "apps/max-game/source/client/test/kdw-video-audio.test.mjs": [
+      "MAX-Game"
+    ],
+    "docs/verification-video-audio-20261027/README.md": [
+      "MAX-Game"
+    ],
+    "apps/stela/launcher/voice/ai-recovery.cjs": [
+      "VK_Stella"
+    ],
+    "ops/audit-fixes/stela-touch-recovery.mjs": [
+      "VK_Stella"
+    ],
+    "ops/audit-fixes/stela-touch-recovery.test.cjs": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-touch-recovery-20261027/README.md": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-touch-recovery-20261027/browser.json": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-touch-recovery-20261027/silent-ai-fallback.png": [
+      "VK_Stella"
+    ],
+    "apps/STARTUP/tools/layout-settings.cjs": [
+      "MAX-Game"
+    ],
+    "apps/max-game/launcher/layout-settings.cjs": [
+      "MAX-Game"
+    ],
+    "apps/max-game/source/client/src/kdw-composition-layout.mjs": [
+      "MAX-Game"
+    ],
+    "apps/max-game/source/client/test/kdw-composition-layout.test.mjs": [
+      "MAX-Game"
+    ],
+    "apps/max-game/source/operator/layout.html": [
+      "MAX-Game"
+    ],
+    "apps/max-game/source/operator/layout.js": [
+      "MAX-Game"
+    ],
+    "apps/max-game/source/operator/layout.css": [
+      "MAX-Game"
+    ],
+    "apps/max-game/www/admin/layout.html": [
+      "MAX-Game"
+    ],
+    "apps/max-game/www/admin/layout.js": [
+      "MAX-Game"
+    ],
+    "apps/max-game/www/admin/layout.css": [
+      "MAX-Game"
+    ],
+    "ops/production-build/layout-settings.test.cjs": [
+      "MAX-Game"
+    ],
+    "ops/production-build/layout-browser.mjs": [
+      "MAX-Game"
+    ],
+    "docs/verification-composition-20261027/README.md": [
+      "MAX-Game"
+    ],
+    "docs/verification-composition-20261027/browser.json": [
+      "MAX-Game"
+    ],
+    "ops/audit-fixes/stela-listening-frame.mjs": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-listening-frame-20261027/README.md": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-listening-frame-20261027/idle.png": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-listening-frame-20261027/listening.png": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-listening-frame-20261027/browser.json": [
+      "VK_Stella"
+    ],
+    "apps/STARTUP/tools/lan-admin.cjs": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "apps/STARTUP/tools/lan-admin-panel.js": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "apps/max-game/launcher/lan-admin.cjs": [
+      "MAX-Game"
+    ],
+    "apps/max-game/launcher/lan-admin-panel.js": [
+      "MAX-Game"
+    ],
+    "apps/stela/launcher/lan-admin.cjs": [
+      "VK_Stella"
+    ],
+    "apps/stela/launcher/lan-admin-panel.js": [
+      "VK_Stella"
+    ],
+    "ops/production-build/configure-lan-admin.ps1": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "ops/production-build/lan-admin.test.cjs": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "ops/production-build/lan-admin-browser.mjs": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-lan-admin-20261027/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-lan-admin-20261027/browser.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/src/features/voice/listening-pixel-field.ts": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/src/features/voice/listening-pixel-field.test.ts": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/src/styles/listening-pixels.css": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/assets/PixelScene.css": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-listening-pixels-20261027/browser.json": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-listening-pixels-20261027/idle.png": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-listening-pixels-20261027/landscape.png": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-listening-pixels-20261027/listening.png": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-listening-pixels-20261027/README.md": [
+      "VK_Stella"
+    ],
+    "apps/max-game/source/operator/layout-calibration.js": [
+      "MAX-Game"
+    ],
+    "apps/max-game/www/admin/layout-calibration.js": [
+      "MAX-Game"
+    ],
+    "ops/production-build/manual-calibration.test.cjs": [
+      "MAX-Game"
+    ],
+    "docs/verification-profiles-lidar-20261027/README.md": [
+      "MAX-Game"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/src/features/presence/presence-frame.ts": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/src/features/presence/presence-session.test.ts": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/src/features/presence/presence-session.ts": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/src/features/presence/presence-state.test.ts": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/src/features/presence/presence-state.ts": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/src/features/presence/presence-worker.test.ts": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/src/features/presence/use-entry-presence.test.tsx": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/src/features/presence/use-entry-presence.ts": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/presence/blaze_face_short_range.tflite": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/presence/LICENSE": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/presence/README.md": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/presence/vision_bundle.cjs": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/presence/worker.js": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/presence/wasm/vision_wasm_internal.js": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/presence/wasm/vision_wasm_internal.wasm": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/presence/wasm/vision_wasm_nosimd_internal.js": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/presence/wasm/vision_wasm_nosimd_internal.wasm": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/presence/blaze_face_short_range.tflite": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/presence/LICENSE": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/presence/README.md": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/presence/vision_bundle.cjs": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/presence/worker.js": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/presence/wasm/vision_wasm_internal.js": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/presence/wasm/vision_wasm_internal.wasm": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/presence/wasm/vision_wasm_nosimd_internal.js": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/presence/wasm/vision_wasm_nosimd_internal.wasm": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-presence-20261027/arrival-intro.png": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-presence-20261027/assets.json": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-presence-20261027/browser.json": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-presence-20261027/README.md": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-presence-20261027/rim/browser.json": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-presence-20261027/rim/idle.png": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-presence-20261027/rim/landscape.png": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-presence-20261027/rim/listening.png": [
+      "VK_Stella"
+    ],
+    "ops/audit-fixes/stela-presence.mjs": [
+      "VK_Stella"
+    ],
+    "ops/audit-fixes/stela-presence.test.cjs": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/src/features/voice/presence-rim.test.ts": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-presence-rim-20261027/arrival-intro.png": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-presence-rim-20261027/browser.json": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-presence-rim-20261027/README.md": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-presence-rim-20261027/rim-progress.json": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/src/features/camera/camera-frame.test.ts": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/src/features/camera/camera-frame.ts": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-camera-left-20261027/browser.json": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-camera-left-20261027/preview.png": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-camera-left-20261027/README.md": [
+      "VK_Stella"
+    ],
+    "ops/audit-fixes/stela-camera-left.mjs": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-camera-upright-20261027/browser.json": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-camera-upright-20261027/preview.png": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-camera-upright-20261027/README.md": [
+      "VK_Stella"
+    ],
+    "apps/max-game/source/client/src/kdw-native-touch.mjs": [
+      "MAX-Game"
+    ],
+    "apps/max-game/source/client/test/kdw-native-touch.test.mjs": [
+      "MAX-Game"
+    ],
+    "docs/verification-mission-touch-links-20261027/README.md": [
+      "MAX-Game"
+    ],
+    "docs/verification-mission-touch-links-20261027/browser.json": [
+      "MAX-Game"
+    ],
+    "apps/stela/Start-Recorded.bat": [
+      "VK_Stella"
+    ],
+    "apps/stela/Start-Generated.bat": [
+      "VK_Stella"
+    ],
+    "apps/stela/launcher/Speech-Mode.ps1": [
+      "VK_Stella"
+    ],
+    "apps/stela/launcher/voice/recording-policy.cjs": [
+      "VK_Stella"
+    ],
+    "ops/audit-fixes/stela-recorded.test.cjs": [
+      "VK_Stella"
+    ],
+    "ops/audit-fixes/stela-recorded-browser.mjs": [
+      "VK_Stella"
+    ],
+    "docs/STELA_RECORDED_MODE.md": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/kazan-20261027/audience.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/kazan-20261027/error-camera.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/kazan-20261027/error-voice.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/kazan-20261027/help-about-max.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/kazan-20261027/help-about-stand.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/kazan-20261027/help-choose-one.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/kazan-20261027/help-controls.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/kazan-20261027/help-not-heard.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/kazan-20261027/help-off-topic.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/kazan-20261027/intro.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/kazan-20261027/manifest.json": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/kazan-20261027/photo-ready.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/kazan-20261027/photo-review.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/kazan-20261027/result-blogger.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/kazan-20261027/result-business-promotion.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/kazan-20261027/result-communication.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/kazan-20261027/result-digital-id.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/kazan-20261027/audience.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/kazan-20261027/error-camera.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/kazan-20261027/error-voice.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/kazan-20261027/help-about-max.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/kazan-20261027/help-about-stand.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/kazan-20261027/help-choose-one.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/kazan-20261027/help-controls.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/kazan-20261027/help-not-heard.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/kazan-20261027/help-off-topic.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/kazan-20261027/intro.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/kazan-20261027/manifest.json": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/kazan-20261027/photo-ready.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/kazan-20261027/photo-review.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/kazan-20261027/result-blogger.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/kazan-20261027/result-business-promotion.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/kazan-20261027/result-communication.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/kazan-20261027/result-digital-id.wav": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-recorded-20261027/browser.json": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-recorded-20261027/recorded-result.png": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-recorded-20261027/README.md": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/STELA-RECORDED-CAMERA-20261027-2/max-game-pc-verified.json": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/STELA-RECORDED-CAMERA-20261027-2/max_right-delivery.json": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/STELA-RECORDED-CAMERA-20261027-2/max_right-preflight.json": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/STELA-RECORDED-CAMERA-20261027-2/max_right-status.json": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/STELA-RECORDED-CAMERA-20261027-2/plan.json": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/STELA-RECORDED-CAMERA-20261027-2/README.md": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/STELA-RECORDED-CAMERA-20261027-2/stela-pc-verified.json": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/STELA-RECORDED-CAMERA-20261027-2/stela-screen-events.json": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/STELA-RECORDED-CAMERA-20261027-2/stella-delivery.json": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/STELA-RECORDED-CAMERA-20261027-2/stella-preflight.json": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/STELA-RECORDED-CAMERA-20261027-2/stella-status.json": [
+      "VK_Stella"
+    ],
+    "docs/verification-idle-keyboard-20261027/README.md": [
+      "MAX-Game"
+    ],
+    "docs/verification-idle-keyboard-20261027/browser.json": [
+      "MAX-Game"
+    ],
+    "apps/max-game/source/client/test/kdw-startup-idle.test.mjs": [
+      "MAX-Game"
+    ],
+    "ops/audit-fixes/stela-photo-guide.mjs": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-photo-guide-20261027/browser.json": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-photo-guide-20261027/preview.png": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-photo-guide-20261027/README.md": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/src/features/voice/photo-guide-tracking.ts": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/src/features/voice/photo-guide-tracking.test.ts": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/src/features/voice/use-photo-guide-tracking.ts": [
+      "VK_Stella"
+    ],
+    "ops/audit-fixes/stela-face-guide.mjs": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-face-guide-20261027/browser.json": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-face-guide-20261027/following.png": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-face-guide-20261027/README.md": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/STELA-FACE-GUIDE-20261027-1/max-game-pc-verified.json": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/STELA-FACE-GUIDE-20261027-1/max_right-delivery.json": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/STELA-FACE-GUIDE-20261027-1/max_right-preflight.json": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/STELA-FACE-GUIDE-20261027-1/max_right-status.json": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/STELA-FACE-GUIDE-20261027-1/plan.json": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/STELA-FACE-GUIDE-20261027-1/README.md": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/STELA-FACE-GUIDE-20261027-1/stela-pc-verified.json": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/STELA-FACE-GUIDE-20261027-1/stella-delivery.json": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/STELA-FACE-GUIDE-20261027-1/stella-preflight.json": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/STELA-FACE-GUIDE-20261027-1/stella-status.json": [
+      "VK_Stella"
+    ],
+    "apps/max-game/source/client/test/kdw-store-motion.test.mjs": [
+      "MAX-Game"
+    ],
+    "ops/production-build/card-flow-fixture.mjs": [
+      "MAX-Game"
+    ],
+    "ops/production-build/card-flow-browser.mjs": [
+      "MAX-Game"
+    ],
+    "docs/verification-card-flow-smooth-20261027/README.md": [
+      "MAX-Game"
+    ],
+    "docs/verification-card-flow-smooth-20261027/before.json": [
+      "MAX-Game"
+    ],
+    "docs/verification-card-flow-smooth-20261027/verified.json": [
+      "MAX-Game"
+    ],
+    "docs/stand-patches/CARD-FLOW-SMOOTH-20261027-1/max-game-pc-input-active.json": [
+      "MAX-Game"
+    ],
+    "docs/stand-patches/CARD-FLOW-SMOOTH-20261027-1/max_right-delivery.json": [
+      "MAX-Game"
+    ],
+    "docs/stand-patches/CARD-FLOW-SMOOTH-20261027-1/max_right-preflight.json": [
+      "MAX-Game"
+    ],
+    "docs/stand-patches/CARD-FLOW-SMOOTH-20261027-1/max_right-status.json": [
+      "MAX-Game"
+    ],
+    "docs/stand-patches/CARD-FLOW-SMOOTH-20261027-1/plan.json": [
+      "MAX-Game"
+    ],
+    "docs/stand-patches/CARD-FLOW-SMOOTH-20261027-1/README.md": [
+      "MAX-Game"
+    ],
+    "docs/stand-patches/CARD-FLOW-SMOOTH-20261027-1/stella-delivery.json": [
+      "MAX-Game"
+    ],
+    "docs/stand-patches/CARD-FLOW-SMOOTH-20261027-1/stella-preflight.json": [
+      "MAX-Game"
+    ],
+    "docs/stand-patches/CARD-FLOW-SMOOTH-20261027-1/stella-status.json": [
+      "MAX-Game"
+    ],
+    "docs/verification-menu-input-20261027/README.md": [
+      "MAX-Game"
+    ],
+    "apps/stela/launcher/screen-state.cjs": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/src/features/voice/use-screen-publication.ts": [
+      "VK_Stella"
+    ],
+    "ops/audit-fixes/stela-screen-api.test.cjs": [
+      "VK_Stella"
+    ],
+    "ops/audit-fixes/stela-screen-api.mjs": [
+      "VK_Stella"
+    ],
+    "docs/STELA_SCREEN_API.md": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-screen-api-20261027/browser.json": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-screen-api-20261027/events.json": [
+      "VK_Stella"
+    ],
+    "docs/verification-stela-screen-api-20261027/result.png": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/STELA-SCREEN-API-20261027-1/max_right-delivery.json": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/STELA-SCREEN-API-20261027-1/max_right-preflight.json": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/STELA-SCREEN-API-20261027-1/max_right-status.json": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/STELA-SCREEN-API-20261027-1/max_right-verification.json": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/STELA-SCREEN-API-20261027-1/plan.json": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/STELA-SCREEN-API-20261027-1/README.md": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/STELA-SCREEN-API-20261027-1/stella-delivery.json": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/STELA-SCREEN-API-20261027-1/stella-preflight.json": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/STELA-SCREEN-API-20261027-1/stella-status.json": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/STELA-SCREEN-API-20261027-1/stella-verification.json": [
+      "VK_Stella"
+    ],
+    "docs/stand-patches/ALL-UPDATES-MAX-20261027-1/plan.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/stand-patches/ALL-UPDATES-MAX-20261027-1/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/stand-patches/ALL-UPDATES-MAX-20261027-1/stella-delivery.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/stand-patches/ALL-UPDATES-MAX-20261027-1/stella-preflight.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/stand-patches/ALL-UPDATES-MAX-20261027-1/stella-status.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/stand-patches/ALL-UPDATES-MAX-20261027-1/verification.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/stand-patches/ALL-UPDATES-STELA-20261027-1/max_right-delivery.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/stand-patches/ALL-UPDATES-STELA-20261027-1/max_right-preflight.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/stand-patches/ALL-UPDATES-STELA-20261027-1/max_right-status.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/stand-patches/ALL-UPDATES-STELA-20261027-1/plan.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/stand-patches/ALL-UPDATES-STELA-20261027-1/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/stand-patches/ALL-UPDATES-STELA-20261027-1/verification.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "ops/production-build/navigation-press-browser.mjs": [
+      "MAX-Game"
+    ],
+    "docs/verification-card-press-smooth-20261027/after.json": [
+      "MAX-Game"
+    ],
+    "docs/verification-card-press-smooth-20261027/before.json": [
+      "MAX-Game"
+    ],
+    "docs/verification-card-press-smooth-20261027/navigation-press.json": [
+      "MAX-Game"
+    ],
+    "docs/verification-card-press-smooth-20261027/README.md": [
+      "MAX-Game"
+    ],
+    "ops/production-build/card-native-scene-browser.mjs": [
+      "MAX-Game"
+    ],
+    "docs/verification-card-press-smooth-20261027/full-scene.json": [
+      "MAX-Game"
+    ],
+    "ops/production-build/menu-start-browser.mjs": [
+      "MAX-Game"
+    ],
+    "apps/max-game/source/client/test/kdw-menu-diagnostics.test.mjs": [
+      "MAX-Game"
+    ],
+    "docs/verification-menu-start-retry-20261027/browser.json": [
+      "MAX-Game"
+    ],
+    "docs/verification-menu-start-retry-20261027/README.md": [
+      "MAX-Game"
+    ],
+    "docs/stand-patches/MENU-START-MAX-20261027-1/active-game-verified.json": [
+      "MAX-Game"
+    ],
+    "docs/stand-patches/MENU-START-MAX-20261027-1/operator-verified.json": [
+      "MAX-Game"
+    ],
+    "docs/stand-patches/MENU-START-MAX-20261027-1/plan.json": [
+      "MAX-Game"
+    ],
+    "docs/stand-patches/MENU-START-MAX-20261027-1/README.md": [
+      "MAX-Game"
+    ],
+    "docs/stand-patches/MENU-START-MAX-20261027-1/stella-delivery.json": [
+      "MAX-Game"
+    ],
+    "docs/stand-patches/MENU-START-MAX-20261027-1/stella-preflight.json": [
+      "MAX-Game"
+    ],
+    "docs/stand-patches/MENU-START-MAX-20261027-1/stella-status.json": [
+      "MAX-Game"
+    ],
+    "docs/stand-patches/MENU-START-STELA-20261027-1/max_right-delivery.json": [
+      "MAX-Game"
+    ],
+    "docs/stand-patches/MENU-START-STELA-20261027-1/max_right-preflight.json": [
+      "MAX-Game"
+    ],
+    "docs/stand-patches/MENU-START-STELA-20261027-1/max_right-status.json": [
+      "MAX-Game"
+    ],
+    "docs/stand-patches/MENU-START-STELA-20261027-1/plan.json": [
+      "MAX-Game"
+    ],
+    "docs/stand-patches/MENU-START-STELA-20261027-1/README.md": [
+      "MAX-Game"
+    ],
+    "apps/STARTUP/Start-Stela-Recorded.bat": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-recorded-startup-20261027/max-game-pc.json": [
+      "VK_Stella"
+    ],
+    "docs/verification-recorded-startup-20261027/README.md": [
+      "VK_Stella"
+    ],
+    "docs/verification-recorded-startup-20261027/stela-pc.json": [
+      "VK_Stella"
+    ],
+    "apps/max-game/source/client/src/kdw-graceful-media.mjs": [
+      "MAX-Game"
+    ],
+    "apps/max-game/source/client/src/kdw-standby-cover.mjs": [
+      "MAX-Game"
+    ],
+    "apps/max-game/source/client/test/kdw-graceful-media.test.mjs": [
+      "MAX-Game"
+    ],
+    "apps/max-game/source/client/test/kdw-standby-cover.test.mjs": [
+      "MAX-Game"
+    ],
+    "ops/production-build/graceful-browser.mjs": [
+      "MAX-Game"
+    ],
+    "ops/production-build/graceful-shell-browser.mjs": [
+      "MAX-Game"
+    ],
+    "ops/production-build/graceful-startup-browser.mjs": [
+      "MAX-Game"
+    ],
+    "ops/production-build/graceful-stela-browser.mjs": [
+      "MAX-Game"
+    ],
+    "docs/verification-graceful-ui-20261027/browser.json": [
+      "MAX-Game"
+    ],
+    "docs/verification-graceful-ui-20261027/delayed-fallback.png": [
+      "MAX-Game"
+    ],
+    "docs/verification-graceful-ui-20261027/menu-start-browser.json": [
+      "MAX-Game"
+    ],
+    "docs/verification-graceful-ui-20261027/missing-fallback.png": [
+      "MAX-Game"
+    ],
+    "docs/verification-graceful-ui-20261027/README.md": [
+      "MAX-Game"
+    ],
+    "docs/verification-graceful-ui-20261027/startup-browser.json": [
+      "MAX-Game"
+    ],
+    "docs/verification-graceful-ui-20261027/stela-browser.json": [
+      "MAX-Game"
+    ],
+    "docs/verification-graceful-ui-20261027/stela-neutral.png": [
+      "MAX-Game"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/src/features/voice/neutral-portrait.ts": [
+      "VK_Stella"
+    ],
+    "docs/verification-graceful-ui-20261027/quiet-preparing.png": [
+      "MAX-Game"
+    ],
+    "docs/verification-graceful-ui-20261027/quiet-transition.json": [
+      "MAX-Game"
+    ],
+    "ops/production-build/quiet-transition-browser.mjs": [
+      "MAX-Game"
+    ],
+    "docs/verification-queue-counter-20261027/browser.json": [
+      "MAX-Game"
+    ],
+    "docs/verification-queue-counter-20261027/README.md": [
+      "MAX-Game"
+    ],
+    "docs/verification-queue-counter-20261027/task.png": [
+      "MAX-Game"
+    ],
+    "docs/verification-keyboard-press-20261027/browser.json": [
+      "MAX-Game"
+    ],
+    "docs/verification-keyboard-press-20261027/README.md": [
+      "MAX-Game"
+    ],
+    "ops/production-build/keyboard-press-browser.mjs": [
+      "MAX-Game"
+    ],
+    "docs/verification-photo-transfer-20261027/benchmark.cjs": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-photo-transfer-20261027/benchmark.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-photo-transfer-20261027/lan-check.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-photo-transfer-20261027/README.md": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-photo-transfer-20261027/stela-monitor.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-photo-transfer-20261027/stela-observations.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-photo-transfer-20261027/stela-pc-runtime.json": [
+      "MAX-Game",
+      "VK_Stella"
+    ],
+    "docs/verification-standby-return-20261028/after.json": [
+      "MAX-Game"
+    ],
+    "docs/verification-standby-return-20261028/before.json": [
+      "MAX-Game"
+    ],
+    "docs/verification-standby-return-20261028/README.md": [
+      "MAX-Game"
+    ],
+    "docs/verification-standby-return-20261028/scope.json": [
+      "MAX-Game"
+    ],
+    "ops/production-build/standby-return-browser.mjs": [
+      "MAX-Game"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/vasilisa-2707/audience.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/vasilisa-2707/error-camera.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/vasilisa-2707/error-voice.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/vasilisa-2707/help-about-max.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/vasilisa-2707/help-about-stand.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/vasilisa-2707/help-choose-one.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/vasilisa-2707/help-controls.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/vasilisa-2707/help-not-heard.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/vasilisa-2707/help-off-topic.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/vasilisa-2707/intro.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/vasilisa-2707/manifest.json": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/vasilisa-2707/photo-ready.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/vasilisa-2707/photo-review.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/vasilisa-2707/result-blogger.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/vasilisa-2707/result-business-promotion.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/vasilisa-2707/result-communication.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/source/artifacts/stella-prototype/public/voice/vasilisa-2707/result-digital-id.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/vasilisa-2707/audience.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/vasilisa-2707/error-camera.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/vasilisa-2707/error-voice.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/vasilisa-2707/help-about-max.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/vasilisa-2707/help-about-stand.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/vasilisa-2707/help-choose-one.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/vasilisa-2707/help-controls.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/vasilisa-2707/help-not-heard.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/vasilisa-2707/help-off-topic.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/vasilisa-2707/intro.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/vasilisa-2707/manifest.json": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/vasilisa-2707/photo-ready.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/vasilisa-2707/photo-review.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/vasilisa-2707/result-blogger.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/vasilisa-2707/result-business-promotion.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/vasilisa-2707/result-communication.wav": [
+      "VK_Stella"
+    ],
+    "apps/stela/www/stella/voice/vasilisa-2707/result-digital-id.wav": [
+      "VK_Stella"
+    ],
+    "ops/audit-fixes/import-vasilisa-2707.py": [
+      "VK_Stella"
+    ],
+    "apps/max-game/source/client/src/activity-webgl/activity-controller.mjs": [
+      "MAX-Game"
+    ],
+    "apps/max-game/source/client/src/activity-webgl/activity-input.mjs": [
+      "MAX-Game"
+    ],
+    "apps/max-game/source/client/src/activity-webgl/activity-layer.mjs": [
+      "MAX-Game"
+    ],
+    "apps/max-game/source/client/src/activity-webgl/activity-model.mjs": [
+      "MAX-Game"
+    ],
+    "apps/max-game/source/client/src/activity-webgl/activity-resources.mjs": [
+      "MAX-Game"
+    ],
+    "apps/max-game/source/client/src/activity-webgl/activity-runtime.mjs": [
+      "MAX-Game"
+    ],
+    "apps/max-game/source/client/src/activity-webgl/activity-trails.mjs": [
+      "MAX-Game"
+    ],
+    "ops/activity-webgl/analyze-motion.mjs": [
+      "MAX-Game"
+    ],
+    "ops/activity-webgl/analyze-motion.test.mjs": [
+      "MAX-Game"
+    ],
+    "ops/activity-webgl/analyze-spout.mjs": [
+      "MAX-Game"
+    ],
+    "ops/activity-webgl/motion-probe.js": [
+      "MAX-Game"
+    ],
+    "ops/activity-webgl/serve-motion.mjs": [
+      "MAX-Game"
+    ],
+    "ops/activity-webgl/stand-idle-spout.ps1": [
+      "MAX-Game"
+    ],
+    "ops/activity-webgl/stand-inspect.ps1": [
+      "MAX-Game"
+    ],
+    "ops/activity-webgl/stand-motion.ps1": [
+      "MAX-Game"
+    ],
+    "ops/activity-webgl/stand-remote.py": [
+      "MAX-Game"
+    ],
+    "ops/activity-webgl/verify-browser.mjs": [
+      "MAX-Game"
+    ],
+    "docs/verification-activity-webgl-iab-20261028/console.json": [
+      "MAX-Game"
+    ],
+    "docs/verification-activity-webgl-iab-20261028/iab-posts-exact.json": [
+      "MAX-Game"
+    ],
+    "docs/verification-activity-webgl-iab-20261028/iab-posts.json": [
+      "MAX-Game"
+    ],
+    "docs/verification-activity-webgl-iab-20261028/iab-store-exact.json": [
+      "MAX-Game"
+    ],
+    "docs/verification-activity-webgl-iab-20261028/motion-summary.json": [
+      "MAX-Game"
+    ],
+    "docs/verification-activity-webgl-iab-20261028/posts.png": [
+      "MAX-Game"
+    ],
+    "docs/verification-activity-webgl-iab-20261028/README.md": [
+      "MAX-Game"
+    ],
+    "docs/verification-activity-webgl-iab-20261028/store.png": [
+      "MAX-Game"
+    ],
+    "docs/verification-activity-webgl-20261027/audit-summary.json": [
+      "MAX-Game"
+    ],
+    "docs/verification-activity-webgl-20261027/browser.json": [
+      "MAX-Game"
+    ],
+    "docs/verification-activity-webgl-20261027/posts-complete.png": [
+      "MAX-Game"
+    ],
+    "docs/verification-activity-webgl-20261027/posts-playing.png": [
+      "MAX-Game"
+    ],
+    "docs/verification-activity-webgl-20261027/README.md": [
+      "MAX-Game"
+    ],
+    "docs/verification-activity-webgl-20261027/store-complete.png": [
+      "MAX-Game"
+    ],
+    "docs/verification-activity-webgl-20261027/store-playing.png": [
+      "MAX-Game"
+    ],
+    "docs/stand-patches/ACTIVITY-WEBGL-20261027-1/idle-spout.json": [
+      "MAX-Game"
+    ],
+    "docs/stand-patches/ACTIVITY-WEBGL-20261027-1/motion-summary.json": [
+      "MAX-Game"
+    ],
+    "docs/stand-patches/ACTIVITY-WEBGL-20261027-1/motion.json": [
+      "MAX-Game"
+    ],
+    "docs/stand-patches/ACTIVITY-WEBGL-20261027-1/plan.json": [
+      "MAX-Game"
+    ],
+    "docs/stand-patches/ACTIVITY-WEBGL-20261027-1/README.md": [
+      "MAX-Game"
+    ],
+    "docs/stand-patches/ACTIVITY-WEBGL-20261027-1/stella-delivery.json": [
+      "MAX-Game"
+    ],
+    "docs/stand-patches/ACTIVITY-WEBGL-20261027-1/stella-preflight.json": [
+      "MAX-Game"
+    ],
+    "docs/stand-patches/ACTIVITY-WEBGL-20261027-1/stella-status.json": [
+      "MAX-Game"
+    ],
+    "apps/max-game/source/client/test/activity-input.test.mjs": [
+      "MAX-Game"
+    ],
+    "apps/max-game/source/client/test/activity-runtime-default.test.mjs": [
+      "MAX-Game"
+    ],
+    "apps/max-game/source/client/test/activity-webgl.test.mjs": [
+      "MAX-Game"
+    ],
+    "apps/stela/launcher/renderer-recovery.cjs": [
       "VK_Stella"
     ]
   }

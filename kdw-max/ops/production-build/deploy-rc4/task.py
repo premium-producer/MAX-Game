@@ -1,7 +1,7 @@
 import argparse,pathlib,sys
 sys.path.insert(0,str(pathlib.Path(__file__).resolve().parent.parent/'deploy-rc2'))
 import remote
-p=argparse.ArgumentParser();p.add_argument('device',choices=remote.route.TARGETS);p.add_argument('mode',choices=['install','verify','start','probe']);a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('device',choices=['max_right','stella']);p.add_argument('mode',choices=['install','verify','start','probe']);a=p.parse_args()
 file={'install':'install.ps1'}.get(a.mode,'run-apps.ps1')
 remote.upload(a.device,pathlib.Path(__file__).with_name(file),'C:/KDW-Stand/deploy/RC4-1/'+file)
 extra='' if a.mode == 'install' else ' -Mode '+a.mode

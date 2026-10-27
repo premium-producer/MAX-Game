@@ -47,7 +47,9 @@ export function pixelFlowViewport(width,height){
 }
 export function alignPixelKeyboard(node){
  const area=pixelActivityViewport();if(!node||!area)return false;
- Object.assign(node.style,{left:((area.left+area.right)/2)+'px',top:'auto',bottom:(innerHeight-area.bottom)+'px'});
+ // Lift the four key rows under the route icons instead of anchoring them
+ // to the lower safe edge; keep the same proportional inset on scaled walls.
+ Object.assign(node.style,{left:((area.left+area.right)/2)+'px',top:'auto',bottom:(innerHeight-area.bottom+area.height*.08)+'px'});
  node.style.setProperty('--kdw-scale',Math.min(area.width/1600,area.height/900));return true;
 }
 export function installPixelMapInput(){

@@ -23,7 +23,7 @@ function validate(input){
 }
 function publicGame(r){if(!r)return null;return{schemaVersion:1,gameId:r.gameId,sessionId:r.gameId,voiceSessionId:r.voiceSessionId,missionId:r.missionId,gameMissionId:r.missionId==='business-promotion'?'business':r.missionId,audience:r.audience,goal:r.goal,hasPhoto:!!r.photo,photoSha256:r.photo?.sha256??null,createdAt:r.createdAt,updatedAt:r.updatedAt,status:r.status,progress:r.progress??null,...(r.standPolicy?{standPolicy:r.standPolicy,source:r.source??'stella'}:{})};}
 const NEUTRAL='data:image/svg+xml;base64,'+Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920"><path fill="#251444" d="M0 0h1080v1920H0z"/><circle cx="540" cy="430" r="200" fill="#8674a6"/><ellipse cx="540" cy="990" rx="400" ry="330" fill="#8674a6"/></svg>').toString('base64');
-function createGameHub({root,origin,now=()=>Date.now(),production=false}){
+function createGameHub({root,origin,now=()=>Date.now(),production=false,getOutput=()=>null,validatePhoto=()=>{}}){
  const settings=require('./stand-settings.cjs').createSettings({root,enabled:production});
  const assetCache=new Map(),heartbeats=new Map();
  const directory=path.join(root,'data/link'),games=path.join(directory,'games'),keyFile=path.join(directory,'key.json');fs.mkdirSync(games,{recursive:true});
@@ -31,49 +31,62 @@ function createGameHub({root,origin,now=()=>Date.now(),production=false}){
  const key=read(keyFile).key;if(!/^[a-f0-9]{64}$/.test(key))throw fail('INVALID_PAIRING_KEY');
  const file=id=>{if(!UUID.test(id))throw fail('INVALID_GAME_ID');return path.join(games,id+'.json');};
  const transitionFile=path.join(directory,'replacement.json');
+ function clearPhoto(r){if(r.photo?.blob){const f=path.join(directory,'photos',path.basename(r.photo.blob));if(fs.existsSync(f))fs.unlinkSync(f);}r.photo=null;}
  function finishReplacement(){
   const job=read(transitionFile);if(!job)return;
   // Replay an interrupted replacement before exposing the queue. New ID first,
   // then terminal predecessors, then active pointer; every step is idempotent.
   if(!read(file(job.next.gameId)))atomic(file(job.next.gameId),job.next);
-  for(const id of job.previous){const old=read(file(id));if(old&&old.status!=='superseded'){old.status='superseded';old.supersededBy=job.next.gameId;old.updatedAt=job.next.createdAt;old.photo=null;atomic(file(id),old);}}
+  for(const id of job.previous){const old=read(file(id));if(old&&old.status!=='superseded'){old.status='superseded';old.supersededBy=job.next.gameId;old.updatedAt=job.next.createdAt;clearPhoto(old);atomic(file(id),old);}}
   const a=read(path.join(directory,'active.json'));if(job.previous.includes(a?.gameId))atomic(path.join(directory,'active.json'),{gameId:null});
   fs.unlinkSync(transitionFile);
  }
  finishReplacement();
- const get=id=>{const r=read(file(id));if(!r)throw fail('GAME_NOT_FOUND',404);if(r.photo&&now()-Date.parse(r.createdAt)>DAY){r.photo=null;r.photoExpired=true;atomic(file(id),r);}return r;};
+ const deadlines=new Map();
+ const get=id=>{const r=read(file(id));if(!r)throw fail('GAME_NOT_FOUND',404);
+  if(r.delivery&&!r.claimedAt&&!['task','result','completed','incomplete'].includes(r.progress?.status)&&!['released','superseded','cancelled','handoff-expired'].includes(r.status)){
+   let d=deadlines.get(id);if(!d){d={mono:performance.now(),remaining:r.delivery.deadline-now()};deadlines.set(id,d);}
+   if(now()<r.delivery.receivedAt||now()>=r.delivery.deadline||performance.now()-d.mono>=d.remaining){r.status='handoff-expired';clearPhoto(r);atomic(file(id),r);}
+  }
+  if(r.photo&&now()-Date.parse(r.createdAt)>DAY){if(r.photo.blob){const f=path.join(directory,'photos',r.photo.blob);if(fs.existsSync(f))fs.unlinkSync(f);}r.photo=null;r.photoExpired=true;atomic(file(id),r);}return r;};
  function records(){return fs.readdirSync(games).filter(n=>UUID.test(n.slice(0,-5))&&n.endsWith('.json')).map(n=>publicGame(get(n.slice(0,-5)))).sort((a,b)=>Date.parse(a.createdAt)-Date.parse(b.createdAt));}
  function active(){finishReplacement();let a=read(path.join(directory,'active.json')),r=a?.gameId?get(a.gameId):null;
-  if(r&&(!production&&['completed','incomplete','expired'].includes(r.status)&&now()-Date.parse(r.updatedAt)>=30000||['released','superseded'].includes(r.status)))r=null;
+  if(r&&(!production&&['completed','incomplete','expired'].includes(r.status)&&now()-Date.parse(r.updatedAt)>=30000||['released','superseded','cancelled','handoff-expired'].includes(r.status)))r=null;
   if(production&&!r&&a?.cooldownUntil>now())return null;
   if(production&&r&&!r.standPolicy){r.standPolicy=settings.snapshot();atomic(file(r.gameId),r);}
   if(!r){const pending=records().find(g=>g.status==='queued');r=pending?get(pending.gameId):null;if(r){r.status='assigned';if(production)r.standPolicy=settings.snapshot();r.updatedAt=new Date(now()).toISOString();atomic(file(r.gameId),r);}atomic(path.join(directory,'active.json'),{gameId:r?.gameId??null});}return r;
  }
- function ingest(input,{manual=false}={}){finishReplacement();if(production&&!manual&&settings.snapshot().value.max.entryMode==='manual')throw fail('HANDOFF_DISABLED',409);const value=validate(input),previous=read(file(value.gameId)),signature=hash(JSON.stringify(value));if(previous){if(previous.signature!==signature)throw fail('GAME_ID_CONFLICT',409);return{...publicGame(get(value.gameId)),duplicate:true};}
+ function ingest(input,{manual=false,delivery=null}={}){finishReplacement();if(production&&!manual&&settings.snapshot().value.max.entryMode==='manual')throw fail('HANDOFF_DISABLED',409);const value=validate(input),previous=read(file(value.gameId)),signature=hash(JSON.stringify(value));if(previous){if(previous.signature!==signature)throw fail('GAME_ID_CONFLICT',409);return{...publicGame(get(value.gameId)),duplicate:true};}
   // Bound persistent visitor data. Expired records are pruned; live records are never evicted.
-  const all=records();for(const r of all)if(now()-Date.parse(r.createdAt)>30*DAY&&['released','superseded','expired'].includes(r.status)&&r.gameId!==read(path.join(directory,'active.json'))?.gameId)fs.unlinkSync(file(r.gameId));
+  const all=records();for(const r of all)if(now()-Date.parse(r.createdAt)>30*DAY&&['released','superseded','expired','cancelled','handoff-expired'].includes(r.status)&&r.gameId!==read(path.join(directory,'active.json'))?.gameId)fs.unlinkSync(file(r.gameId));
   const live=records().filter(g=>['queued','assigned','playing','completed','incomplete'].includes(g.status));
   const same=live.filter(g=>g.voiceSessionId===value.voiceSessionId);
   const started=g=>!!get(g.gameId).claimedAt||['task','result','completed','incomplete'].includes(g.progress?.status);
   if(same.some(started))throw fail('GAME_ALREADY_STARTED',409);
   const previousIds=same.map(g=>g.gameId);
   if(live.length-previousIds.length>=200)throw fail('QUEUE_FULL',503);
-  const stamp=new Date(now()).toISOString(),r={...value,signature,source:manual?'manual':'stella',status:'queued',createdAt:stamp,updatedAt:stamp,progress:null};atomic(transitionFile,{next:r,previous:previousIds});finishReplacement();active();return publicGame(get(r.gameId));
+  const stamp=new Date(now()).toISOString(),r={...value,...(delivery?{delivery}:{}),signature,source:manual?'manual':'stella',status:'queued',createdAt:stamp,updatedAt:stamp,progress:null};atomic(transitionFile,{next:r,previous:previousIds});finishReplacement();active();return publicGame(get(r.gameId));
  }
- function assets(r){const cacheKey=r.gameId+':'+(r.photo?.sha256??'none');if(assetCache.has(cacheKey))return assetCache.get(cacheKey);for(const k of assetCache.keys())if(k.startsWith(r.gameId+':'))assetCache.delete(k);const result=[];for(const dir of ['conversation','visitor-details']){const directory=path.join(root,'www/assets/kdw-native',dir);if(!fs.existsSync(directory))continue;for(const name of fs.readdirSync(directory)){if(!name.endsWith('.svg'))continue;const original=`assets/kdw-native/${dir}/${name}`,text=fs.readFileSync(path.join(directory,name),'utf8');if(!text.includes('data-visitor-photo="true"')&&!['visitor-avatar.svg','visitor-placeholder.svg'].includes(name))continue;const dataUri=r.photo?'data:image/jpeg;base64,'+r.photo.base64:NEUTRAL;
+ function assets(r){const cacheKey=r.gameId+':'+(r.photo?.sha256??'none');if(assetCache.has(cacheKey))return assetCache.get(cacheKey);for(const k of assetCache.keys())if(k.startsWith(r.gameId+':'))assetCache.delete(k);const result=[];for(const dir of ['conversation','visitor-details']){const directory=path.join(root,'www/assets/kdw-native',dir);if(!fs.existsSync(directory))continue;for(const name of fs.readdirSync(directory)){if(!name.endsWith('.svg'))continue;const original=`assets/kdw-native/${dir}/${name}`,text=fs.readFileSync(path.join(directory,name),'utf8');if(!text.includes('data-visitor-photo="true"')&&!['visitor-avatar.svg','visitor-placeholder.svg'].includes(name))continue;const dataUri=r.photo?'data:image/jpeg;base64,'+(r.photo.blob?fs.readFileSync(path.join(root,'data/link/photos',r.photo.blob)).toString('base64'):r.photo.base64):NEUTRAL;
    const svg=text.includes('data-visitor-photo="true"')?text.replace(/<image data-visitor-photo="true"[^>]*\/>/g,`<image data-visitor-photo="true" width="1080" height="1920" href="${dataUri}"/>`):`<svg xmlns="http://www.w3.org/2000/svg" width="${name==='visitor-avatar.svg'?880:1080}" height="${name==='visitor-avatar.svg'?880:1920}" viewBox="${name==='visitor-avatar.svg'?'100 100 880 880':'0 0 1080 1920'}"><image width="1080" height="1920" href="${dataUri}"/></svg>`;
-   const bytes=Buffer.from(svg),linkedPath=`assets/kdw-linked/${r.gameId}/${dir}/${name}`;result.push({original,path:linkedPath,sha256:hash(bytes),bytes});}}
+   const bytes=Buffer.from(svg),linkedPath=`assets/kdw-linked/${r.gameId}/${r.photo?.sha256??'none'}/${dir}/${name}`;result.push({original,path:linkedPath,sha256:hash(bytes),bytes});}}
   assetCache.set(cacheKey,result);while(assetCache.size>3)assetCache.delete(assetCache.keys().next().value);return result;
  }
  function assignment(r){
-  const terminal={superseded:'superseded',released:r.progress?.endReason==='no-show'?'no-show':'completed',expired:'completed'};
+  const terminal={'handoff-expired':'no-show',cancelled:'superseded',superseded:'superseded',released:r.progress?.endReason==='no-show'?'no-show':'completed',expired:'completed'};
   let status=terminal[r.status]??(r.status==='queued'?'queued':r.claimedAt||['task','result','completed','incomplete'].includes(r.progress?.status)?'playing':'invited');
   if(['invited','playing'].includes(status)&&now()-(heartbeats.get(r.gameId)??Date.parse(r.lastSeenAt??r.updatedAt))>90000)status='unavailable';
   return{gameId:r.gameId,status,updatedAt:r.updatedAt};
  }
  let tail=Promise.resolve();const queue=fn=>{const work=tail.then(fn);tail=work.catch(()=>{});return work;};
- return{key,ingest,get,active,settings:()=>settings.snapshot(),handle(req,res){
-  const url=new URL(req.url,origin),asset=/^\/assets\/kdw-linked\/([^/]+)\/(conversation|visitor-details)\/([a-z0-9_-]+\.svg)$/.exec(url.pathname);
+ const asyncHub=require('./async-link.cjs').createAsyncHub({root,origin,now,ingest,get,active,assignment,queue,key,getOutput,clearPhoto,validatePhoto});
+ return{key,ingest,get,active,resetForStartup:()=>queue(()=>{
+  finishReplacement();let cancelled=0;const stamp=new Date(now()).toISOString();
+  for(const item of records())if(['queued','assigned','playing','completed','incomplete'].includes(item.status)){const r=get(item.gameId);r.status='cancelled';r.endReason='startup-reset';r.updatedAt=stamp;atomic(file(r.gameId),r);cancelled++;}
+  atomic(path.join(directory,'active.json'),{gameId:null});heartbeats.clear();deadlines.clear();assetCache.clear();return{cancelled};
+ }),settings:()=>settings.snapshot(),handle(req,res){
+  if(asyncHub.handle(req,res))return true;
+  const url=new URL(req.url,origin),asset=/^\/assets\/kdw-linked\/([^/]+)\/(?:(?:[a-f0-9]{64}|none)\/)?(conversation|visitor-details)\/([a-z0-9_-]+\.svg)$/.exec(url.pathname);
   if(!url.pathname.startsWith('/__kdw/link/')&&url.pathname!=='/__kdw/settings'&&!asset)return false;
   void queue(async()=>{
    if(req.method==='GET'&&url.pathname==='/__kdw/settings'){json(res,200,settings.snapshot());return;}
@@ -84,14 +97,14 @@ function createGameHub({root,origin,now=()=>Date.now(),production=false}){
     const audience=id==='business-promotion'?'business':id==='blogger'?'blogger':'personal',goal=id==='digital-id'?'access':id==='communication'?'connection':null;
     const game=ingest({schemaVersion:1,gameId:crypto.randomUUID(),voiceSessionId:crypto.randomUUID(),missionId:id,audience,goal,photo:null},{manual:true});json(res,200,{game});return;
    }
-   if(asset){if(!['GET','HEAD'].includes(req.method))throw fail('METHOD_NOT_ALLOWED',405);const r=get(asset[1]),a=assets(r).find(a=>a.path===url.pathname.slice(1));if(!a)throw fail('ASSET_NOT_FOUND',404);res.writeHead(200,{'Content-Type':'image/svg+xml','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Content-Length':a.bytes.length});res.end(req.method==='HEAD'?undefined:a.bytes);return;}
+   if(asset){if(!['GET','HEAD'].includes(req.method))throw fail('METHOD_NOT_ALLOWED',405);const r=get(asset[1]),a=assets(url.pathname.includes('/none/')?{...r,photo:null}:r).find(a=>a.path.split('?')[0]===url.pathname.slice(1));if(!a)throw fail('ASSET_NOT_FOUND',404);res.writeHead(200,{'Content-Type':'image/svg+xml','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Content-Length':a.bytes.length});res.end(req.method==='HEAD'?undefined:a.bytes);return;}
    if(req.method==='POST'&&url.pathname==='/__kdw/link/ingest'){if(req.headers.origin||req.headers['x-kdw-relay-key']!==key)throw fail('UNAUTHORIZED',403);json(res,200,ingest(await body(req)));return;}
-   if(req.method==='GET'&&url.pathname==='/__kdw/link/active'){json(res,200,{game:publicGame(active())});return;}
+   if(req.method==='GET'&&url.pathname==='/__kdw/link/active'){const game=publicGame(active());json(res,200,{game,queueCount:records().filter(r=>r.status==='queued').length});return;}
    const m=/^\/__kdw\/link\/games\/([^/]+)(\/assets|\/progress|\/claim|\/status)?$/.exec(url.pathname);if(!m)throw fail('NOT_FOUND',404);const r=get(m[1]);
    if(req.method==='GET'&&m[2]==='/status'){json(res,200,{assignment:assignment(r)});return;}
    if(req.method==='POST'&&m[2]==='/claim'){
     if(req.headers.origin!==origin||req.headers['content-type']!=='application/json')throw fail('INVALID_ORIGIN',403);
-    if(active()?.gameId!==r.gameId||['released','superseded'].includes(r.status))throw fail('GAME_NO_LONGER_ACTIVE',409);
+    if(active()?.gameId!==r.gameId||['released','superseded','cancelled','handoff-expired'].includes(r.status))throw fail('GAME_NO_LONGER_ACTIVE',409);
     const b=await body(req);if(b.gameId!==r.gameId)throw fail('INVALID_GAME_ID');
     r.claimedAt??=new Date(now()).toISOString();r.lastSeenAt=new Date(now()).toISOString();atomic(file(r.gameId),r);json(res,200,{assignment:assignment(r)});return;
    }
@@ -113,7 +126,7 @@ function createGameHub({root,origin,now=()=>Date.now(),production=false}){
 }
 function createStelaRelay({root,origin,authorize,now=()=>Date.now(),transport=fetch}){
  let policyCache=null;const policyFile=path.join(root,'data/stand-settings.remote.json');try{policyCache=read(policyFile);}catch{}
- async function policy(){try{const c=config(),response=await(c.certificatePem?((u,o)=>require('./game-link-network.cjs').pinnedFetch(u,o,c.certificatePem)):transport)(c.origin+'/__kdw/settings',{headers:{'x-kdw-relay-key':c.key},signal:AbortSignal.timeout(4000)});if(!response.ok)throw Error('SETTINGS_UNAVAILABLE');const p=await response.json();require('./stand-settings.cjs').validate(p.value);policyCache=p;atomic(policyFile,p);return p;}catch{if(policyCache)return{...policyCache,offline:true};return{production:true,error:'MAX недоступен; ожидаем настройки стенда',value:require('./stand-settings.cjs').DEFAULTS,revision:'offline-default'};}}
+ async function refreshPolicy(){try{const c=config(),response=await(c.certificatePem?((u,o)=>require('./game-link-network.cjs').pinnedFetch(u,o,c.certificatePem)):transport)(c.origin+'/__kdw/settings',{headers:{'x-kdw-relay-key':c.key},signal:AbortSignal.timeout(4000)});if(!response.ok)throw Error('SETTINGS_UNAVAILABLE');const p=await response.json();require('./stand-settings.cjs').validate(p.value);policyCache=p;atomic(policyFile,p);return p;}catch{if(policyCache)return{...policyCache,offline:true};return{production:true,error:'MAX недоступен; ожидаем настройки стенда',value:require('./stand-settings.cjs').DEFAULTS,revision:'offline-default'};}}
 
  const directory=path.join(root,'data/link/outbox');fs.mkdirSync(directory,{recursive:true});let closed=false,working=false,pendingFiles=null,lastCleanup=-Infinity;
  let tail=Promise.resolve();const serial=fn=>{const next=tail.then(fn);tail=next.catch(()=>{});return next;};
@@ -135,8 +148,12 @@ function createStelaRelay({root,origin,authorize,now=()=>Date.now(),transport=fe
     try{const c=config(),response=await (c.certificatePem?((url,options)=>require('./game-link-network.cjs').pinnedFetch(url,options,c.certificatePem)):transport)(c.origin+'/__kdw/link/ingest',{method:'POST',headers:{'Content-Type':'application/json','x-kdw-relay-key':c.key},body:JSON.stringify(r.payload),signal:AbortSignal.timeout(6000)});const result=await response.json();if(!response.ok)throw fail(result.error||'GAME_UNAVAILABLE',response.status);if(result.gameId!==r.payload.gameId||result.photoSha256!==(r.payload.photo?.sha256??null))throw fail('INVALID_GAME_ACK');r.deliveredAt=new Date(now()).toISOString();r.receipt=result;r.payload.photo=null;atomic(f,r);pendingFiles.delete(f);
     }catch(e){r.lastError=e.code||'GAME_UNAVAILABLE';if([400,409].includes(e.status)&&e.code!=='HANDOFF_DISABLED'){r.failure=r.lastError;r.payload.photo=null;}atomic(f,r);if(r.failure)pendingFiles.delete(f);else break;}}
   }finally{working=false;}});}
+ let policyBusy=false;function policy(){if(!policyBusy){policyBusy=true;void refreshPolicy().finally(()=>{policyBusy=false;});}
+  const local=read(path.join(root,'settings/stand.json'));return Promise.resolve(local?{production:true,value:local,revision:hash(JSON.stringify(local)),source:'local'}:policyCache?{...policyCache,source:'cache'}:{production:true,value:require('./stand-settings.cjs').DEFAULTS,revision:'local-default',source:'defaults'});}
+ const asyncRelay=require('./async-link.cjs').createAsyncRelay({root,origin,authorize,now,transport,config});
  const timer=setInterval(()=>void flush().catch(()=>{}),2000);timer.unref();void flush().catch(()=>{});
- return{flush,close(){closed=true;clearInterval(timer);},handle(req,res){
+ return{flush,close(){closed=true;clearInterval(timer);asyncRelay.close();},handle(req,res){
+  if(asyncRelay.handle(req,res))return true;
   if(req.method==='GET'&&req.url==='/__kdw/settings'){void policy().then(p=>json(res,200,p)).catch(()=>json(res,503,{error:'SETTINGS_UNAVAILABLE'}));return true;}
   if(!req.url.startsWith('/__kdw/link/'))return false;
   void serial(async()=>{if(req.method!=='POST'||!['/__kdw/link/submit','/__kdw/link/status'].includes(req.url)||req.headers.origin!==origin||req.headers['content-type']!=='application/json')throw fail('INVALID_REQUEST',403);

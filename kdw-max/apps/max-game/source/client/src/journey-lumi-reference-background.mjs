@@ -10,7 +10,7 @@ export function lumiReferenceBackground(canvas,{offscreen=false}={}){
   // User explicitly requested animated scenery. The game's reduced-motion
   // transitions stay independent; opt back into system scenery policy with auto.
   const followSystemMotion=query.get('background-motion')==='auto';
-  const diagnostic=query.has('background-debug')?document.createElement('output'):null;
+  const diagnostic=!offscreen&&document.documentElement.dataset.production!=='true'&&query.has('background-debug')?document.createElement('output'):null;
   if(diagnostic){
     diagnostic.style.cssText='position:fixed;left:12px;bottom:12px;z-index:99999;padding:8px 12px;border-radius:8px;background:#080012;color:white;font:14px monospace;pointer-events:none;white-space:pre-line';
     document.body.append(diagnostic);

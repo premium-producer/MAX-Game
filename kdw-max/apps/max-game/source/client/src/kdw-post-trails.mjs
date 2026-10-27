@@ -2,13 +2,13 @@
 // Grid cells brighten behind a falling card and fade after it has moved on.
 export function createPostTrails(canvas){
  const ctx=canvas.getContext('2d'),cells=new Map();
- let lastTime=null,width=0,height=0,ratio=1;
- function clear(){cells.clear();lastTime=null;if(ctx)ctx.clearRect(0,0,width,height);}
+ let lastTime=null,width=0,height=0,ratio=1,drawAt=-Infinity;
+ function clear(){cells.clear();lastTime=null;drawAt=-Infinity;if(ctx)ctx.clearRect(0,0,width,height);}
  return {
   clear,
   draw(sources,time,scale,reduced){
    if(!ctx)return;
-   const nextRatio=Math.min(devicePixelRatio||1,1.5);
+   const nextRatio=Math.min(devicePixelRatio||1,1);
    if(width!==innerWidth||height!==innerHeight||ratio!==nextRatio){
     width=innerWidth;height=innerHeight;ratio=nextRatio;
     canvas.width=Math.ceil(width*ratio);canvas.height=Math.ceil(height*ratio);
@@ -16,6 +16,8 @@ export function createPostTrails(canvas){
    }
    canvas.hidden=reduced;
    if(reduced){clear();return;}
+   const now=globalThis.document?.timeline?.currentTime??performance.now();
+   if(time===lastTime||now-drawAt<1000/30)return;drawAt=now;
    if(lastTime!==null&&time<lastTime)clear();
    const dt=lastTime===null?0:Math.min(100,time-lastTime);lastTime=time;
    const decay=Math.exp(-dt/260),pitch=Math.max(9,width*35/3591),tail=Math.max(100,520*scale);

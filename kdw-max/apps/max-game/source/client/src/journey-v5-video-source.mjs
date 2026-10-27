@@ -1,11 +1,13 @@
+import {bindVideoAudio} from './kdw-video-audio.mjs';
 import {localAudioEnabled} from '../audio-producer-port.mjs';
 import {observeMediaAudio} from '../media-audio-observer.mjs';
 // HTMLMediaElement owns decoding/looping; Three.VideoTexture owns frame updates.
 // This adapter only binds readiness and lifetime to the retained device scene.
-export function createDeviceVideo(document,asset,{onError=()=>{},onEnded=()=>{},loop=true,timeoutMs=15000,audioPort=null,audioTrackId='max-independent:video',muted=false}={}){
+export function createDeviceVideo(document,asset,{onError=()=>{},onEnded=()=>{},loop=true,timeoutMs=15000,audioPort=null,audioTrackId='max-independent:video',muted=false,audioGroup='tasks'}={}){
  const element=document.createElement('video');element.className='task-media-image';
  const localAudio=localAudioEnabled(document)&&!audioPort;
- const applyMuted=value=>{const silent=!localAudio||value===true;element.muted=silent;element.defaultMuted=silent;if(silent)element.setAttribute('muted','');else element.removeAttribute('muted');};
+ const videoAudio=localAudio?bindVideoAudio(element,{group:audioGroup,muted}):null;
+ const applyMuted=value=>{if(videoAudio){videoAudio.setMuted(value);return;}const silent=!localAudio||value===true;element.muted=silent;element.defaultMuted=silent;if(silent)element.setAttribute('muted','');else element.removeAttribute('muted');};
  applyMuted(muted);element.loop=loop;element.playsInline=true;element.preload='auto';
  element.setAttribute('playsinline','');element.setAttribute('aria-hidden','true');
  Object.assign(element.style,{display:'block',width:'100%',height:'100%',objectFit:'fill'});
@@ -38,7 +40,7 @@ export function createDeviceVideo(document,asset,{onError=()=>{},onEnded=()=>{},
    Promise.resolve().then(()=>{if(!disposed&&wanted&&generation===playEpoch)return element.play();}).then(()=>{if(generation!==playEpoch)return;starting=false;if(disposed||!wanted){element.pause();playing=false;}else playing=true;}).catch(cause=>{if(generation!==playEpoch)return;starting=false;if(!disposed&&wanted)fail(Error('MAX_VIDEO_PLAY_REJECTED_'+(cause?.name??'ERROR')));});
   },
   readyForAck(visible){return loaded&&!failed&&(!visible||playing);},
-  dispose(){if(disposed)return;disposed=true;playEpoch++;wanted=false;audioObserver?.dispose();cleanupReady();element.removeEventListener('error',error);element.removeEventListener('ended',ended);settle.reject(Error('MAX_VIDEO_CANCELLED'));element.pause();element.removeAttribute('src');element.load();element.remove();},
+  dispose(){if(disposed)return;disposed=true;videoAudio?.dispose();playEpoch++;wanted=false;audioObserver?.dispose();cleanupReady();element.removeEventListener('error',error);element.removeEventListener('ended',ended);settle.reject(Error('MAX_VIDEO_CANCELLED'));element.pause();element.removeAttribute('src');element.load();element.remove();},
  };
 }
 

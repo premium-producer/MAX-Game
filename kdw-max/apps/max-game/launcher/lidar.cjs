@@ -5962,6 +5962,7 @@ var require_perspective_transform = __commonJS({
 // apps/max-game/source/stand-output/lidar.mjs
 var lidar_exports = {};
 __export(lidar_exports, {
+  automaticLidarConfig: () => automaticLidarConfig,
   solveCalibration: () => solveCalibration,
   startLidar: () => startLidar,
   validateLidarConfig: () => validateLidarConfig
@@ -5970,12 +5971,13 @@ module.exports = __toCommonJS(lidar_exports);
 
 // apps/max-game/source/stand-output/hokuyo-osc.mjs
 var import_osc = __toESM(require_osc_node(), 1);
+var SOCKET_ERRORS = /* @__PURE__ */ new Set(["EADDRINUSE", "EADDRNOTAVAIL", "EACCES", "EBADF", "EINVAL", "ECONNRESET", "ENETDOWN", "ENETUNREACH", "EHOSTUNREACH", "ENOTCONN", "ENOBUFS"]);
 function createHokuyoReceiver({ port = 9001, address = "0.0.0.0", sourceAddress = "10.0.0.11", now = Date.now, onContact = () => {
 }, onDiagnostic = () => {
-}, rankPoint = (p) => p.y, selectionSpace = "raw-y", makePort = (options) => new import_osc.default.UDPPort(options), timeoutMs = 350 } = {}) {
-  let transport, closed = false, bound = false, lastPacketAt = 0, primary = null, gesture = null, lastPoint = null, sequence = 0, timer, selectedY = null;
+}, rankPoint = (p) => p.y, selectionSpace = "raw-y", makePort = (options) => new import_osc.default.UDPPort(options), setRetryTimer = setTimeout, clearRetryTimer = clearTimeout, timeoutMs = 350 } = {}) {
+  let transport, closed = false, bound = false, lastPacketAt = 0, primary = null, gesture = null, lastPoint = null, sequence = 0, timer, selectedY = null, started = false, retryTimer = null, retryCount = 0, opening = false, lastTransportError = null;
   const contacts = /* @__PURE__ */ new Map(), addresses = /* @__PURE__ */ new Set(), quarantine = /* @__PURE__ */ new Set();
-  const stats = { packetCount: 0, decodeErrors: 0, rejectedSources: 0, acceptedUpdates: 0, ignoredContacts: 0, selectionChanges: 0 };
+  const stats = { packetCount: 0, decodeErrors: 0, rejectedSources: 0, acceptedUpdates: 0, ignoredContacts: 0, selectionChanges: 0, connectionAttempts: 0, transportErrors: 0 };
   const emit = (id, phase, p) => onContact({ id, phase, sequence: ++sequence, at: now(), ...p });
   function finish(phase) {
     const id = gesture, p = lastPoint;
@@ -6085,42 +6087,120 @@ function createHokuyoReceiver({ port = 9001, address = "0.0.0.0", sourceAddress 
     contacts.clear();
     finish("cancel");
   }
+  function retry() {
+    if (closed || retryTimer !== null) return;
+    const delay = Math.min(5e3, 250 * 2 ** Math.min(retryCount++, 5));
+    retryTimer = setRetryTimer(() => {
+      retryTimer = null;
+      if (!closed) void connect();
+    }, delay);
+    retryTimer?.unref?.();
+    onDiagnostic("lidar-receiver-retry", { port, delay, code: lastTransportError });
+  }
+  function connect() {
+    if (closed || opening || bound) return Promise.resolve();
+    opening = true;
+    stats.connectionAttempts++;
+    return new Promise((resolve) => {
+      let current, settled = false;
+      const done = () => {
+        if (!settled) {
+          settled = true;
+          resolve();
+        }
+      };
+      const failed = (e) => {
+        if (closed || current && current !== transport) {
+          done();
+          return;
+        }
+        lastTransportError = e?.code ?? "OSC_TRANSPORT_ERROR";
+        stats.transportErrors++;
+        bound = false;
+        opening = false;
+        transport = null;
+        reset();
+        try {
+          current?.close();
+        } catch {
+        }
+        onDiagnostic("lidar-receiver-error", { code: lastTransportError, reconnecting: true });
+        retry();
+        done();
+      };
+      try {
+        current = makePort({ localAddress: address, localPort: port, metadata: true });
+        transport = current;
+        current.on("osc", (p, info) => {
+          if (!closed && transport === current && bound) packet(p, info);
+        });
+        current.on("ready", () => {
+          if (closed || transport !== current) {
+            try {
+              current.close();
+            } catch {
+            }
+            done();
+            return;
+          }
+          bound = true;
+          opening = false;
+          retryCount = 0;
+          lastTransportError = null;
+          onDiagnostic("lidar-receiver-ready", { port, sourceAddress, selection: "topmost", selectionSpace });
+          done();
+        });
+        current.on("error", (e) => {
+          if (closed || transport !== current) return;
+          if (bound && !SOCKET_ERRORS.has(e?.code) && !e?.code?.startsWith("ERR_SOCKET_")) {
+            stats.decodeErrors++;
+            onDiagnostic("lidar-receiver-error", { code: "OSC_DECODE_ERROR" });
+            return;
+          }
+          failed(e);
+        });
+        current.on("close", () => {
+          if (transport === current) {
+            transport = null;
+            bound = false;
+            opening = false;
+            reset();
+            if (!closed) retry();
+          }
+          done();
+        });
+        current.open();
+      } catch (e) {
+        failed(e);
+      }
+    });
+  }
   return {
     async start() {
-      transport = makePort({ localAddress: address, localPort: port, metadata: true });
-      transport.on("osc", packet);
-      transport.on("error", (e) => {
-        stats.decodeErrors++;
-        onDiagnostic("lidar-receiver-error", { code: e?.code ?? "OSC_DECODE_ERROR" });
-      });
-      transport.on("close", () => {
-        bound = false;
-        reset();
-      });
-      await new Promise((resolve, reject) => {
-        transport.once("ready", () => {
-          bound = true;
-          resolve();
-        });
-        transport.once("error", reject);
-        transport.open();
-      });
+      if (closed) throw Error("OSC_RECEIVER_CLOSED");
+      if (started) return this;
+      started = true;
       timer = setInterval(expire, 50);
       timer.unref?.();
-      onDiagnostic("lidar-receiver-ready", { port, sourceAddress, selection: "topmost", selectionSpace });
+      await connect();
       return this;
     },
     snapshot() {
-      return { bound, port, sourceAddress, ...stats, lastPacketAgeMs: lastPacketAt ? Math.max(0, now() - lastPacketAt) : null, addresses: [...addresses], activeContactId: gesture, selectedContactId: primary === null ? null : String(primary), selection: "topmost", selectionSpace, selectedY, contactCount: contacts.size };
+      return { bound, reconnecting: !closed && (opening || retryTimer !== null), lastTransportError, port, sourceAddress, ...stats, lastPacketAgeMs: lastPacketAt ? Math.max(0, now() - lastPacketAt) : null, addresses: [...addresses], activeContactId: gesture, selectedContactId: primary === null ? null : String(primary), selection: "topmost", selectionSpace, selectedY, contactCount: contacts.size };
     },
     reset,
     close() {
       if (closed) return;
       closed = true;
+      if (retryTimer !== null) {
+        clearRetryTimer(retryTimer);
+        retryTimer = null;
+      }
       clearInterval(timer);
       reset();
       if (!transport) return;
       const wasBound = bound;
+      bound = false;
       return new Promise((resolve) => {
         transport.once("close", resolve);
         try {
@@ -6188,6 +6268,7 @@ function solveCalibration(rawPoints, targetPoints, logicalSize = DEFAULT_LOGICAL
 
 // apps/max-game/source/stand-output/lidar.mjs
 var import_node_net = require("node:net");
+var automaticLidarConfig = (value) => value ? { ...value, enabled: value.enabled === true || !!(value.rawPoints && value.targetPoints) } : value;
 function validateLidarConfig(value) {
   const keys = ["enabled", "bindAddress", "sourceAddress", "port", "timeoutMs", "width", "height", "rawPoints", "targetPoints"];
   if (!value || Object.keys(value).some((k) => !keys.includes(k)) || typeof value.enabled !== "boolean" || !(0, import_node_net.isIP)(value.bindAddress) || !(0, import_node_net.isIP)(value.sourceAddress) || value.sourceAddress === "0.0.0.0" || !Number.isInteger(value.port) || value.port < 1024 || value.port > 65535 || !Number.isFinite(value.timeoutMs) || value.timeoutMs < 100 || value.timeoutMs > 3e3 || value.width !== 3072 || value.height !== 1536) throw Error("\u041F\u0440\u043E\u0432\u0435\u0440\u044C\u0442\u0435 IP, \u043F\u043E\u0440\u0442, watchdog \u0438 \u0440\u0430\u0437\u043C\u0435\u0440 3072\xD71536");
@@ -6198,64 +6279,66 @@ function validateLidarConfig(value) {
   return structuredClone(value);
 }
 async function startLidar({ config, contents, active, log, width = 3072, height = 1536, calibrating = false, onPoint = () => {
-} }) {
-  if (calibrating) {
-    validateLidarConfig({ ...config, enabled: false });
-    const receiver2 = createHokuyoReceiver({ port: config.port, address: config.bindAddress, sourceAddress: config.sourceAddress, timeoutMs: config.timeoutMs, onContact: onPoint, onDiagnostic: (event, details) => log({ event, ...details }) });
-    try {
-      await receiver2.start();
-    } catch (error) {
-      receiver2.close();
-      throw error;
-    }
-    return { snapshot: () => ({ enabled: false, calibrating: true, ...receiver2.snapshot() }), reset: () => receiver2.reset(), close: () => receiver2.close() };
-  }
-  if (!config?.enabled) return { snapshot: () => ({ enabled: false }), reset() {
+}, makeReceiver = createHokuyoReceiver }) {
+  config = automaticLidarConfig(config);
+  if (!config?.enabled && !calibrating) return { snapshot: () => ({ enabled: false }), reset() {
   }, close() {
   } };
-  if (!config.sourceAddress || !config.bindAddress || !config.rawPoints || !config.targetPoints)
-    throw Error("LiDAR requires an explicit source, bind address and measured calibration");
-  if (config.width !== width || config.height !== height) throw Error("LiDAR calibration viewport mismatch");
-  if (!Number.isFinite(config.timeoutMs) || config.timeoutMs < 100 || config.timeoutMs > 3e3) throw Error("Invalid LiDAR watchdog");
-  const mapping = solveCalibration(config.rawPoints, config.targetPoints, [width, height]);
-  if (!contents.debugger.isAttached()) contents.debugger.attach("1.3");
-  let down = false, closed = false, chain = Promise.resolve(), pendingMove = null, moving = false;
+  const prepare = (value, raw) => {
+    validateLidarConfig(raw ? { ...value, enabled: false } : value);
+    if (value.width !== width || value.height !== height) throw Error("LiDAR calibration viewport mismatch");
+    const mapping2 = value.rawPoints && value.targetPoints ? solveCalibration(value.rawPoints, value.targetPoints, [width, height]) : null;
+    if (value.enabled && !raw && !contents.debugger.isAttached()) contents.debugger.attach("1.3");
+    return mapping2;
+  };
+  let mapping = prepare(config, calibrating);
+  let down = false, closed = false, chain = Promise.resolve(), pendingMove = null, moving = false, inputEpoch = 0, needsCancel = false;
   const send = (type, p) => {
-    chain = chain.then(() => contents.debugger.sendCommand("Input.dispatchTouchEvent", {
-      type,
-      touchPoints: p ? [{ x: p.x, y: p.y, id: 1, radiusX: 2, radiusY: 2, force: 1 }] : []
-    })).catch((error) => {
-      log({ event: "lidar-input-error", message: error.message });
-      throw error;
-    });
-    chain.catch(() => {
-      closed = true;
+    const epoch = inputEpoch;
+    chain = chain.then(async () => {
+      if (closed || p && (epoch !== inputEpoch || calibrating || !config.enabled || !active())) return;
+      if (!contents.debugger.isAttached()) contents.debugger.attach("1.3");
+      if (needsCancel && p) {
+        await contents.debugger.sendCommand("Input.dispatchTouchEvent", { type: "touchCancel", touchPoints: [] });
+        needsCancel = false;
+      }
+      return contents.debugger.sendCommand("Input.dispatchTouchEvent", {
+        type,
+        touchPoints: p ? [{ x: p.x, y: p.y, id: 1, radiusX: 2, radiusY: 2, force: 1 }] : []
+      });
+    }).catch((error) => {
+      down = false;
+      pendingMove = null;
+      needsCancel = true;
+      inputEpoch++;
+      log({ event: "lidar-input-error", message: error.message, retryOnNextContact: true });
     });
   };
   const cancel = () => {
+    inputEpoch++;
     pendingMove = null;
     if (down) {
       down = false;
       send("touchCancel");
     }
   };
-  const receiver = createHokuyoReceiver({
-    port: config.port ?? 9001,
+  const receiver = makeReceiver({
+    port: config.port,
     address: config.bindAddress,
     sourceAddress: config.sourceAddress,
     timeoutMs: config.timeoutMs,
-    rankPoint: (p) => mapping.map(p.x, p.y).y,
-    selectionSpace: "calibrated-screen-y",
+    rankPoint: (p) => !calibrating && mapping ? mapping.map(p.x, p.y).y : p.y,
+    selectionSpace: calibrating ? "raw-y" : "calibrated-screen-y",
     onDiagnostic: (event, details) => log({ event, ...details }),
     onContact: (event) => {
       if (closed) return;
       let cursor = null;
       try {
-        if (event.phase === "down" || event.phase === "move") cursor = mapping.map(event.x, event.y);
+        if (mapping && ["down", "move"].includes(event.phase)) cursor = mapping.map(event.x, event.y);
       } catch {
       }
       onPoint({ ...event, mapped: cursor });
-      if (!active()) {
+      if (calibrating || !config.enabled || !active()) {
         cancel();
         return;
       }
@@ -6282,7 +6365,7 @@ async function startLidar({ config, contents, active, log, width = 3072, height 
         cancel();
         return;
       }
-      if (event.phase === "down") {
+      if (event.phase === "down" || event.phase === "move" && !down) {
         if (down) cancel();
         down = true;
         send("touchStart", p);
@@ -6294,15 +6377,33 @@ async function startLidar({ config, contents, active, log, width = 3072, height 
             moving = false;
             const move = pendingMove;
             pendingMove = null;
-            if (move && down && active()) send("touchMove", move);
+            if (move && down && !calibrating && config.enabled && active()) send("touchMove", move);
           });
         }
       }
     }
   });
-  await receiver.start();
+  try {
+    await receiver.start();
+  } catch (error) {
+    await receiver.close();
+    throw error;
+  }
   return {
-    snapshot: () => ({ enabled: true, ...receiver.snapshot(), cornerErrorPx: mapping.cornerErrorPx }),
+    snapshot: () => ({ ...receiver.snapshot(), enabled: config.enabled && !calibrating, calibrating, selectionSpace: calibrating ? "raw-y" : "calibrated-screen-y", cornerErrorPx: mapping?.cornerErrorPx ?? null }),
+    reconfigure(value, raw = false) {
+      if (closed) return false;
+      value = automaticLidarConfig(value);
+      if (["port", "bindAddress", "sourceAddress", "timeoutMs"].some((k) => value?.[k] !== config[k])) return false;
+      const next = prepare(value, raw);
+      cancel();
+      receiver.reset();
+      config = value;
+      mapping = next;
+      calibrating = raw;
+      log({ event: "lidar-mode-changed", calibrating, enabled: config.enabled, port: config.port, receiverRetained: true });
+      return true;
+    },
     reset() {
       cancel();
       receiver.reset();
@@ -6318,6 +6419,7 @@ async function startLidar({ config, contents, active, log, width = 3072, height 
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
+  automaticLidarConfig,
   solveCalibration,
   startLidar,
   validateLidarConfig

@@ -1,0 +1,11 @@
+{
+  "checks": [
+    "max: upload/decode, unsaved values retained, event file/volume save, actual preview AudioBufferSource.start",
+    "MAX video panel saves independent Standby/task channels; actual HTMLVideoElement gains follow event mix master",
+    "MAX actual Howler voice: custom file, event × master gain, finite playback, cleanup",
+    "stela: upload/decode, unsaved values retained, event file/volume save, actual preview AudioBufferSource.start",
+    "Stella actual Web Audio source: custom file, independent event/master gains, natural end cleanup"
+  ],
+  "errors": [],
+  "scope": "Local isolated HTTP services and real Chromium audio engines; no SSH or production PCs"
+}

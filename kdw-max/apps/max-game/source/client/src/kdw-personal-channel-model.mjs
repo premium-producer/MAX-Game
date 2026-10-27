@@ -1,6 +1,8 @@
 import {PERSONAL_ASSETS} from './kdw-personal-channel-assets.mjs';
 import {forbiddenFields} from './kdw-text-policy.mjs';
-export const PERSONAL_AVATARS=Object.freeze(['cinema','cat','game','island','heart']);
+export const PERSONAL_AVATARS=Object.freeze(['visitor','cinema','cat','game','island']);
+// Heart is no longer offered, but saved channels and accepted receipts retain it.
+const savedAvatar=id=>PERSONAL_AVATARS.includes(id)||id==='heart';
 export const PERSONAL_LIMITS=Object.freeze({name:64,description:160,slug:32,reply:200});
 // Match native maxlength and keyboardEdit (UTF-16), without leaving a half emoji.
 export function limitPersonalReply(value){let s=String(value).slice(0,PERSONAL_LIMITS.reply);if(/[\uD800-\uDBFF]$/.test(s))s=s.slice(0,-1);return s;}
@@ -9,10 +11,10 @@ export const PERSONAL_SCREEN_NUMBERS=Object.freeze({'blogger.channel.chats':1,'b
 const exact=(v,keys)=>v&&typeof v==='object'&&!Array.isArray(v)&&Object.keys(v).sort().join('|')===[...keys].sort().join('|');
 const text=(v,n,multiline=false)=>typeof v==='string'&&v.length<=n&&!/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(v)&&(multiline||!/[\r\n]/.test(v));
 export const validSlug=v=>typeof v==='string'&&/^[a-z][a-z0-9_]{3,31}$/.test(v);
-export function validPersonalDraft(v){return exact(v,['schemaVersion','name','description','avatar','visibility','slug'])&&v.schemaVersion===2&&text(v.name,64)&&text(v.description,160,true)&&PERSONAL_AVATARS.includes(v.avatar)&&['private','public'].includes(v.visibility)&&text(v.slug,32);}
+export function validPersonalDraft(v){return exact(v,['schemaVersion','name','description','avatar','visibility','slug'])&&v.schemaVersion===2&&text(v.name,64)&&text(v.description,160,true)&&savedAvatar(v.avatar)&&['private','public'].includes(v.visibility)&&text(v.slug,32);}
 export const validReply=v=>exact(v,['schemaVersion','reply'])&&[1,2].includes(v.schemaVersion)&&text(v.reply,v.schemaVersion===1?400:PERSONAL_LIMITS.reply,true);
 export const personalComplete=v=>validPersonalDraft(v)&&v.name.trim().length>=2;
-export function personalDraft(state){const p=state?.progress?.blogger,v=p?.interactions?.['blogger.channel']??p?.personalChannel??{};return {schemaVersion:2,name:v.name??'',description:v.description??'',avatar:PERSONAL_AVATARS.includes(v.avatar)?v.avatar:'cinema',visibility:v.visibility??p?.answers?.['channel-type']??'private',slug:v.slug??''};}
+export function personalDraft(state){const p=state?.progress?.blogger,v=p?.interactions?.['blogger.channel']??p?.personalChannel??{};return {schemaVersion:2,name:v.name??'',description:v.description??'',avatar:savedAvatar(v.avatar)?v.avatar:'cinema',visibility:v.visibility??p?.answers?.['channel-type']??'private',slug:v.slug??''};}
 export function personalProfile(state){const p=state?.progress?.blogger,v=p?.personalChannel;return v??{...personalDraft(state),id:'legacy-channel',created:!!p?.answers?.['blogger.channel.filled']};}
 export function savePersonal(state,c,legacyReply=false,moderate=true){
  if(!state.ownerActive)return 'OWNER_REQUIRED';

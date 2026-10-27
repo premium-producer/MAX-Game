@@ -1,0 +1,218 @@
+{
+  "at": "2026-10-27T20:36:38.388Z",
+  "scope": "Local Chromium, not Electron/Spout",
+  "results": [
+    {
+      "kind": "posts",
+      "goal": true,
+      "published": 5,
+      "flightObserved": true,
+      "badPicked": true,
+      "metrics": {
+        "kind": "posts",
+        "backend": "webgl",
+        "frameId": 646,
+        "frame": {
+          "count": 600,
+          "p95": 16.700000000000728,
+          "p99": 16.800000000000182,
+          "max": 16.80000000000109
+        },
+        "update": {
+          "count": 600,
+          "p95": 0.30000001192092896,
+          "p99": 0.4000000059604645,
+          "max": 0.5999999940395355
+        },
+        "resources": {
+          "bytes": 36340000,
+          "rasters": 40,
+          "uploads": 40,
+          "uploadMs": 0.8999999761581421,
+          "fallbacks": 0
+        },
+        "falling": 0,
+        "flights": 0,
+        "published": 5,
+        "stale": false
+      },
+      "errors": []
+    },
+    {
+      "kind": "store",
+      "goal": true,
+      "published": 9,
+      "flightObserved": true,
+      "badPicked": false,
+      "metrics": {
+        "kind": "store",
+        "backend": "webgl",
+        "frameId": 952,
+        "frame": {
+          "count": 600,
+          "p95": 16.700000000000728,
+          "p99": 16.80000000000109,
+          "max": 16.80000000000291
+        },
+        "update": {
+          "count": 600,
+          "p95": 0.30000001192092896,
+          "p99": 0.4000000059604645,
+          "max": 0.5
+        },
+        "resources": {
+          "bytes": 31275411,
+          "rasters": 34,
+          "uploads": 34,
+          "uploadMs": 1.1999999582767487,
+          "fallbacks": 0
+        },
+        "falling": 0,
+        "flights": 1,
+        "published": 9,
+        "stale": false
+      },
+      "errors": []
+    },
+    {
+      "kind": "posts",
+      "business": "flowers",
+      "passed": true,
+      "metrics": {
+        "kind": "posts",
+        "backend": "webgl",
+        "frameId": 286,
+        "frame": {
+          "count": 285,
+          "p95": 16.700000000000728,
+          "p99": 16.800000000000182,
+          "max": 16.800000000000182
+        },
+        "update": {
+          "count": 243,
+          "p95": 0.20000001788139343,
+          "p99": 0.30000001192092896,
+          "max": 6
+        },
+        "resources": {
+          "bytes": 36482015,
+          "rasters": 40,
+          "uploads": 40,
+          "uploadMs": 0.4999999701976776,
+          "fallbacks": 0
+        },
+        "falling": 2,
+        "flights": 0,
+        "published": 0,
+        "stale": false
+      },
+      "errors": []
+    },
+    {
+      "kind": "store",
+      "business": "flowers",
+      "passed": true,
+      "metrics": {
+        "kind": "store",
+        "backend": "webgl",
+        "frameId": 286,
+        "frame": {
+          "count": 285,
+          "p95": 16.700000000000728,
+          "p99": 16.80000000000109,
+          "max": 33.399999999999636
+        },
+        "update": {
+          "count": 243,
+          "p95": 0.20000001788139343,
+          "p99": 0.4000000059604645,
+          "max": 0.5
+        },
+        "resources": {
+          "bytes": 31554578,
+          "rasters": 34,
+          "uploads": 34,
+          "uploadMs": 1.1999999582767487,
+          "fallbacks": 0
+        },
+        "falling": 3,
+        "flights": 0,
+        "published": 0,
+        "stale": false
+      },
+      "errors": []
+    },
+    {
+      "kind": "posts",
+      "business": "auto",
+      "passed": true,
+      "metrics": {
+        "kind": "posts",
+        "backend": "webgl",
+        "frameId": 285,
+        "frame": {
+          "count": 284,
+          "p95": 16.799999999999727,
+          "p99": 16.800000000000182,
+          "max": 33.30000000000018
+        },
+        "update": {
+          "count": 243,
+          "p95": 0.20000001788139343,
+          "p99": 0.4000000059604645,
+          "max": 6.200000017881393
+        },
+        "resources": {
+          "bytes": 36935285,
+          "rasters": 40,
+          "uploads": 40,
+          "uploadMs": 0.800000011920929,
+          "fallbacks": 0
+        },
+        "falling": 3,
+        "flights": 0,
+        "published": 0,
+        "stale": false
+      },
+      "errors": []
+    },
+    {
+      "kind": "store",
+      "business": "auto",
+      "passed": true,
+      "metrics": {
+        "kind": "store",
+        "backend": "webgl",
+        "frameId": 287,
+        "frame": {
+          "count": 286,
+          "p95": 16.700000000000728,
+          "p99": 16.800000000000182,
+          "max": 16.80000000000109
+        },
+        "update": {
+          "count": 244,
+          "p95": 0.19999998807907104,
+          "p99": 0.30000001192092896,
+          "max": 0.5
+        },
+        "resources": {
+          "bytes": 31589864,
+          "rasters": 34,
+          "uploads": 34,
+          "uploadMs": 0.9000000059604645,
+          "fallbacks": 0
+        },
+        "falling": 3,
+        "flights": 0,
+        "published": 0,
+        "stale": false
+      },
+      "errors": []
+    },
+    {
+      "kind": "dom-fallback",
+      "passed": true
+    }
+  ]
+}

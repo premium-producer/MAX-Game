@@ -1,3 +1,6 @@
+import {webglActivitiesEnabled} from './activity-webgl/activity-runtime.mjs';
+import {mountWebGLActivity} from './activity-webgl/activity-controller.mjs';
+import {guardImage,fallbackImageSource,visitorMessage} from './kdw-graceful-media.mjs';
 import {typographyText} from './kdw-typography.mjs';
 import {preloadBusinessImages} from './kdw-business-images.mjs';
 import {activityGeometry,alignActivityPhone,alignActivityActions,createRightCardLayout,fadeActivityOut} from './kdw-activity-stage.mjs';
@@ -12,11 +15,13 @@ import {postMetrics,formatPostCount,counterProgress,COUNTER_DURATION} from './kd
 import {businessProfile} from './kdw-business-profile.mjs';
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const number=n=>n.toLocaleString('ru-RU');
+const setText=(node,value)=>{if(node.textContent!==value)node.textContent=value;};
 const chrome=name=>`./assets/kdw-native/posts-chrome/${name}.svg`;
 async function decodeImage(image){let timer;try{await Promise.race([image.decode(),new Promise((_,reject)=>{timer=setTimeout(()=>reject(Error('Изображения пока недоступны')),10000);})]);}finally{clearTimeout(timer);}}
 const art=(type)=>`<span class="kdw-post-art" data-theme="${type}"><svg viewBox="0 0 120 80" aria-hidden="true">${type==='hotel'?'<path d="M16 52V20h8v20h72V20h8v48h-8V56H24v12h-8Zm12-16V20h28v16Zm36 0V20h28v16Z"/>':'<path d="M15 15q23 12 45 0v28q-23 30-45 0Zm12 14 10 4m8-4 9-2M29 43q9 9 18 0M66 26q20 8 40-1v28q-20 22-40 0Zm10 11 7 2m9 0 7-2M78 56q8-7 16 0"/>'}</svg></span>`;
 function photo(post,type){const a=post.image??postPhoto(post.photo);return a?`<img src="./${esc(a.path)}" alt="" draggable="false">`:['sports','flowers','auto'].includes(type)?`<span class="kdw-post-art kdw-post-theme-symbol" data-theme="${type}">${esc(post.emoji??businessProfile(type).symbol)}</span>`:art(type);}
 export function mountPostActivity({getSession}){
+ if(webglActivitiesEnabled())return mountWebGLActivity({kind:'posts',getSession});
  const root=document.createElement('section');root.id='kdw-posts';root.hidden=true;root.setAttribute('aria-label','Публикации канала');document.body.append(root);
  const clock=createPresentationClock({smooth:true}),reduced=matchMedia('(prefers-reduced-motion: reduce)'),readStream=createPostStreamReader();
  let context='',snapshot=null,phase='',disposed=false,loading=null,loadedType='',loadError='',ready=false,starting=false,startFailed=false,error='',pending=new Set(),chain=Promise.resolve(),feedSignature='',audience=null,lastClock=0,geometry=null,generation=0,autoScroll=true,scrollAnimation=null;
@@ -30,7 +35,7 @@ export function mountPostActivity({getSession}){
  const posts=()=>snapshot?.state.progress.business?.postsActivity;
  function type(){return posts()?.businessType??snapshot?.state.progress.business?.answers?.businessType??'cafe';}
  function valid(key=context){return !disposed&&key===context&&active(getSession()?.snapshot);}
- function status(message){error=message;const el=root.querySelector('[data-post-error]');if(el)el.textContent=message;}
+ function status(message){message=visitorMessage(message);error=message;const el=root.querySelector('[data-post-error]');if(el)el.textContent=message;}
  async function preload(kind){
   if(loadedType===kind)return true;if(loading)return loading;
   loading=(async()=>{
@@ -40,14 +45,14 @@ export function mountPostActivity({getSession}){
    }));const profile=businessProfile(kind);if(profile.logo&&!images.has('avatar:'+kind)){const avatar=new Image();avatar.src='./'+profile.logo;await decodeImage(avatar);images.set('avatar:'+kind,avatar);}await Promise.all(['header','composer','fire','heart','views','verified'].map(async name=>{
     const key='chrome:'+name;if(images.has(key))return;const image=new Image();image.src=chrome(name);await decodeImage(image);images.set(key,image);
    }));loadedType=kind;loadError='';return true;}
-   catch{loadError='Не удалось загрузить фотографии';return false;}
+   catch(error){console.error('MAX_POST_ASSETS_FALLBACK',error?.name);loadedType=kind;loadError='';return true;}
    finally{loading=null;}
   })();return loading;
  }
  function build(){
   placement.clear();
   root.innerHTML=`<div class="kdw-post-phone"><header><img class="kdw-post-header-art" src="${chrome('header')}" alt=""><div class="kdw-post-identity"><strong><span class="kdw-post-channel-name">${esc(BUSINESS_CHANNELS[type()]??'Кофейня')}</span><img src="${chrome('verified')}" alt="Подтверждённый канал"></strong><small data-post-audience></small></div></header><div class="kdw-post-feed" tabindex="0" aria-label="Публикации канала"></div><button class="kdw-post-new" hidden>Новые публикации ↓</button><footer aria-label="Панель публикации MAX"><img src="${chrome('composer')}" alt="Пост · Вложения · Камера · Микрофон"></footer></div><div class="kdw-post-actions"><p data-post-hint></p><button class="kdw-activity-button kdw-transition-button" data-post-finish hidden>Следующее задание</button><button class="kdw-activity-button" data-post-retry hidden>Повторить загрузку</button><p data-post-error role="status" aria-live="polite"></p></div><div class="kdw-post-cards"></div>`;
-  const profile=businessProfile(type()),avatar=document.createElement('span');avatar.className='kdw-post-bound-avatar';avatar.style.background=profile.accent;avatar.innerHTML=profile.logo?`<img src="./${profile.logo}" alt="">`:esc(profile.symbol);root.querySelector('.kdw-post-phone header').append(avatar);
+  const profile=businessProfile(type()),avatar=document.createElement('span');avatar.className='kdw-post-bound-avatar';avatar.style.background=profile.accent;avatar.innerHTML=profile.logo?`<img src="./${profile.logo}" alt="">`:esc(profile.symbol);root.querySelector('.kdw-post-phone header').append(avatar);for(const image of root.querySelectorAll('img'))guardImage(image,{fallback:fallbackImageSource()});
   const trailCanvas=document.createElement('canvas');trailCanvas.className='kdw-post-trails';trailCanvas.setAttribute('aria-hidden','true');root.prepend(trailCanvas);trails=createPostTrails(trailCanvas);
   // The full header participates in entry; do not pop the counter in only
   // after START_POSTS returns and the phone has already become opaque.
@@ -73,7 +78,7 @@ export function mountPostActivity({getSession}){
    for(const row of p.published){if(feed.querySelector(`[data-published="${row.spawnId}"]`)||(motion.has(row.spawnId)&&row.spawnId!==approaching))continue;const post=bank.find(item=>item.id===row.postId),node=document.createElement('article');
     node.className='kdw-feed-post';node.dataset.published=row.spawnId;node.dataset.good=String(row.good);
     if(motion.has(row.spawnId)&&!reduced.matches)reactionStarts.set(row.spawnId,null);
-    node.innerHTML=`<div class="kdw-feed-photo">${photo(post,p.businessType)}</div><div class="kdw-feed-copy"><strong>${esc(typographyText(post.title))}</strong><p>${esc(typographyText(post.body))}</p><div class="kdw-feed-reactions">${['fire','heart'].map((kind,i)=>`<button class="kdw-feed-reaction" data-reaction="${kind}" aria-label="${i?'Нравится':'Огонь'}" aria-pressed="false"><img src="${chrome(kind)}" alt=""><span data-count="${kind}">0</span></button>`).join('')}</div><div class="kdw-feed-meta"><img src="${chrome('views')}" alt="Просмотры"><span data-views>1</span><span>·</span><time>${postMetrics(row,0).time}</time></div></div>`;feed.append(node);appended=true;
+    node.innerHTML=`<div class="kdw-feed-photo">${photo(post,p.businessType)}</div><div class="kdw-feed-copy"><strong>${esc(typographyText(post.title))}</strong><p>${esc(typographyText(post.body))}</p><div class="kdw-feed-reactions">${['fire','heart'].map((kind,i)=>`<button class="kdw-feed-reaction" data-reaction="${kind}" aria-label="${i?'Нравится':'Огонь'}" aria-pressed="false"><img src="${chrome(kind)}" alt=""><span data-count="${kind}">0</span></button>`).join('')}</div><div class="kdw-feed-meta"><img src="${chrome('views')}" alt="Просмотры"><span data-views>1</span><span>·</span><time>${postMetrics(row,0).time}</time></div></div>`;feed.append(node);for(const image of node.querySelectorAll('img'))guardImage(image,{fallback:fallbackImageSource({width:440,height:300})});appended=true;
    }
    feedSignature=signature;motion.sync();if(appended){feed.querySelector('.kdw-post-empty')?.remove();scrollToBottom();}
   }
@@ -84,7 +89,7 @@ export function mountPostActivity({getSession}){
  }
  function displayAudience(){const progress=reduced.matches?1:counterProgress(performance.now()-audienceAt);return Math.round(audienceFrom+((audience??audienceFrom)-audienceFrom)*progress);}
  function updateMetrics(elapsed){
-  root.querySelector('[data-post-audience]').textContent=number(displayAudience())+' подписчиков';
+  setText(root.querySelector('[data-post-audience]'),number(displayAudience())+' подписчиков');
   if(performance.now()-metricsAt<32)return;metricsAt=performance.now();
   for(const row of posts()?.published??[]){const node=root.querySelector(`[data-published="${row.spawnId}"]`);if(!node)continue;
    let reactionAge=reduced.matches?COUNTER_DURATION:null;
@@ -95,8 +100,8 @@ export function mountPostActivity({getSession}){
     if(reactionAge>=COUNTER_DURATION)reactionStarts.delete(row.spawnId);
    }
    const values=postMetrics(row,elapsed,reactionAge);
-   node.querySelector('[data-views]').textContent=formatPostCount(values.views);
-   for(const kind of ['fire','heart']){const button=node.querySelector(`[data-reaction="${kind}"]`);button.querySelector('[data-count]').textContent=formatPostCount(values[kind]+Number(button.getAttribute('aria-pressed')==='true'));}
+   setText(node.querySelector('[data-views]'),formatPostCount(values.views));
+   for(const kind of ['fire','heart']){const button=node.querySelector(`[data-reaction="${kind}"]`);setText(button.querySelector('[data-count]'),formatPostCount(values[kind]+Number(button.getAttribute('aria-pressed')==='true')));}
   }
  }
  async function start(){
@@ -136,18 +141,18 @@ export function mountPostActivity({getSession}){
   for(const spawn of shown){
    let node=cards.get(spawn.spawnId);
    if(!node){node=document.createElement('button');node.type='button';node.className='kdw-falling-post';node.dataset.spawn=spawn.spawnId;node.dataset.post=spawn.post.id;node.setAttribute('aria-label','Опубликовать: '+spawn.post.title);
+    Object.assign(node.style,{width:'440px',fontSize:'1px',transformOrigin:'0 0'});node.style.setProperty('--u','1px');
     node.innerHTML=`<span class="kdw-fall-photo">${photo(spawn.post,p.businessType)}</span><span class="kdw-fall-title">${esc(typographyText(spawn.post.title))}</span><span class="kdw-fall-body">${esc(typographyText(spawn.post.body))}</span><span class="kdw-fall-reactions">♡ <span>Опубликовать</span></span>`;
     node.dataset.lane=String(spawn.lane);node.dataset.start=String(spawn.start);node.dataset.travel=String(spawn.travel??POSTS_RULES.travel);
-    root.querySelector('.kdw-post-cards').append(node);cards.set(spawn.spawnId,node);
+    root.querySelector('.kdw-post-cards').append(node);cards.set(spawn.spawnId,node);for(const image of node.querySelectorAll('img'))guardImage(image,{fallback:fallbackImageSource({width:440,height:220})});
    }
    node.dataset.flow=spawn.flow??'';node.dataset.column=String(spawn.column);
   }
   const rects=geometry?placement.layout(geometry,shown,(spawn,w,unit)=>{
    const node=cards.get(spawn.spawnId);
-   Object.assign(node.style,{width:w+'px',fontSize:unit+'px'});node.style.setProperty('--u',unit+'px');
-   return node.offsetHeight;
+   return node.offsetHeight*unit;
   }):new Map();
-  const admitted=entry.update(shown,s=>({...rects.get(s.spawnId),h:cards.get(s.spawnId).offsetHeight}),ready);
+  const admitted=entry.update(shown,s=>rects.get(s.spawnId),ready);
   for(const spawn of shown){
    const node=cards.get(spawn.spawnId);
    const visible=admitted.has(spawn.spawnId),state=visible?'admitted':'waiting';
@@ -155,9 +160,9 @@ export function mountPostActivity({getSession}){
    if(!pending.has(spawn.spawnId)&&geometry){
     const {x,y,w,unit:cardScale}=rects.get(spawn.spawnId);
     if(visible)trailSources.push({x,y,w});
-    Object.assign(node.style,{width:w+'px',fontSize:cardScale+'px',transform:`translate(${x}px,${y}px)`});node.style.setProperty('--u',cardScale+'px');
+    node.style.transform=`translate3d(${x}px,${y}px,0) scale(${cardScale})`;
    }
-   node.disabled=!visible||pending.has(spawn.spawnId)||!snapshot.state.ownerActive||getSession()?.profile==='server'&&getSession()?.clockStale||!ready;
+   const disabled=!visible||pending.has(spawn.spawnId)||!snapshot.state.ownerActive||getSession()?.profile==='server'&&getSession()?.clockStale||!ready;if(node.disabled!==disabled)node.disabled=disabled;
   }
   trails?.draw(trailSources,elapsed,geometry?.scale??1,reduced.matches);
  }
@@ -172,7 +177,7 @@ export function mountPostActivity({getSession}){
   if(b.dataset.spawn&&event.detail===0)publish(b.dataset.spawn,b);
   if(b.hasAttribute('data-post-retry')){loadError='';status('');startFailed=false;if(!document.hidden)void getSession()?.owner(true);if(loadedType!==type()&&!loading)void preload(type());}
   if(b.classList.contains('kdw-post-new')){autoScroll=true;scrollToBottom();b.hidden=true;}
-  if(b.hasAttribute('data-post-finish')&&!motion.active()&&!getSession().busy&&postsGoal(posts())){b.disabled=true;void getSession().act(POSTS_SCREEN,'business.channel.result.continue').then(r=>{if(!r?.reply.ok&&valid()){b.disabled=false;status('Не удалось продолжить. Попробуйте ещё раз.');}});}
+  if(b.hasAttribute('data-post-finish')&&!motion.active()&&!getSession().busy&&postsGoal(posts())){b.disabled=true;void getSession().act(POSTS_SCREEN,'business.channel.result.continue').then(r=>{if(!r?.reply.ok&&valid()){b.disabled=false;console.error('MAX_POST_CONTINUE_RETRY');}});}
  });
  function clear(){motion.clear();completionPop.clear();reactionStarts.clear();fadeActivityOut(root);generation++;context='';root.hidden=true;trails?.clear();trails=null;root.replaceChildren();cards.clear();entry.clear();pending.clear();stopScroll();ready=false;starting=false;startFailed=false;audience=null;feedSignature='';autoScroll=true;error='';delete document.documentElement.dataset.kdwPosts;delete document.documentElement.dataset.kdwPostsComplete;}
  return {
@@ -183,6 +188,7 @@ export function mountPostActivity({getSession}){
    return loadedType===kind||!!loadError;
   },
   update(next,nextPhase){
+   if(snapshot===next&&phase===nextPhase)return;
    snapshot=next;phase=nextPhase;clock.accept(next);
    if(next?.state?.taskId===POSTS_TASK&&next.state.screenId!==POSTS_SCREEN&&!loading)void preload(next.state.progress.business?.answers?.businessType??'cafe');
    if(!active(next)||!['task','result','paused','phone-exit'].includes(phase)){if(context)clear();return;}
