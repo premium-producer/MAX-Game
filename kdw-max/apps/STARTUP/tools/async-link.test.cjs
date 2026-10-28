@@ -6,6 +6,7 @@ function req(h,url,data={},method='POST',headers={}){return new Promise((resolve
 const mission=(session=randomUUID(),revision=1)=>({schemaVersion:2,gameId:randomUUID(),voiceSessionId:session,selectionRevision:revision,missionId:'blogger',audience:'blogger',goal:null,photoExpected:true,remainingTtlMs:TTL});
 const jpeg=Buffer.from([255,216,255,192,0,17,8,7,128,4,56,3,1,17,0,2,17,0,3,17,0,255,217]);
 const hash=b=>createHash('sha256').update(b).digest('hex');
+const avatarJpeg=Buffer.from(jpeg);avatarJpeg.writeUInt16BE(512,7);avatarJpeg.writeUInt16BE(512,9);
 function fixture(t){const root=fs.mkdtempSync(path.join(os.tmpdir(),'kdw-async-'));t.after(()=>fs.rmSync(root,{recursive:true,force:true}));return root;}
 function network(h){return async(url,o={})=>{const r=await req(h,new URL(url).pathname,o.body?Buffer.isBuffer(o.body)?o.body:JSON.parse(o.body):{},o.method||'GET',{'x-kdw-relay-key':h.key,...o.headers});return{ok:r.status===200,status:r.status,json:async()=>r.value};};}
 test('v2 mission starts without photo; delayed photo is idempotent and does not change claim/progress',async t=>{
@@ -69,4 +70,74 @@ test('a claimed game outlives delivery TTL and a slow photo body does not hold t
  let done;const uploaded=new Promise(r=>{done=r;});hub.handle(request,{writeHead(status){this.status=status;},end(value){done({status:this.status,value:JSON.parse(value)});}});
  const next=await Promise.race([req(hub,'/__kdw/link/v2/missions',mission(),'POST',auth),new Promise((_,reject)=>setTimeout(()=>reject(Error('CONTROL_BLOCKED_BY_PHOTO')),150))]);assert.equal(next.status,200);
  finish();assert.equal((await uploaded).status,200);assert.equal(hub.active().gameId,m.gameId);
+});
+
+test('full and avatar have independent identity, dimensions, retries and durable ACK after restart',async t=>{
+ const root=fixture(t),hub=createGameHub({root:path.join(root,'max'),origin,production:true}),m=mission();let relay,dropAvatarAck=true,time=1000000;
+ const transport=async(...args)=>{const result=await network(hub)(...args);if(args[1]?.headers?.['x-kdw-photo-variant']==='avatar'&&dropAvatarAck){dropAvatarAck=false;throw Error('LOST_AVATAR_ACK');}return result;};
+ const make=()=>createAsyncRelay({root:path.join(root,'stela'),origin,now:()=>time,authorize:()=>({...m,sessionId:m.voiceSessionId,revision:1,hasPhoto:true}),transport,config:()=>({origin,key:hub.key})});
+ relay=make();t.after(()=>relay.close());const h={origin,'x-kdw-session-token':'test'},payload={gameId:m.gameId,revision:1};
+ await req(relay,'/__kdw/link/v2/submit',payload,'POST',h);await relay.flush();
+ const upload=(v,b)=>req(relay,'/__kdw/link/v2/photo',b,'POST',{...h,'content-type':'image/jpeg','x-kdw-game-id':m.gameId,'x-kdw-revision':'1','x-kdw-photo-variant':v});
+ assert.equal((await upload('avatar',jpeg)).status,400);assert.equal((await upload('unknown',avatarJpeg)).status,400);
+ assert.equal((await upload('avatar',avatarJpeg)).value.photos.avatar.status,'pending');
+ assert.equal((await upload('full',jpeg)).value.photoStatus,'pending');await relay.flushPhotos();
+ const state=(await req(relay,'/__kdw/link/v2/status',payload,'POST',h)).value;
+ assert.equal(state.photoStatus,'stored');assert.equal(state.photos.avatar.status,'pending');
+ assert.equal(hub.get(m.gameId).photo.sha256,hash(jpeg));assert.equal(hub.get(m.gameId).avatar.sha256,hash(avatarJpeg));
+ relay.close();relay=make();time+=2000;await relay.flushPhotos();
+ const final=(await req(relay,'/__kdw/link/v2/status',payload,'POST',h)).value;
+ assert.equal(final.photos.full.status,'stored');assert.equal(final.photos.avatar.status,'stored');assert.equal(final.photos.avatar.error,null);
+ assert.equal((await upload('avatar',avatarJpeg)).value.photos.avatar.status,'stored');
+ const other=Buffer.from(avatarJpeg);other[16]^=1;assert.equal((await upload('avatar',other)).status,409);
+ assert.equal(fs.readdirSync(path.join(root,'stela/data/link/outbox-v2/photos')).length,0);
+});
+
+test('avatar arriving first uses only circular slots; full slots and late avatar revisions stay separate',async t=>{
+ const root=fixture(t),dir=path.join(root,'www/assets/kdw-native/conversation');fs.mkdirSync(dir,{recursive:true});
+ fs.writeFileSync(path.join(dir,'visitor-avatar.svg'),'<svg>neutral avatar</svg>');
+ fs.writeFileSync(path.join(dir,'visitor-placeholder.svg'),'<svg>neutral full</svg>');
+ fs.writeFileSync(path.join(dir,'screen_1.svg'),'<svg><svg data-visitor-viewport="circle" viewBox="100 100 880 880"><image data-visitor-photo="true" href="old-avatar"/></svg><svg data-visitor-viewport="call"><image data-visitor-photo="true" href="old-full"/></svg></svg>');
+ const hub=createGameHub({root,origin,production:true}),m=mission(),auth={'x-kdw-relay-key':hub.key};await req(hub,'/__kdw/link/v2/missions',m,'POST',auth);
+ const upload=(variant,b,session=m.voiceSessionId)=>req(hub,`/__kdw/link/v2/missions/${m.gameId}/photo/1`,b,'PUT',{...auth,'content-type':'image/jpeg','x-kdw-voice-session':session,'x-kdw-photo-sha256':hash(b),'x-kdw-photo-variant':variant});
+ assert.equal((await upload('avatar',avatarJpeg,randomUUID())).status,409);
+ assert.equal((await upload('avatar',avatarJpeg)).value.photos.avatar.status,'stored');
+ const manifest=()=>req(hub,`/__kdw/link/games/${m.gameId}/assets`,{},'GET');
+ const fetchSvg=asset=>new Promise(resolve=>hub.handle({url:'/'+asset.path,method:'GET',headers:{}},{writeHead(status){this.status=status;},end(bytes){resolve({status:this.status,text:bytes.toString()});}}));
+ const first=(await manifest()).value,firstAvatar=first.assets.find(a=>a.original.endsWith('visitor-avatar.svg'));
+ const svg=(await fetchSvg(first.assets.find(a=>a.original.endsWith('screen_1.svg')))).text;
+ assert.match(svg,/viewBox="0 0 512 512"/);assert.match(svg,/clip-path="url\(#kdw-visitor-avatar-0\)"/);assert.match(svg,/href="old-full"/);assert.ok(svg.includes(avatarJpeg.toString('base64')));
+ assert.equal((await fetchSvg(first.assets.find(a=>a.original.endsWith('visitor-placeholder.svg')))).text,'<svg>neutral full</svg>');
+ await upload('full',jpeg);const second=(await manifest()).value;assert.notEqual(second.assets[0].path,first.assets[0].path);
+ const mixed=(await fetchSvg(second.assets.find(a=>a.original.endsWith('screen_1.svg')))).text;assert.ok(mixed.includes(jpeg.toString('base64')));assert.ok(mixed.includes(avatarJpeg.toString('base64')));
+ assert.equal((await fetchSvg(second.assets.find(a=>a.original.endsWith('visitor-avatar.svg')))).text.includes(jpeg.toString('base64')),false);
+ assert.ok(firstAvatar);assert.equal(hub.get(m.gameId).claimedAt,undefined);
+ await req(hub,`/__kdw/link/v2/missions/${m.gameId}/cancel`,{},'POST',auth);
+ assert.equal(hub.get(m.gameId).avatar,null);assert.equal(hub.get(m.gameId).photo,null);assert.equal(fs.readdirSync(path.join(root,'data/link/photos')).length,0);
+ assert.equal((await upload('avatar',avatarJpeg)).status,410);
+});
+
+test('avatar-only retention erases both hub blob and metadata',async t=>{
+ let time=1000000;const root=fixture(t),hub=createGameHub({root,origin,now:()=>time,production:true}),m=mission(),auth={'x-kdw-relay-key':hub.key};await req(hub,'/__kdw/link/v2/missions',m,'POST',auth);
+ await req(hub,`/__kdw/link/games/${m.gameId}/claim`,{gameId:m.gameId},'POST',{origin});
+ await req(hub,`/__kdw/link/v2/missions/${m.gameId}/photo/1`,avatarJpeg,'PUT',{...auth,'content-type':'image/jpeg','x-kdw-voice-session':m.voiceSessionId,'x-kdw-photo-sha256':hash(avatarJpeg),'x-kdw-photo-variant':'avatar'});
+ time+=86400001;assert.equal(hub.get(m.gameId).avatar,null);assert.equal(fs.readdirSync(path.join(root,'data/link/photos')).length,0);
+});
+
+test('completion deletes both variants and refuses a late upload for that visitor',async t=>{
+ const root=fixture(t),hub=createGameHub({root,origin,production:true}),m=mission(),auth={'x-kdw-relay-key':hub.key};await req(hub,'/__kdw/link/v2/missions',m,'POST',auth);
+ const upload=(variant,b)=>req(hub,`/__kdw/link/v2/missions/${m.gameId}/photo/1`,b,'PUT',{...auth,'content-type':'image/jpeg','x-kdw-voice-session':m.voiceSessionId,'x-kdw-photo-sha256':hash(b),'x-kdw-photo-variant':variant});
+ await upload('full',jpeg);await upload('avatar',avatarJpeg);
+ const progress={gameId:m.gameId,revision:1,runId:1,status:'completed',missionId:'blogger',taskId:null,screenId:null,contentRevision:'test',endReason:null};
+ assert.equal((await req(hub,`/__kdw/link/games/${m.gameId}/progress`,progress,'POST',{origin})).status,200);
+ assert.equal(hub.get(m.gameId).photo,null);assert.equal(hub.get(m.gameId).avatar,null);assert.equal(fs.readdirSync(path.join(root,'data/link/photos')).length,0);
+ assert.equal((await upload('avatar',avatarJpeg)).status,410);
+});
+
+test('relay rejects a photo whose authorization is revoked while its body is read',async t=>{
+ const root=fixture(t),m=mission();let authorized=true;const relay=createAsyncRelay({root,origin,authorize:()=>authorized?{...m,sessionId:m.voiceSessionId,revision:1,hasPhoto:true}:null,config:()=>({origin,key:'a'.repeat(64)}),transport:async()=>{throw Error('OFFLINE')}});t.after(()=>relay.close());
+ await req(relay,'/__kdw/link/v2/submit',{gameId:m.gameId,revision:1},'POST',{origin});
+ const q=Readable.from((async function*(){authorized=false;yield avatarJpeg;})());Object.assign(q,{url:'/__kdw/link/v2/photo',method:'POST',headers:{origin,'content-type':'image/jpeg','x-kdw-game-id':m.gameId,'x-kdw-revision':'1','x-kdw-photo-variant':'avatar'}});
+ const result=await new Promise(resolve=>relay.handle(q,{writeHead(status){this.status=status;},end(v){resolve({status:this.status,value:JSON.parse(v)})}}));
+ assert.equal(result.status,403);assert.equal(fs.existsSync(path.join(root,'data/link/outbox-v2/photos',m.gameId+'-avatar.jpg')),false);
 });

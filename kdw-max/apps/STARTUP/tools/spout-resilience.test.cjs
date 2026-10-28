@@ -1,17 +1,17 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),os=require('node:os'),path=require('node:path'),vm=require('node:vm'),{EventEmitter}=require('node:events');
 async function fixture(t){
- const root=fs.mkdtempSync(path.join(os.tmpdir(),'kdw-spout-'));fs.mkdirSync(path.join(root,'data'));t.after(()=>fs.rmSync(root,{recursive:true,force:true}));
- let now=0,token=0;const lidarCalls=[],windows=[],intervals=[],timeouts=[],errors=[],logs=[],completed=[],ipcMain=new EventEmitter();
+ const root=fs.mkdtempSync(path.join(os.tmpdir(),'kdw-spout-'));fs.mkdirSync(path.join(root,'data'));let recorder;t.after(async()=>{await recorder?.close();fs.rmSync(root,{recursive:true,force:true});});
+ let now=0,token=0,pointCallback;const lidarCalls=[],windows=[],intervals=[],timeouts=[],errors=[],logs=[],completed=[],ipcMain=new EventEmitter();
  class Window extends EventEmitter{
-  constructor(){super();this.webContents=new EventEmitter();Object.assign(this.webContents,{setFrameRate(){},setWindowOpenHandler(){},sent:[],send(...args){this.sent.push(args);},invalidate(){},startPainting(){},stopPainting(){},stop(){},session:{webRequest:{onBeforeRequest(){}}}});windows.push(this);}
+  constructor(){super();this.webContents=new EventEmitter();Object.assign(this.webContents,{setFrameRate(){},setWindowOpenHandler(){},sent:[],send(...args){this.sent.push(args);},invalidations:0,invalidate(){this.invalidations++;},startPainting(){},stopPainting(){},stop(){},session:{webRequest:{onBeforeRequest(){}}}});windows.push(this);}
   setContentSize(){}isDestroyed(){return false;}async loadURL(){this.webContents.emit('did-start-navigation',{},'',false,true);}destroy(){}
  }
  const bridge={send:()=>++token,poll:()=>completed.splice(0),status:()=>({}),close(){}};
- const exports={};const context={exports,__dirname:root,Buffer,URL,performance:{now:()=>now},setInterval:(f,ms)=>{intervals.push({f,ms});return f;},clearInterval(){},setTimeout:(f,ms)=>{timeouts.push({f,ms});return f;},clearTimeout(){},process:{pid:process.pid},require(name){if(name==='electron')return{BrowserWindow:Window,ipcMain};if(name==='./runtime-policy.cjs')return require('./runtime-policy.cjs');if(name==='./kdw_spout.node')return bridge;if(name==='./operator-http.cjs')return require('./operator-http.cjs');if(name==='./operator-calibration.cjs')return{createCalibration:()=>({point(){},status:()=>({}),result:()=>({rawPoints:[[0,0],[1,0],[1,1],[0,1]],targetPoints:[[560,0],[2320,0],[2320,1536],[560,1536]]})})};if(name==='./lidar.cjs')return{automaticLidarConfig:v=>v,validateLidarConfig:v=>v,solveCalibration(){},startLidar:async()=>{lidarCalls.push('open');return{reset(){},snapshot:()=>null,reconfigure(value,raw){lidarCalls.push(raw?'calibration':'normal');return true;},close:async()=>{lidarCalls.push('close')}}}};return require(name);}};
+ const exports={};const context={exports,__dirname:root,Buffer,URL,performance:{now:()=>now},setInterval:(f,ms)=>{intervals.push({f,ms});return f;},clearInterval(){},setTimeout:(f,ms)=>{timeouts.push({f,ms});return f;},clearTimeout(){},process:{pid:process.pid},require(name){if(name==='./runtime-performance.cjs')return{createPerformanceRecorder:options=>(recorder=require('./runtime-performance.cjs').createPerformanceRecorder(options))};if(name==='node:perf_hooks')return{performance:{now:()=>now}};if(name==='electron')return{BrowserWindow:Window,ipcMain};if(name==='./runtime-policy.cjs')return require('./runtime-policy.cjs');if(name==='./kdw_spout.node')return bridge;if(name==='./operator-http.cjs')return require('./operator-http.cjs');if(name==='./operator-calibration.cjs')return{createCalibration:()=>({point(){},status:()=>({}),result:()=>({rawPoints:[[0,0],[1,0],[1,1],[0,1]],targetPoints:[[560,0],[2320,0],[2320,1536],[560,1536]]})})};if(name==='./lidar.cjs')return{automaticLidarConfig:v=>v,validateLidarConfig:v=>v,solveCalibration(){},startLidar:async options=>{pointCallback=options.onPoint;lidarCalls.push('open');return{reset(){},snapshot:()=>null,reconfigure(value,raw){lidarCalls.push(raw?'calibration':'normal');return true;},close:async()=>{lidarCalls.push('close')}}}};return require(name);}};
  vm.runInNewContext(fs.readFileSync(path.resolve(__dirname,'../../max-game/launcher/stand-output.cjs'),'utf8'),context);
  const output=await exports.startStandOutput({root,host:{origin:'http://127.0.0.1:19252'},config:{entry:'/'},log:v=>logs.push(v),onFatal:e=>errors.push(e)});
  const texture=(channel=0,info={})=>{let releases=0;const value={textureInfo:{widgetType:'frame',codedSize:{width:3072,height:1536},handle:{ntHandle:Buffer.alloc(8)},...info},release(){releases++;}};windows[channel].webContents.emit('paint',{texture:value});return()=>releases;};
- return{root,output,bridge,ipcMain,lidarCalls,windows,intervals,timeouts,errors,logs,completed,texture,at:t=>{now=t;},contentReady(){ipcMain.emit('kdw:background-tick',{sender:windows[1].webContents},{delta:.016,ready:true,epoch:'test'});},ready(){ipcMain.emit('kdw:background-tick',{sender:windows[1].webContents},{delta:.016,ready:true,epoch:'test'});ipcMain.emit('kdw:background-ack',{sender:windows[0].webContents},{ready:'true'});}};
+ return{point:value=>pointCallback(value),root,output,bridge,ipcMain,lidarCalls,windows,intervals,timeouts,errors,logs,completed,texture,at:t=>{now=t;},contentReady(){ipcMain.emit('kdw:background-tick',{sender:windows[1].webContents},{delta:.016,ready:true,epoch:'test'});},ready(){ipcMain.emit('kdw:background-tick',{sender:windows[1].webContents},{delta:.016,ready:true,epoch:'test'});ipcMain.emit('kdw:background-ack',{sender:windows[0].webContents},{ready:'true'});}};
 }
 test('bad paint is discarded; a valid borrowed texture is released only at GPU completion',async t=>{const f=await fixture(t);const bad=f.texture(0,{codedSize:{width:1,height:1}});assert.equal(bad(),1);assert.equal(f.errors.length,0);const valid=f.texture();assert.equal(valid(),0);f.completed.push(1);f.intervals.find(x=>x.ms===4).f();assert.equal(valid(),1);});
 test('native submission failure quarantines the borrowed texture until worker termination',async t=>{const f=await fixture(t);f.bridge.send=()=>{throw Error('GPU_FAILURE_AFTER_COPY');};const releases=f.texture();assert.equal(releases(),0);assert.equal(f.errors.length,1);assert.equal(f.texture()(),1);assert.equal(f.errors.length,1);});
@@ -61,4 +61,23 @@ test('operator bridge accepts only the content renderer reply and coalesces no d
  assert.equal((await work).screenId,'next');
  const pending=f.output.gameControl({action:'back',token:'scope'});f.timeouts.filter(v=>v.ms===2500).at(-1).f();await assert.rejects(pending,/OPERATOR_TIMEOUT/);
  assert.throws(()=>f.output.gameControl({action:'execute',token:'scope'}),/INVALID_OPERATOR_ACTION/);
+});
+
+test('healthy continuous Spout frames are not invalidated by the monitor; stale layers still are',async t=>{
+ const f=await fixture(t),monitor=f.intervals.find(x=>x.ms===500).f;
+ f.at(100);f.ready();f.texture(0);f.texture(1);f.completed.push(1,2);f.intervals.find(x=>x.ms===4).f();
+ f.at(500);monitor();assert.deepEqual(f.windows.map(w=>w.webContents.invalidations),[0,0]);
+ f.at(700);f.texture(1);monitor();assert.deepEqual(f.windows.map(w=>w.webContents.invalidations),[1,0]);
+ assert.equal(f.output.active(),true);assert.equal(f.errors.length,0);
+});
+
+test('overlay sends changes and one clear, preserves moving cursor and restores after reload',async t=>{
+ const f=await fixture(t),tick=f.intervals.find(x=>x.ms===33).f,packets=()=>f.windows[1].webContents.sent.filter(v=>v[0]==='kdw:operator-overlay').map(v=>v[1]);
+ f.ready();for(let i=0;i<100;i++)tick();assert.equal(packets().length,1);
+ f.output.setCursor(true);f.point({phase:'move',mapped:{inside:true,x:100,y:200}});tick();assert.equal(packets().at(-1).cursor.y,200);
+ for(let i=0;i<100;i++){f.point({phase:'move',mapped:{inside:true,x:100,y:200}});tick();}assert.equal(packets().length,2);
+ f.point({phase:'move',mapped:{inside:true,x:100,y:220}});tick();assert.equal(packets().at(-1).cursor.y,220);
+ f.output.setCursor(false);tick();assert.equal(packets().at(-1).cursor,null);for(let i=0;i<100;i++)tick();assert.equal(packets().length,4);
+ f.windows[1].webContents.emit('did-finish-load');tick();assert.equal(packets().length,5);
+ await f.output.beginCalibration({port:8000});tick();assert(packets().at(-1).calibration);await f.output.cancelCalibration();tick();assert.equal(packets().at(-1).calibration,null);assert.equal(f.output.active(),true);assert.equal(f.lidarCalls.filter(x=>x==='open').length,1);
 });

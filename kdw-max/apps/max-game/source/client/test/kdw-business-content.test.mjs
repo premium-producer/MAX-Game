@@ -7,7 +7,7 @@ const rows=fs.readFileSync(new URL('../../../../../docs/BUSINESS_CONTENT_CARDS.m
 test('all 60 approved cards reach live banks with exact copy, classification and prices',()=>{
  assert.equal(rows.length,60);
  for(const type of ['cafe','flowers','auto'])for(const kind of ['post','product']){
-  const bank=kind==='post'?postBank(type):storeBank(type);
+  const bank=kind==='post'?postBank(type,12):storeBank(type,7);
   assert.equal(bank.length,10);assert.equal(bank.filter(p=>p.good).length,5);
   for(const p of bank){
    const r=rows.find(r=>r[0]===p.id);assert.ok(r,p.id);assert.equal(p.title,r[2]);assert.equal(p.description,r[3]);
@@ -28,7 +28,7 @@ test('old activity versions retain original banks, IDs and order',()=>{
 test('each reviewed store can reach its goal after a mistake within the task time',()=>{
  for(const type of ['cafe','flowers','auto']){
   const s={status:'task',taskId:'business.store',screenId:'business.store.start',ownerActive:true,runId:1,deadlineAt:61000,progress:{business:{answers:{businessType:type}}}};
-  const c={taskId:s.taskId,screenId:s.screenId};assert.equal(reduceStore(s,{...c,type:'START_STORE'},1000),null);
+  const c={taskId:s.taskId,screenId:s.screenId};assert.equal(reduceStore(s,{...c,type:'START_STORE'},1000,7),null);
   let mistake=false;
   for(let elapsed=0;elapsed<60000&&!storeGoal(s.progress.business.storeActivity);elapsed+=100){
    const a=s.progress.business.storeActivity,available=storeTimeline(a).at(elapsed);
@@ -43,7 +43,7 @@ test('each reviewed store can reach its goal after a mistake within the task tim
 test('each reviewed channel reaches its audience goal after a mistake within the task time',()=>{
  for(const type of ['cafe','flowers','auto']){
   const s={sessionId:'content-test',missionId:'business',status:'task',taskId:'business.channel',screenId:'business.channel.result',ownerActive:true,runId:1,deadlineAt:61000,progress:{business:{answers:{businessType:type}}}};
-  const c={taskId:s.taskId,screenId:s.screenId};assert.equal(reducePosts(s,{...c,type:'START_POSTS'},1000),null);
+  const c={taskId:s.taskId,screenId:s.screenId};assert.equal(reducePosts(s,{...c,type:'START_POSTS'},1000,12),null);
   let mistake=false;
   for(let elapsed=0;elapsed<60000&&!postsGoal(s.progress.business.postsActivity);elapsed+=100){
    const a=s.progress.business.postsActivity,available=visiblePosts(a,elapsed);

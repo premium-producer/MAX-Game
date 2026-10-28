@@ -13,13 +13,13 @@ class PrepareTest(unittest.TestCase):
   with self.assertRaisesRegex(ValueError,'already exists'):m.prepare(root,spec,root/'package')
   spec['files']=['apps/max-game/data/secret.json']
   with self.assertRaisesRegex(ValueError,'Only application'):m.prepare(root,spec,root/'forbidden')
- def test_only_two_named_stella_launchers_are_allowed_at_app_root(self):
+ def test_only_named_stella_launchers_are_allowed_at_app_root(self):
   root=(pathlib.Path('.cache/patch-prepare-tests')/uuid.uuid4().hex).resolve();root.mkdir(parents=True)
-  files=['apps/stela/Start-Recorded.bat','apps/stela/Start-Generated.bat']
+  files=['apps/stela/Start-Recorded.bat','apps/stela/Start-Generated.bat','apps/stela/Start-Touch-Recorded.bat']
   for name in files:
    p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text('@echo off')
   spec={'id':'TEST-VOICE-MODE','release':'C:/KDW-Stand/releases/RC4-1','base':'base','files':files}
-  self.assertEqual(m.prepare(root,spec,root/'allowed')['files'],2)
+  self.assertEqual(m.prepare(root,spec,root/'allowed')['files'],3)
   for i,name in enumerate(['apps/stela/Unknown.bat','apps/max-game/Start-Recorded.bat','apps/stela/data/narration-mode.local.json','apps/stela/launcher/../../secret']):
    spec['files']=[name]
    with self.assertRaisesRegex(ValueError,'Only application'):m.prepare(root,spec,root/('denied'+str(i)))

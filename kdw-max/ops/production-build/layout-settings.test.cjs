@@ -1,5 +1,12 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),os=require('node:os'),path=require('node:path'),http=require('node:http');
 const {DEFAULTS,validate,createLayoutSettings}=require('../../apps/STARTUP/tools/layout-settings.cjs');
+
+test('falling-card controls are independent from phone scale, scoped and strictly bounded',()=>{
+ const p=structuredClone(DEFAULTS);p.game.relative={cardsScale:1.2,fallingCardScale:2.2,fallingSpawnRight:600};p.screens['business.store.start']={relative:{fallingCardScale:1.5,fallingSpawnRight:900}};
+ assert.deepEqual(validate(p),p);
+ for(const [key,value]of [['fallingCardScale',0],['fallingCardScale',3.1],['fallingSpawnRight',-1],['fallingSpawnRight',1601],['fallingCardScale',NaN],['fallingSpawnRight','600']]){const bad=structuredClone(p);bad.game.relative[key]=value;assert.throws(()=>validate(bad));}
+ assert.deepEqual(validate(structuredClone(DEFAULTS)),DEFAULTS);
+});
 test('layout profile: strict bounds, inheritance input, invalid IDs and unknown fields',()=>{
  const p=structuredClone(DEFAULTS);p.devices.phone={device:{x:120,y:-70,scale:.8}};p.screens['business.platform.start']={reference:{x:0,y:50,scale:1.2}};assert.deepEqual(validate(p),p);
  for(const mutate of [p=>p.game.device.scale=NaN,p=>p.game.device.scale=0,p=>p.game.device.x=4000,p=>p.devices.tv={},p=>p.screens['../../secret']={},p=>p.game.device.color='red',p=>p.schemaVersion=2]){const p=structuredClone(DEFAULTS);mutate(p);assert.throws(()=>validate(p));}
@@ -33,4 +40,17 @@ test('HTTP: draft lease rollback, CAS, edit guard, independent preview session, 
   assert.equal((await api('save',data)).status,200);assert.equal((await api('save',data)).status,409);service=createLayoutSettings({root,origin});state=(await api('state')).value;assert.equal(state.value.standby.video.scale,.75);assert.equal(state.preview,null);
   const p2=structuredClone(p);p2.game.reference.y=80;await api('save',{...data,value:p2,revision:state.revision});assert.equal(JSON.parse(fs.readFileSync(path.join(root,'data/layout.local.json.backup'))).standby.video.scale,.75);
  }finally{server.closeAllConnections();await new Promise(r=>server.close(r));fs.rmSync(root,{recursive:true,force:true});}
+});
+
+
+test('relative composition is additive, bounded and merges with existing saved profiles',()=>{
+ const old=structuredClone(DEFAULTS);assert.deepEqual(validate(old),old);
+ const p=structuredClone(old);p.game.relative={deviceScale:1.4,centered:true,centerX:-10,centerY:5,iconWidth:24,referenceWidth:85,iconGap:12,iconsDeviceGap:15,deviceReferenceGap:18,buttonGap:7};p.devices.phone={relative:{deviceScale:.9}};p.screens['communication.call.result']={relative:{iconGap:20}};assert.deepEqual(validate(p),p);
+ for(const bad of [{deviceScale:0},{iconGap:-1},{centered:'yes'},{referenceWidth:301},{centerY:Infinity},{x:20},{iconWidth:'30'}]){const p=structuredClone(old);p.game.relative=bad;assert.throws(()=>validate(p));}
+});
+
+
+test('independent computer/card multipliers accept 10–200 percent and reject out-of-range input',()=>{
+ for(const scale of [.1,.5,1,1.2,2]){const p=structuredClone(DEFAULTS);p.game.relative={pcScale:scale,cardsScale:2.1-scale};assert.deepEqual(validate(p),p);}
+ for(const bad of [.099,2.001,NaN,'100'])for(const key of ['pcScale','cardsScale']){const p=structuredClone(DEFAULTS);p.game.relative={[key]:bad};assert.throws(()=>validate(p));}
 });

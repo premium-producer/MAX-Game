@@ -1,7 +1,8 @@
+import {STORE_VERSION} from './kdw-store-rating.mjs';
 import chrome from './kdw-store-chrome.json' with {type:'json'};
 // Native HTML storefront uses the same device shell and presentation authority.
 export function applyNativeStore(catalog){
- catalog.kdwStoreActivity=7;
+ catalog.kdwStoreActivity=STORE_VERSION;
  const assetId='kdw.native.store-phone';
  Object.assign(catalog.assets,chrome);
  for(const screen of Object.values(catalog.tasks['business.store'].screens)){

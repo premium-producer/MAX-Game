@@ -11,9 +11,9 @@ test('reference plus button is centred for phone and landscape device, at any sc
   assert.equal(p.buttonLeft+button.width/2,reference.left+reference.width/2);
  }
 });
-test('navigation stays inside the physical touch area when the help panel extends right',()=>{
+test('navigation stays centred under its reference when the help panel extends right',()=>{
  const p=referenceTransitionGeometry({top:100,height:800},{left:2100,width:500,height:200},{width:300,height:50},20,{left:560,right:2320});
- assert.equal(p.buttonLeft,2020);
+ assert.equal(p.buttonLeft,2200);
 });
 test('iteration 1 restores placement without changing event ownership or transforms',()=>{
  const removed=[],node={style:{transform:'scale(.7)',removeProperty:p=>removed.push(p)},dataset:{referenceTransition:'true'}},nodes=new Set([node]);

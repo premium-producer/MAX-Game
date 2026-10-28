@@ -1,11 +1,9 @@
-import {pixelMapViewport} from './kdw-pixel-map.mjs';
-
 // Iteration 2: the reference and navigation form one vertically centred block.
 // Coordinates here are viewport pixels, shared by the GPU and pointer targets.
-export function referenceTransitionGeometry(device,reference,button,gap,touch=null){
+export function referenceTransitionGeometry(device,reference,button,gap){
  const top=device.top+device.height/2-(reference.height+gap+button.height)/2;
- let left=reference.left+(reference.width-button.width)/2;
- if(touch)left=Math.max(touch.left,Math.min(left,touch.right-button.width));
+ const left=reference.left+(reference.width-button.width)/2;
+
  return {referenceTop:top,buttonLeft:left,buttonTop:top+reference.height+gap};
 }
 
@@ -16,11 +14,11 @@ export function layoutDeviceTransitions(nodes){
  for(const node of nodes){node.style.removeProperty('translate');delete node.dataset.referenceTransition;}
  nodes.clear();
 }
-const selector='.client-actions .kdw-transition-button,.pc-forward .kdw-transition-button,.bn-source-forward .kdw-transition-button,.kdw-post-actions .kdw-transition-button,.kdw-store-actions .kdw-transition-button';
+const selector='.kdw-transition-actions .kdw-transition-button,.client-actions .kdw-transition-button,.pc-forward .kdw-transition-button,.bn-source-forward .kdw-transition-button,.kdw-post-actions .kdw-transition-button,.kdw-store-actions .kdw-transition-button';
 export function createTransitionLayout({document,params}){
  const moved=new Set();
  const visible=e=>{
-  if(e.closest('[hidden],[data-activity-ghost]'))return false;
+  if(e.hasAttribute('data-transition-source')||e.closest('[hidden],[data-activity-ghost]'))return false;
   const s=getComputedStyle(e),r=e.getBoundingClientRect();
   return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;
  };
@@ -41,8 +39,7 @@ export function createTransitionLayout({document,params}){
   if(buttons.length!==1)return;
   const button=buttons[0],r=reference.getBoundingClientRect(),b=button.getBoundingClientRect();
   const gap=24*r.width/reference.offsetWidth;
-  const touch=pixelMapViewport(innerWidth,innerHeight).touch;
-  const target=referenceTransitionGeometry(device.getBoundingClientRect(),r,b,gap,touch);
+  const target=referenceTransitionGeometry(device.getBoundingClientRect(),r,b,gap);
   shift(reference,0,target.referenceTop-r.top);
   shift(button,target.buttonLeft-b.left,target.buttonTop-b.top);
  };

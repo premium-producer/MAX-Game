@@ -19,7 +19,7 @@ def prepare(root,spec,output):
    previous[f['path']]=f['sha256']
  rows=[]
  for relative in dict.fromkeys(spec['files']):
-  if not (re.fullmatch(r'apps/(max-game|stela)/(launcher|www)/[A-Za-z0-9_. /-]+',relative) or relative in ('apps/stela/Start-Recorded.bat','apps/stela/Start-Generated.bat')) or any(p in ('','..','.') for p in relative.split('/')):raise ValueError('Only application launcher/www code can be patched')
+  if not (re.fullmatch(r'apps/(max-game|stela)/(launcher|www)/[A-Za-z0-9_. /-]+',relative) or relative in ('apps/stela/Start-Recorded.bat','apps/stela/Start-Generated.bat','apps/stela/Start-Touch-Recorded.bat')) or any(p in ('','..','.') for p in relative.split('/')):raise ValueError('Only application launcher/www code can be patched')
   source=(root/relative).resolve();source.relative_to(root.resolve())
   old=base/relative;before=previous.get(relative,digest(old) if old.exists() else None);after=digest(source)
   if before!=after:rows.append({'path':relative,'before':before,'sha256':after,'bytes':source.stat().st_size})

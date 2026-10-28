@@ -7,7 +7,7 @@ import {TEXT_POLICY,TEXT_REMOVED_NOTICE} from './kdw-text-policy.mjs';
 import {KEYBOARD_DISMISS_ICON,updateKeyboardPanel} from './kdw-keyboard-ui.mjs';
 import {typographyText} from './kdw-typography.mjs';
 import {preloadBusinessImages} from './kdw-business-images.mjs';
-import {storeBank,storeGoal,storeRating,STORE_TASK,STORE_SCREEN} from './kdw-store-rating.mjs';
+import {storeBank,STORE_VERSION,storeGoal,storeRating,STORE_TASK,STORE_SCREEN} from './kdw-store-rating.mjs';
 import {activityGeometry,alignActivityPhone,alignActivityActions,fadeActivityOut} from './kdw-activity-stage.mjs';
 import {createProductStream} from './kdw-product-stream.mjs';
 import {createStoreMotion} from './kdw-store-motion.mjs';
@@ -43,7 +43,7 @@ function mountLegacyInteractions({getSession,onMenu,deferAlignment=false}){
  let storePhotos={key:'',status:'idle'};
  function ensureStorePhotos(){
   const business=latestSnapshot?.state.progress.business;if(!business)return false;
-  const activity=business.storeActivity,type=activity?.businessType??business.answers?.businessType??'cafe',version=activity?.version??7,key=type+':'+version;
+  const activity=business.storeActivity,type=activity?.businessType??business.answers?.businessType??'cafe',version=activity?.version??STORE_VERSION,key=type+':'+version;
   if(storePhotos.key!==key){
    const state=storePhotos={key,status:'loading'};
    preloadBusinessImages(storeBank(type,version)).then(()=>{if(!disposed&&storePhotos===state){state.status='ready';if(scene==='store')error('');}})
@@ -96,7 +96,7 @@ function mountLegacyInteractions({getSession,onMenu,deferAlignment=false}){
   Object.assign(editor.style,{left:rect.left+'px',top:rect.top+'px',height:rect.height/scale+'px',transform:`scale(${scale})`});
  }
  function storeRows(){return latestSnapshot?.state.progress.business?.storeActivity?.published??(screenId!==STORE_SCREEN?(draft?.slots??[]).filter(Boolean).map(postId=>({postId,score:null})):[]);}
- function storeProduct(id){return storeBank(latestSnapshot?.state.progress.business?.storeActivity?.businessType??latestSnapshot?.state.progress.business?.answers?.businessType,latestSnapshot?.state.progress.business?.storeActivity?.version??7).find(p=>p.id===id)??COFFEE_PRODUCTS.find(p=>p.id===id);}
+ function storeProduct(id){return storeBank(latestSnapshot?.state.progress.business?.storeActivity?.businessType??latestSnapshot?.state.progress.business?.answers?.businessType,latestSnapshot?.state.progress.business?.storeActivity?.version??STORE_VERSION).find(p=>p.id===id)??COFFEE_PRODUCTS.find(p=>p.id===id);}
  function slotMarkup(){const rows=storeRows(),capacity=Math.max(8,Math.ceil((rows.length+2)/2)*2);return rows.map((row,index)=>{const product=storeProduct(row.postId);return `<article class="kdw-slot" data-filled="true" data-rating="${row.score}"><div data-kdw-slot="${index}" class="kdw-slot-content">${photo(product)}<div class="kdw-store-price"><strong>${product.price.toLocaleString('ru-RU')} ₽</strong>${ratingMarkup(row.score)}</div><span class="kdw-store-name">${esc(typographyText(product.name))}</span>${product.description?`<small class="kdw-store-description">${esc(typographyText(product.description))}</small>`:''}<span class="kdw-store-more">Подробнее</span></div></article>`;}).join('')+Array.from({length:capacity-rows.length},()=>'<div class="kdw-slot kdw-slot-placeholder" aria-hidden="true"></div>').join('');}
  function productMarkup(product){return `<button type="button" class="kdw-product" data-kdw-product="${product.id}" aria-label="Добавить ${esc(product.name)}">${photo(product)}<span class="kdw-product-title">${esc(typographyText(product.name))}</span><strong>${product.price.toLocaleString('ru-RU')} ₽</strong>${product.description?`<small class="kdw-product-description">${esc(typographyText(product.description))}</small>`:''}</button>`;}
  function storeMarkup(){

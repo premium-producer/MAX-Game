@@ -1,7 +1,7 @@
 import {pressKeyboardKey} from './kdw-keyboard-ui.mjs';
 // Native overlays live outside #circles. Focus fields and enter ordinary click handlers on
 // touch-down/entry, just like the GPU buttons, without waiting for OSC /delete.
-const roots='#kdw-personal-channel,#kdw-business-native,#kdw-interactions,#kdw-posts,#kdw-webgl-store';
+const roots='#kdw-transition-controls,#kdw-personal-channel,#kdw-business-native,#kdw-interactions,#kdw-posts,#kdw-webgl-store';
 export function installNativeTouch({document,active=()=>true,now=()=>performance.now()}={}){
  let hand=null,suppressUntil=0,suppressId=null;
  const inside=(r,x,y)=>r&&x>=r.left&&x<=r.right&&y>=r.top&&y<=r.bottom;

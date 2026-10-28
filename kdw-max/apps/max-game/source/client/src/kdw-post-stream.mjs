@@ -10,7 +10,20 @@ const random=(seed,index,salt)=>{
 
 // Authoritative event schedule, independent of frames, viewport and Math.random.
 // Accepted publication times release capacity; merely pressing a card does not.
+export const POPUP_CARDS=Object.freeze({lifetime:150,interval:450});
+export function createPopupTimeline(activity,bank){
+ const used=new Set(activity.published.map(r=>r.spawnId));
+ const spawn=index=>({index,spawnId:`${activity.runId}.${index}`,post:bank[Math.floor(random(activity.seed,index,2)*bank.length)],
+  flow:'popup',lane:1,start:index*POPUP_CARDS.interval,travel:POPUP_CARDS.lifetime,velocity:0,size:.82+random(activity.seed,index,3)*.18,
+  offset:random(activity.seed,index,4),vertical:random(activity.seed,index,5)});
+ return {spawn,at(elapsed){
+  if(elapsed<0)return [];
+  const row=spawn(Math.floor(elapsed/POPUP_CARDS.interval));
+  return elapsed-row.start<POPUP_CARDS.lifetime&&!used.has(row.spawnId)?[{...row,progress:(elapsed-row.start)/POPUP_CARDS.lifetime}]:[];
+ }};
+}
 export function createPostTimeline(posts,bank){
+ if(posts.version>=14)return createPopupTimeline(posts,bank);
  if(posts.version>=10){
   // Double the whole conveyor clock, including refill, to preserve density.
   // Persisted elapsed times and the mission timer remain real milliseconds.

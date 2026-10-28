@@ -233,3 +233,6 @@ html[data-visual=webgl-bfm-v5] #circles .task-dialog .instruction-copy h2{white-
 html[data-visual=webgl-bfm-v5][data-reveal=true][data-service=false] #circles .route-phone .demo-app .client-actions .pill.client-action.kdw-transition-button{transition:filter .12s ease,opacity .16s ease}
 .kdw-activity-button.kdw-transition-button:active{transform:none}
 .kdw-transition-button[data-transition-contact=true]{filter:brightness(1.15);opacity:1}
+
+/* All mission/task transitions share one stationary presentation component. */
+.kdw-transition-actions{container-type:inline-size;transform-origin:top left;text-align:center}

@@ -6,7 +6,7 @@ import {BUSINESS_CARD_IMAGES,preloadBusinessImages} from '../src/kdw-business-im
 import {postBank} from '../src/kdw-posts-model.mjs';
 import {storeBank} from '../src/kdw-store-rating.mjs';
 test('all sixty current cards have distinct, intact photographic assets; legacy banks stay unchanged',()=>{
- const cards=['cafe','flowers','auto'].flatMap(type=>[...postBank(type),...storeBank(type)]);
+ const cards=['cafe','flowers','auto'].flatMap(type=>[...postBank(type,12),...storeBank(type,7)]);
  assert.equal(cards.length,60);assert.equal(Object.keys(BUSINESS_CARD_IMAGES).length,60);
  const hashes=new Set();
  for(const card of cards){

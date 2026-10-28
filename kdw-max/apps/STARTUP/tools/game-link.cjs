@@ -21,8 +21,8 @@ function validate(input){
  let photo=null;if(input.photo!==null){const p=input.photo;if(p?.mimeType!=='image/jpeg'||typeof p.base64!=='string'||p.base64.length>LIMIT-1024||p.base64.length%4!==0||/[^A-Za-z0-9+/=]/.test(p.base64))throw fail('INVALID_PHOTO');const b=Buffer.from(p.base64,'base64');if(b.toString('base64')!==p.base64)throw fail('INVALID_PHOTO');const size=jpegSize(b);if(size.width!==1080||size.height!==1920||b.length>4*1024*1024)throw fail('INVALID_PHOTO_SIZE');photo={mimeType:'image/jpeg',width:1080,height:1920,bytes:b.length,sha256:hash(b),base64:p.base64};}
  return{schemaVersion:1,gameId:input.gameId,voiceSessionId:input.voiceSessionId,missionId:input.missionId,audience:input.audience,goal:input.goal,photo};
 }
-function publicGame(r){if(!r)return null;return{schemaVersion:1,gameId:r.gameId,sessionId:r.gameId,voiceSessionId:r.voiceSessionId,missionId:r.missionId,gameMissionId:r.missionId==='business-promotion'?'business':r.missionId,audience:r.audience,goal:r.goal,hasPhoto:!!r.photo,photoSha256:r.photo?.sha256??null,createdAt:r.createdAt,updatedAt:r.updatedAt,status:r.status,progress:r.progress??null,...(r.standPolicy?{standPolicy:r.standPolicy,source:r.source??'stella'}:{})};}
-const NEUTRAL='data:image/svg+xml;base64,'+Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920"><path fill="#251444" d="M0 0h1080v1920H0z"/><circle cx="540" cy="430" r="200" fill="#8674a6"/><ellipse cx="540" cy="990" rx="400" ry="330" fill="#8674a6"/></svg>').toString('base64');
+function photoRevision(r){return r.avatar?hash((r.photo?.sha256??'none')+'|'+r.avatar.sha256):r.photo?.sha256??'none';}
+function publicGame(r){if(!r)return null;return{schemaVersion:1,gameId:r.gameId,sessionId:r.gameId,voiceSessionId:r.voiceSessionId,missionId:r.missionId,gameMissionId:r.missionId==='business-promotion'?'business':r.missionId,audience:r.audience,goal:r.goal,hasPhoto:!!r.photo,photoSha256:r.photo?.sha256??null,hasAvatar:!!r.avatar,avatarSha256:r.avatar?.sha256??null,photoRevision:photoRevision(r),createdAt:r.createdAt,updatedAt:r.updatedAt,status:r.status,progress:r.progress??null,...(r.standPolicy?{standPolicy:r.standPolicy,source:r.source??'stella'}:{})};}
 function createGameHub({root,origin,now=()=>Date.now(),production=false,getOutput=()=>null,validatePhoto=()=>{}}){
  const settings=require('./stand-settings.cjs').createSettings({root,enabled:production});
  const assetCache=new Map(),heartbeats=new Map();
@@ -31,7 +31,7 @@ function createGameHub({root,origin,now=()=>Date.now(),production=false,getOutpu
  const key=read(keyFile).key;if(!/^[a-f0-9]{64}$/.test(key))throw fail('INVALID_PAIRING_KEY');
  const file=id=>{if(!UUID.test(id))throw fail('INVALID_GAME_ID');return path.join(games,id+'.json');};
  const transitionFile=path.join(directory,'replacement.json');
- function clearPhoto(r){if(r.photo?.blob){const f=path.join(directory,'photos',path.basename(r.photo.blob));if(fs.existsSync(f))fs.unlinkSync(f);}r.photo=null;}
+ function clearPhoto(r){for(const p of [r.photo,r.avatar])if(p?.blob){const f=path.join(directory,'photos',path.basename(p.blob));if(fs.existsSync(f))fs.unlinkSync(f);}r.photo=null;r.avatar=null;}
  function finishReplacement(){
   const job=read(transitionFile);if(!job)return;
   // Replay an interrupted replacement before exposing the queue. New ID first,
@@ -48,7 +48,7 @@ function createGameHub({root,origin,now=()=>Date.now(),production=false,getOutpu
    let d=deadlines.get(id);if(!d){d={mono:performance.now(),remaining:r.delivery.deadline-now()};deadlines.set(id,d);}
    if(now()<r.delivery.receivedAt||now()>=r.delivery.deadline||performance.now()-d.mono>=d.remaining){r.status='handoff-expired';clearPhoto(r);atomic(file(id),r);}
   }
-  if(r.photo&&now()-Date.parse(r.createdAt)>DAY){if(r.photo.blob){const f=path.join(directory,'photos',r.photo.blob);if(fs.existsSync(f))fs.unlinkSync(f);}r.photo=null;r.photoExpired=true;atomic(file(id),r);}return r;};
+  if((r.photo||r.avatar)&&now()-Date.parse(r.createdAt)>DAY){clearPhoto(r);r.photoExpired=true;atomic(file(id),r);}return r;};
  function records(){return fs.readdirSync(games).filter(n=>UUID.test(n.slice(0,-5))&&n.endsWith('.json')).map(n=>publicGame(get(n.slice(0,-5)))).sort((a,b)=>Date.parse(a.createdAt)-Date.parse(b.createdAt));}
  function active(){finishReplacement();let a=read(path.join(directory,'active.json')),r=a?.gameId?get(a.gameId):null;
   if(r&&(!production&&['completed','incomplete','expired'].includes(r.status)&&now()-Date.parse(r.updatedAt)>=30000||['released','superseded','cancelled','handoff-expired'].includes(r.status)))r=null;
@@ -67,11 +67,22 @@ function createGameHub({root,origin,now=()=>Date.now(),production=false,getOutpu
   if(live.length-previousIds.length>=200)throw fail('QUEUE_FULL',503);
   const stamp=new Date(now()).toISOString(),r={...value,...(delivery?{delivery}:{}),signature,source:manual?'manual':'stella',status:'queued',createdAt:stamp,updatedAt:stamp,progress:null};atomic(transitionFile,{next:r,previous:previousIds});finishReplacement();active();return publicGame(get(r.gameId));
  }
- function assets(r){const cacheKey=r.gameId+':'+(r.photo?.sha256??'none');if(assetCache.has(cacheKey))return assetCache.get(cacheKey);for(const k of assetCache.keys())if(k.startsWith(r.gameId+':'))assetCache.delete(k);const result=[];for(const dir of ['conversation','visitor-details']){const directory=path.join(root,'www/assets/kdw-native',dir);if(!fs.existsSync(directory))continue;for(const name of fs.readdirSync(directory)){if(!name.endsWith('.svg'))continue;const original=`assets/kdw-native/${dir}/${name}`,text=fs.readFileSync(path.join(directory,name),'utf8');if(!text.includes('data-visitor-photo="true"')&&!['visitor-avatar.svg','visitor-placeholder.svg'].includes(name))continue;const dataUri=r.photo?'data:image/jpeg;base64,'+(r.photo.blob?fs.readFileSync(path.join(root,'data/link/photos',r.photo.blob)).toString('base64'):r.photo.base64):NEUTRAL;
-   const svg=text.includes('data-visitor-photo="true"')?text.replace(/<image data-visitor-photo="true"[^>]*\/>/g,`<image data-visitor-photo="true" width="1080" height="1920" href="${dataUri}"/>`):`<svg xmlns="http://www.w3.org/2000/svg" width="${name==='visitor-avatar.svg'?880:1080}" height="${name==='visitor-avatar.svg'?880:1920}" viewBox="${name==='visitor-avatar.svg'?'100 100 880 880':'0 0 1080 1920'}"><image width="1080" height="1920" href="${dataUri}"/></svg>`;
-   const bytes=Buffer.from(svg),linkedPath=`assets/kdw-linked/${r.gameId}/${r.photo?.sha256??'none'}/${dir}/${name}`;result.push({original,path:linkedPath,sha256:hash(bytes),bytes});}}
-  assetCache.set(cacheKey,result);while(assetCache.size>3)assetCache.delete(assetCache.keys().next().value);return result;
+ function assets(r){const revision=photoRevision(r),cacheKey=r.gameId+':'+revision;if(assetCache.has(cacheKey))return assetCache.get(cacheKey);for(const k of assetCache.keys())if(k.startsWith(r.gameId+':'))assetCache.delete(k);
+  const uri=p=>p?'data:image/jpeg;base64,'+(p.blob?fs.readFileSync(path.join(root,'data/link/photos',p.blob)).toString('base64'):p.base64):null,full=uri(r.photo),avatar=uri(r.avatar),result=[];
+  for(const dir of ['conversation','visitor-details']){const directory=path.join(root,'www/assets/kdw-native',dir);if(!fs.existsSync(directory))continue;for(const name of fs.readdirSync(directory)){
+   if(!name.endsWith('.svg'))continue;const original=`assets/kdw-native/${dir}/${name}`,text=fs.readFileSync(path.join(directory,name),'utf8');if(!text.includes('data-visitor-photo="true"')&&!['visitor-avatar.svg','visitor-placeholder.svg'].includes(name))continue;
+   let svg=text,index=0;
+   // Replace only explicitly marked circular viewports; full-height slots retain full.
+   if(avatar)svg=svg.replace(/<svg([^>]*data-visitor-viewport="circle"[^>]*)>[\s\S]*?<\/svg>/g,(_all,attrs)=>{
+    const clip='kdw-visitor-avatar-'+index++;return `<svg${attrs.replace(/viewBox="[^"]*"/,'viewBox="0 0 512 512"')}><defs><clipPath id="${clip}"><circle cx="256" cy="256" r="256"/></clipPath></defs><image width="512" height="512" href="${avatar}" clip-path="url(#${clip})"/></svg>`;
+   });
+   if(full)svg=svg.replace(/<image data-visitor-photo="true"[^>]*\/>/g,`<image data-visitor-photo="true" width="1080" height="1920" href="${full}"/>`);
+   if(name==='visitor-avatar.svg'&&avatar)svg=`<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><defs><clipPath id="kdw-avatar"><circle cx="256" cy="256" r="256"/></clipPath></defs><image width="512" height="512" href="${avatar}" clip-path="url(#kdw-avatar)"/></svg>`;
+   else if(full&&['visitor-avatar.svg','visitor-placeholder.svg'].includes(name))svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${name==='visitor-avatar.svg'?880:1080}" height="${name==='visitor-avatar.svg'?880:1920}" viewBox="${name==='visitor-avatar.svg'?'100 100 880 880':'0 0 1080 1920'}"><image width="1080" height="1920" href="${full}"/></svg>`;
+   const bytes=Buffer.from(svg),linkedPath=`assets/kdw-linked/${r.gameId}/${revision}/${dir}/${name}`;result.push({original,path:linkedPath,sha256:hash(bytes),bytes});
+  }}assetCache.set(cacheKey,result);while(assetCache.size>3)assetCache.delete(assetCache.keys().next().value);return result;
  }
+
  function assignment(r){
   const terminal={'handoff-expired':'no-show',cancelled:'superseded',superseded:'superseded',released:r.progress?.endReason==='no-show'?'no-show':'completed',expired:'completed'};
   let status=terminal[r.status]??(r.status==='queued'?'queued':r.claimedAt||['task','result','completed','incomplete'].includes(r.progress?.status)?'playing':'invited');
@@ -93,7 +104,7 @@ function createGameHub({root,origin,now=()=>Date.now(),production=false,getOutpu
  });}
  return{key,ingest,get,active,operatorChange,resetForStartup:()=>queue(()=>{
   finishReplacement();let cancelled=0;const stamp=new Date(now()).toISOString();
-  for(const item of records())if(['queued','assigned','playing','completed','incomplete'].includes(item.status)){const r=get(item.gameId);r.status='cancelled';r.endReason='startup-reset';r.updatedAt=stamp;atomic(file(r.gameId),r);cancelled++;}
+  for(const item of records())if(['queued','assigned','playing','completed','incomplete'].includes(item.status)){const r=get(item.gameId);r.status='cancelled';r.endReason='startup-reset';r.updatedAt=stamp;clearPhoto(r);atomic(file(r.gameId),r);cancelled++;}
   atomic(path.join(directory,'active.json'),{gameId:null});heartbeats.clear();deadlines.clear();assetCache.clear();return{cancelled};
  }),settings:()=>settings.snapshot(),handle(req,res){
   if(asyncHub.handle(req,res))return true;
@@ -108,7 +119,7 @@ function createGameHub({root,origin,now=()=>Date.now(),production=false,getOutpu
     const audience=id==='business-promotion'?'business':id==='blogger'?'blogger':'personal',goal=id==='digital-id'?'access':id==='communication'?'connection':null;
     const game=ingest({schemaVersion:1,gameId:crypto.randomUUID(),voiceSessionId:crypto.randomUUID(),missionId:id,audience,goal,photo:null},{manual:true});json(res,200,{game});return;
    }
-   if(asset){if(!['GET','HEAD'].includes(req.method))throw fail('METHOD_NOT_ALLOWED',405);const r=get(asset[1]),a=assets(url.pathname.includes('/none/')?{...r,photo:null}:r).find(a=>a.path.split('?')[0]===url.pathname.slice(1));if(!a)throw fail('ASSET_NOT_FOUND',404);res.writeHead(200,{'Content-Type':'image/svg+xml','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Content-Length':a.bytes.length});res.end(req.method==='HEAD'?undefined:a.bytes);return;}
+   if(asset){if(!['GET','HEAD'].includes(req.method))throw fail('METHOD_NOT_ALLOWED',405);const r=get(asset[1]),a=assets(url.pathname.includes('/none/')?{...r,photo:null,avatar:null}:r).find(a=>a.path.split('?')[0]===url.pathname.slice(1));if(!a)throw fail('ASSET_NOT_FOUND',404);res.writeHead(200,{'Content-Type':'image/svg+xml','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Content-Length':a.bytes.length});res.end(req.method==='HEAD'?undefined:a.bytes);return;}
    if(req.method==='POST'&&url.pathname==='/__kdw/link/ingest'){if(req.headers.origin||req.headers['x-kdw-relay-key']!==key)throw fail('UNAUTHORIZED',403);json(res,200,ingest(await body(req)));return;}
    if(req.method==='GET'&&url.pathname==='/__kdw/link/active'){const game=publicGame(active());json(res,200,{game,queueCount:records().filter(r=>r.status==='queued').length});return;}
    const m=/^\/__kdw\/link\/games\/([^/]+)(\/assets|\/progress|\/claim|\/status)?$/.exec(url.pathname);if(!m)throw fail('NOT_FOUND',404);const r=get(m[1]);
@@ -130,7 +141,7 @@ function createGameHub({root,origin,now=()=>Date.now(),production=false,getOutpu
     if(!safeToken(b.taskId)||!safeToken(b.screenId)||b.missionId!==(r.missionId==='business-promotion'?'business':r.missionId)&&b.status!=='menu')throw fail('INVALID_PROGRESS_CONTEXT');
     heartbeats.set(r.gameId,now());r.lastSeenAt=new Date(now()).toISOString();r.progress={endReason:['qr','no-show','inactivity'].includes(b.endReason)?b.endReason:null,revision:b.revision,runId:b.runId,status:b.status,missionId:b.missionId,taskId:b.taskId,screenId:b.screenId,contentRevision:b.contentRevision};
     if(production&&b.status==='menu'&&b.endReason==='inactivity')atomic(path.join(directory,'active.json'),{gameId:r.gameId,cooldownUntil:now()+r.standPolicy.value.max.timings.standbyAfterIdleSeconds*1000});
-    const next=b.status==='menu'?'released':['completed','incomplete','expired'].includes(b.status)?b.status:'playing';if(r.status!==next)r.updatedAt=new Date(now()).toISOString();r.status=next;atomic(file(r.gameId),r);json(res,200,{game:publicGame(r)});return;
+    const next=b.status==='menu'?'released':['completed','incomplete','expired'].includes(b.status)?b.status:'playing';if(r.status!==next)r.updatedAt=new Date(now()).toISOString();r.status=next;if(['released','completed','incomplete','expired'].includes(next))clearPhoto(r);atomic(file(r.gameId),r);json(res,200,{game:publicGame(r)});return;
    }throw fail('METHOD_NOT_ALLOWED',405);
   }).catch(e=>json(res,e.status||500,{error:e.code||'LINK_FAILED'}));return true;
  }};

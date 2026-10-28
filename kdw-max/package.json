@@ -28,7 +28,7 @@
     "setup:browser": "playwright install chromium",
     "test:audit:retention": "node ops/audit-fixes/check-retention.mjs",
     "test:audit:all": "npm run test:audit && npm run test:audit:profile && npm run test:audit:retention && npm run test:audit:browser",
-    "test:runtime": "node --test apps/STARTUP/tools/runtime-resilience.test.cjs apps/STARTUP/tools/spout-resilience.test.cjs",
+    "test:runtime": "node --test apps/STARTUP/tools/runtime-performance.test.cjs apps/STARTUP/tools/runtime-resilience.test.cjs apps/STARTUP/tools/spout-resilience.test.cjs",
     "test:stela:recovery": "node --test --test-isolation=none ops/audit-fixes/stela-touch-recovery.test.cjs",
     "test:layout": "node --test --test-isolation=none ops/production-build/layout-settings.test.cjs ops/production-build/manual-calibration.test.cjs apps/max-game/source/client/test/kdw-composition-layout.test.mjs",
     "test:layout:browser": "node ops/production-build/layout-browser.mjs",

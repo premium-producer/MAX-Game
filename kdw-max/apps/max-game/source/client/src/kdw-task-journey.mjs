@@ -4,10 +4,6 @@ import {V5MotionValue} from './journey-v5-inertia.mjs';
 // A local task replay is a new authority run, not a new physical scene.
 // Retain the outgoing presentation until the normal device handoff packs the row.
 export class KdwTaskJourney extends V5RevealJourney{
- get targetPhoneMetrics(){
-  const metrics=super.targetPhoneMetrics;
-  return this.descriptor?.device?.asset?.assetId==='kdw.posts.phone'?{...metrics,width:metrics.width*1.2,height:metrics.height*1.2}:metrics;
- }
  // Progress may retain completed/skipped tasks after replaying an earlier one.
  // Admit them only when the displayed route has actually reached their slot.
  nodeAdmitted(node){

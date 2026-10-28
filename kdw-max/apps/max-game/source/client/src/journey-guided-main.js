@@ -239,7 +239,7 @@ function resultMarkup(result,qr,presentation){
  result??={};
  return `<div class="field-center"><section class="field-success glass-control" role="dialog" aria-label="${esc(result.title)}"><h2>${v5CopyMarkup(result.title)}</h2><p>${v5CopyMarkup(result.text)}</p>${qr?`<img class="presentation-qr" draggable="false" src="${esc(qr.image)}" alt="QR-код: ${esc(qr.url)}"><p>${esc(qr.label)}</p>`:''}${presentation?'<p>Тестовая миссия</p>':''}${button(bfmVisual&&sharedBackend?'Продолжить':'К миссиям',bfmVisual&&sharedBackend?'data-continue-mission':'data-menu')}</section></div>`;
 }
-function feedback(text){text=visitorMessage(text);if(!text)return;foreground?.showTapFeedback(host,{x:host.clientWidth/2,y:host.clientHeight*.65},text);}
+function feedback(text){text=visitorMessage(text);if(text)console.debug('MAX_INTERACTION_NOTICE',text);}
 function render(preserveTransition=false){
  if(portable&&params.get('view')!=='wall'){const geometry=sceneSize();if(geometry.width!==size.width||geometry.height!==size.height){fit();return;}}
  if(!controller)return;
@@ -742,7 +742,7 @@ function activateButton(b){
  if(portable&&host.querySelector('.v5-mission-qr')&&!b.hasAttribute('data-restart-mission'))return;
  if((managedAssignment||managedShell)&&(b.dataset.mission||['data-restart-mission','data-menu','data-continue-mission','data-reset-progress','data-confirm-reset-progress'].some(a=>b.hasAttribute(a))))return;
  if(localDevelopment&&b.hasAttribute('data-mission-timer')){if(!sharedSession.busy)void sharedSession.command('DEV_TIMER',{active:controller.snapshot.state.devTimerEnabled!==true});return;}
- if(!b.classList.contains('media-hotspot'))foreground?.highlightTile(b);
+ if(!b.classList.contains('media-hotspot')&&!b.hasAttribute('data-transition-source'))foreground?.highlightTile(b);
  if(b.hasAttribute('data-media-page')){void turnMediaPage(b,foreground,host);return;}
  if(b.hasAttribute('data-reset-progress')){changeResetPrompt(true);return;}
  if(b.hasAttribute('data-confirm-reset-progress')){changeResetPrompt(false,true);return;}
@@ -824,11 +824,14 @@ root.addEventListener('pointerdown',e=>{
 root.addEventListener('pointermove',e=>{
  if(tapHand?.id===e.pointerId&&(e.buttons&1)!==0)tapAt(e);
 });
-root.addEventListener('pointerup',e=>{
+function finishPointerContact(e){
  if(tapHand?.id!==e.pointerId)return;
  if(controller?.contact===e.pointerId)controller.up(e.pointerId,true);
  tapHand=null;
-});
+}
+root.addEventListener('pointerup',finishPointerContact);
+window.addEventListener('pointerup',finishPointerContact,{capture:true});
+window.addEventListener('pointercancel',e=>{if(tapHand?.id===e.pointerId)cancelGesture();},{capture:true});
 root.addEventListener('pointercancel',cancelGesture);
 // Keyboard and physical touch share the same trusted immediate contact.
 root.addEventListener('keydown',e=>{if(!controller||!inputActive())return;if(e.target.closest('[data-palm]')&&[' ','Enter'].includes(e.key)){e.preventDefault();if(!e.repeat)beginPalmContact('keyboard');}});
@@ -1166,7 +1169,7 @@ const operatorGame=mountOperatorGame({bridge:globalThis.kdwStandOutput,getSessio
 }});
 const stopBootHealth=monitorPreparation(()=>document.documentElement.dataset.gameReady==='true'?{status:'menu'}:null);
 window.addEventListener('pagehide',stopBootHealth,{once:true});
-window.render_game_to_text=()=>JSON.stringify({coordinates:'viewport pixels, origin top-left, x right, y down',phase:controller?.phase??'loading',status:sharedSession?.snapshot?.state.status??'loading',mission:sharedSession?.snapshot?.state.missionId,screen:sharedSession?.snapshot?.state.screenId,ready:sharedSession?.snapshot?.state.standReady,remainingMs:sharedSession?.snapshot?.view.remainingMs,connected:sharedSession?.connected??false,presentation:{startup:controller?.startup?.stage,pathsDone:controller?.paths?.done,pathTime:[controller?.paths?.elapsed,controller?.paths?.duration],gesture:gesture?.kind,geometry:controller?.geometry,deviceReady:!!controller&&phoneContentReady(),presence:phonePresence.value,position:[phoneX.value,phoneY.value],target:controller?.phone,settled:controller?.settlingNodes?.map(n=>[n.step,foreground?.isSettled(host,n.step)]),camera:[camera.value,focusTarget],busy:foreground?.contentBusy(host),phoneData:host.querySelector('.route-phone')?.dataset}});
+window.render_game_to_text=()=>JSON.stringify({coordinates:'viewport pixels, origin top-left, x right, y down',input:{active:inputActive(),contactHeld:!!tapHand,foregroundBusy:!!foreground?.busy(host),starting:!!controller?.startup,sessionBusy:sharedSession?.busy,answerPending,navigating,startup:controller?.startup?.stage,answersCurrent:[...host.querySelectorAll('[data-answer]')].every(b=>b.dataset.answerToken===controller?.token?.())},phase:controller?.phase??'loading',status:sharedSession?.snapshot?.state.status??'loading',mission:sharedSession?.snapshot?.state.missionId,screen:sharedSession?.snapshot?.state.screenId,ready:sharedSession?.snapshot?.state.standReady,remainingMs:sharedSession?.snapshot?.view.remainingMs,connected:sharedSession?.connected??false,presentation:{startup:controller?.startup?.stage,pathsDone:controller?.paths?.done,pathTime:[controller?.paths?.elapsed,controller?.paths?.duration],gesture:gesture?.kind,geometry:controller?.geometry,deviceReady:!!controller&&phoneContentReady(),presence:phonePresence.value,position:[phoneX.value,phoneY.value],target:controller?.phone,settled:controller?.settlingNodes?.map(n=>[n.step,foreground?.isSettled(host,n.step)]),camera:[camera.value,focusTarget],busy:foreground?.contentBusy(host),phoneData:host.querySelector('.route-phone')?.dataset}});
 async function preparePortableSession(){
  const generation=bindingGeneration;
  if(sharedBackend&&!managedShell){
@@ -1263,7 +1266,11 @@ async function boot(){
  document.documentElement.dataset.graphicsBootCount=String(Number(document.documentElement.dataset.graphicsBootCount||0)+1);
  field=await createWebGLField({container:document.querySelector('#world'),planar:true,hideNodes:true,preparedAssets:assets,contourCatalog:contours,startPaused:true,placements:[],network:{states:{},links:[]},itemTypes:ITEM_TYPES,endpoints:{},selectedItem:null,maxDrawingBufferPixels:MAX_DRAWING_BUFFER_PIXELS,earthStyle:shell.rendering.earth,nodeIconBackdropStyle:shell.rendering.nodeIconBackdrop,signalLinkStyle:{...shell.rendering.signalLinks,...routeLinkStyle},onPlace:()=>{},onMove:()=>{},onRemove:()=>{}});
  if(pageDisposed){field.dispose();return;}
- const compositionLayout=createCompositionLayout({document,params,arena,getSize:()=>size,getHost:()=>host});await compositionLayout.ready;
+ const compositionLayout=createCompositionLayout({document,params,arena,getSize:()=>size,getHost:()=>host,getPresentation:()=>{
+  if(!controller)return null;const shown=controller.displayedState,p=controller.current?controller.phone:null,icons={};
+  if(controller.current&&controller.rowPose)for(const node of controller.nodes){const end=controller.rowPose(node),now=controller.pose(node);icons[node.step]={x:end.worldX-now.worldX,y:end.worldY-now.worldY};}
+  const metrics=deviceMetrics();return{screen:shown?.screenId??shown?.status,kind:metrics.kind,device:p?{x:p.x-phoneX.value,y:p.y-phoneY.value}:null,deviceRect:p?{x:p.x-layoutCamera()-metrics.width/2,y:host.clientHeight/2+p.y-metrics.height/2,width:metrics.width,height:metrics.height}:null,icons};
+ }});await compositionLayout.ready;
  foreground=createJourneyWebGLUI({root,arena,getSize:()=>size,onFrame:tick,onLayout:compositionLayout,gradients:standBrowser?.gradients??v5Tools?.gradients,onActivityFrame:()=>{kdwInteractions.align();personalChannel.align();businessNative.align();kdwPosts.align();},onMotion:()=>{changed();syncScene();},startup:startupAssets?{
   assets:startupAssets,host,frames:[v5SplashWarmup(),v5SplashWarmup(360)],
   icons:content.missions.flatMap(m=>m.steps.flatMap(step=>['','Следующий шаг','Выполнено','Продолжить задание'].map(status=>referenceNodeMarkup(step.id,step.iconId,step.label,true,status)))).concat(referenceNodeMarkup('open-max','open-max','Открыть MAX')),

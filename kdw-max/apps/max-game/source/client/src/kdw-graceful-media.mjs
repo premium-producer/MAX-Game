@@ -1,17 +1,24 @@
+import templates from './kdw-template-media.json' with {type:'json'};
 // Display ownership is independent of a network/decode attempt. A failed image
 // never becomes an error screen and a late portrait cannot revoke a ready frame.
 const guards=new WeakMap(),live=new Set();
 const data=svg=>'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
-// Reuse the existing neutral photograph template inside the current device.
-// Never invent a MAX screen, logo grid or replacement game controls.
-export function fallbackImageSource({width=390,height=800}={}){
- return data(`<svg xmlns="http://www.w3.org/2000/svg" width="${Math.max(1,width)}" height="${Math.max(1,height)}" viewBox="0 0 1080 1920" preserveAspectRatio="xMidYMid slice"><path fill="#251444" d="M0 0h1080v1920H0z"/><circle cx="540" cy="430" r="200" fill="#8674a6"/><ellipse cx="540" cy="990" rx="400" ry="330" fill="#8674a6"/></svg>`);
+// A portrait fallback only belongs inside a portrait slot. Whole screens use
+// independent, embedded copies of the same reviewed media.
+export const TEMPLATE_PORTRAIT=templates.portrait;
+export const TEMPLATE_AVATAR=templates.avatar;
+// Kept for existing consumers; this now means the reviewed template man.
+export const NEUTRAL_PORTRAIT=TEMPLATE_PORTRAIT;
+function mediaPath(source){try{const p=new URL(source,'http://local/').pathname;return p.slice(p.indexOf('/assets/')+1).replace(/^assets\/kdw-linked\/[^/]+\/(?:[a-f0-9]{64}|none)\//,'assets/kdw-native/');}catch{return '';}}
+export function fallbackImageSource({source='',assetId='',screenId=''}={}){
+ const p=mediaPath(source);
+ return templates.images[templates.media[p]??templates.media[templates.assets[assetId]]??templates.media[templates.screens[screenId]]]??data('<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"/>');
 }
-export const NEUTRAL_PORTRAIT=data('<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920"><path fill="#251444" d="M0 0h1080v1920H0z"/><circle cx="540" cy="430" r="200" fill="#8674a6"/><ellipse cx="540" cy="990" rx="400" ry="330" fill="#8674a6"/></svg>');
 export function fallbackForImage(image,snapshot){
- const asset=snapshot?.view?.device?.asset;
- if(/avatar|portrait|Фото посетителя/i.test(image.src+' '+image.alt))return NEUTRAL_PORTRAIT;
- return fallbackImageSource({width:asset?.width||image.naturalWidth||390,height:asset?.height||image.naturalHeight||800,portrait:/avatar|portrait|Фото посетителя/i.test(image.src+' '+image.alt),actions:snapshot?.view?.actions??[]});
+ const source=imageSource(image),p=mediaPath(source);
+ if(/visitor-avatar/.test(p)||/data-pc-visitor-avatar/.test(image.outerHTML??''))return TEMPLATE_AVATAR;
+ if(/visitor-placeholder|portrait|Фото посетителя/i.test(p+' '+image.alt))return TEMPLATE_PORTRAIT;
+ return fallbackImageSource({source,assetId:image.dataset?.businessAsset??image.dataset?.bnSource??snapshot?.view?.device?.asset?.assetId,screenId:snapshot?.state?.screenId});
 }
 export const imageSource=image=>guards.get(image)?.source??image.src;
 export function requestImageSource(image,source){const guard=guards.get(image);if(guard)guard.request(source);else image.src=source;}

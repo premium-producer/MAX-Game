@@ -19,6 +19,12 @@ export function flightPose(from,to,progress){
 }
 // Integrate v(t)=v0*(1-t)^2: preserve incoming velocity, then stop without a snap.
 export const SELECTION_BRAKE_MS=320;
+// Selection acknowledgement fades as soon as the image leaves its held pose.
+export function selectionRimOpacity(phase,age,reduced=false){
+ if(phase==='pending'||phase==='queued')return reduced?1:ease(age/140);
+ if(phase==='flying'||phase==='fading')return reduced?0:1-ease(age/140);
+ return 0;
+}
 export function brakingPose(from,velocity,elapsed,duration=SELECTION_BRAKE_MS){
  const t=Math.max(0,Math.min(1,elapsed/duration)),distance=duration*(t-t*t+t*t*t/3);
  return {...from,x:from.x+(velocity.x??0)*distance,y:from.y+(velocity.y??0)*distance};

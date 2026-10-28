@@ -6,6 +6,7 @@ import {fileURLToPath,pathToFileURL} from 'node:url';
 import {createKdwCatalog} from './client/src/kdw-interactions-model.mjs';
 import {PERSONAL_ASSETS} from './client/src/kdw-personal-channel-assets.mjs';
 import {BUSINESS_UI_ASSETS} from './client/src/kdw-business-native-model.mjs';
+import {prepareMissionFallbacks} from './prepare-mission-fallbacks.mjs';
 const source=path.dirname(fileURLToPath(import.meta.url)),root=path.resolve(source,'..');
 const sharedLink=path.resolve(root,'../STARTUP/tools/game-link.cjs');
 if(fs.existsSync(sharedLink))fs.copyFileSync(sharedLink,path.join(root,'launcher/game-link.cjs'));
@@ -40,6 +41,7 @@ for(const asset of Object.values({...nativeCatalog.assets,...PERSONAL_ASSETS,...
  if(sha(bytes)!==asset.sha256)throw Error('Native interaction resource differs: '+asset.path);
  fs.mkdirSync(path.dirname(path.join(root,'www',asset.path)),{recursive:true});fs.writeFileSync(path.join(root,'www',asset.path),bytes);
 }
+await prepareMissionFallbacks(source,packages);
 const result=await build({entryPoints:[path.join(source,'client/src/journey-guided-main.js')],nodePaths:[path.join(source,'vendor'),packages],bundle:true,format:'esm',platform:'browser',target:['es2022'],minify:true,write:false,metafile:true,legalComments:'inline'});
 await build({entryPoints:[path.join(source,'client/src/kdw-stand-background.mjs')],nodePaths:[path.join(source,'vendor'),packages],bundle:true,format:'esm',platform:'browser',target:['es2022'],minify:true,outfile:path.join(web,'stand-background.js')});
 fs.writeFileSync(path.join(web,'stand-background.html'),'<!doctype html><html><head><meta charset="utf-8"><link rel="icon" href="data:,"><style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#0D001A}canvas{display:block;width:100%;height:100%}</style></head><body><canvas></canvas><script type="module" src="./stand-background.js"></script></body></html>');

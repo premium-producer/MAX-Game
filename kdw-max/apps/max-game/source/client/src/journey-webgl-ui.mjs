@@ -822,7 +822,7 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,onLayo
    // Icon geometry still comes from scenePose; DOM is only the input mirror.
    // Layout extensions run after device/reference motion and before GPU bounds
    // are measured. DOM hit areas and rendered groups therefore use one pose.
-   const composition=onLayout?.();
+   const composition=onLayout?.({delta:bfmVisual&&(document.hidden||root.dataset.presentationPaused==='true')?0:Math.min(delta,.05),reduced:reduced.matches});
    if(composition?.changed)moving=true;
    for(const {item,visual,fade}of preparedGroups){
     const {el,group,base}=item;
@@ -905,6 +905,7 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,onLayo
     if(el?.closest('.route-intro-plus'))presence*=1-(motion?.logo??1);
     const feedback=el?.closest('.tap-feedback');
     if(feedback){const age=time-feedbacks.get(feedback),t=Math.max(0,Math.min(1,Math.min(age/.08,(1-age)/.2)));presence*=t*t*(3-2*t);}
+    if(el?.closest('[data-transition-source]'))presence=0;
     const alpha=m.userData.baseOpacity*(m.userData.fade??1)*presence;
     if(m.uniforms?.alpha)m.uniforms.alpha.value=alpha;else m.opacity=alpha;
    }
@@ -926,6 +927,7 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,onLayo
    const linksStarted=timingFrame?performance.now():0;
    onActivityFrame?.();
    activityFrame();
+   onLayout?.afterActivity?.();
    if(moving)onMotion();
    if(timingFrame){timingFrame.linksMs=performance.now()-linksStarted;timingFrame.prepareMs=performance.now()-started;}
    arenaFrame=null;

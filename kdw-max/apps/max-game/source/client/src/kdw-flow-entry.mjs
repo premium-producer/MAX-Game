@@ -14,7 +14,7 @@ export function createFlowEntry(){
    for(const id of decisions.keys())if(!live.has(id))decisions.delete(id);
    for(const row of rows)if(!decisions.has(row.spawnId)){
     const r=rectangle(row);
-    decisions.set(row.spawnId,Number.isFinite(r?.y)&&Number.isFinite(r?.h)&&r.y+r.h<=0);
+    decisions.set(row.spawnId,Number.isFinite(r?.y)&&Number.isFinite(r?.h)&&(row.flow==='popup'||r.y+r.h<=0));
    }
    return new Set(rows.filter(r=>decisions.get(r.spawnId)).map(r=>r.spawnId));
   },

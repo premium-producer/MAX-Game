@@ -18,7 +18,7 @@ export const sharedTaskMarkup=(snapshot,options)=>{
  let markup=original.sharedTaskMarkup(snapshot,options).replace(/<button\b[^>]*>/g,tag=>{const id=tag.match(/data-answer="([^"]+)"/)?.[1];return snapshot.view.actions?.some(a=>a.actionId===id&&a.placement!=='hotspot'&&a.transitionKind)?tag.replace('class="','class="kdw-transition-button '):tag;});
  if(snapshot.view.missing){
   console.error('MAX_SCREEN_DESCRIPTOR_FALLBACK',snapshot.state.screenId);
-  markup=markup.replace(/<p class="media-missing"[^>]*>[\s\S]*?<\/p>/,`<div class="task-media-frame"><div class="task-media-canvas" style="aspect-ratio:390/800"><img class="task-media-image" src="${fallbackImageSource()}" alt="MAX"></div></div>`);
+  markup=markup.replace(/<p class="media-missing"[^>]*>[\s\S]*?<\/p>/,`<div class="task-media-frame"><div class="task-media-canvas" style="aspect-ratio:390/800"><img class="task-media-image" src="${fallbackImageSource({screenId:snapshot.state.screenId})}" alt="MAX"></div></div>`);
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const controls=(snapshot.view.actions??[]).filter(a=>a.placement==='hotspot').map(a=>`<button class="pill app-option client-action" data-answer="${esc(a.actionId)}" data-answer-token="${esc(options?.token)}" ${a.disabled?'disabled':''}>${esc(a.label)}</button>`).join('');
   markup=markup.replace('<div class="client-actions">','<div class="client-actions">'+controls);

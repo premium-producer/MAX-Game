@@ -21,9 +21,9 @@ function driver(c=catalog,type='cafe'){
  const fields={taskId:'business.channel',screenId:POSTS_SCREEN};
  return {send,start(){return send('START_POSTS',fields);},publish(i,extra={}){const p=model.state.progress.business.postsActivity,spawn=postSpawn(p,i),elapsed=p.startRemainingMs-(model.state.deadlineAt-time);if(elapsed<spawn.start)time+=Math.ceil(spawn.start-elapsed);return send('PUBLISH_POST',{...fields,spawnId:spawn.spawnId,...extra});},finish(){return send('ACT',{screenId:POSTS_SCREEN,actionId:'business.channel.result.continue'});},advance(ms){time+=ms;},get time(){return time;},get model(){return model;},get posts(){return model.state.progress.business.postsActivity;}};
 }
-test('activity is a phone in the existing scene; three business banks contain useful and harmful copy',()=>{
+test('activity is a phone in the existing scene; new business banks contain only positive copy',()=>{
  const screen=catalog.tasks['business.channel'].screens[POSTS_SCREEN];assert.equal(screen.deviceKind,'phone');assert.equal(screen.assetId,'kdw.posts.phone');
- for(const type of ['cafe','hotel','theater']){const d=driver(catalog,type);assert.equal(d.start().reply.ok,true);assert.equal(d.posts.businessType,type);assert.ok(postBank(type).some(p=>p.good)&&postBank(type).some(p=>!p.good));}
+ for(const type of ['cafe','hotel','theater']){const d=driver(catalog,type);assert.equal(d.start().reply.ok,true);assert.equal(d.posts.businessType,type);assert.ok(postBank(type).length>0&&postBank(type).every(p=>p.good));}
 });
 test('core requires a real goal; accepts good/bad, rejects duplicated publication and forged audience',()=>{
  const d=driver();assert.equal(d.finish().reply.code,'POSTS_GOAL_REQUIRED');assert.equal(d.start().reply.ok,true);assert.equal(d.start().reply.code,'POSTS_ALREADY_STARTED');

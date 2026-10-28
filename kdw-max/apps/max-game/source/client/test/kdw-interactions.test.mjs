@@ -160,8 +160,8 @@ test('all four stand missions and all fifteen tasks complete through the local a
  assert.equal(total,15);
 });
 
-test('rated store rejects early completion, scores wrong goods below four, recovers to4.9 and replays',async()=>{
- const d=driver();d.reach('business','business.store.start');const fields={taskId:'business.store',screenId:'business.store.start'},action={screenId:fields.screenId,actionId:fields.screenId+'.continue'};
+test('legacy rated store rejects early completion, scores wrong goods below four, recovers to4.9 and replays',async()=>{
+ const d=driver({...catalog,kdwStoreActivity:7});d.reach('business','business.store.start');const fields={taskId:'business.store',screenId:'business.store.start'},action={screenId:fields.screenId,actionId:fields.screenId+'.continue'};
  assert.equal(d.act('ACT',action).reply.code,'STORE_RATING_REQUIRED');
  assert.equal(d.act('START_STORE',fields).reply.ok,true);assert.equal(storeRating(d.model.state.progress.business.storeActivity),4);
  let bad;for(let i=0;i<30&&!bad;i++){const a=d.model.state.progress.business.storeActivity;bad=storeTimeline(a).at(storeElapsed(a,d.model.state,d.now)).find(s=>!s.post.good);if(!bad)d.advance(1000);}

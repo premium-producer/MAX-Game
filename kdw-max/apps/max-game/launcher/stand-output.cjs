@@ -6,6 +6,8 @@ const {classifyTexture,RecoveryBudget}=require('./runtime-policy.cjs');
 
 exports.startStandOutput=async function({root,host,config,log,onFatal}){
  const width=3072,height=1536,data=path.join(root,'data');let bootId=randomUUID();
+ const diagnostics=require('./runtime-performance.cjs').createPerformanceRecorder({root});
+ const paintAt=[null,null];let monitorAt=performance.now(),ipcAt=null;
  const bridge=require('./kdw_spout.node'),windows=[],pending=new Map(),frames=[0,0];
  const born=performance.now(),lastGood=[0,0],lastTick={content:born},badFrames=[0,0],rendererBudgets=[new RecoveryBudget(),new RecoveryBudget()],reloadTimers=[],graceUntil=[born+15000,born+15000],quarantined=[];
  let faulting=false,reduced=false,backgroundLoaded=false,ui=null;
@@ -18,7 +20,7 @@ exports.startStandOutput=async function({root,host,config,log,onFatal}){
  const active=()=>presenting()&&contentReady;
  const notify=()=>{for(const w of windows)if(!w.isDestroyed())w.webContents.send('kdw:output-state',{active:active(),presenting:presenting(),inputMode:'automatic'});};
  function drain(){
-  for(const token of bridge.poll()){const frame=pending.get(token);if(!frame)throw Error('Unknown GPU completion');frame.texture.release();pending.delete(token);}
+  for(const token of bridge.poll()){const frame=pending.get(token);if(!frame)throw Error('Unknown GPU completion');diagnostics.observe('gpuCompletion'+frame.channel,performance.now()-frame.at);frame.texture.release();pending.delete(token);}
   for(const frame of pending.values())if(performance.now()-frame.at>5000)throw Error('GPU completion timeout');
  }
  const fail=error=>{if(!closed&&!faulting){faulting=true;notify();lidar?.reset();log({event:'spout-fatal',message:error.stack??String(error),frames:[...frames],badFrames:[...badFrames],lastGoodFrameAgeMs:lastGood.map(t=>t?Math.round(performance.now()-t):null),bridge:bridge.status()});onFatal(error);}};
@@ -37,10 +39,11 @@ exports.startStandOutput=async function({root,host,config,log,onFatal}){
    let owned=false,submitted=false;
    try{
     if(closed||faulting||texture.textureInfo.widgetType!=='frame')return;
+    const paintNow=performance.now();if(paintAt[channel]!==null)diagnostics.observe('paint'+channel,paintNow-paintAt[channel]);paintAt[channel]=paintNow;
     const info=texture.textureInfo;
     
     drain();submitted=true;const token=bridge.send(channel,info.handle.ntHandle);
-    if(token){pending.set(token,{texture,at:performance.now()});owned=true;lastGood[channel]=performance.now();frames[channel]++;if(frames[channel]===1)notify();}
+    if(token){pending.set(token,{texture,channel,at:performance.now()});owned=true;lastGood[channel]=performance.now();frames[channel]++;if(frames[channel]===1)notify();}
    }catch(error){if(submitted&&!owned){quarantined.push(texture);owned=true;}fail(error);}finally{if(!owned)try{texture.release();}catch(error){fail(error);}}
   });
  }
@@ -72,7 +75,15 @@ exports.startStandOutput=async function({root,host,config,log,onFatal}){
  }
  async function cancelCalibration(){if(!calibration)return;log({event:'lidar-calibration-cancel'});calibration=null;await configureLidar(lidarConfig);notify();}
  async function saveCalibration(){if(!calibration)throw Error('Калибровка не запущена');const value={...calibrationConfig,...calibration.result(),enabled:true};require('./lidar.cjs').validateLidarConfig(value);await configureLidar(value);calibration=null;log({event:'lidar-calibration-saved'});notify();return value;}
- const overlayTimer=setInterval(()=>{if(!closed&&!content.isDestroyed())content.webContents.send('kdw:operator-overlay',{calibration:calibration?.status()??null,cursor:!calibration&&cursorVisible&&active()&&lastPoint&&Date.now()-lastPoint.at<350?lastPoint:null});},33);
+ let lastOverlay='';
+ const overlayTimer=setInterval(()=>{
+  if(closed||content.isDestroyed())return;
+  const value={calibration:calibration?.status()??null,cursor:!calibration&&cursorVisible&&active()&&lastPoint&&Date.now()-lastPoint.at<350?{x:lastPoint.x,y:lastPoint.y}:null};
+  const signature=JSON.stringify(value);
+  if(signature===lastOverlay)return;
+  lastOverlay=signature;content.webContents.send('kdw:operator-overlay',value);
+ },33);
+ content.webContents.on('did-finish-load',()=>{lastOverlay='';});
  content.webContents.session.webRequest.onBeforeRequest((details,callback)=>{
   const url=new URL(details.url);callback({cancel:!(['data:','blob:'].includes(url.protocol)||url.origin===host.origin)});
  });
@@ -81,7 +92,8 @@ exports.startStandOutput=async function({root,host,config,log,onFatal}){
   if(contentReady!==(packet.ready===true)){contentReady=packet.ready===true;notify();}
   if(typeof packet.epoch==='string'&&packet.epoch!==epoch){epoch=packet.epoch;lidar?.reset();}
   if(packet.ui&&typeof packet.ui==='object'&&JSON.stringify(packet.ui).length<8192)ui=packet.ui;
-  lastTick.content=performance.now();reduced=packet.reduced===true;
+  const ipcNow=performance.now();if(ipcAt!==null)diagnostics.observe('contentIpc',ipcNow-ipcAt);ipcAt=ipcNow;
+  lastTick.content=ipcNow;reduced=packet.reduced===true;
  };
  const ack=(event,packet)=>{if(event.sender===background.webContents){backgroundBusy=false;lastBackgroundAck=performance.now();if(packet?.ready==='false'){fail(Error('Background shader failed'));return;}if(backgroundReady!==(packet?.ready==='true')){backgroundReady=packet?.ready==='true';notify();}}};
  ipcMain.on('kdw:background-tick',tick);ipcMain.on('kdw:background-ack',ack);
@@ -91,12 +103,14 @@ exports.startStandOutput=async function({root,host,config,log,onFatal}){
   if(closed)return;
   try{drain();if(performance.now()-born>15000){for(let c=0;c<2;c++)if(performance.now()>graceUntil[c]&&!reloadTimers[c]&&(!lastGood[c]||performance.now()-lastGood[c]>2000))throw Error('SPOUT_LAYER_STALE_'+c);if(performance.now()>graceUntil[1]&&performance.now()-lastTick.content>5000)throw Error('CONTENT_RENDERER_STALLED');}if(performance.now()>graceUntil[0]&&backgroundBusy&&performance.now()-lastBackgroundAck>5000)throw Error('Background renderer stalled');}catch(error){fail(error);}
  },4);
+ const diagnosticState=()=>({bootId,epoch,active:active(),contentReady,calibrating:!!calibration,ui,frames:[...frames],frameAge:lastGood.map(t=>t?performance.now()-t:null),pending:pending.size,bridge:bridge.status(),input:lidar?.snapshot()??null});
  const monitor=setInterval(()=>{
   if(closed||faulting)return;
   try{
-   notify();for(const w of windows)if(!w.isDestroyed())w.webContents.invalidate();
+   const monitorNow=performance.now();diagnostics.observe('monitorLag',Math.max(0,monitorNow-monitorAt-500));monitorAt=monitorNow;diagnostics.sample(diagnosticState());
+   notify();for(const [channel,w]of windows.entries())if(!w.isDestroyed()&&(!lastGood[channel]||monitorNow-lastGood[channel]>=500))w.webContents.invalidate();
    const state={schemaVersion:1,bootId,pid:process.pid,armed:true,inputMode:'automatic',active:active(),presenting:presenting(),backgroundReady,contentReady,width,height,fps:60,senders:['KDW_MAX_BACKGROUND','KDW_MAX_CONTENT'],frames,pending:pending.size,bridge:bridge.status(),lidar:lidar?.snapshot()??null,ui,updatedAt:new Date().toISOString()};
-   const tmp=statePath+'.tmp';fs.writeFileSync(tmp,JSON.stringify(state,null,2));fs.renameSync(tmp,statePath);
+   const writeAt=performance.now(),tmp=statePath+'.tmp';fs.writeFileSync(tmp,JSON.stringify(state,null,2));fs.renameSync(tmp,statePath);diagnostics.observe('stateWrite',performance.now()-writeAt);
    if(calibration&&Date.now()-calibrationAt>10*60*1000){calibrationAt=Date.now();void cancelCalibration().catch(fail);}
   }catch(error){log({event:'output-state-write-failed',code:error.code,message:error.message});}
  },500);
@@ -104,6 +118,7 @@ exports.startStandOutput=async function({root,host,config,log,onFatal}){
   ipcMain.removeListener('kdw:game-control-result',operatorReply);for(const request of operatorPending.values()){clearTimeout(request.timer);request.reject(Error('OUTPUT_CLOSED'));}operatorPending.clear();
   if(closed)return;closed=true;notify();clearInterval(timer);clearInterval(monitor);clearInterval(overlayTimer);clearInterval(backgroundTimer);for(const timer of reloadTimers)clearTimeout(timer);
   ipcMain.removeListener('kdw:background-tick',tick);ipcMain.removeListener('kdw:background-ack',ack);
+  await diagnostics.close(diagnosticState());
   await lidar?.close();for(const w of windows)if(!w.isDestroyed())w.webContents.stopPainting();
   const deadline=performance.now()+5000;while(pending.size&&performance.now()<deadline){drain();await new Promise(r=>setTimeout(r,2));}
   if(!pending.size&&!quarantined.length)bridge.close();

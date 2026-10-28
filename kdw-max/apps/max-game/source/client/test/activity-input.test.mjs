@@ -28,3 +28,18 @@ test('Consumed GPU contact preserves production inactivity tracking and trust ch
  try{reportActivityContact({isTrusted:false});assert.equal(commands.length,0);reportActivityContact({isTrusted:true});assert.deepEqual(commands,['STAND_TOUCH']);reportActivityContact({isTrusted:true});assert.equal(commands.length,1);}
  finally{stop();Object.assign(globalThis,saved);}
 });
+
+test('a product rejected while another choice is pending can be retried by the same hand',()=>{
+ const handlers=new Map(),oldDoc=globalThis.document,oldWindow=globalThis.window;
+ globalThis.document={addEventListener:(n,f)=>handlers.set(n,f),removeEventListener:n=>handlers.delete(n)};
+ globalThis.window={addEventListener(){},removeEventListener(){}};
+ const frame={key:'store-run',interactive:true,hits:[{id:'first',x:100,y:100,w:50,h:50,interactive:true,action:'card'},{id:'second',x:200,y:100,w:50,h:50,interactive:true,action:'card'}]};
+ let pending=false;const accepted=[];
+ const cleanup=installActivityInput({getFrame:()=>frame,select:id=>{if(pending)return false;pending=true;accepted.push(id);return true;},scroll(){},react(){}});
+ const e=x=>({pointerId:7,clientX:x,clientY:110,target:{closest:()=>null},preventDefault(){},stopImmediatePropagation(){}});
+ try{
+  handlers.get('pointerdown')(e(110));handlers.get('pointermove')(e(210));assert.deepEqual(accepted,['first']);
+  pending=false;handlers.get('pointermove')(e(211));assert.deepEqual(accepted,['first','second']);
+  pending=false;handlers.get('pointermove')(e(212));assert.deepEqual(accepted,['first','second']);
+ }finally{cleanup();globalThis.document=oldDoc;globalThis.window=oldWindow;}
+});

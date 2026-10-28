@@ -1,6 +1,6 @@
 import {operatorGoto} from '../kdw-operator-model.mjs';
 import {production,timing,prepareProductionTask,completeByTimeout,productionCommand} from '../kdw-production-core.mjs';
-import {reduceStore,storeGoal,catalogForStoreReceipt} from '../kdw-store-rating.mjs';
+import {reduceStore,STORE_VERSION,storeGoal,catalogForStoreReceipt} from '../kdw-store-rating.mjs';
 import {catalogForBusinessReceipt} from '../kdw-business-choice.mjs';
 import {reduceDevelopment,finishDevelopmentState} from '../kdw-development.mjs';
 import {reducePosts,postsGoal,POSTS_SCREEN,catalogForPostsReceipt} from '../kdw-posts-model.mjs';
@@ -104,7 +104,7 @@ export function dispatchMissionCommand(catalog,model,input,{now=0,internal=false
   effects.push({type:c.type==='START_POSTS'?'POSTS_STARTED':'POST_PUBLISHED'});
  }else if(['START_STORE','PICK_PRODUCT'].includes(c.type)){
   if(!catalog.kdwStoreActivity)return reject('STORE_UNAVAILABLE');
-  const error=reduceStore(s,c,now,[1,2,3,4,5,6].includes(catalog.kdwStoreActivity)?catalog.kdwStoreActivity:7);if(error)return reject(error);
+  const error=reduceStore(s,c,now,[1,2,3,4,5,6,7,8].includes(catalog.kdwStoreActivity)?catalog.kdwStoreActivity:STORE_VERSION);if(error)return reject(error);
   effects.push({type:c.type==='START_STORE'?'STORE_STARTED':'PRODUCT_ADDED'});
  }else if(c.type==='SAVE_INTERACTION'){
   if(!catalog.kdwInteractions||s.status!=='task')return reject('INTERACTION_UNAVAILABLE');

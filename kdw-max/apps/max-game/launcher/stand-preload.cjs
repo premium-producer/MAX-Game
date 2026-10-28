@@ -1,14 +1,23 @@
 const {contextBridge,ipcRenderer}=require('electron');
 let active=false,presenting=true,diagnosticAt=0,lastPointer=null,pointerCount=0;
 for(const type of ['pointerdown','pointerup','pointercancel'])document.addEventListener(type,e=>{if(!e.isTrusted)return;pointerCount++;lastPointer={type,x:Math.round(e.clientX),y:Math.round(e.clientY),mission:e.target.closest?.('[data-idle-mission]')?.dataset.idleMission??null,at:Date.now()};},{capture:true,passive:true});
-function uiDiagnostic(){const now=performance.now();if(now-diagnosticAt<1000)return;diagnosticAt=now;const d=document.documentElement.dataset,host=document.querySelector('.journey-zone');return {game:(()=>{try{const raw=d.operatorGame;return raw&&raw.length<6000?JSON.parse(raw):null;}catch{return null;}})(),at:Date.now(),screen:d.kdwScreen??null,phase:host?.dataset.revealPhase??null,entry:d.standEntryMode??null,menuReady:!!d.idleMenuReady,selection:d.idleSelection??'ready',error:d.idleSelectionError??null,rootInert:document.querySelector('#circles')?.inert??null,pointerCount,lastPointer,activity:(()=>{try{const raw=document.querySelector('[data-activity-metrics]:not([hidden])')?.dataset.activityMetrics;return raw&&raw.length<2000?JSON.parse(raw):null;}catch{return null;}})(),buttons:[...document.querySelectorAll('[data-idle-mission]')].slice(0,4).map(el=>{const r=el.getBoundingClientRect();return {id:el.dataset.idleMission,inert:!!el.closest('[inert]'),presence:Number(el.dataset.pathPresence??0),rect:[r.x,r.y,r.width,r.height].map(Math.round)};})};}
+// Collected on the existing render tick: no extra RAF or per-frame IPC.
+let timingLast=null,timingValues=[],timingCount=0,timingMax=0,timingOver50=0,longTasks=[];
+try{new PerformanceObserver(list=>{for(const e of list.getEntries()){if(longTasks.length<16)longTasks.push({at:Math.round(e.startTime),duration:Math.round(e.duration)});}}).observe({type:'longtask',buffered:false});}catch{}
+function timingTick(){const now=performance.now();if(timingLast!==null){const ms=now-timingLast;timingCount++;timingMax=Math.max(timingMax,ms);if(ms>50)timingOver50++;if(timingValues.length<120)timingValues.push(Math.round(ms*100)/100);}timingLast=now;}
+function timingTake(){const sorted=[...timingValues].sort((a,b)=>a-b),value={count:timingCount,max:timingMax,p95:sorted[Math.floor((sorted.length-1)*.95)]??0,over50:timingOver50,intervals:timingValues,longTasks};timingValues=[];timingCount=0;timingMax=0;timingOver50=0;longTasks=[];return value;}
+function uiDiagnostic(){const now=performance.now();if(now-diagnosticAt<1000)return;diagnosticAt=now;const d=document.documentElement.dataset,host=document.querySelector('.journey-zone');return {timing:timingTake(),game:(()=>{try{const raw=d.operatorGame;return raw&&raw.length<6000?JSON.parse(raw):null;}catch{return null;}})(),at:Date.now(),screen:d.kdwScreen??null,phase:host?.dataset.revealPhase??null,entry:d.standEntryMode??null,menuReady:!!d.idleMenuReady,selection:d.idleSelection??'ready',error:d.idleSelectionError??null,rootInert:document.querySelector('#circles')?.inert??null,pointerCount,lastPointer,activity:(()=>{try{const raw=document.querySelector('[data-activity-metrics]:not([hidden])')?.dataset.activityMetrics;return raw&&raw.length<2000?JSON.parse(raw):null;}catch{return null;}})(),buttons:[...document.querySelectorAll('[data-idle-mission]')].slice(0,4).map(el=>{const r=el.getBoundingClientRect();return {id:el.dataset.idleMission,inert:!!el.closest('[inert]'),presence:Number(el.dataset.pathPresence??0),rect:[r.x,r.y,r.width,r.height].map(Math.round)};})};}
 
 let gameControlHandler=null;
 ipcRenderer.on('kdw:game-control',async(_event,packet)=>{if(typeof packet?.id!=='string')return;let value,error;try{if(!gameControlHandler)throw Error('OPERATOR_NOT_READY');value=await gameControlHandler(packet.input);}catch(e){error=String(e.message).slice(0,200);}ipcRenderer.send('kdw:game-control-result',{id:packet.id,value,error});});
-let overlay;
+let overlay,overlaySignature='';
 ipcRenderer.on('kdw:operator-overlay',(_event,value)=>{
  if(!document.body)return;
+ const signature=JSON.stringify(value);if(signature===overlaySignature)return;overlaySignature=signature;
+ // An absent cursor needs no full-screen canvas or compositor update.
+ if(!value.calibration&&!value.cursor){if(overlay)overlay.hidden=true;return;}
  if(!overlay){overlay=document.createElement('canvas');overlay.width=3072;overlay.height=1536;overlay.style.cssText='position:fixed;inset:0;width:100vw;height:100vh;z-index:2147483647;pointer-events:none';overlay.setAttribute('aria-hidden','true');document.body.append(overlay);}
+ overlay.hidden=false;
  const c=overlay.getContext('2d');c.clearRect(0,0,3072,1536);
  if(value.calibration){
   const s=value.calibration;c.fillStyle='#10091f';c.fillRect(0,0,3072,1536);c.strokeStyle='#595071';c.lineWidth=2;c.strokeRect(560,0,1760,1536);
@@ -36,5 +45,5 @@ contextBridge.exposeInMainWorld('kdwStandOutput',Object.freeze({
  onGameControl:handler=>{gameControlHandler=handler;return()=>{if(gameControlHandler===handler)gameControlHandler=null;};},
  active:()=>active,
  presenting:()=>presenting,
- tick:(delta,options)=>ipcRenderer.send('kdw:background-tick',{delta,reduced:options?.reduced===true,ready:document.documentElement.dataset.gameReady==='true',epoch:document.documentElement.dataset.kdwRun+':'+document.documentElement.dataset.kdwScreen,ui:uiDiagnostic()}),
+ tick:(delta,options)=>{timingTick();return ipcRenderer.send('kdw:background-tick',{delta,reduced:options?.reduced===true,ready:document.documentElement.dataset.gameReady==='true',epoch:document.documentElement.dataset.kdwRun+':'+document.documentElement.dataset.kdwScreen,ui:uiDiagnostic()});},
 }));

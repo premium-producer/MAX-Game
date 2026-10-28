@@ -1,0 +1,30 @@
+✔ v2 mission starts without photo; delayed photo is idempotent and does not change claim/progress (15.8651ms)
+✔ expiry, clock rollback, restart and old selections cannot revive an invitation (14.5603ms)
+✔ unready output is not an invitation; bad photo identity/hash/auth is rejected (5.5596ms)
+✔ slow network never blocks local submit/status/settings; outbox survives restart and lost ACK (18.6015ms)
+✔ a blocked control request does not lock the local API or the photo lane (3.305ms)
+✔ a claimed game outlives delivery TTL and a slow photo body does not hold the control queue (10.1253ms)
+✔ full and avatar have independent identity, dimensions, retries and durable ACK after restart (18.0441ms)
+✔ avatar arriving first uses only circular slots; full slots and late avatar revisions stay separate (14.2135ms)
+✔ avatar-only retention erases both hub blob and metadata (8.4123ms)
+✔ completion deletes both variants and refuses a late upload for that visitor (10.0888ms)
+✔ relay rejects a photo whose authorization is revoked while its body is read (2.1634ms)
+✔ queue counter excludes the active visitor and follows FIFO releases (12.3978ms)
+✔ replacement is durable, keeps other visitors FIFO, never revives a superseded ID (16.6942ms)
+✔ crash recovery completes an interrupted replacement journal before exposing the queue (8.7472ms)
+✔ relay exposes current assignment separately from immutable delivery receipt (14.2772ms)
+✔ offline relay supersedes only pending choices from the same visitor and prunes terminal history (5.5262ms)
+✔ renderer recovery reloads at most three times then shows an operator retry (0.5029ms)
+✔ simultaneous palm and replacement have a single winner in either arrival order (15.0705ms)
+✔ unchanged heartbeat refreshes availability without rewriting visitor data (7.6621ms)
+✔ explicit output startup cancels prior visitors and queue, preserves receipts, and admits a fresh visitor (16.0876ms)
+✔ operator replaces only the active visitor, preserves FIFO and rejects stale close (19.1998ms)
+✔ missing visitor photo retains each exact authored screen and template man (5.7266ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 267.6226

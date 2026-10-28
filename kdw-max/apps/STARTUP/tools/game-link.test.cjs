@@ -99,3 +99,20 @@ test('operator replaces only the active visitor, preserves FIFO and rejects stal
   await hub.operatorChange({action:'close',gameId:started.game.gameId});assert.equal(hub.get(started.game.gameId).status,'cancelled');assert.equal(hub.active().gameId,b.gameId);await release(hub,b);assert.equal(hub.active().gameId,c.gameId);
  }finally{fs.rmSync(root,{recursive:true,force:true});}
 });
+
+
+test('missing visitor photo retains each exact authored screen and template man',async()=>{
+ const root=fs.mkdtempSync(path.join(os.tmpdir(),'kdw-template-man-'));
+ try{
+  const directory=path.join(root,'www/assets/kdw-native/conversation');fs.mkdirSync(directory,{recursive:true});
+  const template='<svg xmlns="http://www.w3.org/2000/svg" width="360" height="800"><text>Original controls</text><image data-visitor-photo="true" width="1080" height="1920" href="data:image/webp;base64,dGVtcGxhdGUtbWFu"/></svg>';
+  const avatar='<svg xmlns="http://www.w3.org/2000/svg" width="880" height="880"><image href="data:image/webp;base64,dGVtcGxhdGUtbWFu"/></svg>';
+  fs.writeFileSync(path.join(directory,'screen_1.svg'),template);fs.writeFileSync(path.join(directory,'visitor-avatar.svg'),avatar);
+  const hub=createGameHub({root,origin}),g=hub.ingest(payload());
+  const {value}=await request(hub,`/__kdw/link/games/${g.gameId}/assets`,{},'GET');
+  for(const [name,text]of [['screen_1.svg',template],['visitor-avatar.svg',avatar]]){
+   const asset=value.assets.find(a=>a.original.endsWith('/'+name));assert.ok(asset.path.includes('/none/'));
+   assert.equal(asset.sha256,require('node:crypto').createHash('sha256').update(text).digest('hex'));
+  }
+ }finally{fs.rmSync(root,{recursive:true,force:true});}
+});

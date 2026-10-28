@@ -31,24 +31,28 @@ function surface(kind,card,stored){
   text(card.description??'',8,w-16,10,13,400,'#777','Arial',6);y=Math.max(229,y+8);
   const by=y;commands.push(c=>{rounded(c,8,by,w-16,33,9,'#2c2c2c');c.font=font(11,400,'Arial');c.fillStyle='#fff';c.textAlign='center';c.fillText('Подробнее',w/2,by+10);c.textAlign='left';});y+=41;
  }
- const c=canvas(w,y),ctx=c.getContext('2d');rounded(ctx,0,0,w,y,stored?(kind==='posts'?18:20):40,stored?(kind==='posts'?'#36394e':'#fff'):'#0D001A');for(const draw of commands)draw(ctx);
+ const rasterScale=stored?1:2,c=canvas(w*rasterScale,y*rasterScale),ctx=c.getContext('2d');ctx.scale(rasterScale,rasterScale);rounded(ctx,0,0,w,y,stored?(kind==='posts'?18:20):40,stored?(kind==='posts'?'#36394e':'#fff'):'#0D001A');for(const draw of commands)draw(ctx);
  return{canvas:c,w,h:y,photo,metrics};
 }
 async function image(url){const img=new Image();img.decoding='async';img.src=url;let timer;try{await Promise.race([img.decode(),new Promise((_,reject)=>timer=setTimeout(()=>reject(Error('Image timeout')),4000))]);return img;}finally{clearTimeout(timer);}}
 function photoCanvas(img,card,kind){
- const ratio=img?Math.min(1,640/Math.max(img.naturalWidth,img.naturalHeight)):1,c=canvas(img?img.naturalWidth*ratio:440,img?img.naturalHeight*ratio:260),ctx=c.getContext('2d');
+ const ratio=img?Math.min(1,1024/Math.max(img.naturalWidth,img.naturalHeight)):1,c=canvas(img?img.naturalWidth*ratio:440,img?img.naturalHeight*ratio:260),ctx=c.getContext('2d');
  ctx.fillStyle=kind==='store'?'#e9e6df':'#362e74';ctx.fillRect(0,0,c.width,c.height);
  if(img)ctx.drawImage(img,0,0,c.width,c.height);else{ctx.font=font(72);ctx.textAlign='center';ctx.fillStyle='#fff';ctx.fillText(card.emoji??'MAX',c.width/2,c.height*.6);}return c;
 }
-export function createActivityResources(kind,type,bank){
+export function createActivityResources(kind,type,bank,{imageOnly=true}={}){
  const textures=[],records=new Map(),extras=new Map(),stats={bytes:0,rasters:0,uploads:0,uploadMs:0,fallbacks:0};let disposed=false,decoded=false,failure=null,upload=0;
- const add=(c)=>{if(disposed)return null;const bytes=textureBytes(c.width,c.height);if(stats.bytes+bytes>64*1024*1024)throw Error('Activity texture budget exceeded');const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;t.generateMipmaps=true;t.minFilter=THREE.LinearMipmapLinearFilter;t.magFilter=THREE.LinearFilter;stats.bytes+=bytes;stats.rasters++;textures.push(t);return t;};
+ const add=(c)=>{if(disposed)return null;const bytes=textureBytes(c.width,c.height);if(stats.bytes+bytes>160*1024*1024)throw Error('Activity texture budget exceeded');const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;t.generateMipmaps=true;t.minFilter=THREE.LinearMipmapLinearFilter;t.magFilter=THREE.LinearFilter;stats.bytes+=bytes;stats.rasters++;textures.push(t);return t;};
  const ready=(async()=>{
   await Promise.race([document.fonts.load('600 30px "Max Sans"'),new Promise(r=>setTimeout(r,4000))]);
   for(const card of bank){if(disposed)return;let img=null;const asset=card.image??(kind==='posts'?postPhoto(card.photo):null);
    try{if(asset)img=await image('./'+asset.path);else if(card.crop){const sheet=await image('./assets/kdw-r7/catalog-reference.png'),[x,y,w,h]=card.crop,c=canvas(w,h);c.getContext('2d').drawImage(sheet,x,y,w,h,0,0,w,h);img=await image(c.toDataURL());}}catch{stats.fallbacks++;}
    if(disposed)return;
-   const fall=surface(kind,card,false),stored=surface(kind,card,true),p=photoCanvas(img,card,kind);records.set(card.id,{card,fall:{...fall,texture:add(fall.canvas)},stored:{...stored,texture:add(stored.canvas)},photo:add(p),fit:kind==='store'?2:1});await pause();
+   const stored=surface(kind,card,true),p=photoCanvas(img,card,kind);
+   // Keep the destination photo's aspect ratio, without any text surface in flight.
+   const h=440*stored.photo.h/stored.photo.w;
+   const fall=imageOnly?{w:440,h,photo:{x:0,y:0,w:440,h,radius:28}}:surface(kind,card,false);
+   records.set(card.id,{card,fall:{...fall,texture:fall.canvas?add(fall.canvas):null},stored:{...stored,texture:add(stored.canvas)},photo:add(p),fit:kind==='store'?2:1});await pause();
   }
   const urls=kind==='posts'?{header:'./assets/kdw-native/posts-chrome/header.svg',footer:'./assets/kdw-native/posts-chrome/composer.svg',fire:'./assets/kdw-native/posts-chrome/fire.svg',heart:'./assets/kdw-native/posts-chrome/heart.svg',views:'./assets/kdw-native/posts-chrome/views.svg',verified:'./assets/kdw-native/posts-chrome/verified.svg',avatar:businessProfile(type).logo?'./'+businessProfile(type).logo:null}:{header:'./assets/kdw-native/store-header.svg'};
   for(const [name,url]of Object.entries(urls)){if(!url)continue;try{const img=await image(url);if(disposed)return;const c=canvas(Math.min(780,img.naturalWidth),Math.min(280,img.naturalHeight));c.getContext('2d').drawImage(img,0,0,c.width,c.height);extras.set(name,add(c));}catch{stats.fallbacks++;}}

@@ -6,7 +6,7 @@ import {BUSINESS_PROFILES} from './kdw-business-profile.mjs';
 import {activityRemaining} from './kdw-development.mjs';
 import {createPostTimeline} from './kdw-post-stream.mjs';
 export const POSTS_SCREEN='business.channel.result',POSTS_TASK='business.channel';
-export const POSTS_RULES=Object.freeze({version:12,initialAudience:14628,goal:300,good:120,bad:-100,interval:2300,travel:10500,maxPosts:20});
+export const POSTS_RULES=Object.freeze({version:14,initialAudience:14628,goal:300,good:120,bad:-100,interval:2300,travel:10500,maxPosts:20});
 const banks={
  auto:[
   ['service','Подготовим автомобиль к сезону','Проверим тормоза, жидкости и состояние шин. Запись по удобному времени.',0,true,'Понятное предложение помогает спланировать обслуживание.'],
@@ -73,7 +73,7 @@ export const BUSINESS_CHANNELS=Object.freeze(Object.fromEntries(Object.values(BU
 export function postBank(type='cafe',version=POSTS_RULES.version){
  const reviewed=version>=12&&content.banks[type]?.posts;
  const rows=reviewed?reviewed.map(p=>({...p,body:p.description,image:businessCardImage(p.id)})):(banks[type]??banks.cafe).map(([id,title,body,photo,good,reason])=>({id,title,body,photo,good,reason}));
- return rows.map(p=>({...p,delta:p.good?POSTS_RULES.good:POSTS_RULES.bad,reactions:p.good?128:34}));
+ return rows.filter(p=>version<13||p.good).map(p=>({...p,delta:p.good?POSTS_RULES.good:POSTS_RULES.bad,reactions:p.good?128:34}));
 }
 export const postPhoto=id=>photos.find(a=>a.assetId===`kdw.posts.photo-${id}`);
 export function applyPostsCatalog(catalog){
@@ -144,7 +144,7 @@ export function reducePosts(state,command,now,version=POSTS_RULES.version){
 // Replaying an already accepted legacy completion must not retroactively impose
 // the new activity. Live commands never receive this replay-only catalog.
 export function catalogForPostsReceipt(catalog,r){
- if(r.command.type==='START_POSTS'&&[1,2,3,4,5,6,7,8,9,10,11].includes(r.reply?.snapshot?.progress?.business?.postsActivity?.version))return {...catalog,kdwPostsActivity:r.reply.snapshot.progress.business.postsActivity.version};
+ if(r.command.type==='START_POSTS'&&[1,2,3,4,5,6,7,8,9,10,11,12,13].includes(r.reply?.snapshot?.progress?.business?.postsActivity?.version))return {...catalog,kdwPostsActivity:r.reply.snapshot.progress.business.postsActivity.version};
  if(r.command.type==='ACT'&&r.command.screenId===POSTS_SCREEN&&r.command.actionId==='business.channel.result.continue'&&!r.reply?.snapshot?.progress?.business?.postsActivity)return {...catalog,kdwPostsActivity:null};
  return catalog;
 }

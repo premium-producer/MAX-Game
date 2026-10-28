@@ -11,7 +11,7 @@ function createPortableServer({root, config, onStop = () => {}, onMissing = () =
   const token = crypto.randomBytes(32).toString('hex');
   const origin = `http://127.0.0.1:${config.port}`;
   const lan=require('./lan-admin.cjs').createLanAdmin({root,port:config.port,app:'max'});
-  const link=require('./game-link.cjs').createGameHub({root,origin,production:config.production===true,getOutput:()=>getOutput()?.operatorStatus()??null,validatePhoto:buffer=>{const image=require('electron').nativeImage.createFromBuffer(buffer);const size=image.getSize();if(image.isEmpty()||size.width!==1080||size.height!==1920)throw Object.assign(Error('INVALID_JPEG'),{code:'INVALID_JPEG',status:400});}});
+  const link=require('./game-link.cjs').createGameHub({root,origin,production:config.production===true,getOutput:()=>getOutput()?.operatorStatus()??null,validatePhoto:(buffer,variant)=>{const image=require('electron').nativeImage.createFromBuffer(buffer);const size=image.getSize();if(image.isEmpty()||size.width!==(variant==='avatar'?512:1080)||size.height!==(variant==='avatar'?512:1920))throw Object.assign(Error('INVALID_JPEG'),{code:'INVALID_JPEG',status:400});}});
   const network=require('./game-link-network.cjs').createNetworkReceiver({root,hub:link});
   const operator=require('./operator.cjs').createOperator({root,origin,link,getOutput});
   const layout=require('./layout-settings.cjs').createLayoutSettings({root,origin});

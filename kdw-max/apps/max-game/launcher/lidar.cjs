@@ -6293,25 +6293,46 @@ async function startLidar({ config, contents, active, log, width = 3072, height 
   };
   let mapping = prepare(config, calibrating);
   let down = false, closed = false, chain = Promise.resolve(), pendingMove = null, moving = false, inputEpoch = 0, needsCancel = false;
+  const input = { errors: 0, recoveries: 0, alreadyReleased: 0, lastError: null, lastCommand: null, lastSuccessAt: null };
+  const dispatch = async (type, p) => {
+    input.lastCommand = type;
+    try {
+      await contents.debugger.sendCommand("Input.dispatchTouchEvent", {
+        type,
+        touchPoints: p ? [{ x: p.x, y: p.y, id: 1, radiusX: 2, radiusY: 2, force: 1 }] : []
+      });
+    } catch (error) {
+      if (!p && ["touchCancel", "touchEnd"].includes(type) && /Must send a TouchStart first to start a new touch\./i.test(error.message)) {
+        input.alreadyReleased++;
+        return;
+      }
+      throw error;
+    }
+    input.lastSuccessAt = Date.now();
+  };
   const send = (type, p) => {
     const epoch = inputEpoch;
     chain = chain.then(async () => {
       if (closed || p && (epoch !== inputEpoch || calibrating || !config.enabled || !active())) return;
       if (!contents.debugger.isAttached()) contents.debugger.attach("1.3");
-      if (needsCancel && p) {
-        await contents.debugger.sendCommand("Input.dispatchTouchEvent", { type: "touchCancel", touchPoints: [] });
+      const recovering = needsCancel && !!p;
+      if (recovering) {
+        await dispatch("touchCancel");
         needsCancel = false;
       }
-      return contents.debugger.sendCommand("Input.dispatchTouchEvent", {
-        type,
-        touchPoints: p ? [{ x: p.x, y: p.y, id: 1, radiusX: 2, radiusY: 2, force: 1 }] : []
-      });
+      await dispatch(type, p);
+      if (recovering) {
+        input.recoveries++;
+        log({ event: "lidar-input-recovered", command: type, recoveries: input.recoveries });
+      }
     }).catch((error) => {
       down = false;
       pendingMove = null;
       needsCancel = true;
       inputEpoch++;
-      log({ event: "lidar-input-error", message: error.message, retryOnNextContact: true });
+      input.errors++;
+      input.lastError = { command: input.lastCommand, message: error.message, at: Date.now() };
+      log({ event: "lidar-input-error", ...input.lastError, count: input.errors, retryOnNextContact: true });
     });
   };
   const cancel = () => {
@@ -6390,7 +6411,7 @@ async function startLidar({ config, contents, active, log, width = 3072, height 
     throw error;
   }
   return {
-    snapshot: () => ({ ...receiver.snapshot(), enabled: config.enabled && !calibrating, calibrating, selectionSpace: calibrating ? "raw-y" : "calibrated-screen-y", cornerErrorPx: mapping?.cornerErrorPx ?? null }),
+    snapshot: () => ({ ...receiver.snapshot(), enabled: config.enabled && !calibrating, calibrating, selectionSpace: calibrating ? "raw-y" : "calibrated-screen-y", cornerErrorPx: mapping?.cornerErrorPx ?? null, input: { ...input, recoveryPending: needsCancel } }),
     reconfigure(value, raw = false) {
       if (closed) return false;
       value = automaticLidarConfig(value);

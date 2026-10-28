@@ -3,10 +3,12 @@ const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypt
 const {read,atomic,revision,compare,fail,json,body}=require('./operator-http.cjs');
 const pose=()=>({x:0,y:0,scale:1});
 const DEFAULTS={schemaVersion:1,standby:{logo:pose(),video:pose(),missions:pose()},game:{device:pose(),reference:pose(),button:pose()},devices:{},screens:{}};
-const groups=['device','reference','button'];
+const groups=['device','reference','button','relative'];
+const relativeBounds={fallingCardScale:[.5,3],fallingSpawnRight:[0,1600],pcScale:[.1,2],cardsScale:[.1,2],deviceScale:[.35,2.5],centerX:[-200,200],centerY:[-200,200],iconWidth:[5,180],referenceWidth:[20,300],iconGap:[0,200],iconsDeviceGap:[0,200],deviceReferenceGap:[0,200],buttonGap:[0,100]};
+function relative(v){object(v,[...Object.keys(relativeBounds),'centered']);const out={};for(const [k,value]of Object.entries(v)){if(k==='centered'){if(typeof value!=='boolean')throw fail('Некорректное центрирование');}else{const [min,max]=relativeBounds[k];if(typeof value!=='number'||!Number.isFinite(value)||value<min||value>max)throw fail('Некорректный относительный размер или отступ: '+k);}out[k]=value;}return out;}
 function object(v,keys){if(!v||typeof v!=='object'||Array.isArray(v)||Object.keys(v).some(k=>!keys.includes(k)))throw fail('Некорректный профиль композиции');}
 function validatePose(v){object(v,['x','y','scale']);for(const k of ['x','y','scale'])if(typeof v[k]!=='number'||!Number.isFinite(v[k])||v[k]<(k==='scale'?.35:-3072)||v[k]>(k==='scale'?2.5:3072))throw fail('Смещение: −3072…3072 px; масштаб: 35…250%');return{x:v.x,y:v.y,scale:v.scale};}
-function group(v,keys,partial=false){object(v,keys);const out={};for(const k of keys)if(k in v)out[k]=validatePose(v[k]);else if(!partial)throw fail('Неполный профиль композиции');return out;}
+function group(v,keys,partial=false){object(v,keys);const out={};for(const k of keys)if(k in v)out[k]=k==='relative'?relative(v[k]):validatePose(v[k]);else if(!partial&&k!=='relative')throw fail('Неполный профиль композиции');return out;}
 function validate(v){
  object(v,['schemaVersion','standby','game','devices','screens']);if(v.schemaVersion!==1)throw fail('Неизвестная версия профиля');
  object(v.devices,['phone','pc']);object(v.screens,Object.keys(v.screens||{}));if(Object.keys(v.screens).length>150)throw fail('Слишком много экранов');
