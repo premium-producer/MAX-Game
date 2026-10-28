@@ -1,0 +1,14 @@
+{
+  "localOnly": true,
+  "bundleSha256": "25cbbae932e78cfc33cf19db43c4cb5a33ab4108252f9c197842d9565d9d02f0",
+  "maxTests": 183,
+  "operatorCoreTests": 4,
+  "runtimeTests": 14,
+  "linkTests": 16,
+  "generalAudit": "All non-browser stages pass; broad browser reached all functional checks but rejects HTTP 409 console messages in Stella audience/result",
+  "dedicatedOperatorBrowser": "passed",
+  "newRuntimeModules": [
+    "kdw-operator-model.mjs",
+    "kdw-operator-game.mjs"
+  ]
+}

@@ -1,3 +1,5 @@
+import {mountOperatorGame} from './kdw-operator-game.mjs';
+import {operatorScope} from './kdw-operator-model.mjs';
 import {guardImage,fallbackForImage,fallbackImageSource,useImageFallback,retireDetachedMedia,visitorMessage} from './kdw-graceful-media.mjs';
 import {showStandbyCover,dismissStandbyCover,installSceneTransition,transitionReload} from './kdw-standby-cover.mjs';
 import {installNativeTouch} from './kdw-native-touch.mjs';
@@ -568,6 +570,7 @@ async function changeLocalTask(type,taskId){
 }
 const taskSkip=mountTaskSkip({host,onSkip:taskId=>changeLocalTask('SKIP_TASK',taskId)});
 function tick(delta){
+ operatorGame.tick();
  const skipState=controller?.snapshot?.state,skipShown=controller?.displayedState;
  taskSkip.update(skipState,localDevelopment&&inputActive()&&!navigating&&!sharedSession?.busy&&!controller?.startup&&!controller?.handoff&&controller?.phase==='task'&&!foreground?.busy(host,true)&&!foreground?.contentBusy(host)&&skipState?.runId===skipShown?.runId&&skipState?.taskId===skipShown?.taskId&&skipState?.screenId===skipShown?.screenId);
  kdwInteractions.update(controller?.displaySnapshot,controller?.phase);
@@ -1151,9 +1154,19 @@ function publishIndependentApplied(){
  if(!state||!command||!independentAuthority||independentKey(state)!==independentKey(command)||independentKey(state)!==independentKey(independentAuthority))return;
  parent.postMessage({type:'max-assets:applied',owner:state.owner,revision:state.revision,modeEpoch:state.modeEpoch,settingsRevision:state.settingsRevision??0,sceneKey:independentKey(state)},location.origin);
 }
+const operatorGame=mountOperatorGame({bridge:globalThis.kdwStandOutput,getSession:()=>sharedSession,getCatalog:()=>MISSION_CATALOG,getPhase:()=>controller?.phase,isBusy:()=>navigating||!!sharedSession?.busy||!!controller?.startup||!!controller?.handoff||!!foreground?.busy(host,true),goto:async(target,token)=>{
+ const session=sharedSession;if(operatorScope(session.snapshot.state)!==token)throw Error('OPERATOR_STATE_CHANGED');
+ if(gameLink?.game&&session.snapshot.state.status==='scan'&&target.screenId!=='operator.scan')await claimLinkedMission(gameLink);
+ if(session!==sharedSession||operatorScope(session.snapshot.state)!==token)throw Error('OPERATOR_STATE_CHANGED');
+ navigating=true;cancelGesture();personalChannel.dismissKeyboard();taskSkip.suspend();controller.prepareMissionRestart?.();
+ try{await session.operatorGoto({missionId:target.missionId,taskId:target.taskId,screenId:target.screenId});
+  const commit=()=>{controller.commitMissionRestart?.();controller.startup=null;controller.paths=null;controller.handoff=null;controller.presentedDevice=null;if(controller.phase==='paused')controller.resume(controller.activeId);phonePresence.value=0;phonePresence.velocity=0;resetPrompt=false;popupPage=0;popupToken='';view='';render(true);navigating=false;fit();syncScene();};
+  if(!foreground?.transition(host,commit,{interrupt:true}))commit();
+ }catch(error){controller.cancelMissionRestart?.();navigating=false;throw error;}
+}});
 const stopBootHealth=monitorPreparation(()=>document.documentElement.dataset.gameReady==='true'?{status:'menu'}:null);
 window.addEventListener('pagehide',stopBootHealth,{once:true});
-window.render_game_to_text=()=>JSON.stringify({coordinates:'viewport pixels, origin top-left, x right, y down',phase:controller?.phase??'loading',status:sharedSession?.snapshot?.state.status??'loading',mission:sharedSession?.snapshot?.state.missionId,screen:sharedSession?.snapshot?.state.screenId,ready:sharedSession?.snapshot?.state.standReady,remainingMs:sharedSession?.snapshot?.view.remainingMs,connected:sharedSession?.connected??false,presentation:{startup:controller?.startup?.stage,pathsDone:controller?.paths?.done,pathTime:[controller?.paths?.elapsed,controller?.paths?.duration],gesture:gesture?.kind,geometry:controller?.geometry,deviceReady:phoneContentReady(),presence:phonePresence.value,position:[phoneX.value,phoneY.value],target:controller?.phone,settled:controller?.settlingNodes?.map(n=>[n.step,foreground?.isSettled(host,n.step)]),camera:[camera.value,focusTarget],busy:foreground?.contentBusy(host),phoneData:host.querySelector('.route-phone')?.dataset}});
+window.render_game_to_text=()=>JSON.stringify({coordinates:'viewport pixels, origin top-left, x right, y down',phase:controller?.phase??'loading',status:sharedSession?.snapshot?.state.status??'loading',mission:sharedSession?.snapshot?.state.missionId,screen:sharedSession?.snapshot?.state.screenId,ready:sharedSession?.snapshot?.state.standReady,remainingMs:sharedSession?.snapshot?.view.remainingMs,connected:sharedSession?.connected??false,presentation:{startup:controller?.startup?.stage,pathsDone:controller?.paths?.done,pathTime:[controller?.paths?.elapsed,controller?.paths?.duration],gesture:gesture?.kind,geometry:controller?.geometry,deviceReady:!!controller&&phoneContentReady(),presence:phonePresence.value,position:[phoneX.value,phoneY.value],target:controller?.phone,settled:controller?.settlingNodes?.map(n=>[n.step,foreground?.isSettled(host,n.step)]),camera:[camera.value,focusTarget],busy:foreground?.contentBusy(host),phoneData:host.querySelector('.route-phone')?.dataset}});
 async function preparePortableSession(){
  const generation=bindingGeneration;
  if(sharedBackend&&!managedShell){
@@ -1161,7 +1174,7 @@ async function preparePortableSession(){
   if(profile!=='server'){
    const key=`${WEBGL_SHARED_KEY}${bfmVisual?':v5':''}:${MISSION_CATALOG.contentRevision}`;
    const persistence=interactionPreview||params.get('test')==='memory'?createMemoryPersistencePort():bfmVisual?createIndexedDBPersistence({legacyStorage:localStorage,key}):createBrowserPersistence({storage:localStorage,key});
-   port=(bfmVisual?createV5MissionSessionApplication:createMissionSessionApplication)({catalog:MISSION_CATALOG,persistence,development:localDevelopment,admit:()=>claimLinkedMission(gameLink)});
+   port=(bfmVisual?createV5MissionSessionApplication:createMissionSessionApplication)({catalog:MISSION_CATALOG,persistence,development:localDevelopment,admit:()=>claimLinkedMission(gameLink),operatorControls:!!globalThis.kdwStandOutput?.onGameControl});
   }
   sharedSession=profile==='server'?managedSession(managedAssignment,params.get('session')):createWebGLSession({port,catalog:MISSION_CATALOG,initialOwnerActive:false,assignmentId:managedAssignment,sessionId:params.get('session')||(bfmVisual?(localDevelopment?'webgl-v5-development':'webgl-v5'):'site-shared'),profile,onSnapshot:snapshot=>{if(generation!==bindingGeneration||pageDisposed)return;managedSnapshot(snapshot);if(!controller||!portable&&snapshot.assignment?.lifecycle.status!=='active')return;controller.accept(snapshot);if(foreground&&!navigating){if((controller.phase==='burst'||bfmVisual&&controller.startup&&controller.snapshot.state.scanned)&&gesture?.kind==='palm')cancelGesture();if(!gesture)focusCurrent();render();}},onError:error=>{console.error('MAX backend',error);if(foreground)feedback('Нет связи с backend. Экран сохранён.');}});
   await sharedSession.start();
@@ -1268,4 +1281,4 @@ async function boot(){
  if(managedShell){document.documentElement.dataset.managedBinding='';managedNotice.hidden=true;applyManagedActivity();void refreshManagedBinding();}
 }
 boot().catch(e=>{if(pageDisposed)return;console.error('MAX_BOOT_RECOVERY',e);startupAssets?.dispose();document.documentElement.dataset.assetPreparation='failed';showRuntimeRecovery();});
-window.addEventListener('pagehide',()=>{stopNativeTouch();stopProduction();clearPixelInput();clearPixelDebug();stopGameLink();taskSkip.dispose();localAdmission.dispose();standBrowser?.dispose();kdwInteractions.dispose();personalChannel.dispose();businessNative.dispose();kdwPosts.dispose();pageDisposed=true;bindingGeneration++;clearTimeout(contextTimer);screenEpoch++;gameAudio?.dispose();missionContinuation?.cancel();cancelGesture();save();sharedSession?.close();idleMenu?.dispose();independent?.dispose();field?.dispose();foreground?.dispose();assets?.dispose();startupAssets?.dispose();ambient?.dispose();v5Tools?.dispose();},{once:true});
+window.addEventListener('pagehide',()=>{operatorGame.dispose();stopNativeTouch();stopProduction();clearPixelInput();clearPixelDebug();stopGameLink();taskSkip.dispose();localAdmission.dispose();standBrowser?.dispose();kdwInteractions.dispose();personalChannel.dispose();businessNative.dispose();kdwPosts.dispose();pageDisposed=true;bindingGeneration++;clearTimeout(contextTimer);screenEpoch++;gameAudio?.dispose();missionContinuation?.cancel();cancelGesture();save();sharedSession?.close();idleMenu?.dispose();independent?.dispose();field?.dispose();foreground?.dispose();assets?.dispose();startupAssets?.dispose();ambient?.dispose();v5Tools?.dispose();},{once:true});

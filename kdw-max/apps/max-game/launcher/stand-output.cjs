@@ -50,6 +50,11 @@ exports.startStandOutput=async function({root,host,config,log,onFatal}){
   windows.push(win);install(win,channel);
  }
  const [background,content]=windows;
+ const operatorPending=new Map();
+ const operatorReply=(event,packet)=>{if(event.sender!==content.webContents||typeof packet?.id!=='string')return;const pending=operatorPending.get(packet.id);if(!pending)return;operatorPending.delete(packet.id);clearTimeout(pending.timer);packet.error?pending.reject(Error(packet.error)):pending.resolve(packet.value);};
+ ipcMain.on('kdw:game-control-result',operatorReply);
+ function gameControl(input){if(!contentReady||closed||calibration)throw Error('OPERATOR_NOT_READY');if(!['next','back'].includes(input?.action)||typeof input.token!=='string'||input.token.length>512)throw Error('INVALID_OPERATOR_ACTION');if(operatorPending.size)throw Error('OPERATOR_BUSY');return new Promise((resolve,reject)=>{const id=randomUUID(),timer=setTimeout(()=>{operatorPending.delete(id);reject(Error('OPERATOR_TIMEOUT'));},2500);operatorPending.set(id,{resolve,reject,timer});log({event:'operator-game-control',action:input.action,id});content.webContents.send('kdw:game-control',{id,input});});}
+
  const operatorStatus=()=>({bootId,armed:true,inputMode:'automatic',active:active(),presenting:presenting(),backgroundReady,contentReady,frames:[...frames],lastGoodFrameAgeMs:lastGood.map(t=>t?Math.round(performance.now()-t):null),badFrames:[...badFrames],fresh:fresh(),senders:['KDW_MAX_BACKGROUND','KDW_MAX_CONTENT'],width,height,bridge:bridge.status(),lidar:lidar?.snapshot()??null,cursorVisible,calibration:calibration?.status()??null,ui});
  // Compatibility for older operator panels/installers: ARM is no longer a latch.
  function setArmed(value){log({event:'legacy-arm-ignored',requested:value,inputMode:'automatic'});notify();}
@@ -75,7 +80,7 @@ exports.startStandOutput=async function({root,host,config,log,onFatal}){
   if(event.sender!==content.webContents||!Number.isFinite(packet?.delta)||packet.delta<0||packet.delta>1)return;
   if(contentReady!==(packet.ready===true)){contentReady=packet.ready===true;notify();}
   if(typeof packet.epoch==='string'&&packet.epoch!==epoch){epoch=packet.epoch;lidar?.reset();}
-  if(packet.ui&&typeof packet.ui==='object'&&JSON.stringify(packet.ui).length<4096)ui=packet.ui;
+  if(packet.ui&&typeof packet.ui==='object'&&JSON.stringify(packet.ui).length<8192)ui=packet.ui;
   lastTick.content=performance.now();reduced=packet.reduced===true;
  };
  const ack=(event,packet)=>{if(event.sender===background.webContents){backgroundBusy=false;lastBackgroundAck=performance.now();if(packet?.ready==='false'){fail(Error('Background shader failed'));return;}if(backgroundReady!==(packet?.ready==='true')){backgroundReady=packet?.ready==='true';notify();}}};
@@ -96,6 +101,7 @@ exports.startStandOutput=async function({root,host,config,log,onFatal}){
   }catch(error){log({event:'output-state-write-failed',code:error.code,message:error.message});}
  },500);
  async function close(){
+  ipcMain.removeListener('kdw:game-control-result',operatorReply);for(const request of operatorPending.values()){clearTimeout(request.timer);request.reject(Error('OUTPUT_CLOSED'));}operatorPending.clear();
   if(closed)return;closed=true;notify();clearInterval(timer);clearInterval(monitor);clearInterval(overlayTimer);clearInterval(backgroundTimer);for(const timer of reloadTimers)clearTimeout(timer);
   ipcMain.removeListener('kdw:background-tick',tick);ipcMain.removeListener('kdw:background-ack',ack);
   await lidar?.close();for(const w of windows)if(!w.isDestroyed())w.webContents.stopPainting();
@@ -110,6 +116,6 @@ exports.startStandOutput=async function({root,host,config,log,onFatal}){
   await configureLidar(lidarConfig);
   for(const w of windows)w.webContents.startPainting();
   log({event:'spout-started',bootId,width,height});
-  return {close,content,background,active,get bootId(){return bootId;},operatorStatus,setArmed,configureLidar,beginCalibration,cancelCalibration,saveCalibration,captureCalibration(){if(!calibration)throw Error('Калибровка не запущена');return calibration.capture();},setCursor(value){cursorVisible=value;}};
+  return {close,content,background,active,gameControl,get bootId(){return bootId;},operatorStatus,setArmed,configureLidar,beginCalibration,cancelCalibration,saveCalibration,captureCalibration(){if(!calibration)throw Error('Калибровка не запущена');return calibration.capture();},setCursor(value){cursorVisible=value;}};
  }catch(error){await close();throw error;}
 };

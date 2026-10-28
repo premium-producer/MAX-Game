@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {hit,flightPose,phoneLayout,slotPose,wrapText,textureBytes,generationKey} from '../src/activity-webgl/activity-model.mjs';
+import {hit,flightPose,phoneLayout,slotPose,wrapText,textureBytes,generationKey,brakingPose,SELECTION_BRAKE_MS,orderedSprites,placeholderOpacity,ease} from '../src/activity-webgl/activity-model.mjs';
 import {createActivityTrails} from '../src/activity-webgl/activity-trails.mjs';
 test('GPU input uses visible order, clipping and the same rotation as drawing',()=>{
  const a={id:'back',x:10,y:10,w:100,h:100,interactive:true},b={...a,id:'front',clip:{x:50,y:50,w:20,h:20}};
@@ -15,6 +15,32 @@ test('Flight starts at the captured picture and lands exactly in the resized tar
  const first=flightPose(from,to,0),last=flightPose(from,to,1);
  for(const key of ['x','y','w','h','radius']){assert.equal(first[key],from[key]);assert.ok(Math.abs(last[key]-to[key])<1e-9);}
  assert.ok(flightPose(from,to,.5).y<(from.y+to.y)/2);
+});
+test('Selection preserves incoming velocity and decelerates monotonically to a stationary flight origin',()=>{
+ const from={x:700,y:200,w:180,h:210},v={x:0,y:.28},T=SELECTION_BRAKE_MS;
+ assert.deepEqual(brakingPose(from,v,0),from);
+ let previous=from,lastVelocity=Infinity;
+ for(let t=1;t<=T;t++){
+  const pose=brakingPose(from,v,t),speed=pose.y-previous.y;
+  assert.ok(speed>=0&&speed<=lastVelocity+1e-9);assert.equal(pose.x,from.x);
+  if(t===1)assert.ok(Math.abs(speed-v.y)<.001);
+  previous=pose;lastVelocity=speed;
+ }
+ assert.ok(lastVelocity<.00001);assert.ok(Math.abs(previous.y-from.y-v.y*T/3)<1e-9);
+ assert.deepEqual(brakingPose(from,v,T+1000),previous);
+});
+test('Selected, falling and exiting sprites keep their shared order without promotion',()=>{
+ const a={id:'a',layerOrder:2},b={id:'b',layerOrder:3},c={id:'c',layerOrder:1};
+ const before=orderedSprites([a,b,c]).map(s=>s.id);
+ for(const phase of ['pending','queued','flying','docking'])assert.deepEqual(orderedSprites([b,c,{...a,phase}]).map(s=>s.id),before);
+ const behind={x:0,y:0,w:100,h:100,id:'behind',action:'card',interactive:true};
+ assert.equal(hit({x:10,y:10},[behind,{...behind,id:'selected',action:'occlusion'}]).action,'occlusion');
+});
+test('White store placeholder stays visible in flight and fades continuously during docking',()=>{
+ assert.equal(placeholderOpacity(0),1);assert.equal(placeholderOpacity(1),0);
+ let previous=1;
+ for(let t=0;t<=420;t+=7){const opacity=placeholderOpacity(ease(t/420));assert.ok(opacity<=previous&&previous-opacity<.04);previous=opacity;}
+ assert.equal(previous,0);
 });
 test('Phone content and scroll are calculated in a single viewport coordinate system',()=>{
  const records=new Map([['p',{stored:{h:400}}]]),rows=[{postId:'p',spawnId:'1'},{postId:'p',spawnId:'2'}];

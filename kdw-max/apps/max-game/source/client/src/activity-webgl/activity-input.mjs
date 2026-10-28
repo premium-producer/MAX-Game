@@ -12,7 +12,7 @@ export function installActivityInput({getFrame,select,scroll,react}){
   // the original trusted contact after pixel-map/calibration filtering.
   reportActivityContact(e);
   if(hand.seen.has(card.id))return true;hand.seen.add(card.id);suppressUntil=performance.now()+1000;
-  if(card.action==='reaction')react(card);else select(card.id);return true;
+  if(card.action==='reaction')react(card);else if(card.action==='card')select(card.id);return true;
  }
  const down=e=>{hands.delete(e.pointerId);const initial=getFrame();if(initial?.interactive&&!blocked(e.target))hands.set(e.pointerId,{generation:initial.key,seen:new Set()});if(enter(e)){e.preventDefault();e.stopImmediatePropagation();return;}const f=getFrame();if(f?.interactive&&!blocked(e.target)&&inside({x:e.clientX,y:e.clientY},f.scrollClip))drag={id:e.pointerId,y:e.clientY};};
  const move=e=>{if(drag?.id===e.pointerId){scroll(drag.y-e.clientY);drag.y=e.clientY;e.preventDefault();return;}if(hands.has(e.pointerId)&&enter(e)){e.preventDefault();e.stopImmediatePropagation();}};

@@ -351,6 +351,23 @@ replace('async function boot(){',sessionFunction+'async function boot(){');
 replace("document.documentElement.dataset.gameReady='true';", "document.documentElement.dataset.gameReady='true';\n installSceneTransition(transitionPortableSession);");
 replace("try{await selectManualMission(missionId);}", "try{await idleMenu.exit();await selectManualMission(missionId);}");
 replace("['manual','combined'].includes(standSettings.value.max.entryMode)","['manual','combined'].includes(productionPolicy.value.max.entryMode)");
+// Trusted operator controls arrive only through the existing desktop preload.
+text="import {mountOperatorGame} from './kdw-operator-game.mjs';\nimport {operatorScope} from './kdw-operator-model.mjs';\n"+text;
+replace('admit:()=>claimLinkedMission(gameLink)', 'admit:()=>claimLinkedMission(gameLink),operatorControls:!!globalThis.kdwStandOutput?.onGameControl');
+replace('function tick(delta){', 'function tick(delta){\n operatorGame.tick();');
+replace('deviceReady:phoneContentReady(),', 'deviceReady:!!controller&&phoneContentReady(),');
+replace('const stopBootHealth=', `const operatorGame=mountOperatorGame({bridge:globalThis.kdwStandOutput,getSession:()=>sharedSession,getCatalog:()=>MISSION_CATALOG,getPhase:()=>controller?.phase,isBusy:()=>navigating||!!sharedSession?.busy||!!controller?.startup||!!controller?.handoff||!!foreground?.busy(host,true),goto:async(target,token)=>{
+ const session=sharedSession;if(operatorScope(session.snapshot.state)!==token)throw Error('OPERATOR_STATE_CHANGED');
+ if(gameLink?.game&&session.snapshot.state.status==='scan'&&target.screenId!=='operator.scan')await claimLinkedMission(gameLink);
+ if(session!==sharedSession||operatorScope(session.snapshot.state)!==token)throw Error('OPERATOR_STATE_CHANGED');
+ navigating=true;cancelGesture();personalChannel.dismissKeyboard();taskSkip.suspend();controller.prepareMissionRestart?.();
+ try{await session.operatorGoto({missionId:target.missionId,taskId:target.taskId,screenId:target.screenId});
+  const commit=()=>{controller.commitMissionRestart?.();controller.startup=null;controller.paths=null;controller.handoff=null;controller.presentedDevice=null;if(controller.phase==='paused')controller.resume(controller.activeId);phonePresence.value=0;phonePresence.velocity=0;resetPrompt=false;popupPage=0;popupToken='';view='';render(true);navigating=false;fit();syncScene();};
+  if(!foreground?.transition(host,commit,{interrupt:true}))commit();
+ }catch(error){controller.cancelMissionRestart?.();navigating=false;throw error;}
+}});
+const stopBootHealth=`);
+replace("window.addEventListener('pagehide',()=>{", "window.addEventListener('pagehide',()=>{operatorGame.dispose();");
 // Reuse the existing timer material and queue feed; one non-interactive sibling.
 replace('resumeLinkedMission,watchGameLink,claimLinkedMission}', 'resumeLinkedMission,watchGameLink,claimLinkedMission,linkedQueueCount}');
 replace('function updateTargets(){', `function updateMissionQueue(timer,rect){

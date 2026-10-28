@@ -2,7 +2,7 @@ import {registerActivity} from './activity-runtime.mjs';
 import {createActivityResources} from './activity-resources.mjs';
 import {installActivityInput} from './activity-input.mjs';
 import {createActivityTrails} from './activity-trails.mjs';
-import {ease,flightPose,generationKey,photoPose,phoneLayout,slotPose,summary} from './activity-model.mjs';
+import {SELECTION_BRAKE_MS,brakingPose,orderedSprites,placeholderOpacity,ease,flightPose,generationKey,photoPose,phoneLayout,slotPose,summary} from './activity-model.mjs';
 import {activityGeometry,alignActivityActions,createRightCardLayout} from '../kdw-activity-stage.mjs';
 import {createPresentationClock} from '../kdw-card-clock.mjs';
 import {createFlowEntry} from '../kdw-flow-entry.mjs';
@@ -22,6 +22,7 @@ export function mountWebGLActivity({kind,getSession}){
  newer.addEventListener('click',()=>{autoScroll=true;hasNewer=false;if(layout)scrollTarget=layout.revealScroll;});
  const clock=createPresentationClock({smooth:true}),placement=createRightCardLayout(),entry=createFlowEntry(),readPosts=createPostStreamReader(),reduced=matchMedia('(prefers-reduced-motion: reduce)');
  let snapshot=null,phase='',key='',contextKey='',epoch=0,resources=null,resourceKey='',disposed=false,active=false,starting=false,startFailed=false,commandBusy=false,chain=Promise.resolve(),lastNow=null,animationTime=0,lastReport=0,scroll=0,scrollTarget=0,autoScroll=true,layout=null,lastPublished='',elapsed=0,lastRows=[],items=[],current=null,submitted=null,lastSignature='',lastGoal=false,exits=[],closing=null,timeline=null,timelineSignature='';
+ const layerOrders=new Map();let nextLayerOrder=0;
  const flights=new Map(),reactions=new Set(),settledAt=new Map(),history=[],frameIntervals=[];
  const trails=createActivityTrails();
  let audience=POSTS_RULES.initialAudience,audienceFrom=audience,audienceAt=0;
@@ -34,7 +35,7 @@ export function mountWebGLActivity({kind,getSession}){
   const a=posts?business.postsActivity:business.storeActivity,type=a?.businessType??business.answers?.businessType??'cafe',version=a?.version??(posts?POSTS_RULES.version:7),rkey=`${kind}:${type}:${version}`;
   if(resourceKey===rkey&&resources)return;resources?.dispose();resourceKey=rkey;resources=createActivityResources(kind,type,posts?postBank(type,version):storeBank(type,version));
  }
- function reset(){epoch++;trails.clear();hasNewer=false;newer.hidden=true;flights.clear();settledAt.clear();reactions.clear();placement.clear();entry.clear();submitted=null;current=null;items=[];scroll=scrollTarget=0;autoScroll=true;lastPublished='';lastSignature='';lastGoal=false;exits=[];starting=false;startFailed=false;commandBusy=false;chain=Promise.resolve();lastNow=null;animationTime=0;timeline=null;timelineSignature='';semantic.replaceChildren();}
+ function reset(){epoch++;layerOrders.clear();nextLayerOrder=0;trails.clear();hasNewer=false;newer.hidden=true;flights.clear();settledAt.clear();reactions.clear();placement.clear();entry.clear();submitted=null;current=null;items=[];scroll=scrollTarget=0;autoScroll=true;lastPublished='';lastSignature='';lastGoal=false;exits=[];starting=false;startFailed=false;commandBusy=false;chain=Promise.resolve();lastNow=null;animationTime=0;timeline=null;timelineSignature='';semantic.replaceChildren();}
  function clearFlags(){if(posts){delete document.documentElement.dataset.kdwPosts;delete document.documentElement.dataset.kdwPostsComplete;}else{delete document.documentElement.dataset.kdwInteraction;delete document.documentElement.dataset.kdwStorePlaying;}}
  const draw=(texture,rect,extra={})=>{if(texture&&rect.w>0&&rect.h>0)items.push({texture,...rect,...extra});};
  const solid=(rect,color,opacity=1,radius=0,clip)=>draw(resources.extras.get('white'),rect,{color,opacity,radius,clip});
@@ -55,13 +56,13 @@ export function mountWebGLActivity({kind,getSession}){
   try{const r=await session.command(posts?'START_POSTS':'START_STORE',{taskId,screenId});if(key!==expected||!active)return;if(!r?.reply.ok){startFailed=true;say('Не удалось начать. Повторите попытку');}else say('');}
   catch{if(key===expected){startFailed=true;say('Не удалось начать. Повторите попытку');}}finally{if(key===expected)starting=false;}
  }
- function reconcile(){const published=activity()?.published??[];for(const [id,f]of flights){if(published.some(row=>row.spawnId===id)){if(f.phase==='pending'){if(!f.animate){flights.delete(id);hasNewer=true;}else{f.phase='queued';f.acceptedAt=animationTime;}}}else if(f.phase==='pending'&&f.failed){flights.delete(id);say('Не удалось сохранить выбор. Попробуйте ещё раз');}}}
+ function reconcile(){const published=activity()?.published??[];for(const [id,f]of flights){if(published.some(row=>row.spawnId===id)){if(f.phase==='pending'){f.phase='queued';f.acceptedAt=animationTime;}}else if(f.phase==='pending'&&f.failed){flights.delete(id);say('Не удалось сохранить выбор. Попробуйте ещё раз');}}}
  function select(id){
   if(debug)root.dataset.lastSelection=id;
   const frame=submitted,source=frame?.hits.find(h=>h.id===id&&h.action==='card'&&h.interactive),session=getSession();
   if(!source||!frame.interactive||frame.key!==key||flights.has(id)||goal()||flights.size>12||[...flights.values()].filter(f=>f.phase==='pending').length>=(posts?2:1))return;
   if(!snapshot.state.ownerActive||session.connected===false||session.profile==='server'&&session.clockStale)return;
-  const f={id,asset:source.asset,cardPose:{x:source.x,y:source.y,w:source.w,h:source.h},from:photoPose(source,source.asset.fall.photo,440),phase:'pending',at:animationTime,animate:!posts||autoScroll,wallAt:performance.now(),generation:key};flights.set(id,f);source.interactive=false;
+  const f={id,asset:source.asset,layerOrder:source.layerOrder,velocity:{x:source.vx??0,y:source.vy??0},cardPose:{x:source.x,y:source.y,w:source.w,h:source.h},from:photoPose(source,source.asset.fall.photo,440),phase:'pending',at:animationTime,animate:!posts||autoScroll,wallAt:performance.now(),generation:key};f.origin={...f.cardPose};flights.set(id,f);source.action='occlusion';
   const expected=key;
   chain=chain.catch(()=>{}).then(async()=>{
    for(let count=0;session.busy&&count<80&&active&&key===expected;count++)await new Promise(r=>setTimeout(r,20));
@@ -93,8 +94,12 @@ export function mountWebGLActivity({kind,getSession}){
   if(read.time!==null)elapsed=activity()?(posts?postsElapsed(activity(),activityRemaining(snapshot.state,read.time)):storeElapsed(activity(),snapshot.state,read.time)):0;
   reconcile();
   const a=activity(),published=a?.published??[],done=goal();
-  if(![...flights.values()].some(f=>f.phase==='flying'||f.phase==='docking')){const next=[...flights.values()].find(f=>f.phase==='queued');if(next){if(!posts)autoScroll=true;next.phase='flying';next.start=animationTime;}}
-  const visibleRows=published.filter(row=>!flights.has(row.spawnId)||!['pending','queued'].includes(flights.get(row.spawnId).phase));
+  for(const f of flights.values())if(f.phase==='pending'||f.phase==='queued'){
+   f.cardPose=brakingPose(f.origin,f.velocity,reduced.matches?SELECTION_BRAKE_MS:animationTime-f.at);
+   f.from=photoPose(f.cardPose,f.asset.fall.photo,f.asset.fall.w);
+  }
+  if(![...flights.values()].some(f=>f.phase==='flying'||f.phase==='docking')){const next=[...flights.values()].find(f=>f.phase==='queued'&&(reduced.matches||animationTime-f.at>=SELECTION_BRAKE_MS));if(next){if(!posts)autoScroll=true;next.phase=next.animate?'flying':'fading';next.start=animationTime;if(!next.animate)hasNewer=true;}}
+  const visibleRows=published.filter(row=>!flights.has(row.spawnId)||!['pending','queued','fading'].includes(flights.get(row.spawnId).phase));
   layout=phoneLayout(kind,g.rect,resources.records,visibleRows);
   const signature=visibleRows.map(r=>r.spawnId).join('|');if(signature!==lastPublished){lastPublished=signature;if(autoScroll)scrollTarget=layout.revealScroll;}
   scrollTarget=Math.min(scrollTarget,layout.maxScroll);scroll=reduced.matches?scrollTarget:scroll+(scrollTarget-scroll)*(1-Math.exp(-dt/120));
@@ -108,8 +113,14 @@ export function mountWebGLActivity({kind,getSession}){
    draw(resources.extras.get('footer'),{x:rect.x,y:rect.y+rect.h-78*scale,w:rect.w,h:78*scale},{opacity:alpha,clip:phoneClip});
   }else text(storeRating(a).toFixed(1).replace('.',','),rect.x+244*scale,rect.y+102*scale,15*scale,'#fff',alpha,phoneClip);
   // Placeholder grid is GPU-only as well; it never owns a hit rectangle.
-  if(!posts)for(let i=visibleRows.length;i<Math.max(8,Math.ceil((visibleRows.length+2)/2)*2);i++){const row=Math.floor(i/2),p={x:feedClip.x+(9+i%2*190)*scale,y:feedClip.y+(9+row*278-scroll)*scale,w:182*scale,h:270*scale};solid(p,'#fff',alpha,20*scale,feedClip);}
-  for(const row of visibleRows){const slot=layout.slots.get(row.spawnId);if(!slot)continue;const pose=slotPose(layout,slot,scroll),flight=flights.get(row.spawnId);let reveal=flight?flight.phase==='docking'?ease((animationTime-flight.landed)/300):0:1;
+  const revealFor=flight=>flight?flight.phase==='docking'?ease((animationTime-flight.landed)/420):0:1;
+  if(!posts)for(let i=0;i<Math.max(8,Math.ceil((visibleRows.length+2)/2)*2);i++){
+   const row=visibleRows[i],slot=row&&layout.slots.get(row.spawnId),flight=row&&flights.get(row.spawnId);
+   const p=slot?slotPose(layout,slot,scroll):{x:feedClip.x+(9+i%2*190)*scale,y:feedClip.y+(9+Math.floor(i/2)*278-scroll)*scale,w:182*scale,h:270*scale};
+   // Keep the white cell while the photo travels; fade it with the arriving card.
+   solid(p,'#fff',alpha*(row?placeholderOpacity(revealFor(flight)):1),20*scale,feedClip);
+  }
+  for(const row of visibleRows){const slot=layout.slots.get(row.spawnId);if(!slot)continue;const pose=slotPose(layout,slot,scroll),flight=flights.get(row.spawnId);let reveal=revealFor(flight);
    drawCard(slot.asset,pose,true,alpha*reveal,feedClip,flight?0:alpha);
    if(posts){const at=settledAt.get(row.spawnId),m=postMetrics(row,elapsed,flight?0:at===undefined?700:animationTime-at),y=pose.y+slot.asset.stored.metrics.reactionY*scale;
     for(const [index,name]of ['fire','heart'].entries()){const x=pose.x+(index?113:10)*scale,id=`reaction:${row.spawnId}:${name}`;if(reactions.has(id))solid({x,y,w:(index?85:98)*scale,h:35*scale},'#4b6989',alpha*reveal,18*scale,feedClip);draw(resources.extras.get(name),{x:x+7*scale,y:y+4*scale,w:26*scale,h:26*scale},{opacity:alpha*reveal,clip:feedClip});text(formatPostCount(m[name]+Number(reactions.has(id))),x+37*scale,y+9*scale,15*scale,'#e0e0e4',alpha*reveal,feedClip);hits.push({id,action:'reaction',x,y,w:(index?85:98)*scale,h:35*scale,clip:feedClip,interactive:interactive&&!flight});}
@@ -119,29 +130,52 @@ export function mountWebGLActivity({kind,getSession}){
   const rows=a&&!done?rowsAt(a,elapsed):[],selected=new Set(published.map(row=>row.spawnId)),field=g.flowArea?{x:g.flowArea.left,y:g.flowArea.top,w:g.flowArea.width,h:g.flowArea.height}:{x:0,y:0,w:innerWidth,h:innerHeight};
   if(done&&!lastGoal)exits=lastRows.filter(r=>!selected.has(r.id)&&!flights.has(r.id)).map((r,i)=>({...r,at:animationTime+i*90}));lastGoal=done;
   const rects=placement.layout(g,rows,(spawn,w,unit)=>(resources.records.get(spawn.post.id)?.fall.h??600)*unit),admitted=entry.update(rows,r=>rects.get(r.spawnId),interactive),falling=[];
+  const previousPoses=new Map(lastRows.map(p=>[p.id,p]));
   for(const spawn of rows){const asset=resources.records.get(spawn.post.id),r=rects.get(spawn.spawnId);if(!asset||!r||!admitted.has(spawn.spawnId)||selected.has(spawn.spawnId)||flights.has(spawn.spawnId))continue;
-   const pose={x:r.x,y:r.y,w:r.w,h:r.h,radius:40*r.w/440,id:spawn.spawnId,asset,action:'card',clip:field,interactive};falling.push(pose);
+   if(!layerOrders.has(spawn.spawnId))layerOrders.set(spawn.spawnId,nextLayerOrder++);
+   const previous=previousPoses.get(spawn.spawnId),vx=previous&&dt>0?(r.x-previous.x)/dt:0,vy=previous&&dt>0?(r.y-previous.y)/dt:0;
+   const pose={x:r.x,y:r.y,w:r.w,h:r.h,vx,vy,layerOrder:layerOrders.get(spawn.spawnId),radius:40*r.w/440,id:spawn.spawnId,asset,action:'card',clip:field,interactive};falling.push(pose);
    hits.push(pose);
   }lastRows=falling;
   if(done)trails.clear();else for(const q of trails.update(falling,elapsed,innerWidth,innerHeight,g.scale,reduced.matches))solid(q,q.color,alpha*q.opacity,0,field);
-  for(const pose of falling)drawCard(pose.asset,pose,false,alpha,field);
-  exits=exits.filter(p=>animationTime-p.at<240);for(const p of exits){const t=Math.max(0,(animationTime-p.at)/240),s=reduced.matches?0:1-.45*ease(t);drawCard(p.asset,{x:p.x+(1-s)*p.w/2,y:p.y+(1-s)*p.h/2,w:p.w*s,h:p.h*s},false,alpha*(1-ease(t)),field);}
+  const sprites=[];
+  const sprite=(layerOrder,paint)=>{const offset=items.length;paint();sprites.push({layerOrder,items:items.splice(offset)});};
+  for(const pose of falling)sprite(pose.layerOrder,()=>drawCard(pose.asset,pose,false,alpha,field));
+  exits=exits.filter(p=>animationTime-p.at<240);for(const p of exits){const t=Math.max(0,(animationTime-p.at)/240),s=reduced.matches?0:1-.45*ease(t);sprite(p.layerOrder,()=>drawCard(p.asset,{x:p.x+(1-s)*p.w/2,y:p.y+(1-s)*p.h/2,w:p.w*s,h:p.h*s},false,alpha*(1-ease(t)),field));}
   const flightPoses=debug?[]:null;
   for(const [id,f]of flights){
-   if(f.phase==='pending'||f.phase==='queued'){drawCard(f.asset,f.cardPose,false,alpha*.75,field,alpha);continue;}
-   const slot=layout.slots.get(id);if(!slot)continue;const to=photoPose(slotPose(layout,slot,scroll),f.asset.stored.photo,f.asset.stored.w),t=reduced.matches?1:Math.min(1,(animationTime-f.start)/680);
+   if(f.phase==='fading'){
+    const opacity=reduced.matches?0:1-ease((animationTime-f.start)/420);
+    sprite(f.layerOrder,()=>drawCard(f.asset,f.cardPose,false,alpha*opacity,field));
+    if(opacity>0)hits.push({...f.cardPose,id,layerOrder:f.layerOrder,action:'occlusion',clip:field,interactive});else flights.delete(id);
+    continue;
+   }
+   if(f.phase==='pending'||f.phase==='queued'){
+    sprite(f.layerOrder,()=>drawCard(f.asset,f.cardPose,false,alpha,field));
+    hits.push({...f.cardPose,id,layerOrder:f.layerOrder,radius:40*f.cardPose.w/440,action:'occlusion',clip:field,interactive});
+    flightPoses?.push({id,phase:f.phase,layerOrder:f.layerOrder,...f.cardPose});continue;
+   }
+   const slot=layout.slots.get(id);if(!slot)continue;const to=photoPose(slotPose(layout,slot,scroll),f.asset.stored.photo,f.asset.stored.w),t=reduced.matches?1:Math.min(1,(animationTime-f.start)/850);
    if(t>=1&&f.phase==='flying'){f.phase='docking';f.landed=animationTime;settledAt.set(id,animationTime);}
-   const pose=f.phase==='docking'?to:flightPose(f.from,to,t);draw(f.asset.photo,pose,{opacity:alpha,fit:f.asset.fit,clip:f.phase==='docking'?feedClip:undefined});
-   flightPoses?.push({id,phase:f.phase,...pose,target:to});
-   if(f.phase==='docking'&&(reduced.matches||animationTime-f.landed>=300))flights.delete(id);
+   const pose=f.phase==='docking'?to:flightPose(f.from,to,t);
+   sprite(f.layerOrder,()=>{
+    const shell=reduced.matches?0:1-ease((animationTime-f.start)/260);
+    if(shell>0)drawCard(f.asset,f.cardPose,false,alpha*shell,field,0);
+    draw(f.asset.photo,pose,{opacity:alpha,fit:f.asset.fit,clip:f.phase==='docking'?feedClip:undefined});
+   });
+   hits.push({...pose,id,layerOrder:f.layerOrder,action:'occlusion',clip:f.phase==='docking'?feedClip:field,interactive});
+   flightPoses?.push({id,phase:f.phase,layerOrder:f.layerOrder,...pose,target:to,reveal:revealFor(f)});
+   if(f.phase==='docking'&&(reduced.matches||animationTime-f.landed>=420))flights.delete(id);
   }
+  for(const group of orderedSprites(sprites))items.push(...group.items);
+  hits.sort((a,b)=>(a.layerOrder??-1)-(b.layerOrder??-1));
   current={frameId,key,hits,interactive,scrollClip:feedClip};syncSemantics(hits);
   alignActivityActions(footer,g,alpha,!interactive);finish.hidden=!done;finish.disabled=!interactive||flights.size>0||exits.length>0||commandBusy||getSession()?.busy;
   newer.hidden=!posts||done||!hasNewer||autoScroll;
   if(posts)document.documentElement.dataset.kdwPostsComplete=String(done);else document.documentElement.dataset.kdwStorePlaying=String(!done);
   history.push(performance.now()-started);if(history.length>600)history.shift();
   if(now-lastReport>=1000){lastReport=now;root.dataset.activityMetrics=JSON.stringify({kind,backend:'webgl',frameId,frame:summary(frameIntervals),update:summary(history),resources:resources.stats,falling:falling.length,flights:flights.size,published:published.length,stale:read.stale});}
-  if(debug)root.dataset.activityFrame=JSON.stringify({frameId,time:now,elapsed,key,interactive,phone:rect,goal:done,flights:flights.size,flightPoses,published:published.length,cards:falling.map(p=>({id:p.id,postId:p.asset.card.id,good:p.asset.card.good,x:p.x,y:p.y,w:p.w,h:p.h,interactive:p.interactive})),scroll,maxScroll:layout.maxScroll});
+  if(debug)root.dataset.activityFrame=JSON.stringify({frameId,time:now,elapsed,key,interactive,phone:rect,goal:done,flights:flights.size,flightPoses,published:published.length,cards:falling.map(p=>({id:p.id,postId:p.asset.card.id,good:p.asset.card.good,layerOrder:p.layerOrder,vx:p.vx,vy:p.vy,x:p.x,y:p.y,w:p.w,h:p.h,interactive:p.interactive})),scroll,maxScroll:layout.maxScroll});
  }
  const controller={gpuActivity:true,frame,warm:renderer=>resources?.warm(renderer),items:()=>items,submitted(){submitted=current;},invalidateGPU(){submitted=null;resources?.invalidate();},
   ready(next){if(!owns(next))return true;ensure(next);return !!resources?.prepared;},flush:async()=>{},align(){},

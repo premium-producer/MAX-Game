@@ -17,6 +17,14 @@ export function flightPose(from,to,progress){
  const t=ease(progress),arc=Math.sin(Math.PI*t)*Math.min(100,Math.abs(from.x-to.x)*.16);
  return{x:mix(from.x,to.x,t),y:mix(from.y,to.y,t)-arc,w:mix(from.w,to.w,t),h:mix(from.h,to.h,t),radius:mix(from.radius??0,to.radius??0,t),rotation:-.12*Math.sin(Math.PI*t)};
 }
+// Integrate v(t)=v0*(1-t)^2: preserve incoming velocity, then stop without a snap.
+export const SELECTION_BRAKE_MS=320;
+export function brakingPose(from,velocity,elapsed,duration=SELECTION_BRAKE_MS){
+ const t=Math.max(0,Math.min(1,elapsed/duration)),distance=duration*(t-t*t+t*t*t/3);
+ return {...from,x:from.x+(velocity.x??0)*distance,y:from.y+(velocity.y??0)*distance};
+}
+export const orderedSprites=sprites=>[...sprites].sort((a,b)=>(a.layerOrder??-1)-(b.layerOrder??-1));
+export const placeholderOpacity=reveal=>1-Math.max(0,Math.min(1,reveal));
 export function photoPose(card,photo,width){const k=card.w/width;return{x:card.x+photo.x*k,y:card.y+photo.y*k,w:photo.w*k,h:photo.h*k,radius:photo.radius*k};}
 export function phoneLayout(kind,rect,resources,rows){
  const scale=rect.width/390,height=rect.height/scale,header=kind==='posts'?121.33:140,footer=kind==='posts'?78:14;

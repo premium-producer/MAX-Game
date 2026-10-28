@@ -153,6 +153,7 @@ export function dispatchMissionCommand(catalog,model,input,{now=0,internal=false
    if(p.currentTaskIndex===sequence(catalog,s,p).length-1)s.deadlineAt=null;
   }else return reject('INVALID_OUTCOME');
  }else return reject('INVALID_COMMAND');
+ if(s.operatorControlled&&s.missionId){const p=currentProgress(s);for(const id of p.operatorTasks??[])if(p.finished.includes(id)){p.completed=p.completed.filter(t=>t!==id);if(!p.skipped.includes(id))p.skipped.push(id);}if(s.status==='completed'&&p.skipped.length)s.status='incomplete';}
  if(!production(s))finishDevelopmentState(model.state,s,c,now,TASK_CLOCK_BUDGET_MS);
  s.revision++;const reply=deepFreeze({ok:true,code:'APPLIED',commandId:c.commandId,snapshot:s});
  return {model:deepFreeze({schemaVersion:1,state:s,receipts:[...model.receipts,{command:c,now,internal,reply}]}),reply,effects:deepFreeze(effects),duplicate:false};

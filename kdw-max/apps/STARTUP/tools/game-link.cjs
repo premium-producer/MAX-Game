@@ -80,7 +80,18 @@ function createGameHub({root,origin,now=()=>Date.now(),production=false,getOutpu
  }
  let tail=Promise.resolve();const queue=fn=>{const work=tail.then(fn);tail=work.catch(()=>{});return work;};
  const asyncHub=require('./async-link.cjs').createAsyncHub({root,origin,now,ingest,get,active,assignment,queue,key,getOutput,clearPhoto,validatePhoto});
- return{key,ingest,get,active,resetForStartup:()=>queue(()=>{
+ function operatorChange(input){return queue(()=>{
+  if(!input||!['start','close'].includes(input.action)||input.gameId!==null&&!UUID.test(input.gameId)||input.action==='start'&&!MISSIONS.has(input.missionId==='business'?'business-promotion':input.missionId))throw fail('INVALID_OPERATOR_ACTION');
+  const current=active();if((current?.gameId??null)!==input.gameId)throw fail('Текущая сессия уже изменилась. Обновите состояние',409);
+  if(current){current.status='cancelled';current.endReason='operator';current.updatedAt=new Date(now()).toISOString();clearPhoto(current);atomic(file(current.gameId),current);assetCache.clear();}
+  atomic(path.join(directory,'active.json'),{gameId:null});
+  if(input.action==='close')return{closed:current?.gameId??null};
+  const id=input.missionId==='business'?'business-promotion':input.missionId,audience=id==='business-promotion'?'business':id==='blogger'?'blogger':'personal',goal=id==='digital-id'?'access':id==='communication'?'connection':null;
+  const game=ingest({schemaVersion:1,gameId:crypto.randomUUID(),voiceSessionId:crypto.randomUUID(),missionId:id,audience,goal,photo:null},{manual:true});
+  const promoted=active();if(promoted&&promoted.gameId!==game.gameId){if(promoted.claimedAt)throw fail('Игра уже занята другим посетителем',409);promoted.status='queued';atomic(file(promoted.gameId),promoted);}
+  const selected=get(game.gameId);selected.status='assigned';selected.standPolicy=settings.snapshot();selected.source='operator';atomic(file(selected.gameId),selected);atomic(path.join(directory,'active.json'),{gameId:selected.gameId});return{game:publicGame(selected)};
+ });}
+ return{key,ingest,get,active,operatorChange,resetForStartup:()=>queue(()=>{
   finishReplacement();let cancelled=0;const stamp=new Date(now()).toISOString();
   for(const item of records())if(['queued','assigned','playing','completed','incomplete'].includes(item.status)){const r=get(item.gameId);r.status='cancelled';r.endReason='startup-reset';r.updatedAt=stamp;atomic(file(r.gameId),r);cancelled++;}
   atomic(path.join(directory,'active.json'),{gameId:null});heartbeats.clear();deadlines.clear();assetCache.clear();return{cancelled};

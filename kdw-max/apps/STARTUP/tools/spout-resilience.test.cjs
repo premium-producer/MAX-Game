@@ -11,7 +11,7 @@ async function fixture(t){
  vm.runInNewContext(fs.readFileSync(path.resolve(__dirname,'../../max-game/launcher/stand-output.cjs'),'utf8'),context);
  const output=await exports.startStandOutput({root,host:{origin:'http://127.0.0.1:19252'},config:{entry:'/'},log:v=>logs.push(v),onFatal:e=>errors.push(e)});
  const texture=(channel=0,info={})=>{let releases=0;const value={textureInfo:{widgetType:'frame',codedSize:{width:3072,height:1536},handle:{ntHandle:Buffer.alloc(8)},...info},release(){releases++;}};windows[channel].webContents.emit('paint',{texture:value});return()=>releases;};
- return{root,output,bridge,lidarCalls,windows,intervals,timeouts,errors,logs,completed,texture,at:t=>{now=t;},contentReady(){ipcMain.emit('kdw:background-tick',{sender:windows[1].webContents},{delta:.016,ready:true,epoch:'test'});},ready(){ipcMain.emit('kdw:background-tick',{sender:windows[1].webContents},{delta:.016,ready:true,epoch:'test'});ipcMain.emit('kdw:background-ack',{sender:windows[0].webContents},{ready:'true'});}};
+ return{root,output,bridge,ipcMain,lidarCalls,windows,intervals,timeouts,errors,logs,completed,texture,at:t=>{now=t;},contentReady(){ipcMain.emit('kdw:background-tick',{sender:windows[1].webContents},{delta:.016,ready:true,epoch:'test'});},ready(){ipcMain.emit('kdw:background-tick',{sender:windows[1].webContents},{delta:.016,ready:true,epoch:'test'});ipcMain.emit('kdw:background-ack',{sender:windows[0].webContents},{ready:'true'});}};
 }
 test('bad paint is discarded; a valid borrowed texture is released only at GPU completion',async t=>{const f=await fixture(t);const bad=f.texture(0,{codedSize:{width:1,height:1}});assert.equal(bad(),1);assert.equal(f.errors.length,0);const valid=f.texture();assert.equal(valid(),0);f.completed.push(1);f.intervals.find(x=>x.ms===4).f();assert.equal(valid(),1);});
 test('native submission failure quarantines the borrowed texture until worker termination',async t=>{const f=await fixture(t);f.bridge.send=()=>{throw Error('GPU_FAILURE_AFTER_COPY');};const releases=f.texture();assert.equal(releases(),0);assert.equal(f.errors.length,1);assert.equal(f.texture()(),1);assert.equal(f.errors.length,1);});
@@ -50,4 +50,15 @@ test('renderer recovery during calibration also resumes without ARM after exit',
  const f=await fixture(t);f.contentReady();await f.output.beginCalibration({port:3000});
  f.windows[1].webContents.emit('render-process-gone',{}, {reason:'crashed'});f.timeouts[0].f();f.contentReady();
  assert.equal(f.output.active(),false);await f.output.saveCalibration();assert.equal(f.output.active(),true);
+});
+
+test('operator bridge accepts only the content renderer reply and coalesces no duplicate request',async t=>{
+ const f=await fixture(t);f.contentReady();const work=f.output.gameControl({action:'next',token:'scope'});
+ const packet=f.windows[1].webContents.sent.find(v=>v[0]==='kdw:game-control')[1];
+ assert.throws(()=>f.output.gameControl({action:'back',token:'scope'}),/OPERATOR_BUSY/);
+ f.ipcMain.emit('kdw:game-control-result',{sender:f.windows[0].webContents},{id:packet.id,value:'spoof'});
+ f.ipcMain.emit('kdw:game-control-result',{sender:f.windows[1].webContents},{id:packet.id,value:{screenId:'next'}});
+ assert.equal((await work).screenId,'next');
+ const pending=f.output.gameControl({action:'back',token:'scope'});f.timeouts.filter(v=>v.ms===2500).at(-1).f();await assert.rejects(pending,/OPERATOR_TIMEOUT/);
+ assert.throws(()=>f.output.gameControl({action:'execute',token:'scope'}),/INVALID_OPERATOR_ACTION/);
 });

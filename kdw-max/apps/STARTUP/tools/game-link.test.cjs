@@ -90,3 +90,12 @@ test('explicit output startup cancels prior visitors and queue, preserves receip
  const restarted=createGameHub({root,origin,production:true});assert.equal(restarted.active(),null);const fresh=payload();restarted.ingest(fresh);assert.equal(restarted.active().gameId,fresh.gameId);
  }finally{fs.rmSync(root,{recursive:true,force:true});}
 });
+
+test('operator replaces only the active visitor, preserves FIFO and rejects stale close',async()=>{
+ const root=fs.mkdtempSync(path.join(os.tmpdir(),'kdw-operator-link-'));let time=1000000;
+ try{const hub=createGameHub({root,origin,production:true,now:()=>++time}),a=payload(),b=payload(),c=payload();hub.ingest(a);hub.ingest(b);hub.ingest(c);
+  const started=await hub.operatorChange({action:'start',missionId:'digital-id',gameId:a.gameId});assert.equal(hub.active().gameId,started.game.gameId);assert.equal(hub.get(a.gameId).status,'cancelled');assert.equal(hub.get(b.gameId).status,'queued');
+  await assert.rejects(hub.operatorChange({action:'close',gameId:a.gameId}),/изменилась/);assert.equal(hub.active().gameId,started.game.gameId);
+  await hub.operatorChange({action:'close',gameId:started.game.gameId});assert.equal(hub.get(started.game.gameId).status,'cancelled');assert.equal(hub.active().gameId,b.gameId);await release(hub,b);assert.equal(hub.active().gameId,c.gameId);
+ }finally{fs.rmSync(root,{recursive:true,force:true});}
+});
