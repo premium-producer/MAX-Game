@@ -1,7 +1,7 @@
 'use strict';
 // Stable event IDs belong to each application, never to a shared settings store.
 const max = [
- ['ambience','Фоновая музыка','Во время активной игры, зациклено','game_ambience_loop',.22,true],
+ ['ambience','Фоновая музыка','Один трек или список, по выбранному режиму стендбая','game_ambience_loop',.22,true],
  ['hold','Удержание иконки','Пока посетитель удерживает иконку','game_icon_hold_loop',.25,true],
  ['click1','Нажатие · вариант 1','Один из трёх вариантов нажатия кнопки','game_button_click_1',.45],
  ['click2','Нажатие · вариант 2','Один из трёх вариантов нажатия кнопки','game_button_click_2',.45],
@@ -27,4 +27,5 @@ const stela = [
  ['Scan','Отсчёт и съёмка','Фоновый цикл во время съёмки',true],
  ['ScanEnd1','Принятие снимка','Подтверждение фотографии'],
 ].map(([id,label,description,loop=false])=>({id,label,description,file:id+'.wav',volume:loop?.18:.45,loop}));
-module.exports={max,stela};
+const maxMusicFiles=['game_ambience_loop.ogg','music_sustained_shadow.ogg','music_seoul_track.ogg'];
+module.exports={max,stela,maxMusicFiles};

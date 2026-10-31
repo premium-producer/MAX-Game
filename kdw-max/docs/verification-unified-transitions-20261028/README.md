@@ -1,6 +1,6 @@
 # Unified transition button presentation
 
-Local implementation, not deployed in this task.
+Deployed to production MAX on 2026-10-28 at 11:15 UTC+3 as UNIFIED-TRANSITIONS-MAX-20261028-1. See ../stand-patches/UNIFIED-TRANSITIONS-MAX-20261028-1/README.md for installation and runtime evidence.
 
 Ordinary mission buttons used GPU groups inside the moving phone, whereas the last correction covered only the external posts/store controls. Native buttons could still inherit the phone exit trajectory after activation.
 

@@ -15,6 +15,8 @@
     "build:stela": "node apps/stela/source/typecheck.mjs && node apps/stela/source/build.mjs",
     "build": "npm run build:shared && npm run build:max && npm run build:stela",
     "check": "node apps/STARTUP/tools/check-package.mjs",
+    "test:max:brightness": "node --test --test-isolation=none ops/production-build/device-brightness.test.cjs",
+    "test:max:brightness:browser": "node ops/production-build/device-brightness-browser.mjs",
     "test:max": "npm --prefix apps/max-game/source/client test",
     "test:activity:webgl": "node ops/activity-webgl/verify-browser.mjs",
     "test:stela": "npm --prefix apps/stela/source/artifacts/stella-prototype test",
@@ -22,7 +24,7 @@
     "sync:prepare": "node ops/sync-workspace.mjs prepare",
     "check:generated": "node apps/max-game/source/adapt-stand-main.mjs --check",
     "test:link": "node --test apps/STARTUP/tools/game-link.test.cjs apps/STARTUP/tools/async-link.test.cjs",
-    "test:audit": "npm run check:generated && npm run test:max && npm run test:link && npm run test:stela && npm run test:stela:screen-api && npm run test:stela:presence && npm run test:stela:recorded && npm run test:stela:recovery && node apps/stela/source/typecheck.mjs && npm run test:runtime && npm run test:layout",
+    "test:audit": "npm run check:generated && npm run test:max && npm run test:max:brightness && npm run test:link && npm run test:stela && npm run test:max:screen-api && npm run test:stela:screen-api && npm run test:stela:presence && npm run test:stela:recorded && npm run test:stela:recovery && node apps/stela/source/typecheck.mjs && npm run test:runtime && npm run test:layout",
     "test:audit:browser": "node ops/audit-fixes/run-browser.mjs",
     "test:audit:profile": "node ops/audit-fixes/check-build-profile.mjs",
     "setup:browser": "playwright install chromium",
@@ -34,7 +36,8 @@
     "test:layout:browser": "node ops/production-build/layout-browser.mjs",
     "test:stela:presence": "node --test --test-isolation=none ops/audit-fixes/stela-presence.test.cjs",
     "test:stela:recorded": "node --test --test-isolation=none ops/audit-fixes/stela-recorded.test.cjs",
-    "test:stela:screen-api": "node --test --test-isolation=none ops/audit-fixes/stela-screen-api.test.cjs"
+    "test:stela:screen-api": "node --test --test-isolation=none ops/audit-fixes/stela-screen-api.test.cjs",
+    "test:max:screen-api": "node --test --test-isolation=none ops/audit-fixes/max-screen-api.test.cjs"
   },
   "devDependencies": {
     "playwright": "1.62.1"

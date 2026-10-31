@@ -1,9 +1,11 @@
 // Public stand policy only. Credentials and visitor data never enter this file.
 const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+const CARD_DEFAULTS={pauseTaskTimer:true,enterMs:800,holdMs:2000,exitMs:800,maxOverlapPercent:15,minOpacityPercent:15};
 const DEFAULTS={schemaVersion:1,max:{entryMode:'stella',timings:{palmWaitSeconds:30,palmHoldSeconds:.8,taskDurationSeconds:60,inactivitySeconds:120,qrDisplaySeconds:15,standbyAfterIdleSeconds:3,resultSeconds:.8}},stella:{timings:{inactivitySeconds:30,deliveryRetrySeconds:2,resultReturnSeconds:15}},defaults:{businessType:'cafe',channelName:'Мой канал',channelDescription:'Новости и события',channelSlug:'my_channel',commentReply:'Спасибо за интерес!'}};
 function validate(value){
  const exact=(o,keys)=>o&&typeof o==='object'&&!Array.isArray(o)&&Object.keys(o).sort().join(',')===keys.sort().join(',');
- if(!exact(value,['schemaVersion','max','stella','defaults'])||value.schemaVersion!==1||!exact(value.max,['entryMode','timings'])||!['stella','manual','combined'].includes(value.max.entryMode)||!exact(value.stella,['timings']))throw Error('Неверная структура или режим stand.json');
+ if(!exact(value,['schemaVersion','max','stella','defaults'])||value.schemaVersion!==1||!exact(value.max,Object.hasOwn(value.max,'cardActivity')?['entryMode','timings','cardActivity']:['entryMode','timings'])||!['stella','manual','combined'].includes(value.max.entryMode)||!exact(value.stella,['timings']))throw Error('Неверная структура или режим stand.json');
+ if(value.max.cardActivity!==undefined){const c=value.max.cardActivity;if(!exact(c,Object.keys(CARD_DEFAULTS))||typeof c.pauseTaskTimer!=='boolean')throw Error('Неверные настройки карточек');for(const [key,min,max]of [['enterMs',100,5000],['holdMs',100,10000],['exitMs',100,5000],['maxOverlapPercent',0,15],['minOpacityPercent',0,100]])if(!Number.isInteger(c[key])||c[key]<min||c[key]>max)throw Error('cardActivity.'+key+': ожидается '+min+'…'+max);}
  for(const app of ['max','stella']){const t=value[app].timings,reference=DEFAULTS[app].timings;if(!exact(t,Object.keys(reference)))throw Error('Неверный список таймингов '+app);for(const [k,v]of Object.entries(t))if(typeof v!=='number'||!Number.isFinite(v)||v<.1||v>3600)throw Error(app+'.'+k+': ожидается число 0.1…3600 секунд');}
  if(value.max.timings.palmHoldSeconds>=value.max.timings.palmWaitSeconds)throw Error('palmHoldSeconds должен быть меньше palmWaitSeconds');
  const d=value.defaults;if(!exact(d,Object.keys(DEFAULTS.defaults))||!['cafe','flowers','auto'].includes(d.businessType)||!Object.values(d).every(v=>typeof v==='string'&&v.trim().length>0&&v.length<=160&&!/[\x00-\x1f]/.test(v))||d.channelName.length>64||!/^\w{4,32}$/.test(d.channelSlug)||!/^[a-z]/.test(d.channelSlug))throw Error('Неверные значения defaults');
@@ -20,4 +22,4 @@ function createSettings({root,enabled=false}){
  }
  return{snapshot};
 }
-module.exports={DEFAULTS,validate,revision,createSettings};
+module.exports={CARD_DEFAULTS,DEFAULTS,validate,revision,createSettings};

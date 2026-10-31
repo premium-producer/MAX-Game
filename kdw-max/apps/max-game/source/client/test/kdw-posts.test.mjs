@@ -19,7 +19,7 @@ function driver(c=catalog,type='cafe'){
  }
  assert.equal(model.state.screenId,POSTS_SCREEN);
  const fields={taskId:'business.channel',screenId:POSTS_SCREEN};
- return {send,start(){return send('START_POSTS',fields);},publish(i,extra={}){const p=model.state.progress.business.postsActivity,spawn=postSpawn(p,i),elapsed=p.startRemainingMs-(model.state.deadlineAt-time);if(elapsed<spawn.start)time+=Math.ceil(spawn.start-elapsed);return send('PUBLISH_POST',{...fields,spawnId:spawn.spawnId,...extra});},finish(){return send('ACT',{screenId:POSTS_SCREEN,actionId:'business.channel.result.continue'});},advance(ms){time+=ms;},get time(){return time;},get model(){return model;},get posts(){return model.state.progress.business.postsActivity;}};
+ return {send,start(){return send('START_POSTS',fields);},publish(i,extra={}){const p=model.state.progress.business.postsActivity,spawn=postSpawn(p,i),elapsed=p.startRemainingMs-(model.state.deadlineAt-time);if(elapsed<spawn.start)time+=Math.ceil(spawn.start-elapsed);const result=send('PUBLISH_POST',{...fields,spawnId:spawn.spawnId,...extra});if(result.reply.ok&&p.version>=16)assert.equal(send('POST_ARRIVED',{...fields,spawnId:spawn.spawnId}).reply.ok,true);return result;},finish(){return send('ACT',{screenId:POSTS_SCREEN,actionId:'business.channel.result.continue'});},advance(ms){time+=ms;},get time(){return time;},get model(){return model;},get posts(){return model.state.progress.business.postsActivity;}};
 }
 test('activity is a phone in the existing scene; new business banks contain only positive copy',()=>{
  const screen=catalog.tasks['business.channel'].screens[POSTS_SCREEN];assert.equal(screen.deviceKind,'phone');assert.equal(screen.assetId,'kdw.posts.phone');
@@ -83,7 +83,7 @@ test('legacy looped waves have 2–6 simultaneous posts on both sides, remain bo
 test('saved P1 activity keeps its original rules and replays under the new catalog',()=>{
  for(const version of [1,2,3,4,5,6,7,8,9,10,11]){
  const old={...catalog,kdwPostsActivity:version},d=driver(old);d.start();assert.equal(d.posts.version,version);
- for(let i=0;i<8&&!postsGoal(d.posts);i++)d.publish(i);
+ for(let i=0;i<40&&!postsGoal(d.posts);i++)d.publish(i);
  assert.equal(d.finish().reply.ok,true);assert.equal(restoreMissionModel(catalog,d.model).ok,true);
  }
 });

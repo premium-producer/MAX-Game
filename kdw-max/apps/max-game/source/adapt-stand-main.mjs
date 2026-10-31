@@ -97,6 +97,8 @@ replace('function syncScene(){',"function syncScene(){\n if(idleMenu||independen
 replace('field.update({placements,network,endpoints:{},selectedItem:null});',"calmLinks?.update(network.links,scale,performance.now()/1000,reduced.matches);\n field.update({placements,network,endpoints:{},selectedItem:null});");
 replace('calmLinks?.update(network.links,scale,performance.now()/1000,reduced.matches);',`calmLinks?.update(network.links,scale,performance.now()/1000,reduced.matches);
  if(params.get('test')==='link-motion'){const frames=window.__kdwLinkFrames??=[];frames.push({time:performance.now(),phase:controller.phase,elapsed:controller.elapsed,startup:controller.startup?.stage,handoff:controller.handoff?.stage,links:network.links.map(({a,b,lane,reveal,visibility})=>({a,b,lane,reveal,visibility}))});if(frames.length>1200)frames.shift();}`);
+// The supplied QR contains its own destination; do not label it with legacy URL metadata.
+replace('alt="QR-код MAX с логотипом: ${esc(qr.url)}"','alt="QR-код MAX"');
 // On the stand the common background belongs to the outer GPU host. The portable
 // host supplies its existing local MAX grid layer behind the transparent game.
 replace('ambient=bfmVisual?commonMapBackground','ambient=bfmVisual?lumiReferenceBackground');
@@ -107,10 +109,11 @@ replace('({catalog:MISSION_CATALOG,persistence});','({catalog:MISSION_CATALOG,pe
 replace("(bfmVisual?'webgl-v5':'site-shared')", "(bfmVisual?(localDevelopment?'webgl-v5-development':'webgl-v5'):'site-shared')");
 replace('await sharedSession.start();', "await sharedSession.start();\n  if(localDevelopment&&sharedSession.snapshot.state.devTimerEnabled===undefined)await sharedSession.command('DEV_TIMER',{active:false});");
 text=text.replaceAll('revealTimerLabel(controller.secondsLeft)', "(localDevelopment&&controller.snapshot?.state.devTimerEnabled!==true?'--:--':revealTimerLabel(controller.secondsLeft))");
-replace('<div class="v5-device-timer" data-mission-timer', "<${localDevelopment?'button':'div'} class=\"v5-device-timer\" data-mission-timer");
-replace('aria-label="Оставшееся время миссии">${(localDevelopment', 'aria-label="Таймер задания">${(localDevelopment');
-replace("revealTimerLabel(controller.secondsLeft))}</div>`:''}", "revealTimerLabel(controller.secondsLeft))}</${localDevelopment?'button':'div'}>`:''}");
-replace(" if(!b.classList.contains('media-hotspot'))", " if(localDevelopment&&b.hasAttribute('data-mission-timer')){if(!sharedSession.busy)void sharedSession.command('DEV_TIMER',{active:controller.snapshot.state.devTimerEnabled!==true});return;}\n if(!b.classList.contains('media-hotspot'))");
+replace('<div class="v5-device-timer" data-mission-timer', '<button type="button" class="v5-device-timer" data-mission-timer');
+replace('role="timer" aria-live="off" aria-label="Оставшееся время миссии"', 'aria-live="off" aria-label="Завершить миссию"');
+replace('data-menu data-mission-timer aria-label="Вернуться к миссиям"', 'data-mission-timer aria-label="Завершить миссию"');
+replace("revealTimerLabel(controller.secondsLeft))}</div>`:''}", "revealTimerLabel(controller.secondsLeft))}</button>`:''}");
+replace(" if(!b.classList.contains('media-hotspot'))", " if(b.hasAttribute('data-mission-timer')){const s=sharedSession?.snapshot?.state;if(!navigating&&!answerPending&&!sharedSession?.busy&&s?.missionId&&['task','result'].includes(s.status)){cancelGesture();personalChannel.dismissKeyboard();void sharedSession.command('FINISH_MISSION',{missionId:s.missionId});}return;}\n if(!b.classList.contains('media-hotspot'))");
 replace(' if(b.dataset.object){', ` if(b.dataset.object){
   if(localDevelopment&&b.dataset.object!=='open-max'){
    void changeLocalTask('RESTART_TASK',b.dataset.object);return;
@@ -240,6 +243,9 @@ text="import {gameAudioActive,showRuntimeRecovery,monitorPreparation} from './kd
 replace('resumeLinkedMission,watchGameLink}', 'resumeLinkedMission,watchGameLink,claimLinkedMission}');
 replace('({catalog:MISSION_CATALOG,persistence,development:localDevelopment})', '({catalog:MISSION_CATALOG,persistence,development:localDevelopment,admit:()=>claimLinkedMission(gameLink)})');
 replace("if(bfmVisual&&(globalThis.STAND_AUDIO_MODE==='master'||document.documentElement.dataset.managedAudio==='true'))gameAudio=mountV5Audio();", "if(bfmVisual&&(portable||globalThis.STAND_AUDIO_MODE==='master'||document.documentElement.dataset.managedAudio==='true')){if(portable)document.documentElement.dataset.localAudio='true';gameAudio=mountV5Audio();}");
+replace("if(!gameAudio||!controller)return;", "if(!gameAudio)return;if(idleMenu||!controller){gameAudio.sync({musicScene:'standby',run:'menu',active:false,musicAvailable:presentationActive()&&(!localRecovery||windowFocused)});return;}");
+replace("if(idleMenu){ambient?.tick?.", "if(idleMenu)syncGameAudio();if(idleMenu){ambient?.tick?.");
+replace("gameAudio.sync({run:", "gameAudio.sync({musicScene:controller.session.screen==='field'?'mission':'standby',musicAvailable:presentationActive()&&(!localRecovery||windowFocused),run:");
 replace("active:sharedSession?.connected===true&&sharedSession?.snapshot?.assignment?.lifecycle.status==='active'&&presentationActive()&&(!localRecovery||windowFocused)", "active:gameAudioActive({connected:sharedSession?.connected===true,assignment:sharedSession?.snapshot?.assignment,local:portable,presented:visible&&presentationActive()&&(!localRecovery||windowFocused)})");
 replace("boot().catch(e=>{if(pageDisposed)return;", "boot().catch(e=>{if(pageDisposed)return;showRuntimeRecovery();");
 replace('async function boot(){', "const stopBootHealth=monitorPreparation(()=>document.documentElement.dataset.gameReady==='true'?{status:'menu'}:null);\nwindow.addEventListener('pagehide',stopBootHealth,{once:true});\nwindow.render_game_to_text=()=>JSON.stringify({coordinates:'viewport pixels, origin top-left, x right, y down',input:{active:inputActive(),contactHeld:!!tapHand,foregroundBusy:!!foreground?.busy(host),starting:!!controller?.startup,sessionBusy:sharedSession?.busy,answerPending,navigating,startup:controller?.startup?.stage,answersCurrent:[...host.querySelectorAll('[data-answer]')].every(b=>b.dataset.answerToken===controller?.token?.())},phase:controller?.phase??'loading',status:sharedSession?.snapshot?.state.status??'loading',mission:sharedSession?.snapshot?.state.missionId,screen:sharedSession?.snapshot?.state.screenId,ready:sharedSession?.snapshot?.state.standReady,remainingMs:sharedSession?.snapshot?.view.remainingMs,connected:sharedSession?.connected??false,presentation:{startup:controller?.startup?.stage,pathsDone:controller?.paths?.done,pathTime:[controller?.paths?.elapsed,controller?.paths?.duration],gesture:gesture?.kind,geometry:controller?.geometry,deviceReady:phoneContentReady(),presence:phonePresence.value,position:[phoneX.value,phoneY.value],target:controller?.phone,settled:controller?.settlingNodes?.map(n=>[n.step,foreground?.isSettled(host,n.step)]),camera:[camera.value,focusTarget],busy:foreground?.contentBusy(host),phoneData:host.querySelector('.route-phone')?.dataset}});\nasync function boot(){");
@@ -271,6 +277,11 @@ replace('  await resumeLinkedMission(sharedSession,gameLink);',`  if(document.do
 replace("if(interactionPreview&&controller.phase==='paused')", "if((interactionPreview||document.documentElement.dataset.layoutPreview==='true')&&controller.phase==='paused')");
 replace("if(!productionMode&&!gameLink?.game&&standPresentation&&!interactionPreview&&", "if(document.documentElement.dataset.layoutPreview!=='true'&&!productionMode&&!gameLink?.game&&standPresentation&&!interactionPreview&&");
 replace("if(bfmVisual&&(portable||globalThis.STAND_AUDIO_MODE", "if(document.documentElement.dataset.layoutPreview!=='true'&&bfmVisual&&(portable||globalThis.STAND_AUDIO_MODE");
+text="import {contactRadius} from './kdw-contact-area.mjs';\n"+text;
+replace("controller?.snapshot?.state?.screenId):null;", "controller?.snapshot?.state?.screenId,contactRadius(e)):null;");
+replace("touchPick(root,e.target,e.clientX,e.clientY,touchScale());", "touchPick(root,e.target,e.clientX,e.clientY,touchScale(),contactRadius(e));");
+replace("touchContains(prior,e.clientX,e.clientY,0);", "touchContains(prior,e.clientX,e.clientY,0,contactRadius(e));");
+replace("touchContains(rect,e.clientX,e.clientY,touchScale())", "touchContains(rect,e.clientX,e.clientY,touchScale(),contactRadius(e))");
 text="import {installNativeTouch} from './kdw-native-touch.mjs';\n"+text;
 replace('const localAdmission=new LocalStandAdmission({active:()=>inputActive()});', 'const localAdmission=new LocalStandAdmission({active:()=>inputActive()});\nconst stopNativeTouch=installNativeTouch({document,active:()=>inputActive()});');
 replace("window.addEventListener('pagehide',()=>{stopProduction();", "window.addEventListener('pagehide',()=>{stopNativeTouch();stopProduction();");
@@ -355,7 +366,7 @@ replace("try{await selectManualMission(missionId);}", "try{await idleMenu.exit()
 replace("['manual','combined'].includes(standSettings.value.max.entryMode)","['manual','combined'].includes(productionPolicy.value.max.entryMode)");
 // Trusted operator controls arrive only through the existing desktop preload.
 text="import {mountOperatorGame} from './kdw-operator-game.mjs';\nimport {operatorScope} from './kdw-operator-model.mjs';\n"+text;
-replace('admit:()=>claimLinkedMission(gameLink)', 'admit:()=>claimLinkedMission(gameLink),operatorControls:!!globalThis.kdwStandOutput?.onGameControl');
+replace('admit:()=>claimLinkedMission(gameLink)', 'admit:()=>claimLinkedMission(gameLink),operatorControls:!!globalThis.kdwStandOutput?.onGameControl,outputRecovery:!!globalThis.kdwStandOutput');
 replace('function tick(delta){', 'function tick(delta){\n operatorGame.tick();');
 replace('deviceReady:phoneContentReady(),', 'deviceReady:!!controller&&phoneContentReady(),');
 replace('const stopBootHealth=', `const operatorGame=mountOperatorGame({bridge:globalThis.kdwStandOutput,getSession:()=>sharedSession,getCatalog:()=>MISSION_CATALOG,getPhase:()=>controller?.phase,isBusy:()=>navigating||!!sharedSession?.busy||!!controller?.startup||!!controller?.handoff||!!foreground?.busy(host,true),goto:async(target,token)=>{
@@ -387,6 +398,31 @@ replace('if(productionMode)queue.hidden=true;const labels=', 'const labels=');
 replace('`Ожидают: ${wait.queueCount??\'—\'}`', '`очередь: ${wait.queueCount??\'—\'}`');
 replace('aria-label="Миссии в очереди">Ожидают: —', 'aria-label="Очередь">очередь: —');
 replace("if(!b.classList.contains('media-hotspot'))foreground?.highlightTile(b);","if(!b.classList.contains('media-hotspot')&&!b.hasAttribute('data-transition-source'))foreground?.highlightTile(b);");
+// Screen telemetry is independent of the game-link and contains no visitor data.
+text="import {startScreenPublication} from './kdw-screen-publication.mjs';\n"+text;
+replace('const stopBootHealth=', `const stopScreenPublication=startScreenPublication(()=>{
+ const state=idleMenu?{status:'menu'}:controller?.displayedState??sharedSession?.snapshot?.state;
+ const phase=controller?.phase??'loading',booted=document.documentElement.dataset.gameReady==='true';
+ const menuReady=!!idleMenu&&document.documentElement.dataset.idleMenuReady===document.documentElement.dataset.idleMenuScope;
+ const phoneReady=['task','result'].includes(state?.status)&&phoneContentReady()&&phonePresence.value>.97;
+ const qr=host.querySelector('.v5-mission-qr');
+ const ready=booted&&(state?.status==='menu'?menuReady:state?.status==='scan'?palmPresence.value>.97:['completed','incomplete','expired'].includes(state?.status)?!!qr&&foreground?.qrReady(qr)===true:phoneReady);
+ return {state,phase,active:presentationActive(),ready,transitioning:state?.status!=='menu'&&(!!controller?.startup||!!controller?.handoff||!['palm','holding','task','result','complete','paused'].includes(phase)||!!foreground?.busy(host,true)||!!foreground?.contentBusy(host))};
+});
+window.addEventListener('pagehide',stopScreenPublication,{once:true});
+const stopBootHealth=`);
+text="import {createDeviceBrightness} from './kdw-device-brightness.mjs';\n"+text;
+replace('function tick(delta){',"const deviceBrightnessControl=createDeviceBrightness({document,getScreen:()=>controller?.displayedState?.screenId});\nfunction tick(delta){\n deviceBrightnessControl.update();");
+replace('foreground=createJourneyWebGLUI({', 'await deviceBrightnessControl.ready;\n foreground=createJourneyWebGLUI({');
+replace('await sharedSession.start();', 'await sharedSession.start();\n  if(standOutput)await sharedSession.outputRecovery(!standOutput.active());');
+// Keep production timers paused during output recovery, independently of ownership.
+replace("window.addEventListener('kdw-output-state',()=>{cancelGesture();windowFocused=standOutput?.active()===true;if(!preparingInteractionPreview)sharedSession?.owner(inputActive());});", "window.addEventListener('kdw-output-state',()=>{cancelGesture();windowFocused=standOutput?.active()===true;if(!preparingInteractionPreview&&sharedSession)void sharedSession.outputRecovery(!inputActive(),true).catch(error=>console.error('MAX_OUTPUT_RECOVERY_FAILED',error));});");
+// A production output reload has already admitted this visitor. Resume the
+// saved task's presentation automatically instead of waiting on an icon click.
+replace("if((mobileWall||recoveryChoice==='continue')&&controller.phase==='paused')", "if((mobileWall||recoveryChoice==='continue'||productionMode&&standOutput)&&controller.phase==='paused')");
+// Match selection and contact latch to the same expanded in-device hotspot.
+replace("import {contactRadius} from './kdw-contact-area.mjs';", "import {contactRadius,missionHitRect} from './kdw-contact-area.mjs';");
+replace("rect=screenTap?.rect??(tile||b).getBoundingClientRect();", "rect=screenTap?.rect??(tile?tile.getBoundingClientRect():missionHitRect(b));");
 if(process.argv.includes('--check')){if(fs.readFileSync(file,'utf8').replaceAll('\r\n','\n')!==text.replaceAll('\r\n','\n'))throw Error('Generated stand main differs; run the adapter and review its diff.');}
 else fs.writeFileSync(file,text);
 console.log('Stand main adapted only at local host boundaries');

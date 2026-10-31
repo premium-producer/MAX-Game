@@ -6,6 +6,12 @@
 <label>Fade in, мс<input type="number" id="fadeInMs" min="0" max="10000" step="1" required><small>Нарастание в начале каждой дорожки</small></label>
 <label>Fade out, мс<input type="number" id="fadeOutMs" min="0" max="10000" step="1" required><small>Затухание в конце или при остановке</small></label></div>
 <p>0 мс — без плавного перехода. У коротких эффектов fade автоматически сокращается, чтобы сохранить слышимую часть. Голос и VST Стеллы настраиваются отдельно</p></section>
+<section id="music-settings" hidden><h2>Фоновая музыка MAX</h2><div class="controls">
+<label>Воспроизведение<select id="music-mode"><option value="single">Один трек по кругу</option><option value="playlist">Все треки списка подряд по кругу</option></select></label>
+<label>Когда играет фон<select id="music-when"><option value="missions">Только во время миссии</option><option value="always">В стендбае и во время миссии</option><option value="standby">Только в стендбае</option></select></label></div>
+<p>В режиме одного трека выберите файл ниже. Громкость фона общая для всех треков списка; мастер-громкость и Fade in/out также действуют на музыку</p>
+<div class="table"><table><thead><tr><th>Событие</th><th>Выбранный трек</th><th>Громкость, %</th><th>Проверка</th></tr></thead><tbody id="music-event"></tbody></table></div>
+<div id="music-playlist" hidden><h3>Порядок воспроизведения</h3><p>После последнего трека снова играет первый. Можно добавить любой файл из папки музыки</p><ol id="music-tracks"></ol><button id="music-add" type="button">Добавить трек</button></div></section>
 <section id="video-settings" hidden><h2>Звук видео</h2><p>Встроенные аудиодорожки роликов. Громкость каждого вида видео умножается на общую громкость MAX. Выключение звука не останавливает изображение</p><div class="controls">
 <div><h3>Видео Standby</h3><label class="check"><input type="checkbox" id="video-standby-enabled"> Звук включён</label><label>Громкость, %<input type="number" id="video-standby-volume" min="0" max="100" step="1" required></label></div>
 <div><h3>Видео в заданиях</h3><label class="check"><input type="checkbox" id="video-tasks-enabled"> Звук включён</label><label>Громкость, %<input type="number" id="video-tasks-volume" min="0" max="100" step="1" required></label></div>

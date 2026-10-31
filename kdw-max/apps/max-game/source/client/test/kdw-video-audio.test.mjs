@@ -14,6 +14,7 @@ test('video channels respect master, remain independent, and never restart playb
  assert.equal(standby.muted,true); // No burst before persisted settings arrive.
  const mix={enabled:true,masterVolume:.5,video:{standby:{enabled:true,volume:.4},tasks:{enabled:true,volume:.8}}};configureVideoAudio(mix);
  assert.equal(standby.volume,.2);assert.equal(task.volume,.4);assert.equal(standby.currentTime,17);assert.equal(standby.paused,false);
+ a.setVolume(.5);assert.equal(standby.volume,.1);assert.equal(standby.currentTime,17);a.setVolume(1);
  configureVideoAudio({...mix,video:{...mix.video,standby:{enabled:false,volume:.4}}});assert.equal(standby.muted,true);assert.equal(task.muted,false);
  b.setMuted(true);configureVideoAudio(mix);assert.equal(task.muted,true);b.setMuted(false);assert.equal(task.volume,.4);
  configureVideoAudio({...mix,enabled:false});assert.equal(standby.muted,true);assert.equal(task.muted,true);

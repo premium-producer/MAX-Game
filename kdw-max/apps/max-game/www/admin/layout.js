@@ -38,7 +38,15 @@ function relativeControls(){const parent=$('#relative-fields'),value=relativeVal
  const center=document.createElement('button');center.type='button';center.id='center-device';center.textContent='По центру игровой области';center.disabled=disabled;center.onclick=()=>{setRelative('centered',true);setRelative('centerX',0);setRelative('centerY',0);relativeControls();};
  const original=document.createElement('button');original.type='button';original.className='secondary';original.textContent='Вернуть исходный центр';original.disabled=disabled;original.onclick=()=>{setRelative('centered',false);setRelative('centerX',0);setRelative('centerY',0);relativeControls();};parent.append(center,original);
 }
-function render(){fields($('#standby-fields'),['logo','video','missions'],true);fields($('#game-fields'),['device'],false);relativeControls();$('#scope-info').textContent=$('#layout-scope').value==='screen'?(scene?.screen&&!scene.standby?'Исключение для '+scene.screen:'Откройте игровой экран в предпросмотре'):'Общие значения → тип устройства → отдельный экран';$('#clear-override').disabled=$('#layout-scope').value==='game';}
+function keyboardControls(){const parent=$('#keyboard-fields');parent.replaceChildren();const current={x:0,y:0,width:1,height:1,...draft.keyboard};
+ for(const [key,title,min,max,factor]of [['x','Клавиатура · смещение X',-1536,1536,1],['y','Клавиатура · смещение Y',-768,768,1],['width','Клавиатура · ширина, %',50,150,100],['height','Клавиатура · высота клавиш, %',50,200,100]]){
+  const row=document.createElement('div');row.className='pose-row';const label=document.createElement('label');label.textContent=title;const range=document.createElement('input'),number=document.createElement('input');range.type='range';number.type='number';number.setAttribute('aria-label',title);
+  for(const n of [range,number]){n.min=min;n.max=max;n.step=1;n.value=current[key]*factor;n.dataset.group='keyboard';n.dataset.property=key;n.oninput=()=>{const next=Number(n.value);if(n.value===''||!Number.isFinite(next)||next<min||next>max)return;range.value=number.value=next;draft.keyboard??={...current};draft.keyboard[key]=next/factor;changed();};}
+  label.append(range);row.append(label,number);parent.append(row);
+ }
+ const reset=document.createElement('button');reset.type='button';reset.className='secondary';reset.textContent='Сбросить положение и размер клавиатуры';reset.onclick=()=>{delete draft.keyboard;keyboardControls();changed();};parent.append(reset);
+}
+function render(){keyboardControls();fields($('#standby-fields'),['logo','video','missions'],true);fields($('#game-fields'),['device'],false);relativeControls();$('#scope-info').textContent=$('#layout-scope').value==='screen'?(scene?.screen&&!scene.standby?'Исключение для '+scene.screen:'Откройте игровой экран в предпросмотре'):'Общие значения → тип устройства → отдельный экран';$('#clear-override').disabled=$('#layout-scope').value==='game';}
 function fit(){iframe.style.transform=`scale(${$('#preview-wrap').clientWidth/3072})`;}
 new ResizeObserver(fit).observe($('#preview-wrap'));
 async function openPreview(){const session=await api('session',{});const u=new URL(session.url,location.origin);if($('#layout-scene').value)u.searchParams.set('layout-scene',$('#layout-scene').value);frameUrl=u.href;scene=null;iframe.src=frameUrl;render();fit();}

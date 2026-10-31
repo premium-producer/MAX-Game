@@ -1,3 +1,5 @@
+import {cardSettings,pauseCardTimer} from './kdw-card-settings.mjs';
+import {arrivedCount,recordArrival} from './kdw-activity-arrivals.mjs';
 import photos from './kdw-post-assets.json' with {type:'json'};
 import {BUSINESS_CARD_IMAGES,businessCardImage} from './kdw-business-images.mjs';
 import content from './kdw-business-content.json' with {type:'json'};
@@ -6,7 +8,7 @@ import {BUSINESS_PROFILES} from './kdw-business-profile.mjs';
 import {activityRemaining} from './kdw-development.mjs';
 import {createPostTimeline} from './kdw-post-stream.mjs';
 export const POSTS_SCREEN='business.channel.result',POSTS_TASK='business.channel';
-export const POSTS_RULES=Object.freeze({version:14,initialAudience:14628,goal:300,good:120,bad:-100,interval:2300,travel:10500,maxPosts:20});
+export const POSTS_RULES=Object.freeze({version:17,selectionGoal:10,initialAudience:14628,goal:300,good:120,bad:-100,interval:2300,travel:10500,maxPosts:20});
 const banks={
  auto:[
   ['service','Подготовим автомобиль к сезону','Проверим тормоза, жидкости и состояние шин. Запись по удобному времени.',0,true,'Понятное предложение помогает спланировать обслуживание.'],
@@ -114,12 +116,12 @@ export function createPostStreamReader(){
  let signature='',timeline=null,lastTime=-1;
  return (posts,elapsed)=>{
   if(posts.version<3)return visiblePosts(posts,elapsed);
-  const next=JSON.stringify([posts.version,posts.runId,posts.seed,posts.businessType,posts.published]);
+  const next=JSON.stringify([posts.version,posts.runId,posts.seed,posts.businessType,posts.popup,posts.published]);
   if(next!==signature||elapsed<lastTime){signature=next;timeline=createPostTimeline(posts,postBank(posts.businessType,posts.version));}
   lastTime=elapsed;return timeline.at(elapsed);
  };
 }
-export function postsGoal(posts){return !!posts&&posts.audience>=POSTS_RULES.initialAudience+POSTS_RULES.goal;}
+export function postsGoal(posts){return !!posts&&(posts.version>=16?arrivedCount(posts)>=POSTS_RULES.selectionGoal:posts.audience>=POSTS_RULES.initialAudience+POSTS_RULES.goal);}
 export function reducePosts(state,command,now,version=POSTS_RULES.version){
  if(state.status!=='task'||state.taskId!==POSTS_TASK||state.screenId!==POSTS_SCREEN||command.taskId!==state.taskId||command.screenId!==state.screenId)return 'WRONG_POST_CONTEXT';
  if(!state.ownerActive)return 'POSTS_PAUSED';
@@ -127,15 +129,16 @@ export function reducePosts(state,command,now,version=POSTS_RULES.version){
  if(command.type==='START_POSTS'){
   if(p.postsActivity)return 'POSTS_ALREADY_STARTED';
   let seed=0;for(const ch of `${state.sessionId}:${state.runId}`)seed=(seed*31+ch.charCodeAt(0))>>>0;
-  p.postsActivity={version,businessType:p.answers?.businessType??'cafe',runId:state.runId,seed:seed%8,startRemainingMs:remaining,audience:POSTS_RULES.initialAudience,published:[]};return null;
+  p.postsActivity={version,businessType:p.answers?.businessType??'cafe',runId:state.runId,seed:seed%8,startRemainingMs:remaining,audience:POSTS_RULES.initialAudience,published:[]};if(version>=17){p.postsActivity.popup=cardSettings(state);pauseCardTimer(state,p.postsActivity.popup,now);}return null;
  }
  const posts=p.postsActivity;if(!posts)return 'POSTS_NOT_STARTED';
+ if(command.type==='POST_ARRIVED')return posts.version>=16?recordArrival(posts,command.spawnId):'ARRIVAL_UNAVAILABLE';
  if(posts.version<2&&posts.published.length>=POSTS_RULES.maxPosts||postsGoal(posts))return 'POSTS_FINISHED';
  const parts=String(command.spawnId).split('.');
  if(parts.length!==2||String(posts.runId)!==parts[0]||!/^\d{1,9}$/.test(parts[1]))return 'INVALID_POST';
  const index=Number(parts[1]),elapsed=postsElapsed(posts,remaining);
  if(posts.published.some(p=>p.spawnId===command.spawnId))return 'POST_ALREADY_PUBLISHED';
- const spawn=posts.version>=3?visiblePosts(posts,elapsed).find(row=>row.index===index):postSpawn(posts,index);
+ const spawn=posts.version>=17?createPostTimeline(posts,postBank(posts.businessType,posts.version)).at(Math.max(0,elapsed-500)).concat(visiblePosts(posts,elapsed)).find(row=>row.index===index):posts.version>=3?visiblePosts(posts,elapsed).find(row=>row.index===index):postSpawn(posts,index);
  if(!spawn||elapsed<spawn.start||posts.version<7&&elapsed>=spawn.start+(spawn.travel??POSTS_RULES.travel))return 'POST_NOT_AVAILABLE';
  if(posts.version<2&&posts.published.some(p=>p.postId===spawn.post.id))return 'POST_ALREADY_PUBLISHED';
  const post=spawn.post,before=posts.audience;posts.audience=Math.max(0,before+post.delta);
@@ -144,7 +147,7 @@ export function reducePosts(state,command,now,version=POSTS_RULES.version){
 // Replaying an already accepted legacy completion must not retroactively impose
 // the new activity. Live commands never receive this replay-only catalog.
 export function catalogForPostsReceipt(catalog,r){
- if(r.command.type==='START_POSTS'&&[1,2,3,4,5,6,7,8,9,10,11,12,13].includes(r.reply?.snapshot?.progress?.business?.postsActivity?.version))return {...catalog,kdwPostsActivity:r.reply.snapshot.progress.business.postsActivity.version};
+ if(r.command.type==='START_POSTS'&&[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16].includes(r.reply?.snapshot?.progress?.business?.postsActivity?.version))return {...catalog,kdwPostsActivity:r.reply.snapshot.progress.business.postsActivity.version};
  if(r.command.type==='ACT'&&r.command.screenId===POSTS_SCREEN&&r.command.actionId==='business.channel.result.continue'&&!r.reply?.snapshot?.progress?.business?.postsActivity)return {...catalog,kdwPostsActivity:null};
  return catalog;
 }

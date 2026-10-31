@@ -1,4 +1,5 @@
-import {operatorGoto} from '../kdw-operator-model.mjs';
+import {finishCardTimer} from '../kdw-card-settings.mjs';
+import {operatorGoto,resumeOperatorTask} from '../kdw-operator-model.mjs';
 import {production,timing,prepareProductionTask,completeByTimeout,productionCommand} from '../kdw-production-core.mjs';
 import {reduceStore,STORE_VERSION,storeGoal,catalogForStoreReceipt} from '../kdw-store-rating.mjs';
 import {catalogForBusinessReceipt} from '../kdw-business-choice.mjs';
@@ -15,7 +16,7 @@ export const TASK_CLOCK_RULES_REVISION='mission-rules-task-clock-v2';
 export const TASK_CLOCK_BUDGET_MS=60000;
 const taskClock=s=>s.rulesRevision===TASK_CLOCK_RULES_REVISION;
 const initialBudget=s=>taskClock(s)?TASK_CLOCK_BUDGET_MS:180000;
-const INTERNAL=new Set(['OPERATOR_GOTO','HOLD_CONFIRMED','OWNER_CHANGED','EXPIRE','AUTO_SCREEN','STAND_IDLE']);
+const INTERNAL=new Set(['OUTPUT_RECOVERY','OPERATOR_GOTO','HOLD_CONFIRMED','OWNER_CHANGED','EXPIRE','AUTO_SCREEN','STAND_IDLE']);
 const branchTask=tool=>`business.${tool}`;
 export function createMissionModel(catalog,{sessionId,rulesRevision=MISSION_RULES_REVISION}){
  if(!missionToken(sessionId)||catalog?.schemaVersion!==1)throw new TypeError('Invalid mission session/catalog');
@@ -47,8 +48,18 @@ export function dispatchMissionCommand(catalog,model,input,{now=0,internal=false
  const s=structuredClone(model.state),effects=[];
  if(production(s)&&['DEV_TIMER','RESTART_TASK','SKIP_TASK','RESTART_MISSION','RESET_PROGRESS'].includes(c.type))return reject('PRODUCTION_CONTROL_FORBIDDEN');
  if(production(s)&&c.type==='SELECT_MISSION'&&s.status!=='menu')return reject('MISSION_ALREADY_ACTIVE');
- if(s.ownerActive&&s.deadlineAt!==null&&now>=s.deadlineAt&&!['OPERATOR_GOTO','DEV_TIMER','RESTART_TASK','RETURN_MENU','RESTART_MISSION','RESET_PROGRESS','EXPIRE','OWNER_CHANGED','STAND_READY','STAND_TOUCH','STAND_IDLE'].includes(c.type))return reject('MISSION_EXPIRED');
- if(c.type==='OPERATOR_GOTO'){const error=operatorGoto(catalog,s,c,now);if(error)return reject(error);effects.push({type:'OPERATOR_SCREEN_CHANGED',screenId:s.screenId});}
+ if(s.ownerActive&&s.deadlineAt!==null&&now>=s.deadlineAt&&!['FINISH_MISSION','OPERATOR_GOTO','DEV_TIMER','RESTART_TASK','RETURN_MENU','RESTART_MISSION','RESET_PROGRESS','EXPIRE','OWNER_CHANGED','OUTPUT_RECOVERY','STAND_READY','STAND_TOUCH','STAND_IDLE'].includes(c.type))return reject('MISSION_EXPIRED');
+ if(s.outputPausedAt!==undefined&&!['OUTPUT_RECOVERY','OWNER_CHANGED','OPERATOR_GOTO'].includes(c.type))return reject('OUTPUT_RECOVERING');
+ if(c.type==='OUTPUT_RECOVERY'){
+  if(!production(s))return reject('PRODUCTION_REQUIRED');
+  if(c.active){if(s.outputPausedAt===undefined)s.outputPausedAt=now;}
+  else if(s.outputPausedAt!==undefined){
+   const duration=now-s.outputPausedAt;
+   for(const key of ['deadlineAt','resultReadyAt','screenEnteredAt','lastTouchAt','startedAt'])if(Number.isFinite(s[key]))s[key]+=duration;
+   if(s.cardTaskPause&&Number.isFinite(s.cardTaskPause.deadlineAt))s.cardTaskPause.deadlineAt+=duration;
+   delete s.outputPausedAt;
+  }
+ }else if(c.type==='OPERATOR_GOTO'){delete s.outputPausedAt;const error=operatorGoto(catalog,s,c,now);if(error)return reject(error);effects.push({type:'OPERATOR_SCREEN_CHANGED',screenId:s.screenId});}
  else if(['STAND_READY','STAND_TOUCH'].includes(c.type)){
   if(!production(s))return reject('PRODUCTION_REQUIRED');const error=productionCommand(s,c,now);if(error)return reject(error);
  }else if(['DEV_TIMER','RESTART_TASK','SKIP_TASK'].includes(c.type)){
@@ -92,20 +103,28 @@ export function dispatchMissionCommand(catalog,model,input,{now=0,internal=false
   if(!s.missionId)return reject('MISSION_UNAVAILABLE');
   const id=s.missionId;delete s.progress[id];const p=s.progress[id]={completed:[],skipped:[],finished:[],answers:{},businessTool:null,currentTaskIndex:0,currentScreenId:null,scanned:false,remainingMs:initialBudget(s)};
   s.runId++;s.status='scan';s.taskId=null;s.screenId=null;s.scanned=false;s.startedAt=now;s.deadlineAt=now+p.remainingMs;s.pausedAt=s.ownerActive?null:now;s.resultReadyAt=null;effects.push({type:'MISSION_RESTARTED'});
+ }else if(c.type==='FINISH_MISSION'){
+  if(!s.missionId||c.missionId!==s.missionId||!['task','result'].includes(s.status))return reject('MISSION_FINISH_UNAVAILABLE');
+  const p=currentProgress(s),ids=sequence(catalog,s,p);
+  // Use the normal final/QR state without claiming that unfinished tasks were passed.
+  for(const id of ids){if(!p.completed.includes(id)&&!p.skipped.includes(id))p.skipped.push(id);if(!p.finished.includes(id))p.finished.push(id);}
+  p.currentTaskIndex=ids.length;p.currentScreenId=null;
+  enterTask(catalog,s,now);s.lastTouchAt=now;
+  effects.push({type:'MISSION_FINISHED',missionId:s.missionId,reason:'timer-tap'});
  }else if(c.type==='ADVANCE_RESULT'){
   if(s.status!=='result'||now<s.resultReadyAt&&!(catalog.kdwBusinessConfirmation?.screenId===s.screenId&&!internal))return reject('RESULT_NOT_READY');
   currentProgress(s).currentTaskIndex++;currentProgress(s).currentScreenId=null;
   if(catalog.kdwDevelopment){const p=currentProgress(s),ids=sequence(catalog,s,p);while(p.finished.includes(ids[p.currentTaskIndex]))p.currentTaskIndex++;}
   enterTask(catalog,s,now,true);
   effects.push({type:'NEXT_TASK',taskId:s.taskId});
- }else if(['START_POSTS','PUBLISH_POST'].includes(c.type)){
+ }else if(['START_POSTS','PUBLISH_POST','POST_ARRIVED'].includes(c.type)){
   if(!catalog.kdwPostsActivity)return reject('POSTS_UNAVAILABLE');
   const error=reducePosts(s,c,now,catalog.kdwPostsActivity);if(error)return reject(error);
-  effects.push({type:c.type==='START_POSTS'?'POSTS_STARTED':'POST_PUBLISHED'});
- }else if(['START_STORE','PICK_PRODUCT'].includes(c.type)){
+  effects.push({type:c.type==='START_POSTS'?'POSTS_STARTED':c.type==='POST_ARRIVED'?'POST_ARRIVED':'POST_PUBLISHED'});
+ }else if(['START_STORE','PICK_PRODUCT','PRODUCT_ARRIVED'].includes(c.type)){
   if(!catalog.kdwStoreActivity)return reject('STORE_UNAVAILABLE');
-  const error=reduceStore(s,c,now,[1,2,3,4,5,6,7,8].includes(catalog.kdwStoreActivity)?catalog.kdwStoreActivity:STORE_VERSION);if(error)return reject(error);
-  effects.push({type:c.type==='START_STORE'?'STORE_STARTED':'PRODUCT_ADDED'});
+  const error=reduceStore(s,c,now,[1,2,3,4,5,6,7,8,9,10].includes(catalog.kdwStoreActivity)?catalog.kdwStoreActivity:STORE_VERSION);if(error)return reject(error);
+  effects.push({type:c.type==='START_STORE'?'STORE_STARTED':c.type==='PRODUCT_ARRIVED'?'PRODUCT_ARRIVED':'PRODUCT_ADDED'});
  }else if(c.type==='SAVE_INTERACTION'){
   if(!catalog.kdwInteractions||s.status!=='task')return reject('INTERACTION_UNAVAILABLE');
   if(c.taskId!==s.taskId||c.screenId!==s.screenId)return reject('WRONG_CONTEXT');
@@ -136,7 +155,15 @@ export function dispatchMissionCommand(catalog,model,input,{now=0,internal=false
   else if(c.type==='AUTO_SCREEN')return reject('NOT_AUTOMATIC_SCREEN');
   const o=a.outcome;if(o.kind==='incorrect')return reject('INCORRECT_ANSWER');
   if(catalog.tasks[s.taskId].coreCatalog){
-   const source=catalog.tasks[s.taskId].coreCatalog,g=p.channelModel.state,result=dispatchGameCommand(source,p.channelModel,{schemaVersion:1,type:'ACT',commandId:c.commandId,sessionId:s.sessionId,contentRevision:source.contentRevision,missionId:source.missionId,taskId:g.taskId,screenId:g.screenId,expectedRevision:g.revision,actionId:c.actionId});
+   const source=catalog.tasks[s.taskId].coreCatalog;
+   const apply=model=>{const g=model.state;return dispatchGameCommand(source,model,{schemaVersion:1,type:'ACT',commandId:c.commandId,sessionId:s.sessionId,contentRevision:source.contentRevision,missionId:source.missionId,taskId:g.taskId,screenId:g.screenId,expectedRevision:g.revision,actionId:c.actionId});};
+   let result=p.channelModel?apply(p.channelModel):null;
+   // Previously accepted receipts retain their exact semantics. Repair only a
+   // rejected/missing inner task after an explicit operator jump.
+   if(!result?.reply.ok&&s.operatorControlled&&(!p.channelModel||p.channelModel.state.screenId!==s.screenId||p.channelModel.state.status!=='active')){
+    const resumed=resumeOperatorTask(source,p.channelModel,{sessionId:s.sessionId,screenId:s.screenId,commandId:c.commandId});if(resumed)result=apply(resumed);
+   }
+   if(!result)return reject('TASK_UNAVAILABLE');
    if(!result.reply.ok)return reject(result.reply.code);p.channelModel=result.model;
   }
   p.answers[s.screenId]=c.actionId;if(o.answer)p.answers[o.answer.kind]=o.answer.value;
@@ -149,12 +176,13 @@ export function dispatchMissionCommand(catalog,model,input,{now=0,internal=false
    if(!p.finished.includes(s.taskId))p.finished.push(s.taskId);
    s.status='result';s.resultReadyAt=now+(production(s)?timing(s,'resultSeconds'):800);
    if(catalog.kdwBusinessConfirmation?.from===s.screenId){s.screenId=catalog.kdwBusinessConfirmation.screenId;p.currentScreenId=s.screenId;}
-   if(taskClock(s)){p.remainingMs=Math.max(0,s.deadlineAt-(s.pausedAt??now));s.deadlineAt=null;}
+   if(taskClock(s)){p.remainingMs=s.cardTaskPause?.remainingMs??Math.max(0,s.deadlineAt-(s.pausedAt??now));s.deadlineAt=null;}
    if(p.currentTaskIndex===sequence(catalog,s,p).length-1)s.deadlineAt=null;
   }else return reject('INVALID_OUTCOME');
  }else return reject('INVALID_COMMAND');
  if(s.operatorControlled&&s.missionId){const p=currentProgress(s);for(const id of p.operatorTasks??[])if(p.finished.includes(id)){p.completed=p.completed.filter(t=>t!==id);if(!p.skipped.includes(id))p.skipped.push(id);}if(s.status==='completed'&&p.skipped.length)s.status='incomplete';}
  if(!production(s))finishDevelopmentState(model.state,s,c,now,TASK_CLOCK_BUDGET_MS);
+ finishCardTimer(model.state,s,now);
  s.revision++;const reply=deepFreeze({ok:true,code:'APPLIED',commandId:c.commandId,snapshot:s});
  return {model:deepFreeze({schemaVersion:1,state:s,receipts:[...model.receipts,{command:c,now,internal,reply}]}),reply,effects:deepFreeze(effects),duplicate:false};
 }

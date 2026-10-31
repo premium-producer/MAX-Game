@@ -11,9 +11,9 @@ import {startProduction} from '../src/kdw-production.mjs';
 import {monitorPreparation,gameAudioActive} from '../src/kdw-runtime-health.mjs';
 const require=createRequire(import.meta.url),{DEFAULTS}=require('../../../../STARTUP/tools/stand-settings.cjs');
 const catalog={...V5_MISSION_CATALOG,contentRevision:V5_MISSION_CATALOG.contentRevision+'.audit-fixes',kdwProduction:{production:true,revision:'audit-fixes',value:DEFAULTS}};
-async function driver(admit){
+async function driver(admit,outputRecovery=false){
  let time=1000000,mono=0,serial=0;const id='regression',persistence=createMemoryPersistencePort();
- const make=()=>createMissionSessionApplication({catalog,persistence,now:()=>time,monotonic:()=>mono,admit,missionRulesRevision:TASK_CLOCK_RULES_REVISION});
+ const make=()=>createMissionSessionApplication({catalog,persistence,now:()=>time,monotonic:()=>mono,admit,outputRecovery,missionRulesRevision:TASK_CLOCK_RULES_REVISION});
  const app=make();await app.createSession({sessionId:id});const snap=()=>app.getSnapshot(id);
  const send=async(type,fields={})=>{const s=(await snap()).state;const out=await app.sendCommand({schemaVersion:1,type,commandId:'test.'+(++serial),sessionId:id,contentRevision:catalog.contentRevision,expectedRevision:s.revision,...fields});assert.equal(out.reply.ok,true,out.reply.code);return out;};
  await app.inputOwnerChanged(id,{active:true});await send('SELECT_MISSION',{missionId:'business'});
@@ -72,4 +72,35 @@ test('five-second and five-minute wall corrections survive command and restart w
   assert.equal((await recovered.getSnapshot(d.id)).state.deadlineAt,deadline);await recovered.pollTime(d.id);const s=await recovered.getSnapshot(d.id);assert.ok(s.view.remainingMs===null||s.view.remainingMs>=0);if(shift===300000)assert.equal(s.state.status,'result');
   await d.app.close();await recovered.close();
  }
+});
+
+
+test('output reload restores committed mission progress and excludes downtime from the task timer',async()=>{
+ const d=await driver(undefined,true);await begin(d);
+ const initial=(await d.snap()).state,screen=catalog.tasks[initial.taskId].screens[initial.screenId];
+ await d.send('ACT',{taskId:initial.taskId,screenId:initial.screenId,actionId:screen.actions[0].actionId});
+ await d.send('STAND_READY',{screenId:(await d.snap()).state.screenId});
+ d.advance(1200);await d.app.pollTime(d.id,undefined,{allowResult:false});
+ const before=await d.snap();await d.app.close();d.advance(60000);
+ const recovered=d.make(),restored=await recovered.getSnapshot(d.id);
+ assert.equal(restored.state.sessionId,before.state.sessionId);assert.equal(restored.state.runId,before.state.runId);
+ assert.equal(restored.state.screenId,before.state.screenId);assert.deepEqual(restored.state.progress,before.state.progress);
+ assert.equal(restored.state.ownerActive,false);assert.equal(restored.view.remainingMs,before.view.remainingMs);
+ await recovered.outputRecoveryChanged(d.id,{active:false});await recovered.inputOwnerChanged(d.id,{active:true});const resumed=await recovered.getSnapshot(d.id);
+ assert.equal(resumed.state.status,'task');assert.equal(resumed.view.remainingMs,before.view.remainingMs);
+ await recovered.close();
+});
+
+
+test('live output hold blocks timeout, inactivity and commands, then resumes without a new budget',async()=>{
+ const d=await driver(undefined,true);await begin(d);
+ const facade=createWebGLSession({port:d.app,catalog,sessionId:d.id});await facade.start();await facade.owner(true);
+ const holding=facade.outputRecovery(true,true);assert.equal(facade.busy,true);
+ assert.equal(await facade.command('STAND_TOUCH'),null);await holding;assert.equal(facade.busy,false);
+ const before=await d.snap();d.advance(180000);await d.app.pollTime(d.id);
+ const held=await d.snap();assert.equal(held.state.screenId,before.state.screenId);assert.equal(held.state.status,'task');assert.equal(held.view.remainingMs,before.view.remainingMs);
+ const resume=facade.outputRecovery(false,true);assert.equal(facade.busy,true);await resume;
+ const after=await d.snap();assert.equal(after.view.remainingMs,before.view.remainingMs);assert.equal(after.state.ownerActive,true);assert.equal(after.state.outputPausedAt,undefined);
+ d.advance(500);await d.app.pollTime(d.id);assert.equal((await d.snap()).view.remainingMs,before.view.remainingMs-500);
+ await facade.close();
 });

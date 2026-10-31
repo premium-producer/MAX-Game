@@ -6,11 +6,24 @@ import {createMissionModel,dispatchMissionCommand,restoreMissionModel} from '../
 import {personalProfile,personalDraft,validPersonalDraft,validSlug,PERSONAL_AVATARS,PERSONAL_LIMITS,limitPersonalReply} from '../src/kdw-personal-channel-model.mjs';
 import {createMissionSessionApplication} from '../src/application/mission-session.mjs';
 import {createMemoryPersistencePort} from '../src/application/memory-persistence.mjs';
+import {restoreGameModel} from '../src/core/game-core.mjs';
 const base=JSON.parse(fs.readFileSync(new URL('../src/reviewed-content/mission-catalog.json',import.meta.url))),catalog=createKdwCatalog(base);
 const value={schemaVersion:2,name:'Мой <канал> & кино',description:'Новости\nи обсуждения',avatar:'cinema',visibility:'private',slug:''};
 function driver(c=catalog){let model=createMissionModel(c,{sessionId:'personal-test',rulesRevision:'mission-rules-task-clock-v2'}),id=0,now=1000;const cmd=(type,fields={},internal=false)=>{const result=dispatchMissionCommand(c,model,{schemaVersion:1,type,commandId:'p.'+(++id),sessionId:'personal-test',contentRevision:c.contentRevision,expectedRevision:model.state.revision,...fields},{now:now++,internal});if(result.reply.ok)model=result.model;return result;};const act=actionId=>cmd('ACT',{screenId:model.state.screenId,actionId});const save=v=>cmd('SAVE_INTERACTION',{taskId:model.state.taskId,screenId:model.state.screenId,value:v});const begin=()=>{cmd('OWNER_CHANGED',{active:true},true);cmd('SELECT_MISSION',{missionId:'blogger'});cmd('HOLD_CONFIRMED',{},true);act('channel.open-create-menu');act('channel.choose-create');};const advance=()=>{now+=1000;return cmd('ADVANCE_RESULT');};return {cmd,act,save,begin,advance,get model(){return model},get now(){return now}};}
 function create(d){d.begin();assert.equal(d.save(value).reply.ok,true);d.act('channel.fill-name-example');d.act('channel.create');}
 function finishChannel(d){d.act('channel.continue-private');d.act('channel.skip-invites');d.act('channel.complete');d.advance();}
+
+test('create channel works after operator jumps forward and back, with valid inner receipts',()=>{
+ for(const target of ['blogger.channel.name','blogger.channel.filled'])for(const origin of ['chats','completed']){
+  const d=driver();if(origin==='completed'){create(d);finishChannel(d);}else{d.cmd('OWNER_CHANGED',{active:true},true);d.cmd('SELECT_MISSION',{missionId:'blogger'});d.cmd('HOLD_CONFIRMED',{},true);}
+  assert.equal(d.cmd('OPERATOR_GOTO',{missionId:'blogger',taskId:'blogger.channel',screenId:target},true).reply.ok,true);
+  assert.equal(d.save(value).reply.ok,true);
+  assert.equal(d.act(target.endsWith('.name')?'personal.channel.create':'channel.create').reply.ok,true,origin+' '+target);
+  assert.equal(d.model.state.screenId,'blogger.channel.privacy');assert.equal(personalProfile(d.model.state).name,value.name);
+  assert.equal(d.model.state.progress.blogger.channelModel.state.screenId,'blogger.channel.privacy');
+  assert.equal(restoreMissionModel(catalog,d.model).ok,true);assert.equal(restoreGameModel(catalog.tasks['blogger.channel'].coreCatalog,d.model.state.progress.blogger.channelModel).ok,true);
+ }
+});
 
 test('comment limit applies to new commands and restores accepted historical long replies',()=>{
  assert.equal(PERSONAL_LIMITS.reply,200);

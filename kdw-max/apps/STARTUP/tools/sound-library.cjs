@@ -20,6 +20,17 @@ function createSoundLibrary({root,origin,app,isBusy=()=>false}){
   fs.writeFileSync(marker,'Local audio library; do not replace during application updates.\n');
  }
  const legacy=app==='stela'?read(path.join(root,'data/soundtrack.local.json'),{}):{};
+ // New bundled music is imported once per filename, without restoring deleted
+ // operator files or overwriting existing tracks/settings on an upgraded stand.
+ if(app==='max'){
+  const record=path.join(folder,'.music-seeded.json'),seeded=read(record,[]);let changed=false;
+  for(const name of catalogs.maxMusicFiles)if(!seeded.includes(name)&&fs.existsSync(path.join(seed,name))){
+   if(!fs.existsSync(path.join(folder,name)))fs.copyFileSync(path.join(seed,name),path.join(folder,name));
+   seeded.push(name);changed=true;
+  }
+  if(changed)atomic(record,seeded);
+ }
+ const defaultMusic={mode:'single',when:'missions',tracks:catalogs.maxMusicFiles};
  const defaultVideo={standby:{enabled:true,volume:1},tasks:{enabled:true,volume:1}};
  const defaults={...(app==='max'?{video:defaultVideo}:{}),schemaVersion:1,enabled:legacy.enabled??true,masterVolume:1,fadeInMs:20,fadeOutMs:150,events:Object.fromEntries(catalog.map(e=>[e.id,{file:e.file,volume:app==='stela'?(e.loop?legacy.musicVolume:legacy.effectsVolume)??e.volume:e.volume}]))};
  const inside=name=>{const candidate=path.join(folder,filename(name));const real=fs.realpathSync(candidate);if(path.dirname(real)!==fs.realpathSync(folder)||!fs.statSync(real).isFile())throw fail('Файл вне папки аудио');return real;};
@@ -35,7 +46,15 @@ function createSoundLibrary({root,origin,app,isBusy=()=>false}){
    if(!input||typeof input!=='object'||Array.isArray(input)||Object.keys(input).sort().join('|')!=='standby|tasks')throw fail('Неверные настройки звука видео');
    video={};for(const key of ['standby','tasks']){const item=input[key];if(!item||typeof item.enabled!=='boolean'||typeof item.volume!=='number'||!Number.isFinite(item.volume)||item.volume<0||item.volume>1)throw fail('Громкость видео должна быть от 0 до 100%');video[key]={enabled:item.enabled,volume:item.volume};}
   }
-  return{...(video?{video}:{}),schemaVersion:1,enabled:v.enabled,masterVolume:v.masterVolume,fadeInMs:v.fadeInMs,fadeOutMs:v.fadeOutMs,events};
+  let music;
+  if(app==='max'){
+   const input=v.music??(checkFiles?read(configFile,{}).music:undefined)??defaultMusic;
+   if(!input||!['single','playlist'].includes(input.mode)||!['missions','always','standby'].includes(input.when)||!Array.isArray(input.tracks)||input.tracks.length>100||new Set(input.tracks).size!==input.tracks.length)throw fail('Неверные настройки фоновой музыки');
+   for(const name of input.tracks){filename(name);if(checkFiles&&input.mode==='playlist')try{inside(name);}catch{throw fail('Файл музыки отсутствует: '+name);}}
+   if(input.mode==='playlist'&&!input.tracks.length)throw fail('Добавьте хотя бы один трек в цикл');
+   music={mode:input.mode,when:input.when,tracks:[...input.tracks]};
+  }
+  return{...(video?{video,music}:{}),schemaVersion:1,enabled:v.enabled,masterVolume:v.masterVolume,fadeInMs:v.fadeInMs,fadeOutMs:v.fadeOutMs,events};
  }
  if(!fs.existsSync(configFile))atomic(configFile,defaults);
  const settings=()=>validate(read(configFile,defaults));

@@ -43,10 +43,10 @@ export function watchGameLink({link,getSession,onPhotoChange=()=>{},onChange=()=
   const revision=game?.photoRevision??game?.photoSha256;
   if(photoLoading||!revision||revision==='none'||revision===(link.game?.photoRevision??link.game?.photoSha256))return;photoLoading=true;
   try{const manifest=await api(`/__kdw/link/games/${game.gameId}/assets`);if(manifest.gameId!==game.gameId)throw Error('GAME_LINK_CONTEXT_CONFLICT');
-   const decoded=new Map();let cursor=0;
-   await Promise.all(Array.from({length:2},async()=>{while(cursor<manifest.assets.length){const a=manifest.assets[cursor++],image=new Image();image.src='./'+a.path;let timeout;try{await Promise.race([image.decode(),new Promise((_,reject)=>{timeout=setTimeout(()=>reject(Error('PHOTO_DECODE_TIMEOUT')),4000);})]);}finally{clearTimeout(timeout);}decoded.set(photoKey(image.src),image.src);}}));
+   // Mounted image guards own decoding and retries. An unrelated screen must
+   // never prevent the current screen from receiving a late photo revision.
    if(stopped||binding!==link||link.game.gameId!==game.gameId)return;
-   for(const [key,value]of decoded)if(key)replacements.set(key,value);
+   for(const asset of manifest.assets){const url=new URL('./'+asset.path,document.baseURI).href,key=photoKey(url);if(key)replacements.set(key,url);}
    link.game.photoSha256=game.photoSha256;link.game.hasPhoto=game.hasPhoto;link.game.avatarSha256=game.avatarSha256;link.game.hasAvatar=game.hasAvatar;link.game.photoRevision=revision;link.assets=manifest.assets;
    const avatar=manifest.assets.find(a=>a.original.endsWith('/visitor-avatar.svg'));if(avatar)link.avatar='./'+avatar.path;
    applyPhotos();

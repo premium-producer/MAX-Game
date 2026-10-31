@@ -95,3 +95,12 @@ session generation/epoch/revision и serial таймеров защищают о
 ## Кайма прослушивания — 27.10.2026, локально
 
 Новое правило заменяет скрытие интерфейса ради голоса на всех этапах: текущий экран остаётся видимым, подтверждённую речь обозначает мягкая градиентная кайма MAX по периметру. Ожидание звука не блокирует касания; переходы между разными экранами и AnswerFlight сохранены. [Реализация и проверки](verification-stela-listening-frame-20261027/README.md).
+
+
+## Полноэкранный старт и курсор production · 29.10.2026
+
+Production display-worker добавляет kiosk=1. Начальный HTML сразу включает data-stella-kiosk и cursor:none!important для всего документа, потомков и псевдоэлементов, включая загрузочную заставку, кнопки и portal «Домой». Админка и обычный browser/dev preview сохраняют курсор. Параметр сохраняется при штатном renderer recovery через entry URL.
+
+Кнопка brand-splash__logo занимает весь портретный стартовый экран 1080×1920. Касания свободных полей вне canvas также запускают тот же voice.start, с guards состояния idle, visual ready, playing, hidden/inert и повторного клика. На entry нет перекрывающей кнопки «Домой»; на остальных экранах она сохраняется. Клики кнопки не дублируются обработчиком viewport. Splash по-прежнему ждёт готовую enabled кнопку.
+
+Локально проверено: TypeScript, production build, 72 теста; Chromium — пять точек/размеров (углы, низ, горизонтальные поля, центр), переход на intro и возврат домой, cursor:none над фоном и кнопками, сохранение после reload, обычный курсор в dev. Стенд не обновлялся. Для будущего delta включать launcher/display-worker.cjs, www/stella/assets/app.js, www/stella/index.html, www/stella/pixels/index.html, www/stella/gradient/index.html; настройки и режим запуска сохранять.

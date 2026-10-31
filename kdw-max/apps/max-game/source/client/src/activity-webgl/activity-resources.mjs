@@ -40,7 +40,7 @@ function photoCanvas(img,card,kind){
  ctx.fillStyle=kind==='store'?'#e9e6df':'#362e74';ctx.fillRect(0,0,c.width,c.height);
  if(img)ctx.drawImage(img,0,0,c.width,c.height);else{ctx.font=font(72);ctx.textAlign='center';ctx.fillStyle='#fff';ctx.fillText(card.emoji??'MAX',c.width/2,c.height*.6);}return c;
 }
-export function createActivityResources(kind,type,bank,{imageOnly=true}={}){
+export function createActivityResources(kind,type,bank,{imageOnly=true,countGoal=false}={}){
  const textures=[],records=new Map(),extras=new Map(),stats={bytes:0,rasters:0,uploads:0,uploadMs:0,fallbacks:0};let disposed=false,decoded=false,failure=null,upload=0;
  const add=(c)=>{if(disposed)return null;const bytes=textureBytes(c.width,c.height);if(stats.bytes+bytes>160*1024*1024)throw Error('Activity texture budget exceeded');const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;t.generateMipmaps=true;t.minFilter=THREE.LinearMipmapLinearFilter;t.magFilter=THREE.LinearFilter;stats.bytes+=bytes;stats.rasters++;textures.push(t);return t;};
  const ready=(async()=>{
@@ -57,12 +57,12 @@ export function createActivityResources(kind,type,bank,{imageOnly=true}={}){
   const urls=kind==='posts'?{header:'./assets/kdw-native/posts-chrome/header.svg',footer:'./assets/kdw-native/posts-chrome/composer.svg',fire:'./assets/kdw-native/posts-chrome/fire.svg',heart:'./assets/kdw-native/posts-chrome/heart.svg',views:'./assets/kdw-native/posts-chrome/views.svg',verified:'./assets/kdw-native/posts-chrome/verified.svg',avatar:businessProfile(type).logo?'./'+businessProfile(type).logo:null}:{header:'./assets/kdw-native/store-header.svg'};
   for(const [name,url]of Object.entries(urls)){if(!url)continue;try{const img=await image(url);if(disposed)return;const c=canvas(Math.min(780,img.naturalWidth),Math.min(280,img.naturalHeight));c.getContext('2d').drawImage(img,0,0,c.width,c.height);extras.set(name,add(c));}catch{stats.fallbacks++;}}
   if(disposed)return;
-  const glyphs=canvas(1024,384),ctx=glyphs.getContext('2d'),chars=[...new Set('0123456789.,: · +−—₽★♡КMAXРейтингмагазинаподписчиковНовыеубликац↑↓'+Object.values({name:businessProfile(type).name??type}).join(''))];
+  const glyphs=canvas(1024,384),ctx=glyphs.getContext('2d'),chars=[...new Set('0123456789.,: · +−—₽★♡КMAXРейтингмагазинаподписчиковНовыеубликацПостыВыбрано/↑↓'+Object.values({name:businessProfile(type).name??type}).join(''))];
   ctx.font=font(30,400,'Arial');ctx.textBaseline='top';ctx.fillStyle='#fff';const atlas=new Map();chars.forEach((ch,i)=>{const x=(i%32)*32,y=Math.floor(i/32)*48;ctx.fillText(ch,x,y+4);atlas.set(ch,{x,y,w:32,h:48,advance:ctx.measureText(ch).width});});
   extras.set('glyphs',add(glyphs));extras.set('glyphMetrics',atlas);
   const white=canvas(1,1);white.getContext('2d').fillStyle='#fff';white.getContext('2d').fillRect(0,0,1,1);extras.set('white',add(white));
   // Static header copy shares the bank lifetime, not the changing counter clock.
-  const label=canvas(390,140),lc=label.getContext('2d');if(kind==='posts'){lc.font=font(18,600,'Arial');lc.fillStyle='#d4d4d6';lc.textBaseline='top';lc.fillText(businessProfile(type).name??type,103.6,62,235);}else{lc.font=font(15,600,'Arial');lc.textBaseline='top';lc.fillStyle='#fff';lc.fillText('Рейтинг магазина:',87,102);}extras.set('label',add(label));decoded=true;
+  const label=canvas(390,140),lc=label.getContext('2d');if(kind==='posts'){lc.font=font(18,600,'Arial');lc.fillStyle='#d4d4d6';lc.textBaseline='top';lc.fillText(businessProfile(type).name??type,103.6,62,235);}else{lc.font=font(15,600,'Arial');lc.textBaseline='top';lc.fillStyle='#fff';lc.fillText(countGoal?'Товары в витрине:':'Рейтинг магазина:',87,102);}extras.set('label',add(label));decoded=true;
  })().catch(e=>{failure=e;console.error('MAX_ACTIVITY_RESOURCE',e.message);});
  return{records,extras,stats,ready,get prepared(){return decoded&&upload===textures.length;},get error(){return failure;},
   warm(renderer){if(disposed||!decoded||failure||renderer.getContext().isContextLost())return;const until=performance.now()+2;let count=0;try{while(upload<textures.length&&count++<2){const t=performance.now();renderer.initTexture(textures[upload]);upload++;stats.uploadMs+=performance.now()-t;stats.uploads++;if(performance.now()>=until)break;}}catch(e){failure=e;console.error('MAX_ACTIVITY_UPLOAD',e.message);}},

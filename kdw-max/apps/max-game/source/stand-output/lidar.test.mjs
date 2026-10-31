@@ -2,12 +2,12 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {startLidar} from './lidar.mjs';
 const flush=()=>new Promise(resolve=>setImmediate(resolve));
-const config={enabled:true,bindAddress:'127.0.0.1',sourceAddress:'127.0.0.1',port:8000,timeoutMs:350,width:3072,height:1536,rawPoints:[[0,0],[1,0],[1,1],[0,1]],targetPoints:[[560,0],[2320,0],[2320,1536],[560,1536]]};
+const config={inputFilter:{enabled:false},enabled:true,bindAddress:'127.0.0.1',sourceAddress:'127.0.0.1',port:8000,timeoutMs:350,width:3072,height:1536,rawPoints:[[0,0],[1,0],[1,1],[0,1]],targetPoints:[[560,0],[2320,0],[2320,1536],[560,1536]]};
 function fixture(){let options,opens=0,closes=0,resets=0,attached=false;const touches=[],points=[];
  return {touches,points,get opens(){return opens},get closes(){return closes},get resets(){return resets},emit(phase,x=.5,y=.5){options.onContact({id:'1',sourceContactId:'1',phase,x,y})},rank(p){return options.rankPoint(p)},
- options:{config,active:()=>true,log(){},onPoint:p=>points.push(p),contents:{debugger:{isAttached:()=>attached,attach(){attached=true},async sendCommand(_,event){touches.push(event)}}},makeReceiver:o=>{options=o;return{async start(){opens++},snapshot:()=>({bound:true}),reset(){resets++},async close(){closes++}}}}};}
+ options:{config:{...config,inputFilter:{enabled:false}},active:()=>true,log(){},onPoint:p=>points.push(p),contents:{debugger:{isAttached:()=>attached,attach(){attached=true},detach(){attached=false},async sendCommand(_,event){touches.push(event)}}},makeReceiver:o=>{options=o;return{async start(){opens++},snapshot:()=>({bound:true}),reset(){resets++},async close(){closes++}}}}};}
 test('calibration enter/save/cancel reuses UDP receiver and suppresses gameplay touch',async()=>{
- const f=fixture(),r=await startLidar(f.options);f.emit('down');await flush();assert.ok(Math.abs(f.touches[0].touchPoints[0].x-1440)<.001);
+ const f=fixture(),r=await startLidar(f.options);f.emit('down');await flush();assert.ok(Math.abs(f.touches[0].touchPoints[0].x-1440)<.001);assert.equal(f.touches[0].touchPoints[0].radiusX,36);assert.equal(f.touches[0].touchPoints[0].radiusY,36);
  assert.equal(r.reconfigure(config,true),true);await flush();assert.equal(f.touches.at(-1).type,'touchCancel');const n=f.touches.length;
  f.emit('down',.2,.3);await flush();assert.equal(f.touches.length,n);assert.equal(f.points.at(-1).x,.2);assert.equal(r.snapshot().calibrating,true);assert.equal(f.rank({x:.2,y:.3}),.3);
  assert.equal(r.reconfigure(config,false),true);f.emit('down');await flush();assert.equal(f.touches.at(-1).type,'touchStart');
@@ -79,4 +79,54 @@ test('an already released touchEnd is harmless; unrelated cancellation errors re
  f.options.contents.debugger.sendCommand=async()=>{throw Error('Target closed')};r.reset();await flush();
  assert.equal(logs.at(-1).event,'lidar-input-error');assert.equal(logs.at(-1).message,'Target closed');
  await r.close();
+});
+
+
+test('renderer reset releases a hung dispatch and ignores its late rejection without reopening UDP',async()=>{
+ const f=fixture(),send=f.options.contents.debugger.sendCommand;let rejectOld,first=true;
+ f.options.contents.debugger.sendCommand=(...args)=>{if(first){first=false;return new Promise((_,reject)=>{rejectOld=reject})}return send(...args)};
+ const r=await startLidar(f.options);f.emit('down');await flush();
+ r.reset();await flush();f.emit('move');await flush();
+ assert.equal(f.touches.at(-1).type,'touchStart');assert.ok(r.snapshot().input.lastSuccessAt);
+ rejectOld(Error('late target closed'));await flush();
+ assert.equal(r.snapshot().input.errors,0);assert.equal(r.snapshot().input.recoveryPending,false);
+ f.emit('up');await flush();assert.equal(f.touches.at(-1).type,'touchEnd');
+ assert.equal(f.opens,1);assert.equal(f.closes,0);await r.close();
+});
+
+test('hung dispatch times out and the next contact resumes; close also remains bounded',async()=>{
+ const f=fixture(),send=f.options.contents.debugger.sendCommand;let first=true;
+ f.options.contents.debugger.sendCommand=(...args)=>{if(first){first=false;return new Promise(()=>{})}return send(...args)};
+ const r=await startLidar({...f.options,commandTimeoutMs:20});f.emit('down');await flush();
+ await new Promise(resolve=>setTimeout(resolve,50));
+ assert.equal(r.snapshot().input.timeouts,1);assert.equal(r.snapshot().input.lastError.message,'LIDAR_INPUT_TIMEOUT');
+ f.emit('move');await flush();assert.equal(f.touches.at(-1).type,'touchStart');
+ assert.equal(r.snapshot().input.recoveries,1);assert.equal(f.opens,1);
+ f.options.contents.debugger.sendCommand=()=>new Promise(()=>{});
+ await r.close();assert.equal(f.closes,1);
+});
+
+
+function filteredFixture(){
+ const f=fixture();let t=1000;f.options.config={...config,inputFilter:{enabled:true}};f.options.now=()=>t;
+ const emit=f.emit;f.emit=(phase,x=.5,y=.5)=>{t+=16;emit(phase,x,y)};
+ f.contact=()=>{f.emit('down');f.emit('move');f.emit('move')};return f;
+}
+test('enabled filter rejects a ghost, smooths motion, bypasses calibration and toggles without reopening UDP',async()=>{
+ const f=filteredFixture(),r=await startLidar(f.options);
+ f.emit('down');await flush();f.emit('up');await flush();assert.equal(f.touches.length,0);
+ f.contact();await flush();assert.equal(f.touches.at(-1).type,'touchStart');
+ f.emit('move',.51);await flush();await flush();const p=f.touches.at(-1).touchPoints[0];assert(p.x>1440&&p.x<1457.6);
+ f.emit('up');await flush();assert.equal(f.touches.at(-1).type,'touchEnd');
+ r.reconfigure(f.options.config,true);await flush();const n=f.touches.length;f.emit('down',.2,.3);await flush();assert.equal(f.touches.length,n);assert(Math.abs(f.points.at(-1).mapped.x-912)<.001);
+ r.reconfigure({...config,inputFilter:{enabled:false}},false);f.emit('down');await flush();assert.equal(f.touches.at(-1).type,'touchStart');assert.equal(f.opens,1);await r.close();
+});
+test('enabled smoothing retains timeout and renderer reset recovery without replaying stale contacts',async()=>{
+ const f=filteredFixture(),send=f.options.contents.debugger.sendCommand;let hang=true;
+ f.options.contents.debugger.sendCommand=(...args)=>hang?new Promise(()=>{}):send(...args);
+ const r=await startLidar({...f.options,commandTimeoutMs:20});f.contact();await flush();await new Promise(resolve=>setTimeout(resolve,45));
+ assert.equal(r.snapshot().input.timeouts,1);hang=false;f.contact();await flush();assert.equal(f.touches.at(-1).type,'touchStart');
+ hang=true;f.emit('move');await flush();await flush();r.reset();hang=false;await flush();
+ const n=f.touches.length;f.emit('move');await flush();assert.equal(f.touches.length,n);f.emit('move');f.emit('move');await flush();assert.equal(f.touches.at(-1).type,'touchStart');
+ assert.equal(r.snapshot().filter.options.enabled,true);assert.equal(r.snapshot().input.recoveryPending,false);assert.equal(f.opens,1);await r.close();
 });

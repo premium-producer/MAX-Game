@@ -45,11 +45,16 @@ export function pixelFlowViewport(width,height){
  const {safe,touch}=pixelMapViewport(width,height);
  return {...safe,top:touch.top,bottom:touch.bottom,height:touch.height};
 }
+let keyboardLayout={};
+export function setKeyboardLayout(value){keyboardLayout=value??{};}
 export function alignPixelKeyboard(node){
- const area=pixelActivityViewport();if(!node||!area)return false;
+ if(!node)return false;
+ node.style.setProperty('--kdw-keyboard-width',keyboardLayout.width??1);node.style.setProperty('--kdw-keyboard-height',keyboardLayout.height??1);
+ const area=pixelActivityViewport(),unit=Math.min(innerWidth/3072,innerHeight/1536),x=(keyboardLayout.x??0)*unit,y=(keyboardLayout.y??0)*unit;
+ if(!area){node.style.left=`calc(50% + ${x}px)`;node.style.bottom=-y+'px';return false;}
  // Lift the four key rows under the route icons instead of anchoring them
- // to the lower safe edge; keep the same proportional inset on scaled walls.
- Object.assign(node.style,{left:((area.left+area.right)/2)+'px',top:'auto',bottom:(innerHeight-area.bottom+area.height*.08)+'px'});
+ // to the lower safe edge; lift by another 15% of the safe height on all walls.
+ Object.assign(node.style,{left:((area.left+area.right)/2+x)+'px',top:'auto',bottom:(innerHeight-area.bottom+area.height*.23-y)+'px'});
  node.style.setProperty('--kdw-scale',Math.min(area.width/1600,area.height/900));return true;
 }
 export function installPixelMapInput(){

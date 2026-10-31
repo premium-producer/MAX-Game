@@ -10,7 +10,7 @@ export async function prepareInteractionPreview(session,catalog,kind,businessTyp
   const s=session.snapshot.state;if(s.screenId===target)return;
   if(s.screenId===POSTS_SCREEN&&s.status==='task'){
    const p=s.progress.business.postsActivity;if(!p)await session.command('START_POSTS',{taskId:POSTS_TASK,screenId:POSTS_SCREEN});
-   else if(!postsGoal(p)){await session.poll(Date.now());const elapsed=postsElapsed(p,activityRemaining(s,Date.now())),spawn=visiblePosts(p,elapsed).find(v=>v.post.good);if(spawn)await session.command('PUBLISH_POST',{taskId:POSTS_TASK,screenId:POSTS_SCREEN,spawnId:spawn.spawnId});else await sleep(200);continue;}
+   else if(!postsGoal(p)){await session.poll(Date.now());const elapsed=postsElapsed(p,activityRemaining(s,Date.now())),spawn=visiblePosts(p,elapsed).find(v=>v.post.good);if(spawn){const fields={taskId:POSTS_TASK,screenId:POSTS_SCREEN,spawnId:spawn.spawnId};const result=await session.command('PUBLISH_POST',fields);if(result?.reply.ok&&p.version>=16)await session.command('POST_ARRIVED',fields);}else await sleep(200);continue;}
    if(!p)continue;
   }
   if(s.status==='result'){await sleep(120);await session.poll(Date.now());continue;}

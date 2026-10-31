@@ -11,4 +11,15 @@ function classifyTexture(texture,width,height){
  if(i.codedSize?.width!==width||i.codedSize?.height!==height)return{code:'TEXTURE_SIZE_MISMATCH',expected:{width,height},actual:i.codedSize};
  return null;
 }
-module.exports={RecoveryBudget,classifyTexture};
+// A cold operator launch may clear the previous visitor. Output/API recovery
+// and a watchdog relaunch must never cancel the current visitor or their photo.
+class OutputStartupGate{
+ constructor({recovering=false}={}){this.initialized=recovering;this.pending=null;}
+ async prepare(reset){
+  if(this.initialized)return{preserved:true};
+  if(this.pending)return this.pending;
+  this.pending=(async()=>{const result=await reset();this.initialized=true;return{preserved:false,...result};})();
+  try{return await this.pending;}finally{this.pending=null;}
+ }
+}
+module.exports={RecoveryBudget,classifyTexture,OutputStartupGate};

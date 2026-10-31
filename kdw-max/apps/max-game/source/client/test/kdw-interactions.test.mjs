@@ -16,10 +16,11 @@ function driver(c=catalog,rulesRevision='mission-rules-task-clock-v2'){
   if(!c.kdwPostsActivity||model.state.screenId!==POSTS_SCREEN)return;
   const fields={taskId:'business.channel',screenId:POSTS_SCREEN};
   if(!model.state.progress.business.postsActivity)assert.equal(act('START_POSTS',fields).reply.ok,true);
-  for(let i=0;i<8&&!postsGoal(model.state.progress.business.postsActivity);i++){
+  for(let i=0;i<40&&!postsGoal(model.state.progress.business.postsActivity);i++){
    const p=model.state.progress.business.postsActivity,spawn=postSpawn(p,i);if(!spawn.post.good)continue;
    const elapsed=p.startRemainingMs-(model.state.deadlineAt-now);if(elapsed<spawn.start)now+=Math.ceil(spawn.start-elapsed);
    assert.equal(act('PUBLISH_POST',{...fields,spawnId:spawn.spawnId}).reply.ok,true);
+   if(p.version>=16)assert.equal(act('POST_ARRIVED',{...fields,spawnId:spawn.spawnId}).reply.ok,true);
   }
   assert.equal(postsGoal(model.state.progress.business.postsActivity),true);
  }
@@ -31,6 +32,7 @@ function driver(c=catalog,rulesRevision='mission-rules-task-clock-v2'){
    const spawn=timeline.at(elapsed).find(s=>s.post.good);
    if(!spawn){now+=1000;continue;}
    assert.equal(act('PICK_PRODUCT',{...fields,spawnId:spawn.spawnId}).reply.ok,true);
+   if(activity.version>=11)assert.equal(act('PRODUCT_ARRIVED',{...fields,spawnId:spawn.spawnId}).reply.ok,true);
   }
   assert.ok(storeGoal(model.state.progress.business.storeActivity));
  }

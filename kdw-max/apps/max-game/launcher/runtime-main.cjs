@@ -1,6 +1,6 @@
 'use strict';
 const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),crypto=require('node:crypto');
-const {spawn}=require('node:child_process'),{RecoveryBudget}=require('./runtime-policy.cjs'),{rpcPeer}=require('./runtime-ipc.cjs'),{createRuntimeJournal}=require('./runtime-journal.cjs');
+const {spawn}=require('node:child_process'),{RecoveryBudget,OutputStartupGate}=require('./runtime-policy.cjs'),{rpcPeer}=require('./runtime-ipc.cjs'),{createRuntimeJournal}=require('./runtime-journal.cjs');
 const atomic=(file,value)=>{fs.mkdirSync(path.dirname(file),{recursive:true});const tmp=file+'.'+crypto.randomUUID()+'.tmp';try{fs.writeFileSync(tmp,JSON.stringify(value));fs.renameSync(tmp,file);}finally{if(fs.existsSync(tmp))fs.unlinkSync(tmp);}};
 function run({root}){
  const role=process.argv.find(a=>a.startsWith('--runtime-role='))?.split('=')[1]||'supervisor';
@@ -32,6 +32,7 @@ async function supervise({app,root,config,journal}){
  const watchdog=process.argv.includes('--runtime-watchdog'),verify=process.argv.includes('--verify');
  if(watchdog&&desired.state!=='running'){app.exit(0);return;}
  let outputEnabled=watchdog?desired.outputEnabled:!process.argv.includes('--serve-only'),stopping=false,generation=0;
+ const gameStartup=new OutputStartupGate({recovering:watchdog});
  atomic(desiredFile,{state:'running',outputEnabled});
  const slots={api:{status:'stopped',budget:new RecoveryBudget(),manual:new RecoveryBudget({limit:1,windowMs:60000,delays:[0]})},output:{status:'stopped',budget:new RecoveryBudget(),manual:new RecoveryBudget({limit:1,windowMs:60000,delays:[0]})}};
  function faultBundle(reason){try{const dir=path.join(root,'data/runtime-faults');fs.mkdirSync(dir,{recursive:true});const files=fs.readdirSync(dir).filter(n=>/^[0-9]+-[a-f0-9-]+\.json$/.test(n)).sort();while(files.length>=10)fs.unlinkSync(path.join(dir,files.shift()));atomic(path.join(dir,Date.now()+'-'+crypto.randomUUID()+'.json'),{reason,state:snapshot(),logs:require('./runtime-journal.cjs').runtimeLogTail(root)});}catch(e){journal.fault('FAULT_BUNDLE_WRITE_FAILED',{code:e.code});}}
@@ -39,7 +40,7 @@ async function supervise({app,root,config,journal}){
  const snapshot=()=>({application:config.id,version:config.version,bootId,supervisorPid:process.pid,state:stopping?'stopped':Object.values(slots).some(s=>s.status==='degraded')?'degraded':slots.api.status==='ready'?'running':'starting',outputEnabled,api:publicSlot(slots.api),output:publicSlot(slots.output),logWriteError:journal.status().writeError});
  async function stopSlot(name){const s=slots[name];if(s.timer){clearTimeout(s.timer);s.timer=null;}const child=s.child;if(!child)return;s.expected=true;s.status='stopping';await new Promise(resolve=>{let complete=false;const done=()=>{if(complete)return;complete=true;clearTimeout(timer);resolve();};const timer=setTimeout(()=>{child.kill();},2500);child.once('exit',done);void s.peer.request('shutdown').catch(()=>{});if(child.exitCode!==null)done();});}
  async function launch(name){const s=slots[name];if(stopping||s.child||s.resetting||name==='output'&&(!outputEnabled||slots.api.status!=='ready'))return;
-  if(name==='output'&&config.id==='kdw-max-game'){s.resetting=true;try{const reset=await slots.api.peer.request('reset-game-for-output');journal.record('game.startup-reset',reset);}finally{s.resetting=false;}if(stopping||s.child)return;}
+  if(name==='output'&&config.id==='kdw-max-game'){s.resetting=true;try{const result=await gameStartup.prepare(()=>slots.api.peer.request('reset-game-for-output'));journal.record(result.preserved?'game.output-resume':'game.startup-reset',result);}finally{s.resetting=false;}if(stopping||s.child)return;}
   s.status='starting';s.expected=false;s.lastSeen=performance.now();s.started=s.lastSeen;s.generation=++generation;s.output=null;s.error=null;
   const env={...process.env,KDW_RUNTIME_GENERATION:String(s.generation)};delete env.ELECTRON_RUN_AS_NODE;
   const child=spawn(process.execPath,[path.join(root,'launcher/desktop-main.cjs'),'--runtime-role='+name],{cwd:root,env,windowsHide:true,stdio:['ignore','pipe','pipe','ipc']});s.child=child;s.peer=rpcPeer(child,{timeout:3500});

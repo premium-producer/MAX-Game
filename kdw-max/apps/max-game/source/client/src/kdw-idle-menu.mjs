@@ -3,7 +3,7 @@ import {V5MotionValue} from './journey-v5-inertia.mjs';
 import {V5_MOTION} from './journey-v5-motion-profile.mjs';
 import {v5IconTile} from './journey-v5-icons.mjs';
 import {v5CopyMarkup} from './kdw-ui-copy.mjs';
-import {createDeviceVideo} from './journey-v5-video-source.mjs';
+import {createStandbyVideoPlayer} from './kdw-standby-videos.mjs';
 import {IDLE_VIDEO_ASSET,idleMissionChoices,idleLayout} from './journey-v5-idle-layout.mjs';
 
 export function createIdleMenu({host,foreground,catalog,assetCatalog,reduced,changed,onSelect,onError,layout:customLayout,hostRect}){
@@ -24,13 +24,13 @@ export function createIdleMenu({host,foreground,catalog,assetCatalog,reduced,cha
  const app=document.createElement('div');app.className='demo-app';app.dataset.device='pc';Object.assign(app.style,{width:'100%',height:'100%',padding:'12px 10px',boxSizing:'border-box'});
  const content=document.createElement('div');content.className='phone-content';content.dataset.taskContent='';Object.assign(content.style,{width:'100%',height:'100%'});app.append(content);shell.append(app);
  const asset=assetCatalog.devices.find(a=>a.assetId===IDLE_VIDEO_ASSET);if(!asset)throw Error('MAX_IDLE_VIDEO_MISSING');
- const video=createDeviceVideo(document,asset,{loop:true,muted:false,audioGroup:'standby',onError});
- content.append(video.element);
- const readyVideo=()=>{videoReady=true;shell.dataset.sceneVersion='idle-video';shell.dataset.mediaReadyKey='idle-video';foreground.refreshPart(shell);changed();};
+ let videoKey='idle-video';
+ const readyVideo=(key=videoKey)=>{videoKey=key;videoReady=true;shell.dataset.sceneVersion=key;shell.dataset.mediaReadyKey=key;foreground.refreshPart(shell);changed();};
+ const video=createStandbyVideoPlayer({document,asset,content,foreground,onChange:key=>{if(disposed)return;videoFallback=false;readyVideo(key);},onError});
  const fallbackVideo=()=>{if(disposed||videoReady)return;videoFallback=true;const still=document.createElement('img');still.style.cssText='display:block;width:100%;height:100%;object-fit:contain';still.src=fallbackImageSource({width:960,height:550});still.alt='MAX';content.replaceChildren(still);void guardImage(still).ready.then(()=>{if(!disposed)readyVideo();});};
- const videoDeadline=setTimeout(fallbackVideo,2500);
+ const videoDeadline=setTimeout(fallbackVideo,12000);
  void video.ready.then(()=>{if(disposed||videoFallback)return;clearTimeout(videoDeadline);readyVideo();}).catch(error=>{if(!disposed){fallbackVideo();onError(error);}});
- reveal(shell,.1,()=>videoReady&&shell.dataset.gpuReadyKey==='idle-video');
+ reveal(shell,.1,()=>videoReady&&shell.dataset.gpuReadyKey===videoKey);
  for(const [index,choice]of choices.entries()){
   const el=document.createElement('button');el.className='object';el.dataset.object='idle-'+choice.missionId;el.dataset.idleMission=choice.missionId;el.dataset.planning='true';el.dataset.pathPresence='0';el.inert=true;
   el.setAttribute('aria-label',choice.title);el.innerHTML=v5IconTile(catalog,choice.taskId,layout.iconSize)+'<span class="object-label icon-caption" style="font-size:32px">'+v5CopyMarkup(choice.title)+'</span>';
@@ -61,6 +61,6 @@ export function createIdleMenu({host,foreground,catalog,assetCatalog,reduced,cha
  },select(id){if(disposed||exiting||selected||!ready||!choices.some(c=>c.missionId===id))return;selected=true;onSelect(id);},
   exit(){if(exitPromise)return exitPromise;if(disposed||parts.every(part=>part.alpha.at(0,.005,.05)))return Promise.resolve();exiting=true;exitPromise=new Promise(resolve=>{resolveExit=resolve;exitTimer=setTimeout(finishExit,1200);});return exitPromise;},
   restore(){if(disposed)return;exiting=false;selected=false;finishExit();exitPromise=undefined;},
-  dispose(){if(disposed)return;disposed=true;clearTimeout(videoDeadline);finishExit();foreground.releaseVideo?.(video.element);video.dispose();for(const el of buttons)el.remove();logo.remove();shell.remove();foreground.invalidate();}
+  dispose(){if(disposed)return;disposed=true;clearTimeout(videoDeadline);finishExit();video.dispose();for(const el of buttons)el.remove();logo.remove();shell.remove();foreground.invalidate();}
  };
 }

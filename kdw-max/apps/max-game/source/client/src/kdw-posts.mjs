@@ -1,3 +1,4 @@
+import {arrivedCount,createArrivalReporter} from './kdw-activity-arrivals.mjs';
 import {webglActivitiesEnabled} from './activity-webgl/activity-runtime.mjs';
 import {mountWebGLActivity} from './activity-webgl/activity-controller.mjs';
 import {guardImage,fallbackImageSource,visitorMessage} from './kdw-graceful-media.mjs';
@@ -32,6 +33,7 @@ export function mountPostActivity({getSession}){
   onApproach(id){feedSignature='';refreshFeed(id);}});
  let trails=null;
  const active=s=>s?.state?.taskId===POSTS_TASK&&s.state.screenId===POSTS_SCREEN&&['task','result'].includes(s.state.status);
+ const arrivals=createArrivalReporter({getSession,getKey:()=>context,taskId:POSTS_TASK,screenId:POSTS_SCREEN,type:'POST_ARRIVED',onSnapshot:next=>{snapshot=next;}});
  const posts=()=>snapshot?.state.progress.business?.postsActivity;
  function type(){return posts()?.businessType??snapshot?.state.progress.business?.answers?.businessType??'cafe';}
  function valid(key=context){return !disposed&&key===context&&active(getSession()?.snapshot);}
@@ -57,7 +59,7 @@ export function mountPostActivity({getSession}){
   // The full header participates in entry; do not pop the counter in only
   // after START_POSTS returns and the phone has already become opaque.
   audience=posts()?.audience??POSTS_RULES.initialAudience;audienceFrom=audience;audienceAt=performance.now();
-  root.querySelector('[data-post-audience]').textContent=number(audience)+' подписчиков';
+  root.querySelector('[data-post-audience]').textContent=(posts()?.version??POSTS_RULES.version)>=16?`Посты: ${arrivedCount(posts())}/${POSTS_RULES.selectionGoal}`:number(audience)+' подписчиков';
   root.querySelector('.kdw-post-feed').addEventListener('wheel',()=>{autoScroll=false;stopScroll();},{passive:true});
   root.querySelector('.kdw-post-feed').addEventListener('pointerdown',()=>{autoScroll=false;stopScroll();});
   root.querySelector('.kdw-post-feed').addEventListener('scroll',()=>{const feed=root.querySelector('.kdw-post-feed');if(feed.scrollHeight-feed.clientHeight-feed.scrollTop<8){autoScroll=true;root.querySelector('.kdw-post-new').hidden=true;}},{passive:true});
@@ -89,7 +91,7 @@ export function mountPostActivity({getSession}){
  }
  function displayAudience(){const progress=reduced.matches?1:counterProgress(performance.now()-audienceAt);return Math.round(audienceFrom+((audience??audienceFrom)-audienceFrom)*progress);}
  function updateMetrics(elapsed){
-  setText(root.querySelector('[data-post-audience]'),number(displayAudience())+' подписчиков');
+  setText(root.querySelector('[data-post-audience]'),(posts()?.version??POSTS_RULES.version)>=16?`Посты: ${arrivedCount(posts())}/${POSTS_RULES.selectionGoal}`:number(displayAudience())+' подписчиков');
   if(performance.now()-metricsAt<32)return;metricsAt=performance.now();
   for(const row of posts()?.published??[]){const node=root.querySelector(`[data-published="${row.spawnId}"]`);if(!node)continue;
    let reactionAge=reduced.matches?COUNTER_DURATION:null;
@@ -209,6 +211,7 @@ export function mountPostActivity({getSession}){
    if(entering&&feedSignature)scrollToBottom();
    root.querySelector('.kdw-post-trails').style.opacity=String(g.alpha);
    ready=loadedType===type()&&!document.hidden&&phase==='task'&&phoneAlpha>.97&&!editor.inert;
+   arrivals.tick((posts()?.published??[]).filter(row=>!motion.has(row.spawnId)),performance.now(),ready&&valid()&&phase==='task'&&posts()?.version>=16&&!postsGoal(posts()));
    root.dataset.ready=String(ready);root.querySelector('[data-post-retry]').hidden=!loadError&&!error;
    if(loadError)status(loadError);else if(!loadedType)root.querySelector('[data-post-hint]').textContent='Готовим публикации…';
    const read=clock.read(getSession()?.connected!==false);lastClock=read.time??snapshot.view.clock.serverTime;

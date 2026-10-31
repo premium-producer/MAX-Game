@@ -23,3 +23,16 @@ test('Uploads, audio range delivery, traversal/origin/content/volume rejection',
  const value=structuredClone(s.value);value.events.click1.file='missing.wav';assert.equal((await f.request('settings',{revision:s.revision,value})).status,400);value.events.click1.file='Мой звук.wav';assert.equal((await f.request('settings',{revision:s.revision,value})).status,200);
  }finally{await f.close();}
 });
+
+test('MAX music migration preserves settings and imports new tracks once',async()=>{
+ const f=await fixture('max');try{
+  const seed=path.join(f.root,'www/webgl-v5/audio'),name='music_seoul_track.ogg';fs.writeFileSync(path.join(seed,name),wave);
+  const reloaded=createSoundLibrary({root:f.root,origin:f.origin,app:'max'});assert.ok(reloaded.state().files.some(f=>f.name===name));
+  fs.unlinkSync(path.join(f.root,'data/audio',name));createSoundLibrary({root:f.root,origin:f.origin,app:'max'});assert.equal(fs.existsSync(path.join(f.root,'data/audio',name)),false);
+  const s=(await f.request('state')).value;assert.equal(s.value.music.mode,'single');assert.equal(s.value.music.when,'missions');
+  const music={mode:'playlist',when:'always',tracks:['game_ambience_loop.ogg','game_button_click_1.ogg']};
+  let r=await f.request('settings',{revision:s.revision,value:{...s.value,music}});assert.equal(r.status,200);
+  const old={...r.value.value};delete old.music;r=await f.request('settings',{revision:r.value.revision,value:old});assert.equal(r.status,200);assert.deepEqual(r.value.value.music,music);
+  for(const bad of [{...music,when:'wrong'},{...music,tracks:[]},{...music,tracks:['missing.ogg']},{...music,tracks:['../file.ogg']},{...music,tracks:['game_ambience_loop.ogg','game_ambience_loop.ogg']}])assert.equal((await f.request('settings',{revision:r.value.revision,value:{...r.value.value,music:bad}})).status,400);
+ }finally{await f.close();}
+});

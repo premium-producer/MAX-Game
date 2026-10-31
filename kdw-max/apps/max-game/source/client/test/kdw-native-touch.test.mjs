@@ -28,3 +28,5 @@ test('touching a native input focuses it before invoking the keyboard handler',(
 
 
 test('one navigation contact cannot reactivate the same button after jitter or a busy toggle',()=>{const f=fixture();try{const b=f.button('next');b.dataset={};b.classList={contains:v=>v==='kdw-transition-button'};f.current=b;f.send('pointerdown');assert.equal(b.dataset.transitionContact,'true');b.disabled=true;f.send('pointermove',{clientX:250});b.disabled=false;f.send('pointermove');assert.deepEqual(f.clicks,['next']);f.send('pointerup');assert.equal(b.dataset.transitionContact,undefined);f.send('pointerdown');assert.deepEqual(f.clicks,['next','next']);}finally{f.stop();}});
+
+test('overlapping hit zones allow another live button but never auto-advance a replacement screen',()=>{const f=fixture();try{const a=f.button('a'),b=f.button('b',170);a.isConnected=true;b.isConnected=true;f.current=a;f.send('pointerdown');f.current=b;f.send('pointermove',{clientX:185});assert.deepEqual(f.clicks,['a','b']);b.isConnected=false;f.current=f.button('next-screen',170);f.send('pointermove',{clientX:185});assert.deepEqual(f.clicks,['a','b']);}finally{f.stop();}});

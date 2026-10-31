@@ -4,7 +4,9 @@ export const V5_QR_CARD_WIDTH=640;
 export const V5_QR_CARD_HEIGHT=V5_QR_SIZE+48*2+32+80;
 export const V5_QR_CAPTION='Узнать больше о возможностях MAX';
 export function v5QrAsset(catalog,qr){
- // Reviewed PNG has the embedded brand and has been independently decoded.
+ // Keep the supplied QR artwork intact, including its embedded central logo.
+ // The catalog assigns the business QR only to the business mission.
+ if(qr?.asset?.path?.startsWith('assets/kdw-native/final-qr/'))return qr.asset;
  return catalog.assets['official.max-qr-png']??qr?.asset;
 }
 export function v5QrFinaleEligible(snapshot,videoFinale=false){

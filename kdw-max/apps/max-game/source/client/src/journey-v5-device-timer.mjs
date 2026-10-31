@@ -53,6 +53,7 @@ export function installV5DeviceTimerStyles(doc){
  color:#fff;font-family:inherit;font-size:64px;font-weight:500;font-variant-numeric:tabular-nums;
  line-height:1;white-space:nowrap;text-align:center;pointer-events:none;user-select:none;
  }
+ html[data-visual=webgl-bfm-v5] #circles button[data-mission-timer]{pointer-events:auto;cursor:pointer}
  html[data-visual=webgl-bfm-v5] #circles .v5-scan-queue{font-size:40px}
  html[data-visual=webgl-bfm-v5] #circles .v5-scan-wait-timer,
  html[data-visual=webgl-bfm-v5] #circles .v5-scan-queue{

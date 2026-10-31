@@ -1,3 +1,4 @@
+import {setKeyboardLayout} from './kdw-pixel-map.mjs';
 import {createTransitionControls} from './kdw-transition-controls.mjs';
 import {placeTransitionAction} from './kdw-transition-action.mjs';
 import {V5MotionValue} from './journey-v5-inertia.mjs';
@@ -57,6 +58,7 @@ export function createCompositionLayout({document,params,arena,getSize,getHost,g
  function layout({delta=0,reduced=false}={}){
   const host=getHost();if(!host||document.documentElement.dataset.pixelMap!=='true')return null;
   const v=override??(previewUntil&&Date.now()>previewUntil?savedValue:value),standby=host.dataset.screen==='standby',device=host.querySelector('.route-phone'),kind=device?.querySelector('.demo-app')?.dataset.device==='pc'?'pc':'phone',screen=document.documentElement.dataset.kdwScreen??'';
+  setKeyboardLayout(v.keyboard);
   transitionControls.update(host);
   const presentation=getPresentation(),current=resolveComposition(v,presentation?.kind??kind,presentation?.screen??screen),targets=[];
   for(const [name,val]of Object.entries({fallingCardScale:current.relative.fallingCardScale??2.2,fallingSpawnRight:current.relative.fallingSpawnRight??0}))if(host.dataset[name]!==String(val))host.dataset[name]=String(val);

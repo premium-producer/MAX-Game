@@ -1,3 +1,4 @@
+import {arrivedCount,createArrivalReporter} from './kdw-activity-arrivals.mjs';
 import {webglActivitiesEnabled} from './activity-webgl/activity-runtime.mjs';
 import {mountWebGLActivity} from './activity-webgl/activity-controller.mjs';
 import {guardImage,fallbackImageSource,visitorMessage} from './kdw-graceful-media.mjs';
@@ -100,7 +101,7 @@ function mountLegacyInteractions({getSession,onMenu,deferAlignment=false}){
  function slotMarkup(){const rows=storeRows(),capacity=Math.max(8,Math.ceil((rows.length+2)/2)*2);return rows.map((row,index)=>{const product=storeProduct(row.postId);return `<article class="kdw-slot" data-filled="true" data-rating="${row.score}"><div data-kdw-slot="${index}" class="kdw-slot-content">${photo(product)}<div class="kdw-store-price"><strong>${product.price.toLocaleString('ru-RU')} ₽</strong>${ratingMarkup(row.score)}</div><span class="kdw-store-name">${esc(typographyText(product.name))}</span>${product.description?`<small class="kdw-store-description">${esc(typographyText(product.description))}</small>`:''}<span class="kdw-store-more">Подробнее</span></div></article>`;}).join('')+Array.from({length:capacity-rows.length},()=>'<div class="kdw-slot kdw-slot-placeholder" aria-hidden="true"></div>').join('');}
  function productMarkup(product){return `<button type="button" class="kdw-product" data-kdw-product="${product.id}" aria-label="Добавить ${esc(product.name)}">${photo(product)}<span class="kdw-product-title">${esc(typographyText(product.name))}</span><strong>${product.price.toLocaleString('ru-RU')} ₽</strong>${product.description?`<small class="kdw-product-description">${esc(typographyText(product.description))}</small>`:''}</button>`;}
  function storeMarkup(){
-  return `<div class="kdw-store-editor kdw-max-store"><header class="kdw-store-header"><img src="./assets/kdw-native/store-header.svg" alt="" draggable="false"><h2>Рейтинг магазина: <span data-store-rating>4,0</span></h2></header><div class="kdw-store-scroll" tabindex="0" aria-label="Каталог магазина"><div class="kdw-store-slots">${slotMarkup()}</div></div></div><footer class="kdw-store-actions"><button type="button" class="kdw-activity-button kdw-transition-button" data-kdw-submit hidden>Завершить миссию</button><button type="button" class="kdw-activity-button" data-kdw-image-retry hidden>Повторить загрузку</button><p class="kdw-error" data-kdw-error role="status" aria-live="polite"></p><p class="kdw-moderation-notice" data-kdw-moderation role="status" aria-live="polite"></p></footer><section class="kdw-product-stream" aria-label="Товары для витрины"></section>`;
+  return `<div class="kdw-store-editor kdw-max-store"><header class="kdw-store-header"><img src="./assets/kdw-native/store-header.svg" alt="" draggable="false"><h2><span data-store-goal-label>Товары в витрине:</span> <span data-store-rating>0/10</span></h2></header><div class="kdw-store-scroll" tabindex="0" aria-label="Каталог магазина"><div class="kdw-store-slots">${slotMarkup()}</div></div></div><footer class="kdw-store-actions"><button type="button" class="kdw-activity-button kdw-transition-button" data-kdw-submit hidden>Завершить миссию</button><button type="button" class="kdw-activity-button" data-kdw-image-retry hidden>Повторить загрузку</button><p class="kdw-error" data-kdw-error role="status" aria-live="polite"></p><p class="kdw-moderation-notice" data-kdw-moderation role="status" aria-live="polite"></p></footer><section class="kdw-product-stream" aria-label="Товары для витрины"></section>`;
  }
  function alignStore(){
   if(scene!=='store')return;
@@ -108,6 +109,7 @@ function mountLegacyInteractions({getSession,onMenu,deferAlignment=false}){
   const ready=g&&g.matched&&g.phone.dataset.sceneVersion?.includes(screenId)&&g.phone.querySelector('.task-media-canvas img')?.getAttribute('src')?.endsWith('kdw-native/store-phone.svg');
   const controls=overlay.querySelector('.kdw-store-actions');
   if(!ready){editor.style.opacity='0';field.style.opacity='0';controls.style.opacity='0';editor.inert=field.inert=controls.inert=true;return;}
+  const a=latestSnapshot?.state.progress.business?.storeActivity;arrivals.tick((a?.published??[]).filter((row,index)=>!storeMotion.has(index)),performance.now(),scenePhase==='task'&&a?.version>=11&&!storeGoal(a)&&g.alpha>.97);
   const photosReady=ensureStorePhotos(),phoneAlpha=alignActivityPhone(editor,g);editor.inert ||=scenePhase!=='task'||!photosReady;
   if(!photosReady){editor.style.opacity='0';error(storePhotos.status==='error'?'Не удалось загрузить фотографии':'Загружаем фотографии…');}
   const retry=overlay.querySelector('[data-kdw-image-retry]');if(retry)retry.hidden=storePhotos.status!=='error';
@@ -116,6 +118,7 @@ function mountLegacyInteractions({getSession,onMenu,deferAlignment=false}){
   for(const node of field.querySelectorAll('[data-kdw-product]'))node.disabled ||=submitBusy||storePending;
  }
  function redraw(){storeMotion.clear();overlay.innerHTML=scene==='channel'?channelMarkup():storeMarkup();for(const image of overlay.querySelectorAll('img'))guardImage(image,{fallback:fallbackImageSource()});resize();alignChannel();alignStore();buttonsBusy(submitBusy);refreshStore();}
+ const arrivals=createArrivalReporter({getSession,getKey:()=>context,taskId:STORE_TASK,screenId:STORE_SCREEN,type:'PRODUCT_ARRIVED',onSnapshot:next=>{latestSnapshot=next;refreshStore();}});
  function refreshStore(){
   if(scene!=='store')return;
   const activity=latestSnapshot?.state.progress.business?.storeActivity,signature=JSON.stringify(activity?.published??[]),slots=overlay.querySelector('.kdw-store-slots');
@@ -126,7 +129,7 @@ function mountLegacyInteractions({getSession,onMenu,deferAlignment=false}){
    scroller.scrollTo({top:Math.max(0,bottom-scroller.clientHeight),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});}
   const finished=storeFinished();document.documentElement.dataset.kdwStorePlaying=String(!finished);
   overlay.querySelector('[data-kdw-submit]').hidden=!finished;
-  const rating=overlay.querySelector('[data-store-rating]'),ratingText=storeRating(activity).toFixed(1).replace('.',',');if(rating.textContent!==ratingText)rating.textContent=ratingText;
+  const rating=overlay.querySelector('[data-store-rating]'),countGoal=(activity?.version??STORE_VERSION)>=11,ratingText=countGoal?`${arrivedCount(activity)}/10`:storeRating(activity).toFixed(1).replace('.',',');overlay.querySelector('[data-store-goal-label]').textContent=countGoal?'Товары в витрине:':'Рейтинг магазина:';if(rating.textContent!==ratingText)rating.textContent=ratingText;
   storeMotion.sync();buttonsBusy(submitBusy);
  }
  async function startStore(){const session=getSession();if(storeStarting||session.snapshot?.state.progress.business?.storeActivity||session.busy||!session.snapshot?.state.ownerActive)return;storeStarting=true;const key=context;try{const r=await session.command('START_STORE',{taskId:STORE_TASK,screenId:STORE_SCREEN});if(key===context){latestSnapshot=session.snapshot;if(!r?.reply.ok)error('Не удалось начать каталог.');}}finally{storeStarting=false;}}
@@ -134,6 +137,7 @@ function mountLegacyInteractions({getSession,onMenu,deferAlignment=false}){
   storeMotion.begin(index,button);
   try{const session=getSession(),r=await session.command('PICK_PRODUCT',{taskId:STORE_TASK,screenId:STORE_SCREEN,spawnId:button.dataset.productSpawn});if(key!==context)return;if(!r?.reply.ok){storeMotion.cancel(index);error('Товар уже улетел. Выберите следующий.');return;}latestSnapshot=session.snapshot;refreshStore();error('');storeMotion.add(product,index,button);}catch(cause){if(key===context){storeMotion.cancel(index);error('Не удалось выбрать товар. Попробуйте ещё раз.');}}finally{storePending=false;delete button.dataset.pending;}}
  function refreshKeyboard(){updateKeyboardPanel(overlay.querySelector('.kdw-channel-scene'),keyboard(),keyboardOpen);}
+ function openKeyboard(f){if(!f||keyboardOpen&&activeField===f)return;activeField=f;language=f==='slug'?'en':'ru';shift=f!=='slug';symbols=false;keyboardOpen=true;refreshKeyboard();}
  function dismissKeyboard(){keyboardOpen=false;overlay.querySelector('[data-kdw-field]:focus')?.blur();refreshKeyboard();}
  function editKey(key){
   if(submitBusy)return;
@@ -141,7 +145,7 @@ function mountLegacyInteractions({getSession,onMenu,deferAlignment=false}){
   if(key==='shift'){shift=!shift;refreshKeyboard();return;}
   if(key==='symbols'){symbols=!symbols;refreshKeyboard();return;}
   if(key==='language'){language=language==='ru'?'en':'ru';symbols=false;refreshKeyboard();return;}
-  if(key==='enter'){if(activeField==='name'){activeField='description';overlay.querySelector('[name=description]').focus();refreshKeyboard();}else dismissKeyboard();return;}
+  if(key==='enter'){if(activeField==='name'){openKeyboard('description');overlay.querySelector('[name=description]').focus();}else dismissKeyboard();return;}
   const input=overlay.querySelector(`[name="${activeField}"]`);if(!input)return;
   const insertion=key==='backspace'?key:shift?key.toUpperCase():key;
   const edited=keyboardEdit(input.value,input.selectionStart??input.value.length,input.selectionEnd??input.value.length,insertion,{limit:CHANNEL_LIMITS[activeField]});
@@ -166,10 +170,10 @@ function mountLegacyInteractions({getSession,onMenu,deferAlignment=false}){
  for(const type of ['pointerup','pointercancel','lostpointercapture'])overlay.addEventListener(type,event=>{const b=event.target.closest('[data-product-spawn]');if(b)delete b.dataset.held;});
  const textInputs=createTextInputGuard(overlay,{selector:'[data-kdw-field]',fieldAttribute:'data-kdw-field',limits:CHANNEL_LIMITS,onEdit(input,result){if(draft){draft[input.dataset.kdwField]=result.value;changed();}},onRemoved(){clearTimeout(noticeTimer);noticeText=TEXT_REMOVED_NOTICE;overlay.querySelectorAll('[data-kdw-moderation],[data-kdw-moderation-keyboard]').forEach(e=>e.textContent=noticeText);noticeTimer=setTimeout(()=>{noticeText='';overlay.querySelectorAll('[data-kdw-moderation],[data-kdw-moderation-keyboard]').forEach(e=>e.textContent='');},2200);}});
 
- overlay.addEventListener('focusin',event=>{if(event.target.dataset.kdwField){activeField=event.target.dataset.kdwField;keyboardOpen=true;refreshKeyboard();}});
+ overlay.addEventListener('focusin',event=>{if(event.target.dataset.kdwField){openKeyboard(event.target.dataset.kdwField);}});
  overlay.addEventListener('keydown',event=>{if(event.isComposing)return;if(event.key==='Escape'&&scene==='channel'){event.preventDefault();event.stopPropagation();dismissKeyboard();}if(event.key==='Enter'&&event.target.name==='name'){event.preventDefault();editKey('enter');}});
  overlay.addEventListener('click',event=>{
-  if(event.target.matches('[data-kdw-field]')){activeField=event.target.dataset.kdwField;keyboardOpen=true;refreshKeyboard();return;}
+  if(event.target.matches('[data-kdw-field]')){openKeyboard(event.target.dataset.kdwField);return;}
   const button=event.target.closest('button');if(!button||button.disabled||button.closest('[inert],[hidden]'))return;
   if(button.hasAttribute('data-kdw-menu')){if(submitBusy)return;void flush().then(()=>onMenu()).catch(cause=>error(cause.message));return;}
   if(button.hasAttribute('data-kdw-submit')){void act();return;}
@@ -186,7 +190,7 @@ function mountLegacyInteractions({getSession,onMenu,deferAlignment=false}){
  function hide(){clearTimeout(noticeTimer);noticeText='';textInputs.reset();if(!scene)return;productStream.clear();if(scene==='store')fadeActivityOut(overlay);storeSignature='';storeMotion.clear();clearTimeout(saveTimer);scene=null;context='';dirty=false;submitBusy=false;overlay.hidden=true;overlay.replaceChildren();delete document.documentElement.dataset.kdwInteraction;delete document.documentElement.dataset.kdwStorePlaying;document.querySelector('#circles').inert=false;}
  return {
   flush,
-  align(){alignChannel();alignStore();},
+  align(){if(scene==='channel')resize();alignChannel();alignStore();},
   update(next,phase){
    if(disposed)return;if(next===latestSnapshot&&phase===scenePhase)return;latestSnapshot=next;scenePhase=phase;productStream.accept(next);if(next?.state.progress.business?.answers?.businessType)ensureStorePhotos();const kind=currentScene(next,phase);if(!kind){hide();return;}
    const s=next.state,key=`${s.runId}:${s.taskId}`;

@@ -7,8 +7,12 @@ try{
  fs.symlinkSync(path.join(root,'apps/STARTUP'),path.join(temp,'STARTUP'),'dir');
  for(const name of ['client','stand-base','vendor','stand-output','operator'])fs.symlinkSync(path.join(original,'source',name),path.join(app,'source',name),'dir');
  copy(path.join(original,'source/build.mjs'),path.join(app,'source/build.mjs'));
+ copy(path.join(original,'source/prepare-mission-fallbacks.mjs'),path.join(app,'source/prepare-mission-fallbacks.mjs'));
  for(const name of Object.keys(JSON.parse(fs.readFileSync(path.join(original,'source/stand-base/manifest.json'))).files).filter(n=>n.startsWith('public/'))){const relative=name.slice(7);copy(path.join(original,'www',relative),path.join(app,'www',relative));}
  for(const name of ['r6-app.js','build.json'])copy(path.join(original,'www/webgl-v5',name),path.join(app,'www/webgl-v5',name));
+ // Fallback generation also reads original exported media outside public/.
+ fs.mkdirSync(path.join(app,'www/assets'),{recursive:true});
+ for(const entry of fs.readdirSync(path.join(original,'www/assets'),{withFileTypes:true}))if(entry.isDirectory()&&entry.name!=='kdw-native')fs.symlinkSync(path.join(original,'www/assets',entry.name),path.join(app,'www/assets',entry.name),'dir');
  const config={...JSON.parse(fs.readFileSync(path.join(original,'app.json'))),production:false,entry:'/webgl-v5/client.html?view=browser&custom=preserve',version:'test-profile',port:19567};const bytes=JSON.stringify(config,null,2)+'\n';fs.writeFileSync(path.join(app,'app.json'),bytes);
  const run=spawnSync(process.execPath,[path.join(app,'source/build.mjs'),path.join(original,'source/client/node_modules')],{cwd:root,encoding:'utf8'});assert.equal(run.status,0,run.stderr);assert.equal(fs.readFileSync(path.join(app,'app.json'),'utf8'),bytes);
  const built=JSON.parse(fs.readFileSync(path.join(app,'www/webgl-v5/r9-build.json')));assert.match(built.buildId,/^[0-9a-f]{20}$/);

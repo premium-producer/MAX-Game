@@ -1,7 +1,11 @@
 import templates from './kdw-template-media.json' with {type:'json'};
 // Display ownership is independent of a network/decode attempt. A failed image
 // never becomes an error screen and a late portrait cannot revoke a ready frame.
-const guards=new WeakMap(),live=new Set();
+const guards=new WeakMap(),live=new Set(),pendingReveals=new WeakMap();
+// The DOM animation is also the clock for the WebGL/Spout material. Start only
+// after the replacement texture was uploaded; decode alone is not GPU readiness.
+export function revealUploadedMedia(image){pendingReveals.get(image)?.start();}
+export function mediaGhostOpacity(image){return image?.dataset?.mediaGhost==='true'?Number(getComputedStyle(image).opacity):1;}
 const data=svg=>'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
 // A portrait fallback only belongs inside a portrait slot. Whole screens use
 // independent, embedded copies of the same reviewed media.
@@ -25,16 +29,21 @@ export function requestImageSource(image,source){const guard=guards.get(image);i
 export function guardImage(image,{fallback=fallbackForImage(image),onChange=()=>{},onFault=(reason)=>console.error('MAX media fallback',reason),fallbackAfter=1500,attemptTimeout=6000,makeImage=()=>new Image()}={}){
  guards.get(image)?.dispose();
  let disposed=false,epoch=0,sourceReadyVersion=0,display=image.src,shown=!!(image.complete&&image.naturalWidth),readyDone=false,settle,fallbackTask=null;
- const timers=new Set(),ghosts=new Set(),probes=new Set(),ready=new Promise(r=>settle=r);
+ const timers=new Set(),ghosts=new Set(),animations=new Set(),probes=new Set(),ready=new Promise(r=>settle=r);
  const later=(fn,ms)=>{const id=setTimeout(()=>{timers.delete(id);fn();},ms);timers.add(id);return id;};
  const connected=()=>!disposed&&image.isConnected;
  function resolve(){if(!readyDone){readyDone=true;settle();}}
  function swap(source,isFallback){
   if(!connected())return;
-  let ghost;
-  if(shown&&source!==display&&image.animate&&!globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches){ghost=image.cloneNode(true);ghost.removeAttribute('id');ghost.dataset.mediaGhost='true';ghost.setAttribute('aria-hidden','true');Object.assign(ghost.style,{position:'absolute',left:image.offsetLeft+'px',top:image.offsetTop+'px',width:image.offsetWidth+'px',height:image.offsetHeight+'px',pointerEvents:'none',margin:'0'});image.after(ghost);ghosts.add(ghost);}
+  // A newer source may arrive before the previous upload: keep the genuinely
+  // visible template, not a clone of the still-unpresented replacement.
+  let ghost=pendingReveals.get(image)?.ghost;
+  pendingReveals.delete(image);
+  if(!ghost&&shown&&source!==display&&image.animate&&!globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches){ghost=image.cloneNode(true);ghost.removeAttribute('id');ghost.dataset.mediaGhost='true';ghost.setAttribute('aria-hidden','true');Object.assign(ghost.style,{position:'absolute',left:image.offsetLeft+'px',top:image.offsetTop+'px',width:image.offsetWidth+'px',height:image.offsetHeight+'px',pointerEvents:'none',margin:'0',opacity:'1'});image.after(ghost);ghosts.add(ghost);}
   display=source;image.src=source;image.dataset.gpuDecoded='true';image.dataset.mediaFallback=String(isFallback);image.dataset.preparedPhone='true';shown=true;
-  if(ghost){const animation=ghost.animate([{opacity:1},{opacity:0}],{duration:360,easing:'ease-out',fill:'forwards'});animation.finished.catch(()=>{}).finally(()=>{ghost.remove();ghosts.delete(ghost);onChange();});}
+  if(ghost){const reveal={ghost,start(){if(pendingReveals.get(image)!==reveal||!connected())return;pendingReveals.delete(image);const animation=ghost.animate([{opacity:1},{opacity:0}],{duration:520,easing:'ease-in-out',fill:'forwards'});animations.add(animation);animation.finished.catch(()=>{}).finally(()=>{animations.delete(animation);ghost.remove();ghosts.delete(ghost);if(connected())onChange();});}};pendingReveals.set(image,reveal);
+   if(image.ownerDocument?.documentElement?.dataset.webglUi!=='true'||!image.closest('.route-phone'))reveal.start();
+  }
   resolve();onChange();
  }
  async function decoded(source){const probe=makeImage();probes.add(probe);probe.decoding='async';probe.src=source;let id;try{await Promise.race([probe.decode(),new Promise((_,reject)=>{id=later(()=>reject(Error('MEDIA_DECODE_TIMEOUT')),attemptTimeout);})]);return probe;}finally{clearTimeout(id);timers.delete(id);probes.delete(probe);}}
@@ -52,7 +61,7 @@ export function guardImage(image,{fallback=fallbackForImage(image),onChange=()=>
    catch(error){if(!connected()||version!==epoch)return;void useFallback(error?.message??'decode',version);if(attempt<2)await new Promise(r=>later(r,attempt?2000:350));}
   }
  }
- const guard={source:image.src,ready,request(source){const url=new URL(source,image.ownerDocument?.baseURI??globalThis.document?.baseURI??'http://localhost/').href;if(url===guard.source&&epoch)return;guard.source=url;image.dataset.mediaOriginal=url;const version=++epoch;void load(url,version);},fallback(reason){if(!fallbackTask)fallbackTask=useFallback(reason).finally(()=>fallbackTask=null);return fallbackTask;},dispose(){disposed=true;epoch++;for(const id of timers)clearTimeout(id);timers.clear();for(const probe of probes)probe.src='';probes.clear();for(const node of ghosts)node.remove();ghosts.clear();observer?.disconnect();live.delete(guard);resolve();},get connected(){return connected();}};
+ const guard={source:image.src,ready,request(source){const url=new URL(source,image.ownerDocument?.baseURI??globalThis.document?.baseURI??'http://localhost/').href;if(url===guard.source&&epoch)return;guard.source=url;image.dataset.mediaOriginal=url;const version=++epoch;void load(url,version);},fallback(reason){if(!fallbackTask)fallbackTask=useFallback(reason).finally(()=>fallbackTask=null);return fallbackTask;},dispose(){disposed=true;epoch++;pendingReveals.delete(image);for(const animation of animations)animation.cancel();animations.clear();for(const id of timers)clearTimeout(id);timers.clear();for(const probe of probes)probe.src='';probes.clear();for(const node of ghosts)node.remove();ghosts.clear();observer?.disconnect();live.delete(guard);resolve();},get connected(){return connected();}};
  const observer=typeof MutationObserver==='function'?new MutationObserver(()=>{if(image.src!==display){const next=image.src;image.src=display;guard.request(next);}}):null;
  observer?.observe(image,{attributes:true,attributeFilter:['src']});guards.set(image,guard);live.add(guard);
  image.dataset.gpuDecoded=shown?'true':'false';guard.request(image.src);

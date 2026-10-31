@@ -116,3 +116,20 @@ test('missing visitor photo retains each exact authored screen and template man'
   }
  }finally{fs.rmSync(root,{recursive:true,force:true});}
 });
+
+
+test('output restart and API reconstruction preserve claimed game, progress and queue',async t=>{
+ const {OutputStartupGate}=require('./runtime-policy.cjs'),root=fs.mkdtempSync(path.join(os.tmpdir(),'kdw-resume-'));
+ t.after(()=>fs.rmSync(root,{recursive:true,force:true}));let hub=createGameHub({root,origin,production:true});
+ const gate=new OutputStartupGate();await gate.prepare(()=>hub.resetForStartup());
+ const game=payload(),waiting=payload();hub.ingest(game);hub.ingest(waiting);
+ assert.equal((await request(hub,`/__kdw/link/games/${game.gameId}/claim`,{gameId:game.gameId})).status,200);
+ const progress={gameId:game.gameId,revision:5,runId:1,status:'task',missionId:'blogger',taskId:'blogger.channel',screenId:'blogger.channel.name',contentRevision:'audit'};
+ assert.equal((await request(hub,`/__kdw/link/games/${game.gameId}/progress`,progress)).status,200);
+ const before=hub.get(game.gameId);
+ for(let attempt=0;attempt<3;attempt++){
+  assert.equal((await gate.prepare(()=>hub.resetForStartup())).preserved,true);
+  hub=createGameHub({root,origin,production:true});assert.equal(hub.active().gameId,game.gameId);
+  assert.deepEqual(hub.get(game.gameId),before);assert.equal(hub.get(waiting.gameId).status,'queued');
+ }
+});

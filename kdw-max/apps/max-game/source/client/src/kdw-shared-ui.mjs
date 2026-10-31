@@ -15,7 +15,9 @@ export function sharedInstructionBody(snapshot,options){
 }
 export const sharedTaskMarkup=(snapshot,options)=>{
  const body=instructionText(sharedInstructionBody(snapshot,options));
+ const brightnessScreen=String(snapshot.state.screenId??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  let markup=original.sharedTaskMarkup(snapshot,options).replace(/<button\b[^>]*>/g,tag=>{const id=tag.match(/data-answer="([^"]+)"/)?.[1];return snapshot.view.actions?.some(a=>a.actionId===id&&a.placement!=='hotspot'&&a.transitionKind)?tag.replace('class="','class="kdw-transition-button '):tag;});
+ markup=markup.replace('class="demo-app"',`class="demo-app" data-device-screen="${brightnessScreen}"`).replace('class="phone-content"',`class="phone-content" data-device-screen="${brightnessScreen}"`);
  if(snapshot.view.missing){
   console.error('MAX_SCREEN_DESCRIPTOR_FALLBACK',snapshot.state.screenId);
   markup=markup.replace(/<p class="media-missing"[^>]*>[\s\S]*?<\/p>/,`<div class="task-media-frame"><div class="task-media-canvas" style="aspect-ratio:390/800"><img class="task-media-image" src="${fallbackImageSource({screenId:snapshot.state.screenId})}" alt="MAX"></div></div>`);

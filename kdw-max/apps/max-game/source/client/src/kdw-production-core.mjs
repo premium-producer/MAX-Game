@@ -1,3 +1,4 @@
+import {pauseCardTimer} from './kdw-card-settings.mjs';
 export const production=s=>!!s.standPolicy;
 export const timing=(s,key)=>s.standPolicy.value.max.timings[key]*1000;
 export function prepareProductionTask(s){s.deadlineAt=null;s.standReady=false;}
@@ -18,7 +19,7 @@ export function productionCommand(s,c,now){
  if(c.type==='STAND_TOUCH'){if(['task','result'].includes(s.status))s.lastTouchAt=now;return null;}
  if(c.type==='STAND_READY'){
   if(!['scan','task','completed','incomplete'].includes(s.status)||c.screenId!==(s.screenId??s.status))return 'SCENE_CONFLICT';
-  if(!s.standReady){s.standReady=true;s.deadlineAt=now+timing(s,s.status==='scan'?'palmWaitSeconds':s.status==='task'?'taskDurationSeconds':'qrDisplaySeconds');}
+  if(!s.standReady){s.standReady=true;s.deadlineAt=now+timing(s,s.status==='scan'?'palmWaitSeconds':s.status==='task'?'taskDurationSeconds':'qrDisplaySeconds');const activity=s.screenId==='business.channel.result'?s.progress.business?.postsActivity:s.screenId==='business.store.start'?s.progress.business?.storeActivity:null;if(activity?.popup){activity.startRemainingMs=timing(s,'taskDurationSeconds');pauseCardTimer(s,activity.popup,now);}}
   return null;
  }
  return 'STAND_COMMAND_UNAVAILABLE';

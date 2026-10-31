@@ -13,7 +13,8 @@ const text=(v,n,multiline=false)=>typeof v==='string'&&v.length<=n&&!/[\u0000-\u
 export const validSlug=v=>typeof v==='string'&&/^[a-z][a-z0-9_]{3,31}$/.test(v);
 export function validPersonalDraft(v){return exact(v,['schemaVersion','name','description','avatar','visibility','slug'])&&v.schemaVersion===2&&text(v.name,64)&&text(v.description,160,true)&&savedAvatar(v.avatar)&&['private','public'].includes(v.visibility)&&text(v.slug,32);}
 export const validReply=v=>exact(v,['schemaVersion','reply'])&&[1,2].includes(v.schemaVersion)&&text(v.reply,v.schemaVersion===1?400:PERSONAL_LIMITS.reply,true);
-export const personalComplete=v=>validPersonalDraft(v)&&v.name.trim().length>=2;
+export const personalComplete=v=>validPersonalDraft(v)&&v.name.trim().length>=1;
+export const defaultPersonalChannelName=avatar=>({visitor:'Мой канал',cinema:'Кино каждый день',cat:'Кошачьи истории',game:'Игровой мир',island:'Вокруг света',heart:'Хорошие новости'})[avatar]??'Мой канал';
 export function personalDraft(state){const p=state?.progress?.blogger,v=p?.interactions?.['blogger.channel']??p?.personalChannel??{};return {schemaVersion:2,name:v.name??'',description:v.description??'',avatar:savedAvatar(v.avatar)?v.avatar:'cinema',visibility:v.visibility??p?.answers?.['channel-type']??'private',slug:v.slug??''};}
 export function personalProfile(state){const p=state?.progress?.blogger,v=p?.personalChannel;return v??{...personalDraft(state),id:'legacy-channel',created:!!p?.answers?.['blogger.channel.filled']};}
 export function savePersonal(state,c,legacyReply=false,moderate=true){

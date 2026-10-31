@@ -10,8 +10,22 @@ function uiDiagnostic(){const now=performance.now();if(now-diagnosticAt<1000)ret
 
 let gameControlHandler=null;
 ipcRenderer.on('kdw:game-control',async(_event,packet)=>{if(typeof packet?.id!=='string')return;let value,error;try{if(!gameControlHandler)throw Error('OPERATOR_NOT_READY');value=await gameControlHandler(packet.input);}catch(e){error=String(e.message).slice(0,200);}ipcRenderer.send('kdw:game-control-result',{id:packet.id,value,error});});
-let overlay,overlaySignature='';
+let overlay,overlaySignature='',contactDiameterPx=72,keyboardContactDiameterPx=72,contactEdgeGrowthPercent=0;
+// Coordinates are CSS pixels; returned radius is in the 3072px wall space.
+// Use the actual exposed keyboard at the contact centre, not keyboard-open state.
+function lidarContactRadius(x,y){
+ const target=Number.isFinite(x)&&Number.isFinite(y)?document.elementFromPoint(x,y):null;
+ const keyboard=target?.closest?.('.kdw-keyboard');
+ if(keyboard&&!keyboard.closest('[hidden],[inert],[aria-hidden="true"]'))return keyboardContactDiameterPx/2;
+ // Same full-height touch zone as pixelMapViewport, excluding letterbox margins.
+ const scale=Math.min(innerWidth/3072,innerHeight/1536),height=1536*scale,top=(innerHeight-height)/2;
+ const edge=height>0&&Number.isFinite(y)?Math.min(1,Math.abs((y-top)/height*2-1)):0;
+ const growth=edge*edge*(3-2*edge);
+ return contactDiameterPx/2*(1+contactEdgeGrowthPercent/100*growth);
+}
 ipcRenderer.on('kdw:operator-overlay',(_event,value)=>{
+ for(const key of ['contactDiameterPx','keyboardContactDiameterPx']){const n=value[key];if(Number.isInteger(n)&&n>=2&&n<=400){if(key==='contactDiameterPx')contactDiameterPx=n;else keyboardContactDiameterPx=n;}}
+ if(Number.isInteger(value.contactEdgeGrowthPercent)&&value.contactEdgeGrowthPercent>=0&&value.contactEdgeGrowthPercent<=300)contactEdgeGrowthPercent=value.contactEdgeGrowthPercent;
  if(!document.body)return;
  const signature=JSON.stringify(value);if(signature===overlaySignature)return;overlaySignature=signature;
  // An absent cursor needs no full-screen canvas or compositor update.
@@ -33,7 +47,7 @@ ipcRenderer.on('kdw:operator-overlay',(_event,value)=>{
   c.fillText(p?`Касание: ${Math.round(p.x)}, ${Math.round(p.y)} · ${p.source==='preview'?'новая калибровка':'сохранённая калибровка'}${p.x<0||p.x>3072||p.y<0||p.y>1536?' · за экраном, маркер у края':''}`:raw?`Сигнал получен · X ${raw.x.toFixed(3)} · Y ${raw.y.toFixed(3)}`:'Нет текущего касания',1536,1470);
   if(s.cursorMapping==='unavailable'){c.font='22px sans-serif';c.fillText('Позиция на экране появится после четырёх углов — сохранённой калибровки нет',1536,1505);}
  }
- else if(value.cursor){c.beginPath();c.arc(value.cursor.x,value.cursor.y,18,0,Math.PI*2);c.fillStyle='#00dfffaa';c.fill();c.lineWidth=4;c.strokeStyle='#fff';c.stroke();}
+ else if(value.cursor){c.beginPath();c.arc(value.cursor.x,value.cursor.y,lidarContactRadius(value.cursor.x*innerWidth/3072,value.cursor.y*innerHeight/1536),0,Math.PI*2);c.fillStyle='#00dfffaa';c.fill();c.lineWidth=4;c.strokeStyle='#fff';c.stroke();}
 });
 ipcRenderer.on('kdw:output-state',(_event,value)=>{
  const next=typeof value==='boolean'?value:value?.active===true;
@@ -43,6 +57,7 @@ ipcRenderer.on('kdw:output-state',(_event,value)=>{
 });
 contextBridge.exposeInMainWorld('kdwStandOutput',Object.freeze({
  onGameControl:handler=>{gameControlHandler=handler;return()=>{if(gameControlHandler===handler)gameControlHandler=null;};},
+ contactRadius:lidarContactRadius,
  active:()=>active,
  presenting:()=>presenting,
  tick:(delta,options)=>{timingTick();return ipcRenderer.send('kdw:background-tick',{delta,reduced:options?.reduced===true,ready:document.documentElement.dataset.gameReady==='true',epoch:document.documentElement.dataset.kdwRun+':'+document.documentElement.dataset.kdwScreen,ui:uiDiagnostic()});},

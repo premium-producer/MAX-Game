@@ -3,10 +3,10 @@ import {localAudioEnabled} from '../audio-producer-port.mjs';
 import {observeMediaAudio} from '../media-audio-observer.mjs';
 // HTMLMediaElement owns decoding/looping; Three.VideoTexture owns frame updates.
 // This adapter only binds readiness and lifetime to the retained device scene.
-export function createDeviceVideo(document,asset,{onError=()=>{},onEnded=()=>{},loop=true,timeoutMs=15000,audioPort=null,audioTrackId='max-independent:video',muted=false,audioGroup='tasks'}={}){
+export function createDeviceVideo(document,asset,{onError=()=>{},onEnded=()=>{},loop=true,timeoutMs=15000,audioPort=null,audioTrackId='max-independent:video',muted=false,audioGroup='tasks',volume=1}={}){
  const element=document.createElement('video');element.className='task-media-image';
  const localAudio=localAudioEnabled(document)&&!audioPort;
- const videoAudio=localAudio?bindVideoAudio(element,{group:audioGroup,muted}):null;
+ const videoAudio=localAudio?bindVideoAudio(element,{group:audioGroup,muted,volume}):null;
  const applyMuted=value=>{if(videoAudio){videoAudio.setMuted(value);return;}const silent=!localAudio||value===true;element.muted=silent;element.defaultMuted=silent;if(silent)element.setAttribute('muted','');else element.removeAttribute('muted');};
  applyMuted(muted);element.loop=loop;element.playsInline=true;element.preload='auto';
  element.setAttribute('playsinline','');element.setAttribute('aria-hidden','true');
@@ -17,7 +17,7 @@ export function createDeviceVideo(document,asset,{onError=()=>{},onEnded=()=>{},
  const ready=new Promise((resolve,reject)=>{settle={resolve,reject};});
  function data(){
   if(disposed||loaded||element.readyState<2)return;
-  if(element.videoWidth!==asset.width||element.videoHeight!==asset.height){fail(Error('MAX_VIDEO_DIMENSIONS_MISMATCH'));return;}
+  if(asset.width!=null&&element.videoWidth!==asset.width||asset.height!=null&&element.videoHeight!==asset.height){fail(Error('MAX_VIDEO_DIMENSIONS_MISMATCH'));return;}
   // A newly loaded element already starts at zero. Seeking here invalidates
   // loadeddata in Firefox: readyState drops while the GPU scene is built.
   loaded=true;cleanupReady();settle.resolve();
@@ -28,8 +28,8 @@ export function createDeviceVideo(document,asset,{onError=()=>{},onEnded=()=>{},
  element.addEventListener('ended',ended);
  element.addEventListener('loadeddata',data);element.addEventListener('error',error);
  const timer=setTimeout(()=>fail(Error('MAX_VIDEO_READY_TIMEOUT')),timeoutMs);
- element.src=`./${asset.path}?v=${asset.sha256}`;element.load();data();
- return {element,ready,setMuted:applyMuted,
+ element.src=asset.url??`./${asset.path}?v=${asset.sha256}`;element.load();data();
+ return {element,ready,setMuted:applyMuted,setVolume:value=>videoAudio?.setVolume(value),
   setPlaying(value){
    wanted=!!value&&!disposed&&!failed;
    audioObserver?.setVisible(wanted&&loaded);audioObserver?.tick();

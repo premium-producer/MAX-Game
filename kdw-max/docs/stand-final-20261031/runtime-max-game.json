@@ -1,0 +1,4195 @@
+{
+  "snapshot": "stand-final-20261031",
+  "application": "max-game",
+  "captureStartedUtc": "2026-10-31T13:59:27.4065338Z",
+  "captureCompletedUtc": "2026-10-31T14:01:16.8693033Z",
+  "files": {
+    "apps/max-game/app.json": {
+      "bytes": 463,
+      "sha256": "2ced8aee2cd50d1690864f020a18adb6df43dbfb90d0f9dd36c86b07fca3549c"
+    },
+    "apps/max-game/Calibrate-Pixel-Map.bat": {
+      "bytes": 105,
+      "sha256": "c5bcadec14e7861fc76418c4cc28d2b96e93bde934b76997d58b6247d0130261"
+    },
+    "apps/max-game/Check-Settings.bat": {
+      "bytes": 128,
+      "sha256": "4e0a21b10057e7d2494a737030c8ffcf0e7f5d3f04081ae58882c3bd77ccb507"
+    },
+    "apps/max-game/Check.bat": {
+      "bytes": 177,
+      "sha256": "5d6baaadffa5003db324bb9659d91ca8ccf8b46b9ca10f4f15a376ea61c633df"
+    },
+    "apps/max-game/Edit-Settings.bat": {
+      "bytes": 122,
+      "sha256": "f87a432e8021b44cd6af4809ded5767b28d12c884fb1d47d4bd0fb322f9b76df"
+    },
+    "apps/max-game/Start-Admin.bat": {
+      "bytes": 163,
+      "sha256": "9d51295fdb2c026a3e3485f5708a1370700f9830304828af403a23fdd6d52cf0"
+    },
+    "apps/max-game/Start-Manual.bat": {
+      "bytes": 215,
+      "sha256": "f3358a9287981706318768b3f2a4d3f55d87b44f8363d25c1e7fa405e0d83749"
+    },
+    "apps/max-game/Start-Pixel-Map.bat": {
+      "bytes": 100,
+      "sha256": "6dfce99e9594a2998b77f3f5afb1c5bceba2b8e28903118603081aed602b3122"
+    },
+    "apps/max-game/Start-With-Stella.bat": {
+      "bytes": 215,
+      "sha256": "f06acc66b9e4934d2b64fe06a86c1d8ee9cbe9e2997b13ad42a8c1f4e3654e7b"
+    },
+    "apps/max-game/Start.bat": {
+      "bytes": 163,
+      "sha256": "066afea104817da2852b7ca4616dfd15697e633b36990bd620a7d11254ef354a"
+    },
+    "apps/max-game/Stop.bat": {
+      "bytes": 176,
+      "sha256": "481f45ce5459ffcf993101adc03f3c139cf73e52c20e525fa1114906b97db83e"
+    },
+    "apps/max-game/launcher/async-link.cjs": {
+      "bytes": 16086,
+      "sha256": "f6e9f88a2d99de103f10f362822b14d977b8d3215dfe58166690d4c098abfc7e"
+    },
+    "apps/max-game/launcher/background-preload.cjs": {
+      "bytes": 325,
+      "sha256": "dbea942e32d7e36267d343f200109add0fbf0877f0464afafff4d8b5089e4946"
+    },
+    "apps/max-game/launcher/Control.ps1": {
+      "bytes": 2819,
+      "sha256": "fb8e21773bdabdf433efe543447284837465541fc5cfe4e2fa0f0fa35135c54f"
+    },
+    "apps/max-game/launcher/desktop-main.cjs": {
+      "bytes": 104,
+      "sha256": "7f83f1c6f9ca9b0f5e2f92bdb22be97794f18c9cef847f3f41618bde4f7bb749"
+    },
+    "apps/max-game/launcher/device-brightness-catalog.json": {
+      "bytes": 22190,
+      "sha256": "9a501ca1d3ea80bfda9b2e734011d7eb88e1a12dd5bb99725a9d8e9095c70cbb"
+    },
+    "apps/max-game/launcher/device-brightness.cjs": {
+      "bytes": 2981,
+      "sha256": "4b09b8e0cd2408a049ea503c48df2bbd25a547c7df2cbd50ecee5c0a30a924fb"
+    },
+    "apps/max-game/launcher/display-worker.cjs": {
+      "bytes": 8148,
+      "sha256": "179a7e33e6058fc3bd7a89a3ddd8d32996e4b30d45035dd0a2e51f852a2554f4"
+    },
+    "apps/max-game/launcher/game-link-network.cjs": {
+      "bytes": 3298,
+      "sha256": "a4b8a9c77ff3aaf93b7b6e6410985769606dea0041d2be351499a1ad8b489a07"
+    },
+    "apps/max-game/launcher/game-link.cjs": {
+      "bytes": 27804,
+      "sha256": "fcf9d1cfa8c0a314f6427b5dadb6bddc23b1d8f7bf1c4777d5be7521ce42385a"
+    },
+    "apps/max-game/launcher/game-state-osc.cjs": {
+      "bytes": 3138,
+      "sha256": "b84dc85945f9d29b730cc303f583bb1fdb605079a19329aeba472d0bb19ad7d3"
+    },
+    "apps/max-game/launcher/Install-RuntimeWatchdog.ps1": {
+      "bytes": 1785,
+      "sha256": "fa4a22006d41b29c00dca8bfd520be13bd21d89a607e1d7cd43f6665302da22d"
+    },
+    "apps/max-game/launcher/kdw_spout.node": {
+      "bytes": 395776,
+      "sha256": "cf48b36a4bdd5370fb27eb81f5ba9d4ac3b8a6c632fda20a80690a9095c1d915"
+    },
+    "apps/max-game/launcher/lan-admin-panel.js": {
+      "bytes": 871,
+      "sha256": "117bab79c988274402c4dda2ef798da4bd991127de5d8b1738bef6d14be3657f"
+    },
+    "apps/max-game/launcher/lan-admin.cjs": {
+      "bytes": 5674,
+      "sha256": "5342157d934a09f6e137e771df61eab2fa946318e2ca4c52b0e1996859c0ff16"
+    },
+    "apps/max-game/launcher/lan-screen.cjs": {
+      "bytes": 3070,
+      "sha256": "51c5e63a09f434e4477abe455e5b8383405ccea1577e55a7a81db907cc72276b"
+    },
+    "apps/max-game/launcher/Launch.ps1": {
+      "bytes": 3775,
+      "sha256": "03c699f56da188684208dd9b60b193e4ebcec1f8d246670012915d27dcd74065"
+    },
+    "apps/max-game/launcher/layout-settings.cjs": {
+      "bytes": 10000,
+      "sha256": "7d37fe1032f61c5b4367c37bb61bdea7475879a0954c72cacd32975b211523f3"
+    },
+    "apps/max-game/launcher/lidar.cjs": {
+      "bytes": 231726,
+      "sha256": "484a0ab4933425616f55834dfcbfe22381b4557026c9fcc6fe8cf4e08d3b3fe6"
+    },
+    "apps/max-game/launcher/operator-calibration.cjs": {
+      "bytes": 5468,
+      "sha256": "948e6b3833515234bb73e6bf103297bccfd7069ceb32d231e117b2ead43b68bc"
+    },
+    "apps/max-game/launcher/operator-http.cjs": {
+      "bytes": 2290,
+      "sha256": "f6f90b7c435823364fb0b54a955c53ed025d4956e2fe04d25d8ed4a17963a1a6"
+    },
+    "apps/max-game/launcher/operator.cjs": {
+      "bytes": 6304,
+      "sha256": "297f516d027e3dfc75c29ddc1aed678ee31e49c1dda83fe805a9ed84d208949f"
+    },
+    "apps/max-game/launcher/portable-server.cjs": {
+      "bytes": 6552,
+      "sha256": "ce599587516df159792594509404369f312b9f2833dd5ef8ddc4a3f56324e118"
+    },
+    "apps/max-game/launcher/renderer-recovery.cjs": {
+      "bytes": 1538,
+      "sha256": "d6e77a4ccbc0e0bbb0383590dcfff2291ebc78aa9ef7aa2ce57437667fbf6b0f"
+    },
+    "apps/max-game/launcher/runtime-crashes.cjs": {
+      "bytes": 1180,
+      "sha256": "bde0aa47c023b011d781fe438aa44dcee6de31c4b9b490e56f9178ade7294976"
+    },
+    "apps/max-game/launcher/runtime-http.cjs": {
+      "bytes": 1653,
+      "sha256": "47e92acabf0c7f877037ace7dd377d5591406396e547a53cb2c7da4a9d42c38d"
+    },
+    "apps/max-game/launcher/runtime-ipc.cjs": {
+      "bytes": 1484,
+      "sha256": "c087bcace6b6f0bf0fc407661a0749940d5c0244f9ee7a93a5a247be9b0ab78d"
+    },
+    "apps/max-game/launcher/runtime-journal.cjs": {
+      "bytes": 2945,
+      "sha256": "afdee3a2f040e0703f3cb89d2dad7463e0653ab1bd23a4e52eb343e4b84fbeec"
+    },
+    "apps/max-game/launcher/runtime-main.cjs": {
+      "bytes": 13128,
+      "sha256": "e7d480e3a388fa2362f5655dd0a43f37a1b350a47029834c36c97a43205fbb1a"
+    },
+    "apps/max-game/launcher/runtime-panel.html": {
+      "bytes": 2566,
+      "sha256": "5ff178c750684fd0ffeb7c6370dcdf0f52d2f46f6f7ea24f391d39fb612e5fe4"
+    },
+    "apps/max-game/launcher/runtime-performance.cjs": {
+      "bytes": 3700,
+      "sha256": "647289b6777020cc7be028cfd989dad391adcd22c2ccfaf62650e8dd8b00b061"
+    },
+    "apps/max-game/launcher/runtime-policy.cjs": {
+      "bytes": 1580,
+      "sha256": "604360eeb10d145f58c7fdc8f610b385dd619cb11ceef9dd0317508dfa8348e9"
+    },
+    "apps/max-game/launcher/runtime-worker-host.cjs": {
+      "bytes": 2397,
+      "sha256": "25879210a5c302483184cbb367ce7c75fe9e9e990da8ee4a5ca89f770af32494"
+    },
+    "apps/max-game/launcher/screen-state.cjs": {
+      "bytes": 4960,
+      "sha256": "c5b0454a6ccf439c326db15be4866930c223af8bd578040a498e455a0ee9e23b"
+    },
+    "apps/max-game/launcher/sound-events.cjs": {
+      "bytes": 3632,
+      "sha256": "17fcbc0109ba8bba13ace399ddc3cfbddf8591130429ea31da5b36b3eb3ffcad"
+    },
+    "apps/max-game/launcher/sound-library.cjs": {
+      "bytes": 10658,
+      "sha256": "e36be9e608f177b6c8e9cd20fa22bc85a360a1858c85ade9e7761cfd6d333c89"
+    },
+    "apps/max-game/launcher/stand-output.cjs": {
+      "bytes": 19036,
+      "sha256": "4207874bcbb18ee824e3ecd60003b94c0b4fbb4125d48eda8b70c5bd4d0793db"
+    },
+    "apps/max-game/launcher/stand-preload.cjs": {
+      "bytes": 8595,
+      "sha256": "25f0db73ed477c211af26ec0ab7778c928aa18fa2e797c0395818830311bd1b5"
+    },
+    "apps/max-game/launcher/stand-settings.cjs": {
+      "bytes": 4018,
+      "sha256": "92a5ae07609a3a2248df6f606492ff1f9dc08d60dad5843501c033b2f251403b"
+    },
+    "apps/max-game/launcher/Stand-Settings.ps1": {
+      "bytes": 1383,
+      "sha256": "d0affe630907a30e9d0221973a26c4b2f5289afd918255d9c0f089d4b717c1c2"
+    },
+    "apps/max-game/launcher/standby-videos.cjs": {
+      "bytes": 6834,
+      "sha256": "2b251c337282633d20b61199e829068ebb7a6d36dc32093ef7ea5816bf2b1caf"
+    },
+    "apps/max-game/www/index.html": {
+      "bytes": 146,
+      "sha256": "f86fe9a6a548dbd8d33371519e293df7ccc965a8202ad0681392ce6c482b096d"
+    },
+    "apps/max-game/launcher/sound-panel/index.html": {
+      "bytes": 6435,
+      "sha256": "8f14e6ac56eb5cc0b12cbc19ec4ceb58f98141296ca937b9e6eda04b003ce7fc"
+    },
+    "apps/max-game/launcher/sound-panel/panel.css": {
+      "bytes": 2359,
+      "sha256": "5e0fe0d8edf0ff1f0e847eca15a2d4d473d4220c0e904e339e583270c5f64eeb"
+    },
+    "apps/max-game/launcher/sound-panel/panel.js": {
+      "bytes": 10653,
+      "sha256": "a437a0c770662384618b5bb46b76080b9ab216db81b9124f36ad17aa68571a0c"
+    },
+    "apps/max-game/www/admin/brightness.css": {
+      "bytes": 893,
+      "sha256": "900574b4e84e6236affc6e9fb4d9b449ae600de8ced6ea1ff149af0e268d6e66"
+    },
+    "apps/max-game/www/admin/brightness.html": {
+      "bytes": 4300,
+      "sha256": "537443d30b1239d10ec2b02565aa6d86806ab59e28421dc2656d08d935fbf7b7"
+    },
+    "apps/max-game/www/admin/brightness.js": {
+      "bytes": 9529,
+      "sha256": "6aec9a16e8f1874a7d09a5a6f6a4b8af27673ba9be7fb6d19d65fafd20095fd5"
+    },
+    "apps/max-game/www/admin/index.html": {
+      "bytes": 11625,
+      "sha256": "a573f9c42e1c812df10e14cef71b88b7012e79bb344718a1a898fdf1503aa615"
+    },
+    "apps/max-game/www/admin/layout-calibration.js": {
+      "bytes": 7256,
+      "sha256": "b74b85ae2b92124eed5d2b228f33d212636fb4836bcfeb859e506b51c99a36aa"
+    },
+    "apps/max-game/www/admin/layout.css": {
+      "bytes": 2003,
+      "sha256": "a4203020ef271a3e6bd7c48f85a1d38f57a8ade4c2f7e84c005a8939854b619e"
+    },
+    "apps/max-game/www/admin/layout.html": {
+      "bytes": 7920,
+      "sha256": "4b94399ce7a8bbefec924ae89d2ea2c1113323ab9d9b9f70f4748c7174cb34c9"
+    },
+    "apps/max-game/www/admin/layout.js": {
+      "bytes": 16420,
+      "sha256": "d7e3d474601d8c59f863868e7634bcd17892c5bc745449d75efcc3f6f85a495b"
+    },
+    "apps/max-game/www/admin/panel.css": {
+      "bytes": 1792,
+      "sha256": "9db0c9176e617ad4b9a0c6489856b8747c2a5fcba191eb77c7c5ee789597c2d3"
+    },
+    "apps/max-game/www/admin/panel.js": {
+      "bytes": 12622,
+      "sha256": "76cc1454e79f4fee52f011820bcae6ae1629b1ed95ccc300031f863fc8f9227c"
+    },
+    "apps/max-game/www/admin/standby.html": {
+      "bytes": 3062,
+      "sha256": "51c53f986104f6546a3b18ef572284c551e10718f58b59fcc4223d8e102ab303"
+    },
+    "apps/max-game/www/admin/standby.js": {
+      "bytes": 4955,
+      "sha256": "9060a4531daa201d5823e8dffd98257dcb3e4d10f27462b890ad5d3c2ae1971f"
+    },
+    "apps/max-game/www/audio/background.webm": {
+      "bytes": 584785,
+      "sha256": "7427645c5781f0063b7cce51f571e5269e603792f15a6a3cec2bf97c985bde42"
+    },
+    "apps/max-game/www/audio/camera-orbit-01.webm": {
+      "bytes": 18853,
+      "sha256": "c9e6d72ee3311d985e3e15ae6e782d8ee8e589c23058a1336ac838a799ff34ec"
+    },
+    "apps/max-game/www/audio/camera-orbit-02.webm": {
+      "bytes": 19049,
+      "sha256": "16695546c14745f8be58467368cfb0ab1b9396dc993dd681c637219796161821"
+    },
+    "apps/max-game/www/audio/camera-orbit-03.webm": {
+      "bytes": 19045,
+      "sha256": "d57ccd1ee42f647d9e5df0ea654c68afe0c3a0ef4003f1b4e1db7e19cd5cd64e"
+    },
+    "apps/max-game/www/audio/cta-primary.webm": {
+      "bytes": 136486,
+      "sha256": "5877c43ac101a2ca243536d21e3125e041feae4b7ba2c8536fbebd6e10e1f633"
+    },
+    "apps/max-game/www/audio/cta-screen-enter.webm": {
+      "bytes": 138658,
+      "sha256": "28c0e2aa1773615e7d0917e692604b78f1090f2d405fff945559d9eeb5ff8159"
+    },
+    "apps/max-game/www/audio/end-finish-game.webm": {
+      "bytes": 128344,
+      "sha256": "a9f9616dfcd5a649a9c7718f3dd43ccb9b6d000e3c3b93f1523efbc783397c49"
+    },
+    "apps/max-game/www/audio/link-blue-loop.webm": {
+      "bytes": 340394,
+      "sha256": "5884b10abdf0d5f2ee9791218a53317e3f63801dd77715c61c29ba6676e59604"
+    },
+    "apps/max-game/www/audio/link-green-loop.webm": {
+      "bytes": 30773,
+      "sha256": "cf7e5cba1ffbc297f50a66a1c0c8926560c2babe746181da00babea88cc80f02"
+    },
+    "apps/max-game/www/audio/link-red-loop.webm": {
+      "bytes": 28791,
+      "sha256": "3eb3aae434f06cd03bf5efa1054021e030684dbec136ac61666ad5b3dc6befba"
+    },
+    "apps/max-game/www/audio/mission-card-hover.webm": {
+      "bytes": 17898,
+      "sha256": "2cf7acb2619152a607838c42b38c6f4044c6fb6b785f389e07650dafa3ee2757"
+    },
+    "apps/max-game/www/audio/mission-card-press.webm": {
+      "bytes": 153711,
+      "sha256": "b22b926be2870735f63b5536a8001707230bf520264a4b7451ed01cb7794181a"
+    },
+    "apps/max-game/www/audio/mission-launch.webm": {
+      "bytes": 137445,
+      "sha256": "b2af34274629d4f292f581b6217fd1b475ddd02c0689151c0a6c2974ecaecbc0"
+    },
+    "apps/max-game/www/audio/mission-restart.webm": {
+      "bytes": 138988,
+      "sha256": "802927c6debb3c80a68b58b7e71424c64b3e63e5411a8475ba8a4f1f264a5cc2"
+    },
+    "apps/max-game/www/audio/mission-select-finish.webm": {
+      "bytes": 143930,
+      "sha256": "7aaeaec739f36944787acb2923d47bfcaf4522f8074b8fbd4ca3e4f2a881c04a"
+    },
+    "apps/max-game/www/audio/mission-success-continue.webm": {
+      "bytes": 127470,
+      "sha256": "4fc072c72a37f3a941b01da264c3be717eef5351346702db1c2fea8feea1a9b7"
+    },
+    "apps/max-game/www/audio/navigation-back.webm": {
+      "bytes": 153711,
+      "sha256": "c7215b3bd813335fc419c8660ca9e5251cf3ed70e100e681e1f59ec4bc9c1e6e"
+    },
+    "apps/max-game/www/audio/node-place-or-move.webm": {
+      "bytes": 97488,
+      "sha256": "ed63a50f90b535e38bc8bf84551d4e531dbfd88dc2ccf4c6da8776f57e537524"
+    },
+    "apps/max-game/www/audio/onboarding-to-missions.webm": {
+      "bytes": 161975,
+      "sha256": "4a65120b844f4ee7c3e1d6269e1aaf5a16530e11acfa7fc0b96a9f3f5eaa01e7"
+    },
+    "apps/max-game/www/audio/popup-error.webm": {
+      "bytes": 114292,
+      "sha256": "f8d1bf98582e38db29870adb2aa87e30b116a6a57e7e53345aa6ec5fc213f3e0"
+    },
+    "apps/max-game/www/audio/popup-success.webm": {
+      "bytes": 111186,
+      "sha256": "80c910f2e36d76940a7152107ac07f8651c3f23b2c5c2443d7f84238f13260f9"
+    },
+    "apps/max-game/www/config/audio.json": {
+      "bytes": 6790,
+      "sha256": "fbb450f0ddcf772c1749ba33937e45191be50d102cb171ca69780f993d431293"
+    },
+    "apps/max-game/www/config/audio.schema.json": {
+      "bytes": 2856,
+      "sha256": "2f1c97d762c2885909f384ef6994a61a2252d9f8fe2144d7057a43fb27e678ac"
+    },
+    "apps/max-game/www/config/client-missions.json": {
+      "bytes": 6689,
+      "sha256": "feeeafe0f24135ec1e0bc89c231f1587a1917f999b61748ed75c0399e87f1639"
+    },
+    "apps/max-game/www/config/client-webgl.json": {
+      "bytes": 32662,
+      "sha256": "9a9b08cf6e1e51f5b5d9b351ae1368f8197ef25b4bfde3238fe394de7cc46f3c"
+    },
+    "apps/max-game/www/config/earth-contours.json": {
+      "bytes": 414,
+      "sha256": "de8546985baa9da1f094b3c4d6702172256e1ac8855a30938a495caef0488c66"
+    },
+    "apps/max-game/www/config/mission-system.json": {
+      "bytes": 9461,
+      "sha256": "125f6d87ca3d1592abb243b5cf3e10620cbaec521a7ea331a6d2c39b51087970"
+    },
+    "apps/max-game/www/config/mission-system.schema.json": {
+      "bytes": 9976,
+      "sha256": "13f73fa2f8f62f57d53c96b541ecb03c90db71aa1ed68a429bc2f64a47a1307f"
+    },
+    "apps/max-game/www/config/mission-v2.schema.json": {
+      "bytes": 20957,
+      "sha256": "49a9ee19077db3fba1e31789a1cb35ee625538ecc99069dd7faf6f38445e8fb2"
+    },
+    "apps/max-game/www/config/missions.json": {
+      "bytes": 9496,
+      "sha256": "13e7aaba85c83b92dec032e7ae2c850f7873d3e6764ed0e0947175823a3273c5"
+    },
+    "apps/max-game/www/config/missions.schema.json": {
+      "bytes": 7582,
+      "sha256": "588a0ce3a1870d485cac35484b40bec462e68b8c3252404bd36d37e7aa561ab8"
+    },
+    "apps/max-game/www/config/ui-shell.json": {
+      "bytes": 6833,
+      "sha256": "7e882ac7d87d4a606e6eedbb2c0be03168b44aff37c9ad4f60d575c56c39c748"
+    },
+    "apps/max-game/www/config/ui-shell.schema.json": {
+      "bytes": 20443,
+      "sha256": "cda85fe12b53a9e3136e8a1cd9ac7f4456bb5308105682597dd6dc31f5a8b930"
+    },
+    "apps/max-game/www/config/wording-client.json": {
+      "bytes": 30871,
+      "sha256": "c7c154e70e39bce6947f7e9d93e39d3286958042df32db3521a236c90c4d62bf"
+    },
+    "apps/max-game/www/config/wording.json": {
+      "bytes": 31173,
+      "sha256": "3a4ff7057e76148652b18cf37898f84a02a4804cbda5c3e5d2dc74707bdfd37c"
+    },
+    "apps/max-game/www/config/wording.schema.json": {
+      "bytes": 894,
+      "sha256": "808937310d88e4e6eb056dfed64a8d8695b3d29fa0a613bab971d2679648712c"
+    },
+    "apps/max-game/www/earth/Earth_Clouds_4K.webp": {
+      "bytes": 2747422,
+      "sha256": "aa11b35010eedb2dfbd65c4bb60f2aae65adbbf1a83ec7fab2ae96d23bf99a37"
+    },
+    "apps/max-game/www/earth/Earth_Diffuse_4K.jpg": {
+      "bytes": 1247415,
+      "sha256": "70ed3a3b119c879fc776bcf82a677f12b9438761c857663830e0f028e6be2b9a"
+    },
+    "apps/max-game/www/earth/Earth_Illumination_Core_4K.webp": {
+      "bytes": 354294,
+      "sha256": "6636264c7dc408f132ceda0da3b7183dd20db0399594668eaa1ab9323f33df0c"
+    },
+    "apps/max-game/www/earth/Earth_Normal_4K.webp": {
+      "bytes": 1598406,
+      "sha256": "901ae8e7650de5edbf305e79ce2856a84a98c13750954ee10d36e27b0bd4394b"
+    },
+    "apps/max-game/www/earth/Earth_Specular_4K.webp": {
+      "bytes": 395312,
+      "sha256": "94616acf545127b0f7079352cf614d34949cb896b29f584ed3185158fdfb671d"
+    },
+    "apps/max-game/www/earth/Earth_Surface_4K.bin": {
+      "bytes": 1048576,
+      "sha256": "0714d8ea0cc0de65dbdbca7b34ccc7a20e7a68c1ee04cb738e15ae0b72c457d4"
+    },
+    "apps/max-game/www/earth/Earth_Surface_4K.json": {
+      "bytes": 519,
+      "sha256": "5168f905589161b4422a8dd955bbbf7f83867ca2223a20b789d6103328a296b1"
+    },
+    "apps/max-game/www/earth/Russia_Border_Mask_6K.svg": {
+      "bytes": 549817,
+      "sha256": "79ec8fe0eed7667516eee0fa26211723119b7f7d4c2d1797be317f240b9d76eb"
+    },
+    "apps/max-game/www/earth/Russia_Fill_Mask_6K.svg": {
+      "bytes": 549728,
+      "sha256": "eced47a294aed730439cca4db28ccd1e2675a348f0f53b1bcc8c4a7d2a6c8869"
+    },
+    "apps/max-game/www/icons/core.svg": {
+      "bytes": 3424,
+      "sha256": "7dd0659b98f0390cc0a6f2e2bc0526151ae84a773d330d2e5294791a99adbafb"
+    },
+    "apps/max-game/www/icons/endpoint-a.svg": {
+      "bytes": 239,
+      "sha256": "4803d8a04c5389659aaedc8892c7f089e5c497afe3cb06df20b1d9d6797ab86e"
+    },
+    "apps/max-game/www/icons/endpoint-b.svg": {
+      "bytes": 287,
+      "sha256": "d830ac789402fbd26d8474ff12856e9eff11898c56bad345f284cdc1c9e3111a"
+    },
+    "apps/max-game/www/icons/internet.svg": {
+      "bytes": 4104,
+      "sha256": "6fe7d1256d0572699b91e23116f8464cdbbaf98a43e0c6eeb870f9f0c353057b"
+    },
+    "apps/max-game/www/icons/ship.svg": {
+      "bytes": 946,
+      "sha256": "814b85e3c220a18a62e237d5009e6890950ed988dcf701d565b0d8f1ea4e85f8"
+    },
+    "apps/max-game/www/icons/sputnik.svg": {
+      "bytes": 1388,
+      "sha256": "8174f9e9a458a8f42bdbba1d40c6ab1bf5e5fccc304821e951644f58072af66a"
+    },
+    "apps/max-game/www/icons/station.svg": {
+      "bytes": 679,
+      "sha256": "6a67bc0023f2c2119ab999d597e9da8c02eae3a16d0158440b48edfa1d295659"
+    },
+    "apps/max-game/www/icons/step-1.svg": {
+      "bytes": 204,
+      "sha256": "bc3eba18ff29fb85049db6c7d84c55f344f944aed610b4187d610ccfe7f5b98f"
+    },
+    "apps/max-game/www/icons/step-2.svg": {
+      "bytes": 220,
+      "sha256": "277eaaabb090f055fbfb3118b5b22dd7cdcce6156d78cd5b5b0196c55263e036"
+    },
+    "apps/max-game/www/icons/step-3.svg": {
+      "bytes": 228,
+      "sha256": "eb0a0e71d93a62664241325220bdce636626fff5c1bafbbaf8e2b3db1e909ed9"
+    },
+    "apps/max-game/www/icons/step-4.svg": {
+      "bytes": 197,
+      "sha256": "53bdc6eae16ab055b43c2338076da9e28b6a54663ad4bc88babcb6988e548451"
+    },
+    "apps/max-game/www/icons/step-5.svg": {
+      "bytes": 210,
+      "sha256": "fe25a3052db0f1c385fae3c0be6d44e8a5f6ecc1b1925dea515ddd25fe02afe3"
+    },
+    "apps/max-game/www/icons/terminal.svg": {
+      "bytes": 774,
+      "sha256": "a41e5b6c8e73537578da8ac76293512c89399f1f3474b9d433903b2b205f2b88"
+    },
+    "apps/max-game/www/licenses/glin-profanity.txt": {
+      "bytes": 1346,
+      "sha256": "c98684ffb9bc332d62fdcf2dc7a411e0d01eab6c0200b22b32ae6e09b00bd820"
+    },
+    "apps/max-game/www/licenses/three.txt": {
+      "bytes": 1081,
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+    },
+    "apps/max-game/www/webgl-v5/annotation-source.json": {
+      "bytes": 20485,
+      "sha256": "b48786a30ca872537820e41d4950b408068e8ab61c81562ab607aa4cd73734b6"
+    },
+    "apps/max-game/www/webgl-v5/app.js": {
+      "bytes": 16237189,
+      "sha256": "813b852e7a1afc6ae7c9dc9ef3831ba680de758e56c5c4d8fcd055c24a4c5e13"
+    },
+    "apps/max-game/www/webgl-v5/backend-source.json": {
+      "bytes": 26592,
+      "sha256": "71d2429e0d7dd50dda88bf7101c907c2e93978a9878639431cb99b0e2f61dbfe"
+    },
+    "apps/max-game/www/webgl-v5/build.json": {
+      "bytes": 73443,
+      "sha256": "3e1cf517769ddc9466e04e9371045b2557ff2d6fa4f2d672a67f9e46d4668bab"
+    },
+    "apps/max-game/www/webgl-v5/cafe-original.html": {
+      "bytes": 1411,
+      "sha256": "1bca0c291df796b826b1ca1247515f2c9345f037fe7eb9f6287a998b2435c838"
+    },
+    "apps/max-game/www/webgl-v5/client.css": {
+      "bytes": 615,
+      "sha256": "3b7a1816c2ef2a91a456a705d482124c56835ef09e9a716c37117da7da33afb8"
+    },
+    "apps/max-game/www/webgl-v5/client.html": {
+      "bytes": 1391,
+      "sha256": "5d3615b9deecadd28c26171c07990757349cd3e06409214d60195e4fd9187786"
+    },
+    "apps/max-game/www/webgl-v5/finale-player.css": {
+      "bytes": 48087,
+      "sha256": "076c48366e8a186bf243d5937f32a97410045612629b6fdbabc389abb6ce5cb9"
+    },
+    "apps/max-game/www/webgl-v5/finale-player.js": {
+      "bytes": 726256,
+      "sha256": "b0f4447d81a654806b931b7d3ff21cfd6e47d416385879d3def656a7868231a0"
+    },
+    "apps/max-game/www/webgl-v5/index.html": {
+      "bytes": 1391,
+      "sha256": "5d3615b9deecadd28c26171c07990757349cd3e06409214d60195e4fd9187786"
+    },
+    "apps/max-game/www/webgl-v5/journey-guided-line.css": {
+      "bytes": 2511,
+      "sha256": "dd227fa968c1826603f10a527777fce1d4cb462b67d394522430637b91900d45"
+    },
+    "apps/max-game/www/webgl-v5/journey-guided-reveal.css": {
+      "bytes": 2891,
+      "sha256": "c58bb33399c8e8dd878249f13e3f50e3b94fbdccab51f8a28a0e45466faa0901"
+    },
+    "apps/max-game/www/webgl-v5/journey-guided.css": {
+      "bytes": 9291,
+      "sha256": "a03281b011ccfc772db966a831c54664fbdf6d893a1c5c7a0438d713f3c31350"
+    },
+    "apps/max-game/www/webgl-v5/journey.css": {
+      "bytes": 39825,
+      "sha256": "84043200dca1248646a296eda2477ff464cd4a091aa25f348aa7a1ba180c8721"
+    },
+    "apps/max-game/www/webgl-v5/kdw-interactions.css": {
+      "bytes": 49622,
+      "sha256": "8d544b029cb30cba2d53babb29a73a6f9b725c3af0cd3239f94b90c7f444ad8d"
+    },
+    "apps/max-game/www/webgl-v5/r9-build.json": {
+      "bytes": 102429,
+      "sha256": "481a5dd8212b9baebe00e18fd398a2e224f5adfcc9f6f38a327b85f7100b7b68"
+    },
+    "apps/max-game/www/webgl-v5/stand-background.html": {
+      "bytes": 319,
+      "sha256": "ba9bb549f365c2ba62e9e817c5556a4c074e22ec3f171e328510d27a33f908d0"
+    },
+    "apps/max-game/www/webgl-v5/stand-background.js": {
+      "bytes": 207241,
+      "sha256": "cc7f405eef70f7690947edb107f7258d2a323f7b371311e37fe3e9915b34035e"
+    },
+    "apps/max-game/www/webgl-v5/third-party-notices.html": {
+      "bytes": 3971,
+      "sha256": "b38ba0977ab49e21791268e53203c97f664464dfde8f49bf89356c832dd88d9d"
+    },
+    "apps/max-game/www/webgl-v5/THIRD-PARTY-NOTICES.txt": {
+      "bytes": 1453,
+      "sha256": "e2a134c52a5a782b3d663a285b1a6d1337abd605cf3fd059e6f7166b5961b630"
+    },
+    "apps/max-game/www/webgl-v5/v5.css": {
+      "bytes": 8986,
+      "sha256": "27a6a5b504f6c8dd56bfd3fd066fc792ad557ab30e54461ccec33a0cbd75d37d"
+    },
+    "apps/max-game/www/assets/backgrounds/figma-game-background.json": {
+      "bytes": 4380,
+      "sha256": "f2845a5329edfef370fa571a40a13cc18bb26724c5dab6e69e38c52807020c07"
+    },
+    "apps/max-game/www/assets/backgrounds/figma-game-background.svg": {
+      "bytes": 2042631,
+      "sha256": "bd194a1435572ef8ab019912641b861ca40de62a0d99360ada1363159907a058"
+    },
+    "apps/max-game/www/assets/client-media/age-01-arrival.png": {
+      "bytes": 2072377,
+      "sha256": "49b8e749c4975e1ec6879dd253c0f6b4eb7a56b7c678e649e980d6bc104b0b89"
+    },
+    "apps/max-game/www/assets/client-media/age-02-present-id.png": {
+      "bytes": 2175590,
+      "sha256": "0fbe7559bec6456c03a5c1f1d4a6c8f6872a053f7953670676c8def77491f8d1"
+    },
+    "apps/max-game/www/assets/client-media/bot-delivery.png": {
+      "bytes": 229656,
+      "sha256": "7f4abacaac00d3df2859defcd740854aaaae5c5c801ae3e1e3887af0d5b617c1"
+    },
+    "apps/max-game/www/assets/client-media/frame-100034.png": {
+      "bytes": 345460,
+      "sha256": "dfd6b9e83af1c7e217840cab749690bd622c0c6184eece1502cf601dee9f3d82"
+    },
+    "apps/max-game/www/assets/client-media/frame-100117.png": {
+      "bytes": 388624,
+      "sha256": "ec6112432254938e0f28466bcc60fb9b914ac1f38825a0b40ba900ad4bb0566b"
+    },
+    "apps/max-game/www/assets/client-media/frame-100204.png": {
+      "bytes": 147704,
+      "sha256": "91c1a9a5040e5037f25c20b45ce43fe05aaafdade107f08802be03084f043303"
+    },
+    "apps/max-game/www/assets/client-media/frame-100205.png": {
+      "bytes": 81999,
+      "sha256": "e5a2eda3bfac17e947c208c1ad7f70032d4127fdbc76c49c56355192f25c5dff"
+    },
+    "apps/max-game/www/assets/client-media/frame-100211.png": {
+      "bytes": 62497,
+      "sha256": "0f312b765ecde873130e5be9e2fe620cfee6cdbe2b459cb7cacbdd405e52dd5e"
+    },
+    "apps/max-game/www/assets/client-media/frame-102188.png": {
+      "bytes": 59539,
+      "sha256": "86139cc3b5c7c95b8e6c7a4b66ea7bbe30d58c3cddf4b5032a1f501031b21edd"
+    },
+    "apps/max-game/www/assets/client-media/frame-103769.png": {
+      "bytes": 237693,
+      "sha256": "0c574bcd401f20405c84bbf0bef6f1ba91244c4eb12d50e803836aceb2919df2"
+    },
+    "apps/max-game/www/assets/client-media/frame-103778.png": {
+      "bytes": 240813,
+      "sha256": "b3b1c49959540181780087ba819f9ad9a572d79ed01230f8631902d83698ae4a"
+    },
+    "apps/max-game/www/assets/client-media/frame-73601.png": {
+      "bytes": 238525,
+      "sha256": "fbe50917d92e858e785ff4f67f83f4fb969c5ad3e98bc7b19d12e432df5fc5df"
+    },
+    "apps/max-game/www/assets/client-media/frame-73617.png": {
+      "bytes": 237909,
+      "sha256": "86c341f47d9248d8ecf7130cca680cf12f90a45946fe88ffb620af283b20275e"
+    },
+    "apps/max-game/www/assets/client-media/frame-73633.png": {
+      "bytes": 184395,
+      "sha256": "c3aeaf5651eecf3eb2884d381ccbb217d19f069c0ca13b26405cffc713f8b775"
+    },
+    "apps/max-game/www/assets/client-media/frame-73648.png": {
+      "bytes": 171540,
+      "sha256": "d11ec347dd927ae45c744e2b8cd01f6d1cd0e0c11c42291ac56f856fddfa0dc8"
+    },
+    "apps/max-game/www/assets/client-media/frame-73690.png": {
+      "bytes": 266071,
+      "sha256": "a3dec1220bc1cc16e701e27016ba03af6ef61faae521041da2521eb8cf39d653"
+    },
+    "apps/max-game/www/assets/client-media/frame-73731.png": {
+      "bytes": 265321,
+      "sha256": "64d2349a5a04379bc96e5ba369c311922b48ff2db39aa3cd7e2633f77037c6ac"
+    },
+    "apps/max-game/www/assets/client-media/frame-73772.png": {
+      "bytes": 267012,
+      "sha256": "3b3510f61a3fc58ead0e2c0b480d6e6a149a441376ce21a46173f3b33ade3bbc"
+    },
+    "apps/max-game/www/assets/client-media/frame-73810.png": {
+      "bytes": 184402,
+      "sha256": "b1781496cf7ed3e932ab56a56a40552b89e2b4bd2cc1d7608c631f80b8cf400d"
+    },
+    "apps/max-game/www/assets/client-media/frame-73825.png": {
+      "bytes": 238524,
+      "sha256": "47283a247383b6c95fee7257059bee559b49cfedbdd1c1b63afad0fd501d60ef"
+    },
+    "apps/max-game/www/assets/client-media/frame-73841.png": {
+      "bytes": 237908,
+      "sha256": "ee3d79589b8d95fa96ef2c7ed8cccb91e83557a910ce1bdc2d8914413c2e2215"
+    },
+    "apps/max-game/www/assets/client-media/frame-73857.png": {
+      "bytes": 171500,
+      "sha256": "e3851c3982c765cb62a737f1c19e574d689cb79f46e07015a52c6eb4d4fff0c6"
+    },
+    "apps/max-game/www/assets/client-media/frame-73899.png": {
+      "bytes": 128540,
+      "sha256": "18cb08d88a2e2dd1f478207711661c1c41628fa052356d68e712fd4e23ebcba7"
+    },
+    "apps/max-game/www/assets/client-media/frame-73937.png": {
+      "bytes": 140501,
+      "sha256": "ced7ffdc20047270b56f4f5459324cf7b45776b948a394a5d1c8fadd843d1c27"
+    },
+    "apps/max-game/www/assets/client-media/frame-73976.png": {
+      "bytes": 166246,
+      "sha256": "4cb75f0dacd30392cd968befe5167742b54968c6a9fe9cb15a9dd49a5d5a90c5"
+    },
+    "apps/max-game/www/assets/client-media/frame-74018.png": {
+      "bytes": 266915,
+      "sha256": "735718dd2e1d3fe6d5c8e4ceab34623c3c51eaeac1694b6ac8fa1f4a11959c32"
+    },
+    "apps/max-game/www/assets/client-media/frame-74059.png": {
+      "bytes": 282410,
+      "sha256": "0f5a882f4e19cd9acfc173285c43811bba3cbcbfa558b26ca338cffe1bd66c0e"
+    },
+    "apps/max-game/www/assets/client-media/frame-74100.png": {
+      "bytes": 184735,
+      "sha256": "d8733a8c009799fbbad71e524ead81e6e352dac7789338998a2e1535ca4353dc"
+    },
+    "apps/max-game/www/assets/client-media/frame-74133.png": {
+      "bytes": 183485,
+      "sha256": "123713eb7dad9b51c2e57b7a039c09942690b07c951c4c8a9cbe82dff757248f"
+    },
+    "apps/max-game/www/assets/client-media/frame-74149.png": {
+      "bytes": 182472,
+      "sha256": "ddc4fe3fc613829b0e5351b46897a4e8452df776df4be9c1deb896c831701fcd"
+    },
+    "apps/max-game/www/assets/client-media/frame-74165.png": {
+      "bytes": 182098,
+      "sha256": "371204312bf20c806b4b4a4397554edfb04accc9067a68991bbbfe5ca11035ee"
+    },
+    "apps/max-game/www/assets/client-media/frame-74200.png": {
+      "bytes": 184398,
+      "sha256": "efe11dd9b01f76f05553d818d718443c8aed6c31dfdf1fb3afaa243d7087a497"
+    },
+    "apps/max-game/www/assets/client-media/frame-74215.png": {
+      "bytes": 182475,
+      "sha256": "ab267f8813e2c61e82247b03f2d6d8e6b9a1b8368cfed5dda42873b2fa619801"
+    },
+    "apps/max-game/www/assets/client-media/frame-74231.png": {
+      "bytes": 182045,
+      "sha256": "e409310d7c98e1f526e70a54130ea88ec3fd5ae004a7cbf06ec6788b5202bcb4"
+    },
+    "apps/max-game/www/assets/client-media/frame-74262.png": {
+      "bytes": 179749,
+      "sha256": "badef48fdb7d793a4491b5034722a5a2d45f427140f0a10e8a800c6da0ebec5e"
+    },
+    "apps/max-game/www/assets/client-media/frame-74293.png": {
+      "bytes": 174398,
+      "sha256": "e79c949757d75deb2db54a27853c5040922add2fb6b058fe52f1e172eac7b291"
+    },
+    "apps/max-game/www/assets/client-media/frame-74309.png": {
+      "bytes": 236790,
+      "sha256": "006e7b8a2ad229164472ad371446b9ebb51d99971ec04d99143b579410e5215d"
+    },
+    "apps/max-game/www/assets/client-media/frame-74315.png": {
+      "bytes": 194872,
+      "sha256": "5ee3969c561d6c8b8e375e4dfdac810a9819aa54d09eb99367002e003321ef71"
+    },
+    "apps/max-game/www/assets/client-media/frame-74325.png": {
+      "bytes": 119874,
+      "sha256": "a1875481b513f120da1a7158b4734c64e30609b68c6d838f591c8d3eefef90b4"
+    },
+    "apps/max-game/www/assets/client-media/frame-74405.png": {
+      "bytes": 119576,
+      "sha256": "8b897aceb764a114b27a26dc0bc31f08b99e1cda6e4a531082ed006fa1733bda"
+    },
+    "apps/max-game/www/assets/client-media/frame-74496.png": {
+      "bytes": 120569,
+      "sha256": "8efa256a54a303869ddaa06ae2f0f73f9fd1cf880da0fe48910b3a95502f0998"
+    },
+    "apps/max-game/www/assets/client-media/frame-74587.png": {
+      "bytes": 501528,
+      "sha256": "e80d3b2120f7a90a7963c8f7611c7d386d88e40108c3489f70d45faa6c5cb71e"
+    },
+    "apps/max-game/www/assets/client-media/frame-74603.png": {
+      "bytes": 480212,
+      "sha256": "5b1e7d712cf450332e445ed719fc7eb2e233200eedd05bae2f02d8e2454e501b"
+    },
+    "apps/max-game/www/assets/client-media/frame-74613.png": {
+      "bytes": 479909,
+      "sha256": "56ee782d5252e4c5f4d58e93e1f974175735d01825f83caed7c034db0ad17fc5"
+    },
+    "apps/max-game/www/assets/client-media/frame-74627.png": {
+      "bytes": 89653,
+      "sha256": "5ee70a0808b456c3a7fb4652ebc788fc98b50b4daa3f2d8ffbc5dff747b2bdc8"
+    },
+    "apps/max-game/www/assets/client-media/frame-74665.png": {
+      "bytes": 106098,
+      "sha256": "de2faebafd280a6303618347e001fe895035cd80d83b9a6b1cffa2ca108fbee9"
+    },
+    "apps/max-game/www/assets/client-media/frame-85682.png": {
+      "bytes": 86174,
+      "sha256": "0c5092a9cef61ee57653c5bdb81116c9e387f8e3d76aa4b3ee48b9d0790480fe"
+    },
+    "apps/max-game/www/assets/client-media/frame-85698.png": {
+      "bytes": 117232,
+      "sha256": "6d52e9dc24743d1eaef0d9211e903646f0b4c1659698d9b5c96d411e09013380"
+    },
+    "apps/max-game/www/assets/client-media/frame-85717.png": {
+      "bytes": 298690,
+      "sha256": "b170cc37dfebcddf56b0a9dbe7a64b2599e160661e89cba274da2c6d15275d11"
+    },
+    "apps/max-game/www/assets/client-media/frame-85728.png": {
+      "bytes": 313431,
+      "sha256": "14bd919369d5edb7ea604a3ec0b42e06cfba5e43bdca1c13a4f6a7b47172ca41"
+    },
+    "apps/max-game/www/assets/client-media/frame-85740.png": {
+      "bytes": 296633,
+      "sha256": "7287b9f3c2d23ea42cc674d6974c969037bfc36221c719f1e59b81747d9ebf4f"
+    },
+    "apps/max-game/www/assets/client-media/frame-85751.png": {
+      "bytes": 313687,
+      "sha256": "259de11a306a9a9a9e53d048f2fd0e88e290efa0c98eebddd141ac68784f71c8"
+    },
+    "apps/max-game/www/assets/client-media/frame-85757.png": {
+      "bytes": 348101,
+      "sha256": "48f91cd72517b8844093e7c7ae962f740698c6df77bbc7ceeba45c4e9bb932a2"
+    },
+    "apps/max-game/www/assets/client-media/frame-85762.png": {
+      "bytes": 201914,
+      "sha256": "255d246e3a9750cdcb7d8795ff459e1efb50b822b3617c900af5c2c2b992bafc"
+    },
+    "apps/max-game/www/assets/client-media/frame-85778.png": {
+      "bytes": 336327,
+      "sha256": "0b4ff5c4a6c285f96a2ee683862681d37bfaaed7a941ed4a5f0591cafa4a5d3d"
+    },
+    "apps/max-game/www/assets/client-media/frame-85802.png": {
+      "bytes": 308944,
+      "sha256": "2b610f12323cf7557192dae254393b94f4690ea22f22810988f7405d55642a6a"
+    },
+    "apps/max-game/www/assets/client-media/frame-85816.png": {
+      "bytes": 274503,
+      "sha256": "3e70b2cd78632db88b09aea3e42cbce41a901cfcf81883a0a345e7d5155c9dbf"
+    },
+    "apps/max-game/www/assets/client-media/frame-85835.png": {
+      "bytes": 313431,
+      "sha256": "74f192ba56a2e5861ee97fd0294689ec361c515d73a23d6ecb77a03a74a8bddf"
+    },
+    "apps/max-game/www/assets/client-media/frame-85847.png": {
+      "bytes": 311842,
+      "sha256": "f6b3da13a629e800df8346ef8281c10284edc9d30fd8d2ee6079e43d33e88bfd"
+    },
+    "apps/max-game/www/assets/client-media/frame-85859.png": {
+      "bytes": 313687,
+      "sha256": "8224ecda7535a5c735f27b93bbb0e2edef9a719f0c9827affd0625ab1f123997"
+    },
+    "apps/max-game/www/assets/client-media/frame-85865.png": {
+      "bytes": 313687,
+      "sha256": "259de11a306a9a9a9e53d048f2fd0e88e290efa0c98eebddd141ac68784f71c8"
+    },
+    "apps/max-game/www/assets/client-media/frame-85871.png": {
+      "bytes": 201915,
+      "sha256": "86d6b6b219e19f71b2e2d852fb7a7d5ebcd6e4350f285407ab6c706d87de9a76"
+    },
+    "apps/max-game/www/assets/client-media/frame-85886.png": {
+      "bytes": 219470,
+      "sha256": "bd805b6cce5036ded55607c9b9b9c3823f0b360ba2eb7c81ef3e74a70c333df7"
+    },
+    "apps/max-game/www/assets/client-media/frame-85899.png": {
+      "bytes": 291233,
+      "sha256": "deff6277b1f14e3e252bb802c0e87a6ab13e249edc27fbed9dd09ef97a8ced4f"
+    },
+    "apps/max-game/www/assets/client-media/frame-86375.png": {
+      "bytes": 219964,
+      "sha256": "cff4c1bc7d028509a1101b5c6b37ca2ce533ccfde53200eec9d0146d9cfb8d82"
+    },
+    "apps/max-game/www/assets/client-media/frame-86385.png": {
+      "bytes": 258443,
+      "sha256": "70513d524ab05a5517ac9be44907204b7cc6058c7cef8c8110414aed80641abd"
+    },
+    "apps/max-game/www/assets/client-media/frame-86396.png": {
+      "bytes": 42816,
+      "sha256": "85b4b905fae30e1acf45f1512e7f81a3a118bec35ee72308abc14b19d28c96de"
+    },
+    "apps/max-game/www/assets/client-media/frame-86417.png": {
+      "bytes": 144556,
+      "sha256": "670b4b44f0ddd678d705414a391f74ca4af0a2af75600c1ad58107569034f869"
+    },
+    "apps/max-game/www/assets/client-media/frame-86446.png": {
+      "bytes": 219964,
+      "sha256": "cff4c1bc7d028509a1101b5c6b37ca2ce533ccfde53200eec9d0146d9cfb8d82"
+    },
+    "apps/max-game/www/assets/client-media/frame-86456.png": {
+      "bytes": 82492,
+      "sha256": "fd119d6fb09f40226f0611066be8a224e2e33093e6e75da74db24c61cb36be11"
+    },
+    "apps/max-game/www/assets/client-media/frame-86479.png": {
+      "bytes": 245310,
+      "sha256": "2a0b151e83e2193ad9c681a91bf7138661bf810eb0c5e95fcfc5f318b4d06632"
+    },
+    "apps/max-game/www/assets/client-media/frame-86494.png": {
+      "bytes": 220019,
+      "sha256": "149e64253ef6e9aebead8e4a91949e90eb4d821de7a2089c1841d678ffcf767e"
+    },
+    "apps/max-game/www/assets/client-media/frame-86516.png": {
+      "bytes": 58039,
+      "sha256": "2328f872ac299eea0477f0e65e893f7f498e0d30b9c6ddaf287d00939a3bf80a"
+    },
+    "apps/max-game/www/assets/client-media/frame-86524.png": {
+      "bytes": 219965,
+      "sha256": "16030097e87c491a02cf2181bfd214d018853ce285ab4efc80345308f46f2b74"
+    },
+    "apps/max-game/www/assets/client-media/frame-91189.png": {
+      "bytes": 238140,
+      "sha256": "afdb290902b2c2cd80898d01c66d123ad5532aa6cac37e63a24f8729fae02bab"
+    },
+    "apps/max-game/www/assets/client-media/frame-91237.png": {
+      "bytes": 238128,
+      "sha256": "be52066267e05a8a6c2c3d2091e2f4e8c8680c688ba6ce38e3a6468acb6428af"
+    },
+    "apps/max-game/www/assets/client-media/frame-91287.png": {
+      "bytes": 160472,
+      "sha256": "2a37aebdfb3dcb93c9c341e93a13b952be13fe291590f8f97eda467103ac9eb9"
+    },
+    "apps/max-game/www/assets/client-media/frame-91338.png": {
+      "bytes": 162122,
+      "sha256": "fbc41d89d6f627e28f9f71b857360abdc4b3f5310d30ff416d13664d3fa0958a"
+    },
+    "apps/max-game/www/assets/client-media/frame-91389.png": {
+      "bytes": 280061,
+      "sha256": "996544589dfd513da5b2c116fb4b8ddf42b8ac93be861b80440c72af99bcb6a8"
+    },
+    "apps/max-game/www/assets/client-media/frame-91443.png": {
+      "bytes": 278928,
+      "sha256": "ee5697520dcc2aba0d1c1da4b70979411049ced698d7f5ba4cde5cda74d03fb9"
+    },
+    "apps/max-game/www/assets/client-media/frame-91497.png": {
+      "bytes": 438154,
+      "sha256": "91cf935c2e24f7ff6d1a4086de68af755185bcfc2a074fcb7a20d59b06b5dfa5"
+    },
+    "apps/max-game/www/assets/client-media/frame-91499.png": {
+      "bytes": 508988,
+      "sha256": "e7f3fe17feb1382e6721b3dce6e95322a3668aa4934ebb5fe712da388cfbd9a3"
+    },
+    "apps/max-game/www/assets/client-media/frame-91501.png": {
+      "bytes": 421462,
+      "sha256": "a605fd04fa296027a83605650be93861075e54291fce9c800c411fcaabbe3691"
+    },
+    "apps/max-game/www/assets/client-media/frame-91504.png": {
+      "bytes": 100942,
+      "sha256": "d9708ef0e897ddd5d6bae2adf42cb1c62aa6232c1f50e4c0dd35d08226e3688a"
+    },
+    "apps/max-game/www/assets/client-media/frame-91516.png": {
+      "bytes": 49192,
+      "sha256": "55766cf655f5e6043a7d680c0b4a05813e4924d63445959f9404fdcca01b9d6e"
+    },
+    "apps/max-game/www/assets/client-media/frame-91547.png": {
+      "bytes": 27398,
+      "sha256": "b30b4e5d196462a6c12f83b730c7d1743144b5fa8a2cdc22049ba7424d4a2483"
+    },
+    "apps/max-game/www/assets/client-media/frame-91553.png": {
+      "bytes": 26976,
+      "sha256": "f8e30d8bcf1399aea3c8c04f0e887373b95029b37e2083637e89f513a2c47dcc"
+    },
+    "apps/max-game/www/assets/client-media/frame-91559.png": {
+      "bytes": 45260,
+      "sha256": "7f0e37392654bc83d04e6528cb8a8f8d96453384a7ebd14acff8573880a976b1"
+    },
+    "apps/max-game/www/assets/client-media/frame-91612.png": {
+      "bytes": 45907,
+      "sha256": "b0105467c97c8edf795b8dab3b5a780f198aac323a5f706fbccbf9ff05b1e048"
+    },
+    "apps/max-game/www/assets/client-media/frame-91637.png": {
+      "bytes": 44981,
+      "sha256": "4bd87813f383f46804f1f1971e2b4264eb3540a93d54678d8e24a130b9c8eb50"
+    },
+    "apps/max-game/www/assets/client-media/frame-91662.png": {
+      "bytes": 85514,
+      "sha256": "3a74ea1d07de9c07c5d9d154637fda319808dad62cd1cb496fde41d77e8b744a"
+    },
+    "apps/max-game/www/assets/client-media/frame-91689.png": {
+      "bytes": 71949,
+      "sha256": "6f703a9679f70e6842d925ac3919b8a072a26c82cbeb51e18c7a9b3ce9aaccd3"
+    },
+    "apps/max-game/www/assets/client-media/frame-91714.png": {
+      "bytes": 122891,
+      "sha256": "0ec15594df56d4fac956561ab16610d01ade84380a8871f0efbb0d828bb08f20"
+    },
+    "apps/max-game/www/assets/client-media/frame-91755.png": {
+      "bytes": 237391,
+      "sha256": "6c6bc262219cf47b91b4fbb88bd883518c1163ba72230ecf288bbab5901c8245"
+    },
+    "apps/max-game/www/assets/client-media/frame-91803.png": {
+      "bytes": 237451,
+      "sha256": "3aa102a4cb9ea6a3304667af206c615015100674cfe18ac9a19c2ccbdba04017"
+    },
+    "apps/max-game/www/assets/client-media/frame-91854.png": {
+      "bytes": 217482,
+      "sha256": "6ec44ba630260cf20f94fc8368320779e7e755ca734863056566873989756389"
+    },
+    "apps/max-game/www/assets/client-media/frame-91944.png": {
+      "bytes": 137813,
+      "sha256": "e4842bcb3faf7a8671878ad36e094f2a2a54ebd874259f462d00e5b1be01d4a6"
+    },
+    "apps/max-game/www/assets/client-media/frame-91998.png": {
+      "bytes": 131173,
+      "sha256": "61c150b1c9106b9cb8c1781689e77426493bb9bc1904449d9fa22fe77a881695"
+    },
+    "apps/max-game/www/assets/client-media/frame-99706.png": {
+      "bytes": 157433,
+      "sha256": "41463c9df00346c9c43caec2f6a3d7dc8c67bfa2fa57c086021ba8962fa8e38b"
+    },
+    "apps/max-game/www/assets/client-media/frame-99709.png": {
+      "bytes": 68199,
+      "sha256": "e961b52cf3809e4e444dcba930ba53b4dddae4f49a1f4975895dd90b59cdc36c"
+    },
+    "apps/max-game/www/assets/client-media/frame-99725.png": {
+      "bytes": 117486,
+      "sha256": "f9974f9e218199e399eaca71983c59f3cb05a3955dd1be96ec01287607eb8d3d"
+    },
+    "apps/max-game/www/assets/client-media/frame-99734.png": {
+      "bytes": 176803,
+      "sha256": "b7d7688ae4a8403bb456741638bf66270781f0813bcd38c15c8c265bffbdc733"
+    },
+    "apps/max-game/www/assets/client-media/frame-99750.png": {
+      "bytes": 181393,
+      "sha256": "b0ff865e53d0fc2d0a38f5b06ae607c61f175206a735f2c1519f9621efdad06a"
+    },
+    "apps/max-game/www/assets/client-media/frame-99766.png": {
+      "bytes": 109786,
+      "sha256": "5087c8aab640f187c7e29878d30a5f30291e93256872d2d3fcb46a78b6ee6db8"
+    },
+    "apps/max-game/www/assets/client-media/frame-99817.png": {
+      "bytes": 108135,
+      "sha256": "36036d95f824949d37527b20b25b98c7c4da66e34940414b67166219d50c82c4"
+    },
+    "apps/max-game/www/assets/client-media/frame-99846.png": {
+      "bytes": 385779,
+      "sha256": "fa8e0a8e365ed09c83918251eb55ace535c2a7649610b903ef83a3d3d318049b"
+    },
+    "apps/max-game/www/assets/client-media/frame-99940.png": {
+      "bytes": 348720,
+      "sha256": "53057f123fd279b72231c293bdca6a2d82ad26bc6989282b3365bd4c83f4c3fb"
+    },
+    "apps/max-game/www/assets/client-media/hotel-01-arrival.png": {
+      "bytes": 2113029,
+      "sha256": "c33431a5320372e8f1ca82391d330d16a0ea3d1b472ca53dcea41777de104ecf"
+    },
+    "apps/max-game/www/assets/client-media/hotel-02-present-id.png": {
+      "bytes": 2099369,
+      "sha256": "b7f8062b7d238e935de920fee19970e17c4cf6a8ba93ed1b2e7c423a7b70c5c0"
+    },
+    "apps/max-game/www/assets/client-media/museum-01-arrival.png": {
+      "bytes": 2072391,
+      "sha256": "d2389f762f944faa605bb0e466f0a9567887a8e9a579751558711f73864712ae"
+    },
+    "apps/max-game/www/assets/client-media/museum-02-present-id.png": {
+      "bytes": 2017782,
+      "sha256": "a172c4c74e6e826f440a879e3ffb2652bae6ce09997b40fcc075a77902215b6a"
+    },
+    "apps/max-game/www/assets/client-media/sources.json": {
+      "bytes": 55883,
+      "sha256": "cc60d1352ee20bbb5702314d466bd76dda763a98a401dfb73fc9fc2c965a4f0b"
+    },
+    "apps/max-game/www/assets/device-custom/home-photo-no-benefits.svg": {
+      "bytes": 2764792,
+      "sha256": "36b034ff33f2ff7e7efcd5e51248538c9014d55ab4f80a5b36be74aa37fbad88"
+    },
+    "apps/max-game/www/assets/device-custom/max-gosuslugi.svg": {
+      "bytes": 82723,
+      "sha256": "469ad8e5e09b701b4ccac6a8b654b0b112942ea76729e031912a1011133bac4d"
+    },
+    "apps/max-game/www/assets/device-custom/max-standby.svg": {
+      "bytes": 82016,
+      "sha256": "fa5827b8b264d720cdfe7637209078cfdf38a9644e39d0b67e56c6034b8c3726"
+    },
+    "apps/max-game/www/assets/device-custom/tv-first-30s.mp4": {
+      "bytes": 19816649,
+      "sha256": "7bc8377806a047ba83a6dffb3d4e913c1f1315974e244124ff5c249b9d911a7f"
+    },
+    "apps/max-game/www/assets/digital-id/create-01.png": {
+      "bytes": 122484,
+      "sha256": "9543fad19915fc4606f64e8fcd1790abfd44309cb9cfc77296e358435b3de9fe"
+    },
+    "apps/max-game/www/assets/digital-id/create-01.svg": {
+      "bytes": 192850,
+      "sha256": "e41853b6bca3df2ece65ff16bfb0621c69bb4c14a576ab18a7a0c9663e0aec2e"
+    },
+    "apps/max-game/www/assets/digital-id/create-02.png": {
+      "bytes": 37803,
+      "sha256": "b8674f9e1408ff33bf85ab08ed2797b14d40688abba4c1466da6ff61d50b9c41"
+    },
+    "apps/max-game/www/assets/digital-id/create-02.svg": {
+      "bytes": 161028,
+      "sha256": "97d39b265c5106c931185f1dfde7a536d148b4d62771731cc0c790b81751fc6e"
+    },
+    "apps/max-game/www/assets/digital-id/create-03.png": {
+      "bytes": 15418,
+      "sha256": "4f5232f21868edb854ccf4e6e58cd275a1550ee6542bc2cf53e161bf5eb3e63a"
+    },
+    "apps/max-game/www/assets/digital-id/create-03.svg": {
+      "bytes": 16255,
+      "sha256": "c250a57e34c71faa101c229d315972b4d0926ec0450080ac4239d419bd9c399e"
+    },
+    "apps/max-game/www/assets/digital-id/create-04.png": {
+      "bytes": 39459,
+      "sha256": "e36164afbc02cd3c41cca048934aa8c852ccbdae8a087ea47fefb8b432a6a6d1"
+    },
+    "apps/max-game/www/assets/digital-id/create-04.svg": {
+      "bytes": 271844,
+      "sha256": "8481957a8ffcad0c759a8eec72f88ee53c83fe0c5c0e029cb69b77b69f9c1ee2"
+    },
+    "apps/max-game/www/assets/digital-id/create-05.png": {
+      "bytes": 41310,
+      "sha256": "59beb45217ce82a69eeaf337556b42a2e627bdcf4e5e7ec46effa511e77096e4"
+    },
+    "apps/max-game/www/assets/digital-id/create-05.svg": {
+      "bytes": 396658,
+      "sha256": "9788d9fda365f2f14a62b3c1c81a26b665a2a64a838a17fe0b0a10860dc9c4a1"
+    },
+    "apps/max-game/www/assets/digital-id/create-06.png": {
+      "bytes": 24219,
+      "sha256": "2dc437d8c6d7182e4664194aabe1007f536bc7415eb9837b5fb7344b76466cf8"
+    },
+    "apps/max-game/www/assets/digital-id/create-06.svg": {
+      "bytes": 109290,
+      "sha256": "9d3700d56dfd421d26081faa097de595771521bc12054d6bfb9e22539c830c02"
+    },
+    "apps/max-game/www/assets/digital-id/create-07.png": {
+      "bytes": 28356,
+      "sha256": "2acd7344b63730c1db5d0193d741b669a98ee92b5a12616867c13cb5fe104d96"
+    },
+    "apps/max-game/www/assets/digital-id/create-07.svg": {
+      "bytes": 96659,
+      "sha256": "178d53f20b5ccfc93c19e55409b2f9c08adf02ed17e554fc4e7aa218e62854ae"
+    },
+    "apps/max-game/www/assets/digital-id/create-08.png": {
+      "bytes": 28904,
+      "sha256": "84f54797b672e5481dd3179ac28c474ae13cb9e2b2f3075cff51c1be2d65f3c5"
+    },
+    "apps/max-game/www/assets/digital-id/create-08.svg": {
+      "bytes": 98361,
+      "sha256": "7243007f81b03ef73ef7c51d8dad2ee2f5e0aa188488304b00a5f9ec654783bf"
+    },
+    "apps/max-game/www/assets/digital-id/create-09.png": {
+      "bytes": 26593,
+      "sha256": "782883b12f17aa6cc4df557eb16044724ebd587b3173e41c96e11f9df1e9d8c0"
+    },
+    "apps/max-game/www/assets/digital-id/create-09.svg": {
+      "bytes": 77413,
+      "sha256": "d0cd979438be2a27720c8ce4cd9eb8a7155068d33b777b2e887561bfc4c0662f"
+    },
+    "apps/max-game/www/assets/digital-id/create-10.png": {
+      "bytes": 27138,
+      "sha256": "6075b94a300fc120af4666dcc69642d0dfd0446ae74b44f84e2aaf6c009a8def"
+    },
+    "apps/max-game/www/assets/digital-id/create-10.svg": {
+      "bytes": 79115,
+      "sha256": "12ee39d6be385727dd1cf710d495a8c0b99b0eb67e835062a345243a43a2dd1b"
+    },
+    "apps/max-game/www/assets/digital-id/create-11.png": {
+      "bytes": 67310,
+      "sha256": "941a440e9a01ef9114f8142a2c41bb97bb29387dc8bae1a17e8bd03ee53bfca2"
+    },
+    "apps/max-game/www/assets/digital-id/create-11.svg": {
+      "bytes": 155225,
+      "sha256": "23834855e9f796e5724e8665e29cc5d4069fb9bce1b1348cc1ba0d9546543dd8"
+    },
+    "apps/max-game/www/assets/digital-id/create-12.png": {
+      "bytes": 62496,
+      "sha256": "f54bfa82905e9b427caebc237a5f86a4d38114207f6377be72b8740d5e74d8fe"
+    },
+    "apps/max-game/www/assets/digital-id/create-12.svg": {
+      "bytes": 1062479,
+      "sha256": "bc9eb6ea11cfd81ee1f67826e62328b994f7f922eb25a789439723d603bb0a19"
+    },
+    "apps/max-game/www/assets/digital-id/create-13.png": {
+      "bytes": 139893,
+      "sha256": "8d19f66397d42a68b24eeef4d56386dd79dfea0354e592dcc70cc8cdfd172af5"
+    },
+    "apps/max-game/www/assets/digital-id/create-13.svg": {
+      "bytes": 962086,
+      "sha256": "a0af7a769663f21c6c0f126d4f8c4d15c6303ef9005d24c9b655d74b5a1afed6"
+    },
+    "apps/max-game/www/assets/digital-id/sources.json": {
+      "bytes": 7003,
+      "sha256": "22e7841b5898d404ad6535b2986f2d63d007fdd20b82f3c19a7435aebf5791d3"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-13423.png": {
+      "bytes": 319800,
+      "sha256": "5c0eef56f2155bff17be538a2d19afb4416bef84129ad187ff2ffa7dd277e516"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-13434.png": {
+      "bytes": 173947,
+      "sha256": "73eb879efa1d05f4abca6384fa445ff823e6f0065dc9c6e135f415d60b1ed557"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-13442.png": {
+      "bytes": 102834,
+      "sha256": "b8d697f8d669f9ba492e650bf9943402f80e87691618a8beb22e9380973d30f5"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-13455.png": {
+      "bytes": 102119,
+      "sha256": "87c94f64b934cd6cbe0e5241512bbfa1f5b0cbb7e8104f20be86c68b8cad3d67"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-13464.png": {
+      "bytes": 175701,
+      "sha256": "bbe0a907368143a7bd3962fea1247580a2103a35ec14973e30fa223809b52dbb"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-13473.png": {
+      "bytes": 231037,
+      "sha256": "3c0113fce7951d7e6b4af673c4cc3043b1836f636bb557a255496d0eeffab660"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-13482.png": {
+      "bytes": 143970,
+      "sha256": "211c4438274a96b8f9c2b698d705099a83b6f0f78fd9c1b68628a0587deb6b23"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-13493.png": {
+      "bytes": 139610,
+      "sha256": "ab25e1e29f6777899445d99779a81942bda057de6a45c8732e264821e2a705ac"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-13504.png": {
+      "bytes": 237911,
+      "sha256": "7c02bea4a6b12e396e17ba60f132f73c15b3e6613f86580ed7956a3c7ce6f609"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-13512.png": {
+      "bytes": 439570,
+      "sha256": "fd749330049e2f0643ebbd9239a47ad3929b34d56121d41b9e1230a1349925a4"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-13522.png": {
+      "bytes": 439570,
+      "sha256": "fd749330049e2f0643ebbd9239a47ad3929b34d56121d41b9e1230a1349925a4"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-13537.png": {
+      "bytes": 679341,
+      "sha256": "44b1051bb1d116a0a2cbfb93c52250abcd9aa73e025fac9a4c4f2e21e78007f9"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-13546.png": {
+      "bytes": 407539,
+      "sha256": "2e97c4bc2cf5d3b5c3e029332edc72c8a3d7db87ff25355bb6cc50b511e876b7"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-13555.png": {
+      "bytes": 394338,
+      "sha256": "4e8d761b767ec7d5e776c75d72cdea1c3f4853455f9fdb045ee3ecbb766c0993"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-13564.png": {
+      "bytes": 592986,
+      "sha256": "37ff70d901fed87b89c7ef57f0e5c924f83d420a832c741140e16ff658a3e5c0"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-13573.png": {
+      "bytes": 592986,
+      "sha256": "37ff70d901fed87b89c7ef57f0e5c924f83d420a832c741140e16ff658a3e5c0"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-13587.png": {
+      "bytes": 342036,
+      "sha256": "62745764375b1089f2b5b9c4feefcfec308960b97fd40e53e8fba4a89e8019c9"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-13597.png": {
+      "bytes": 331801,
+      "sha256": "523471418755edba113178ac6ee3c90009bf53d4f9e7eea37214e32156309b1d"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-13807.png": {
+      "bytes": 460613,
+      "sha256": "636ff05cc0095b4842ea7dd4b540010ccf00975a44a60ec6f394e883b21fb6c9"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-14794.png": {
+      "bytes": 99418,
+      "sha256": "dc070dbb30aa30bb7d5f7ede8757b0469f61588811b69091997ce696885d51ee"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-14873.png": {
+      "bytes": 44822,
+      "sha256": "83c860a4665345a301ba36f7656b2e15191eacf2279737e578316d48026d2770"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-14904.png": {
+      "bytes": 63831,
+      "sha256": "d34bf484b2d62d39dcb3d595f5d1e485199dcd8591b3e7748098125f9bbda7a7"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-14945.png": {
+      "bytes": 255459,
+      "sha256": "1771f7067973cbc6baaa07a5de31ca1d8f75f4cde45a095f3adf943b4ec1ab8b"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-15108.png": {
+      "bytes": 247705,
+      "sha256": "831f81a61dbedc73088deb690c7ddcf1b4cb60f246aec4a62f523178f804b5bd"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-15260.png": {
+      "bytes": 534107,
+      "sha256": "06a0122d1346a203b9b2bedff01220fc60248f5ba97c72fae048da14f599c137"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-15686.png": {
+      "bytes": 2119539,
+      "sha256": "8ace0a1367998c489b888937300ebb700d64646bbd0162686f1f50b7125224c4"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-15696.png": {
+      "bytes": 2112460,
+      "sha256": "0091ac547170ffe16252212f978795d1a061c7095c9a8d8554cb34a1b2ae39af"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-15706.png": {
+      "bytes": 2112460,
+      "sha256": "0091ac547170ffe16252212f978795d1a061c7095c9a8d8554cb34a1b2ae39af"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-15720.png": {
+      "bytes": 2072605,
+      "sha256": "f7db64ede387b78731cffc68e358062a41df2b7d76168a9b8ecd84c46b20fe94"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-15730.png": {
+      "bytes": 2011614,
+      "sha256": "0ce98c4574c856a70f020c5982752de44441c1a7c4ce98deab80161af7560d36"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-15740.png": {
+      "bytes": 2011614,
+      "sha256": "0ce98c4574c856a70f020c5982752de44441c1a7c4ce98deab80161af7560d36"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-15754.png": {
+      "bytes": 2102497,
+      "sha256": "dd470c25e451141e1bc5a342294369e734712c3d10cb40ee950b8c662bbf81b6"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-15764.png": {
+      "bytes": 2183240,
+      "sha256": "e93094c5b8de1d0e1bc8d6261e6baf2edde1821a9c75d1536244a47680cfdb86"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-15774.png": {
+      "bytes": 2183240,
+      "sha256": "e93094c5b8de1d0e1bc8d6261e6baf2edde1821a9c75d1536244a47680cfdb86"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-15983.png": {
+      "bytes": 551112,
+      "sha256": "6591d0f5b17c97c0a31d262492db94c000237743ba3118a500fbbf73a1b21f98"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-15990.png": {
+      "bytes": 728227,
+      "sha256": "4f76fc8da6944a502c53bc6955151b6e41c00400f02314066aaefd75345a1b12"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-16000.png": {
+      "bytes": 1140965,
+      "sha256": "d4522202159f3d20d7f52c077768d06261ba707ff713aa994dba5945020b7d22"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-16021.png": {
+      "bytes": 948892,
+      "sha256": "31fa3306a7465d65b3d8e4358275a154fdb06a83b3ae27787632ae7fdbca80ac"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-16039.png": {
+      "bytes": 535954,
+      "sha256": "89b58e0eb57fd25b1d4fe0c572f7823d3be437804990d5ac21f09ef2eeadad9e"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-16051.png": {
+      "bytes": 529288,
+      "sha256": "dfc2701df9c847e7d32af99f7fc1370635bf1983af206b30f2f0fdccd9651922"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-16061.png": {
+      "bytes": 522501,
+      "sha256": "c9ce2e0938479b2e2fdf640a7ae738944086bdeaa582497c68c6cd922d24ec45"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-16071.png": {
+      "bytes": 504733,
+      "sha256": "1c636ae9aaae779abcddbb64de2dd36e568217ad6be91dd8be42951be090e39e"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-16081.png": {
+      "bytes": 528718,
+      "sha256": "0ffb0a0507eb42833a5d25962afaaa008f406f5ac8ac16217fe5ee1efe11317f"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-16090.png": {
+      "bytes": 535949,
+      "sha256": "ffafc02c0866acd61eba950d6b683eaa32a57558bf11834fb755800b88664503"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-16098.png": {
+      "bytes": 389488,
+      "sha256": "794c5d1aa9e5b68417024903908560c2de3ac22705e5c2df8cc428be38db7bb7"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-16108.png": {
+      "bytes": 649986,
+      "sha256": "0e0cce555165187c5fd14c4c246a7d401745b6153228ee072bb4d87513a4a43b"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-16118.png": {
+      "bytes": 650905,
+      "sha256": "93d0f208cc5b489299cc1fd5ec56534ded1bcc315d2bd08d19dd0505fe5b812b"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-16126.png": {
+      "bytes": 650893,
+      "sha256": "eec653e19e8a96b1dcedd60f2b2e075bad691c8338e0484c3989ed9d80e3f6ec"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-16137.png": {
+      "bytes": 660170,
+      "sha256": "d0ecd59a4a658e4c86a68025663446ef5ac6dc485d0954337d92ca268d4a6a14"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-16151.png": {
+      "bytes": 971039,
+      "sha256": "031e631efabdded0292c34d96d5ad54cc64fd1cf00ebde260e2372e98b9aaa8e"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-16171.png": {
+      "bytes": 646372,
+      "sha256": "d976cde6e3b0e5967ab6eab7d76ce6926155a4e24d5729c2800175de3eec95ca"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-16290.png": {
+      "bytes": 600540,
+      "sha256": "3642b0d042a8d069206e804a6c011e654dd8d48eac8e6a582401d543fa4ccc62"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-16365.png": {
+      "bytes": 949669,
+      "sha256": "aefa8ac28e1684cbc4c0abd8f1211e5be3e3888bad74360a746b716c25c916b1"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-16392.png": {
+      "bytes": 378396,
+      "sha256": "c7e321b828a1a6d6b319c8861a88b19680058e02d766045fc4dd46311ad3a4f0"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-16403.png": {
+      "bytes": 467160,
+      "sha256": "b3b18d6b8dbe8771ec956229241b33a503951da905b565a43a8358ee878b42f6"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-16411.png": {
+      "bytes": 603913,
+      "sha256": "ee74395556447dbae89a06ed8771f302fcea661c2ec229d75f7d91273d77c30b"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-16423.png": {
+      "bytes": 1300229,
+      "sha256": "84a07efe59b5e8da459cce2b3f19083926f0636d3fc978d5c4c64c58b12e6290"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-16433.png": {
+      "bytes": 1680065,
+      "sha256": "10fc2138d15923502a6d8ce3b77dc885c4c038cd52b72be3b4b95e7224abc744"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-16657.png": {
+      "bytes": 1041962,
+      "sha256": "8ec1e22c39deabc9f2c411b3b63e369231526f73f5b68b4eb19f759f44660acf"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-16744.png": {
+      "bytes": 65337,
+      "sha256": "2f3a8875d7b7af13cf52ed6a82b9574813c39812142d2b2a9caa08125aef7f1f"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-16939.png": {
+      "bytes": 71976,
+      "sha256": "3f2ffafebff146f1823d952a87f60b27cb6a0ea9d17b82a9ae1b77ae20b8846c"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-17134.png": {
+      "bytes": 22193,
+      "sha256": "ced8b2bb401a5e39c9ea3c2e057595802e19ab7b6614fcce144a1a6dccb9fd09"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-17148.png": {
+      "bytes": 183121,
+      "sha256": "1b7c2375e4ce8bc4b82075008a8f5aee3757b2c3e2aca58ff1465709384242c3"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-17351.png": {
+      "bytes": 152526,
+      "sha256": "5db6890f2c6fff9e0e15bb29f8679a653a7cdcc3f4c6eaa6e0a62697a1d18387"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-17579.png": {
+      "bytes": 133203,
+      "sha256": "494059a5e242e2f1b28d3ffe524dff966b8da8e8b87f0767f25ec3507a06e768"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-17783.png": {
+      "bytes": 665975,
+      "sha256": "cb199ce17d99aa03f4e6da9c47b4602688ca5ffe625f4cc578bb4b1c22883848"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-17801.png": {
+      "bytes": 669151,
+      "sha256": "d4e58583c8fb28cbc1300497b677522dd50b98e4b37defc06fb48f9a8d34986b"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-17821.png": {
+      "bytes": 688633,
+      "sha256": "96eec3ee3ccd5da621631afc3d795afbc7a1f26984b436fd84d8101c97b21419"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-17843.png": {
+      "bytes": 708066,
+      "sha256": "c9d98f4726261266d7f013ca9c3a9e8b780bd1827250bced6b5323869f4c6e7b"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-17863.png": {
+      "bytes": 719905,
+      "sha256": "28cba128b48215ded74080c72cf4bfe33c3a55ee5d977ef7b56028e63be97750"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-17887.png": {
+      "bytes": 666612,
+      "sha256": "47f0bfa1c1d1082d0983b79bb9831dc0214e20055261ac0993756d91d2d39bbd"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-17912.png": {
+      "bytes": 237854,
+      "sha256": "8b350f1200ece39e569172fa3d4fc4a07fd95852db7e3440f2ca8ec49e3e5f5d"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-18120.png": {
+      "bytes": 1331565,
+      "sha256": "a879b4cda8fb9ce193e2a8b06030db4ff83055a442c1784bf493b7c0e1c9ecec"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-18558.png": {
+      "bytes": 152526,
+      "sha256": "5db6890f2c6fff9e0e15bb29f8679a653a7cdcc3f4c6eaa6e0a62697a1d18387"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-18787.png": {
+      "bytes": 151647,
+      "sha256": "966f3a08827ed762d26164c5fd4c23d689c29ada2d836bc3ff2412d3062541a9"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-18799.png": {
+      "bytes": 155640,
+      "sha256": "60c2dc36e76720a497b316e6be573ac13a0b481ffd0c9026efc8994350b59d5a"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-18852.png": {
+      "bytes": 102675,
+      "sha256": "5047c3219f2b9185e976a2bad5973fbec39759740193728482fec7410ff38bf9"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-19066.png": {
+      "bytes": 375019,
+      "sha256": "5f6954548bfbba579af1749579d8c4caccd0d456da52f34b018c41b0ddcbe5d5"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-19278.png": {
+      "bytes": 375028,
+      "sha256": "c4089c0f3323992cde49288973c6a593beeb3ca3324ceea5a642c7765031db5c"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-19495.png": {
+      "bytes": 152526,
+      "sha256": "5db6890f2c6fff9e0e15bb29f8679a653a7cdcc3f4c6eaa6e0a62697a1d18387"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-19723.png": {
+      "bytes": 218910,
+      "sha256": "3951bb4ab1d2ba07ebf2a6a08e20ece6873fb6d752a9bc1548332784efd158a2"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-19730.png": {
+      "bytes": 237499,
+      "sha256": "66844d5bbd5f3a6c64ad921d1469558909e29cc8e396fd0b327432aa9ab92863"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-19737.png": {
+      "bytes": 80326,
+      "sha256": "deebd5a01109a87caf36d8c50b739eddfb42763b8372c333072c49d9a87e06b1"
+    },
+    "apps/max-game/www/assets/figma-20261003/296-19936.png": {
+      "bytes": 80317,
+      "sha256": "b66dbe87abdc3361f06b8c22c611a97e32fd058860e74dfa152e43ee69bbbc36"
+    },
+    "apps/max-game/www/assets/kdw-native/business-channel-menu.svg": {
+      "bytes": 180165,
+      "sha256": "0ec4fd8f696d6ab0b5d9df169e02ab777e154a35322bb86b0ae2368bea40056b"
+    },
+    "apps/max-game/www/assets/kdw-native/business-channel-phone.svg": {
+      "bytes": 1810913,
+      "sha256": "8391f8f2ed29a17740231c5633c01f41fea5609c3d6f6a93cc04822f80758839"
+    },
+    "apps/max-game/www/assets/kdw-native/business-choice.svg": {
+      "bytes": 3300,
+      "sha256": "a8f9eef8f77ce9892e09deb2d698b8cc3e4fb6783db8dd4e88a6bc5315b9181e"
+    },
+    "apps/max-game/www/assets/kdw-native/store-header.svg": {
+      "bytes": 8110,
+      "sha256": "24e76d8ba2f11bf944768df95503bba7c6b9c181201199485bedf550361b1e17"
+    },
+    "apps/max-game/www/assets/kdw-native/store-phone.svg": {
+      "bytes": 145,
+      "sha256": "47622eea8de8aeefef8119db0a8aedf625bca208db176cef54ba43ff23971f50"
+    },
+    "apps/max-game/www/assets/kdw-r7/catalog-reference.png": {
+      "bytes": 477925,
+      "sha256": "d9af0f9cc740ef9dc84a8dcad9e23416519ba299f079a6c62cbd78372ac62037"
+    },
+    "apps/max-game/www/assets/max-icons/age.svg": {
+      "bytes": 27441,
+      "sha256": "50dce53f9be72c493c2015471054cb3f472fc8288ffd20d6a07df06b9488ad30"
+    },
+    "apps/max-game/www/assets/max-icons/benefit.svg": {
+      "bytes": 22243,
+      "sha256": "cb0f7bb4b04d188b5a2acceb0cc7e6715445e839ff11247697ce4a3625d289c7"
+    },
+    "apps/max-game/www/assets/max-icons/bot.svg": {
+      "bytes": 32931,
+      "sha256": "386c6b6f5c124215168098a7c6c8514f580d9ba66a1cf23f126f9c112c006939"
+    },
+    "apps/max-game/www/assets/max-icons/business.svg": {
+      "bytes": 23128,
+      "sha256": "d5d3285ccb381535848ecb7dd835cd4d03ff13e4581db67876c2b1a4612b5359"
+    },
+    "apps/max-game/www/assets/max-icons/call.svg": {
+      "bytes": 23930,
+      "sha256": "03e4e88ea527faa3f5b2a8bc9e578ca603192f9b0369b3294034675f01f20b22"
+    },
+    "apps/max-game/www/assets/max-icons/channel.svg": {
+      "bytes": 18166,
+      "sha256": "3d1624b029a1228db57564fba2403162fbf04849233eb17dd5804dd19b039a47"
+    },
+    "apps/max-game/www/assets/max-icons/comments.svg": {
+      "bytes": 23237,
+      "sha256": "f2bf0323b5ae8c7b658bbc5a78105b629aa8fe951b28dc148bd1254653c38e2b"
+    },
+    "apps/max-game/www/assets/max-icons/digital-id.svg": {
+      "bytes": 29990,
+      "sha256": "26ba047ad5e2a4009b99c5db7ece56bf3d4bf082c3ac27060d5bd3573ff4ef77"
+    },
+    "apps/max-game/www/assets/max-icons/hotel.svg": {
+      "bytes": 23285,
+      "sha256": "694a569530558368e35dc4cf214b8a7d6cf4ef7723d9f82b34679f84b135a437"
+    },
+    "apps/max-game/www/assets/max-icons/message.svg": {
+      "bytes": 32350,
+      "sha256": "74d6b5779c9bdd0dae9ce415441da638d46cc750d7e339247011b9683b9c9f38"
+    },
+    "apps/max-game/www/assets/max-icons/missing.svg": {
+      "bytes": 356,
+      "sha256": "0ecb676b09c0d73b512d788ca80779de74841ab5dbab7cb23d5ecff08bf31384"
+    },
+    "apps/max-game/www/assets/max-icons/open-max.svg": {
+      "bytes": 17748,
+      "sha256": "0e5185b65d3babbc5cd1b3835fa64a8db5bfa0deda19318be0d1a2f503c46de0"
+    },
+    "apps/max-game/www/assets/max-icons/restart.svg": {
+      "bytes": 830,
+      "sha256": "3f3ccacabd45aa9aa47212f99157553b998ed95ee30b0bc301685297f725ab23"
+    },
+    "apps/max-game/www/assets/max-icons/scan.svg": {
+      "bytes": 4051,
+      "sha256": "fc38905740843d47acad7abb34a89fd52272cb679115ec557057777b43ebbaa1"
+    },
+    "apps/max-game/www/assets/max-icons/statistics.svg": {
+      "bytes": 21048,
+      "sha256": "fe7e74692caaabdc9b0d58624484d00438c5a1878dca221bcfa182eb85512de7"
+    },
+    "apps/max-game/www/assets/max-icons/stickers.svg": {
+      "bytes": 17736,
+      "sha256": "9eb9bd06deb08622880397c88a0dd78fba39225556375ffc3d7164218ca17ea6"
+    },
+    "apps/max-game/www/assets/max-icons/store.svg": {
+      "bytes": 20589,
+      "sha256": "30e352da23cdca13d8d5c47a65d0e41be648aa3323fd440cf8c5bd8891085080"
+    },
+    "apps/max-game/www/assets/max-icons/story.svg": {
+      "bytes": 20322,
+      "sha256": "cffa374a8b711c8fede39f1113bbfc98ac3b7b046e5ea9c10a523238b5921bf0"
+    },
+    "apps/max-game/www/assets/nodes/icon-10.svg": {
+      "bytes": 4162,
+      "sha256": "741098225055eee71e1396396cca2db210b910b98d45ffeec288b10495ff521a"
+    },
+    "apps/max-game/www/assets/nodes/icon-11.svg": {
+      "bytes": 1765,
+      "sha256": "1a0501c17ab0d6fc001e5441914507a61054e413621f70223b9636a972204334"
+    },
+    "apps/max-game/www/assets/nodes/icon-12.svg": {
+      "bytes": 820,
+      "sha256": "134229190942dc9ab51d8ff133457a4f66fc2496f857df78c63036798ccd0937"
+    },
+    "apps/max-game/www/assets/nodes/icon-13.svg": {
+      "bytes": 1014,
+      "sha256": "900e8cd749c7138b5cd34316f40c8e8463b9ee6c7381056a353145c4b1ced5d0"
+    },
+    "apps/max-game/www/assets/nodes/icon-14.svg": {
+      "bytes": 4177,
+      "sha256": "a6cc9c84d52e8d95ef45283aaaf7f965001f613f7f77b4aa07abffb20e5cbe20"
+    },
+    "apps/max-game/www/assets/nodes/icon-15.svg": {
+      "bytes": 1147,
+      "sha256": "30268eafa02f49978fc6db1adbddf298d1ed7e8a82cfc97e6a08029396805277"
+    },
+    "apps/max-game/www/assets/nodes/icon-16.svg": {
+      "bytes": 847,
+      "sha256": "80e35ebe03bb0dc5bc5adc9e2aff1ed809ab64c6ccf06b3a074f2da0f6caf638"
+    },
+    "apps/max-game/www/assets/nodes/icon-18.svg": {
+      "bytes": 1606,
+      "sha256": "3c0c24fc826976bbd48613afa1285d1520b2a65fb23d9d0fa155d9fb37ae51c6"
+    },
+    "apps/max-game/www/assets/nodes/icon-19.svg": {
+      "bytes": 1603,
+      "sha256": "12e2a5210276d997de640da27590deb3f76ac57ac6081c44f57e3c53e0c6876d"
+    },
+    "apps/max-game/www/assets/nodes/icon-2.svg": {
+      "bytes": 1622,
+      "sha256": "a27630778d5cf4f4456e95062fa04616c80885a8ff5e7ee00d133c4d51276f4b"
+    },
+    "apps/max-game/www/assets/nodes/icon-24.svg": {
+      "bytes": 1025,
+      "sha256": "54b8466698099f342a4b3800049c85bdf6149aff3eeb5feff8620ed29bb0c2a4"
+    },
+    "apps/max-game/www/assets/nodes/icon-25.svg": {
+      "bytes": 1026,
+      "sha256": "89344106bb7ca3d4b0516721de72a0b5204fbe5ac559d0e0c2ce8073b455833a"
+    },
+    "apps/max-game/www/assets/nodes/icon-26.svg": {
+      "bytes": 849,
+      "sha256": "2559b5ffd8e6e80139374e2b0e12b054af24960a2f1b9d71968c3d6dcf0db3d2"
+    },
+    "apps/max-game/www/assets/nodes/icon-27.svg": {
+      "bytes": 1007,
+      "sha256": "fa8178e4606e692375fedb1358afcd831ad4c2473463447ebab10cceaa8ce271"
+    },
+    "apps/max-game/www/assets/nodes/icon-28.svg": {
+      "bytes": 1634,
+      "sha256": "513ad32291a61070f63d7c667ee9560ce0258dbee3fb18d0586806591237e45d"
+    },
+    "apps/max-game/www/assets/nodes/icon-3.svg": {
+      "bytes": 835,
+      "sha256": "8546826b55ec8862a8fe16e9481a28b2073fb57fc030b8ca24eb89f9139e62b6"
+    },
+    "apps/max-game/www/assets/nodes/icon-34.svg": {
+      "bytes": 1015,
+      "sha256": "e513a1538524cb40554b9bb76ae8f1e65d780015fac3acec079773b0740d373b"
+    },
+    "apps/max-game/www/assets/nodes/icon-36.svg": {
+      "bytes": 1764,
+      "sha256": "ac75147e932ca464c95ec59953abb8f116c1088f641657f5e4c25222b8e37b8c"
+    },
+    "apps/max-game/www/assets/nodes/icon-37.svg": {
+      "bytes": 819,
+      "sha256": "0b8ad755ef9edf852a61c386c5d5a83aa45015b9e21f0921f60c4c787193ca47"
+    },
+    "apps/max-game/www/assets/nodes/icon-39.svg": {
+      "bytes": 2190,
+      "sha256": "4bd068a8be1af315ecf975c2b810840c059b85ea74ae48c177bb334bb770956e"
+    },
+    "apps/max-game/www/assets/nodes/icon-4.svg": {
+      "bytes": 4165,
+      "sha256": "6fa0ad476c473374e1ff486c31d5aa2737e54897b0c3cde7e0bbdc2bc6174c77"
+    },
+    "apps/max-game/www/assets/nodes/icon-46.svg": {
+      "bytes": 831,
+      "sha256": "216e6a385f3d01fad29095e45f0a9ca3a122d95ce5e611fee1373e67194f34bf"
+    },
+    "apps/max-game/www/assets/nodes/icon-47.svg": {
+      "bytes": 1613,
+      "sha256": "29250edde87f18d61b809a9cfaaba04f04bba6ed8f69d5c5f508af2aa8473dee"
+    },
+    "apps/max-game/www/assets/nodes/icon-48.svg": {
+      "bytes": 1613,
+      "sha256": "672e9785d88be18ec223f35c4eb75590142e3891030c34dfcce6af258fab0afb"
+    },
+    "apps/max-game/www/assets/nodes/icon-49.svg": {
+      "bytes": 1031,
+      "sha256": "9b2bfaf8c581c813423c469ef91030d55e4331ada6b4034008781ec0abd442bd"
+    },
+    "apps/max-game/www/assets/nodes/icon-5.svg": {
+      "bytes": 1608,
+      "sha256": "ca800c7f907098d0efc15ab2b926804d6bf50ec56afc96b393b032884e9ce5f8"
+    },
+    "apps/max-game/www/assets/nodes/icon-50.svg": {
+      "bytes": 4167,
+      "sha256": "2736e8d1d7f78386b9f4e06f70e7fdf9e541e46aeb1ebb6a28a04cd3feb58695"
+    },
+    "apps/max-game/www/assets/nodes/icon-55.svg": {
+      "bytes": 2075,
+      "sha256": "a6205420c20b1b0b1d129aad2fef05bf26d285bb06e2b722779baa34bfaec13c"
+    },
+    "apps/max-game/www/assets/nodes/icon-6.svg": {
+      "bytes": 1024,
+      "sha256": "04dd497e9485ac9b1ae1a482730df44c78122e377318991f41460a8ec4568e47"
+    },
+    "apps/max-game/www/assets/nodes/icon-61.svg": {
+      "bytes": 1612,
+      "sha256": "ebb7ff25f4cae90c0d57b4d15d74ac6f2dfba1d97c29e3afa8f8746caaaac82e"
+    },
+    "apps/max-game/www/assets/nodes/icon-62.svg": {
+      "bytes": 1028,
+      "sha256": "06c66a8c60fb71579375f386315a2812f196ddad8396e6642a2c91dedc16542c"
+    },
+    "apps/max-game/www/assets/nodes/icon-63.svg": {
+      "bytes": 846,
+      "sha256": "6119eb60bdbd3813f8303536e01facf99cd83d642eaff13ec2d18516614c98d5"
+    },
+    "apps/max-game/www/assets/nodes/icon-64.svg": {
+      "bytes": 1018,
+      "sha256": "66a789a51fa9835fea221720f77236a9612fc2aed4a89a944d49d0fad9aed9ea"
+    },
+    "apps/max-game/www/assets/nodes/icon-65.svg": {
+      "bytes": 1631,
+      "sha256": "93ced532dcd31064306efc30864b2d201a10d46042a79199d1fdd8162b586745"
+    },
+    "apps/max-game/www/assets/nodes/icon-67.svg": {
+      "bytes": 1757,
+      "sha256": "23550a4ba06f17e1d8160cf637342be87a5940218523c0a98b30b22ed5012351"
+    },
+    "apps/max-game/www/assets/nodes/icon-68.svg": {
+      "bytes": 822,
+      "sha256": "221bb76b45a3039a0262836c2478b815652ec0a713b9bc08147df471e3277bf0"
+    },
+    "apps/max-game/www/assets/nodes/icon-69.svg": {
+      "bytes": 1014,
+      "sha256": "b36f077fc374ef74e34d2f999faf7fdcf7f6c9e9394843d533a035d24f2c10b3"
+    },
+    "apps/max-game/www/assets/nodes/icon-7.svg": {
+      "bytes": 857,
+      "sha256": "0521e117d9bd9a3ec188c37317134109c14a87fc56e959ef37398e574996751b"
+    },
+    "apps/max-game/www/assets/nodes/icon-71.svg": {
+      "bytes": 1628,
+      "sha256": "b655b6a03d1d3a23d53e1dc9f28ec5774770ca29161a6357622dae258dc78051"
+    },
+    "apps/max-game/www/assets/nodes/icon-8.svg": {
+      "bytes": 1637,
+      "sha256": "82bf8c0dd1585920ebe982413611ac752e9d41125e66fd0fce69bced1d50070a"
+    },
+    "apps/max-game/www/assets/nodes/icon-9.svg": {
+      "bytes": 1007,
+      "sha256": "4a1f119cd21499744f177a0bf303c39febb2e699a523dccd54cc4640e8757927"
+    },
+    "apps/max-game/www/assets/nodes/icon-satellite-10.svg": {
+      "bytes": 394,
+      "sha256": "1236fca595c5f6364a53943f29d8bfc3b26616ca250566b479ad6b480dd12234"
+    },
+    "apps/max-game/www/assets/nodes/icon-satellite-11.svg": {
+      "bytes": 1209,
+      "sha256": "c29add48352e2825cc2908f6617bb30e59f3e324e658f8b8e3e5c27daef5845d"
+    },
+    "apps/max-game/www/assets/nodes/icon-satellite-12.svg": {
+      "bytes": 890,
+      "sha256": "0ddc071d62782f25c1072404932ffb964288e8a3ab6745938e898df787abeeaa"
+    },
+    "apps/max-game/www/assets/nodes/icon-satellite-14.svg": {
+      "bytes": 4097,
+      "sha256": "618a89422d7937ca3d1ea05877e1c45020b01547895dc14ec02cfb3c676d688d"
+    },
+    "apps/max-game/www/assets/nodes/icon-satellite-15.svg": {
+      "bytes": 1629,
+      "sha256": "bb683f2da869b34ac21c7ea160599fa702a30c35fd86ad0c203f7befbc735e31"
+    },
+    "apps/max-game/www/assets/nodes/icon-satellite-16.svg": {
+      "bytes": 1632,
+      "sha256": "c65881f82c33ae0c7fd99a3e1b0d8ba4bc02e20c2828e6418cbcb098b3a5ad14"
+    },
+    "apps/max-game/www/assets/nodes/icon-satellite-2.svg": {
+      "bytes": 1656,
+      "sha256": "9f650c4eff91e5bce125294d5a4dae4237511013d6fdf7c21922976bc0e734cc"
+    },
+    "apps/max-game/www/assets/nodes/icon-satellite-21.svg": {
+      "bytes": 1663,
+      "sha256": "f0e3c171bd6b843bc7c9cf4b0a14779ef660338e99629bd72e02c21d041e3157"
+    },
+    "apps/max-game/www/assets/nodes/icon-satellite-27.svg": {
+      "bytes": 2232,
+      "sha256": "384b488cb3b672a09d50c91f53046b44c773b44fcfb5f086edd93ad71428fe60"
+    },
+    "apps/max-game/www/assets/nodes/icon-satellite-28.svg": {
+      "bytes": 4255,
+      "sha256": "1fcfc57a3261152e038d23ad097f1eb25d456dc9636faea575c488752573f07b"
+    },
+    "apps/max-game/www/assets/nodes/icon-satellite-3.svg": {
+      "bytes": 378,
+      "sha256": "76dbf7a26ffeea1b1ffac8aa17bb98d10ae176ec30d713ab00e7baae0f71a90d"
+    },
+    "apps/max-game/www/assets/nodes/icon-satellite-36.svg": {
+      "bytes": 1635,
+      "sha256": "2640a1493ac10c94aa08c8758aaa94421e6c0ffac74aea4d5c2491d8222fcee3"
+    },
+    "apps/max-game/www/assets/nodes/icon-satellite-37.svg": {
+      "bytes": 1636,
+      "sha256": "b4355b52bc747630a0321b2bb5fb85512d5a1ef2d1e772371b615ae420effd57"
+    },
+    "apps/max-game/www/assets/nodes/icon-satellite-4.svg": {
+      "bytes": 394,
+      "sha256": "88a4e511663aef944994a23aa19b30baaa9dd09b248fe27d6eb5d9ed57d165ac"
+    },
+    "apps/max-game/www/assets/nodes/icon-satellite-44.svg": {
+      "bytes": 4257,
+      "sha256": "1ec2b342a2cde71e594e524057ca588107cce6425a1357d9fc0232dbdd1b940a"
+    },
+    "apps/max-game/www/assets/nodes/icon-satellite-45.svg": {
+      "bytes": 1639,
+      "sha256": "8768c7b5a3ed83c637fde53486e2762fd2d1a8a794d406b5f4bc4ec448569468"
+    },
+    "apps/max-game/www/assets/nodes/icon-satellite-46.svg": {
+      "bytes": 1664,
+      "sha256": "57a0acf7d8fc8fac6712bd94a7e68d7e9c3be2e60b96dd4b2639e65c9cc67c66"
+    },
+    "apps/max-game/www/assets/nodes/icon-satellite-47.svg": {
+      "bytes": 1650,
+      "sha256": "91beb5d650d9dba76c2bcfd9ae39080ba04fa2dcea7b7ba9067b99a4e2121f46"
+    },
+    "apps/max-game/www/assets/nodes/icon-satellite-5.svg": {
+      "bytes": 878,
+      "sha256": "065e92b7ea01ed4c22705bc3823723adeb92609b99debcc841b8fd2759ded1b4"
+    },
+    "apps/max-game/www/assets/nodes/icon-satellite-6.svg": {
+      "bytes": 4076,
+      "sha256": "fa429407bfd934fff30db4981a41133092420b2450b156513b86025624086664"
+    },
+    "apps/max-game/www/assets/nodes/icon-satellite-7.svg": {
+      "bytes": 4259,
+      "sha256": "64ee66aa1cfe867f76f15fc3e00e8d11cdb72bda581b06560a84568309f85d63"
+    },
+    "apps/max-game/www/assets/nodes/icon-satellite-8.svg": {
+      "bytes": 1641,
+      "sha256": "56f65358c567f11eb477d1374f608e11467d9bcb0c7432fe1d50878979454a6c"
+    },
+    "apps/max-game/www/assets/nodes/icon-satellite-9.svg": {
+      "bytes": 1659,
+      "sha256": "2b6e2fce72c50a28a65b3f59ac7fad4222c124f78d7362d2de14cdde8124d83b"
+    },
+    "apps/max-game/www/assets/nodes/icon-satellite.svg": {
+      "bytes": 1658,
+      "sha256": "c3b7c32364c81ee9c64b0708eb78e30f1123d731327c7044598dafe62f66e05a"
+    },
+    "apps/max-game/www/assets/nodes/icon.svg": {
+      "bytes": 1627,
+      "sha256": "398f9f14a5fc29d3accdff26129d52721fa4985a7a3fcfc51339bf7d1bd50cbc"
+    },
+    "apps/max-game/www/assets/nodes/image-1.png": {
+      "bytes": 8293,
+      "sha256": "6e33290a8724e32e5cc5d682b91d534c9f83e9c9a1a0d0175b03c700b492ee2a"
+    },
+    "apps/max-game/www/assets/nodes/logo-10.svg": {
+      "bytes": 8049,
+      "sha256": "fc01312a499a7f7bc9c12252e655a948ebc483607367b61c9f9d126e97700d4f"
+    },
+    "apps/max-game/www/assets/nodes/logo-2.svg": {
+      "bytes": 8049,
+      "sha256": "329f6a2def9dd8403b436b46a7cb096d93473bcc6530dbcf49bce885c290ac47"
+    },
+    "apps/max-game/www/assets/nodes/logo-3.svg": {
+      "bytes": 8043,
+      "sha256": "01305c8ae34ec33f80e3dd0e5958d4a04cf7e3b13eff0a40346d15504f742542"
+    },
+    "apps/max-game/www/assets/nodes/logo-4.svg": {
+      "bytes": 8039,
+      "sha256": "2389c8ba4ea81795daa66b5e8df282cafb294fbe3898f86ea551ef89b4223448"
+    },
+    "apps/max-game/www/assets/nodes/logo-5.svg": {
+      "bytes": 8085,
+      "sha256": "1bd68cb1f40357a8eee9cdf85c7ca3597d0f68c5786d171d4c6110d1a4d99c0b"
+    },
+    "apps/max-game/www/assets/nodes/logo-6.svg": {
+      "bytes": 8049,
+      "sha256": "16dbbff67397e58ee6310d4da6fe7a7e3b31e9e9fd7a6c0e20aef102c83c2463"
+    },
+    "apps/max-game/www/assets/nodes/logo-7.svg": {
+      "bytes": 8049,
+      "sha256": "ffa8bdd0a25018ed8e36660e1981aa960ac483c4c28d03d89ea8b83094031b7a"
+    },
+    "apps/max-game/www/assets/nodes/logo-8.svg": {
+      "bytes": 8049,
+      "sha256": "1c4e78807968ac6b0262519687d93932a6b1ff16df91a2bf89916584f3380f33"
+    },
+    "apps/max-game/www/assets/nodes/logo-9.svg": {
+      "bytes": 8043,
+      "sha256": "1de2737f98fdca57d9e5b48b06f906d95f5ef5c301b3330074dbe52f07c074a3"
+    },
+    "apps/max-game/www/assets/presentation/max-site-qr.png": {
+      "bytes": 1818,
+      "sha256": "d1e47b2e0647ecb963fd83a24fca23968f4fcd4bb72d9eb95cb1dd51966695e8"
+    },
+    "apps/max-game/www/assets/reviewed-20261004/business-platform-verification-98d2a4483c08.svg": {
+      "bytes": 250266,
+      "sha256": "98d2a4483c086caba7159b8497349f5d1b8c58f8aeebf511b842a380f0673274"
+    },
+    "apps/max-game/www/assets/reviewed-20261004/business-store-ready-298f3dc198d9.png": {
+      "bytes": 698224,
+      "sha256": "298f3dc198d94e20964a17642dec15f6fdf03d3c3ed897d8b8cd008003483954"
+    },
+    "apps/max-game/www/assets/reviewed-20261007/business-channel-posts-79f5b66ea857.svg": {
+      "bytes": 5448237,
+      "sha256": "79f5b66ea857f9924d2da5d0da57e4f17a50adea6409de0fba49f3bb1d224772"
+    },
+    "apps/max-game/www/assets/reviewed-20261007/comments-input-3ac21a0a4533.svg": {
+      "bytes": 4609135,
+      "sha256": "3ac21a0a4533190436eaa975b92f0eb4d220cdb338a05d062fe623da9f7dbca2"
+    },
+    "apps/max-game/www/assets/reviewed-20261007/comments-input-f447114a7431.svg": {
+      "bytes": 4609579,
+      "sha256": "f447114a7431216c481a7982dbe1d4e1faf677a8c351563eacce3a43c2c7121a"
+    },
+    "apps/max-game/www/assets/reviewed-20261007/comments-post-71b2e32b2ea8.svg": {
+      "bytes": 4826606,
+      "sha256": "71b2e32b2ea81672cc8f32d9a1ca06ee2f20d4052f271583283e205ccc2d4ebc"
+    },
+    "apps/max-game/www/assets/reviewed-20261007/comments-post-ba47854982bb.svg": {
+      "bytes": 4826835,
+      "sha256": "ba47854982bbecd7d05d344a97b7996af1f3ebaa8aca38a774797e022a5d03f5"
+    },
+    "apps/max-game/www/assets/reviewed-20261007/comments-reply-b90a01c771f5.svg": {
+      "bytes": 4671039,
+      "sha256": "b90a01c771f51752e5b9db9767e765fe60df47570537e88851be7835629423ba"
+    },
+    "apps/max-game/www/assets/reviewed-20261007/comments-reply-ddb90b591051.svg": {
+      "bytes": 4670595,
+      "sha256": "ddb90b591051279ef2b2b81cb3b16e3e484557a61485a9b702fbb246de31b9aa"
+    },
+    "apps/max-game/www/assets/reviewed-20261007/comments-result-0007cda60a4b.svg": {
+      "bytes": 4827688,
+      "sha256": "0007cda60a4b35f8b0f727434b5215bdb161628694da8130090e44af107383f8"
+    },
+    "apps/max-game/www/assets/reviewed-20261007/comments-result-212b866257d0.svg": {
+      "bytes": 4827912,
+      "sha256": "212b866257d08d0c2a720ed0369b1336f877d902cdb49209f1af17341369fa73"
+    },
+    "apps/max-game/www/assets/reviewed-20261007/comments-sent-8079de3838e8.svg": {
+      "bytes": 4586611,
+      "sha256": "8079de3838e84d0a855536845579341c2317ec1962ce6c7e056a5de70bc91041"
+    },
+    "apps/max-game/www/assets/reviewed-20261007/comments-sent-f75840fda3da.svg": {
+      "bytes": 4586167,
+      "sha256": "f75840fda3daa0173f3ed97bdcfec9046da878e9eb1be095d69752934eeb5f9d"
+    },
+    "apps/max-game/www/assets/reviewed-20261007/digital-id-home-photo-e61ae178507b.svg": {
+      "bytes": 2464153,
+      "sha256": "e61ae178507bf56f76a1a328ef84fbd22344e74a195d5a71cf27de54fa9e6e14"
+    },
+    "apps/max-game/www/assets/reviewed-20261007/digital-id-qr-044f6a2c0cde.png": {
+      "bytes": 50777,
+      "sha256": "044f6a2c0cdea621a78cec22d024fb816a8383f6540807d03fd7cee022a3c8da"
+    },
+    "apps/max-game/www/assets/reviewed-20261007/digital-id-qr-572b7e7e7a15.svg": {
+      "bytes": 32509,
+      "sha256": "572b7e7e7a15ebf5f2468cbf9b5aa90688fef2a111c027ccd28c78d04e46d150"
+    },
+    "apps/max-game/www/assets/reviewed-20261007/max-logo-qr-f3c691313875.svg": {
+      "bytes": 379597,
+      "sha256": "f3c6913138753c69cf25c2a05fab25d492b7308afb024b043344c23431a3de91"
+    },
+    "apps/max-game/www/assets/reviewed-20261007/max-logo-qr-faa6982ad913.png": {
+      "bytes": 70613,
+      "sha256": "faa6982ad91341abac5aef806ed13b63dddddbb234c3a1dea144c0caa0b839f6"
+    },
+    "apps/max-game/www/brand/tokens/brand.css": {
+      "bytes": 1175,
+      "sha256": "634a212cb2be6393d472fcc5cc10a38d8f57350cc745e971c4336bf5d38ab899"
+    },
+    "apps/max-game/www/config/missions/arctic-route.json": {
+      "bytes": 4912,
+      "sha256": "3b17505ea2975b83aba7547003e4f7aa8d8bc07d6d12ec9e47dd1eb038229302"
+    },
+    "apps/max-game/www/config/missions/first-signal.json": {
+      "bytes": 5329,
+      "sha256": "98ec05607f3519c799ffebc85512ff8ca8692084493b4ab3d65d1dd8dae26c7f"
+    },
+    "apps/max-game/www/config/missions/index.json": {
+      "bytes": 185,
+      "sha256": "1932c9dad1f73319b79ef2da126275ba955734efe195ef1833155c3b687a7a67"
+    },
+    "apps/max-game/www/config/missions/protected-network.json": {
+      "bytes": 5465,
+      "sha256": "a807e3b0a0f1a47f46b24cdf1c5df6de0b06810f37a002bb3ef331d05a45ee88"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_ambience_loop.mp3": {
+      "bytes": 615213,
+      "sha256": "801afd8d8ac9125b6ee85ee64c91f536cb1127c9d5e79c9df3f1aea8401aae2f"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_ambience_loop.ogg": {
+      "bytes": 420076,
+      "sha256": "105c0f7e7ce99f298ca553ee1f21518839223834809c68aa40e2f755100f14a6"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_button_click_1.mp3": {
+      "bytes": 23853,
+      "sha256": "bb568917cc429a313c468f421d54177f0978be8917af986e49626b7aa7992750"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_button_click_1.ogg": {
+      "bytes": 22272,
+      "sha256": "6b6d4b3f63a94203194de946fa0e1a8c00689ee97f0f068ce8fb60895c21ae13"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_button_click_2.mp3": {
+      "bytes": 10413,
+      "sha256": "fe0f4ccbbce42be49f165bca2a4b6706520b14191fa96fdd8e543daec2179b9e"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_button_click_2.ogg": {
+      "bytes": 10907,
+      "sha256": "e9b5a07f034842ab3501eaa0b231c316e48430cfdb9c6846a91ff7a519f23a5a"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_button_click_3.mp3": {
+      "bytes": 25005,
+      "sha256": "77f620cdc440cba8b2c498e33eff08c3f1b37a0fcb3e9180f0ef644ed442ff95"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_button_click_3.ogg": {
+      "bytes": 18282,
+      "sha256": "a4cef6a472510193b8a883dc169cb51bf95773315c99bab64c0980d6475475e6"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_enengy_stream_1.mp3": {
+      "bytes": 20013,
+      "sha256": "603654503a7f738b2af99525cd68fa04f295798021e99fc2ea55e0955bab3414"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_enengy_stream_1.ogg": {
+      "bytes": 25118,
+      "sha256": "1843f0596f6a673ab436b26ed661dbdb0fd6af953af4061e369e9efe795017ef"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_enengy_stream_2.mp3": {
+      "bytes": 17709,
+      "sha256": "3efdc1a9ddf96b2c1e0ae8977679dc65a27c83b33818e4d7b27291ba59378930"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_enengy_stream_2.ogg": {
+      "bytes": 24404,
+      "sha256": "5e0dd254b8518d931748d9e53f65f4fb1e0ca9447334e08545a6fbec903c26d6"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_icons_deselect.mp3": {
+      "bytes": 32301,
+      "sha256": "0ca75f721b60ba722f8f88d40787b780478d9bd34ae1cabd748a15890f93a5fb"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_icons_deselect.ogg": {
+      "bytes": 30666,
+      "sha256": "eac450eabe50e4d4adb6b77efc98e5413daf170236a143bc6dcf80676dde6737"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_icon_grab_1.mp3": {
+      "bytes": 22701,
+      "sha256": "376011df9f68bdd44ccfdfeba4f38c4d577af38b1d6ad8786166881f0a8ac9af"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_icon_grab_1.ogg": {
+      "bytes": 26084,
+      "sha256": "81835535a21a5467d4ddfcf41d641738d4392ca495d7b5ed8231232a3c06ef43"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_icon_grab_2.mp3": {
+      "bytes": 22701,
+      "sha256": "c5dc9fdc65e62d46712cd96d0735c51942d43cbac519edbff0acddbdfd44d3f0"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_icon_grab_2.ogg": {
+      "bytes": 22477,
+      "sha256": "62383e959b123eb0a6a0dbb7de735a5b0603c8508a6207a55e0ef1a1388d598b"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_icon_hold_loop.mp3": {
+      "bytes": 46509,
+      "sha256": "50ee8e5ff1e4c0535ea78f6ace3aab0c63593719d0c7de17095241a761c199f7"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_icon_hold_loop.ogg": {
+      "bytes": 49614,
+      "sha256": "1463ab23e2ee465c2fe02e95f4fbaaa140b0dfabe6411ad78a6f451ddab8bce5"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_icon_pop.mp3": {
+      "bytes": 13485,
+      "sha256": "be220e1226fc3499c55a36f09ec733cd70a9ab089892186a1ea1fd6d8c5177bb"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_icon_pop.ogg": {
+      "bytes": 17004,
+      "sha256": "7528c00225890a83e007b7afbef2622023afe7c211ac281c75ffadb26297e678"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_phonescreen_activate.mp3": {
+      "bytes": 32301,
+      "sha256": "c8f2d1a3e4e7622e8d3ef12a15bdbe155d8c006bf643e8343b92cfc830462531"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_phonescreen_activate.ogg": {
+      "bytes": 35173,
+      "sha256": "7c34f4aa25f2aa462d6b4f88a80defa0c4dac19979b5f2f99d73e49e19643ea1"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_phonescreen_reactivate.mp3": {
+      "bytes": 29613,
+      "sha256": "96e82fe16b12adf67e07a90cf879c9c1b5ebb42ce5b8f408504182ab92af5d15"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_phonescreen_reactivate.ogg": {
+      "bytes": 28671,
+      "sha256": "a8e45b20ac1fbfad55961a5d525bf47541f93f6ef7188a4e735d90c2373a66b6"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_phone_grab_1.mp3": {
+      "bytes": 29613,
+      "sha256": "a87ef5bf01e670ef462b1abbc57dbad8b550d5905c98cce11401514c0da5f5e8"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_phone_grab_1.ogg": {
+      "bytes": 29959,
+      "sha256": "83121cdbc3cf49efe0f8a2392a024bad9fab1a762391cf7c0cd6e1620a3bcc7f"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_transition_handscreen.mp3": {
+      "bytes": 58413,
+      "sha256": "3c11db007cff482409e7bf99f24f8d7c0ebd549bddada2b69f489d80c1fd96ac"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_transition_handscreen.ogg": {
+      "bytes": 45091,
+      "sha256": "a9a5d40b2d703028e9d9b6e2c71b8914503e49514978f2c23970a3d0faddce22"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_transition_icons.mp3": {
+      "bytes": 58413,
+      "sha256": "5b08846bed2e2860953b770fb548a8b14b04d0868ae946bc5d0ea61f58d42d6a"
+    },
+    "apps/max-game/www/webgl-v5/audio/game_transition_icons.ogg": {
+      "bytes": 42131,
+      "sha256": "29d393d92c07c3fa9ed92e98f9f5572628a51e02bf5e61d2a7adb363db0e8e09"
+    },
+    "apps/max-game/www/webgl-v5/audio/music_seoul_track.ogg": {
+      "bytes": 3601663,
+      "sha256": "121ef15ff41563ea56632f78cdd87c0b8b9779b269a4ed9553844e61e130272d"
+    },
+    "apps/max-game/www/webgl-v5/audio/music_sustained_shadow.ogg": {
+      "bytes": 6486504,
+      "sha256": "de37b740001c1c41a9b21e29cd30cd059d2f936af422c80a073f072b2f205a76"
+    },
+    "apps/max-game/www/webgl-v5/finale-videos/01.mp4": {
+      "bytes": 12977897,
+      "sha256": "79f61184e97006b1314bcdd97a0ed256bcc937c4f84c3043da9a04271ea891d7"
+    },
+    "apps/max-game/www/webgl-v5/finale-videos/02.mp4": {
+      "bytes": 11850007,
+      "sha256": "0e70443cfe011ebaa9d84f44f505a65636c7507dfd4b3d07fb690c95c183e984"
+    },
+    "apps/max-game/www/webgl-v5/finale-videos/03.mp4": {
+      "bytes": 16146620,
+      "sha256": "8030bf9869f1f11510fa8cf7a0a9e3d8b80a5a978065a2fe7195ca8f4a196731"
+    },
+    "apps/max-game/www/webgl-v5/finale-videos/04.mp4": {
+      "bytes": 12389282,
+      "sha256": "9d0b5a1494b26e88bb25bb9ea7ddead825c18f0cd5c8427fd0043f41fc00b18a"
+    },
+    "apps/max-game/www/webgl-v5/finale-videos/05.mp4": {
+      "bytes": 11147497,
+      "sha256": "4d99f0cef0b920f3f1620b4bb617c9df4b7ed0ad2f84d43f2054f9085b9e4eac"
+    },
+    "apps/max-game/www/webgl-v5/finale-videos/06.mp4": {
+      "bytes": 11931627,
+      "sha256": "6cb2e6f12acf126b64fee3bb135dc629b163cf8c06cf12f4bdd3f4a10d1ece0a"
+    },
+    "apps/max-game/www/webgl-v5/finale-videos/07.mp4": {
+      "bytes": 10572497,
+      "sha256": "52472b5d3ef9018cb187285fa199c89a72420fa0eff1a58f6fd9a72d22ef0972"
+    },
+    "apps/max-game/www/webgl-v5/finale-videos/08.mp4": {
+      "bytes": 20768952,
+      "sha256": "0a5a2f606b629023a73b8d779afe188b888d9c2e6388ed9d64968e4bf472c40c"
+    },
+    "apps/max-game/www/webgl-v5/finale-videos/09.mp4": {
+      "bytes": 13976548,
+      "sha256": "85e4685476a11ddbad9c9417192e7530f04ac7b321a9624c5ae1f9922588b414"
+    },
+    "apps/max-game/www/webgl-v5/finale-videos/10.mp4": {
+      "bytes": 13702093,
+      "sha256": "a21b7435148913f2a7aafaa714473401f6afb7be492021d5c2b75eca4a84f958"
+    },
+    "apps/max-game/www/webgl-v5/finale-videos/11.mp4": {
+      "bytes": 12048740,
+      "sha256": "680ff622c07389ab76255b55d2871e94c12ea7b48db13836230748ea20429f1d"
+    },
+    "apps/max-game/www/webgl-v5/finale-videos/manifest.json": {
+      "bytes": 4481,
+      "sha256": "2b6c8a7321b5cbabad51a220c0ca510af5cbbe07ab19b3e2f21cfd0d4a65f81c"
+    },
+    "apps/max-game/www/webgl-v5/icon-glyphs/manifest.json": {
+      "bytes": 5769,
+      "sha256": "b0b0ec92cede8bb03d947f0e59a4e0d496c3a621ee2882ad0704b978122e1fa4"
+    },
+    "apps/max-game/www/webgl-v5/icon-glyphs/max-icon.age.svg": {
+      "bytes": 6013,
+      "sha256": "823430e658d8fc9e2794b69dd74714705a4378e7a599bc9d9259bbc157bba8fd"
+    },
+    "apps/max-game/www/webgl-v5/icon-glyphs/max-icon.benefit.svg": {
+      "bytes": 4793,
+      "sha256": "7648c40cf5f3af66996174695cc5b19e8ae5da7b995b6fcc7d1aedae5292b590"
+    },
+    "apps/max-game/www/webgl-v5/icon-glyphs/max-icon.bot.svg": {
+      "bytes": 4356,
+      "sha256": "1ba8b5c60fe4715e391b2ecf04e1ac7a9250fd6b59c5de120c9f7695ff7f9972"
+    },
+    "apps/max-game/www/webgl-v5/icon-glyphs/max-icon.business.svg": {
+      "bytes": 3879,
+      "sha256": "10b3958cc810ddc70e76d8596f3e01728e3c197971681aee874e125f8237cace"
+    },
+    "apps/max-game/www/webgl-v5/icon-glyphs/max-icon.call.png": {
+      "bytes": 13058,
+      "sha256": "0e9b52f08bf48abdb53dffb1aab97dcf5822f1ab120e570333cf07858b04efdc"
+    },
+    "apps/max-game/www/webgl-v5/icon-glyphs/max-icon.call.svg": {
+      "bytes": 3898,
+      "sha256": "d2eaa4d6d2388c6ee46841d16bf5090c0b8c010243403335138595375f9f1361"
+    },
+    "apps/max-game/www/webgl-v5/icon-glyphs/max-icon.channel.png": {
+      "bytes": 13523,
+      "sha256": "d72046f9843b603c04c625007776d4c3b000a6283a1ed23f13422744e9019b75"
+    },
+    "apps/max-game/www/webgl-v5/icon-glyphs/max-icon.channel.svg": {
+      "bytes": 3446,
+      "sha256": "ad5a096406dd452134727005bdc617a35844dd3559d57553516ce2244f7ffc27"
+    },
+    "apps/max-game/www/webgl-v5/icon-glyphs/max-icon.comments.svg": {
+      "bytes": 2315,
+      "sha256": "98426c2fcd8df7044ccc80b1cfcaaee7dce37b76c873cef422d4f9bae6d34cd8"
+    },
+    "apps/max-game/www/webgl-v5/icon-glyphs/max-icon.digital-id.svg": {
+      "bytes": 4910,
+      "sha256": "c28d2592e8880e94ce89746131f84dbfc17a292f68ed7b5ecb72797e4fc2ef32"
+    },
+    "apps/max-game/www/webgl-v5/icon-glyphs/max-icon.hotel.svg": {
+      "bytes": 3033,
+      "sha256": "dac62d04b97e1cfa6157efb82bced02bfcfbfb9a93d150b04e7f726de9c9abe2"
+    },
+    "apps/max-game/www/webgl-v5/icon-glyphs/max-icon.message.svg": {
+      "bytes": 3321,
+      "sha256": "a6ebfe90f19cc30197d6442e68869debefe998c1008249437cad621331ec8e87"
+    },
+    "apps/max-game/www/webgl-v5/icon-glyphs/max-icon.missing.svg": {
+      "bytes": 397,
+      "sha256": "f6452c177b13da9909da20250f17f990eb69a99af836d00181dff61ed2b091ac"
+    },
+    "apps/max-game/www/webgl-v5/icon-glyphs/max-icon.open-max.svg": {
+      "bytes": 2760,
+      "sha256": "f205d189acfc9ef5b4019c950bc5f055d14ab9fa4f2b9492033b7e943f70e3dd"
+    },
+    "apps/max-game/www/webgl-v5/icon-glyphs/max-icon.restart.svg": {
+      "bytes": 869,
+      "sha256": "94bb33e300e67b4229dccfd9562e1eaf227339e8ce9f7112d23dfd8d6bb1d690"
+    },
+    "apps/max-game/www/webgl-v5/icon-glyphs/max-icon.scan.svg": {
+      "bytes": 4090,
+      "sha256": "75b73132ae6cee82cf90ab0661f83d458af352e1e10289e667c7a62842074934"
+    },
+    "apps/max-game/www/webgl-v5/icon-glyphs/max-icon.statistics.svg": {
+      "bytes": 4021,
+      "sha256": "9336bf9a9b04b4acbe5c5b959f44aa5a79bde5cbdd8a54af214c742f762b0214"
+    },
+    "apps/max-game/www/webgl-v5/icon-glyphs/max-icon.stickers.svg": {
+      "bytes": 2649,
+      "sha256": "bca328285d045b5c202c0851c8927c2ad922ac37a1af31c3afec99091fc30146"
+    },
+    "apps/max-game/www/webgl-v5/icon-glyphs/max-icon.store.svg": {
+      "bytes": 3295,
+      "sha256": "c025fbc5cb5d62c6bae2bc0d9a0aa42a245fd3ab407e430df175f548b2e93d30"
+    },
+    "apps/max-game/www/webgl-v5/icon-glyphs/max-icon.story.svg": {
+      "bytes": 3958,
+      "sha256": "ef88690df29271cecf04f478cdfede9ecec9e699fef7da814e19fc91c8dac3d5"
+    },
+    "apps/max-game/www/webgl-v5/licenses/range-parser.txt": {
+      "bytes": 1178,
+      "sha256": "f655e6291356ec0de7a8f0e69f294961a2cea86678ec94588be1e6a492e278ab"
+    },
+    "apps/max-game/www/webgl-v5/licenses/video.js.txt": {
+      "bytes": 867,
+      "sha256": "25be5c0d5db286add77f5e4d21886800cf38296f50c71fc2d582a2223312b23c"
+    },
+    "apps/max-game/www/webgl-v5/licenses/videojs-playlist.txt": {
+      "bytes": 552,
+      "sha256": "41d953499fec0b2745322ddc0ff7ab6f6f3da175c2b4803fe4634517b229f7ff"
+    },
+    "apps/max-game/www/webgl-v5/standby-videos/MAX-Business-MKT46469.mp4": {
+      "bytes": 60098570,
+      "sha256": "13e5138d62ac4b059f219550d5a6c2c8543de8840eea5af6c0f49dd75b0ae3e6"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/auto-11.svg": {
+      "bytes": 572822,
+      "sha256": "636d936b30a70dec7642e430f076bd3c03319197da372911d1e0b2a28ae86575"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/auto-12.svg": {
+      "bytes": 484016,
+      "sha256": "aeab38d45ae35926b4ebc313b2ae3257005a87a4eb0f9bb4d12a65d36cf82e7e"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/auto-15.svg": {
+      "bytes": 1031521,
+      "sha256": "8fffa99f5dd16ba8ae6848af3af31dfe1d315927674f92d74b889ab323f59c4f"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/auto-16.svg": {
+      "bytes": 412140,
+      "sha256": "a3c9134f271ad1c1eaadaf0744be66e5e6e7c991a435118d5c08ec2621e30136"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/auto-17.svg": {
+      "bytes": 680182,
+      "sha256": "5b970066b58a127a375a5c1f271bd8060055903908395eb3f4406fa0ade01e60"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/auto-19.svg": {
+      "bytes": 746803,
+      "sha256": "24e5e5e8de7e12361c3345f943c36640fc163555086628fc9171491c6d3490ab"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/auto-5.svg": {
+      "bytes": 403135,
+      "sha256": "2cc5361fa7f2a71216557f68b59b0894dc052f3d53a0dde2f4a471c7616bc8ba"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/auto-6.svg": {
+      "bytes": 320085,
+      "sha256": "15e4d606ba3c60e2abf65fca31b0df780f5b88050347904aa5ff8218a9c56008"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/cafe-11.svg": {
+      "bytes": 560610,
+      "sha256": "e298015df502733786e2a2402314c9684f919aad893e49aa838d9cae9206937c"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/cafe-12.svg": {
+      "bytes": 471788,
+      "sha256": "4e9d4c0e1408c6192c0759a5b4b246d3fc59dfd141b60c7a5e95cbdc9352b615"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/cafe-15.svg": {
+      "bytes": 1038586,
+      "sha256": "44acbc6783e210cbfc5ebe3b66ec8ca01784f9e4bc60c11b371e19172a898f53"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/cafe-16.svg": {
+      "bytes": 393248,
+      "sha256": "5ccd8c592416a8c25915590499807e5fed642d717a4de655eddc80fe3d4cb282"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/cafe-17.svg": {
+      "bytes": 671356,
+      "sha256": "027b91786018ddb8b0c472f9f767598eb52950ce3bdda3ab2bd0c54560fb7dd5"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/cafe-19.svg": {
+      "bytes": 532206,
+      "sha256": "3400bf6b6f55fa69eb94cd41aa9dcdfca759c64e8e687c20b9c601f611da78d9"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/cafe-5.svg": {
+      "bytes": 396632,
+      "sha256": "e00928af300209cd0da7c60c3b2ca528c9330105c8b70b9d54f574641d69442b"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/cafe-6.svg": {
+      "bytes": 313667,
+      "sha256": "91fc95a1131a44bd978f05b80370ad81d6287655230b7a88ebbd67cfd8ae70cd"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/canvas-1440-840.svg": {
+      "bytes": 95,
+      "sha256": "65a9d25160d8839f5dadc36f27e04c1a8d2d907f611333518c55709ef876f159"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/canvas-1440-900.svg": {
+      "bytes": 95,
+      "sha256": "ee663fa914abba4006620f9782a398526aced69edd4a3bbdb8c4e64399018a25"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/canvas-341-744.svg": {
+      "bytes": 93,
+      "sha256": "e25c53f1ff7da67ca57be19d8064167a4707162f185cb9c73bb1a1d65a6cd597"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/canvas-360-794.svg": {
+      "bytes": 93,
+      "sha256": "fc976aa717d6cd4e51876e3bbf34008cec474833586bfe2939f26992014b9371"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/canvas-455-78.svg": {
+      "bytes": 91,
+      "sha256": "aca4496121c2da7690b11dc1cea9a89d3859d2d82bd560f47e395f5fa31e49a7"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/canvas-666-416.svg": {
+      "bytes": 93,
+      "sha256": "72ca7d1bac0bfedf9ce6320b69ab36602a00c39643cdb965ef58dd9fc64df844"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/canvas-723-452.svg": {
+      "bytes": 93,
+      "sha256": "4375131367999574fe3b8f8e7c0faf46f357f7c0a113b3dc7dc39eaaedd728c2"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/canvas-757-493.svg": {
+      "bytes": 93,
+      "sha256": "c49cff055ee66cc017f34e54ab969790271d7e157cc23c3f5ebad4e54bf3b025"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/canvas-794-496.svg": {
+      "bytes": 93,
+      "sha256": "b4c656ccc6eb991ba07595ddd33c3763f58e1f68d237e80f16de4c575a207b8d"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/canvas-880-550.svg": {
+      "bytes": 93,
+      "sha256": "30edf63ae737342d5a60ec8b3f5fb05ba04f1ea85f628f5feed9258891423a93"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/canvas-895-559.svg": {
+      "bytes": 93,
+      "sha256": "49084ae7a7d154306a1ef7082e59c111f20f3c3391f78a6d3f73bd0ed272dbcb"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/flowers-11.svg": {
+      "bytes": 570297,
+      "sha256": "43ee9802f713bc914d6c04e523e63620088418cad188806f47fa64f353e41358"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/flowers-12.svg": {
+      "bytes": 481437,
+      "sha256": "24520385e8f744b27b0e38a86413e7e7f15216029fa23d2fe3e110e43b1efe6d"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/flowers-15.svg": {
+      "bytes": 1012844,
+      "sha256": "aa3911bab89d0b6a1a78d3493f598f0d69792f0b361802aa3a226c085c03a1c1"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/flowers-16.svg": {
+      "bytes": 408106,
+      "sha256": "f753213957c514030f306e3483a25b9bc8e13ee4e45b035b3f43452b3b86af5e"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/flowers-17.svg": {
+      "bytes": 678459,
+      "sha256": "6992503debaf002a9888b63efc9ad27f5acb5d56e12208d36ab95989c7734669"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/flowers-19.svg": {
+      "bytes": 741167,
+      "sha256": "8b3f9dc02ed4204d8b5dc999b508b8f4cbe4dba0dc99d7d3ae2079e62ab88cb5"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/flowers-5.svg": {
+      "bytes": 401988,
+      "sha256": "a5307433ebe2a9e3544cc9ed4d65c5903fe633e6b98f127ae522a8020e42a94a"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/flowers-6.svg": {
+      "bytes": 319005,
+      "sha256": "0ba6bf34ca18ebb232bbb21a760653bf3a3d167a113af803ebc48b58a2dcb0a5"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/general-1.svg": {
+      "bytes": 167388,
+      "sha256": "b3ebd9843f6ab2eea0b96cdd0d964be3d097f9bb6b96434364ecd9a475a5a411"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/general-10.svg": {
+      "bytes": 476604,
+      "sha256": "e7cc27e055d86b48e4d6496150690b2cf7a1d7ab42b2905a01200d0f5764b1ba"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/general-2.svg": {
+      "bytes": 215607,
+      "sha256": "3837077ceed3aa08ebf71656f4f502bd7425bf1e113a41f6010b52a0f6b1e885"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/general-3.svg": {
+      "bytes": 170180,
+      "sha256": "7d3fe3334a9a9908c54ae7090d274a833938d4fa8b4a02f3593c31948789d878"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/general-4.svg": {
+      "bytes": 20943,
+      "sha256": "9d729b294e6b5cb0c335533d8c0ba97313492d8cbc4b36f626fecbb5b52184a4"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/general-7.svg": {
+      "bytes": 186638,
+      "sha256": "6aeb8a0d1aad13990458d325c0e4b2ac5ff7ab24d51214fad5ea0b81b2ff5530"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/general-8.svg": {
+      "bytes": 316192,
+      "sha256": "c1bbc0bdef8da661410be58c2dff2b9dedc7f9bda71129a3aa3ec5f75828e232"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/general-9.svg": {
+      "bytes": 475833,
+      "sha256": "0317024591a42d2ed8d1659386ba6523911a693fc4ea3bbc8fdd13a7415cbadc"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/logo-auto.png": {
+      "bytes": 43693,
+      "sha256": "244f196c238a6a21fab7ab521103fc7d8c0e506104e8b3d29ec2c2942fe673f7"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/logo-cafe.png": {
+      "bytes": 29174,
+      "sha256": "5760626ab07eb031cd0f26438088a2d1335e9eff9ff8fb9427bfd28ea0e8d05c"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/logo-flowers.png": {
+      "bytes": 41301,
+      "sha256": "0bc0ab82f3ad7d81304ac83d81207dcead415569947f01da7e75e1f7be39d002"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/raster-1654108f715d217be669980bf112977025835f48bae5e05cf317bc26dcd89ad7.png": {
+      "bytes": 2219090,
+      "sha256": "1654108f715d217be669980bf112977025835f48bae5e05cf317bc26dcd89ad7"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/raster-1744e6d39837d935ccef1601157c97126e7116b2b01e7639548620841d1ab8e0.png": {
+      "bytes": 1522930,
+      "sha256": "1744e6d39837d935ccef1601157c97126e7116b2b01e7639548620841d1ab8e0"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/raster-18967f584e0fe97a8582b6a9398baed2110c525679ecd2c59b30fbfba297fb2d.png": {
+      "bytes": 148445,
+      "sha256": "18967f584e0fe97a8582b6a9398baed2110c525679ecd2c59b30fbfba297fb2d"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/raster-28a8f1a1f08cea0916d078d808e3cdfbcad4f29eb7262cffc4af6a74d723b66c.png": {
+      "bytes": 7516,
+      "sha256": "28a8f1a1f08cea0916d078d808e3cdfbcad4f29eb7262cffc4af6a74d723b66c"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/raster-2f70ab47344ec46714dc61bd9748478df60722e0f70d885971ceed315bee5398.jpg": {
+      "bytes": 121277,
+      "sha256": "2f70ab47344ec46714dc61bd9748478df60722e0f70d885971ceed315bee5398"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/raster-33cc354e614eacfa1edb101f16f96cfc425c5f51b5a73f7cf9db27ecf389d5c7.png": {
+      "bytes": 137291,
+      "sha256": "33cc354e614eacfa1edb101f16f96cfc425c5f51b5a73f7cf9db27ecf389d5c7"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/raster-3f298f8beab0ee60362987b718d691253164fb5de414ae5cd9b40b3970221f9c.png": {
+      "bytes": 1434309,
+      "sha256": "3f298f8beab0ee60362987b718d691253164fb5de414ae5cd9b40b3970221f9c"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/raster-5b9f82cda65852aee1c96250fd2a098dee76b1ac2e18931aa2fd18d59f87feaa.png": {
+      "bytes": 630698,
+      "sha256": "5b9f82cda65852aee1c96250fd2a098dee76b1ac2e18931aa2fd18d59f87feaa"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/raster-6bca28c8500fa36c41248a9f011d861789e15602e92d846d8687b26bd4591b78.png": {
+      "bytes": 7761,
+      "sha256": "6bca28c8500fa36c41248a9f011d861789e15602e92d846d8687b26bd4591b78"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/raster-82d18d75e2bc2bbd049bfb37c1d464415627c0a2f79a5185859dbf1667084921.png": {
+      "bytes": 37016,
+      "sha256": "82d18d75e2bc2bbd049bfb37c1d464415627c0a2f79a5185859dbf1667084921"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/raster-84b7625e9530de29072d377f781771ec9acc063cfecd5d1f05c5d52279eafbe9.png": {
+      "bytes": 72478,
+      "sha256": "84b7625e9530de29072d377f781771ec9acc063cfecd5d1f05c5d52279eafbe9"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/raster-8ee42fba6387568946b45a603b4bee02208567c41489e2ed0463f85eed1995da.png": {
+      "bytes": 244057,
+      "sha256": "8ee42fba6387568946b45a603b4bee02208567c41489e2ed0463f85eed1995da"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/raster-9d420b6c5dcafbb65f8ea772f4f01ea504c3e76819db3c9e8baf133d7e72189e.png": {
+      "bytes": 2314033,
+      "sha256": "9d420b6c5dcafbb65f8ea772f4f01ea504c3e76819db3c9e8baf133d7e72189e"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/raster-a2df60cabc73b0cfc2117403270d5b710215534d30b9e36f2f35f8fa4152b3c0.png": {
+      "bytes": 163448,
+      "sha256": "a2df60cabc73b0cfc2117403270d5b710215534d30b9e36f2f35f8fa4152b3c0"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/raster-a71243d4f4dc4b76cc0af969736987e9fee13073a085f57e3b1d9485f0cc8aae.png": {
+      "bytes": 1501932,
+      "sha256": "a71243d4f4dc4b76cc0af969736987e9fee13073a085f57e3b1d9485f0cc8aae"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/raster-b2c641940f8f2c3d0460898b519bfe5a369e25f1b76a255aaed5e752b6e16361.png": {
+      "bytes": 1343118,
+      "sha256": "b2c641940f8f2c3d0460898b519bfe5a369e25f1b76a255aaed5e752b6e16361"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/raster-bab77cf022642644b5859742ec08b403296975f46050c88fc72aa8d59814e23d.png": {
+      "bytes": 151597,
+      "sha256": "bab77cf022642644b5859742ec08b403296975f46050c88fc72aa8d59814e23d"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/raster-f890b666e9323602c72db0e07b3387ce8a28744a04826fca7695cf3561936601.png": {
+      "bytes": 1121133,
+      "sha256": "f890b666e9323602c72db0e07b3387ce8a28744a04826fca7695cf3561936601"
+    },
+    "apps/max-game/www/assets/kdw-native/business-all/raster-fa9c7b73234dcde8a0fe50a43d4ce3cf989a5019f66b8835fb85686b0cfb4b4e.png": {
+      "bytes": 887049,
+      "sha256": "fa9c7b73234dcde8a0fe50a43d4ce3cf989a5019f66b8835fb85686b0cfb4b4e"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/auto-post-bad-01.webp": {
+      "bytes": 78896,
+      "sha256": "d42b5cc4f173e56e9b1e5ff9ad145805879700b9078231d755c8a45b5bcd10a5"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/auto-post-bad-02.webp": {
+      "bytes": 84040,
+      "sha256": "187f0171669b9fbf3b6d9755f52f69c3e32696cefed6e2be1558ac6025675b63"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/auto-post-bad-03.webp": {
+      "bytes": 115168,
+      "sha256": "5de7c9a3e672adaa7052b045235311346cbfe4c5505332e342014dadb667bbf0"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/auto-post-bad-04.webp": {
+      "bytes": 108386,
+      "sha256": "2fd79c0789dbb8c99e22d1d46e4d0775075376df02ebf94c1fceb27a38d0a779"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/auto-post-bad-05.webp": {
+      "bytes": 88584,
+      "sha256": "52c38d0587060be144718a9bd583fcc176b85cb35c7b483e0f68e30241698d03"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/auto-post-good-01.webp": {
+      "bytes": 87584,
+      "sha256": "53fb7def0657784bb15229afbc28b882a9ebca77646cde014131c20abc375287"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/auto-post-good-02.webp": {
+      "bytes": 113376,
+      "sha256": "c9c4926f271da3e7d4dd06fcc48ecf7a5e5792aa73fd38c5bbd347c97b998e18"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/auto-post-good-03.webp": {
+      "bytes": 88626,
+      "sha256": "0d8f4641334fedde45061562db88cf86cd3750b40ee04fb53ae9d68682be6192"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/auto-post-good-04.webp": {
+      "bytes": 79674,
+      "sha256": "b8fc7ad9c0519a6bb6413b36875aae1552db1a7c5351bc3242077085cae9aa6f"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/auto-post-good-05.webp": {
+      "bytes": 76546,
+      "sha256": "c4d2c1c08a2177257607e7960d21237f7be1528bccf01c521c064c3b8a3fa7c1"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/auto-product-bad-01.webp": {
+      "bytes": 85712,
+      "sha256": "171d550b23151984325e1e889a530638edd8cd8668709511de593e2e0c691ac4"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/auto-product-bad-02.webp": {
+      "bytes": 111544,
+      "sha256": "942f5f58c0ca3b8ed30e1063856d4ec01c5d08f5c7b7e6f7a136c8a925e8a5f2"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/auto-product-bad-03.webp": {
+      "bytes": 48136,
+      "sha256": "4c1c447b7bbab915aa9532d117c79e6cf6a14f0ff7ada58daa2956d0ebedacb9"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/auto-product-bad-04.webp": {
+      "bytes": 57158,
+      "sha256": "c244a30f65bc9b82488a72939c4ed6dd56fdab76373db523a47118be7ff220ea"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/auto-product-bad-05.webp": {
+      "bytes": 44374,
+      "sha256": "658aa0cf5bdb5f4f4bf2c969571ea1c1881dabbb33f6320c9673a6be5b126a37"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/auto-product-good-01.webp": {
+      "bytes": 43324,
+      "sha256": "4560ff47ad6a66a9b12a0e940d2fc27a64b276075e9bede8049450f3ab6efac2"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/auto-product-good-02.webp": {
+      "bytes": 46718,
+      "sha256": "6fce5321ab61e60d8a1f18382444f9d12ef3369377ebb4893af38ec7abe30f30"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/auto-product-good-03.webp": {
+      "bytes": 62642,
+      "sha256": "4f00ee00447ca7da2b065deab978f16ab229d161064b6ab2c4511ec040f62a56"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/auto-product-good-04.webp": {
+      "bytes": 57458,
+      "sha256": "2727f73161ac504c64b9e4925691e5fa2c2e30e687996501af6ebf3dcb10a298"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/auto-product-good-05.webp": {
+      "bytes": 49676,
+      "sha256": "b7f125fddbd1bf9ff25c16eca11fa79d2209dd7c52547c077653b863b0497769"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/cafe-post-bad-01.webp": {
+      "bytes": 71392,
+      "sha256": "2e5decdeecdc4e0a61a52e4d231dee90082284dd26297fc139080158a6c097ef"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/cafe-post-bad-02.webp": {
+      "bytes": 82266,
+      "sha256": "e77a5693365e19abfe3440e755df1c639b8178072beafa6f78618587a7b7bf0d"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/cafe-post-bad-03.webp": {
+      "bytes": 85830,
+      "sha256": "0d6d7ea701bd65faad91620e2797f569c50d4caee632bc37c4d1f5f71ea4d2e2"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/cafe-post-bad-04.webp": {
+      "bytes": 109782,
+      "sha256": "4d6b44ee8908bd846724eee9fbd366e11a034987562ef4c4c96975252d13a4f6"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/cafe-post-bad-05.webp": {
+      "bytes": 85594,
+      "sha256": "9662b380ae93fbb67c3d63adcc8d836ab7734ec6de8820337a09c60cff9e5b8d"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/cafe-post-good-01.webp": {
+      "bytes": 101636,
+      "sha256": "6653a506aaf4ab2f11240a921c6f611405c15978f5420f5e77702800cf44bccd"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/cafe-post-good-02.webp": {
+      "bytes": 87748,
+      "sha256": "fcd13e893da6be0bbfd3b34da289aaec8a2666b002e93978cb7e6e83bd6d7fc4"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/cafe-post-good-03.webp": {
+      "bytes": 138550,
+      "sha256": "6e151c7cdefd4b52e84ce512b9d8409a3f3dfbebb930ea0380c08632f82168cf"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/cafe-post-good-04.webp": {
+      "bytes": 89214,
+      "sha256": "0507d76096e74d96253cd9ab1ebd1e418bf87dc108d5d7cf49acb75074102f4b"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/cafe-post-good-05.webp": {
+      "bytes": 83418,
+      "sha256": "783ed30a8ba1914c9b1a688165f1755dcf4ea1f7995953782485181b181d7cc8"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/cafe-product-bad-01.webp": {
+      "bytes": 102046,
+      "sha256": "2335804da74d3899964227c016f040af205b9b7bd13c7596df0de6059dfd3491"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/cafe-product-bad-02.webp": {
+      "bytes": 112766,
+      "sha256": "61e3ea23809c23ba8f8b6c1d7d12bd5ad6ce89ea1f5ae90353fc0290a7d0d8a1"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/cafe-product-bad-03.webp": {
+      "bytes": 50452,
+      "sha256": "f2c76561beed66356635ef7a45a859d1dd944083d0b156f4dd7986e66e68e08b"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/cafe-product-bad-04.webp": {
+      "bytes": 46622,
+      "sha256": "0d9f73304893aca1883c1b3991791291c61357beb40a73a1f6030d063c8eb8c8"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/cafe-product-bad-05.webp": {
+      "bytes": 55844,
+      "sha256": "bae1196b10edcb589cf40690de3ed09c1b1f214eb1162ab9b71b6bc1228beb79"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/cafe-product-good-01.webp": {
+      "bytes": 59742,
+      "sha256": "bca1fcc7854784764674e5edf7297a3250c51fac1e66e328f1c3611f9be8170c"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/cafe-product-good-02.webp": {
+      "bytes": 58060,
+      "sha256": "0e33a4f5fee0e766d2968c18903314d756c0fe3d5bddf3387e5676ab64bf9c01"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/cafe-product-good-03.webp": {
+      "bytes": 67732,
+      "sha256": "5d23cb0b3cbc1c04d3b5473ab6b252d55d0447fb305289e551eb07870dfd5f88"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/cafe-product-good-04.webp": {
+      "bytes": 128222,
+      "sha256": "0cf05c2fb96137ef2497afc5d4bd6fcc37197a2c3418ffb41bb5d59c429f6d93"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/cafe-product-good-05.webp": {
+      "bytes": 96424,
+      "sha256": "cf60ed6c53108641a68fcc8a7021911cbfbffb9ae7255d43a431e3b55da73f1b"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/flowers-post-bad-01.webp": {
+      "bytes": 137432,
+      "sha256": "9dceaa3814f4a2352a5921a562cd5e41643deafbd875b1b5198af91bf7e7db86"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/flowers-post-bad-02.webp": {
+      "bytes": 117792,
+      "sha256": "c06e0a00f46ed314bb56768bc1376b4ba79a55dbd40c71a589a5f43a005107b4"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/flowers-post-bad-03.webp": {
+      "bytes": 86392,
+      "sha256": "06f923712e006b5a77e9e2f048c4c06935d7bf4635daf935bbb77ff80bb4a208"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/flowers-post-bad-04.webp": {
+      "bytes": 61008,
+      "sha256": "be281a6f1dddcdcf36ba50fd2236728d1e0bdf1f6cd370ca4f6aa9f78fc40f8b"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/flowers-post-bad-05.webp": {
+      "bytes": 114202,
+      "sha256": "12956e9c41bd24ea53791029ea425d1a17070fb6ed53cc829afc9ada3a6fab41"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/flowers-post-good-01.webp": {
+      "bytes": 104050,
+      "sha256": "c9b41b0a7a08d83a8bc7e650e59079024841b09121da2983b230892ec01daf8d"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/flowers-post-good-02.webp": {
+      "bytes": 101282,
+      "sha256": "5f25a6f0c5588018f44f38ff266c34ffc96ebb5ada1fcb855be924e608fd81e4"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/flowers-post-good-03.webp": {
+      "bytes": 105500,
+      "sha256": "03faf61608883d8810deb5c5eef1ecf3b3e3e6358fe44eefbf148bcbf350e8f3"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/flowers-post-good-04.webp": {
+      "bytes": 116950,
+      "sha256": "25a380f9ef2e809b7cd584d92afc33b64e4b54673a504bb4fccd59f7c3813ce2"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/flowers-post-good-05.webp": {
+      "bytes": 161770,
+      "sha256": "b048f630bb36ab8c4d23e56331f1e2980757b4da97de12b64f930699e96ebefb"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/flowers-product-bad-01.webp": {
+      "bytes": 79900,
+      "sha256": "989bc0ad31166df653450e141b733505153b021473b44d0811ca955b763e1ec2"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/flowers-product-bad-02.webp": {
+      "bytes": 62580,
+      "sha256": "dfe5dfa700f6fe803fb829e0e081e3727f5b88e5d45bf2ebcb9c84e6d69c9e8c"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/flowers-product-bad-03.webp": {
+      "bytes": 70364,
+      "sha256": "61004247b7a53f8dbfa8a12916b60bcfd24631a8f69909853d4a74d6d994a9ae"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/flowers-product-bad-04.webp": {
+      "bytes": 48308,
+      "sha256": "25ed56e98db60c09f658cde3c17dd12291bd21bf53a745f93b2c4efc1b8fa31f"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/flowers-product-bad-05.webp": {
+      "bytes": 58472,
+      "sha256": "b26523652167e8494ccccfbe057248e37dcaa86630cab283ae90170bb152aa5d"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/flowers-product-good-01.webp": {
+      "bytes": 74792,
+      "sha256": "6edfef2de13381819e482f6d99565f009d8b7c7b812e31bc387b50a32775e4dc"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/flowers-product-good-02.webp": {
+      "bytes": 88814,
+      "sha256": "bbd507cf865d1d779ec4a5000eaa6d65c0687357b220f77ced61eddb7028c676"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/flowers-product-good-03.webp": {
+      "bytes": 104512,
+      "sha256": "332bea2428bad817f4d86fcccaf9f041299aa3bed35928dede20284776c1653e"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/flowers-product-good-04.webp": {
+      "bytes": 86724,
+      "sha256": "9f8fe1c79e00df4c7444bfb9935e4e347b796cdf3937a551a516edfe033f8d9c"
+    },
+    "apps/max-game/www/assets/kdw-native/business-cards-v1/flowers-product-good-05.webp": {
+      "bytes": 47660,
+      "sha256": "4daa32b99c9983eaf1bc523d84657b0b3fbbb5b9017c0165f0aaf936011789aa"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-create-binding-0.svg": {
+      "bytes": 1520,
+      "sha256": "63f9ebe3cd9e3a4b8cbf1770e3f7226765fced599f87bb447d7cbd35270bd356"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-create-binding-1.svg": {
+      "bytes": 1520,
+      "sha256": "940ee6b5672caba2deb4fc5a7ba5943c789e0f1fa2a665452d526f308ba86dc5"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-filled-0.svg": {
+      "bytes": 665332,
+      "sha256": "24a58ba5bae0480d6d4190169c6a4a7df681e46e0c9e59c8857faca4d16bddc0"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-filled-1.svg": {
+      "bytes": 665336,
+      "sha256": "500a779f3cfd1ca74ec17178235fef67fa060d8f108fe36350a59ff58d70f687"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-filled-2.svg": {
+      "bytes": 665336,
+      "sha256": "f543a63e5adfdc2a00227f4124cbc0db436bd5061d4bf6ae5bd02751df2ea669"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-filled-binding-0.svg": {
+      "bytes": 2856,
+      "sha256": "386b9284af8d14139853bd8ae24c815caf9ddb15990d47b5256d3de8ea0c0a98"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-filled-binding-1.svg": {
+      "bytes": 2856,
+      "sha256": "6f6db6c31569831631c2e7a704210e572a41ac2272e7ce64bc7e22422d5f4461"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-filled-binding-10.svg": {
+      "bytes": 11336,
+      "sha256": "c2c23784eac3895793df9f7729d301c4509987255850212fe167598db11fdaf4"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-filled-binding-11.svg": {
+      "bytes": 11974,
+      "sha256": "0f3f0a5c51f3fbedf9542742fe2b00d597626512a88c9f9670f31ba213fe8bf0"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-filled-binding-2.svg": {
+      "bytes": 5115,
+      "sha256": "4205c92a8962493c99a4a75e4373dd2f241d8b20a6070d849c07d5cfea265990"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-filled-binding-3.svg": {
+      "bytes": 4480,
+      "sha256": "d4f6e3f315b5195728fb3cf9d520da3856a09e486ce092621060406f95bae05a"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-filled-binding-4.svg": {
+      "bytes": 8469,
+      "sha256": "cfd5b11bf105cf91db24c8ac8549aebceacac18238376ee0dafad4c0055edc81"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-filled-binding-5.svg": {
+      "bytes": 8524,
+      "sha256": "16f61f2f2921d1a9cb832ba9f254201e9cc0af6e3d886c9ab0685578075d8e49"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-filled-binding-6.svg": {
+      "bytes": 8529,
+      "sha256": "47b9d232b0ea8efc5485c7a4c082a234c42fd826084add82b1f650b4a560998d"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-filled-binding-7.svg": {
+      "bytes": 11335,
+      "sha256": "5dd83af64cc4f7ef637b12dcdee8d93f23fcc173a591290ea56d697177f0662e"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-filled-binding-8.svg": {
+      "bytes": 11336,
+      "sha256": "a1f5c5ed744db703848a0be77b659e6de524bdad0686d09ae64b35a7d1be25d2"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-filled-binding-9.svg": {
+      "bytes": 11336,
+      "sha256": "4810c157c46c541d2248ea9aca4fe032bc0bf613ccdc8ca1940ec40ca200a74a"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-ready-0.svg": {
+      "bytes": 273398,
+      "sha256": "3ab0c5c0d41de0ffa324f777f958eb157238e181789507d4f31d838c057ce2fa"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-ready-1.svg": {
+      "bytes": 273403,
+      "sha256": "bae945847ea8fa82fd495ab5b4c7a45cafe20652fd3a9449dbdd4c4022096c66"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-ready-2.svg": {
+      "bytes": 273407,
+      "sha256": "b3a03e48b16089e2363dde6125be23b87a3335c2d02e58f65b0094b7e70627b5"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-ready-binding-0.svg": {
+      "bytes": 1370,
+      "sha256": "2801c0fd0aef3e0cebf7a892d75d1c35420165762be0e054a15d670f2ff0f0ae"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-ready-binding-1.svg": {
+      "bytes": 1372,
+      "sha256": "f39efed96459e331a60e0b575c4f0ffef443a1ebc1d30def39ae0658efbfd4bd"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-ready-binding-2.svg": {
+      "bytes": 1372,
+      "sha256": "4cff2a645105ba88bc050c3bd4be776412989a90090467909ca03767ffbe5389"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-ready-binding-3.svg": {
+      "bytes": 1372,
+      "sha256": "1a205374dd22c7fedd7abcb743bae2f9dfde904d733febab93e5f7e683559258"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-result-0.svg": {
+      "bytes": 502332,
+      "sha256": "e9a4a57d472e321513964d0ac33e5e19999467694930400c6f1648ddff67aa26"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-result-1.svg": {
+      "bytes": 502336,
+      "sha256": "c2f5c733352eb81571614edd772881a0bf593b6289c60e5087ea57178925df9e"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-result-2.svg": {
+      "bytes": 502333,
+      "sha256": "59429ed1e3cc678d3c62bedcdab2e38abe29de38a92a1843e7d44b4524d98f1f"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-result-binding-0.svg": {
+      "bytes": 3385,
+      "sha256": "7d917525b86cb467509ed6195f402074ad80ca009cc1e53571acde0810c2c833"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-result-binding-1.svg": {
+      "bytes": 3387,
+      "sha256": "2e3a135a5eafd4de104d27d433a9a8afa8fa2e4602a7f537501b9f9ee89507cf"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-result-binding-2.svg": {
+      "bytes": 2368,
+      "sha256": "07616bfa106611a3c39a9cad121926d11e0438f4ba7cfab6d07ebcf1b5e7116f"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-result-binding-3.svg": {
+      "bytes": 2368,
+      "sha256": "0a7753292bee44c6f43c2a6953d05a3ad2475688b7eb2d8c8f2dcf0dade07d56"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-bot-result-binding-4.svg": {
+      "bytes": 3038,
+      "sha256": "bc82d7d1c2bc67e7c7bb93fd4c64a83391eba99b7526fbbfb46b9f59567e20f3"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-continue-0.svg": {
+      "bytes": 305013,
+      "sha256": "81dfa3bd3246b4bb0f74adc30625f6d2847d82ff6cc4598581469dd81b0feb9f"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-continue-1.svg": {
+      "bytes": 305018,
+      "sha256": "df7190b090064f188e0d19d0c60b30baf039d4b686972e8fea416d6ed58e80e7"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-continue-2.svg": {
+      "bytes": 305022,
+      "sha256": "2d7e23bc78363bef22de1476f676b3626d19498f8868bc7c3121b9ffc4277cd0"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-continue-binding-0.svg": {
+      "bytes": 1351,
+      "sha256": "ce746db34a352150ec6c0aea54c0c1ea8cfcaf130acc746aab71666834925e55"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-continue-binding-1.svg": {
+      "bytes": 1351,
+      "sha256": "0a985f23be57855ff140a1ccf47863e137e1da0543ed08e51a634308592d1895"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-create-0.svg": {
+      "bytes": 381996,
+      "sha256": "6285c63b776af097d4d45808297e0c5de1ef408734c1eaa02c623ae2ae343f66"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-create-1.svg": {
+      "bytes": 382001,
+      "sha256": "cf239e4fd871981cec0878eb25ad20e5af8b1dc3ac740f86c31dc65ee11f1269"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-create-2.svg": {
+      "bytes": 382005,
+      "sha256": "cbc32f6f1ca033e4a7796c0aca9cdc41d75d4930ba7fbcc7ab1e5db045a712b8"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-create-binding-0.svg": {
+      "bytes": 1520,
+      "sha256": "63f9ebe3cd9e3a4b8cbf1770e3f7226765fced599f87bb447d7cbd35270bd356"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-create-binding-1.svg": {
+      "bytes": 1520,
+      "sha256": "940ee6b5672caba2deb4fc5a7ba5943c789e0f1fa2a665452d526f308ba86dc5"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-description-0.svg": {
+      "bytes": 476406,
+      "sha256": "e3cf0ac879e4a641fb085fc668446c58df18bdf848259af3501a7211ee8d29b7"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-description-1.svg": {
+      "bytes": 476408,
+      "sha256": "210aa71d76282b68fb3a25997c9078bb125419e89c170d8beb794a410a1a61c1"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-description-2.svg": {
+      "bytes": 476406,
+      "sha256": "3c0316926b7c6056759022eadad1496e021fa9d00dce94a484f5548d28712844"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-details-0.svg": {
+      "bytes": 475353,
+      "sha256": "9b7e3d34467feb553b77ffa39b1e6d6dea1b4533f6315910842ee5af18c8afa5"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-details-1.svg": {
+      "bytes": 475355,
+      "sha256": "e2362a704ae226b7d7381423bdf91d52a4303cfa2cf1f2269f4f0187cd5194c7"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-details-2.svg": {
+      "bytes": 475353,
+      "sha256": "4e098c958b755bbd0216e83d7fe1d74aaca6e227e6f1eafdddc5b02a3b61b265"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-open-0.svg": {
+      "bytes": 150059,
+      "sha256": "15de01bad8fb138235c75cdf918d9911fbaaf7ee4d068b4d4b34f9b8fa5e3b0e"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-open-1.svg": {
+      "bytes": 150061,
+      "sha256": "14df62ba119ff9e701e5416349eda506ee794f77dc836eb2853ec2f5205a404b"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-open-2.svg": {
+      "bytes": 150059,
+      "sha256": "c7f0d8e7e1b4a848f5c4b20331d1c63137f4f93f3d04608459a73f3744dc41e2"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-publish-0.svg": {
+      "bytes": 463545,
+      "sha256": "03f1db782f3adbb340717f5af80f16d4f211e3371c2dd4516e0d71ac57e8ff3e"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-publish-1.svg": {
+      "bytes": 463549,
+      "sha256": "502f4ddfca22b577d37fd35193de117b9410a53c6ce29c0bbb2cb7798deaaea5"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-publish-2.svg": {
+      "bytes": 463546,
+      "sha256": "8c34f51fe645b987f78c9f262e30f257934eb2cad2c5c50c04765a79da7af813"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-publish-binding-0.svg": {
+      "bytes": 2672,
+      "sha256": "542458ac3b4fa0968b4031b216e9159b0d2635034c35f8597be4b886292a857e"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-publish-binding-1.svg": {
+      "bytes": 2683,
+      "sha256": "9bc8ebb17c67c423dfb657403a6e30594ba48f933d17b1f1823840583a35517c"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-publish-binding-2.svg": {
+      "bytes": 2683,
+      "sha256": "4987f59c5df670bcaab28bbc96537cf4442777deb499ec6250d325f3fc189f16"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-publish-name-footer.svg": {
+      "bytes": 471192,
+      "sha256": "6fb28251e251229a75c868c1f17114a1a732d3569b1aad05f4012cd940587edc"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-publish-name-header.svg": {
+      "bytes": 471192,
+      "sha256": "17ab5e9587703330627428c46eec88830f53d28217239a85b505c042f01d170f"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-publish-name-meta.svg": {
+      "bytes": 6253,
+      "sha256": "84299aa7c27f516a6ed9844955a962114aaae6e32d9d371f18bd28af89ff99bb"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-publish-name-prefix.svg": {
+      "bytes": 470326,
+      "sha256": "1fae825a95eb6f43325845a8efaad8341d43b3e9c7a3621a4f51f48e5cb9160c"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-publish-name-skin.svg": {
+      "bytes": 1806,
+      "sha256": "ea2647d15c54a3ce111e9c0385af4550caae349cd76b3a3bd9f1986d9e7b7a00"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-publish-name-tail.svg": {
+      "bytes": 470547,
+      "sha256": "d7eca00c69ea6e39453e899395e335b06297f58ac59f3c771d74c05d6df21502"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-publish-name-wallpaper.svg": {
+      "bytes": 1308,
+      "sha256": "dcbc5b0736781a624be86493f79fc828516c93ea2ac6459db589e3393e6ab8cf"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-setup-0.svg": {
+      "bytes": 316116,
+      "sha256": "2f74befde981a8504665243068b5856bd1fb313cfed91fe6d5ce020cf6736f7b"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-setup-1.svg": {
+      "bytes": 316118,
+      "sha256": "baba14e89b28bed943bc1e2b0a4eb6a120dfe5b25343a81e7be68735a5bdf128"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-setup-2.svg": {
+      "bytes": 316116,
+      "sha256": "2a7c280d91be56f9e2a06e0d37812fd7500519901753bf8be0e0a3f8b18e0eb7"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-setup-binding-0.svg": {
+      "bytes": 2521,
+      "sha256": "354d5417662e7cad789fdb5173017ee2dc35c7ad0fb65148db677dd15f81548d"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-type-0.svg": {
+      "bytes": 547481,
+      "sha256": "58786fe62a669f308f1a84b32ad3074645399e21ebcece71bf039f47ce1ef0f9"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-type-1.svg": {
+      "bytes": 547485,
+      "sha256": "b0bc7253596af6d64e5d48c90bdd62f65cdbd596cb9a0e932f86de3e77561bda"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-type-2.svg": {
+      "bytes": 547482,
+      "sha256": "5a70a16c409e3e14732e1be0e26745a1671562bbfca648ef1d1cdc8ea49684ab"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-type-binding-0.svg": {
+      "bytes": 2671,
+      "sha256": "80e1d5c8e28ef7e211129856a9a55d5c70d5c1b510d8d9759075f9aadca83a6d"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-type-binding-1.svg": {
+      "bytes": 2680,
+      "sha256": "027143dff6155c27f8276dabbad1357c399caa02917a2198bd3d8ad4343ff7c2"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-type-binding-2.svg": {
+      "bytes": 2680,
+      "sha256": "02a9a953b4114ed49852cee2dde36377e3827008f2a2642a068cf5faa75b3d1f"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-type-name-footer.svg": {
+      "bytes": 559961,
+      "sha256": "87f11dd2df6259c400f352744f590afe0b69af1216f184388e368b30d530327c"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-type-name-header.svg": {
+      "bytes": 559961,
+      "sha256": "303aa0ff641246c6d3e6da5102e1945d0bacd4c61b0e74141197e1a5dee3dd7e"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-type-name-meta.svg": {
+      "bytes": 6251,
+      "sha256": "d62f7113af56ae3dcd93003488fdf6832f2857fc2307690c657fc70f53f6298b"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-type-name-prefix.svg": {
+      "bytes": 559095,
+      "sha256": "738fad3f69fefe9fe656f48c763d421583159d9953740a4f9a72d9b25269a818"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-type-name-skin.svg": {
+      "bytes": 1805,
+      "sha256": "71e258d121dc07597dc90f1c0e4dc5b0ebea445c3b2bb720e35eafc06b9795a3"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-type-name-tail.svg": {
+      "bytes": 554482,
+      "sha256": "4a3cd71d16181397e2618c2bf64390dfceb422e39bb445d9153cd13e0e9a36b2"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-channel-type-name-wallpaper.svg": {
+      "bytes": 1308,
+      "sha256": "56c21ee9a86ca5765bccf214ea8da0730afef0cee46c95d8d364bac867fb8ead"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-platform-login-0.svg": {
+      "bytes": 167826,
+      "sha256": "90af8cde5500aa5ec302676e62428356b921a79e3286aa5120639d69aebfe0ba"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-platform-login-1.svg": {
+      "bytes": 167826,
+      "sha256": "4d2dac7424d5196991feafa0f66933ec66ba8c95c17bc5ba51a5a1e6d25d80ad"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-platform-login-2.svg": {
+      "bytes": 167828,
+      "sha256": "fc171f1ad396a44fba064c6d43b631909964bafcdbfee905dc806f5131ac8a93"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-platform-profile-0.svg": {
+      "bytes": 215055,
+      "sha256": "a4c461b1dce94bf83c7bf21f804fac880182a227fbadb44f923243548061caee"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-platform-profile-1.svg": {
+      "bytes": 215060,
+      "sha256": "e15e895a363cd14ece30c5410ba3754c45f20de30aad0a7c19755dfd497509de"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-platform-profile-2.svg": {
+      "bytes": 215064,
+      "sha256": "754f50be7f7ffeff475bc22f4fe95b54dc1c02436618936264facb609c69b412"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-platform-profile-binding-0.svg": {
+      "bytes": 1588,
+      "sha256": "1a7de70b15e554fe737965bb0651d120eaa1145e44b0953a1fb09a713950f6e3"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-platform-ready-0.svg": {
+      "bytes": 401973,
+      "sha256": "47ad227c3c0221c28c56e0a0e4f946eb292ad35eed4369399cba06858f3dfbd6"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-platform-ready-1.svg": {
+      "bytes": 401976,
+      "sha256": "2c6ca8d411a76a91f8e767c6d1f0c8feda2d7ed22f3ad9c8a9f0c40815545e22"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-platform-ready-2.svg": {
+      "bytes": 401978,
+      "sha256": "1ec49df64b968b542bb9ce5357cc6cf8f49880002dd1e0e9600a1284c189bca7"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-platform-verification-0.svg": {
+      "bytes": 245308,
+      "sha256": "fb9e0a877771a379bdfa3f498c4f8da2714661a58ee3469ad73c3ea0e59462af"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-platform-verification-1.svg": {
+      "bytes": 245313,
+      "sha256": "4fe4f9df8cc3844357a249fd5fa23cff32413cec62adf91ba43b1f9b1a440992"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-platform-verification-2.svg": {
+      "bytes": 245317,
+      "sha256": "00b87a382fe4ae6d65788cc17693a7b29fac2125d531b1a57e953f39b407f4f2"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/business-platform-verification-binding-0.svg": {
+      "bytes": 1588,
+      "sha256": "947861903bb339a7e5c464f1dd47336360d682a23ea5c585b9e65a3b4a6c7125"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/canvas-business-bot-create.svg": {
+      "bytes": 66,
+      "sha256": "66bee21f7598d9709de879b00252ac10e3309b4e1d2f043d2c0ed14d0a85389f"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/canvas-business-bot-filled.svg": {
+      "bytes": 66,
+      "sha256": "274bd5fa7f5549a9e865aab9651c5064f8a2f6bb7b43fcd9b2fc0417d2a5f7aa"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/canvas-business-bot-ready.svg": {
+      "bytes": 66,
+      "sha256": "71e3c6d51b7621a8431c509a22ff1de89a15c97a72d12036b016a095b28c41fc"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/canvas-business-bot-result.svg": {
+      "bytes": 66,
+      "sha256": "16ff5e01c9c4b50912ebd98935ed68dbdebb5a5785d95bf4b66e15b84d20f6ed"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/canvas-business-channel-continue.svg": {
+      "bytes": 66,
+      "sha256": "d76711dcc3549a33ca976acb766cc07429dd3c300e0796621ec7eb098d3ea9f9"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/canvas-business-channel-create.svg": {
+      "bytes": 66,
+      "sha256": "66bee21f7598d9709de879b00252ac10e3309b4e1d2f043d2c0ed14d0a85389f"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/canvas-business-channel-description.svg": {
+      "bytes": 66,
+      "sha256": "3328ede0e62c2323f6c6ebbab71a94fabcc415ac2bc4c0b067295e686f9b9774"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/canvas-business-channel-details.svg": {
+      "bytes": 66,
+      "sha256": "3328ede0e62c2323f6c6ebbab71a94fabcc415ac2bc4c0b067295e686f9b9774"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/canvas-business-channel-open.svg": {
+      "bytes": 66,
+      "sha256": "3328ede0e62c2323f6c6ebbab71a94fabcc415ac2bc4c0b067295e686f9b9774"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/canvas-business-channel-publish.svg": {
+      "bytes": 66,
+      "sha256": "3328ede0e62c2323f6c6ebbab71a94fabcc415ac2bc4c0b067295e686f9b9774"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/canvas-business-channel-setup.svg": {
+      "bytes": 66,
+      "sha256": "3328ede0e62c2323f6c6ebbab71a94fabcc415ac2bc4c0b067295e686f9b9774"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/canvas-business-channel-type.svg": {
+      "bytes": 66,
+      "sha256": "3328ede0e62c2323f6c6ebbab71a94fabcc415ac2bc4c0b067295e686f9b9774"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/canvas-business-platform-login.svg": {
+      "bytes": 67,
+      "sha256": "15812e3d3482e63d2f4b9aa78af8db79d686a08bf97a3afc61b239aeeea5d3db"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/canvas-business-platform-profile.svg": {
+      "bytes": 66,
+      "sha256": "764db78bf4cdd6e72bf6b44a551f6c6809d6d790766695149a8667311844dc34"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/canvas-business-platform-ready.svg": {
+      "bytes": 66,
+      "sha256": "764db78bf4cdd6e72bf6b44a551f6c6809d6d790766695149a8667311844dc34"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/canvas-business-platform-verification.svg": {
+      "bytes": 66,
+      "sha256": "61742680b9c2812c69267176259a45eb6892c139eae564ee96135da01a9af081"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/order-flow-action-button.svg": {
+      "bytes": 659281,
+      "sha256": "58d3fa6a84de8df35f8283d8d54302cf3668d512f3e20c482cdaa4bddc832d24"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/order-flow-cancel-button.svg": {
+      "bytes": 659280,
+      "sha256": "bf9bb0a252c62519599fbac71b19dbe1ca10d24d1235dda67587313bdab5b3d0"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/order-flow-delivery-0.svg": {
+      "bytes": 659280,
+      "sha256": "6fcf8b32ffec492c8bbebeb02038f736ee5ed26912b422cc6e24002f31154031"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/order-flow-delivery-1.svg": {
+      "bytes": 659280,
+      "sha256": "718a0a1191995b695cdc7a8a0b6986b70ad2fb44bbd110d58a2a56323f483b11"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/order-flow-delivery-2.svg": {
+      "bytes": 659280,
+      "sha256": "215aad12c251a2b9745e802bf0a7e7f1dab3bb3ef7dfeda94c040f00640e2eff"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/order-flow-footer.svg": {
+      "bytes": 659280,
+      "sha256": "f951a73cb8456c83225561a6c4b8b72cdbdc626ff431d40a3cb21e37397963d1"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/order-flow-header.svg": {
+      "bytes": 631774,
+      "sha256": "8da8e2e8bdf58ed4170c4c3efb7eac602e99fa6967fccf12d601cecc7610c37d"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/order-flow-incoming-meta.svg": {
+      "bytes": 5494,
+      "sha256": "dc8577da473636ffa5b8c720971b54f339626f8cd60aadff82d04b7efbe6a6ea"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/order-flow-incoming-skin.svg": {
+      "bytes": 2018,
+      "sha256": "1fb84435af9f3fe941ede861544b784be47899ccfafb853ec696a23985cb203f"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/order-flow-outgoing-meta.svg": {
+      "bytes": 5041,
+      "sha256": "e67ae9ebfbd677486190c95deeb2d73906285dbd37255634d3d046d5c2d14935"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/order-flow-outgoing-skin.svg": {
+      "bytes": 1347,
+      "sha256": "9c6c175e3e83dae289f946427da8b8689f8652d72e1ecb89e754be1ed2a2df3b"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/order-flow-status-button.svg": {
+      "bytes": 659280,
+      "sha256": "4d1e7d5077eef48ba8fd8ba48983bc95abc604a0632df21e8f1af0640dc6fd42"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/order-flow-status-message.svg": {
+      "bytes": 659281,
+      "sha256": "a3531c4a45a370af771c0ea618c31e6552f4b1aed46712d2bf4b66b34800f594"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/order-message-meta-0.svg": {
+      "bytes": 659280,
+      "sha256": "2d2cc0853f9763eeec8d547ef7c1af333aa91cca49f60ea836d802386061051c"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/order-message-meta-1.svg": {
+      "bytes": 659280,
+      "sha256": "7080d8f287588be28261b26cddd16f4cebd7d0e7a734988b076f65ac6fe1970a"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/order-message-meta-2.svg": {
+      "bytes": 659280,
+      "sha256": "972a4d50886e63fee77a592e527ff7e4baa7bea89b8ffd2720e8758beb80203e"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/raster-1ffaa52678ed5abbbd8ac7d3.png": {
+      "bytes": 1343118,
+      "sha256": "b2c641940f8f2c3d0460898b519bfe5a369e25f1b76a255aaed5e752b6e16361"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/raster-309eeac091232aaaa6ed5e95.png": {
+      "bytes": 151597,
+      "sha256": "bab77cf022642644b5859742ec08b403296975f46050c88fc72aa8d59814e23d"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/raster-4d8c926bb85aff84e717da64.png": {
+      "bytes": 148445,
+      "sha256": "18967f584e0fe97a8582b6a9398baed2110c525679ecd2c59b30fbfba297fb2d"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/raster-73eeca3b8cd426b7ab2db273.png": {
+      "bytes": 887049,
+      "sha256": "fa9c7b73234dcde8a0fe50a43d4ce3cf989a5019f66b8835fb85686b0cfb4b4e"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/raster-763279c56de316c6c836f1cf.png": {
+      "bytes": 7516,
+      "sha256": "28a8f1a1f08cea0916d078d808e3cdfbcad4f29eb7262cffc4af6a74d723b66c"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/raster-79c1d658361ee8435a956da6.png": {
+      "bytes": 37016,
+      "sha256": "82d18d75e2bc2bbd049bfb37c1d464415627c0a2f79a5185859dbf1667084921"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/raster-951cc2326453473c49556d16.png": {
+      "bytes": 7761,
+      "sha256": "6bca28c8500fa36c41248a9f011d861789e15602e92d846d8687b26bd4591b78"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/raster-a998691e7132a7ffc884adc1.png": {
+      "bytes": 630698,
+      "sha256": "5b9f82cda65852aee1c96250fd2a098dee76b1ac2e18931aa2fd18d59f87feaa"
+    },
+    "apps/max-game/www/assets/kdw-native/business-components/verification-bank.svg": {
+      "bytes": 250212,
+      "sha256": "f204c9d2e16395da1f6bc7f5f78918a7d5b9773e6783460bc2ec62b2494dd76a"
+    },
+    "apps/max-game/www/assets/kdw-native/business-confirmation/canvas.svg": {
+      "bytes": 66,
+      "sha256": "764db78bf4cdd6e72bf6b44a551f6c6809d6d790766695149a8667311844dc34"
+    },
+    "apps/max-game/www/assets/kdw-native/business-confirmation/snack-body.svg": {
+      "bytes": 20886,
+      "sha256": "ba951f65d49642f0be93ea79ab665deb4c6931048d5f7d11fcaeaf08b05d4d61"
+    },
+    "apps/max-game/www/assets/kdw-native/business-ui/bots.svg": {
+      "bytes": 140,
+      "sha256": "377908ff855c69ab5edb06f088202854a7ad4cf3bbe033d4e154e2ea27d6ac46"
+    },
+    "apps/max-game/www/assets/kdw-native/business-ui/cafe.webp": {
+      "bytes": 5588,
+      "sha256": "b4c3db3ab6f085b972c191c22b85cac223dba12f5cb34cd02465810c82d6a523"
+    },
+    "apps/max-game/www/assets/kdw-native/business-ui/channel-bot.webp": {
+      "bytes": 58616,
+      "sha256": "c1d481fe4e5221d7b145042ed61207002fa4c096c925a0e1d39d42fc9030b37f"
+    },
+    "apps/max-game/www/assets/kdw-native/business-ui/choice-auto.svg": {
+      "bytes": 96894,
+      "sha256": "83a8b012a01ee013a098b7486cc1cafa59f9c247bd1f73ad5149b90b2d06345b"
+    },
+    "apps/max-game/www/assets/kdw-native/business-ui/choice-cafe.svg": {
+      "bytes": 842661,
+      "sha256": "c38f1be88a10185af97875fba28724f1f6190e3ce6af54ed73d671d45fb7ca06"
+    },
+    "apps/max-game/www/assets/kdw-native/business-ui/choice-flowers.svg": {
+      "bytes": 2962518,
+      "sha256": "d09f1c5f72b5a67c000500907d1355de8914049dab0f6418693a68e2558210a0"
+    },
+    "apps/max-game/www/assets/kdw-native/business-ui/choice.svg": {
+      "bytes": 95,
+      "sha256": "da3e862453bc3c4fc0cdb77e39099a715a30a48539575ba8b90bcad2dabc1a9d"
+    },
+    "apps/max-game/www/assets/kdw-native/business-ui/dashboard.svg": {
+      "bytes": 140,
+      "sha256": "bf45dd2ff5c0428414678f38d85a76fa406ede50b55c80cb206e5bc19272d2c1"
+    },
+    "apps/max-game/www/assets/kdw-native/business-ui/desktop.svg": {
+      "bytes": 140,
+      "sha256": "7fc6afa3f052c07400a98a2dda5bb7fcaa638c10893eb334a16bacb239a99fa1"
+    },
+    "apps/max-game/www/assets/kdw-native/business-ui/form.svg": {
+      "bytes": 140,
+      "sha256": "c8fe09f688a1d049d547f3ee5319a64425c8680445d49cf736005d407dda0284"
+    },
+    "apps/max-game/www/assets/kdw-native/business-ui/landing-art.webp": {
+      "bytes": 19260,
+      "sha256": "718a0437b8520d13ff6a2a167059e8aa6ef8629af10a374ade71ed77e9d9105b"
+    },
+    "apps/max-game/www/assets/kdw-native/business-ui/landing.svg": {
+      "bytes": 143,
+      "sha256": "20de005b4d00881b5868034acbd3ce1e15b09013459aa109b16d4c6c2b914c45"
+    },
+    "apps/max-game/www/assets/kdw-native/business-ui/method.svg": {
+      "bytes": 140,
+      "sha256": "59ec76a1f85a7e9d115902d9aa96c12d2d14a21032b3d4451bfc747c6ce71a4a"
+    },
+    "apps/max-game/www/assets/kdw-native/business-ui/order.svg": {
+      "bytes": 140,
+      "sha256": "596ec9c3603886a31f38998bd8745dfcd558e58a45e13eb1aa105f7b9402a370"
+    },
+    "apps/max-game/www/assets/kdw-native/business-ui/phone.svg": {
+      "bytes": 140,
+      "sha256": "f311f3b4e60d29294317c832d7dcf36fb000c9417f8d0626ddeebeac5d686909"
+    },
+    "apps/max-game/www/assets/kdw-native/business-ui/wallpaper.webp": {
+      "bytes": 118844,
+      "sha256": "e9cb45c40e0a2bc16ec20dc1b881d1095c4b72a9c75c2dd469a74b5b83ba367c"
+    },
+    "apps/max-game/www/assets/kdw-native/conversation/hq-communication-call-connected.svg": {
+      "bytes": 5626094,
+      "sha256": "d03424277f0d04ab1ab443643216666c0606c0dfb6cc7f9225f8704f743c362e"
+    },
+    "apps/max-game/www/assets/kdw-native/conversation/hq-communication-call-result.svg": {
+      "bytes": 3674834,
+      "sha256": "737072e6b573e7799e4d6add400544f61bd1599753887c9933206a4f82b53186"
+    },
+    "apps/max-game/www/assets/kdw-native/conversation/hq-communication-message-video-preview.svg": {
+      "bytes": 4543712,
+      "sha256": "b7220fa6a8f543fafac0dc5ebc47ca333d334f94d4f61c241925641706a502c0"
+    },
+    "apps/max-game/www/assets/kdw-native/conversation/hq-communication-message-video-sent.svg": {
+      "bytes": 3667871,
+      "sha256": "4d5da2fa52d55017f8d5e69f9e5fa1c682277250f796a575403b8ba59dbf507b"
+    },
+    "apps/max-game/www/assets/kdw-native/conversation/hq-communication-message-video-stop.svg": {
+      "bytes": 4493910,
+      "sha256": "266c4ac28e3e45b3ba37a094f38517dd2e908935ff62e5c1e625dcec46a70f25"
+    },
+    "apps/max-game/www/assets/kdw-native/conversation/hq-communication-story-ready.svg": {
+      "bytes": 6763225,
+      "sha256": "b4c6a9508188005f1d13d0e828cfcdb8f67fce70a2aed491a7fd868af67ac3b0"
+    },
+    "apps/max-game/www/assets/kdw-native/conversation/hq-communication-story-start.svg": {
+      "bytes": 1465484,
+      "sha256": "c6f41e4ab0f273fd278916477b4d0a3ca982d8ff991e87800f1e2e56cb67768a"
+    },
+    "apps/max-game/www/assets/kdw-native/conversation/screen_1.svg": {
+      "bytes": 1644860,
+      "sha256": "498cfa8733187f7d2efde4d97502a28f422ef4aa442db5166f46adaac13def44"
+    },
+    "apps/max-game/www/assets/kdw-native/conversation/screen_2.svg": {
+      "bytes": 1388872,
+      "sha256": "28a2cab567e8e5a9ad5425bcefa7d9b555b8eb9ad9b56a5922f81182052a1701"
+    },
+    "apps/max-game/www/assets/kdw-native/conversation/screen_3.svg": {
+      "bytes": 1359484,
+      "sha256": "cec3e646da8eba316f554122d9e4dd0163ad4f35332da40e2fa90a9ef35984de"
+    },
+    "apps/max-game/www/assets/kdw-native/conversation/screen_4.svg": {
+      "bytes": 1370550,
+      "sha256": "c8794c7832f3926a9a6649ed0b26a454ab76414668837bdd36cf2bc27a8e0f33"
+    },
+    "apps/max-game/www/assets/kdw-native/conversation/screen_5.svg": {
+      "bytes": 1187653,
+      "sha256": "fff675f9fa66a7a82ff7cd52a01df75db4e42c577a4558f3f208e083e9cca6a3"
+    },
+    "apps/max-game/www/assets/kdw-native/conversation/screen_6.svg": {
+      "bytes": 566982,
+      "sha256": "9ff5fea9d2333c0b8b0f743c24b1a4b581cb9cbbf68b20b7a5f31a142ddaf71a"
+    },
+    "apps/max-game/www/assets/kdw-native/conversation/screen_7.svg": {
+      "bytes": 2360271,
+      "sha256": "22727def4317ec79b92aaf288c9258e42c5c04a5f7f4072d7731f5a720a3b1f2"
+    },
+    "apps/max-game/www/assets/kdw-native/conversation/visitor-avatar.svg": {
+      "bytes": 119548,
+      "sha256": "f2eb9c376147d72cb31f08528deef6620ed60eb1b4d742080abe10df6c3c063e"
+    },
+    "apps/max-game/www/assets/kdw-native/conversation/visitor-placeholder.svg": {
+      "bytes": 119548,
+      "sha256": "e75c15723cc6904c04b7085b048ced14caafa6223411b79a8ef0220c3cddf424"
+    },
+    "apps/max-game/www/assets/kdw-native/final-qr/business.svg": {
+      "bytes": 162640,
+      "sha256": "1caf6d1bf1d86ccd504cd2b52f9de005efcb6a7d676a7c6bba6eeb5272089397"
+    },
+    "apps/max-game/www/assets/kdw-native/final-qr/download.svg": {
+      "bytes": 83383,
+      "sha256": "98cf3b656d3aea14b99c1c7d2908a8384cd9c06d5be4ff625b0769f52879e42d"
+    },
+    "apps/max-game/www/assets/kdw-native/hq/communication-message-video-start.png": {
+      "bytes": 1796110,
+      "sha256": "135051f981507d9191f9407ed3a369e90c302b528aa67c2d44200381f2412df2"
+    },
+    "apps/max-game/www/assets/kdw-native/hq/communication-message-voice-preview.png": {
+      "bytes": 1639255,
+      "sha256": "cd5abd6ec0a3f4e9d89e0cac95c3ebef297b05593ac6adda4b98b1efe63420d7"
+    },
+    "apps/max-game/www/assets/kdw-native/hq/communication-message-voice-sent.png": {
+      "bytes": 1745558,
+      "sha256": "0c5c020a8fe08c68f1cc391f1b0fd4af67fce1e3b130ced774b756dae304aae2"
+    },
+    "apps/max-game/www/assets/kdw-native/hq/communication-message-voice-start.png": {
+      "bytes": 1796092,
+      "sha256": "ee9c4ae1ba6597f8a7f7ee0a25685b45e3f9494e6c6783566fef7166a4c50442"
+    },
+    "apps/max-game/www/assets/kdw-native/hq/communication-message-voice-stop.png": {
+      "bytes": 1773137,
+      "sha256": "066381588d36eede464b246d5aa36548684d7c11d98dcc0cb4d61d246bc60d92"
+    },
+    "apps/max-game/www/assets/kdw-native/hq/communication-reaction-chat.png": {
+      "bytes": 3046633,
+      "sha256": "8b61f47c79adf29206ecb6297fcc0e76abd8102d79959905349c8fdf8224d932"
+    },
+    "apps/max-game/www/assets/kdw-native/hq/communication-reaction-preview.png": {
+      "bytes": 1595465,
+      "sha256": "5dc7a52b00790b957401f7ec09bed9a722e2b932514b2a1950c9ae4a99f025ff"
+    },
+    "apps/max-game/www/assets/kdw-native/hq/communication-reaction-sent.png": {
+      "bytes": 3073233,
+      "sha256": "b57d24bef5d5130cee6282cc6521c4ba67fc03489b179bb1673bf61491815024"
+    },
+    "apps/max-game/www/assets/kdw-native/hq/communication-reaction-stickers.png": {
+      "bytes": 2077029,
+      "sha256": "570074325a499c3b8685f6728dd34887f0e30a054bf23d39e67976a6ffbf8ddc"
+    },
+    "apps/max-game/www/assets/kdw-native/hq/communication-story-audience.png": {
+      "bytes": 2144283,
+      "sha256": "61d7df1422d52225f46afd64ada7d6b2cc182d269ac606b240c96f659177178b"
+    },
+    "apps/max-game/www/assets/kdw-native/hq/communication-story-duration.png": {
+      "bytes": 1666689,
+      "sha256": "4573656db333ebebb97905d339566131ccc26721fea6a90e824a1b6d66e2a539"
+    },
+    "apps/max-game/www/assets/kdw-native/hq/digital-id-create-id-biometry.png": {
+      "bytes": 602503,
+      "sha256": "951720357ddacd7aace74015376c30545eb5bd3b5281f0f4da1e6b6e05cf3107"
+    },
+    "apps/max-game/www/assets/kdw-native/hq/digital-id-create-id-confirm.png": {
+      "bytes": 132102,
+      "sha256": "d39a1fbaad644d41977c30ee8a6648e432d9df4797a3df7f8b1affad14ff959c"
+    },
+    "apps/max-game/www/assets/kdw-native/hq/digital-id-create-id-documents.png": {
+      "bytes": 220599,
+      "sha256": "a65b9daa83cb7a014ad77edbe93dee5cd5a9c8421e682dd171e9cf99740c63f4"
+    },
+    "apps/max-game/www/assets/kdw-native/hq/digital-id-create-id-quick.png": {
+      "bytes": 599300,
+      "sha256": "82f897f19a64cdef28c4d5919fbfdd603892e8c9044342a3b3e7c3c5f4118fe4"
+    },
+    "apps/max-game/www/assets/kdw-native/hq/digital-id-create-id-start.png": {
+      "bytes": 1300814,
+      "sha256": "b0a07e59e0984961c819fae48dba15eb94235f86c718d12b345bf9baffc4f43a"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/phone-dark.svg": {
+      "bytes": 149,
+      "sha256": "e85fab37c6f3feaf2ce43317e7847d32e0a86a298abbcd6b17a74b830931f25a"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/phone-light.svg": {
+      "bytes": 149,
+      "sha256": "15b70262b5887afa2c71377693ac76ddfb06ff1841f4a526002f4b25cf3762f9"
+    },
+    "apps/max-game/www/assets/kdw-native/posts/photo-1.png": {
+      "bytes": 345876,
+      "sha256": "21f6d9e02f0e1f4ac7f21e62bf8d367e95b08bfa732621e770fb4f80791944cc"
+    },
+    "apps/max-game/www/assets/kdw-native/posts/photo-2.png": {
+      "bytes": 632614,
+      "sha256": "18095edbb738b1a4320af6cdb0a506e6eaffccfa6ddd30c656ee8ae8341f2c9b"
+    },
+    "apps/max-game/www/assets/kdw-native/posts/photo-3.png": {
+      "bytes": 636457,
+      "sha256": "b93a208786d83c8345dee5e7805f64761ff343d723d4b23df1f79a58e087abed"
+    },
+    "apps/max-game/www/assets/kdw-native/posts/photo-4.png": {
+      "bytes": 602123,
+      "sha256": "532b96964e1640f84de912e4b13c4723ba2f47d38965b3e39fa789469a10b639"
+    },
+    "apps/max-game/www/assets/kdw-native/posts/photo-5.png": {
+      "bytes": 692162,
+      "sha256": "49e0c911e09c8b7235f7eb3e119e50071876beef817af29c8e208d21e5f973f3"
+    },
+    "apps/max-game/www/assets/kdw-native/posts/photo-6.png": {
+      "bytes": 606688,
+      "sha256": "2a3edfb2d8a2d7c5233865f9574cc4f30e6fcb451fc770860a3fd9d7ee5d5dfa"
+    },
+    "apps/max-game/www/assets/kdw-native/posts/photo-7.png": {
+      "bytes": 711212,
+      "sha256": "fc50ad0bd1bbfb8bdae4488736ca19d7ec506fedcece5a65eaf47b33ff424d42"
+    },
+    "apps/max-game/www/assets/kdw-native/posts-chrome/composer.svg": {
+      "bytes": 13766,
+      "sha256": "627ea08fa507e98fd6079eab7e43f50ebc64f61913cb473d4c341ddab641caca"
+    },
+    "apps/max-game/www/assets/kdw-native/posts-chrome/fire.svg": {
+      "bytes": 12961,
+      "sha256": "9d4ff5cef8f309d3446f89f8ba12d5ed71c94c0d3fb4985bc57c4ab4a1a022ef"
+    },
+    "apps/max-game/www/assets/kdw-native/posts-chrome/header.svg": {
+      "bytes": 5445,
+      "sha256": "48902d583cdb8119bd7460d4f512bae32c5125c60ae70fbeab0174c7b2c614b9"
+    },
+    "apps/max-game/www/assets/kdw-native/posts-chrome/heart.svg": {
+      "bytes": 6447,
+      "sha256": "895759c6807bf2773abfeab821140f9cd120f5697a5a0e51e4d2b3b70e7b910b"
+    },
+    "apps/max-game/www/assets/kdw-native/posts-chrome/phone.svg": {
+      "bytes": 189,
+      "sha256": "07ebcfb6bb97c95dd7f7b26323a324a9766afdeb5268c89ee4a4810200391bb3"
+    },
+    "apps/max-game/www/assets/kdw-native/posts-chrome/verified.svg": {
+      "bytes": 1812,
+      "sha256": "9fd585cbc5b7f9f98f342ca3262307585d6b64013eec4e9d104098f0f561f489"
+    },
+    "apps/max-game/www/assets/kdw-native/posts-chrome/views.svg": {
+      "bytes": 1327,
+      "sha256": "5117559051874dbcfbb4dcfaaaac095b2bb412356482076e4f489ad3dab3d16f"
+    },
+    "apps/max-game/www/assets/kdw-native/visitor-details/business-bot-create.svg": {
+      "bytes": 323356,
+      "sha256": "5f03ba9cd6c33ebd41a801bf58635520b6baaad1907cb91262436f8518414550"
+    },
+    "apps/max-game/www/assets/kdw-native/visitor-details/business-bot-filled.svg": {
+      "bytes": 327582,
+      "sha256": "6d311fe14615cb4d35044debf78e1fda469eb274cbe0b4c8c8254c5d598c5577"
+    },
+    "apps/max-game/www/assets/kdw-native/visitor-details/business-bot-ready.svg": {
+      "bytes": 256969,
+      "sha256": "207b1f9da1c6c8d237d2d90103fa350443d93816d03abfc5aa683bf1288d0208"
+    },
+    "apps/max-game/www/assets/kdw-native/visitor-details/business-channel-continue.svg": {
+      "bytes": 300089,
+      "sha256": "820ff8f64c4f22eed7219ea4340715ad8898151d2e56a396530a882860f04bf3"
+    },
+    "apps/max-game/www/assets/kdw-native/visitor-details/business-channel-create.svg": {
+      "bytes": 323356,
+      "sha256": "5f03ba9cd6c33ebd41a801bf58635520b6baaad1907cb91262436f8518414550"
+    },
+    "apps/max-game/www/assets/kdw-native/visitor-details/business-platform-profile.svg": {
+      "bytes": 207108,
+      "sha256": "b9a4777c11624c8c429617de8766d2c7d89d6fc34debbdee2312782d519d1982"
+    },
+    "apps/max-game/www/assets/kdw-native/visitor-details/business-platform-verification.svg": {
+      "bytes": 370230,
+      "sha256": "8355a7aae8f9e2b807540232148342f6c7981cc372add226aedc898238d9bcf5"
+    },
+    "apps/max-game/www/assets/kdw-native/visitor-details/communication-call-chat.svg": {
+      "bytes": 740666,
+      "sha256": "0d550377dcd984725161b6295bf9b15bc2308210bc8a19b75287dc8da298dd59"
+    },
+    "apps/max-game/www/assets/kdw-native/visitor-details/digital-id-create-id-ready.svg": {
+      "bytes": 735512,
+      "sha256": "78ecd6041b50c8ba7d914cd4d24194cf77c72c20d29222513a6d57e62fdf5ebe"
+    },
+    "apps/max-game/www/assets/kdw-native/visitor-details/hq-communication-call-chat.svg": {
+      "bytes": 2518991,
+      "sha256": "c98bfcd944a1bb40790d72282ad065d69210f0d5ab877764cc99d2af9a0c051a"
+    },
+    "apps/max-game/www/assets/kdw-native/visitor-details/hq-digital-id-create-id-ready.svg": {
+      "bytes": 3685406,
+      "sha256": "0c1eba9e20f56821d59ca86ab38c779758978f1946dd0dc22742c1fb289c88e0"
+    },
+    "apps/max-game/www/brand/assets/fonts/max-sans-300.woff2": {
+      "bytes": 18168,
+      "sha256": "486adb0229012b9859ec65f6b66c1f0f9c5fe9a0e2f949120e2d215d0344c5a1"
+    },
+    "apps/max-game/www/brand/assets/fonts/max-sans-400.woff2": {
+      "bytes": 18308,
+      "sha256": "16b5a57c3fb0188774b86704addba2d2bbab81457b6d85e835e2227d0c20d02f"
+    },
+    "apps/max-game/www/brand/assets/fonts/max-sans-500.woff2": {
+      "bytes": 18472,
+      "sha256": "37f8013affe617da87b108ba39990698cb362ec03bb6f058de4d6ec3a896e4b2"
+    },
+    "apps/max-game/www/brand/assets/fonts/max-sans-600.woff2": {
+      "bytes": 18152,
+      "sha256": "61a2e984c490264cadb3f6e2f0d78c5bb5c25433c1fd27ff3884aaa0e390e2a9"
+    },
+    "apps/max-game/www/brand/assets/fonts/max-sans-700.woff2": {
+      "bytes": 18356,
+      "sha256": "7d6551891a39239747698052557baea7426a57024b4b36735512d494c208956f"
+    },
+    "apps/max-game/www/brand/assets/logos/max-mono-white.svg": {
+      "bytes": 2814,
+      "sha256": "bfb262ae53b65cf78b6889902d115da1c5ea0373c250cdfd35428aa87f6f73bb"
+    },
+    "apps/max-game/www/brand/assets/logos/max-primary-white.svg": {
+      "bytes": 79378,
+      "sha256": "28535aec5b2b59a2d85cd714f76a22ec5af884c9c3f16b75a556ae3c0436fc5e"
+    },
+    "apps/max-game/www/brand/assets/logos/max-symbol-white.svg": {
+      "bytes": 928,
+      "sha256": "2dfe98323a15e850f3903c53465380c471dbbe2d55cac144ceb0f041f5cfb537"
+    },
+    "apps/max-game/www/earth/contours/decorative-2026/Russia_Border_Mask_6K.svg": {
+      "bytes": 118521,
+      "sha256": "7cbe7235fc6d6bef85c7ff6d0947228d792b2b2a66f67f097e687c3042858c8a"
+    },
+    "apps/max-game/www/earth/contours/decorative-2026/Russia_Fill_Mask_6K.svg": {
+      "bytes": 118532,
+      "sha256": "75add7711cad7dc9d83c17e81533e789ad8ae9ec5157e358a4545a2297fa4186"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_ambience_loop.mp3": {
+      "bytes": 615213,
+      "sha256": "801afd8d8ac9125b6ee85ee64c91f536cb1127c9d5e79c9df3f1aea8401aae2f"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_ambience_loop.ogg": {
+      "bytes": 420076,
+      "sha256": "105c0f7e7ce99f298ca553ee1f21518839223834809c68aa40e2f755100f14a6"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_button_click_1.mp3": {
+      "bytes": 23853,
+      "sha256": "bb568917cc429a313c468f421d54177f0978be8917af986e49626b7aa7992750"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_button_click_1.ogg": {
+      "bytes": 22272,
+      "sha256": "6b6d4b3f63a94203194de946fa0e1a8c00689ee97f0f068ce8fb60895c21ae13"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_button_click_2.mp3": {
+      "bytes": 10413,
+      "sha256": "fe0f4ccbbce42be49f165bca2a4b6706520b14191fa96fdd8e543daec2179b9e"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_button_click_2.ogg": {
+      "bytes": 10907,
+      "sha256": "e9b5a07f034842ab3501eaa0b231c316e48430cfdb9c6846a91ff7a519f23a5a"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_button_click_3.mp3": {
+      "bytes": 25005,
+      "sha256": "77f620cdc440cba8b2c498e33eff08c3f1b37a0fcb3e9180f0ef644ed442ff95"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_button_click_3.ogg": {
+      "bytes": 18282,
+      "sha256": "a4cef6a472510193b8a883dc169cb51bf95773315c99bab64c0980d6475475e6"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_enengy_stream_1.mp3": {
+      "bytes": 20013,
+      "sha256": "603654503a7f738b2af99525cd68fa04f295798021e99fc2ea55e0955bab3414"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_enengy_stream_1.ogg": {
+      "bytes": 25118,
+      "sha256": "1843f0596f6a673ab436b26ed661dbdb0fd6af953af4061e369e9efe795017ef"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_enengy_stream_2.mp3": {
+      "bytes": 17709,
+      "sha256": "3efdc1a9ddf96b2c1e0ae8977679dc65a27c83b33818e4d7b27291ba59378930"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_enengy_stream_2.ogg": {
+      "bytes": 24404,
+      "sha256": "5e0dd254b8518d931748d9e53f65f4fb1e0ca9447334e08545a6fbec903c26d6"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_icons_deselect.mp3": {
+      "bytes": 32301,
+      "sha256": "0ca75f721b60ba722f8f88d40787b780478d9bd34ae1cabd748a15890f93a5fb"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_icons_deselect.ogg": {
+      "bytes": 30666,
+      "sha256": "eac450eabe50e4d4adb6b77efc98e5413daf170236a143bc6dcf80676dde6737"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_icon_grab_1.mp3": {
+      "bytes": 22701,
+      "sha256": "376011df9f68bdd44ccfdfeba4f38c4d577af38b1d6ad8786166881f0a8ac9af"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_icon_grab_1.ogg": {
+      "bytes": 26084,
+      "sha256": "81835535a21a5467d4ddfcf41d641738d4392ca495d7b5ed8231232a3c06ef43"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_icon_grab_2.mp3": {
+      "bytes": 22701,
+      "sha256": "c5dc9fdc65e62d46712cd96d0735c51942d43cbac519edbff0acddbdfd44d3f0"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_icon_grab_2.ogg": {
+      "bytes": 22477,
+      "sha256": "62383e959b123eb0a6a0dbb7de735a5b0603c8508a6207a55e0ef1a1388d598b"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_icon_hold_loop.mp3": {
+      "bytes": 46509,
+      "sha256": "50ee8e5ff1e4c0535ea78f6ace3aab0c63593719d0c7de17095241a761c199f7"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_icon_hold_loop.ogg": {
+      "bytes": 49614,
+      "sha256": "1463ab23e2ee465c2fe02e95f4fbaaa140b0dfabe6411ad78a6f451ddab8bce5"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_icon_pop.mp3": {
+      "bytes": 13485,
+      "sha256": "be220e1226fc3499c55a36f09ec733cd70a9ab089892186a1ea1fd6d8c5177bb"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_icon_pop.ogg": {
+      "bytes": 17004,
+      "sha256": "7528c00225890a83e007b7afbef2622023afe7c211ac281c75ffadb26297e678"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_phonescreen_activate.mp3": {
+      "bytes": 32301,
+      "sha256": "c8f2d1a3e4e7622e8d3ef12a15bdbe155d8c006bf643e8343b92cfc830462531"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_phonescreen_activate.ogg": {
+      "bytes": 35173,
+      "sha256": "7c34f4aa25f2aa462d6b4f88a80defa0c4dac19979b5f2f99d73e49e19643ea1"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_phonescreen_reactivate.mp3": {
+      "bytes": 29613,
+      "sha256": "96e82fe16b12adf67e07a90cf879c9c1b5ebb42ce5b8f408504182ab92af5d15"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_phonescreen_reactivate.ogg": {
+      "bytes": 28671,
+      "sha256": "a8e45b20ac1fbfad55961a5d525bf47541f93f6ef7188a4e735d90c2373a66b6"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_phone_grab_1.mp3": {
+      "bytes": 29613,
+      "sha256": "a87ef5bf01e670ef462b1abbc57dbad8b550d5905c98cce11401514c0da5f5e8"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_phone_grab_1.ogg": {
+      "bytes": 29959,
+      "sha256": "83121cdbc3cf49efe0f8a2392a024bad9fab1a762391cf7c0cd6e1620a3bcc7f"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_transition_handscreen.mp3": {
+      "bytes": 58413,
+      "sha256": "3c11db007cff482409e7bf99f24f8d7c0ebd549bddada2b69f489d80c1fd96ac"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_transition_handscreen.ogg": {
+      "bytes": 45091,
+      "sha256": "a9a5d40b2d703028e9d9b6e2c71b8914503e49514978f2c23970a3d0faddce22"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_transition_icons.mp3": {
+      "bytes": 58413,
+      "sha256": "5b08846bed2e2860953b770fb548a8b14b04d0868ae946bc5d0ea61f58d42d6a"
+    },
+    "apps/max-game/www/webgl-v5/audio/audio/game_transition_icons.ogg": {
+      "bytes": 42131,
+      "sha256": "29d393d92c07c3fa9ed92e98f9f5572628a51e02bf5e61d2a7adb363db0e8e09"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/icons/attachment.svg": {
+      "bytes": 2534,
+      "sha256": "3e843f4902af45248c512d64439cc88a3ff50803778029dd3e6f04effa1584a5"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/icons/back.svg": {
+      "bytes": 716,
+      "sha256": "d9febe2f3899b31634be6ecbc4aa6e108d533092f2af25f1386a71b5e9adf070"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/icons/business.svg": {
+      "bytes": 3213,
+      "sha256": "500e19291eff4b9fafc49a510efd22cbd5348a04845cd4d250636d47ab997459"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/icons/camera-add.svg": {
+      "bytes": 2745,
+      "sha256": "116a79e28c5bff50a42a57f55c55aaee0a6c9e7de96774095003f85d2313f807"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/icons/check.svg": {
+      "bytes": 597,
+      "sha256": "5204108b63a6264dfc4c44a03497076e2617d8705f66c83b061502341d0cb1c8"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/icons/chevron-right.svg": {
+      "bytes": 620,
+      "sha256": "2ebd6e77c6bdcd3e64fcdc52263e5be54a67f37534f8cd2d425afd4c4aba166f"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/icons/close.svg": {
+      "bytes": 801,
+      "sha256": "849767e40475491675d131cffcce187a83cfbc1cf5564ada6021c7ce3278164a"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/icons/comments.svg": {
+      "bytes": 1581,
+      "sha256": "77a1da80bde462ab920a9728c74e0e80e86a2b750d2bf3ee7e7d943422207b53"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/icons/copy-link.svg": {
+      "bytes": 4671,
+      "sha256": "6a4aa9b366704cda575a5203a70535608e3460b7f79aef874b682b0d4c36e9f8"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/icons/create-channel.svg": {
+      "bytes": 3750,
+      "sha256": "184da43ec901f823b035d75793f8fb9e717c0e5e08ea7ef58f776e94d8149d6c"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/icons/create-group.svg": {
+      "bytes": 3103,
+      "sha256": "414c6d2ad99843718d095320cefc0ad244c508cc7f23befa40278c44b5adba6e"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/icons/microphone.svg": {
+      "bytes": 2072,
+      "sha256": "fe2d70f74465f09915477afe19fc71bb97ec9f857b9dbf489e470148ad3e67e4"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/icons/more.svg": {
+      "bytes": 907,
+      "sha256": "1ca6c615d33f1a63bd8619136cc9e412cd15eb6147ff5a8267f4127d894fc4e7"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/icons/search.svg": {
+      "bytes": 796,
+      "sha256": "53b6dd4ac0653da7aef0f30523a27562514be38ec9b7921e30b31a441475c97e"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/icons/send.svg": {
+      "bytes": 753,
+      "sha256": "4986c93a9b8b32352b49917ff3f5c791832185aec6be8cbd683b5ff2a1c965bf"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/icons/share.svg": {
+      "bytes": 1112,
+      "sha256": "f6ed908b883292581237ff2092b922fbac401351c9d7542d73a8a574d24f4c59"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/icons/smile.svg": {
+      "bytes": 4076,
+      "sha256": "9d118817927cf3f1be3dc8cd3be05bb3c8b7c2aa87900462617066f6916847e8"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/icons/sprite.svg": {
+      "bytes": 33372,
+      "sha256": "561d8486b284a4b5a30b967b205cc1ec05e04b8417827df521103976b96c2869"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/channel-avatar-cinema.webp": {
+      "bytes": 14466,
+      "sha256": "a93a48c3d827febb45d0db3d726f6ef0a9fc0c63806e8767dd88ed3c4cbe0765"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/channel-avatar-timecode-reference.webp": {
+      "bytes": 7656,
+      "sha256": "4cdfc18b88ad8d01affc4e9e8c885c3ad369b092ae9c58d56492082d55c0771a"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/chat-wallpaper-dark.webp": {
+      "bytes": 30334,
+      "sha256": "aac4f8819f2267fee1170f65c67541b6f916d970ed5c54c47cd16b51a0f3552f"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/chat-wallpaper-light.webp": {
+      "bytes": 198648,
+      "sha256": "5267153e7c07a24efb5815d8660c4cc3dee8efea8132190f625b280d6576174c"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/creation-confetti.webp": {
+      "bytes": 26006,
+      "sha256": "6be0bbaa2122ed3499daad8d59f04ea0d654c739b95118389052410332f436bf"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/post-photo-cat-reference.webp": {
+      "bytes": 40466,
+      "sha256": "becb038fe5b52b29871af6201aa5ca280f91eb93013a6572307a1d18813849ab"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/post-photo-series.webp": {
+      "bytes": 97414,
+      "sha256": "46fe5b2da2918059e6cec8a88ecde53c05133c17422c481d815638aef6c52f50"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/post-symbol-eyes.webp": {
+      "bytes": 3842,
+      "sha256": "089d1e294ef0493bf15d961e792bcd785066a91aac83e42cc751231fe0b28764"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/post-symbol-spiral.webp": {
+      "bytes": 4408,
+      "sha256": "94c62e05f27cf16f6979d30c243b59ee13e1bcbeb0a29d9cafb95d776bf44dd8"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/source-15eea2a316ae.webp": {
+      "bytes": 4234,
+      "sha256": "2d8d05272f052ee03184e37915b9802497993070338503745a619c98d303ca7d"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/source-1e46e9ce857c.webp": {
+      "bytes": 2206,
+      "sha256": "6ed633e776f62dbe07d32b911c351ddef8e2ececd6fea99827402c4622d70c2c"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/source-24d2e8eb7aa0.webp": {
+      "bytes": 3492,
+      "sha256": "82b3a1eb30841dd45c794e433e59d703399936b0a20a4aa87ce147b81191d4b8"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/source-26aaec4c7488.webp": {
+      "bytes": 6200,
+      "sha256": "da532772924c3682359db2a0225725088f72aa9913f5f87cc5b34e07f29b71a2"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/source-495c5b1f4d80.webp": {
+      "bytes": 3268,
+      "sha256": "040bea65460f526f82a80dc8b62801ccb571c0ffcf527cb10a83c6ed6529084e"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/source-4e009e048abd.webp": {
+      "bytes": 2892,
+      "sha256": "ef539ff605ace5f1f0ce31304237c0ce7ea486a181bc1806f0158fa3af8095c6"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/source-4e719b88769a.webp": {
+      "bytes": 3506,
+      "sha256": "e5ca03b0a8c345450164b5e1ebfbbd42c6dbb7d046a587febb659c37624c17c1"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/source-4ebea81b439c.webp": {
+      "bytes": 7970,
+      "sha256": "fa5f76d32304519a5fbe2ba883560c09a140a8a9c284784dba2203762ab52d5f"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/source-518e06c7d419.webp": {
+      "bytes": 5714,
+      "sha256": "f86192f3f1c70bbedc8a063b9a3109b7f295e4ecbf94f7ec62b96743372389ba"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/source-53cc6f805fe1.webp": {
+      "bytes": 2868,
+      "sha256": "adc9f56a9c81e0216f2512b5cd0a7ca9f393c2923241118e6c1cd5d46a7842cd"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/source-59c4081f54e8.webp": {
+      "bytes": 4798,
+      "sha256": "edad2af71ccd854cbd51409860fd9963d2aba1bab9323c757abc096e34550a5b"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/source-63bc230e06cf.webp": {
+      "bytes": 3460,
+      "sha256": "382f118ea89cba113555ff2935bef6c99496815fb97d22cea5d192a3fdb4853b"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/source-779bb8cb88ca.webp": {
+      "bytes": 5540,
+      "sha256": "74275270db52ba42643e6950688bee6833d9a827415d3f3dcb87b8b68049f419"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/source-8ee68bd60476.webp": {
+      "bytes": 2220,
+      "sha256": "d4fa3545db43beea22171aab27fd2512a04521dfaf12394865cae3a58162e6ad"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/source-926be1f412ed.webp": {
+      "bytes": 8256,
+      "sha256": "7604b0e7f75ce02d7c538aff41189a5f37dff116d6a01959f66902063cf8bdfc"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/source-a29a561456ef.webp": {
+      "bytes": 11506,
+      "sha256": "fecc471831d03879b8f6c35381d8b05dad2081e892d592147247e1dc139b1541"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/source-bd8bfa665919.webp": {
+      "bytes": 7236,
+      "sha256": "b2f4100c5ef9c6091e27b36d50846a1d7029d8142a3cb7e5f5380cd885dd9232"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/source-cdacf2a04973.webp": {
+      "bytes": 1518,
+      "sha256": "00ef544370bb4a366504a0fb72a7aadb667ee6042d4339cff2cf80b5cb015cd5"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/source-cf827ad58d9a.webp": {
+      "bytes": 2436,
+      "sha256": "94cd5392ee55e217c0ec29d64500eddaf64e347be2bf5a5600953596776a39f0"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/source-d49c707c0688.webp": {
+      "bytes": 3438,
+      "sha256": "658db0a8200f7a68e1c5bae93e6f99d9d32cff004f47f20103b3c837c9cd081d"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/source-e237721d5a9e.webp": {
+      "bytes": 2282,
+      "sha256": "208c117024cf1ec94798f6698c6e34ce2cf801d0ad2b0451366a88870fcc9a97"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/source-e4b3f19262e0.webp": {
+      "bytes": 5630,
+      "sha256": "2df29db876778ae23ac1b9fe79df42ffa1c3f9243bce43151df3ccb3ba2ec15c"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/source-f7888527468f.webp": {
+      "bytes": 3204,
+      "sha256": "3bfe5eea45dc2cea46a367cdce675a0ab9e2a4c928c8787e3d5d65abc70e8b92"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/source-f840aff15fd9.webp": {
+      "bytes": 2188,
+      "sha256": "8397c73b2c6c45ef05b5c870e25014c7eb6a537d81572f89dfd82b04d463a279"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/source-fac684a480bb.webp": {
+      "bytes": 3352,
+      "sha256": "257b38f55146f3a45460ef0790dad8348a9d9f22d83c860d1f0d2f238f31aabb"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/images/source-fd2c0e2661b9.webp": {
+      "bytes": 2340,
+      "sha256": "81224e355e4f8e11350e58763b98b88d1bd5b1c20455587d853d766ab480cc35"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/reply/background.svg": {
+      "bytes": 405756,
+      "sha256": "daccb625f50b86630360f8e8b55f1ea67407bbffb18706ace490ae881badc269"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/reply/meta.svg": {
+      "bytes": 4295,
+      "sha256": "f68e9b72d8013053ba38f56680724e27e6fe86822b40f7587188d5c183c10653"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/reply/prefix.png": {
+      "bytes": 74690,
+      "sha256": "8c747d206773fff1a540b6a4402f4397c7e2d7bb9c9d505f4d73bbf6a29009cf"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/reply/quote.svg": {
+      "bytes": 35584,
+      "sha256": "af44bbed5e4a81eda57759d1a44357568ca589ff578a7af63fdefafa5a400274"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/reply/skin.svg": {
+      "bytes": 648,
+      "sha256": "98a0b6d73122972b1b74e2715adc06f3860c24d1c7a7c2b91d5fa639ebe79b6d"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/reply/wallpaper.svg": {
+      "bytes": 230356,
+      "sha256": "76424b0cad5417505dc2513c7586600a23c2639ec64299cb8cbebd09e25762d4"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/screen_1.png": {
+      "bytes": 100934,
+      "sha256": "6fa913ba1ce95c11c1adf79beae7b06eda2768413925fd904b95f2ff12ddfc63"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/screen_10.png": {
+      "bytes": 124234,
+      "sha256": "8f3ba0111eb446b35113f856f959225ee2247a6bb7a00cc91471b3e32b5d5f60"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/screen_11.png": {
+      "bytes": 237512,
+      "sha256": "688d4d08d209369f2e16790c3b6019deee804904bec51f68beb26679ac947aaa"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/screen_12.png": {
+      "bytes": 113965,
+      "sha256": "f51132f62d8350e6539a6456d3a8c3a9dda8bfce78f6eaa8a1b22dbc3e5ca01f"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/screen_13.png": {
+      "bytes": 109773,
+      "sha256": "12822d4656283d5e9c177f3f87ffffecc1f562edf2db14c65a2a8dbb3fb6364b"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/screen_14.png": {
+      "bytes": 131447,
+      "sha256": "0721244e88c966f904036e633093dea37cb6c4f728b149442ff2488b1e28643c"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/screen_15.png": {
+      "bytes": 237566,
+      "sha256": "5e63f438c63227978b62c0c47d3ad7b772edb578e276ecd264db90c635004493"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/screen_2.png": {
+      "bytes": 49185,
+      "sha256": "59e10a128131b67f754c44da03d53af4c4a7c46619931e0a9f52fb2aa6a0fa9b"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/screen_3.png": {
+      "bytes": 28422,
+      "sha256": "01081263d34fc591cb2a1d0fc5bedef4cc6ab10cf33ff4214839a31966e23f9c"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/screen_4.png": {
+      "bytes": 26976,
+      "sha256": "f8e30d8bcf1399aea3c8c04f0e887373b95029b37e2083637e89f513a2c47dcc"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/screen_5.png": {
+      "bytes": 45273,
+      "sha256": "93c6ad34c3b26b30bb39a62369471b1a6af87ffee2a1dcecc457abbf6a2310fa"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/screen_6.png": {
+      "bytes": 85295,
+      "sha256": "2a0464d11185b9962206c51b4d4b70a6810a4bfd94af05d0bf11ddfe99805190"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/screen_7.png": {
+      "bytes": 46144,
+      "sha256": "6d35c7f6fe8b5fbbbfe55c0e3fdfdda1d1f2d9eb1a089a571f286135db7cfb36"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/screen_8.png": {
+      "bytes": 45021,
+      "sha256": "4beb370a113ce2e6571508c369c898b046264f3607d8eba10e690d3a07285351"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/screen_9.png": {
+      "bytes": 71950,
+      "sha256": "81079ba169ff1bc9291f460151838afcb1a9559f34ba74f9162727d1d9e97a7f"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/underlay_1.svg": {
+      "bytes": 134737,
+      "sha256": "541e3d5a832415820ad563a0334add21dbd0e03602e338d4aaab5960a8f484f8"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/underlay_10.svg": {
+      "bytes": 166008,
+      "sha256": "cf165114d700b359f3cb116c36e4f4b3e0d5d7cc7d30612ded5629a22eb7a554"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/underlay_11.svg": {
+      "bytes": 316969,
+      "sha256": "df2fd1d1b7c85f8e917e6675e22d4b4bb4930e741b276343dc4116cbcd8b92e5"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/underlay_12.svg": {
+      "bytes": 152245,
+      "sha256": "84800e0a6236eb7915f4a0e8268c98f538246994fc9f40b02b485d18891bcf20"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/underlay_13.svg": {
+      "bytes": 146719,
+      "sha256": "7fa4c8210d2f10f466a1a61308e581767dbf8596d6923a6cd03a717b00031469"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/underlay_14.svg": {
+      "bytes": 175556,
+      "sha256": "09a22c7f2225bf4a0a693a07b0bc381dba40cb40398ad54e2969b58ff357d01d"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/underlay_15.svg": {
+      "bytes": 317041,
+      "sha256": "288b100e8c0bf57e5e18504ea9f1086396f3ebdb6cd6e449cac9972c1bd1350e"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/underlay_16.svg": {
+      "bytes": 141737,
+      "sha256": "7d5b34634fd79af11d73e044225ec16e8e2ad151b7c6c0083a225511b801d6c7"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/underlay_17.svg": {
+      "bytes": 150989,
+      "sha256": "4a6a90cc3e670f14d88d6176b57f685f7dd8d2a5a7c52ee222e0cab21d75fb10"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/underlay_2.svg": {
+      "bytes": 65737,
+      "sha256": "e9b82aee61c155b822d97c8385f63e4b801612f90f49f96400f14184c2901233"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/underlay_3.svg": {
+      "bytes": 38053,
+      "sha256": "5601b187c97c5f4e743959d4e35e5d1ad79b61ac733cbfff521b8ba2fe272a62"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/underlay_4.svg": {
+      "bytes": 36398,
+      "sha256": "95fad8c3c84c9a118c19d820dbc648dee98a5b414947376281c1c9b41db21288"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/underlay_5.svg": {
+      "bytes": 60521,
+      "sha256": "1e2f65aab1567e9e6e4c716551b38b9509a2780ead1c1e185f7435f696f049a6"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/underlay_6.svg": {
+      "bytes": 113885,
+      "sha256": "b489d607c6935bea00b2791efa1c511cbbc5efebfd1162c0b7f8721faa6cee1c"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/underlay_7.svg": {
+      "bytes": 61821,
+      "sha256": "906a48dbf6abbd5801b767a6f827e98fd07dac47dc00dc68ca00e37782de79b0"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/underlay_8.svg": {
+      "bytes": 60321,
+      "sha256": "2d9235c6cc7c20bcd13e667817ff1ea840f376529b916691583f8064ece137e5"
+    },
+    "apps/max-game/www/assets/kdw-native/personal-channel/screens/underlay_9.svg": {
+      "bytes": 96093,
+      "sha256": "2409e378807ab4c4f278e8ab0398a67224bbbfade3a0a51b7325838bd06a5874"
+    }
+  },
+  "localSourceDifferences": [],
+  "excludedPrivateCategories": {
+    "release-manifest.json": 1,
+    "data": 1151,
+    "licenses": 13,
+    "settings": 2
+  }
+}

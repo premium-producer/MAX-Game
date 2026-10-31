@@ -1,3 +1,4 @@
+import {deviceBrightnessCatalog} from './device-brightness-catalog.mjs';
 import {STANDBY_COVER_CSS} from './client/src/kdw-standby-cover.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -17,6 +18,7 @@ const packages=process.argv[2]?path.resolve(process.argv[2]):path.join(source,'c
 if(!fs.existsSync(path.join(packages,'esbuild/lib/main.js')))throw Error('Pass an existing development node_modules directory. Runtime startup does not need this toolchain.');
 const {build,transform}=await import(pathToFileURL(path.join(packages,'esbuild/lib/main.js')));
 fs.cpSync(path.join(source,'operator'),path.join(root,'www/admin'),{recursive:true});
+fs.cpSync(path.join(source,'client/public/webgl-v5/standby-videos'),path.join(root,'www/webgl-v5/standby-videos'),{recursive:true});
 const sha=value=>createHash('sha256').update(value).digest('hex');
 // Two filled SVG glyphs show internal diagonal cracks in production Electron.
 // Ship their deterministic CPU rasters; keep the original vector and source pins.
@@ -28,6 +30,7 @@ for(const glyph of Object.values(iconGlyphs).filter(g=>g.vectorPath)){
  fs.writeFileSync(path.join(root,'www',glyph.path),bytes);
 }
 const web=path.join(root,'www/webgl-v5'),originalBundle=path.join(web,'r6-app.js');
+fs.cpSync(path.join(source,'client/public/webgl-v5/audio'),path.join(web,'audio'),{recursive:true});
 if(!fs.existsSync(originalBundle)){
  const bytes=fs.readFileSync(path.join(web,'app.js'));
  const expected=JSON.parse(fs.readFileSync(path.join(source,'r6-release.json'))).profiles.client.appSha256;
@@ -35,11 +38,14 @@ if(!fs.existsSync(originalBundle)){
  fs.writeFileSync(originalBundle,bytes);
  fs.writeFileSync(path.join(web,'r6-client.html'),fs.readFileSync(path.join(web,'client.html'),'utf8').replace('./webgl-v5/app.js','./webgl-v5/r6-app.js'));
 }
+const nativeAssets={};
 const nativeCatalog=createKdwCatalog(JSON.parse(fs.readFileSync(path.join(source,'client/src/reviewed-content/mission-catalog.json'))));
+fs.writeFileSync(path.join(root,'launcher/device-brightness-catalog.json'),JSON.stringify(deviceBrightnessCatalog(nativeCatalog),null,2)+'\n');
 for(const asset of Object.values({...nativeCatalog.assets,...PERSONAL_ASSETS,...BUSINESS_UI_ASSETS}).filter(a=>a.path.startsWith('assets/kdw-native/'))){
  const bytes=fs.readFileSync(path.join(source,'client/public',asset.path));
  if(sha(bytes)!==asset.sha256)throw Error('Native interaction resource differs: '+asset.path);
  fs.mkdirSync(path.dirname(path.join(root,'www',asset.path)),{recursive:true});fs.writeFileSync(path.join(root,'www',asset.path),bytes);
+ nativeAssets[asset.path]=asset.sha256;
 }
 await prepareMissionFallbacks(source,packages);
 const result=await build({entryPoints:[path.join(source,'client/src/journey-guided-main.js')],nodePaths:[path.join(source,'vendor'),packages],bundle:true,format:'esm',platform:'browser',target:['es2022'],minify:true,write:false,metafile:true,legalComments:'inline'});
@@ -65,7 +71,8 @@ for(const [name,pin]of Object.entries(stand.files)){
  if(sha(fs.readFileSync(target))!==pin)adaptations.push(name);
 }
 const manifest={buildId:sha(result.outputFiles[0].contents).slice(0,20),iteration:config.version,bundleSha256:sha(result.outputFiles[0].contents),cssSha256:sha(css),inputs:files,standBaseline:stand.id,standRuntimeSha256:stand.runtimeSha256,standFileCount:Object.keys(stand.files).length,standAdaptations:adaptations,interactionRenderer:'Shared stand rendering, motion, catalog and styles; local host admission, measured responsive composition and persistent SessionPort. KDW channel keyboard and store interactions retained.'};
-if(adaptations.some(name=>!['src/journey-guided-main.js','src/journey-v5-backend.mjs','src/core/mission-core.mjs','src/application/mission-session.mjs','src/application/webgl-session.mjs','src/application/indexeddb-persistence.mjs','src/contracts/mission-command.mjs','src/contracts/mission-catalog.mjs','src/journey-v5-route-layout.mjs','src/journey-v5-device-timer.mjs','src/journey-webgl-ui.mjs','src/journey-v5-video-source.mjs','src/journey-lumi-reference-background.mjs'].includes(name)))throw Error('Unexpected stand baseline drift: '+adaptations.join(', '));
+if(adaptations.some(name=>!['src/journey-guided-main.js','src/journey-shared-ui.mjs','src/journey-v5-backend.mjs','src/core/mission-core.mjs','src/application/mission-session.mjs','src/application/webgl-session.mjs','src/application/indexeddb-persistence.mjs','src/contracts/mission-command.mjs','src/contracts/mission-catalog.mjs','src/journey-v5-route-layout.mjs','src/journey-v5-touch-area.mjs','src/journey-v5-device-timer.mjs','src/journey-v5-qr-finale.mjs','src/journey-webgl-ui.mjs','src/journey-v5-video-source.mjs','src/journey-lumi-reference-background.mjs'].includes(name)))throw Error('Unexpected stand baseline drift: '+adaptations.join(', '));
+manifest.requiredAssets=nativeAssets;
 fs.writeFileSync(path.join(web,'r9-build.json'),JSON.stringify(manifest,null,2)+'\n');
-const runtimeBuild=JSON.parse(fs.readFileSync(path.join(web,'build.json')));runtimeBuild.profile='KDW-MAX-R9-STAND';runtimeBuild.files['app.js']=manifest.bundleSha256;runtimeBuild.files['kdw-interactions.css']=manifest.cssSha256;runtimeBuild.entry=config.entry;fs.writeFileSync(path.join(web,'build.json'),JSON.stringify(runtimeBuild,null,2)+'\n');
+const runtimeBuild=JSON.parse(fs.readFileSync(path.join(web,'build.json')));runtimeBuild.profile='KDW-MAX-R9-STAND';runtimeBuild.files['app.js']=manifest.bundleSha256;runtimeBuild.files['kdw-interactions.css']=manifest.cssSha256;for(const name of ['music_sustained_shadow.ogg','music_seoul_track.ogg'])runtimeBuild.files['audio/'+name]=sha(fs.readFileSync(path.join(web,'audio',name)));runtimeBuild.entry=config.entry;fs.writeFileSync(path.join(web,'build.json'),JSON.stringify(runtimeBuild,null,2)+'\n');
 console.log(JSON.stringify({iteration:config.version,bundleBytes:result.outputFiles[0].contents.length,modules:Object.keys(files).length,bundleSha256:manifest.bundleSha256}));

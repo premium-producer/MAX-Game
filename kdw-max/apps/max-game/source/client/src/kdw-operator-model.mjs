@@ -1,3 +1,14 @@
+import {createGameModel,dispatchGameCommand} from './core/game-core.mjs';
+// Resume the embedded task kernel after an operator moved the outer mission.
+// Replay valid navigation edges rather than forging a snapshot or completion.
+export function resumeOperatorTask(catalog,model,{sessionId,screenId,commandId}){
+ const route=start=>{const queue=[{screen:start,path:[]}],seen=new Set([start]);for(let i=0;i<queue.length;i++){const row=queue[i];if(row.screen===screenId)return row.path;for(const a of catalog.screens[row.screen]?.actions??[]){const next=a.outcome.screenId;if(a.outcome.kind==='complete-task'||!next||seen.has(next))continue;seen.add(next);queue.push({screen:next,path:[...row.path,a.actionId]});}}return null;};
+ let current=model?.state.status==='active'?model:null,path=current?route(current.state.screenId):null;
+ if(!path){current=createGameModel(catalog,{sessionId});path=route(current.state.screenId);}
+ if(!path)return null;
+ for(const [i,actionId]of path.entries()){const s=current.state,result=dispatchGameCommand(catalog,current,{schemaVersion:1,type:'ACT',commandId:commandId.slice(0,90)+'.resume.'+i,sessionId,contentRevision:catalog.contentRevision,missionId:catalog.missionId,taskId:s.taskId,screenId:s.screenId,expectedRevision:s.revision,actionId});if(!result.reply.ok)return null;current=result.model;}
+ return current;
+}
 // Operator navigation is explicit and independent of visitor ACT.
 export function operatorRoute(catalog,state){
  const mission=catalog.missions[state.missionId];if(!mission)return [];

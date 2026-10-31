@@ -65,6 +65,6 @@ export function finishDevelopmentState(previous,s,c,now,budget){
 
 // Posting animation keeps advancing even when the countdown is switched off.
 export function activityRemaining(state,now){
- const deadline=state.devActivityDeadlineAt??state.deadlineAt;
+ const deadline=state.cardTaskPause?.deadlineAt??state.devActivityDeadlineAt??state.deadlineAt;
  return deadline==null?60000:deadline-(state.pausedAt??now);
 }

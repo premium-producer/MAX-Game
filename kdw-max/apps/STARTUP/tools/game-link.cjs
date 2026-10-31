@@ -74,6 +74,9 @@ function createGameHub({root,origin,now=()=>Date.now(),production=false,getOutpu
    let svg=text,index=0;
    // Replace only explicitly marked circular viewports; full-height slots retain full.
    if(avatar)svg=svg.replace(/<svg([^>]*data-visitor-viewport="circle"[^>]*)>[\s\S]*?<\/svg>/g,(_all,attrs)=>{
+    // ID uses the face crop too, but its authored portrait mask is rectangular.
+    // An extra circular mask would expose the template portrait underneath.
+    if(attrs.includes('data-visitor-mask="portrait"'))return `<svg${attrs.replace(/viewBox="[^"]*"/,'viewBox="0 0 512 512"')}><image width="512" height="512" href="${avatar}"/></svg>`;
     const clip='kdw-visitor-avatar-'+index++;return `<svg${attrs.replace(/viewBox="[^"]*"/,'viewBox="0 0 512 512"')}><defs><clipPath id="${clip}"><circle cx="256" cy="256" r="256"/></clipPath></defs><image width="512" height="512" href="${avatar}" clip-path="url(#${clip})"/></svg>`;
    });
    if(full)svg=svg.replace(/<image data-visitor-photo="true"[^>]*\/>/g,`<image data-visitor-photo="true" width="1080" height="1920" href="${full}"/>`);

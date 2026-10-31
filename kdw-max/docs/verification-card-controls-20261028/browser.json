@@ -1,0 +1,128 @@
+{
+  "at": "2026-10-28T13:09:50.489Z",
+  "scope": "Local Chromium, not Electron/Spout",
+  "results": [
+    {
+      "kind": "posts",
+      "goal": true,
+      "published": 11,
+      "flightObserved": true,
+      "badPicked": false,
+      "metrics": {
+        "kind": "posts",
+        "backend": "webgl",
+        "frameId": 1009,
+        "frame": {
+          "count": 600,
+          "p95": 16.700000000000728,
+          "p99": 16.80000000000109,
+          "max": 16.80000000000291
+        },
+        "update": {
+          "count": 600,
+          "p95": 0.40000003576278687,
+          "p99": 0.5999999642372131,
+          "max": 0.800000011920929
+        },
+        "resources": {
+          "bytes": 22739090,
+          "rasters": 20,
+          "uploads": 20,
+          "uploadMs": 0.30000001192092896,
+          "fallbacks": 0
+        },
+        "falling": 8,
+        "flights": 2,
+        "published": 11,
+        "arrived": 9,
+        "remainingMs": null,
+        "timerPaused": false,
+        "lastCommand": {
+          "type": "PUBLISH_POST",
+          "spawnId": "1.43",
+          "ok": true,
+          "code": "APPLIED",
+          "at": 1793192954081
+        },
+        "stale": false,
+        "interactive": true,
+        "input": {
+          "counts": {
+            "accepted": 11
+          },
+          "last": {
+            "reason": "accepted",
+            "x": 1116,
+            "y": 281,
+            "card": "1.43",
+            "at": 1793192954080
+          },
+          "dragging": false,
+          "contacts": 0
+        }
+      },
+      "errors": []
+    },
+    {
+      "kind": "store",
+      "goal": true,
+      "published": 11,
+      "flightObserved": true,
+      "badPicked": false,
+      "metrics": {
+        "kind": "store",
+        "backend": "webgl",
+        "frameId": 1013,
+        "frame": {
+          "count": 600,
+          "p95": 16.700000000000728,
+          "p99": 16.799999999999272,
+          "max": 16.80000000000291
+        },
+        "update": {
+          "count": 600,
+          "p95": 0.40000003576278687,
+          "p99": 0.5,
+          "max": 0.699999988079071
+        },
+        "resources": {
+          "bytes": 20373958,
+          "rasters": 14,
+          "uploads": 14,
+          "uploadMs": 0.5,
+          "fallbacks": 0
+        },
+        "falling": 0,
+        "flights": 0,
+        "published": 11,
+        "arrived": 10,
+        "remainingMs": null,
+        "timerPaused": false,
+        "lastCommand": {
+          "type": "PICK_PRODUCT",
+          "spawnId": "1.40",
+          "ok": true,
+          "code": "APPLIED",
+          "at": 1793192985241
+        },
+        "stale": false,
+        "interactive": false,
+        "input": {
+          "counts": {
+            "accepted": 11
+          },
+          "last": {
+            "reason": "accepted",
+            "x": 1010,
+            "y": 280,
+            "card": "1.40",
+            "at": 1793192985239
+          },
+          "dragging": false,
+          "contacts": 0
+        }
+      },
+      "errors": []
+    }
+  ]
+}

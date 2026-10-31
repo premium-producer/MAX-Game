@@ -6,6 +6,7 @@ export const WEBGL_SHARED_KEY = 'max-site-shared:v1';
 export function createWebGLSession({port,catalog,sessionId,profile='local',initialOwnerActive=true,assignmentId=null,onSnapshot=()=>{},onError=()=>{}}){
  if(!port||!catalog?.contentRevision||!sessionId||!['local','server'].includes(profile))throw new TypeError('Explicit WebGL SessionPort profile required');
  const managed=assignmentId!==null;let contacted=false;
+ let outputPending=0;
  let pendingCommand=null,restartPromise=null,durablePending=false,recovery=[];
  const presentationClock=createPresentationClock();
  let snapshot=null,unsubscribe=null,busy=false,polling=false,closed=false,serial=0,contactSerial=0,lastPoll=-Infinity,startPromise=null,connected=profile==='local';
@@ -26,7 +27,7 @@ export function createWebGLSession({port,catalog,sessionId,profile='local',initi
  const make=(type,fields={})=>({...fields,schemaVersion:1,type,commandId:`webgl.${Date.now()}.${++serial}.${globalThis.crypto?.randomUUID?.()??Math.random().toString(36).slice(2)}`,sessionId,contentRevision:catalog.contentRevision,expectedRevision:fields.expectedRevision??snapshot.state.revision});
  function command(type,fields={}){
   if(managed&&(snapshot?.assignment?.lifecycle.status!=='active'||['SELECT_MISSION','RETURN_MENU','RESET_PROGRESS','RESTART_MISSION'].includes(type)))return Promise.reject(Object.assign(Error('MANAGED_SESSION_FORBIDDEN'),{code:'MANAGED_SESSION_FORBIDDEN'}));
-  if(closed||busy||durablePending||!snapshot||profile==='server'&&(!connected||presentationClock.read(connected).stale))return Promise.resolve(null);
+  if(closed||busy||outputPending||durablePending||!snapshot||profile==='server'&&(!connected||presentationClock.read(connected).stale))return Promise.resolve(null);
   busy=true;
   pendingCommand=(async()=>{
    try{if(managed){const before=snapshot.state;if(fields.expectedRevision!==undefined&&fields.expectedRevision!==before.revision)throw Object.assign(Error('REVISION_CONFLICT'),{code:'REVISION_CONFLICT'});await port.acquireInputOwner(sessionId);accept(await port.getSnapshot(sessionId));const after=snapshot.state;if(after.revision!==before.revision+(before.ownerActive?0:1)||after.screenId!==before.screenId||after.runId!==before.runId||after.taskId!==before.taskId)throw Object.assign(Error('REVISION_CONFLICT'),{code:'REVISION_CONFLICT'});contacted=true;}const result=await port.sendCommand(make(type,{...fields,...(managed?{expectedRevision:snapshot.state.revision}:{})}));accept(result);if(!result.reply.ok)report(Object.assign(new Error(result.reply.code),{code:result.reply.code}));return closed?null:result;}
@@ -41,7 +42,7 @@ export function createWebGLSession({port,catalog,sessionId,profile='local',initi
   await port.releaseInputOwner(sessionId);return port.getSnapshot(sessionId);
  }
  const api={
-  get snapshot(){return snapshot;},get busy(){return busy||durablePending;},get profile(){return profile;},get connected(){return connected;},get presentationTime(){return presentationClock.read(connected).time;},get clockStale(){return presentationClock.read(connected).stale;},get recovery(){return structuredClone(recovery);},
+  get snapshot(){return snapshot;},get busy(){return busy||outputPending>0||durablePending;},get profile(){return profile;},get connected(){return connected;},get presentationTime(){return presentationClock.read(connected).time;},get clockStale(){return presentationClock.read(connected).stale;},get recovery(){return structuredClone(recovery);},
   start(){
    if(closed)return Promise.reject(Object.assign(new Error('SESSION_CLOSED'),{code:'SESSION_CLOSED'}));
    if(startPromise)return startPromise;
@@ -81,6 +82,12 @@ export function createWebGLSession({port,catalog,sessionId,profile='local',initi
    if(closed||durablePending||!snapshot||profile==='server'&&!connected||managed&&snapshot.assignment?.lifecycle.status!=='active')return null;
    if(type==='down')contacted=true;
    try{const result=await port.handleContact(sessionId,{contactId:String(contactId),sequence:++contactSerial,type,inside});accept(result);return closed?null:snapshot;}catch(error){report(error);return null;}
+  },
+  async outputRecovery(active,updateOwner=false){
+   if(closed||!snapshot||profile!=='local'||!port.outputRecoveryChanged)return null;
+   outputPending++;
+   try{accept(await port.outputRecoveryChanged(sessionId,{active}));if(updateOwner&&!closed)accept(await ownership(!active));return closed?null:snapshot;}
+   catch(error){report(error);throw error;}finally{outputPending--;}
   },
   async owner(active){if(closed||!snapshot)return null;try{accept(await ownership(active));return closed?null:snapshot;}catch(error){report(error);return null;}},
   poll(time,{pauseResult=false}={}){

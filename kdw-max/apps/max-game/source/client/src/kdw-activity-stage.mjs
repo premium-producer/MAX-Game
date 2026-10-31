@@ -1,11 +1,11 @@
-import {LANE_FLOW,FREE_FLOW} from './kdw-post-stream.mjs';
+import {LANE_FLOW,FREE_FLOW,SOFT_POPUP} from './kdw-post-stream.mjs';
 import {createFlightPlacement} from './kdw-flight-placement.mjs';
 import {pixelActivityViewport,pixelFlowViewport,pixelMapViewport} from './kdw-pixel-map.mjs';
 import {fallingCardGeometry,FALLING_CARD_DEFAULTS} from './kdw-falling-card-layout.mjs';
 const fallingFields=new WeakMap();
 // Both activities use the live device rectangle and the same right-hand field.
 // Never recenter the route or introduce another scene projection.
-export function activityGeometry(){
+export function activityGeometry({popupScale=1}={}){
  const phone=document.querySelector('.route-phone'),canvas=phone?.querySelector('.task-media-canvas'),arena=document.querySelector('#arena');
  if(!canvas||!arena)return null;
  const rect=canvas.getBoundingClientRect(),a=arena.getBoundingClientRect(),scale=a.width/parseFloat(arena.style.width);
@@ -14,9 +14,12 @@ export function activityGeometry(){
  const area=pixelActivityViewport(),flowArea=area?pixelFlowViewport(innerWidth,innerHeight):null,viewport=area?pixelMapViewport(innerWidth,innerHeight):null;
  const settings={cardScale:Number(host?.dataset.fallingCardScale??FALLING_CARD_DEFAULTS.scale),spawnRight:Number(host?.dataset.fallingSpawnRight??0),viewportScale:viewport?.scale??1,displayRight:viewport?viewport.left+viewport.width:innerWidth};
  if(flowArea){
-  const key=JSON.stringify([area.left,area.right,area.height,flowArea.top,flowArea.bottom,Math.round(rect.width*4),host?.dataset.compositionRevision,settings.cardScale,settings.spawnRight,settings.displayRight]);
+  const key=JSON.stringify([area.left,area.right,area.height,flowArea.top,flowArea.bottom,Math.round(rect.width*4),host?.dataset.compositionRevision,settings.cardScale,settings.spawnRight,settings.displayRight,popupScale]);
   let cached=fallingFields.get(phone);if(cached?.key!==key){cached={key,geometry:fallingCardGeometry({rect,scale,playArea:area,flowArea,...settings})};fallingFields.set(phone,cached);}
-  settings.fallingGeometry=cached.geometry;flowArea.right=Math.max(flowArea.right,cached.geometry.right);flowArea.width=flowArea.right-flowArea.left;
+  // Keep the configured extra range, but do not squeeze an enlarged popup
+  // back to the previous single-card width. The physical display is the limit.
+  settings.fallingGeometry=popupScale>1?{...cached.geometry,right:Math.min(settings.displayRight,cached.geometry.right+cached.geometry.width*(popupScale-1))}:cached.geometry;
+  flowArea.right=Math.max(flowArea.right,settings.fallingGeometry.right);flowArea.width=flowArea.right-flowArea.left;
  }
  for(const field of document.querySelectorAll('.kdw-post-cards,.kdw-product-stream'))field.style.clipPath=flowArea?`inset(${flowArea.top}px ${innerWidth-flowArea.right}px ${innerHeight-flowArea.bottom}px ${flowArea.left}px)`:'none';
  return {phone,rect,scale,playArea:area,flowArea,...settings,layoutRevision:host?.dataset.compositionRevision??'',alpha:Math.max(0,Math.min(1,Number(phone.dataset.pathPresence??0),Number(host?.dataset.contentPresence??1),Number(host?.dataset.uiPresence??1))),
@@ -34,25 +37,49 @@ export function rightCardRect(g,spawn){
  return {x,y,w,unit:w/440};
 }
 export function createRightCardLayout(){
- const planner=createFlightPlacement(),heights=new Map();let geometryKey='',geometry=null;
+ const planner=createFlightPlacement(),heights=new Map(),popups=new Map();let geometryKey='',geometry=null;
  const height=(s,w,unit,measure)=>{const key=w.toFixed(3)+':'+(s.post?.id??''),cached=heights.get(s.spawnId);if(cached?.key===key)return cached.h;const h=measure(s,w,unit);heights.set(s.spawnId,{key,h});return h;};
  return {
-  clear(){planner.clear();heights.clear();geometryKey='';geometry=null;},
+  clear(){planner.clear();heights.clear();popups.clear();geometryKey='';geometry=null;},
   layout(g,rows,measure){
-   if(!rows.length){planner.clear();heights.clear();return new Map();}
+   if(!rows.length){planner.clear();heights.clear();popups.clear();return new Map();}
    if(rows[0].flow!=='free'&&rows[0].flow!=='popup')return new Map(rows.map(s=>{const r=rightCardRect(g,s);return[s.spawnId,{...r,h:height(s,r.w,r.unit,measure)}];}));
    const area=g.playArea??{left:0,top:0,right:innerWidth,bottom:innerHeight,height:innerHeight};
    const flow=g.flowArea??area;
    // The phone floats a few pixels by design. Its drift must never resize text,
    // rerun collision search, or change a card's established flight geometry.
-   const key=JSON.stringify([area.left,area.right,area.height,flow.top,flow.bottom,Math.round(g.rect.width*4),g.layoutRevision,g.cardScale,g.spawnRight,g.displayRight]);
-   if(key!==geometryKey){geometryKey=key;geometry=g.fallingGeometry??fallingCardGeometry({...g,playArea:area,flowArea:flow});}
+   const key=JSON.stringify([area.left,area.right,area.height,flow.top,flow.bottom,Math.round(g.rect.width*4),g.layoutRevision,g.cardScale,g.spawnRight,g.displayRight,rows[0].softPopup,rows[0].popup]);
+   if(key!==geometryKey){popups.clear();geometryKey=key;geometry=g.fallingGeometry??fallingCardGeometry({...g,playArea:area,flowArea:flow});}
    const {left,right,width,entry,path}=geometry;
-   if(rows[0].flow==='popup')return new Map(rows.map(s=>{
-    let w=width*s.size,h=height(s,w,w/440,measure);
-    const fit=Math.min(1,Math.max(1,right-left)/w,Math.max(1,flow.bottom-flow.top)/h);w*=fit;h*=fit;
-    return [s.spawnId,{x:left+(right-left-w)*s.offset,y:flow.top+(flow.bottom-flow.top-h)*s.vertical,w,h,unit:w/440}];
-   }));
+   if(rows[0].flow==='popup'){
+    const ids=new Set(rows.map(r=>r.spawnId));for(const id of popups.keys())if(!ids.has(id))popups.delete(id);
+    const result=new Map(),occupied=[];
+    // Reserve the complete rise/fall envelope. No existing target moves when
+    // a neighbour is picked; lack of space skips a new target for its lifetime.
+    for(const row of rows){const p=popups.get(row.spawnId);if(p){result.set(row.spawnId,p);occupied.push(p);}}
+    const overlap=(a,b)=>Math.max(0,Math.min(a.x+a.w,b.x+b.w)-Math.max(a.x,b.x))*Math.max(0,Math.min(a.y+a.h+a.w*.09,b.y+b.h+b.w*.09)-Math.max(a.y,b.y));
+    for(const s of rows){
+     if(popups.has(s.spawnId))continue;
+     const top=s.softPopup?Math.min(flow.bottom-1,Math.max(flow.top,flow.top+240*(g.viewportScale??1))):flow.top;
+     const bottom=s.softPopup?Math.max(top+1,flow.bottom-24*(g.viewportScale??1)):flow.bottom;
+     const base=s.softPopup?Math.min(g.rect.width,(right-left)*.42):width;
+     let w=base*s.size/(s.softPopup?SOFT_POPUP.scale:1),h=height(s,w,w/440,measure);
+     const fit=Math.min(1,Math.max(1,right-left)/w,Math.max(1,bottom-top)/(h+(s.softPopup?w*.09:0)));w*=fit;h*=fit;
+     const pose=(u,v)=>({x:left+(right-left-w)*u,y:top+(bottom-top-h-(s.softPopup?w*.09:0))*v,w,h,unit:w/440});
+     let chosen=pose(s.offset,s.vertical);
+     if(s.popup){
+      const limit=s.popup.maxOverlapPercent/100;
+      const fits=p=>overlapTotal(p,occupied)<=p.w*p.h*limit+.001&&occupied.every(q=>overlapTotal(q,occupied.filter(v=>v!==q))+overlap(q,p)<=q.w*q.h*limit+.001);
+      function overlapTotal(p,list){return list.reduce((sum,q)=>sum+overlap(p,q),0);}
+      if(!fits(chosen)){
+       chosen=null;
+       for(let i=0;i<121;i++){const index=(i+Math.floor(s.offset*120))%121,p=pose((index%11)/10,Math.floor(index/11)/10);if(fits(p)){chosen=p;break;}}
+      }
+     }
+     popups.set(s.spawnId,chosen);if(chosen){occupied.push(chosen);result.set(s.spawnId,chosen);}
+    }
+    return result;
+   }
    // One compact continuous field beside the phone, not the whole remaining
    // viewport. Keep card sizing independent of the new horizontal boundary.
    const ids=new Set(rows.map(r=>r.spawnId));for(const id of heights.keys())if(!ids.has(id))heights.delete(id);

@@ -22,7 +22,43 @@ export function createPopupTimeline(activity,bank){
   return elapsed-row.start<POPUP_CARDS.lifetime&&!used.has(row.spawnId)?[{...row,progress:(elapsed-row.start)/POPUP_CARDS.lifetime}]:[];
  }};
 }
+export const SOFT_POPUP=Object.freeze({enter:400,hold:800,exit:400,lifetime:1600,max:10,minGap:45,maxGap:130,scale:1.5});
+export const popupRules=row=>row.popup?{...SOFT_POPUP,enter:row.popup.enterMs,hold:row.popup.holdMs,exit:row.popup.exitMs,lifetime:row.popup.enterMs+row.popup.holdMs+row.popup.exitMs}:SOFT_POPUP;
+export function popupOpacity(row,elapsed){
+ const rules=popupRules(row);
+ if(!row.softPopup)return 1;
+ const age=elapsed-row.start,smooth=t=>{t=Math.max(0,Math.min(1,t));return t*t*t*(t*(t*6-15)+10);};
+ if(age<0||age>=rules.lifetime)return 0;
+ return age<rules.enter?smooth(age/rules.enter):age<rules.enter+rules.hold?1:1-smooth((age-rules.enter-rules.hold)/rules.exit);
+}
+export function popupAcceptsInput(row,elapsed,presence=1){
+ const opacity=popupOpacity(row,elapsed)*presence;
+ return opacity>0&&opacity>=(row.popup?.minOpacityPercent??15)/100;
+}
+export function createSoftPopupTimeline(activity,bank){
+ const rules=popupRules(activity);
+ const selected=new Map(activity.published.map(r=>[r.index,r.elapsedMs]));
+ const history=[];let live=[];
+ const end=row=>Math.min(row.start+row.travel,selected.get(row.index)??Infinity);
+ function next(){
+  const index=history.length;
+  let start=index?history.at(-1).start+rules.minGap+random(activity.seed,index,6)*(rules.maxGap-rules.minGap):0;
+  live=live.filter(r=>end(r)>start);
+  if(live.length>=rules.max)start=Math.max(start,Math.min(...live.map(end)));
+  live=live.filter(r=>end(r)>start);
+  const row={index,spawnId:`${activity.runId}.${index}`,post:bank[Math.floor(random(activity.seed,index,2)*bank.length)],
+   flow:'popup',softPopup:true,...(activity.popup?{popup:activity.popup}:{}),lane:1,start,travel:rules.lifetime,velocity:0,size:(.82+random(activity.seed,index,3)*.18)*rules.scale,
+   offset:random(activity.seed,index,4),vertical:random(activity.seed,index,5)};
+  history.push(row);live.push(row);return row;
+ }
+ return {spawn(index){while(history.length<=index)next();return {...history[index]};},at(elapsed){
+  if(elapsed<0)return [];
+  while(!history.length||history.at(-1).start<=elapsed)next();
+  return history.filter(r=>r.start<=elapsed&&end(r)>elapsed).map(r=>({...r,progress:(elapsed-r.start)/r.travel}));
+ }};
+}
 export function createPostTimeline(posts,bank){
+ if(posts.version>=15)return createSoftPopupTimeline(posts,bank);
  if(posts.version>=14)return createPopupTimeline(posts,bank);
  if(posts.version>=10){
   // Double the whole conveyor clock, including refill, to preserve density.

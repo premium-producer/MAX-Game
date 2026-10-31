@@ -15,9 +15,10 @@ for(const type of ['cafe','flowers','auto','hotel','theater','sports'])test(`${t
    const rows=posts?visiblePosts(activity,elapsed):storeTimeline(activity).at(elapsed);assert.ok(rows.every(r=>r.post.good));
    if(!rows.length)continue;
    assert.equal(reduce(state,{...command,type:posts?'PUBLISH_POST':'PICK_PRODUCT',spawnId:rows[0].spawnId},1000+elapsed),null);
+   assert.equal(reduce(state,{...command,type:posts?'POST_ARRIVED':'PRODUCT_ARRIVED',spawnId:rows[0].spawnId},1000+elapsed),null);
    const result=activity.published.at(-1);assert.ok(posts?result.delta>0:result.score===5);
   }
-  assert.ok(goal(activity));assert.equal(activity.published.length,posts?3:9);
+  assert.ok(goal(activity));assert.equal(activity.published.length,10);
  }
 });
 test('legacy mixed banks and receipt versions stay reproducible',()=>{

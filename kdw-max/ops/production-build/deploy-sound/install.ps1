@@ -4,7 +4,7 @@ $release=[IO.Path]::GetFullPath($plan.release);$before=Get-Content "$base/prefli
 $names=@($before.apps|ForEach-Object {$_.name})
 $backup="$base/backup";$applied=@();$stopped=@();$results=@();$changedTasks=@()
 function Status($phase,$extra){@{phase=$phase;patch=$plan.id;computer=$env:COMPUTERNAME;time=[DateTime]::UtcNow.ToString('o');details=$extra}|ConvertTo-Json -Depth 16|Set-Content "$base/status.json" -Encoding UTF8}
-function Target($relative){if($relative -notmatch '^apps/(max-game|stela)/(launcher/|www/)' -and $relative -notin @('apps/stela/Start-Recorded.bat','apps/stela/Start-Generated.bat','apps/stela/Start-Touch-Recorded.bat')){throw 'Patch path outside application code'};$p=[IO.Path]::GetFullPath((Join-Path $release $relative));if(-not $p.StartsWith($release+[IO.Path]::DirectorySeparatorChar,[StringComparison]::OrdinalIgnoreCase)){throw 'Unsafe patch target'};return $p}
+function Target($relative){if($relative -notmatch '^apps/(max-game|stela)/(launcher/|www/)' -and $relative -notin @('apps/stela/Start-Recorded.bat','apps/stela/Start-Generated.bat','apps/stela/Start-Touch-Recorded.bat','apps/stela/Start-Touch-Only-Recorded.bat','apps/stela/Start-Display-Only.bat')){throw 'Patch path outside application code'};$p=[IO.Path]::GetFullPath((Join-Path $release $relative));if(-not $p.StartsWith($release+[IO.Path]::DirectorySeparatorChar,[StringComparison]::OrdinalIgnoreCase)){throw 'Unsafe patch target'};return $p}
 function Health($name){$port=if($name -eq 'stela'){18751}else{18752};try{return Invoke-RestMethod "http://127.0.0.1:$port/__kdw/health" -TimeoutSec 2}catch{return $null}}
 function StopApp($name){if((Health $name) -or (Test-Path "$release/apps/$name/data/supervisor.json")){& powershell.exe -NoProfile -File "$release/apps/$name/launcher/Control.ps1" -Action Stop|Out-Null;if($LASTEXITCODE -ne 0){throw "Failed to stop $name"}}}
 function StartApp($item){
@@ -16,7 +16,7 @@ function StartApp($item){
 function PreservePins {
  $pins=@{}
  foreach($name in $names){
-  foreach($relative in @('app.json','settings/stand.json','data/lidar.local.json','data/layout.local.json','data/layout-profiles.local.json','data/calibration-targets.local.json','data/lan-admin/config.json','data/lan-admin/server.pfx','data/operator.local.json','data/display.local.json','data/soundtrack.local.json','data/sound-events.local.json','data/omni.local.json','data/narration-mode.local.json','data/audio.local.json','data/audio-profile.json','data/game-link.local.json','data/game-link-network.local.json')){
+  foreach($relative in @('app.json','settings/stand.json','data/lidar.local.json','data/layout.local.json','data/layout-profiles.local.json','data/calibration-targets.local.json','data/lan-admin/config.json','data/lan-admin/server.pfx','data/operator.local.json','data/display.local.json','data/display-filters.local.json','data/soundtrack.local.json','data/sound-events.local.json','data/omni.local.json','data/narration-mode.local.json','data/audio.local.json','data/audio-profile.json','data/game-link.local.json','data/game-link-network.local.json')){
    $f="$release/apps/$name/$relative";if(Test-Path -LiteralPath $f){$pins["$name/$relative"]=(Get-FileHash -LiteralPath $f).Hash}
   }
  };return $pins

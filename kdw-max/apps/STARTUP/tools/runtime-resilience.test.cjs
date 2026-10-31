@@ -7,3 +7,20 @@ test('fault flood is aggregated and retention bounded',t=>{const root=fs.mkdtemp
 test('IPC rejects stale/disconnected requests and has a bounded timeout',async()=>{const a=new EventEmitter(),b=new EventEmitter();a.connected=b.connected=true;a.send=(v,cb)=>{queueMicrotask(()=>b.emit('message',v));cb?.();};b.send=(v,cb)=>{queueMicrotask(()=>a.emit('message',v));cb?.();};const x=rpcPeer(a,{timeout:20}),y=rpcPeer(b);y.handle(async(m,v)=>{if(m==='slow')return new Promise(()=>{});return v+1;});assert.equal(await x.request('increment',4),5);await assert.rejects(x.request('slow'),/RPC_TIMEOUT/);x.close();await assert.rejects(x.request('increment',4),/DISCONNECTED/);y.close();});
 
 test('crash dumps are bounded without removing crashpad metadata',t=>{const root=fs.mkdtempSync(path.join(os.tmpdir(),'kdw-dumps-'));t.after(()=>fs.rmSync(root,{recursive:true,force:true}));for(let i=0;i<8;i++)fs.writeFileSync(path.join(root,i+'.dmp'),Buffer.alloc(20));fs.writeFileSync(path.join(root,'settings.dat'),'keep');require('./runtime-crashes.cjs').trimDumps(root,{maxFiles:3,maxBytes:50});assert(fs.readdirSync(root).filter(n=>n.endsWith('.dmp')).length<=2);assert.equal(fs.readFileSync(path.join(root,'settings.dat'),'utf8'),'keep');});
+
+
+test('only cold output startup clears old visitors; output/API/watchdog recovery preserves them',async()=>{
+ const {OutputStartupGate}=require('./runtime-policy.cjs');let resets=0;
+ const reset=async()=>({cancelled:++resets}),gate=new OutputStartupGate();
+ assert.equal((await gate.prepare(reset)).preserved,false);
+ for(let n=0;n<5;n++)assert.equal((await gate.prepare(reset)).preserved,true);
+ const watchdog=new OutputStartupGate({recovering:true});assert.equal((await watchdog.prepare(reset)).preserved,true);assert.equal(resets,1);
+});
+
+test('startup reset is serialized and a failed reset cannot mark the game initialized',async()=>{
+ const {OutputStartupGate}=require('./runtime-policy.cjs');const gate=new OutputStartupGate();
+ await assert.rejects(gate.prepare(async()=>{throw Error('API_DOWN');}),/API_DOWN/);
+ let calls=0,finish;const reset=()=>{calls++;return new Promise(r=>finish=r);};
+ const one=gate.prepare(reset),two=gate.prepare(reset);finish({cancelled:0});await Promise.all([one,two]);
+ assert.equal(calls,1);assert.equal((await gate.prepare(reset)).preserved,true);
+});

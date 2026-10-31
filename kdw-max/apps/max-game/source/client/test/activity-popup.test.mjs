@@ -34,7 +34,7 @@ for(const posts of [true,false])test(`${posts?'posts':'store'} authority rejects
  const taskId=posts?'business.channel':'business.store',screenId=posts?'business.channel.result':'business.store.start';
  const make=()=>({sessionId:'popup',missionId:'business',status:'task',taskId,screenId,ownerActive:true,runId:1,deadlineAt:61000,progress:{business:{answers:{businessType:'cafe'}}}});
  const reduce=posts?reducePosts:reduceStore,c={taskId,screenId},s=make();
- assert.equal(reduce(s,{...c,type:posts?'START_POSTS':'START_STORE'},1000),null);
+ assert.equal(reduce(s,{...c,type:posts?'START_POSTS':'START_STORE'},1000,posts?14:9),null);
  assert.equal(reduce(s,{...c,type:posts?'PUBLISH_POST':'PICK_PRODUCT',spawnId:'1.0'},1150),posts?'POST_NOT_AVAILABLE':'PRODUCT_NOT_AVAILABLE');
  assert.equal(reduce(s,{...c,type:posts?'PUBLISH_POST':'PICK_PRODUCT',spawnId:'1.0'},1149),null);
 });

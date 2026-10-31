@@ -1,3 +1,4 @@
+import {circleIntersectsRect,missionHitRect} from './kdw-contact-area.mjs';
 import {Box2,Vector2} from 'three';
 
 export const TOUCH_MINIMUM=500;
@@ -7,18 +8,18 @@ export function touchBounds(rect,scale=1){
  const width=Math.max(rect.width,min),height=Math.max(rect.height,min);
  return {left:rect.left+(rect.width-width)/2,top:rect.top+(rect.height-height)/2,width,height};
 }
-export function touchContains(rect,x,y,scale=1){
+export function touchContains(rect,x,y,scale=1,radius=0){
  if(!rect||rect.width<=0||rect.height<=0||!Number.isFinite(x)||!Number.isFinite(y))return false;
  const r=touchBounds(rect,scale);
  box.min.set(r.left,r.top);box.max.set(r.left+r.width,r.top+r.height);
- return box.containsPoint(point.set(x,y));
+ return radius>0?circleIntersectsRect(x,y,radius,r):box.containsPoint(point.set(x,y));
 }
 export function touchEligible(root,el){
  return el?.isConnected&&root.contains(el)&&!el.disabled&&!el.closest('[inert],[hidden]')&&el.getClientRects().length>0
   &&getComputedStyle(el).visibility!=='hidden'&&getComputedStyle(el).pointerEvents!=='none'
   &&Number(el.dataset.pathPresence??1)>.1&&Number(el.dataset.uiFade??1)>.1;
 }
-export function touchPick(root,target,x,y,scale=1){
+export function touchPick(root,target,x,y,scale=1,radius=0){
  const direct=target?.closest?.('button');
  // Respect the browser's exact target, including a disabled control blocking one behind it.
  if(direct)return touchEligible(root,direct)?direct:null;
@@ -31,8 +32,10 @@ export function touchPick(root,target,x,y,scale=1){
  let selected=null,best=Infinity;
  for(const el of root.querySelectorAll('button')){
   if(!touchEligible(root,el)||el.hasAttribute('data-phone-drag'))continue;
-  const tile=el.querySelector('.tile'),r=(tile||el).getBoundingClientRect();
-  if(!touchContains(r,x,y,scale))continue;
+  const tile=el.querySelector('.tile'),r=tile?tile.getBoundingClientRect():missionHitRect(el);
+  // Ending a visit must require the actual timer area, not the generous
+  // 500-unit halo intended for ordinary game targets beside it.
+  if(!touchContains(r,x,y,el.hasAttribute('data-mission-timer')?0:scale,radius))continue;
   const distance=point.set(x,y).distanceToSquared(new Vector2(r.left+r.width/2,r.top+r.height/2));
   if(distance<best){selected=el;best=distance;}
  }

@@ -5969,6 +5969,9 @@ __export(lidar_exports, {
 });
 module.exports = __toCommonJS(lidar_exports);
 
+// apps/max-game/source/client/src/kdw-contact-area.mjs
+var LIDAR_CONTACT_RADIUS = 36;
+
 // apps/max-game/source/stand-output/hokuyo-osc.mjs
 var import_osc = __toESM(require_osc_node(), 1);
 var SOCKET_ERRORS = /* @__PURE__ */ new Set(["EADDRINUSE", "EADDRNOTAVAIL", "EACCES", "EBADF", "EINVAL", "ECONNRESET", "ENETDOWN", "ENETUNREACH", "EHOSTUNREACH", "ENOTCONN", "ENOBUFS"]);
@@ -6266,20 +6269,226 @@ function solveCalibration(rawPoints, targetPoints, logicalSize = DEFAULT_LOGICAL
   return { map, coefficients: [...solver.coeffs], cornerErrorPx };
 }
 
+// apps/max-game/source/stand-output/vendor/one-euro-filter/OneEuroFilter.mjs
+/*!
+ * Author: Gery Casiez
+ * Details: https://gery.casiez.net/1euro/
+ *
+ * Copyright 2019 Inria
+ *
+ * BSD License https://opensource.org/licenses/BSD-3-Clause
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ *  1. Redistributions of source code must retain the above copyright notice, this list of conditions
+ * and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions
+ * and the following disclaimer in the documentation and/or other materials provided with the distribution.
+ *
+ * 3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or
+ * promote products derived from this software without specific prior written permission.
+
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+ * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ */
+var LowPassFilter = class {
+  setAlpha(alpha) {
+    if (alpha <= 0 || alpha > 1)
+      console.log("alpha should be in (0.0., 1.0]");
+    this.a = alpha;
+  }
+  constructor(alpha, initval = 0) {
+    this.y = this.s = initval;
+    this.setAlpha(alpha);
+    this.initialized = false;
+  }
+  filter(value) {
+    var result;
+    if (this.initialized)
+      result = this.a * value + (1 - this.a) * this.s;
+    else {
+      result = value;
+      this.initialized = true;
+    }
+    this.y = value;
+    this.s = result;
+    return result;
+  }
+  filterWithAlpha(value, alpha) {
+    this.setAlpha(alpha);
+    return this.filter(value);
+  }
+  hasLastRawValue() {
+    return this.initialized;
+  }
+  lastRawValue() {
+    return this.y;
+  }
+  lastFilteredValue() {
+    return this.s;
+  }
+  reset() {
+    this.initialized = false;
+  }
+};
+var OneEuroFilter = class {
+  alpha(cutoff) {
+    var te = 1 / this.freq;
+    var tau = 1 / (2 * Math.PI * cutoff);
+    return 1 / (1 + tau / te);
+  }
+  setFrequency(f) {
+    if (f <= 0) console.log("freq should be >0");
+    this.freq = f;
+  }
+  setMinCutoff(mc) {
+    if (mc <= 0) console.log("mincutoff should be >0");
+    this.mincutoff = mc;
+  }
+  setBeta(b) {
+    this.beta_ = b;
+  }
+  setDerivateCutoff(dc) {
+    if (dc <= 0) console.log("dcutoff should be >0");
+    this.dcutoff = dc;
+  }
+  constructor(freq, mincutoff = 1, beta_ = 0, dcutoff = 1) {
+    this.setFrequency(freq);
+    this.setMinCutoff(mincutoff);
+    this.setBeta(beta_);
+    this.setDerivateCutoff(dcutoff);
+    this.x = new LowPassFilter(this.alpha(mincutoff));
+    this.dx = new LowPassFilter(this.alpha(dcutoff));
+    this.lasttime = void 0;
+  }
+  reset() {
+    this.x.reset();
+    this.dx.reset();
+    this.lasttime = void 0;
+  }
+  filter(value, timestamp = void 0) {
+    if (this.lasttime != void 0 && timestamp != void 0 && timestamp > this.lasttime)
+      this.freq = 1 / (timestamp - this.lasttime);
+    this.lasttime = timestamp;
+    var dvalue = this.x.hasLastRawValue() ? (value - this.x.lastFilteredValue()) * this.freq : 0;
+    var edvalue = this.dx.filterWithAlpha(dvalue, this.alpha(this.dcutoff));
+    var cutoff = this.mincutoff + this.beta_ * Math.abs(edvalue);
+    return this.x.filterWithAlpha(value, this.alpha(cutoff));
+  }
+};
+
+// apps/max-game/source/stand-output/lidar-filter.mjs
+var DEFAULT_INPUT_FILTER = Object.freeze({
+  enabled: true,
+  minCutoff: 1.2,
+  beta: 6e-3,
+  confirmMs: 24,
+  maxJumpPx: 160,
+  maxGapMs: 250
+});
+function inputFilterOptions(value = {}) {
+  if (!value || typeof value !== "object" || Array.isArray(value) || Object.keys(value).some((k) => !Object.hasOwn(DEFAULT_INPUT_FILTER, k))) throw Error("\u041D\u0435\u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u044B\u0435 \u043D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438 \u0444\u0438\u043B\u044C\u0442\u0440\u0430 \u043B\u0438\u0434\u0430\u0440\u0430");
+  const options = { ...DEFAULT_INPUT_FILTER, ...value };
+  const ranges = { minCutoff: [0.1, 20], beta: [0, 1], confirmMs: [0, 100], maxJumpPx: [20, 1e3], maxGapMs: [50, 350] };
+  if (typeof options.enabled !== "boolean" || Object.entries(ranges).some(([key, [min, max]]) => !Number.isFinite(options[key]) || options[key] < min || options[key] > max)) throw Error("\u041F\u0440\u043E\u0432\u0435\u0440\u044C\u0442\u0435 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B \u0441\u0433\u043B\u0430\u0436\u0438\u0432\u0430\u043D\u0438\u044F \u0438 \u043F\u043E\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043D\u0438\u044F \u043A\u043E\u043D\u0442\u0430\u043A\u0442\u0430");
+  return options;
+}
+function createLidarFilter(value) {
+  const options = inputFilterOptions(value);
+  const xFilter = new OneEuroFilter(60, options.minCutoff, options.beta);
+  const yFilter = new OneEuroFilter(60, options.minCutoff, options.beta);
+  const stats = { accepted: 0, suppressed: 0, sourceSwitches: 0, discontinuities: 0 };
+  let source = null, last = null, candidate = null, lastObservedAt = null, filtered = null;
+  const distance = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
+  function reset() {
+    source = null;
+    last = null;
+    candidate = null;
+    lastObservedAt = null;
+    filtered = null;
+    xFilter.reset();
+    yFilter.reset();
+  }
+  function accept(point, id, at, restart) {
+    if (restart) {
+      xFilter.reset();
+      yFilter.reset();
+    }
+    source = id;
+    last = { ...point, at };
+    candidate = null;
+    stats.accepted++;
+    filtered = { ...point, x: xFilter.filter(point.x, at / 1e3), y: yFilter.filter(point.y, at / 1e3) };
+    return { point: filtered, restart };
+  }
+  return {
+    update(point, id, at) {
+      if (!Number.isFinite(at) || ![point?.x, point?.y].every(Number.isFinite)) {
+        stats.suppressed++;
+        return null;
+      }
+      id = String(id);
+      if (!options.enabled) {
+        source = id;
+        last = { ...point, at };
+        filtered = { ...point };
+        stats.accepted++;
+        return { point: filtered, restart: false };
+      }
+      if (lastObservedAt !== null && at <= lastObservedAt) {
+        stats.suppressed++;
+        return null;
+      }
+      const gap = lastObservedAt !== null && at - lastObservedAt > options.maxGapMs || last !== null && at - last.at > options.maxGapMs;
+      if (gap) {
+        reset();
+        stats.discontinuities++;
+      }
+      lastObservedAt = at;
+      const sameSource = source === id;
+      if (last && sameSource && distance(point, last) <= options.maxJumpPx) return accept(point, id, at, false);
+      if (!candidate || candidate.id !== id || distance(point, candidate.previous) > options.maxJumpPx) {
+        candidate = { id, previous: { ...point }, at, count: 1 };
+        stats.suppressed++;
+        return gap ? { cancel: true } : null;
+      }
+      candidate.previous = { ...point };
+      candidate.count++;
+      if (candidate.count < 2 || at - candidate.at < options.confirmMs) {
+        stats.suppressed++;
+        return gap ? { cancel: true } : null;
+      }
+      if (source !== null && !sameSource) stats.sourceSwitches++;
+      return accept(point, id, at, true);
+    },
+    reset,
+    snapshot: () => ({ options: { ...options }, ...stats, pending: !!candidate, sourceContactId: source, point: filtered ? { x: filtered.x, y: filtered.y } : null })
+  };
+}
+
 // apps/max-game/source/stand-output/lidar.mjs
 var import_node_net = require("node:net");
 var automaticLidarConfig = (value) => value ? { ...value, enabled: value.enabled === true || !!(value.rawPoints && value.targetPoints) } : value;
 function validateLidarConfig(value) {
-  const keys = ["enabled", "bindAddress", "sourceAddress", "port", "timeoutMs", "width", "height", "rawPoints", "targetPoints"];
+  const keys = ["enabled", "bindAddress", "sourceAddress", "port", "timeoutMs", "width", "height", "rawPoints", "targetPoints", "inputFilter"];
   if (!value || Object.keys(value).some((k) => !keys.includes(k)) || typeof value.enabled !== "boolean" || !(0, import_node_net.isIP)(value.bindAddress) || !(0, import_node_net.isIP)(value.sourceAddress) || value.sourceAddress === "0.0.0.0" || !Number.isInteger(value.port) || value.port < 1024 || value.port > 65535 || !Number.isFinite(value.timeoutMs) || value.timeoutMs < 100 || value.timeoutMs > 3e3 || value.width !== 3072 || value.height !== 1536) throw Error("\u041F\u0440\u043E\u0432\u0435\u0440\u044C\u0442\u0435 IP, \u043F\u043E\u0440\u0442, watchdog \u0438 \u0440\u0430\u0437\u043C\u0435\u0440 3072\xD71536");
   if (value.rawPoints !== null || value.targetPoints !== null) {
     solveCalibration(value.rawPoints, value.targetPoints, [value.width, value.height]);
     if (value.targetPoints.some(([x, y]) => x < 0 || x > value.width || y < 0 || y > value.height) || value.rawPoints.some((p) => p.some((n) => Math.abs(n) > 1e4))) throw Error("\u0422\u043E\u0447\u043A\u0438 \u0432\u043D\u0435 \u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u043E\u0433\u043E \u0434\u0438\u0430\u043F\u0430\u0437\u043E\u043D\u0430");
   } else if (value.enabled) throw Error("\u0421\u043D\u0430\u0447\u0430\u043B\u0430 \u0432\u044B\u043F\u043E\u043B\u043D\u0438\u0442\u0435 \u043A\u0430\u043B\u0438\u0431\u0440\u043E\u0432\u043A\u0443");
+  inputFilterOptions(value.inputFilter);
   return structuredClone(value);
 }
 async function startLidar({ config, contents, active, log, width = 3072, height = 1536, calibrating = false, onPoint = () => {
-}, makeReceiver = createHokuyoReceiver }) {
+}, makeReceiver = createHokuyoReceiver, commandTimeoutMs = 1e3, now = () => performance.now() }) {
   config = automaticLidarConfig(config);
   if (!config?.enabled && !calibrating) return { snapshot: () => ({ enabled: false }), reset() {
   }, close() {
@@ -6291,43 +6500,64 @@ async function startLidar({ config, contents, active, log, width = 3072, height 
     if (value.enabled && !raw && !contents.debugger.isAttached()) contents.debugger.attach("1.3");
     return mapping2;
   };
-  let mapping = prepare(config, calibrating);
-  let down = false, closed = false, chain = Promise.resolve(), pendingMove = null, moving = false, inputEpoch = 0, needsCancel = false;
-  const input = { errors: 0, recoveries: 0, alreadyReleased: 0, lastError: null, lastCommand: null, lastSuccessAt: null };
-  const dispatch = async (type, p) => {
+  let mapping = prepare(config, calibrating), filter = createLidarFilter(config.inputFilter);
+  let down = false, closed = false, chain = Promise.resolve(), pendingMove = null, moving = false, inputEpoch = 0, needsCancel = false, generation = 0, abortDispatch = null;
+  const input = { errors: 0, recoveries: 0, alreadyReleased: 0, lastError: null, lastCommand: null, lastSuccessAt: null, timeouts: 0, resets: 0 };
+  const dispatch = async (type, p, gen) => {
     input.lastCommand = type;
+    let timer, abort;
+    const deadline = new Promise((_, reject) => {
+      abort = () => reject(Error("LIDAR_INPUT_RESET"));
+      abortDispatch = abort;
+      timer = setTimeout(() => reject(Error("LIDAR_INPUT_TIMEOUT")), commandTimeoutMs);
+    });
     try {
-      await contents.debugger.sendCommand("Input.dispatchTouchEvent", {
+      await Promise.race([deadline, contents.debugger.sendCommand("Input.dispatchTouchEvent", {
         type,
-        touchPoints: p ? [{ x: p.x, y: p.y, id: 1, radiusX: 2, radiusY: 2, force: 1 }] : []
-      });
+        touchPoints: p ? [{ x: p.x, y: p.y, id: 1, radiusX: LIDAR_CONTACT_RADIUS, radiusY: LIDAR_CONTACT_RADIUS, force: 1 }] : []
+      })]);
     } catch (error) {
+      if (gen !== generation) throw error;
       if (!p && ["touchCancel", "touchEnd"].includes(type) && /Must send a TouchStart first to start a new touch\./i.test(error.message)) {
         input.alreadyReleased++;
         return;
       }
       throw error;
+    } finally {
+      clearTimeout(timer);
+      if (abortDispatch === abort) abortDispatch = null;
     }
-    input.lastSuccessAt = Date.now();
+    if (gen === generation) input.lastSuccessAt = Date.now();
   };
   const send = (type, p) => {
-    const epoch = inputEpoch;
+    const epoch = inputEpoch, gen = generation;
     chain = chain.then(async () => {
-      if (closed || p && (epoch !== inputEpoch || calibrating || !config.enabled || !active())) return;
+      if (closed || gen !== generation || epoch !== inputEpoch || p && (calibrating || !config.enabled || !active())) return;
       if (!contents.debugger.isAttached()) contents.debugger.attach("1.3");
       const recovering = needsCancel && !!p;
       if (recovering) {
-        await dispatch("touchCancel");
+        await dispatch("touchCancel", null, gen);
+        if (gen !== generation) return;
         needsCancel = false;
       }
-      await dispatch(type, p);
+      await dispatch(type, p, gen);
+      if (gen !== generation) return;
       if (recovering) {
         input.recoveries++;
         log({ event: "lidar-input-recovered", command: type, recoveries: input.recoveries });
       }
     }).catch((error) => {
+      if (gen !== generation || closed) return;
+      if (error.message === "LIDAR_INPUT_TIMEOUT") {
+        input.timeouts++;
+        try {
+          if (contents.debugger.isAttached()) contents.debugger.detach();
+        } catch {
+        }
+      }
       down = false;
       pendingMove = null;
+      filter.reset();
       needsCancel = true;
       inputEpoch++;
       input.errors++;
@@ -6335,7 +6565,7 @@ async function startLidar({ config, contents, active, log, width = 3072, height 
       log({ event: "lidar-input-error", ...input.lastError, count: input.errors, retryOnNextContact: true });
     });
   };
-  const cancel = () => {
+  const cancelTouch = () => {
     inputEpoch++;
     pendingMove = null;
     if (down) {
@@ -6343,11 +6573,16 @@ async function startLidar({ config, contents, active, log, width = 3072, height 
       send("touchCancel");
     }
   };
+  const cancel = () => {
+    filter.reset();
+    cancelTouch();
+  };
   const receiver = makeReceiver({
     port: config.port,
     address: config.bindAddress,
     sourceAddress: config.sourceAddress,
     timeoutMs: config.timeoutMs,
+    now,
     rankPoint: (p) => !calibrating && mapping ? mapping.map(p.x, p.y).y : p.y,
     selectionSpace: calibrating ? "raw-y" : "calibrated-screen-y",
     onDiagnostic: (event, details) => log({ event, ...details }),
@@ -6358,16 +6593,20 @@ async function startLidar({ config, contents, active, log, width = 3072, height 
         if (mapping && ["down", "move"].includes(event.phase)) cursor = mapping.map(event.x, event.y);
       } catch {
       }
-      onPoint({ ...event, mapped: cursor });
+      const observe = (mapped) => onPoint({ ...event, mapped, rawMapped: cursor });
       if (calibrating || !config.enabled || !active()) {
+        observe(cursor);
         cancel();
         return;
       }
       if (event.phase === "cancel") {
+        observe(null);
         cancel();
         return;
       }
       if (event.phase === "up") {
+        observe(null);
+        filter.reset();
         pendingMove = null;
         if (down) {
           down = false;
@@ -6379,15 +6618,26 @@ async function startLidar({ config, contents, active, log, width = 3072, height 
       try {
         p = mapping.map(event.x, event.y);
       } catch {
+        observe(null);
         cancel();
         return;
       }
       if (!p.inside || p.x < 560 || p.x > 2320) {
+        observe(null);
         cancel();
         return;
       }
-      if (event.phase === "down" || event.phase === "move" && !down) {
-        if (down) cancel();
+      const result = filter.update(p, event.sourceContactId ?? event.id, event.seenAt ?? now());
+      const held = filter.snapshot().point;
+      observe(result?.point ?? (held ? { ...held, inside: true } : null));
+      if (!result) return;
+      if (result.cancel) {
+        cancelTouch();
+        return;
+      }
+      if (result.restart && down) cancelTouch();
+      p = result.point;
+      if (!down) {
         down = true;
         send("touchStart", p);
       } else if (down) {
@@ -6411,7 +6661,7 @@ async function startLidar({ config, contents, active, log, width = 3072, height 
     throw error;
   }
   return {
-    snapshot: () => ({ ...receiver.snapshot(), enabled: config.enabled && !calibrating, calibrating, selectionSpace: calibrating ? "raw-y" : "calibrated-screen-y", cornerErrorPx: mapping?.cornerErrorPx ?? null, input: { ...input, recoveryPending: needsCancel } }),
+    snapshot: () => ({ ...receiver.snapshot(), enabled: config.enabled && !calibrating, calibrating, selectionSpace: calibrating ? "raw-y" : "calibrated-screen-y", cornerErrorPx: mapping?.cornerErrorPx ?? null, input: { ...input, recoveryPending: needsCancel }, filter: filter.snapshot() }),
     reconfigure(value, raw = false) {
       if (closed) return false;
       value = automaticLidarConfig(value);
@@ -6422,12 +6672,27 @@ async function startLidar({ config, contents, active, log, width = 3072, height 
       config = value;
       mapping = next;
       calibrating = raw;
+      filter = createLidarFilter(value.inputFilter);
       log({ event: "lidar-mode-changed", calibrating, enabled: config.enabled, port: config.port, receiverRetained: true });
       return true;
     },
     reset() {
-      cancel();
+      generation++;
+      inputEpoch++;
+      abortDispatch?.();
+      chain = Promise.resolve();
+      down = false;
+      pendingMove = null;
+      filter.reset();
+      needsCancel = true;
+      input.resets++;
+      try {
+        if (contents.debugger.isAttached()) contents.debugger.detach();
+      } catch {
+      }
       receiver.reset();
+      log({ event: "lidar-input-reset", generation, receiverRetained: true });
+      send("touchCancel");
     },
     async close() {
       cancel();

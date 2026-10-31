@@ -1,0 +1,1031 @@
+{
+  "snapshot": "stand-final-20261031",
+  "application": "stela",
+  "captureStartedUtc": "2026-10-31T13:58:44.8499491Z",
+  "captureCompletedUtc": "2026-10-31T13:59:47.6286444Z",
+  "files": {
+    "apps/stela/Analyze-Voice-Logs.bat": {
+      "bytes": 156,
+      "sha256": "f42c497575e304ade29db869566c32cc53e630acee19ad4e3d11fbeabd37c1e8"
+    },
+    "apps/stela/app.json": {
+      "bytes": 958,
+      "sha256": "44317bff949703221e6399402c81d1097945a505479a96030bb8c39b8a367db5"
+    },
+    "apps/stela/Check.bat": {
+      "bytes": 177,
+      "sha256": "5d6baaadffa5003db324bb9659d91ca8ccf8b46b9ca10f4f15a376ea61c633df"
+    },
+    "apps/stela/Start-Admin.bat": {
+      "bytes": 170,
+      "sha256": "9e81f1748dbe4f4cb0566c173ca8106870c762b1b447f277a1d094f170aa5a11"
+    },
+    "apps/stela/Start-Display-Only.bat": {
+      "bytes": 260,
+      "sha256": "08c805746f1772f8b0633d776b7d786ee1eb34b228f97bce723a9448826ac3d4"
+    },
+    "apps/stela/Start-Generated.bat": {
+      "bytes": 176,
+      "sha256": "f1351948bd1e74fe412f5f702bbe5d4a17843430643c44f3463c658285d5ce4a"
+    },
+    "apps/stela/Start-Recorded.bat": {
+      "bytes": 175,
+      "sha256": "01ecc729f43d5ec8937aae6dc1d666044ea55514b4172aa71de4a4572f5a160a"
+    },
+    "apps/stela/Start-Touch-Only-Recorded.bat": {
+      "bytes": 262,
+      "sha256": "f857cb7cce7d228957c844e932eb93959f8b6965a2224822b77723e22f9ee58d"
+    },
+    "apps/stela/Start-Touch-Recorded.bat": {
+      "bytes": 256,
+      "sha256": "9ec83913b68731d1a133aec78b125c8db110dc6888d7ff3e94d901b6cf623aa0"
+    },
+    "apps/stela/Start-Voice.bat": {
+      "bytes": 175,
+      "sha256": "c492838c3134b9d9e93b74eeb3c0464954979978c4e37e0cc6120ee12c923f23"
+    },
+    "apps/stela/Start.bat": {
+      "bytes": 163,
+      "sha256": "066afea104817da2852b7ca4616dfd15697e633b36990bd620a7d11254ef354a"
+    },
+    "apps/stela/Stop.bat": {
+      "bytes": 176,
+      "sha256": "481f45ce5459ffcf993101adc03f3c139cf73e52c20e525fa1114906b97db83e"
+    },
+    "apps/stela/launcher/async-link.cjs": {
+      "bytes": 16086,
+      "sha256": "f6e9f88a2d99de103f10f362822b14d977b8d3215dfe58166690d4c098abfc7e"
+    },
+    "apps/stela/launcher/Control.ps1": {
+      "bytes": 2819,
+      "sha256": "fb8e21773bdabdf433efe543447284837465541fc5cfe4e2fa0f0fa35135c54f"
+    },
+    "apps/stela/launcher/desktop-main.cjs": {
+      "bytes": 104,
+      "sha256": "7f83f1c6f9ca9b0f5e2f92bdb22be97794f18c9cef847f3f41618bde4f7bb749"
+    },
+    "apps/stela/launcher/display-filters.cjs": {
+      "bytes": 1972,
+      "sha256": "fe6eee8145f5d445e6ac54f0f544ee175a63dd831c63912cc246093b4cd2008a"
+    },
+    "apps/stela/launcher/display-worker.cjs": {
+      "bytes": 9121,
+      "sha256": "c6bf261a151420523a1423c6e91df5adc46357ef85b4811207c9899a4a1380e6"
+    },
+    "apps/stela/launcher/game-link-network.cjs": {
+      "bytes": 3298,
+      "sha256": "a4b8a9c77ff3aaf93b7b6e6410985769606dea0041d2be351499a1ad8b489a07"
+    },
+    "apps/stela/launcher/game-link.cjs": {
+      "bytes": 27458,
+      "sha256": "2a0b8837d525c14b426b3a4db17df3f1ab1bc5fb6268e5dceb6fb13308d879d6"
+    },
+    "apps/stela/launcher/Install-RuntimeWatchdog.ps1": {
+      "bytes": 1785,
+      "sha256": "fa4a22006d41b29c00dca8bfd520be13bd21d89a607e1d7cd43f6665302da22d"
+    },
+    "apps/stela/launcher/lan-admin-panel.js": {
+      "bytes": 871,
+      "sha256": "117bab79c988274402c4dda2ef798da4bd991127de5d8b1738bef6d14be3657f"
+    },
+    "apps/stela/launcher/lan-admin.cjs": {
+      "bytes": 5674,
+      "sha256": "5342157d934a09f6e137e771df61eab2fa946318e2ca4c52b0e1996859c0ff16"
+    },
+    "apps/stela/launcher/lan-screen.cjs": {
+      "bytes": 3070,
+      "sha256": "51c5e63a09f434e4477abe455e5b8383405ccea1577e55a7a81db907cc72276b"
+    },
+    "apps/stela/launcher/Launch.ps1": {
+      "bytes": 3775,
+      "sha256": "03c699f56da188684208dd9b60b193e4ebcec1f8d246670012915d27dcd74065"
+    },
+    "apps/stela/launcher/operator-http.cjs": {
+      "bytes": 2290,
+      "sha256": "f6f90b7c435823364fb0b54a955c53ed025d4956e2fe04d25d8ed4a17963a1a6"
+    },
+    "apps/stela/launcher/operator.cjs": {
+      "bytes": 2558,
+      "sha256": "008f16f4b3255371ecfaa3b2aee60a7a3059d6408372b017494dbd5fda04b623"
+    },
+    "apps/stela/launcher/portable-server.cjs": {
+      "bytes": 6943,
+      "sha256": "30995fbacddccef846a00ab5d77ebe5e288c62c4bc83672442f48be6f7674f1e"
+    },
+    "apps/stela/launcher/renderer-recovery.cjs": {
+      "bytes": 1538,
+      "sha256": "d6e77a4ccbc0e0bbb0383590dcfff2291ebc78aa9ef7aa2ce57437667fbf6b0f"
+    },
+    "apps/stela/launcher/runtime-crashes.cjs": {
+      "bytes": 1180,
+      "sha256": "bde0aa47c023b011d781fe438aa44dcee6de31c4b9b490e56f9178ade7294976"
+    },
+    "apps/stela/launcher/runtime-http.cjs": {
+      "bytes": 1653,
+      "sha256": "47e92acabf0c7f877037ace7dd377d5591406396e547a53cb2c7da4a9d42c38d"
+    },
+    "apps/stela/launcher/runtime-ipc.cjs": {
+      "bytes": 1484,
+      "sha256": "c087bcace6b6f0bf0fc407661a0749940d5c0244f9ee7a93a5a247be9b0ab78d"
+    },
+    "apps/stela/launcher/runtime-journal.cjs": {
+      "bytes": 2931,
+      "sha256": "faf7a6ca3f8e3e872b53d3fa420f3898e117aa5e57d53a0b0e33e9b5f77457c3"
+    },
+    "apps/stela/launcher/runtime-main.cjs": {
+      "bytes": 12979,
+      "sha256": "ea7ab7413f5972576ade099db555f80a24426a1c64043db26574a18c16e66b4c"
+    },
+    "apps/stela/launcher/runtime-panel.html": {
+      "bytes": 2566,
+      "sha256": "5ff178c750684fd0ffeb7c6370dcdf0f52d2f46f6f7ea24f391d39fb612e5fe4"
+    },
+    "apps/stela/launcher/runtime-policy.cjs": {
+      "bytes": 1005,
+      "sha256": "539aeea4eab55bc89eaaf9e151d742be2ce5af22e5029308fe88fd2810114e95"
+    },
+    "apps/stela/launcher/runtime-worker-host.cjs": {
+      "bytes": 2397,
+      "sha256": "25879210a5c302483184cbb367ce7c75fe9e9e990da8ee4a5ca89f770af32494"
+    },
+    "apps/stela/launcher/screen-state.cjs": {
+      "bytes": 5032,
+      "sha256": "a8729be5e2efe4dbe670503e9bf55e461dbf467eed9020cc4815da6874938aeb"
+    },
+    "apps/stela/launcher/sound-events.cjs": {
+      "bytes": 3453,
+      "sha256": "b8af53a41d4ec8bb96a1fa8e30457e3f606fe98fe33d1f9434bbe3eba29db531"
+    },
+    "apps/stela/launcher/sound-library.cjs": {
+      "bytes": 9183,
+      "sha256": "da9e03a2dc763f36f9af2ef0e56baab900619d43ba3f96bef91a7f3f2da6caac"
+    },
+    "apps/stela/launcher/Speech-Mode.ps1": {
+      "bytes": 2026,
+      "sha256": "b171eae6ac1d67ec86858604a4ed33ac4207627872599f96b479b4561cba9385"
+    },
+    "apps/stela/launcher/stand-settings.cjs": {
+      "bytes": 3293,
+      "sha256": "be3ddb20a4ae4cdb77d066c07bc8d276d5446cb69d5b237e1ad4887f9b072812"
+    },
+    "apps/stela/www/index.html": {
+      "bytes": 107,
+      "sha256": "1fc5edbd61c7432067911403487e1c2f65aba7e37e499e52e468e28e65eb0581"
+    },
+    "apps/stela/launcher/audio/admin.cjs": {
+      "bytes": 5738,
+      "sha256": "0bfa94b442604a38f7295dfc3f1d9ae7f334a996857769529bc0a6df79e15032"
+    },
+    "apps/stela/launcher/audio/concrt140.dll": {
+      "bytes": 324208,
+      "sha256": "2405355f0a58067b258f8df33c327e3a3d716eaac5a3a5aebb757842d85bd376"
+    },
+    "apps/stela/launcher/audio/kdw-audio-host.exe": {
+      "bytes": 650240,
+      "sha256": "b74885e4f30acd35f29a90c643b46cff14fca004c38e9901607344c56774d37e"
+    },
+    "apps/stela/launcher/audio/msvcp140.dll": {
+      "bytes": 557728,
+      "sha256": "0f885b509a685d2bbfa652fed26b5fb31d88fbdab0a978c641d1c7b8aa460aa9"
+    },
+    "apps/stela/launcher/audio/msvcp140_1.dll": {
+      "bytes": 35952,
+      "sha256": "bfad5aef4c63a669e3c140655cdfdf395b6c979b400a447bd5dcb65ed8826c3d"
+    },
+    "apps/stela/launcher/audio/msvcp140_2.dll": {
+      "bytes": 280200,
+      "sha256": "3ea06f0ee098b4823cb79599df3780e7f23cce52c19aac31d2a0d47efe33a5e9"
+    },
+    "apps/stela/launcher/audio/msvcp140_atomic_wait.dll": {
+      "bytes": 50304,
+      "sha256": "640b2aefced484d0368eea5bdd06addd0658a3a70a49256e560d6923b404a479"
+    },
+    "apps/stela/launcher/audio/msvcp140_codecvt_ids.dll": {
+      "bytes": 31872,
+      "sha256": "f2069a52880ec885ee7f0511186100eb7fada0411a2b4948fafea7735b878a18"
+    },
+    "apps/stela/launcher/audio/service.cjs": {
+      "bytes": 10194,
+      "sha256": "4228d011a8c5c048d85afba123d4fdfff86c9d0e7742e0664eccd199cf19e658"
+    },
+    "apps/stela/launcher/audio/state.cjs": {
+      "bytes": 3941,
+      "sha256": "dd57a6b9471aec674b691fee932f34d2f8bfe7ed4afca3a56f1422d0ae651173"
+    },
+    "apps/stela/launcher/audio/STEINBERG-LICENSE.txt": {
+      "bytes": 1116,
+      "sha256": "b99e03d84202686308ba0c6556fcdff70885897cab8a87c02e75e4964a29aa76"
+    },
+    "apps/stela/launcher/audio/vccorlib140.dll": {
+      "bytes": 352384,
+      "sha256": "19839407c3fdbc824e5bce189bf68ddf8097f12ec28b757797ffa0415c144ddd"
+    },
+    "apps/stela/launcher/audio/vcruntime140.dll": {
+      "bytes": 124544,
+      "sha256": "d5e4d9a3e835fa679450145d6a7d94e36573a509317111904d9b3712c30d9066"
+    },
+    "apps/stela/launcher/audio/vcruntime140_1.dll": {
+      "bytes": 49792,
+      "sha256": "1f2d41c4aa5db0bc33ebf7b66d72943a817d7ce6cbe880502a9403823633093f"
+    },
+    "apps/stela/launcher/audio/vcruntime140_threads.dll": {
+      "bytes": 38528,
+      "sha256": "219915cf20822f34d5e7c1fdd4e21ae7f3396881096c51036225fb8f84b47afa"
+    },
+    "apps/stela/launcher/audio/worker.cjs": {
+      "bytes": 3975,
+      "sha256": "32f72271f4e31a4ad6c9bf1ce58d00e0386350f1b9f0876c33faa585d32296a0"
+    },
+    "apps/stela/launcher/sound-panel/index.html": {
+      "bytes": 4949,
+      "sha256": "ac5b4ed1b2b8da1f5cce34cbd4cebb606c6c365d0b92e66da71ffa2f9800d220"
+    },
+    "apps/stela/launcher/sound-panel/panel.css": {
+      "bytes": 2179,
+      "sha256": "38d6f5b8539a670d2a03e95c10fa0fc3a8367c4f90a578880e28651b03799103"
+    },
+    "apps/stela/launcher/sound-panel/panel.js": {
+      "bytes": 8595,
+      "sha256": "8480e916336086b1979aa097ec36cd016b171b95e863405af9a23a473c932768"
+    },
+    "apps/stela/launcher/voice/ai-recovery.cjs": {
+      "bytes": 1707,
+      "sha256": "3e471946ff71ff621328fd41383434802ad7d450f1549431a38e728be771ffc4"
+    },
+    "apps/stela/launcher/voice/analyze.cjs": {
+      "bytes": 19224,
+      "sha256": "e4277b14993d06f5e4bffbd1e1b5aac90ce54f992a38e679de7e3e73a0e63b4e"
+    },
+    "apps/stela/launcher/voice/client-events.cjs": {
+      "bytes": 5194,
+      "sha256": "6b8d6152d57676350e9d5d4369870881f6ca3199bb941cba38fe733e7d2bf89d"
+    },
+    "apps/stela/launcher/voice/config.cjs": {
+      "bytes": 2171,
+      "sha256": "440e17a15f4f25fa3696ae73c97ca905f3098c05334ca3b4b3bd23b17e77de97"
+    },
+    "apps/stela/launcher/voice/controller.cjs": {
+      "bytes": 4307,
+      "sha256": "313102712b61336838f61bdecba1c5d8990aeaa4885655491bf312337d2d5d7c"
+    },
+    "apps/stela/launcher/voice/conversation.cjs": {
+      "bytes": 1872,
+      "sha256": "08d0cd88c1717a3b75151aefe06420f9fcf1a1ce63aa5c439ab42ba4a1636339"
+    },
+    "apps/stela/launcher/voice/decision.cjs": {
+      "bytes": 4129,
+      "sha256": "3b8471a29c239752debd0e72e7feb92d541c2d06cf5338e605f5da3f6eda091e"
+    },
+    "apps/stela/launcher/voice/dialogue.cjs": {
+      "bytes": 13102,
+      "sha256": "a04b29ce8298be37e5eb9ed2bc692a191cb56694b5ad64e53798cdaa7e34bb0f"
+    },
+    "apps/stela/launcher/voice/fallback.cjs": {
+      "bytes": 4702,
+      "sha256": "2f7a86ce3ac45dffb083de099051465508529258977ea96eceb494ce7dc847b4"
+    },
+    "apps/stela/launcher/voice/gateway.cjs": {
+      "bytes": 33466,
+      "sha256": "b4fd8ea9077c5b9d16decc6121edddbc6b63f4885d0e6fbf044690e8c28da6cd"
+    },
+    "apps/stela/launcher/voice/journal.cjs": {
+      "bytes": 6395,
+      "sha256": "a26fb8ad84c3c6ca0676e2679a8e122125e52e58a8a1137aea82f8220e474d06"
+    },
+    "apps/stela/launcher/voice/persistent.cjs": {
+      "bytes": 20479,
+      "sha256": "7dc32ba284a87a69c64dc4cbaecb92e5df1e3b6f086834f67c3c063fcf9bb6dd"
+    },
+    "apps/stela/launcher/voice/provider.cjs": {
+      "bytes": 16024,
+      "sha256": "2b11acd11d966bcb1a80ba4d2d013c00f20666ce729f4abee871be25d7a372b4"
+    },
+    "apps/stela/launcher/voice/README.md": {
+      "bytes": 5520,
+      "sha256": "301cc73e2756e732c3ed49e4edc5b141b72f0dacb00cc8898483550d3da5895c"
+    },
+    "apps/stela/launcher/voice/recorded.cjs": {
+      "bytes": 3066,
+      "sha256": "dd93836d6c19ce0d69e00c23918871cef2b6ca21fe5cf906cd403c2340ada424"
+    },
+    "apps/stela/launcher/voice/recording-policy.cjs": {
+      "bytes": 2577,
+      "sha256": "badb23755540b44f8beba44b064bd1eb1b0558acda7a68dd015890837ebf529d"
+    },
+    "apps/stela/launcher/voice/screen-contract.cjs": {
+      "bytes": 4504,
+      "sha256": "4dcbced15392bd491d85125406ce38ca29fdb74eb59a8ac52eff26400803252a"
+    },
+    "apps/stela/launcher/voice/screens.json": {
+      "bytes": 7904,
+      "sha256": "2df3db1278e637e39f9e77efbc5b987cc721dc3013556f38d5d2d40819aeefd0"
+    },
+    "apps/stela/launcher/voice/tts.cjs": {
+      "bytes": 6675,
+      "sha256": "d07883bc4aaa83e1d3ca466f78d77d5d70ac9c2143fc9b8683b02a4c5fb490ec"
+    },
+    "apps/stela/launcher/voice/voice-profile.cjs": {
+      "bytes": 1008,
+      "sha256": "62087c4f3a15b3a069674ad68c57e02beda16f76fcf3eaef07e245e694d85b7d"
+    },
+    "apps/stela/www/stella/audio-settings.html": {
+      "bytes": 13125,
+      "sha256": "4923d7af87619258b4c781a0ba9542fa8f1098bcffded93f5ae01c479361a344"
+    },
+    "apps/stela/www/stella/index.html": {
+      "bytes": 6268,
+      "sha256": "3dc9a21cc7b1947be36112d3e8f2bb3336c4af00bd74d4ef55dfef6386b1f52a"
+    },
+    "apps/stela/www/stella/third-party-motion-notices.txt": {
+      "bytes": 5279,
+      "sha256": "42371fc8bb2b57e34012fc9a966e465ec7e2d92a6c8316e39b97606365c63c03"
+    },
+    "apps/stela/www/stella/admin/display-filters.js": {
+      "bytes": 3020,
+      "sha256": "91cc1000a45792cd123403b9288059bd0d657f18a40539f27e2feeb3e2677312"
+    },
+    "apps/stela/www/stella/admin/index.html": {
+      "bytes": 4502,
+      "sha256": "ad51973a067c08ebf314d57c637e25bd38d1bd90363b902be98f7f300f162721"
+    },
+    "apps/stela/www/stella/admin/panel.css": {
+      "bytes": 2147,
+      "sha256": "2d846873cb9c7a5141831901e0c5f22c51e61a2401ead9576bda87da8ac45a46"
+    },
+    "apps/stela/www/stella/admin/panel.js": {
+      "bytes": 3161,
+      "sha256": "d28f12914604501941809df11118d6d1b7e1aa861339da6f9d5a38243b24a931"
+    },
+    "apps/stela/www/stella/assets/app.js": {
+      "bytes": 425324,
+      "sha256": "faaa4d8a34e3d9df784d0642796d94b58c1e69dd55005dc95c5833a86a56ab7b"
+    },
+    "apps/stela/www/stella/assets/business.svg": {
+      "bytes": 3173283,
+      "sha256": "3833b6805584112b51fd0d744295d8457ebfc9aa074acdab66530f7b4ba3803d"
+    },
+    "apps/stela/www/stella/assets/connection.svg": {
+      "bytes": 1423458,
+      "sha256": "8fa6e2fe6c6f3d8d5b18e192caca1ec408bf912f55b250b8e141bd3fe02b25fd"
+    },
+    "apps/stela/www/stella/assets/identity.svg": {
+      "bytes": 1107604,
+      "sha256": "ca959186ed4f793e2cfd706c4e343d67f50d2e36d4ad1ecb577bbe963ba9f49e"
+    },
+    "apps/stela/www/stella/assets/index.css": {
+      "bytes": 37571,
+      "sha256": "faf11e1d27e051818f9b3e48fe63dc4f450b5e0e29ec2a74c3246ccad8554713"
+    },
+    "apps/stela/www/stella/assets/max-primary-white.svg": {
+      "bytes": 78436,
+      "sha256": "0b17b845199235e8cc32b8ead7475abe9f66490a64809e018fa10d3ea866ce8f"
+    },
+    "apps/stela/www/stella/assets/max-sans-400.woff2": {
+      "bytes": 18308,
+      "sha256": "16b5a57c3fb0188774b86704addba2d2bbab81457b6d85e835e2227d0c20d02f"
+    },
+    "apps/stela/www/stella/assets/max-symbol-color.svg": {
+      "bytes": 75634,
+      "sha256": "f7bcbeb580c12e017f34d3545763085eb09e10adac8a3c13aa926c603563533a"
+    },
+    "apps/stela/www/stella/assets/personal.svg": {
+      "bytes": 1409882,
+      "sha256": "9f845666ba4c514711edd7378a4b8a269fc00fb35adf81c0ec3cf585e67ff11c"
+    },
+    "apps/stela/www/stella/assets/PixelScene.css": {
+      "bytes": 128,
+      "sha256": "bd0382cd2b8bcee3724ca9e913750d0df64c348b79e875ce55b5122a9253f159"
+    },
+    "apps/stela/www/stella/assets/PixelScene.js": {
+      "bytes": 210533,
+      "sha256": "310506f5e0cafbd3008c7b84a792025d7da3e0c44a2c54c91db38989c0a7d257"
+    },
+    "apps/stela/www/stella/assets/visibility.svg": {
+      "bytes": 1965409,
+      "sha256": "0514eecaa61f412f9167f189aec579410846d4d58903c79c361edd973c852a57"
+    },
+    "apps/stela/www/stella/design-20261020/digital-id.svg": {
+      "bytes": 1260012,
+      "sha256": "878efb54133461860aa77b3a639846a880c1012dd9b409be142daa7355021d47"
+    },
+    "apps/stela/www/stella/design-20261020/entry.svg": {
+      "bytes": 75266,
+      "sha256": "dede3b2951057ec928d2619ebb3a47e7093e87c628575b9e6a41889a1ecbf484"
+    },
+    "apps/stela/www/stella/design-20261020/intro-button.svg": {
+      "bytes": 4150,
+      "sha256": "e622e30ec6ebcc44f080cabe2eb6d22e70181882215c201bc89bc0a48219c4e1"
+    },
+    "apps/stela/www/stella/design-20261020/intro-logo.svg": {
+      "bytes": 75380,
+      "sha256": "5092fc5cd25a029aab81867086b930530c68d5a836b42d2988852b2d079eb9ef"
+    },
+    "apps/stela/www/stella/design-20261020/intro-step1.svg": {
+      "bytes": 18252,
+      "sha256": "e127edb8c86edd5a795bf83fbc64268943be4978408445ff4e661aab7f6e8e4e"
+    },
+    "apps/stela/www/stella/design-20261020/intro-step2.svg": {
+      "bytes": 19308,
+      "sha256": "92b1c5d33088a9b19ef62acd5fe98ff6104af4dc3515705458814881a2191274"
+    },
+    "apps/stela/www/stella/design-20261020/intro-title.svg": {
+      "bytes": 16834,
+      "sha256": "3e6ed093978eb5387e5be769d029c7cbb04d98c7a5760198ea8a359b83445ea3"
+    },
+    "apps/stela/www/stella/design-20261020/intro.svg": {
+      "bytes": 131690,
+      "sha256": "49b91c974cf0d3bd1d29d48cc32a1709b952fb02236bec0138a1f4e0985e4b3f"
+    },
+    "apps/stela/www/stella/design-20261020/provenance.json": {
+      "bytes": 3728,
+      "sha256": "cbaa5604c249afa48ca6b4ca019759ce2738dcd3d6fecd14e2a9574bbc56dc65"
+    },
+    "apps/stela/www/stella/design-20261020/selection.svg": {
+      "bytes": 6269269,
+      "sha256": "ba17a21d0742b296d796a02221cc3af529ff198832fd186691ab4fc3cf18e2f1"
+    },
+    "apps/stela/www/stella/final-missions/blogger.png": {
+      "bytes": 1276447,
+      "sha256": "48d344e117a51848e2c938507e8c105b4e016c36a07b9a81cd83a3f07ae25a80"
+    },
+    "apps/stela/www/stella/final-missions/business-promotion.png": {
+      "bytes": 1362675,
+      "sha256": "174006090f7b471692ac969fa2e4c360f17fd663ad2ea81e9d66309f1d68a600"
+    },
+    "apps/stela/www/stella/final-missions/communication.png": {
+      "bytes": 1049638,
+      "sha256": "8b8aba042d91dc14d19000f150b93b0c32520b84f2f9d8a556d9c9a54aca473c"
+    },
+    "apps/stela/www/stella/final-missions/digital-id.png": {
+      "bytes": 823045,
+      "sha256": "0cefcbcd6f4545f028785f04b33ec198deaebff2df15552325e81d9eaee463a8"
+    },
+    "apps/stela/www/stella/final-missions/provenance.json": {
+      "bytes": 1679,
+      "sha256": "e7101c07978bb278d9237251c2bfd0dd1f3f018be92b0d0f938ae576d0e3af12"
+    },
+    "apps/stela/www/stella/gradient/index.html": {
+      "bytes": 6288,
+      "sha256": "61c9fa1cda889b6406834e9566c96dbdb4ed96923e2d157f6cb19be2742d4fc4"
+    },
+    "apps/stela/www/stella/hybrid-cards/blogger.png": {
+      "bytes": 1276447,
+      "sha256": "48d344e117a51848e2c938507e8c105b4e016c36a07b9a81cd83a3f07ae25a80"
+    },
+    "apps/stela/www/stella/hybrid-cards/business.png": {
+      "bytes": 1362675,
+      "sha256": "174006090f7b471692ac969fa2e4c360f17fd663ad2ea81e9d66309f1d68a600"
+    },
+    "apps/stela/www/stella/hybrid-cards/communication.png": {
+      "bytes": 1049638,
+      "sha256": "8b8aba042d91dc14d19000f150b93b0c32520b84f2f9d8a556d9c9a54aca473c"
+    },
+    "apps/stela/www/stella/hybrid-cards/digital-id.png": {
+      "bytes": 823045,
+      "sha256": "0cefcbcd6f4545f028785f04b33ec198deaebff2df15552325e81d9eaee463a8"
+    },
+    "apps/stela/www/stella/hybrid-cards/flame.svg": {
+      "bytes": 13134,
+      "sha256": "8c5109752175b3dc82373f246f1412616ff87762ebd010ceb69e339924ba489e"
+    },
+    "apps/stela/www/stella/hybrid-cards/header.svg": {
+      "bytes": 17521,
+      "sha256": "1e0af5f48d5ceeae0528682088148ee29361fa702d369dde3870362ffac61a61"
+    },
+    "apps/stela/www/stella/hybrid-cards/heart.png": {
+      "bytes": 20009,
+      "sha256": "9278228d664b87a4bf7843f5a8f350192f696b9ee36bdd36942151c1143986f7"
+    },
+    "apps/stela/www/stella/hybrid-cards/hundred.png": {
+      "bytes": 5268,
+      "sha256": "1b97288bceb280480bb8c57aa8f1eab9eec821520de46b2f36d9df19c2d96e96"
+    },
+    "apps/stela/www/stella/hybrid-cards/provenance.json": {
+      "bytes": 1908,
+      "sha256": "f18929d421d63bb7a8967ef58a31676f9acad174a25180e8717340a9cbe77e90"
+    },
+    "apps/stela/www/stella/hybrid-cards/thumb.png": {
+      "bytes": 18763,
+      "sha256": "a69f80a41d67db1d65201e37988539cc8598c58dd1136b18cbdfdd7b1978d6ab"
+    },
+    "apps/stela/www/stella/operator/display-filters.js": {
+      "bytes": 3020,
+      "sha256": "91cc1000a45792cd123403b9288059bd0d657f18a40539f27e2feeb3e2677312"
+    },
+    "apps/stela/www/stella/operator/index.html": {
+      "bytes": 4502,
+      "sha256": "ad51973a067c08ebf314d57c637e25bd38d1bd90363b902be98f7f300f162721"
+    },
+    "apps/stela/www/stella/operator/panel.css": {
+      "bytes": 2147,
+      "sha256": "2d846873cb9c7a5141831901e0c5f22c51e61a2401ead9576bda87da8ac45a46"
+    },
+    "apps/stela/www/stella/operator/panel.js": {
+      "bytes": 3161,
+      "sha256": "d28f12914604501941809df11118d6d1b7e1aa861339da6f9d5a38243b24a931"
+    },
+    "apps/stela/www/stella/pixels/index.html": {
+      "bytes": 6286,
+      "sha256": "71b47a90eab62adc9d41457d87d645c7a2e25f1da496cff96142062aa48de167"
+    },
+    "apps/stela/www/stella/presence/blaze_face_short_range.tflite": {
+      "bytes": 229746,
+      "sha256": "b4578f35940bf5a1a655214a1cce5cab13eba73c1297cd78e1a04c2380b0152f"
+    },
+    "apps/stela/www/stella/presence/LICENSE": {
+      "bytes": 12331,
+      "sha256": "8707eef0533987efc5b155d64761eeb6e20793f50b9bd1a68dad1cf4719d0ed8"
+    },
+    "apps/stela/www/stella/presence/README.md": {
+      "bytes": 1635,
+      "sha256": "94fe3c7e2e71c3093faaa2d663f593b882bab0cd43e895d60cadbc0822ea45e2"
+    },
+    "apps/stela/www/stella/presence/vision_bundle.cjs": {
+      "bytes": 137315,
+      "sha256": "43c65a77825c5d5af7456d4781a64cd15cb3e53f479ff1f923c12b5adecf2b44"
+    },
+    "apps/stela/www/stella/presence/worker.js": {
+      "bytes": 1655,
+      "sha256": "af4d7422310cf49c7e2d8d1dee615de7906a1bb808410f81afe3c51c91529f1d"
+    },
+    "apps/stela/www/stella/soundtrack/AmbienceMain.wav": {
+      "bytes": 16588880,
+      "sha256": "7cf0a8372950283729161cfe3b20a3abc47e63a9237641d2edad6667d4493509"
+    },
+    "apps/stela/www/stella/soundtrack/ChangeScreen.wav": {
+      "bytes": 691280,
+      "sha256": "a019a3fc6711ddcc29262739842bcc38d7d7da7eb80727811250fbd896c79e44"
+    },
+    "apps/stela/www/stella/soundtrack/ChangeScreen2.wav": {
+      "bytes": 691280,
+      "sha256": "0ad48f62f86c86b6419aba0056a82fac67527335ccae99505211450e8dc26714"
+    },
+    "apps/stela/www/stella/soundtrack/ChangeScreen3.wav": {
+      "bytes": 1209680,
+      "sha256": "7dda0d6b4c6f67ec9919506bcc33b7bf1ef0fa6ecb05e19d3392e3155b57100c"
+    },
+    "apps/stela/www/stella/soundtrack/ChangeScreen4.wav": {
+      "bytes": 1209680,
+      "sha256": "5b39aeb87c9cff5f1f3ee632fea4ca0ab924488b2925ec4059348a19c7f310ca"
+    },
+    "apps/stela/www/stella/soundtrack/ChangeScreen5.wav": {
+      "bytes": 864080,
+      "sha256": "bfaeecd3968da1506b690626e286c7253fc03a2c3aedb3e315e7150eb7fff4a1"
+    },
+    "apps/stela/www/stella/soundtrack/Click.wav": {
+      "bytes": 172880,
+      "sha256": "b0c51d24bffa6cb2446f32757587e71108d6320f063c06f069f9d248a2848252"
+    },
+    "apps/stela/www/stella/soundtrack/manifest.json": {
+      "bytes": 2837,
+      "sha256": "e2d9cc56f1443b0ffad9963fec79137177eca2abaa6a625f28e73adcca7dddcc"
+    },
+    "apps/stela/www/stella/soundtrack/Scan.wav": {
+      "bytes": 6220880,
+      "sha256": "de719ef299dfd589a12b6de877fb1aa078167a63c826e7e00bc298419b22aa18"
+    },
+    "apps/stela/www/stella/soundtrack/ScanEnd1.wav": {
+      "bytes": 432080,
+      "sha256": "e2fa8ba655601b19155a5ed702ba6935f74138f74f8c76506f31b7bac52e1745"
+    },
+    "apps/stela/www/stella/soundtrack/ScanEnd2.wav": {
+      "bytes": 432080,
+      "sha256": "e8499f9589391e4289ab112960c2d0f7b706acdeee4f4d5059f47013c676378b"
+    },
+    "apps/stela/www/stella/soundtrack/ScanStart1.wav": {
+      "bytes": 691280,
+      "sha256": "2971ae5a7b80db39bed0e82c712a2d8d80e22efbfd30449f0b80a8692a2db889"
+    },
+    "apps/stela/www/stella/soundtrack/ScanStart2.wav": {
+      "bytes": 583280,
+      "sha256": "f7996ca83d05475a4885e8f2a00dc86c8990e3deec4e678d1fc0b0ede9fbe129"
+    },
+    "apps/stela/www/stella/soundtrack/Tags.wav": {
+      "bytes": 1292342,
+      "sha256": "4952db05acd4a687695d9b0c5db9018032df439d2d0da5dbe8b20cb3d9809471"
+    },
+    "apps/stela/www/stella/voice/echo-hint.js": {
+      "bytes": 1839,
+      "sha256": "3ca4141585f66fa8a179bc5390a903dd7009c4aa29a986c3e0313a4b3043ec4b"
+    },
+    "apps/stela/www/stella/voice/omni-audio-worklet.js": {
+      "bytes": 1343,
+      "sha256": "69fc5d8c6f03f3babcc2b726f2b7a7d0391fe72803c30cd151e367f4947cce5c"
+    },
+    "apps/stela/www/stella/voice/silero-worker.js": {
+      "bytes": 1986,
+      "sha256": "317d1280519e9adf27a9c6037b35a12a645f9219d5d900d018e7567ea1115959"
+    },
+    "apps/stela/launcher/voice/vendor/ws/index.js": {
+      "bytes": 796,
+      "sha256": "924564d5be26d59b9682c4263f68320e48dde7240bd2d1ad17ec305537429dd2"
+    },
+    "apps/stela/launcher/voice/vendor/ws/LICENSE": {
+      "bytes": 1183,
+      "sha256": "2b29dcfe0d6471f7e8c92c5fb38c9f93edee10330937055440192f1832b1ecef"
+    },
+    "apps/stela/launcher/voice/vendor/ws/package.json": {
+      "bytes": 1829,
+      "sha256": "c1ef91ca04eb4754c011c5f0e7638b5078ff71104fada400c44ac761cf93e0b1"
+    },
+    "apps/stela/www/stella/admin/audio/index.html": {
+      "bytes": 13125,
+      "sha256": "4923d7af87619258b4c781a0ba9542fa8f1098bcffded93f5ae01c479361a344"
+    },
+    "apps/stela/www/stella/presence/wasm/vision_wasm_internal.js": {
+      "bytes": 204816,
+      "sha256": "6f6b86509cf9e163ea1cfec7edc8cf53732699c04781e4c21c557c1ba402310e"
+    },
+    "apps/stela/www/stella/presence/wasm/vision_wasm_internal.wasm": {
+      "bytes": 11453626,
+      "sha256": "cb3ec20026a9aecc2a81a93c25630ceb5389297ddb7a5f0bd61dd09cde606b9b"
+    },
+    "apps/stela/www/stella/presence/wasm/vision_wasm_nosimd_internal.js": {
+      "bytes": 204669,
+      "sha256": "9f8fc960e363f0fb2f42f7937b97ae9cf9a5630490f71031fa90caa9bb121938"
+    },
+    "apps/stela/www/stella/presence/wasm/vision_wasm_nosimd_internal.wasm": {
+      "bytes": 10647962,
+      "sha256": "924274fcd5ac8985f6570a8573e7971b7bd2d580ba1b8f3beb0ba8f95db6347c"
+    },
+    "apps/stela/www/stella/voice/kazan-20261027/audience.wav": {
+      "bytes": 348078,
+      "sha256": "c34d8650c8c108cee4201c750a0b49d0044db93cf8b960b2347b651ee3a937e8"
+    },
+    "apps/stela/www/stella/voice/kazan-20261027/error-camera.wav": {
+      "bytes": 210078,
+      "sha256": "304f46f8183d36dbc5c25f511b2db2b33e0bf8945fa9445415207faa0b82b5b7"
+    },
+    "apps/stela/www/stella/voice/kazan-20261027/error-voice.wav": {
+      "bytes": 144078,
+      "sha256": "b99ba7dab3d44a7266f9d94689b00b98e328a60ea85af71277eae1c0ec013e48"
+    },
+    "apps/stela/www/stella/voice/kazan-20261027/help-about-max.wav": {
+      "bytes": 348078,
+      "sha256": "da6695176c36362a37937d30c6de5ce1e75839494bb40c2173929dec184beca2"
+    },
+    "apps/stela/www/stella/voice/kazan-20261027/help-about-stand.wav": {
+      "bytes": 336078,
+      "sha256": "ec702fd8b3e669ecdfb70e6f1b9d178e62cfcff74998cdc32746921f265fcbb5"
+    },
+    "apps/stela/www/stella/voice/kazan-20261027/help-choose-one.wav": {
+      "bytes": 210078,
+      "sha256": "359c991d57e902d40df72b85d6c2472ea1dbd22e1329a644370100ddc73b673d"
+    },
+    "apps/stela/www/stella/voice/kazan-20261027/help-controls.wav": {
+      "bytes": 156078,
+      "sha256": "c313195e0e5bd3a9a2e8c639e37f3ec47c5a58f933afa7c9eaa05475132cfbe1"
+    },
+    "apps/stela/www/stella/voice/kazan-20261027/help-not-heard.wav": {
+      "bytes": 162078,
+      "sha256": "7e710b4d576baf5f3ea82f101f533e9e03981046753c29d4b4c253c97ff11d61"
+    },
+    "apps/stela/www/stella/voice/kazan-20261027/help-off-topic.wav": {
+      "bytes": 168078,
+      "sha256": "190769b6883c6fc1b06c59f30d725e4f543e8396a195dc968a0607e8c456e88c"
+    },
+    "apps/stela/www/stella/voice/kazan-20261027/intro.wav": {
+      "bytes": 312078,
+      "sha256": "400e238f2e57c759559fc654111ad2fb738644b7306a868f85c10d977f8b1e21"
+    },
+    "apps/stela/www/stella/voice/kazan-20261027/manifest.json": {
+      "bytes": 8716,
+      "sha256": "d76cc46b1a64471078aa7f6445df1d0969f661b96220227f258829ede637f407"
+    },
+    "apps/stela/www/stella/voice/kazan-20261027/photo-ready.wav": {
+      "bytes": 342078,
+      "sha256": "54e8f528db99d83ca12dc22c826e00c134d96473e519987ed440d9583b54ecd2"
+    },
+    "apps/stela/www/stella/voice/kazan-20261027/photo-review.wav": {
+      "bytes": 204078,
+      "sha256": "59aca63447e5e37d7c06737d770c3d7de9b97a1a221dfd3bfd4637f0f248a717"
+    },
+    "apps/stela/www/stella/voice/kazan-20261027/result-blogger.wav": {
+      "bytes": 408078,
+      "sha256": "ea8133f33cd71f6eb5f9b8573e3fada054070953d53b473c95b0063dd43c1e93"
+    },
+    "apps/stela/www/stella/voice/kazan-20261027/result-business-promotion.wav": {
+      "bytes": 384078,
+      "sha256": "c4a73679ee4fddb3c565b60763305b8cac3dae909ebee87c1c2c0722a5f857fe"
+    },
+    "apps/stela/www/stella/voice/kazan-20261027/result-communication.wav": {
+      "bytes": 384078,
+      "sha256": "17237a3fdc49182ddd1052e57708bf65011969be0be6b604764a97b48969de10"
+    },
+    "apps/stela/www/stella/voice/kazan-20261027/result-digital-id.wav": {
+      "bytes": 480078,
+      "sha256": "4ef3cb222c92a2fa3766f62b9d9687dae0d032dc890f7201ae5be5de3f53e44b"
+    },
+    "apps/stela/www/stella/voice/manual-tests/audience.wav": {
+      "bytes": 126764,
+      "sha256": "a39273ea8665d64d045e41acecf64429c1e15c859df55aefeca0788bf79713b3"
+    },
+    "apps/stela/www/stella/voice/manual-tests/intro.wav": {
+      "bytes": 230444,
+      "sha256": "f04a2e814e1bc8a223f9e890f4dc2a4baf95bd6e0b70492812a2e5c47cf13256"
+    },
+    "apps/stela/www/stella/voice/manual-tests/manifest.json": {
+      "bytes": 2169,
+      "sha256": "d08d6b5d6f070263fa0344351f6e41e68c75ffc2c09485babe09507311549fc9"
+    },
+    "apps/stela/www/stella/voice/manual-tests/result-blogger.wav": {
+      "bytes": 180524,
+      "sha256": "89657b3768b4065ec89640f9ceba3e1ca090c2b46f1397c314d41ca64137f205"
+    },
+    "apps/stela/www/stella/voice/manual-tests/result-business-promotion.wav": {
+      "bytes": 199724,
+      "sha256": "bcff3916dd107d6743832e4bd0fe73bd3af9f4b4c9a2b48df73ee7de6a5ebaec"
+    },
+    "apps/stela/www/stella/voice/manual-tests/result-communication.wav": {
+      "bytes": 169004,
+      "sha256": "62f60ef694f988bd541e342f81164b6628bc495daa2841d086603dc542eedb9f"
+    },
+    "apps/stela/www/stella/voice/manual-tests/result-digital-id.wav": {
+      "bytes": 280364,
+      "sha256": "17cb1f4f1bd3c781ce1d22ec21058dabde112a233eda94459b7b49207a890203"
+    },
+    "apps/stela/www/stella/voice/touch-2810/help-choose-one.wav": {
+      "bytes": 181890,
+      "sha256": "f788f6d0c2cb45b9e22bbada170bb60700c0ece7eaedf2261493377d0cd3175c"
+    },
+    "apps/stela/www/stella/voice/touch-2810/manifest.json": {
+      "bytes": 1576,
+      "sha256": "67f28f2d151a6984d165f506e5baf75dc3b9c8175b86a22cd56bf8ae2dccfc82"
+    },
+    "apps/stela/www/stella/voice/touch-2810/photo-ready.wav": {
+      "bytes": 288118,
+      "sha256": "76833e51eaa1b6831bccc07c487ddc510a6dd26de5c2dfc596b64a51e5d45db4"
+    },
+    "apps/stela/www/stella/voice/touch-2810/photo-review.wav": {
+      "bytes": 220760,
+      "sha256": "d80a00ad048e9ad41c7805a398e40368f8ac697e4cd108098050e9fb9892ddf5"
+    },
+    "apps/stela/www/stella/voice/vad/ORT-LICENSE.txt": {
+      "bytes": 1073,
+      "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c"
+    },
+    "apps/stela/www/stella/voice/vad/ORT-ThirdPartyNotices.txt": {
+      "bytes": 326866,
+      "sha256": "e9e90971a8e75a9a8ac0c6412e29c1202d079998389915aa485f46c816c3b4cc"
+    },
+    "apps/stela/www/stella/voice/vad/ort-wasm-simd-threaded.mjs": {
+      "bytes": 20856,
+      "sha256": "30dd851d9c00622940500f71ddd2ff8820c5cb65270816080175b958705385a8"
+    },
+    "apps/stela/www/stella/voice/vad/ort-wasm-simd-threaded.wasm": {
+      "bytes": 11210254,
+      "sha256": "71aef04959c5c1b6de461b6538e2058e306610034a85aad2742d0c7fd4533fe4"
+    },
+    "apps/stela/www/stella/voice/vad/ort.wasm.min.mjs": {
+      "bytes": 48259,
+      "sha256": "6ef726f355b791129f7ddf3f62e7877a16b9b777abe87004b8ab306e6b9cf265"
+    },
+    "apps/stela/www/stella/voice/vad/provenance.json": {
+      "bytes": 1825,
+      "sha256": "70e4e09061d694f00ce7d44ecc292381ece41e5b3318b8b71f2df6b9460927fe"
+    },
+    "apps/stela/www/stella/voice/vad/SILERO-LICENSE.txt": {
+      "bytes": 1075,
+      "sha256": "2e63e9a38b6e8fc0c7bc37ce174caca1862870856c6daf5697cfb785e925520b"
+    },
+    "apps/stela/www/stella/voice/vad/silero_vad_v5.onnx": {
+      "bytes": 2327524,
+      "sha256": "2623a2953f6ff3d2c1e61740c6cdb7168133479b267dfef114a4a3cc5bdd788f"
+    },
+    "apps/stela/www/stella/voice/vasilisa/manifest.json": {
+      "bytes": 449,
+      "sha256": "8fb0fada72f8f71bfd8cfe026ed53d3fed5c70a0262724217d5acf31b49c0e87"
+    },
+    "apps/stela/www/stella/voice/vasilisa/max-audience.wav": {
+      "bytes": 215118,
+      "sha256": "8680f167401ba34ec19b70a8617e83fe8964d95be2f7181c0551baa2dcda8b50"
+    },
+    "apps/stela/www/stella/voice/vasilisa/max-goal.wav": {
+      "bytes": 211278,
+      "sha256": "66d6438e7c3d472b46872d94a3a4749d0566cc1248abfa2dcc5e6f822c026327"
+    },
+    "apps/stela/www/stella/voice/vasilisa/max-onboarding.wav": {
+      "bytes": 380238,
+      "sha256": "d79c9c657aa5185e9a9b18a3e3b12229eee2d98a28ef52efe7c8d7900699cfb2"
+    },
+    "apps/stela/www/stella/voice/vasilisa/max-result-blogger.wav": {
+      "bytes": 268878,
+      "sha256": "7b66456254341d84a6428d96dea80a451f561e61d1907ed3558299f284d5d293"
+    },
+    "apps/stela/www/stella/voice/vasilisa/max-result-business-promotion.wav": {
+      "bytes": 284238,
+      "sha256": "88d882356056643ec3a9602158d33953f155b5d1dfd290fc76430d28377290f8"
+    },
+    "apps/stela/www/stella/voice/vasilisa/max-result-communication.wav": {
+      "bytes": 295758,
+      "sha256": "fc75e78ed60bc904024d0cd6b18206d4e5a493e259b6545cf7c175be38321325"
+    },
+    "apps/stela/www/stella/voice/vasilisa/max-result-digital-id.wav": {
+      "bytes": 337998,
+      "sha256": "152b430a411add863fcbd03298b864172528b19f9f6abe79fd692861e23faf9c"
+    },
+    "apps/stela/www/stella/voice/vasilisa-2707/audience.wav": {
+      "bytes": 381078,
+      "sha256": "ba0787f9b672edf0fc0063af47721fe614b84ffe9f93bd2a28edb1c60e515a04"
+    },
+    "apps/stela/www/stella/voice/vasilisa-2707/error-camera.wav": {
+      "bytes": 234078,
+      "sha256": "36090f6296dd4eed4c5975eee65ea942656f003adea648ef802cebe8ec765b83"
+    },
+    "apps/stela/www/stella/voice/vasilisa-2707/error-voice.wav": {
+      "bytes": 150078,
+      "sha256": "e7e51e1d3709ae96d5d89076d13c8dd6ae9e84b9a9f24c639601906f24a05715"
+    },
+    "apps/stela/www/stella/voice/vasilisa-2707/help-about-max.wav": {
+      "bytes": 354078,
+      "sha256": "282d843959597f12fc5cccf89848e578c632dd6dd836628c360908b1728e7edc"
+    },
+    "apps/stela/www/stella/voice/vasilisa-2707/help-about-stand.wav": {
+      "bytes": 324078,
+      "sha256": "960148a74a9a7c3819b80dbd8566916aeb31a819d93605ee9126366e0da44f98"
+    },
+    "apps/stela/www/stella/voice/vasilisa-2707/help-choose-one.wav": {
+      "bytes": 219528,
+      "sha256": "68c71ae26b47c8db1dd784a60dd6f9a455b1adb796ea3b5047fed5e3d363e984"
+    },
+    "apps/stela/www/stella/voice/vasilisa-2707/help-controls.wav": {
+      "bytes": 183528,
+      "sha256": "4b0a434e058a96036736da41e8dd8b169f14f5206c8117fb7a09278c0b7c0440"
+    },
+    "apps/stela/www/stella/voice/vasilisa-2707/help-not-heard.wav": {
+      "bytes": 174078,
+      "sha256": "33aeb08285aecabd8a79e41683aaa8bb71be4363c443d47781a22a7b35bd6188"
+    },
+    "apps/stela/www/stella/voice/vasilisa-2707/help-off-topic.wav": {
+      "bytes": 174078,
+      "sha256": "35e4311e6570612b6f9df9cb5d194c0a60855fd2c5217170bd732d528fb7b5b7"
+    },
+    "apps/stela/www/stella/voice/vasilisa-2707/intro.wav": {
+      "bytes": 345078,
+      "sha256": "ed35f0b197b71dc46d476d553d3e7228ba6078da0f52f0572cb8ab81bb271c4f"
+    },
+    "apps/stela/www/stella/voice/vasilisa-2707/manifest.json": {
+      "bytes": 8790,
+      "sha256": "90c9ecbe322e7787beb173320a0de1db67d2f1c6fd9d2672be6d6a705d7057e4"
+    },
+    "apps/stela/www/stella/voice/vasilisa-2707/photo-ready.wav": {
+      "bytes": 354078,
+      "sha256": "9c200aceeef2c1621bca0259f87190d5f91adbc6e5e8d0fda8fb5fb561ffdf56"
+    },
+    "apps/stela/www/stella/voice/vasilisa-2707/photo-review.wav": {
+      "bytes": 204078,
+      "sha256": "4c388b94f725c75cc0ab80b5d3a7ee9336874a5190560cb5d64e05641a34749d"
+    },
+    "apps/stela/www/stella/voice/vasilisa-2707/result-blogger.wav": {
+      "bytes": 408078,
+      "sha256": "ea8133f33cd71f6eb5f9b8573e3fada054070953d53b473c95b0063dd43c1e93"
+    },
+    "apps/stela/www/stella/voice/vasilisa-2707/result-business-promotion.wav": {
+      "bytes": 393078,
+      "sha256": "62a32636196b3cebd59f2e1cf8abb7a8e3f53e803f7bb3211997bc5e14862aa5"
+    },
+    "apps/stela/www/stella/voice/vasilisa-2707/result-communication.wav": {
+      "bytes": 402078,
+      "sha256": "46b1eee529fbbae9a80e2bd270ff42efc35663b1b32aa6244135f8a873f1ffda"
+    },
+    "apps/stela/www/stella/voice/vasilisa-2707/result-digital-id.wav": {
+      "bytes": 498078,
+      "sha256": "e7f83bda34ae02497ce454afc4f10fab148162a70d41a23d02d0c04a862535e7"
+    },
+    "apps/stela/launcher/voice/vendor/ws/lib/buffer-util.js": {
+      "bytes": 3056,
+      "sha256": "8b0a45739132f82e25ea13163780abf547ccfe989267f3eb7abb475beec92da3"
+    },
+    "apps/stela/launcher/voice/vendor/ws/lib/constants.js": {
+      "bytes": 503,
+      "sha256": "391e823142b8b370e55a2fd32b022deaf03b8415c56000009674ebc86a0b4f86"
+    },
+    "apps/stela/launcher/voice/vendor/ws/lib/event-target.js": {
+      "bytes": 7321,
+      "sha256": "c45d3c6e12d170c860c0c3f1a050aa0f864d9806632b609a1e607d675aba128c"
+    },
+    "apps/stela/launcher/voice/vendor/ws/lib/extension.js": {
+      "bytes": 6183,
+      "sha256": "852564f0f6b460287043803eae732666fb5610f676874354fc89f06aa4e986ed"
+    },
+    "apps/stela/launcher/voice/vendor/ws/lib/limiter.js": {
+      "bytes": 1034,
+      "sha256": "e0469d4b83f6ba764b15f80e1766b75c136fbff68f048f4c050f0b1c7f065f69"
+    },
+    "apps/stela/launcher/voice/vendor/ws/lib/permessage-deflate.js": {
+      "bytes": 14669,
+      "sha256": "16a91536988a53c23047ee5882392068728a839a244178c3b09b8c54982f58b0"
+    },
+    "apps/stela/launcher/voice/vendor/ws/lib/receiver.js": {
+      "bytes": 17439,
+      "sha256": "a6ada33c9a2d54eaf595824b821ea89ca2c6395f89aa06755c52142148274884"
+    },
+    "apps/stela/launcher/voice/vendor/ws/lib/sender.js": {
+      "bytes": 16886,
+      "sha256": "d0791d30c3defd44dcabbddb879a901c757993fea2c00a7ffea01d53b23b4b77"
+    },
+    "apps/stela/launcher/voice/vendor/ws/lib/stream.js": {
+      "bytes": 4204,
+      "sha256": "a56fcb6e2b152097ee820b6f5410b1f71e59819b45d08d9f8bda588fe39070ec"
+    },
+    "apps/stela/launcher/voice/vendor/ws/lib/subprotocol.js": {
+      "bytes": 1498,
+      "sha256": "be3f6323d6f549568577dcba9004c1479d95c65a7abb0fe0c582875b9fac0b7c"
+    },
+    "apps/stela/launcher/voice/vendor/ws/lib/validation.js": {
+      "bytes": 3903,
+      "sha256": "41ce8e83d0d434132e1704895fedb91f6703a701b42d91c80954ab29b2845593"
+    },
+    "apps/stela/launcher/voice/vendor/ws/lib/websocket-server.js": {
+      "bytes": 17022,
+      "sha256": "6d8dd89a841748c80445fd5fcdb5ba8005369b53cc3525135e11304c8b9c55e5"
+    },
+    "apps/stela/launcher/voice/vendor/ws/lib/websocket.js": {
+      "bytes": 37848,
+      "sha256": "7ccf305925f0cdb74e06b75b4c84de134b1bd771a220ef409b24520def08128f"
+    }
+  },
+  "localSourceDifferences": [
+    {
+      "path": "launcher/game-link.cjs",
+      "installedSha256": "2a0b8837d525c14b426b3a4db17df3f1ab1bc5fb6268e5dceb6fb13308d879d6",
+      "workingSha256": "fcf9d1cfa8c0a314f6427b5dadb6bddc23b1d8f7bf1c4777d5be7521ce42385a"
+    },
+    {
+      "path": "launcher/runtime-journal.cjs",
+      "installedSha256": "faf7a6ca3f8e3e872b53d3fa420f3898e117aa5e57d53a0b0e33e9b5f77457c3",
+      "workingSha256": "afdee3a2f040e0703f3cb89d2dad7463e0653ab1bd23a4e52eb343e4b84fbeec"
+    },
+    {
+      "path": "launcher/runtime-main.cjs",
+      "installedSha256": "ea7ab7413f5972576ade099db555f80a24426a1c64043db26574a18c16e66b4c",
+      "workingSha256": "e7d480e3a388fa2362f5655dd0a43f37a1b350a47029834c36c97a43205fbb1a"
+    },
+    {
+      "path": "launcher/runtime-policy.cjs",
+      "installedSha256": "539aeea4eab55bc89eaaf9e151d742be2ce5af22e5029308fe88fd2810114e95",
+      "workingSha256": "604360eeb10d145f58c7fdc8f610b385dd619cb11ceef9dd0317508dfa8348e9"
+    },
+    {
+      "path": "launcher/sound-events.cjs",
+      "installedSha256": "b8af53a41d4ec8bb96a1fa8e30457e3f606fe98fe33d1f9434bbe3eba29db531",
+      "workingSha256": "17fcbc0109ba8bba13ace399ddc3cfbddf8591130429ea31da5b36b3eb3ffcad"
+    },
+    {
+      "path": "launcher/sound-library.cjs",
+      "installedSha256": "da9e03a2dc763f36f9af2ef0e56baab900619d43ba3f96bef91a7f3f2da6caac",
+      "workingSha256": "e36be9e608f177b6c8e9cd20fa22bc85a360a1858c85ade9e7761cfd6d333c89"
+    },
+    {
+      "path": "launcher/stand-settings.cjs",
+      "installedSha256": "be3ddb20a4ae4cdb77d066c07bc8d276d5446cb69d5b237e1ad4887f9b072812",
+      "workingSha256": "92a5ae07609a3a2248df6f606492ff1f9dc08d60dad5843501c033b2f251403b"
+    },
+    {
+      "path": "launcher/sound-panel/index.html",
+      "installedSha256": "ac5b4ed1b2b8da1f5cce34cbd4cebb606c6c365d0b92e66da71ffa2f9800d220",
+      "workingSha256": "8f14e6ac56eb5cc0b12cbc19ec4ceb58f98141296ca937b9e6eda04b003ce7fc"
+    },
+    {
+      "path": "launcher/sound-panel/panel.css",
+      "installedSha256": "38d6f5b8539a670d2a03e95c10fa0fc3a8367c4f90a578880e28651b03799103",
+      "workingSha256": "5e0fe0d8edf0ff1f0e847eca15a2d4d473d4220c0e904e339e583270c5f64eeb"
+    },
+    {
+      "path": "launcher/sound-panel/panel.js",
+      "installedSha256": "8480e916336086b1979aa097ec36cd016b171b95e863405af9a23a473c932768",
+      "workingSha256": "a437a0c770662384618b5bb46b76080b9ab216db81b9124f36ad17aa68571a0c"
+    },
+    {
+      "path": "www/stella/assets/business.svg",
+      "installedSha256": "3833b6805584112b51fd0d744295d8457ebfc9aa074acdab66530f7b4ba3803d",
+      "workingSha256": null
+    },
+    {
+      "path": "www/stella/assets/connection.svg",
+      "installedSha256": "8fa6e2fe6c6f3d8d5b18e192caca1ec408bf912f55b250b8e141bd3fe02b25fd",
+      "workingSha256": null
+    },
+    {
+      "path": "www/stella/assets/identity.svg",
+      "installedSha256": "ca959186ed4f793e2cfd706c4e343d67f50d2e36d4ad1ecb577bbe963ba9f49e",
+      "workingSha256": null
+    },
+    {
+      "path": "www/stella/assets/personal.svg",
+      "installedSha256": "9f845666ba4c514711edd7378a4b8a269fc00fb35adf81c0ec3cf585e67ff11c",
+      "workingSha256": null
+    },
+    {
+      "path": "www/stella/assets/visibility.svg",
+      "installedSha256": "0514eecaa61f412f9167f189aec579410846d4d58903c79c361edd973c852a57",
+      "workingSha256": null
+    }
+  ],
+  "excludedPrivateCategories": {
+    "release-manifest.json": 1,
+    "data": 1067,
+    "plugins": 32,
+    "licenses": 18
+  }
+}

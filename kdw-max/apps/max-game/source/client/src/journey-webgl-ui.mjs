@@ -1,6 +1,8 @@
+import {prepareBrightnessMaterial,materialDeviceBrightness} from './kdw-device-brightness.mjs';
+import {highQualityRasterScale} from './kdw-conversation-model.mjs';
 import {activityFrame} from './activity-webgl/activity-runtime.mjs';
 import {createActivityLayer} from './activity-webgl/activity-layer.mjs';
-import {useImageFallback,fallbackForImage} from './kdw-graceful-media.mjs';
+import {useImageFallback,fallbackForImage,revealUploadedMedia,mediaGhostOpacity} from './kdw-graceful-media.mjs';
 import {V5_MOTION} from './journey-v5-motion-profile.mjs';
 import {BUSINESS_ORIGINAL} from './kdw-business-original.mjs';
 import {createDeviceVideoTexture} from './journey-v5-video-source.mjs';
@@ -32,7 +34,7 @@ import {v5DeviceRasterScale} from './journey-v5-startup-assets.mjs';
 // DOM is a layout/accessibility tree only. Every visible primitive is rendered by
 // the existing game's WebGL context; text textures are rebuilt only on UI changes.
 const vertex=`varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`;
-const fragment=`varying vec2 vUv;uniform vec2 size;uniform float radius,fill,clock,energy,alpha,dark,selection,scan,scanProgress,deviceFrame,contentProgress,contentActive,referenceRole;
+const fragment=`varying vec2 vUv;uniform vec2 size;uniform float kdwDeviceBrightness,radius,fill,clock,energy,alpha,dark,selection,scan,scanProgress,deviceFrame,contentProgress,contentActive,referenceRole;
 float box(vec2 p,vec2 b,float r){vec2 q=abs(p)-b+r;return length(max(q,0.))+min(max(q.x,q.y),0.)-r;}
 void main(){vec2 p=(vUv-.5)*(size+24.);float d=box(p,size*.5,radius);
 float inside=1.-smoothstep(-.7,.7,d);float rim=exp(-abs(d)*1.6);
@@ -86,8 +88,11 @@ gl_FragColor=vec4(c,clamp(a*alpha,0.,1.));
 #ifdef BFM_COLOR_MANAGED
 // This UI palette is authored in display sRGB. Keep intermediate targets linear;
 // Three selects the output transfer for the current render destination.
+gl_FragColor.rgb *= kdwDeviceBrightness;
 gl_FragColor=sRGBTransferEOTF(gl_FragColor);
 #include <colorspace_fragment>
+#else
+gl_FragColor.rgb *= kdwDeviceBrightness;
 #endif
 }`;
 const surfaceSelector='.cta-orb,.tile,.badge,.medallion,.pill,.mission-card,.instruction,.v5-device-timer,.reset-popup,.field-success,.demo-app,.phone-camera,.phone-home,.app-progress i';
@@ -164,7 +169,7 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,onLayo
   root.dataset.resourceResidency=JSON.stringify({textures:cache.size,pixels,rgbaBytes:pixels*4,startupPinned:startupTextureKeys.size,decodedShellImages:startup?.assets.images.size??0});
  }
  function add(mesh,parent,x,y,w,h){mesh.position.set(x+w/2,y+h/2,0);mesh.scale.set(w,h,1);mesh.renderOrder=order++;mesh.frustumCulled=false;parent.add(mesh);return mesh;}
- function basic(map,opacity=1){const m=new THREE.MeshBasicMaterial({map,transparent:true,opacity,depthTest:false,depthWrite:false,toneMapped:false,side:THREE.DoubleSide});materials.push(m);return m;}
+ function basic(map,opacity=1){const m=new THREE.MeshBasicMaterial({map,transparent:true,opacity,depthTest:false,depthWrite:false,toneMapped:false,side:THREE.DoubleSide});prepareBrightnessMaterial(m);materials.push(m);return m;}
  function surface(el,r,parent,origin,opacity){
   if(el.dataset.independentArtwork==='true')return;
   const cs=getComputedStyle(el),radius=Math.min(parseFloat(cs.borderTopLeftRadius)||0,r.w/2,r.h/2);
@@ -197,7 +202,7 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,onLayo
   }
   const optical=el.matches('.glass-control,.pill'),cover=el.matches('.task-cover,.reset-cover');
   const fill=el.matches('.field-success')?.30:el.matches('.demo-app')?.98:el.matches('.reset-popup')?.9:cover?.15:optical?.035:.7;
-  const mat=new THREE.ShaderMaterial({defines:bfmVisual?{BFM_COLOR_MANAGED:1}:{},vertexShader:vertex,fragmentShader:fragment,transparent:true,depthTest:false,depthWrite:false,side:THREE.DoubleSide,uniforms:{size:{value:new THREE.Vector2(r.w,r.h)},radius:{value:radius},fill:{value:fill},clock:{value:time},energy:{value:0},alpha:{value:opacity}}});
+  const mat=new THREE.ShaderMaterial({defines:bfmVisual?{BFM_COLOR_MANAGED:1}:{},vertexShader:vertex,fragmentShader:fragment,transparent:true,depthTest:false,depthWrite:false,side:THREE.DoubleSide,uniforms:{kdwDeviceBrightness:{value:1},size:{value:new THREE.Vector2(r.w,r.h)},radius:{value:radius},fill:{value:fill},clock:{value:time},energy:{value:0},alpha:{value:opacity}}});
   mat.uniforms.referenceRole={value:(referenceVisual||bfmVisual)?(el.matches('.tile,.medallion')?1:el.matches('.instruction,.v5-device-timer,.field-success,.mission-card')?2:el.matches('.demo-app')?3:el.matches('.pill.kdw-transition-button')?5:el.matches('.pill')?4:0):0};
   mat.uniforms.dark={value:el.matches('.field-success')?.65:el.matches('.demo-app,.phone-camera')?.96:0};
   mat.uniforms.selection={value:0};
@@ -258,7 +263,8 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,onLayo
   const idScreen=el.matches('.id-screen-image'),rasterW=idScreen?360:cachePixels(r.w),rasterH=idScreen?800:cachePixels(r.h);
   const rounded=el.matches('.task-media-image'),pad=rounded?16:0,radius=rounded?parseFloat(getComputedStyle(el).borderTopLeftRadius)||0:0;
   const deviceImage=el.matches('.id-screen-image,.task-media-image');
-  const scale=bfmVisual&&deviceImage?v5DeviceRasterScale(rasterW,rasterH,devicePixelScale,pad):deviceImage?Math.min(2048/Math.max(rasterW,rasterH),Math.max(2,1600/rasterH)):2;
+  const highQuality=deviceImage&&/\/hq(?:-|\/)/.test(el.dataset.mediaOriginal??el.src);
+  const scale=highQuality?highQualityRasterScale(rasterW,rasterH,pad):bfmVisual&&deviceImage?v5DeviceRasterScale(rasterW,rasterH,devicePixelScale,pad):deviceImage?Math.min(2048/Math.max(rasterW,rasterH),Math.max(2,1600/rasterH)):2;
   const shadow=rounded&&!!el.closest('.story-task');
   return {key:`${el.src}:${rasterW}:${rasterH}:${scale}:${radius}:${shadow}`,rasterW,rasterH,rounded,pad,radius,deviceImage,scale,shadow};
  }
@@ -390,7 +396,7 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,onLayo
   // The native store yields the help panel while playing, then returns it on
   // the same screen. Its opacity is sampled live below; baking zero here would
   // keep every help mesh permanently invisible after the activity ends.
-  opacity*=el.matches('.context-popup')&&document.documentElement.dataset.kdwInteraction==='store'?1:Number(cs.opacity);
+  opacity*=el.dataset.mediaGhost==='true'||el.matches('.context-popup')&&document.documentElement.dataset.kdwInteraction==='store'?1:Number(cs.opacity);
   if(el.matches(movingSelector)){
    const previous=previousGroups.get(el),group=previous?.group||new THREE.Group();group.clear();scene.add(group);const born=births.get(el)??time;births.set(el,born);
    el.dataset.sceneId=String(group.id);
@@ -870,6 +876,7 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,onLayo
    }
    for(const m of materials){
     const el=m.userData.el,host=el?.closest('.journey-zone');
+    const brightness=m.userData.deviceBrightness??m.uniforms?.kdwDeviceBrightness;if(brightness)brightness.value=materialDeviceBrightness(el);
     if(m.uniforms?.contentActive){
      const transition=contentTransitions.get(host),phase=transition?.phase;
      const phoneFrame=el?.matches('.route-phone .demo-app');
@@ -906,6 +913,9 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,onLayo
     const feedback=el?.closest('.tap-feedback');
     if(feedback){const age=time-feedbacks.get(feedback),t=Math.max(0,Math.min(1,Math.min(age/.08,(1-age)/.2)));presence*=t*t*(3-2*t);}
     if(el?.closest('[data-transition-source]'))presence=0;
+    // Sample the same fade as the DOM every frame; do not bake it into the
+    // texture/material during refresh (which caused a final abrupt swap).
+    if(el?.dataset.mediaGhost==='true'){presence*=mediaGhostOpacity(el);moving=true;}
     const alpha=m.userData.baseOpacity*(m.userData.fade??1)*presence;
     if(m.uniforms?.alpha)m.uniforms.alpha.value=alpha;else m.opacity=alpha;
    }
@@ -965,7 +975,7 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,onLayo
     const artwork=image.dataset.independentArtwork==='true';
     const qr=image.closest('.v5-mission-qr');
     if(!phone&&!artwork&&!qr)continue;
-    if(uploadedPhoneTextures.has(material.map)){if(artwork)image.dataset.gpuReady='true';continue;}
+    if(uploadedPhoneTextures.has(material.map)){if(artwork)image.dataset.gpuReady='true';revealUploadedMedia(image);continue;}
     if(phone&&phone.dataset.mediaReadyKey!==phone.dataset.sceneVersion)continue;
    try{const start=performance.now();renderer.initTexture(material.map);uploadedPhoneTextures.add(material.map);const ms=performance.now()-start;preparationStats.uploads++;preparationStats.uploadMs+=ms;preparationStats.maxUploadMs=Math.max(preparationStats.maxUploadMs,ms);reportPreparation();}
     catch(error){
@@ -974,7 +984,7 @@ export function createJourneyWebGLUI({root,arena,getSize,onMotion,onFrame,onLayo
      if(qr){image.dataset.gpuUploadError='MAX_QR_GPU_UPLOAD_FAILED';console.error('MAX QR texture upload failed',error);continue;}
      queueMicrotask(()=>{if(!image.isConnected)return;void useImageFallback(image,'gpu-upload',{fallback:fallbackForImage(image),onChange:()=>{if(phone){delete phone.dataset.gpuUploadError;delete phone.dataset.gpuReadyKey;pendingParts.add(phone);}partsDirty=true;onMotion();}}).then(()=>{if(phone){delete phone.dataset.gpuUploadError;pendingParts.add(phone);}partsDirty=true;onMotion();});});
     }
-    if(artwork&&uploadedPhoneTextures.has(material.map))image.dataset.gpuReady='true';
+    if(uploadedPhoneTextures.has(material.map)){if(artwork)image.dataset.gpuReady='true';revealUploadedMedia(image);}
    }
    const panes=[...root.querySelectorAll('.context-popup .instruction,.context-popup .demo-app,.field-success,.v5-device-timer')].filter(el=>!el.closest('[hidden]')&&!confirmationPanel(el)).map(el=>({...rect(el),radius:parseFloat(getComputedStyle(el).borderTopLeftRadius),opacity:glassControlPresence(el,document)*(el.closest('.context-popup')?Number(getComputedStyle(el.closest('.context-popup')).opacity):1)*(el.matches('.v5-mission-qr')?1:Number(el.closest('.journey-zone')?.dataset.finalGamePresence??1))})).filter(pane=>pane.opacity>.001);
    activityLayer.render(renderer);

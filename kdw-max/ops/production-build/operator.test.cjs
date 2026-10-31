@@ -59,3 +59,43 @@ test('calibration receiver can bind and close without a measured map or touch in
  const {createSocket}=require('node:dgram'),socket=createSocket('udp4');await new Promise(r=>socket.bind(0,'127.0.0.1',r));const port=socket.address().port;await new Promise(r=>socket.close(r));
  const config={enabled:false,bindAddress:'127.0.0.1',sourceAddress:'127.0.0.1',port,timeoutMs:350,width:3072,height:1536,rawPoints:null,targetPoints:null};const r=await startLidar({config,calibrating:true,log:()=>{},contents:{debugger:{attach(){throw Error('Must not inject')}}},active:()=>false});assert.equal(r.snapshot().bound,true);await r.close();for(let i=0;i<4;i++){const next=await startLidar({config,calibrating:true,log:()=>{},active:()=>false});assert.equal(next.snapshot().bound,true);await next.close();}
 });
+
+
+test('contact sizes are independently persisted live and visibility preserves them',async()=>{
+ const f=await fixture();try{
+  let applied;f.output.setPresentation=v=>{applied=v;};
+  const before=(await f.request('state')).body;
+  assert.equal(before.presentation.contactDiameterPx,72);assert.equal(before.presentation.keyboardContactDiameterPx,72);
+  // An active visitor must not gate this presentation-only update.
+  const dir=path.join(f.root,'data/link');fs.mkdirSync(path.join(dir,'games'),{recursive:true});fs.writeFileSync(path.join(dir,'active.json'),JSON.stringify({gameId:'visitor'}));fs.writeFileSync(path.join(dir,'games/visitor.json'),JSON.stringify({status:'playing'}));
+  let r=await f.request('presentation',{contactDiameterPx:120,keyboardContactDiameterPx:24});assert.equal(r.status,200);assert.equal(applied.contactDiameterPx,120);assert.equal(applied.keyboardContactDiameterPx,24);
+  r=await f.request('presentation',{cursorVisible:true});assert.equal(r.body.presentation.contactDiameterPx,120);assert.equal(r.body.presentation.keyboardContactDiameterPx,24);
+  r=await f.request('presentation',{keyboardContactDiameterPx:32});assert.equal(r.body.presentation.cursorVisible,true);assert.equal(r.body.presentation.contactDiameterPx,120);
+  for(const value of [0,-1,401,3.5,'72',null])assert.equal((await f.request('presentation',{contactDiameterPx:value})).status,400);
+  assert.equal((await f.request('presentation',{contactDiameterPx:100},{Origin:'https://evil.test'})).status,403);
+  assert.equal((await f.request('presentation',{enabled:false})).status,400);
+  const saved=JSON.parse(fs.readFileSync(path.join(f.root,'data/operator.local.json')));assert.deepEqual(saved,{cursorVisible:true,contactDiameterPx:120,keyboardContactDiameterPx:32,contactEdgeGrowthPercent:0});
+  assert.deepEqual((await f.request('state')).body.lidar,before.lidar);
+ }finally{await f.close();}
+});
+
+
+test('edge growth persists separately, validates percentages and keeps legacy sizes',async()=>{
+ const f=await fixture();try{
+  const data=path.join(f.root,'data');fs.mkdirSync(data,{recursive:true});fs.writeFileSync(path.join(data,'operator.local.json'),JSON.stringify({cursorVisible:true,contactDiameterPx:100,keyboardContactDiameterPx:50}));
+  let applied;f.output.setPresentation=v=>applied=v;
+  assert.equal((await f.request('state')).body.presentation.contactEdgeGrowthPercent,0);
+  let r=await f.request('presentation',{contactEdgeGrowthPercent:100});assert.equal(r.status,200);assert.equal(applied.contactEdgeGrowthPercent,100);assert.equal(applied.keyboardContactDiameterPx,50);assert.equal(applied.contactDiameterPx,100);
+  await f.request('presentation',{cursorVisible:false});assert.equal((await f.request('state')).body.presentation.contactEdgeGrowthPercent,100);
+  for(const value of [-1,301,2.5,'100',null])assert.equal((await f.request('presentation',{contactEdgeGrowthPercent:value})).status,400);
+  assert.equal((await f.request('presentation',{contactEdgeGrowthPercent:0})).status,200);
+  assert.equal(JSON.parse(fs.readFileSync(path.join(data,'operator.local.json'))).contactEdgeGrowthPercent,0);
+ }finally{await f.close();}
+});
+
+test('card policy saves all six controls through settings API and survives reread',async()=>{
+ const f=await fixture();try{const s=(await f.request('state')).body,value=structuredClone(s.settings);value.max.cardActivity={pauseTaskTimer:true,enterMs:800,holdMs:2000,exitMs:800,maxOverlapPercent:15,minOpacityPercent:15};
+ const saved=await f.request('settings',{revision:s.settingsRevision,value});assert.equal(saved.status,200);assert.deepEqual((await f.request('state')).body.settings.max.cardActivity,value.max.cardActivity);
+ value.max.cardActivity.minOpacityPercent=101;assert.equal((await f.request('settings',{revision:saved.body.settingsRevision,value})).status,400);
+ }finally{await f.close();}
+});

@@ -1,7 +1,83 @@
 {
   "passed": true,
   "lateAvatarWithoutReload": true,
+  "lateMountedImage": true,
+  "unrelatedBrokenImageIgnored": true,
   "realJpeg": true,
+  "photoScreens": [
+    {
+      "screenId": "digital-id.create-id.ready",
+      "path": "assets/kdw-native/visitor-details/hq-digital-id-create-id-ready.svg",
+      "variant": "avatar"
+    },
+    {
+      "screenId": "communication.call.connected",
+      "path": "assets/kdw-native/conversation/hq-communication-call-connected.svg",
+      "variant": "full"
+    },
+    {
+      "screenId": "communication.call.result",
+      "path": "assets/kdw-native/conversation/hq-communication-call-result.svg",
+      "variant": "full"
+    },
+    {
+      "screenId": "communication.message.video-stop",
+      "path": "assets/kdw-native/conversation/hq-communication-message-video-stop.svg",
+      "variant": "avatar"
+    },
+    {
+      "screenId": "communication.message.video-preview",
+      "path": "assets/kdw-native/conversation/hq-communication-message-video-preview.svg",
+      "variant": "avatar"
+    },
+    {
+      "screenId": "communication.message.video-sent",
+      "path": "assets/kdw-native/conversation/hq-communication-message-video-sent.svg",
+      "variant": "avatar"
+    },
+    {
+      "screenId": "communication.story.start",
+      "path": "assets/kdw-native/conversation/hq-communication-story-start.svg",
+      "variant": "avatar"
+    },
+    {
+      "screenId": "communication.story.ready",
+      "path": "assets/kdw-native/conversation/hq-communication-story-ready.svg",
+      "variant": "avatar"
+    }
+  ],
+  "business": [
+    {
+      "type": "cafe",
+      "screenId": "business.platform.profile",
+      "currentAvatar": true
+    },
+    {
+      "type": "cafe",
+      "screenId": "business.platform.verification",
+      "currentAvatar": true
+    },
+    {
+      "type": "flowers",
+      "screenId": "business.platform.profile",
+      "currentAvatar": true
+    },
+    {
+      "type": "flowers",
+      "screenId": "business.platform.verification",
+      "currentAvatar": true
+    },
+    {
+      "type": "auto",
+      "screenId": "business.platform.profile",
+      "currentAvatar": true
+    },
+    {
+      "type": "auto",
+      "screenId": "business.platform.verification",
+      "currentAvatar": true
+    }
+  ],
   "result": {
     "avatar": {
       "center": [
@@ -31,7 +107,7 @@
         255
       ]
     },
-    "gameId": "b7ab4fd8-44ad-410d-abb0-704ec41a2db5",
+    "gameId": "1e5e486f-03b4-4595-9d25-a035c7db6881",
     "hasAvatar": true
   },
   "errors": []

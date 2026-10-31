@@ -1,16 +1,14 @@
+import {circleIntersectsRect} from '../kdw-contact-area.mjs';
 // Viewport pixels throughout. No DOM, timers, renderer or transport ownership.
 export const mix=(a,b,t)=>a+(b-a)*t;
 export const ease=t=>{t=Math.max(0,Math.min(1,t));return t*t*t*(t*(t*6-15)+10);};
 export const inside=(p,r)=>{
- if(!r||p.x<r.x||p.x>r.x+r.w||p.y<r.y||p.y>r.y+r.h)return false;
- const radius=Math.min(r.radius??0,r.w/2,r.h/2);if(radius<=0)return true;
- const dx=Math.max(0,Math.abs(p.x-r.x-r.w/2)-(r.w/2-radius)),dy=Math.max(0,Math.abs(p.y-r.y-r.h/2)-(r.h/2-radius));
- return dx*dx+dy*dy<=radius*radius;
+ return !!r&&circleIntersectsRect(p.x,p.y,p.radius??0,r,r.radius??0);
 };
 export function hit(p,items){
  for(let i=items.length-1;i>=0;i--){const r=items[i];if(!r.interactive||r.clip&&!inside(p,r.clip))continue;
   const c=Math.cos(-(r.rotation??0)),s=Math.sin(-(r.rotation??0)),x=p.x-r.x-r.w/2,y=p.y-r.y-r.h/2;
-  if(inside({x:x*c-y*s+r.x+r.w/2,y:x*s+y*c+r.y+r.h/2},r))return r;
+  if(inside({x:x*c-y*s+r.x+r.w/2,y:x*s+y*c+r.y+r.h/2,radius:p.radius??0},r))return r;
  }return null;
 }
 export function flightPose(from,to,progress){

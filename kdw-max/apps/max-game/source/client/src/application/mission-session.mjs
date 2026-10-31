@@ -13,7 +13,7 @@ const freshLayouts=()=>({layoutRevision:0,positions:{},receipts:[]});
 export const MISSION_CLOCK_CHECKPOINT_MS=500;
 export const MISSION_CLOCK_EXTRAPOLATION_MS=1000;
 /** One authority per session. now is host time, never a field of client commands. */
-export function createMissionSessionApplication({catalog=MISSION_CATALOG,persistence,now=wallClock,monotonic=now===wallClock?()=>performance.now():now,admit=null,operatorControls=false,onObserverError=()=>{},missionRulesRevision=MISSION_RULES_REVISION}){
+export function createMissionSessionApplication({catalog=MISSION_CATALOG,persistence,now=wallClock,monotonic=now===wallClock?()=>performance.now():now,admit=null,operatorControls=false,outputRecovery=false,onObserverError=()=>{},missionRulesRevision=MISSION_RULES_REVISION}){
  catalog=copy(assertMissionCatalog(structuredClone(catalog)));
  if(!persistence||['load','create','commit'].some(k=>typeof persistence[k]!=='function'))throw new TypeError('Explicit PersistencePort required');
  if(typeof now!=='function'||typeof onObserverError!=='function')throw new TypeError('Clock and diagnostic handler required');
@@ -34,12 +34,17 @@ export function createMissionSessionApplication({catalog=MISSION_CATALOG,persist
   // never display time beyond the last durable checkpoint plus its bounded budget.
   const assignment=await managed(id);
   if(restored.model.state.ownerActive && (!assignment || assignment.lifecycle.status==='active')){const result=dispatchMissionCommand(catalog,restored.model,internalCommand(entry,'OWNER_CHANGED',{active:false}),{now:checkpoint,internal:true});if(!result.reply.ok)throw err('INVALID_RECOVERY_TIME');entry=await commit(id,entry,{...entry.record,mission:result.model},[]);}
+  if(outputRecovery&&production(entry.record.mission.state)&&entry.record.mission.state.missionId&&entry.record.mission.state.outputPausedAt===undefined){
+   const result=dispatchMissionCommand(catalog,entry.record.mission,internalCommand(entry,'OUTPUT_RECOVERY',{active:true}),{now:checkpoint,internal:true});
+   if(!result.reply.ok)throw err('INVALID_RECOVERY_TIME');
+   entry=await commit(id,entry,{...entry.record,mission:result.model},[]);
+  }
   cache.set(id,entry);return entry;
  }
  function snapshot(entry){const s=structuredClone(entry.record.mission.state);for(const p of Object.values(s.progress))delete p.channelModel;
   const checkpointAt=entry.record.clockCheckpointAt,observedAt=clock();
-  const serverTime=s.pausedAt??Math.min(observedAt,checkpointAt+MISSION_CLOCK_EXTRAPOLATION_MS);
-  const viewClock={schemaVersion:1,serverTime,checkpointAt,maxExtrapolationMs:MISSION_CLOCK_EXTRAPOLATION_MS,held:s.pausedAt!==null||observedAt>=checkpointAt+MISSION_CLOCK_EXTRAPOLATION_MS};
+  const serverTime=s.outputPausedAt??s.pausedAt??Math.min(observedAt,checkpointAt+MISSION_CLOCK_EXTRAPOLATION_MS);
+  const viewClock={schemaVersion:1,serverTime,checkpointAt,maxExtrapolationMs:MISSION_CLOCK_EXTRAPOLATION_MS,held:s.outputPausedAt!==undefined||s.pausedAt!==null||observedAt>=checkpointAt+MISSION_CLOCK_EXTRAPOLATION_MS};
   const terminal=['completed','incomplete','expired'].includes(s.status);
   const screen=!terminal&&s.taskId&&s.screenId?catalog.tasks[s.taskId].screens[s.screenId]:null;
   const device=screen?{kind:screen.deviceKind,asset:screen.assetId?catalog.assets[screen.assetId]:null,annotations:screen.annotations??[]}:null;
@@ -51,7 +56,7 @@ export function createMissionSessionApplication({catalog=MISSION_CATALOG,persist
    missions:Object.values(catalog.missions).map(m=>({missionId:m.missionId,title:m.title,test:m.test,missing:[...m.missing]})),
    result:terminal?{complete:s.status==='completed',title:s.status==='completed'?'Миссия выполнена':s.status==='expired'?'Время миссии истекло':'Миссия просмотрена с пропусками',text:s.status==='completed'?catalog.missions[s.missionId].completionText??'Возможности MAX изучены.':s.status==='expired'?'Миссия завершена по времени. Можно попробовать снова.':'Часть обязательных экранов ещё не предоставлена. Пропущенные задания не засчитаны.'}:null,
    qr:terminal?{...catalog.missions[s.missionId].qr,asset:catalog.assets[catalog.missions[s.missionId].qr.assetId]??catalog.assets['official.max-qr']}:null,
-   resumeRequired:Boolean(p?.scanned),clock:viewClock,remainingMs:s.status==='expired'?0:s.status==='result'&&s.rulesRevision===TASK_CLOCK_RULES_REVISION?p.remainingMs:s.deadlineAt===null?(production(s)&&["scan","task","completed","incomplete"].includes(s.status)?timing(s,s.status==="scan"?"palmWaitSeconds":s.status==="task"?"taskDurationSeconds":"qrDisplaySeconds"):null):Math.max(0,s.deadlineAt-serverTime)};
+   resumeRequired:Boolean(p?.scanned),clock:viewClock,remainingMs:s.cardTaskPause?.remainingMs??(s.status==='expired'?0:s.status==='result'&&s.rulesRevision===TASK_CLOCK_RULES_REVISION?p.remainingMs:s.deadlineAt===null?(production(s)&&["scan","task","completed","incomplete"].includes(s.status)?timing(s,s.status==="scan"?"palmWaitSeconds":s.status==="task"?"taskDurationSeconds":"qrDisplaySeconds"):null):Math.max(0,s.deadlineAt-serverTime))};
   return copy({schemaVersion:2,state:s,layouts:{layoutRevision:entry.record.layouts.layoutRevision,positions:entry.record.layouts.positions},view});
  }
  const report=e=>{try{onObserverError(e);}catch{}};
@@ -73,7 +78,7 @@ export function createMissionSessionApplication({catalog=MISSION_CATALOG,persist
   await guardManaged(id,input.type);
   if(input.type==='SET_LAYOUT')return layout(id,e,input);
   const result=dispatchMissionCommand(catalog,e.record.mission,input,{now:time,internal});
-  if(result.reply.ok&&!result.duplicate){e=await commit(id,e,{...e.record,mission:result.model,clockCheckpointAt:time},result.effects);if(['SELECT_MISSION','RETURN_MENU','RESTART_MISSION','RESET_PROGRESS','EXPIRE'].includes(input.type)||input.type==='OWNER_CHANGED'&&!input.active){contacts.delete(id);for(const key of sequences.keys())if(key.startsWith(`${id}:`))sequences.delete(key);}}
+  if(result.reply.ok&&!result.duplicate){e=await commit(id,e,{...e.record,mission:result.model,clockCheckpointAt:time},result.effects);if(['FINISH_MISSION','SELECT_MISSION','RETURN_MENU','RESTART_MISSION','RESET_PROGRESS','EXPIRE'].includes(input.type)||input.type==='OWNER_CHANGED'&&!input.active){contacts.delete(id);for(const key of sequences.keys())if(key.startsWith(`${id}:`))sequences.delete(key);}}
   return copy({reply:result.reply,duplicate:result.duplicate,snapshot:snapshot(e)});
  }
  function internalCommand(e,type,fields={}){return {schemaVersion:1,type,commandId:`internal.${e.record.mission.state.runId}.${e.record.mission.state.revision}.${++internalSerial}`,sessionId:e.record.mission.state.sessionId,contentRevision:catalog.contentRevision,expectedRevision:e.record.mission.state.revision,...fields};}
@@ -90,6 +95,7 @@ export function createMissionSessionApplication({catalog=MISSION_CATALOG,persist
   e=await commit(id,e,{...e.record,layouts:next},[{type:'LAYOUT_CHANGED',layoutRevision:next.layoutRevision}]);return copy({reply,duplicate:false,snapshot:snapshot(e)});
  }
  async function poll(id,time,{allowResult=false}={}){const assignment=await managed(id);if(assignment && assignment.lifecycle.status!=='active')return copy({reply:{ok:true,code:'ASSIGNMENT_TERMINAL'},duplicate:false,snapshot:snapshot(await load(id))});let e=await load(id),s=e.record.mission.state;
+  if(s.outputPausedAt!==undefined)return copy({reply:{ok:true,code:'OUTPUT_RECOVERING'},duplicate:false,snapshot:snapshot(e)});
   if(production(s)&&['task','result'].includes(s.status)&&s.lastTouchAt!==null&&time-s.lastTouchAt>=timing(s,'inactivitySeconds'))return dispatch(id,internalCommand(e,'STAND_IDLE'),time,true);
   if((s.ownerActive||production(s))&&s.deadlineAt!==null&&time>=s.deadlineAt&&s.status!=='expired')return dispatch(id,internalCommand(e,'EXPIRE'),time,true);
   if(!s.ownerActive&&!production(s))return copy({reply:{ok:true,code:'UNCHANGED'},duplicate:false,snapshot:snapshot(e)});
@@ -153,6 +159,14 @@ export function createMissionSessionApplication({catalog=MISSION_CATALOG,persist
   operatorCommand(input){if(!operatorControls||input?.type!=='OPERATOR_GOTO')return Promise.reject(err('OPERATOR_UNAVAILABLE'));const c=structuredClone(input);return queue(c?.sessionId,async()=>{const result=await dispatch(c.sessionId,c,clock(),true);if(result.reply.ok){contacts.delete(c.sessionId);for(const key of sequences.keys())if(key.startsWith(c.sessionId+':'))sequences.delete(key);}return result;});},
   sendCommand(input){const c=structuredClone(input);return queue(c?.sessionId,async()=>{const e=await load(c.sessionId);if(e.record.layouts.receipts.some(r=>r.command.commandId===c.commandId)&&c.type!=='SET_LAYOUT')return copy({reply:{ok:false,code:'COMMAND_ID_REUSED'},duplicate:false,snapshot:snapshot(e)});return dispatch(c.sessionId,c,clock());});},
   subscribe(id,callback){if(typeof callback!=='function')return Promise.reject(new TypeError('Callback required'));return queue(id,async()=>{const e=await load(id);if(closed)throw err('APPLICATION_CLOSED');const set=listeners.get(id)??new Set();listeners.set(id,set);set.add(callback);deliver(callback,copy({snapshot:{...snapshot(e),assignment:await managed(id)},effects:[]}));return()=>{set.delete(callback);};});},
+  outputRecoveryChanged(id,{active}){return queue(id,async()=>{
+   if(!outputRecovery||typeof active!=='boolean')throw err('OUTPUT_RECOVERY_UNAVAILABLE');
+   const e=await load(id),s=e.record.mission.state;
+   if(!production(s)||!s.missionId||active===(s.outputPausedAt!==undefined))return snapshot(e);
+   contacts.delete(id);
+   const result=await dispatch(id,internalCommand(e,'OUTPUT_RECOVERY',{active}),clock(),true);
+   if(!result.reply.ok)throw err(result.reply.code);return result.snapshot;
+  });},
   inputOwnerChanged(id,{active},trustedNow=clock()){return queue(id,async()=>{await guardManaged(id,'OWNER_CHANGED');contacts.delete(id);for(const key of sequences.keys())if(key.startsWith(`${id}:`))sequences.delete(key);const e=await load(id);if(e.record.mission.state.ownerActive===active)return snapshot(e);await dispatch(id,internalCommand(e,'OWNER_CHANGED',{active}),Math.max(Math.floor(trustedNow),clock()),true);return snapshot(await load(id));});},
   handleContact(id,event,trustedNow=clock()){const value=structuredClone(event);return queue(id,async()=>{await guardManaged(id,'CONTACT');const e=await load(id),s=e.record.mission.state;trustedNow=Math.max(Math.floor(trustedNow),clock());
    if(!missionToken(value.contactId)||!Number.isSafeInteger(value.sequence)||value.sequence<0||!['down','move','up','cancel'].includes(value.type)||typeof value.inside!=='boolean')throw err('INVALID_CONTACT');
