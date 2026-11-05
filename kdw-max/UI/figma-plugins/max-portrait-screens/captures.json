@@ -1,0 +1,4139 @@
+[
+  {
+    "id": "shared.standby",
+    "missionId": null,
+    "taskId": null,
+    "screenId": "shared.standby",
+    "variant": "standby",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "shared.standby.png",
+    "sha256": "bba350de7aa83efa7e494f8a9054038e88dbf8308d07224c91f40d8b748c5cc7",
+    "bytes": 667153,
+    "diagnostics": null
+  },
+  {
+    "id": "blogger.scan.palm",
+    "missionId": "blogger",
+    "taskId": null,
+    "screenId": "scan",
+    "variant": "palm",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "blogger.scan.palm.png",
+    "sha256": "7f82c98c713f22aa31b5ab05f1344b4a7cd0515d4f618d2efcdf92c784c72e18",
+    "bytes": 596711,
+    "diagnostics": {
+      "state": {
+        "phase": "palm",
+        "screen": null,
+        "phonePresence": 0,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "blogger.blogger.channel.chats.screen",
+    "missionId": "blogger",
+    "taskId": "blogger.channel",
+    "screenId": "blogger.channel.chats",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "blogger.blogger.channel.chats.screen.png",
+    "sha256": "553eda3901b027cfbc16c290d62a6c5353a3f5bb330867da374ed27386f083ec",
+    "bytes": 613364,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "blogger.channel.chats",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "blogger.blogger.channel.menu.screen",
+    "missionId": "blogger",
+    "taskId": "blogger.channel",
+    "screenId": "blogger.channel.menu",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "blogger.blogger.channel.menu.screen.png",
+    "sha256": "a9186f6e6a7372a9127983cf8a1f75fe12b3c46e832d1c510c41f8d3b0bcc173",
+    "bytes": 679311,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "blogger.channel.menu",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "blogger.blogger.channel.name.screen",
+    "missionId": "blogger",
+    "taskId": "blogger.channel",
+    "screenId": "blogger.channel.name",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "blogger.blogger.channel.name.screen.png",
+    "sha256": "bbf7c47083f5568421097e5c216787bafa5a8bd4503e94df52c6166148587add",
+    "bytes": 588338,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "blogger.channel.name",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "blogger.blogger.channel.name.filled",
+    "missionId": "blogger",
+    "taskId": "blogger.channel",
+    "screenId": "blogger.channel.name",
+    "variant": "filled",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "blogger.blogger.channel.name.filled.png",
+    "sha256": "cb1594dd55c8be184d8ed3b9e4400052e0cc619ec2ae5b4776ed02e129f51c1b",
+    "bytes": 545774,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "blogger.channel.name",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "blogger.blogger.channel.name.keyboard",
+    "missionId": "blogger",
+    "taskId": "blogger.channel",
+    "screenId": "blogger.channel.name",
+    "variant": "keyboard",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "blogger.blogger.channel.name.keyboard.png",
+    "sha256": "9b601120c78eff77ee58a1638e74fafc28d04b553977eac1ed290387f334a118",
+    "bytes": 718292,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "blogger.channel.name",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "blogger.blogger.channel.privacy.screen",
+    "missionId": "blogger",
+    "taskId": "blogger.channel",
+    "screenId": "blogger.channel.privacy",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "blogger.blogger.channel.privacy.screen.png",
+    "sha256": "ab59dfa1f4b48e544db4219e0d60962ab8e08364ec4617bc023dc814e739789a",
+    "bytes": 653830,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "blogger.channel.privacy",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "blogger.blogger.channel.public-confirm.screen",
+    "missionId": "blogger",
+    "taskId": "blogger.channel",
+    "screenId": "blogger.channel.public-confirm",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "blogger.blogger.channel.public-confirm.screen.png",
+    "sha256": "141e891a3baf666ebbbda55d53a146f8f2be62c6535921cfd1d054d729d52000",
+    "bytes": 580989,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "blogger.channel.public-confirm",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "blogger.blogger.channel.public-link.screen",
+    "missionId": "blogger",
+    "taskId": "blogger.channel",
+    "screenId": "blogger.channel.public-link",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "blogger.blogger.channel.public-link.screen.png",
+    "sha256": "0ce4939e5551043a91a7198e3248225b11a358dbbebe92d69a9838d24b41bcd5",
+    "bytes": 681599,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "blogger.channel.public-link",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "blogger.blogger.channel.subscribers.screen",
+    "missionId": "blogger",
+    "taskId": "blogger.channel",
+    "screenId": "blogger.channel.subscribers",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "blogger.blogger.channel.subscribers.screen.png",
+    "sha256": "651157550fdb07684899c078a1994b0cbdbde115aa75d4bb49d7ad2450aaacf7",
+    "bytes": 621576,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "blogger.channel.subscribers",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "blogger.blogger.channel.created.screen",
+    "missionId": "blogger",
+    "taskId": "blogger.channel",
+    "screenId": "blogger.channel.created",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "blogger.blogger.channel.created.screen.png",
+    "sha256": "af42ac397f2af10c44c7f793e919d1d96fbbb7992df4866af94aac1870bef97a",
+    "bytes": 724830,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "blogger.channel.created",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "blogger.blogger.comments.post.screen",
+    "missionId": "blogger",
+    "taskId": "blogger.comments",
+    "screenId": "blogger.comments.post",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "blogger.blogger.comments.post.screen.png",
+    "sha256": "b2019f8f7bcbfe9dcdb34f9f8652d3a867d525a4fb1a033d1da18f7a36df4d81",
+    "bytes": 830043,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "blogger.comments.post",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "blogger.blogger.comments.input.screen",
+    "missionId": "blogger",
+    "taskId": "blogger.comments",
+    "screenId": "blogger.comments.input",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "blogger.blogger.comments.input.screen.png",
+    "sha256": "c68cb13d081968cec14b84912f930d460b69fad5a406d33dfc75edea23020831",
+    "bytes": 701893,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "blogger.comments.input",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "blogger.blogger.comments.input.filled",
+    "missionId": "blogger",
+    "taskId": "blogger.comments",
+    "screenId": "blogger.comments.input",
+    "variant": "filled",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "blogger.blogger.comments.input.filled.png",
+    "sha256": "5c6cb915cf6077c2a71405bd9682db5efab2796ca85dcf0d1235f6d2e028ef2d",
+    "bytes": 707293,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "blogger.comments.input",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "blogger.blogger.comments.input.keyboard",
+    "missionId": "blogger",
+    "taskId": "blogger.comments",
+    "screenId": "blogger.comments.input",
+    "variant": "keyboard",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "blogger.blogger.comments.input.keyboard.png",
+    "sha256": "bb23a6611077bba9d443d654f246c413f954506bb278a245260179f86b323bd0",
+    "bytes": 827195,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "blogger.comments.input",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "blogger.blogger.comments.result.screen",
+    "missionId": "blogger",
+    "taskId": "blogger.comments",
+    "screenId": "blogger.comments.result",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "blogger.blogger.comments.result.screen.png",
+    "sha256": "82856f845eb9224ff3ddf5ff843902a8e51999d1952d367e3758aaa80c6a7d80",
+    "bytes": 738549,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "blogger.comments.result",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "blogger.blogger.comments.returned-post.screen",
+    "missionId": "blogger",
+    "taskId": "blogger.comments",
+    "screenId": "blogger.comments.returned-post",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "blogger.blogger.comments.returned-post.screen.png",
+    "sha256": "de5cf93a3cab3b8e805687cf71e55b7896a627837d74cb36e7f8b44078a4430f",
+    "bytes": 788662,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "blogger.comments.returned-post",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "blogger.blogger.statistics.menu.screen",
+    "missionId": "blogger",
+    "taskId": "blogger.statistics",
+    "screenId": "blogger.statistics.menu",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "blogger.blogger.statistics.menu.screen.png",
+    "sha256": "f096d921a749827fd172792a965cd1408a099e82f3e9f9fb5f2c9f14242dca4b",
+    "bytes": 669916,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "blogger.statistics.menu",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "blogger.blogger.statistics.statistics.screen",
+    "missionId": "blogger",
+    "taskId": "blogger.statistics",
+    "screenId": "blogger.statistics.statistics",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "blogger.blogger.statistics.statistics.screen.png",
+    "sha256": "b1a664a68b966e74e2b043ec8f208993d66bdab8d31c8599c17475974a9a4184",
+    "bytes": 623335,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "blogger.statistics.statistics",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "blogger.completed.final",
+    "missionId": "blogger",
+    "taskId": null,
+    "screenId": "completed",
+    "variant": "final",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "blogger.completed.final.png",
+    "sha256": "704de27f462c689be238a5d7d08f6ea7ac689f4c48dfd85e22a897665341ff9b",
+    "bytes": 508426,
+    "diagnostics": {
+      "state": {
+        "phase": "complete",
+        "screen": null,
+        "phonePresence": 0,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "digital-id.scan.palm",
+    "missionId": "digital-id",
+    "taskId": null,
+    "screenId": "scan",
+    "variant": "palm",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "digital-id.scan.palm.png",
+    "sha256": "20723e658116685fcd308e572a99c028d270a8b95f05a1f7bd2c74d253c6c733",
+    "bytes": 601265,
+    "diagnostics": {
+      "state": {
+        "phase": "palm",
+        "screen": null,
+        "phonePresence": 0,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "digital-id.digital-id.create-id.start.screen",
+    "missionId": "digital-id",
+    "taskId": "digital-id.create-id",
+    "screenId": "digital-id.create-id.start",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "digital-id.digital-id.create-id.start.screen.png",
+    "sha256": "9577475f4df3851710afbf6667f739fd1efb1ff5da4b04e49ce30b6016d97fe3",
+    "bytes": 702394,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "digital-id.create-id.start",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "digital-id.digital-id.create-id.documents.screen",
+    "missionId": "digital-id",
+    "taskId": "digital-id.create-id",
+    "screenId": "digital-id.create-id.documents",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "digital-id.digital-id.create-id.documents.screen.png",
+    "sha256": "d8825dc5657e0eb2a3ddbe3c68f227b2c252db7c2a2bc55f9a1de44f0313e2f9",
+    "bytes": 568168,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "digital-id.create-id.documents",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "digital-id.digital-id.create-id.confirm.screen",
+    "missionId": "digital-id",
+    "taskId": "digital-id.create-id",
+    "screenId": "digital-id.create-id.confirm",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "digital-id.digital-id.create-id.confirm.screen.png",
+    "sha256": "f9ca7ba6a2b80a0857fc1bb6361daebfe10b72026aa3e261ebebefc5db97eec5",
+    "bytes": 650393,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "digital-id.create-id.confirm",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "digital-id.digital-id.create-id.quick.screen",
+    "missionId": "digital-id",
+    "taskId": "digital-id.create-id",
+    "screenId": "digital-id.create-id.quick",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "digital-id.digital-id.create-id.quick.screen.png",
+    "sha256": "6e6d1a220d416bf533d0241fa7c6a5576f41abbde1af397b519f5367bdcc131d",
+    "bytes": 622233,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "digital-id.create-id.quick",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "digital-id.digital-id.create-id.biometry.screen",
+    "missionId": "digital-id",
+    "taskId": "digital-id.create-id",
+    "screenId": "digital-id.create-id.biometry",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "digital-id.digital-id.create-id.biometry.screen.png",
+    "sha256": "e99ee25ff298c877aad323740f5a5b7fb3cc423bb9653567aac57146614b40ea",
+    "bytes": 584536,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "digital-id.create-id.biometry",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "digital-id.digital-id.create-id.ready.screen",
+    "missionId": "digital-id",
+    "taskId": "digital-id.create-id",
+    "screenId": "digital-id.create-id.ready",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "digital-id.digital-id.create-id.ready.screen.png",
+    "sha256": "c04c2c569092ccbe0744e11113644d3c5a311451488bea1feb06df2efe1dfaf9",
+    "bytes": 743566,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "digital-id.create-id.ready",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "digital-id.digital-id.hotel.arrival.screen",
+    "missionId": "digital-id",
+    "taskId": "digital-id.hotel",
+    "screenId": "digital-id.hotel.arrival",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "digital-id.digital-id.hotel.arrival.screen.png",
+    "sha256": "219c9bd516d742fd0edbcb914782a165de710e643d1d613e5eb4d2fb79161f4a",
+    "bytes": 1161392,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "digital-id.hotel.arrival",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "digital-id.digital-id.hotel.present.screen",
+    "missionId": "digital-id",
+    "taskId": "digital-id.hotel",
+    "screenId": "digital-id.hotel.present",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "digital-id.digital-id.hotel.present.screen.png",
+    "sha256": "1175f237549cded442ff13e77e332bc20a1b92f292698b63f3dc59b79846bff3",
+    "bytes": 1095530,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "digital-id.hotel.present",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "digital-id.digital-id.hotel.result.screen",
+    "missionId": "digital-id",
+    "taskId": "digital-id.hotel",
+    "screenId": "digital-id.hotel.result",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "digital-id.digital-id.hotel.result.screen.png",
+    "sha256": "73d198bd23b2e2d8c17f2bd70a687abbb89d621f744c400684449a55f097cabc",
+    "bytes": 957221,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "digital-id.hotel.result",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "digital-id.digital-id.benefit.arrival.screen",
+    "missionId": "digital-id",
+    "taskId": "digital-id.benefit",
+    "screenId": "digital-id.benefit.arrival",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "digital-id.digital-id.benefit.arrival.screen.png",
+    "sha256": "995ec7831850301834666dbcb7e51383aa0de77388841c65c7e847b102e158a3",
+    "bytes": 1147929,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "digital-id.benefit.arrival",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "digital-id.digital-id.benefit.present.screen",
+    "missionId": "digital-id",
+    "taskId": "digital-id.benefit",
+    "screenId": "digital-id.benefit.present",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "digital-id.digital-id.benefit.present.screen.png",
+    "sha256": "491a0518c01ebc6edab71628a4f293a5445ec97b2cb83f10ce2d448882c839b5",
+    "bytes": 1093678,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "digital-id.benefit.present",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "digital-id.digital-id.benefit.result.screen",
+    "missionId": "digital-id",
+    "taskId": "digital-id.benefit",
+    "screenId": "digital-id.benefit.result",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "digital-id.digital-id.benefit.result.screen.png",
+    "sha256": "10f2b75f3221bf9cf4ea580f6f55fb490ee6499082f6fce87cbf5a90aeb3cc29",
+    "bytes": 935024,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "digital-id.benefit.result",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "digital-id.digital-id.age.arrival.screen",
+    "missionId": "digital-id",
+    "taskId": "digital-id.age",
+    "screenId": "digital-id.age.arrival",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "digital-id.digital-id.age.arrival.screen.png",
+    "sha256": "9acd236fab89aa54f521a337f0d6097bec18229bb81085cf064cf6f81902bac3",
+    "bytes": 1161920,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "digital-id.age.arrival",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "digital-id.digital-id.age.present.screen",
+    "missionId": "digital-id",
+    "taskId": "digital-id.age",
+    "screenId": "digital-id.age.present",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "digital-id.digital-id.age.present.screen.png",
+    "sha256": "013d0e700613165dc70ac92cd08385c7245622e4ecb09816d2927adeac269e04",
+    "bytes": 1144438,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "digital-id.age.present",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "digital-id.digital-id.age.result.screen",
+    "missionId": "digital-id",
+    "taskId": "digital-id.age",
+    "screenId": "digital-id.age.result",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "digital-id.digital-id.age.result.screen.png",
+    "sha256": "eba481e8ba980ba41351a9d66895d70b83f1a69be40fe21127437b7daf11c0e8",
+    "bytes": 987777,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "digital-id.age.result",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "digital-id.completed.final",
+    "missionId": "digital-id",
+    "taskId": null,
+    "screenId": "completed",
+    "variant": "final",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "digital-id.completed.final.png",
+    "sha256": "7021a79a1209bde54d21cb4e42d383b21c015791b63858010332849817866d69",
+    "bytes": 493341,
+    "diagnostics": {
+      "state": {
+        "phase": "complete",
+        "screen": null,
+        "phonePresence": 0,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "communication.scan.palm",
+    "missionId": "communication",
+    "taskId": null,
+    "screenId": "scan",
+    "variant": "palm",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "communication.scan.palm.png",
+    "sha256": "d8c5a1dcbc06b0b6446a01041aa0194203cb47ba93fb590b76add3b93c48e5f9",
+    "bytes": 654188,
+    "diagnostics": {
+      "state": {
+        "phase": "palm",
+        "screen": null,
+        "phonePresence": 0,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "communication.communication.call.chat.screen",
+    "missionId": "communication",
+    "taskId": "communication.call",
+    "screenId": "communication.call.chat",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "communication.communication.call.chat.screen.png",
+    "sha256": "ae7a6d6143932da516ee5d094ec4a70f5eb83253cef3d7cb332e8bb4b4f956bf",
+    "bytes": 743736,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "communication.call.chat",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "communication.communication.call.connected.screen",
+    "missionId": "communication",
+    "taskId": "communication.call",
+    "screenId": "communication.call.connected",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "communication.communication.call.connected.screen.png",
+    "sha256": "9de312c0d6cb62637ad6a81690ea2519b213d4b0ea552bfe6d752141a225444e",
+    "bytes": 712688,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "communication.call.connected",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "communication.communication.call.result.screen",
+    "missionId": "communication",
+    "taskId": "communication.call",
+    "screenId": "communication.call.result",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "communication.communication.call.result.screen.png",
+    "sha256": "ebadf82dd15eefdd014d899e10ebb14ad996c3ab105a76b9ea408e4a5cd04a2b",
+    "bytes": 869355,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "communication.call.result",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "communication.communication.message.voice-start.screen",
+    "missionId": "communication",
+    "taskId": "communication.message",
+    "screenId": "communication.message.voice-start",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "communication.communication.message.voice-start.screen.png",
+    "sha256": "41e91ae387877fb984c1b16d5d359604521fde9c55c663a7070b44abde3994cd",
+    "bytes": 778488,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "communication.message.voice-start",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "communication.communication.message.voice-stop.screen",
+    "missionId": "communication",
+    "taskId": "communication.message",
+    "screenId": "communication.message.voice-stop",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "communication.communication.message.voice-stop.screen.png",
+    "sha256": "b4790ffb39405c8cab90d0b1f7280035df43d0f4201426a5086b0cc2a93e16f5",
+    "bytes": 796048,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "communication.message.voice-stop",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "communication.communication.message.voice-preview.screen",
+    "missionId": "communication",
+    "taskId": "communication.message",
+    "screenId": "communication.message.voice-preview",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "communication.communication.message.voice-preview.screen.png",
+    "sha256": "c88429c8477780c6db99d257e36d64a5f855aed09f6606e2d834dbe046900c75",
+    "bytes": 721131,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "communication.message.voice-preview",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "communication.communication.message.voice-sent.screen",
+    "missionId": "communication",
+    "taskId": "communication.message",
+    "screenId": "communication.message.voice-sent",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "communication.communication.message.voice-sent.screen.png",
+    "sha256": "7d9c5d96db7a16c388bfe5d0dff7f44e309007b7fcc04a164584e58723b60b34",
+    "bytes": 856547,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "communication.message.voice-sent",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "communication.communication.message.video-start.screen",
+    "missionId": "communication",
+    "taskId": "communication.message",
+    "screenId": "communication.message.video-start",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "communication.communication.message.video-start.screen.png",
+    "sha256": "f668d58a395576460673e46630a549155d3b45970edf8e41f29ce88516219736",
+    "bytes": 807965,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "communication.message.video-start",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "communication.communication.message.video-stop.screen",
+    "missionId": "communication",
+    "taskId": "communication.message",
+    "screenId": "communication.message.video-stop",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "communication.communication.message.video-stop.screen.png",
+    "sha256": "9ffc8c3cae21522492580011eed90c831d4e5be6cbf094e8d55beedefa18d76b",
+    "bytes": 722375,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "communication.message.video-stop",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "communication.communication.message.video-preview.screen",
+    "missionId": "communication",
+    "taskId": "communication.message",
+    "screenId": "communication.message.video-preview",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "communication.communication.message.video-preview.screen.png",
+    "sha256": "aba26b0220662eecc703ef77bd9706202b209588688f6501a31cb80b919acd28",
+    "bytes": 728154,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "communication.message.video-preview",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "communication.communication.message.video-sent.screen",
+    "missionId": "communication",
+    "taskId": "communication.message",
+    "screenId": "communication.message.video-sent",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "communication.communication.message.video-sent.screen.png",
+    "sha256": "c3d0e1b32aa40986271e1065cbc30f1029ef887001e3d5cc6f8f70c8620b7f0c",
+    "bytes": 812797,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "communication.message.video-sent",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "communication.communication.reaction.chat.screen",
+    "missionId": "communication",
+    "taskId": "communication.reaction",
+    "screenId": "communication.reaction.chat",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "communication.communication.reaction.chat.screen.png",
+    "sha256": "eef930612d799e711b2716fccdff18c0fb77deba96f05b94a43ed1d132e3c7c8",
+    "bytes": 828109,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "communication.reaction.chat",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "communication.communication.reaction.stickers.screen",
+    "missionId": "communication",
+    "taskId": "communication.reaction",
+    "screenId": "communication.reaction.stickers",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "communication.communication.reaction.stickers.screen.png",
+    "sha256": "e2099cc99f481e3c7433c04f5cff67ac028d4c4a28453df109903908690dc1e8",
+    "bytes": 760342,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "communication.reaction.stickers",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "communication.communication.reaction.preview.screen",
+    "missionId": "communication",
+    "taskId": "communication.reaction",
+    "screenId": "communication.reaction.preview",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "communication.communication.reaction.preview.screen.png",
+    "sha256": "3fd6b48fddd40a5cdf01818393c1c154ac2937b0bf98e4d8323b34808fa58e9c",
+    "bytes": 753655,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "communication.reaction.preview",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "communication.communication.reaction.sent.screen",
+    "missionId": "communication",
+    "taskId": "communication.reaction",
+    "screenId": "communication.reaction.sent",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "communication.communication.reaction.sent.screen.png",
+    "sha256": "8be46064e185f04ad9804e76b07614d363896bf8104c8ea4ff38b61a34a8f16d",
+    "bytes": 874059,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "communication.reaction.sent",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "communication.communication.story.start.screen",
+    "missionId": "communication",
+    "taskId": "communication.story",
+    "screenId": "communication.story.start",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "communication.communication.story.start.screen.png",
+    "sha256": "01e5f963f34c22ba5a7d6ac467b2258fb5b0d612a5517ae7c1b405187f919234",
+    "bytes": 716273,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "communication.story.start",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "communication.communication.story.duration.screen",
+    "missionId": "communication",
+    "taskId": "communication.story",
+    "screenId": "communication.story.duration",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "communication.communication.story.duration.screen.png",
+    "sha256": "3727045111d73fb454d7f43214a1cde3012bbeb1c6f3c51cf6a0bd793b6860fe",
+    "bytes": 715185,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "communication.story.duration",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "communication.communication.story.audience.screen",
+    "missionId": "communication",
+    "taskId": "communication.story",
+    "screenId": "communication.story.audience",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "communication.communication.story.audience.screen.png",
+    "sha256": "9816ba474dcc2d5d5c0a622ca43723c20ed4cc5339b568a1deee69606b1a8e5c",
+    "bytes": 787408,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "communication.story.audience",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "communication.communication.story.ready.screen",
+    "missionId": "communication",
+    "taskId": "communication.story",
+    "screenId": "communication.story.ready",
+    "variant": "screen",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "communication.communication.story.ready.screen.png",
+    "sha256": "8da24b0e1eb0f9da0aa1218334ea485236d4cca9682e1ec872a9379ea78a2b4e",
+    "bytes": 1050889,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "communication.story.ready",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "communication.completed.final",
+    "missionId": "communication",
+    "taskId": null,
+    "screenId": "completed",
+    "variant": "final",
+    "sector": null,
+    "width": 1080,
+    "height": 1920,
+    "image": "communication.completed.final.png",
+    "sha256": "ac5a3bc2ed89cd88d6f5489e7782b0d53da36b7ae785f27f0ecc43b7b8b5ac72",
+    "bytes": 506639,
+    "diagnostics": {
+      "state": {
+        "phase": "complete",
+        "screen": null,
+        "phonePresence": 0,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.cafe.scan.palm",
+    "missionId": "business",
+    "taskId": null,
+    "screenId": "scan",
+    "variant": "palm",
+    "sector": "cafe",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.cafe.scan.palm.png",
+    "sha256": "3dbddf3aa828c4f7848e080ff85efee2e9a2f168c581069effef7bd675a5ab6e",
+    "bytes": 560397,
+    "diagnostics": {
+      "state": {
+        "phase": "palm",
+        "screen": null,
+        "phonePresence": 0,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.cafe.business.platform.business-type.screen",
+    "missionId": "business",
+    "taskId": "business.platform",
+    "screenId": "business.platform.business-type",
+    "variant": "screen",
+    "sector": "cafe",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.cafe.business.platform.business-type.screen.png",
+    "sha256": "84beb80699ae0c8718eb1306e0a6279dc59c7bd0342e8d18f7c058f0fa59069d",
+    "bytes": 721790,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.platform.business-type",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.cafe.business.platform.login.screen",
+    "missionId": "business",
+    "taskId": "business.platform",
+    "screenId": "business.platform.login",
+    "variant": "screen",
+    "sector": "cafe",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.cafe.business.platform.login.screen.png",
+    "sha256": "4b052c287d0dbfdd82413c654250f4aaa57cbf91d8acd1bddcce9a9b94d7b3c3",
+    "bytes": 616669,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.platform.login",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.cafe.business.platform.profile.screen",
+    "missionId": "business",
+    "taskId": "business.platform",
+    "screenId": "business.platform.profile",
+    "variant": "screen",
+    "sector": "cafe",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.cafe.business.platform.profile.screen.png",
+    "sha256": "4266ae17eabee7fb158a478593e6ea824d1c5f39fb458ea881cbfee83c67a347",
+    "bytes": 492348,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.platform.profile",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.cafe.business.platform.verification.screen",
+    "missionId": "business",
+    "taskId": "business.platform",
+    "screenId": "business.platform.verification",
+    "variant": "screen",
+    "sector": "cafe",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.cafe.business.platform.verification.screen.png",
+    "sha256": "ca9d9027ed9c9a732380cb9f5c9d12c3d6290b3e0ead4be5c5cfa94466acaedd",
+    "bytes": 424349,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.platform.verification",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.cafe.business.platform.ready.result",
+    "missionId": "business",
+    "taskId": "business.platform",
+    "screenId": "business.platform.ready",
+    "variant": "result",
+    "sector": "cafe",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.cafe.business.platform.ready.result.png",
+    "sha256": "c768f98a3262e675afba3011ffe2c4ee250424cbc07a7fc039f2452155c7b717",
+    "bytes": 618554,
+    "diagnostics": {
+      "state": {
+        "phase": "result",
+        "screen": "business.platform.ready",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.cafe.business.channel.create.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.create",
+    "variant": "screen",
+    "sector": "cafe",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.cafe.business.channel.create.screen.png",
+    "sha256": "a107842e30c79d9d60b95249b949577480f744c4fa1b3f20349d98c7948f5f59",
+    "bytes": 521664,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.create",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.cafe.business.channel.continue.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.continue",
+    "variant": "screen",
+    "sector": "cafe",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.cafe.business.channel.continue.screen.png",
+    "sha256": "ecd9c3b81de94a22745b2ad3b1f6b3bf0b67e94fee03f4e8896f9072a057730c",
+    "bytes": 433926,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.continue",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.cafe.business.channel.open.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.open",
+    "variant": "screen",
+    "sector": "cafe",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.cafe.business.channel.open.screen.png",
+    "sha256": "045556391fbb0d9ce3f80247855bdda7432738be784df1076b307ca91b85ee53",
+    "bytes": 790478,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.open",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.cafe.business.channel.setup.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.setup",
+    "variant": "screen",
+    "sector": "cafe",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.cafe.business.channel.setup.screen.png",
+    "sha256": "9d77b1a71367f5bf4dc73c8c183e85513f9adbe75aa62609b983697af6cc2c69",
+    "bytes": 726571,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.setup",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.cafe.business.channel.details.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.details",
+    "variant": "screen",
+    "sector": "cafe",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.cafe.business.channel.details.screen.png",
+    "sha256": "0af0ec8578d184b6a21168b6fdd1c3cd68e672eb7d4f53b9b28df33a453e509f",
+    "bytes": 678283,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.details",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.cafe.business.channel.description.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.description",
+    "variant": "screen",
+    "sector": "cafe",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.cafe.business.channel.description.screen.png",
+    "sha256": "1484e231cb5c6dbe296ccaeab999a044a0a8fa8c7444cbd99382d304d0dafc15",
+    "bytes": 798952,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.description",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.cafe.business.channel.type.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.type",
+    "variant": "screen",
+    "sector": "cafe",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.cafe.business.channel.type.screen.png",
+    "sha256": "b647823ba271261552c9e58d8cba53fb93f58ec020194484560225d174fa8e21",
+    "bytes": 741424,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.type",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.cafe.business.channel.publish.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.publish",
+    "variant": "screen",
+    "sector": "cafe",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.cafe.business.channel.publish.screen.png",
+    "sha256": "4b54e5023b49e633c81dda94dcae2f3fd591c1aa7967381ea7476c8b8b0afa5f",
+    "bytes": 696081,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.publish",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.cafe.business.channel.result.activity",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.result",
+    "variant": "activity",
+    "sector": "cafe",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.cafe.business.channel.result.activity.png",
+    "sha256": "f34b4606a2c02e126200180e09742f9b02b70fd1bfe773759f4b0cd967c3a84f",
+    "bytes": 642359,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.result",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.cafe.business.channel.result.success",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.result",
+    "variant": "success",
+    "sector": "cafe",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.cafe.business.channel.result.success.png",
+    "sha256": "6152051e75725f3d79aa44e667cf255eeaf4247c6caa23f22debe1bacadd5d60",
+    "bytes": 768676,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.result",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.cafe.business.bot.create.screen",
+    "missionId": "business",
+    "taskId": "business.bot",
+    "screenId": "business.bot.create",
+    "variant": "screen",
+    "sector": "cafe",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.cafe.business.bot.create.screen.png",
+    "sha256": "bb49a52095e8379da3ad27ff143a2d3fb20a979d81e447c7c0a1f570b211e297",
+    "bytes": 514746,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.bot.create",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.cafe.business.bot.filled.screen",
+    "missionId": "business",
+    "taskId": "business.bot",
+    "screenId": "business.bot.filled",
+    "variant": "screen",
+    "sector": "cafe",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.cafe.business.bot.filled.screen.png",
+    "sha256": "07c4a0f4414f2dbcbec5889e5797229b6ce6c84b3b32e05b3ae7ac6943a10191",
+    "bytes": 562248,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.bot.filled",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.cafe.business.bot.ready.screen",
+    "missionId": "business",
+    "taskId": "business.bot",
+    "screenId": "business.bot.ready",
+    "variant": "screen",
+    "sector": "cafe",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.cafe.business.bot.ready.screen.png",
+    "sha256": "7db7c87185de035a545034399b4a6735389cd173cadf91d6e0592cb24a7b5347",
+    "bytes": 550393,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.bot.ready",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.cafe.business.bot.result.screen",
+    "missionId": "business",
+    "taskId": "business.bot",
+    "screenId": "business.bot.result",
+    "variant": "screen",
+    "sector": "cafe",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.cafe.business.bot.result.screen.png",
+    "sha256": "0dbe342428e432ba429a6372c49438a1e891b94b4b0614ad5506302dc51f516c",
+    "bytes": 686800,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.bot.result",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.cafe.business.store.dashboard.screen",
+    "missionId": "business",
+    "taskId": "business.store",
+    "screenId": "business.store.dashboard",
+    "variant": "screen",
+    "sector": "cafe",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.cafe.business.store.dashboard.screen.png",
+    "sha256": "1c4caa82ea683ded86baa3011af4a5764b9967877e89715ba5671f41060cfce6",
+    "bytes": 496479,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.store.dashboard",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.cafe.business.store.settings.screen",
+    "missionId": "business",
+    "taskId": "business.store",
+    "screenId": "business.store.settings",
+    "variant": "screen",
+    "sector": "cafe",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.cafe.business.store.settings.screen.png",
+    "sha256": "097ab224eb83590a391d5999d232d79f463218ee0f0b3d80460f98b6fe53feec",
+    "bytes": 611166,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.store.settings",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.cafe.business.store.start.activity",
+    "missionId": "business",
+    "taskId": "business.store",
+    "screenId": "business.store.start",
+    "variant": "activity",
+    "sector": "cafe",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.cafe.business.store.start.activity.png",
+    "sha256": "5de880005db5399c0c993a13cfb4f6be36be4e8c83fc2b22c64ea42682c720d9",
+    "bytes": 840001,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.store.start",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.cafe.business.store.start.success",
+    "missionId": "business",
+    "taskId": "business.store",
+    "screenId": "business.store.start",
+    "variant": "success",
+    "sector": "cafe",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.cafe.business.store.start.success.png",
+    "sha256": "87011d362ebe421bdc7b93297e2f2e353fce189021b2e259c94a4ab641f758a3",
+    "bytes": 826193,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.store.start",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.cafe.completed.final",
+    "missionId": "business",
+    "taskId": null,
+    "screenId": "completed",
+    "variant": "final",
+    "sector": "cafe",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.cafe.completed.final.png",
+    "sha256": "aa4c901dd0828216eb4650d59af831ed3cbc05fd6fecded7a61d861ba9eab268",
+    "bytes": 502078,
+    "diagnostics": {
+      "state": {
+        "phase": "complete",
+        "screen": null,
+        "phonePresence": 0,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.flowers.scan.palm",
+    "missionId": "business",
+    "taskId": null,
+    "screenId": "scan",
+    "variant": "palm",
+    "sector": "flowers",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.flowers.scan.palm.png",
+    "sha256": "728a8f167adf542b81c3d3cc16bed632e652302c438eb3ab3136f78f6d55f61b",
+    "bytes": 545454,
+    "diagnostics": {
+      "state": {
+        "phase": "palm",
+        "screen": null,
+        "phonePresence": 0,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.flowers.business.platform.business-type.screen",
+    "missionId": "business",
+    "taskId": "business.platform",
+    "screenId": "business.platform.business-type",
+    "variant": "screen",
+    "sector": "flowers",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.flowers.business.platform.business-type.screen.png",
+    "sha256": "dcedeb27f98fcc5a0e524b7a54f99317b58a19b9cafa7739f4210b5f780e7e5f",
+    "bytes": 751970,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.platform.business-type",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.flowers.business.platform.login.screen",
+    "missionId": "business",
+    "taskId": "business.platform",
+    "screenId": "business.platform.login",
+    "variant": "screen",
+    "sector": "flowers",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.flowers.business.platform.login.screen.png",
+    "sha256": "a62cc5b8e6d6dc6b9df80397df7eab7b238af3a6fb062fb86c219487ee8498ba",
+    "bytes": 618083,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.platform.login",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.flowers.business.platform.profile.screen",
+    "missionId": "business",
+    "taskId": "business.platform",
+    "screenId": "business.platform.profile",
+    "variant": "screen",
+    "sector": "flowers",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.flowers.business.platform.profile.screen.png",
+    "sha256": "85924974fa7b0dd7463033ed73bc1b63af0cd65fe64bd8d33c971524f04d9263",
+    "bytes": 430717,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.platform.profile",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.flowers.business.platform.verification.screen",
+    "missionId": "business",
+    "taskId": "business.platform",
+    "screenId": "business.platform.verification",
+    "variant": "screen",
+    "sector": "flowers",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.flowers.business.platform.verification.screen.png",
+    "sha256": "ffe7907383b8a51b5405fa0462519441e8bab3584b415ecc1728c0f09aea494c",
+    "bytes": 538586,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.platform.verification",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.flowers.business.platform.ready.result",
+    "missionId": "business",
+    "taskId": "business.platform",
+    "screenId": "business.platform.ready",
+    "variant": "result",
+    "sector": "flowers",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.flowers.business.platform.ready.result.png",
+    "sha256": "b2660ffb6072a1ce543c09313f6957cc41e694f77f37b641214721328a78efe5",
+    "bytes": 563438,
+    "diagnostics": {
+      "state": {
+        "phase": "result",
+        "screen": "business.platform.ready",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.flowers.business.channel.create.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.create",
+    "variant": "screen",
+    "sector": "flowers",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.flowers.business.channel.create.screen.png",
+    "sha256": "35331464854d68b00b1b797c922b6fb65260fbd8ae939f9c9db38acd8c45ba77",
+    "bytes": 541788,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.create",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.flowers.business.channel.continue.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.continue",
+    "variant": "screen",
+    "sector": "flowers",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.flowers.business.channel.continue.screen.png",
+    "sha256": "981343eef84f863cd3a492152cceaed581d63191455ffbd747ec09112240ceb9",
+    "bytes": 495718,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.continue",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.flowers.business.channel.open.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.open",
+    "variant": "screen",
+    "sector": "flowers",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.flowers.business.channel.open.screen.png",
+    "sha256": "57e273771c24469bfa26c384fdf1ae8dfaab751dba516725b2f4169b588659ea",
+    "bytes": 701036,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.open",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.flowers.business.channel.setup.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.setup",
+    "variant": "screen",
+    "sector": "flowers",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.flowers.business.channel.setup.screen.png",
+    "sha256": "1f2919117b6245c5124dfc2879caf3203dc75f886676a6b9788432f92daa9a7d",
+    "bytes": 717845,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.setup",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.flowers.business.channel.details.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.details",
+    "variant": "screen",
+    "sector": "flowers",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.flowers.business.channel.details.screen.png",
+    "sha256": "6d51ca2c089d09a5e4abca8ded41a08fb73eb9a67cfc08f777b23501c99f2191",
+    "bytes": 792478,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.details",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.flowers.business.channel.description.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.description",
+    "variant": "screen",
+    "sector": "flowers",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.flowers.business.channel.description.screen.png",
+    "sha256": "98f930f452769c4d74e76c464987f830bb9217fef99abd5b31a597ec067da03e",
+    "bytes": 748416,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.description",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.flowers.business.channel.type.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.type",
+    "variant": "screen",
+    "sector": "flowers",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.flowers.business.channel.type.screen.png",
+    "sha256": "c89d5b2ef186b8ef81a0dc9debce1eef83ec4bdac6af03743827bca7798b91e0",
+    "bytes": 680352,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.type",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.flowers.business.channel.publish.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.publish",
+    "variant": "screen",
+    "sector": "flowers",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.flowers.business.channel.publish.screen.png",
+    "sha256": "dda7d9603700157c594435263781beb7b70d251c671b2a4a92f688e3ff88755b",
+    "bytes": 765714,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.publish",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.flowers.business.channel.result.activity",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.result",
+    "variant": "activity",
+    "sector": "flowers",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.flowers.business.channel.result.activity.png",
+    "sha256": "0ae4e3003662a8cf40a7067d66cee1cae3787d0d25e8088536a51612a2744d90",
+    "bytes": 668619,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.result",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.flowers.business.channel.result.success",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.result",
+    "variant": "success",
+    "sector": "flowers",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.flowers.business.channel.result.success.png",
+    "sha256": "32f523f7e4f00b132b9a8428bb5889639ec1d56b583d7828ca50639210a2e41b",
+    "bytes": 800536,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.result",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.flowers.business.bot.create.screen",
+    "missionId": "business",
+    "taskId": "business.bot",
+    "screenId": "business.bot.create",
+    "variant": "screen",
+    "sector": "flowers",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.flowers.business.bot.create.screen.png",
+    "sha256": "c8653b1104ef031c8028de69d4f7a8440b8d749c7edbb0238aba3d813540c3c9",
+    "bytes": 574235,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.bot.create",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.flowers.business.bot.filled.screen",
+    "missionId": "business",
+    "taskId": "business.bot",
+    "screenId": "business.bot.filled",
+    "variant": "screen",
+    "sector": "flowers",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.flowers.business.bot.filled.screen.png",
+    "sha256": "f94f1c6db572b4ebaefa45b32d3595df3220981e81db6bf6ae214a321cccfeaf",
+    "bytes": 560109,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.bot.filled",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.flowers.business.bot.ready.screen",
+    "missionId": "business",
+    "taskId": "business.bot",
+    "screenId": "business.bot.ready",
+    "variant": "screen",
+    "sector": "flowers",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.flowers.business.bot.ready.screen.png",
+    "sha256": "c3cdc59a8e3a40c8190a1529bd9ee81e61ab1b90de029af06c141c34f7f46146",
+    "bytes": 481368,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.bot.ready",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.flowers.business.bot.result.screen",
+    "missionId": "business",
+    "taskId": "business.bot",
+    "screenId": "business.bot.result",
+    "variant": "screen",
+    "sector": "flowers",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.flowers.business.bot.result.screen.png",
+    "sha256": "7bfb0123cc962404a47639719f23834fd34930617e93331bb1990f125b3b3c57",
+    "bytes": 651552,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.bot.result",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.flowers.business.store.dashboard.screen",
+    "missionId": "business",
+    "taskId": "business.store",
+    "screenId": "business.store.dashboard",
+    "variant": "screen",
+    "sector": "flowers",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.flowers.business.store.dashboard.screen.png",
+    "sha256": "95f32a90ce4edd7508319c8df3806aab3ca19456c2a2aeed192e637d32fe7873",
+    "bytes": 592064,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.store.dashboard",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.flowers.business.store.settings.screen",
+    "missionId": "business",
+    "taskId": "business.store",
+    "screenId": "business.store.settings",
+    "variant": "screen",
+    "sector": "flowers",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.flowers.business.store.settings.screen.png",
+    "sha256": "40c78e22218e9483f103aaf0aca6f83f15426f254dab46e9f9945c94851a77e8",
+    "bytes": 523807,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.store.settings",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.flowers.business.store.start.activity",
+    "missionId": "business",
+    "taskId": "business.store",
+    "screenId": "business.store.start",
+    "variant": "activity",
+    "sector": "flowers",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.flowers.business.store.start.activity.png",
+    "sha256": "ae50ed2abad7980124d0038f6fdc3789215c54526e49d4ddd20b26858fc7c897",
+    "bytes": 770510,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.store.start",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.flowers.business.store.start.success",
+    "missionId": "business",
+    "taskId": "business.store",
+    "screenId": "business.store.start",
+    "variant": "success",
+    "sector": "flowers",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.flowers.business.store.start.success.png",
+    "sha256": "f2f608b8f18d2451258d82b0210d5e0f415f2e8bbdd156349f90e32f4c18d85e",
+    "bytes": 783350,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.store.start",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.flowers.completed.final",
+    "missionId": "business",
+    "taskId": null,
+    "screenId": "completed",
+    "variant": "final",
+    "sector": "flowers",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.flowers.completed.final.png",
+    "sha256": "4771d81d5ed1bb6691c0b919fd3e97d68f37e8db92ecfd4d4d9fc083a3071dfe",
+    "bytes": 471963,
+    "diagnostics": {
+      "state": {
+        "phase": "complete",
+        "screen": null,
+        "phonePresence": 0,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.auto.scan.palm",
+    "missionId": "business",
+    "taskId": null,
+    "screenId": "scan",
+    "variant": "palm",
+    "sector": "auto",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.auto.scan.palm.png",
+    "sha256": "c9605b1c62c77dd3e33a5ec3fe53882769dc6f1466d970b1c24b6396efdd2282",
+    "bytes": 588252,
+    "diagnostics": {
+      "state": {
+        "phase": "palm",
+        "screen": null,
+        "phonePresence": 0,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.auto.business.platform.business-type.screen",
+    "missionId": "business",
+    "taskId": "business.platform",
+    "screenId": "business.platform.business-type",
+    "variant": "screen",
+    "sector": "auto",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.auto.business.platform.business-type.screen.png",
+    "sha256": "ef58784fcde00983e51a08317a2416faf76945478dc2868266b4263a62e1a25c",
+    "bytes": 681152,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.platform.business-type",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.auto.business.platform.login.screen",
+    "missionId": "business",
+    "taskId": "business.platform",
+    "screenId": "business.platform.login",
+    "variant": "screen",
+    "sector": "auto",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.auto.business.platform.login.screen.png",
+    "sha256": "ef6d61832df3bf12236c289cd51c5cba36db08b6c8855b8f1a0f211519e6515e",
+    "bytes": 671788,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.platform.login",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.auto.business.platform.profile.screen",
+    "missionId": "business",
+    "taskId": "business.platform",
+    "screenId": "business.platform.profile",
+    "variant": "screen",
+    "sector": "auto",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.auto.business.platform.profile.screen.png",
+    "sha256": "20efa5ebeb688497f8989408620cfb48fc97f03871658c624f3ae6cd60d5e263",
+    "bytes": 462781,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.platform.profile",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.auto.business.platform.verification.screen",
+    "missionId": "business",
+    "taskId": "business.platform",
+    "screenId": "business.platform.verification",
+    "variant": "screen",
+    "sector": "auto",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.auto.business.platform.verification.screen.png",
+    "sha256": "4c71e1f70a963c850fd39e97cb2a8148160589c2ae3f033646a5b4208e1ba2ed",
+    "bytes": 474954,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.platform.verification",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.auto.business.platform.ready.result",
+    "missionId": "business",
+    "taskId": "business.platform",
+    "screenId": "business.platform.ready",
+    "variant": "result",
+    "sector": "auto",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.auto.business.platform.ready.result.png",
+    "sha256": "d50a5035dd91a089eaf467f73f521288a7a6bffacafc8a292e051b4523d62534",
+    "bytes": 656394,
+    "diagnostics": {
+      "state": {
+        "phase": "result",
+        "screen": "business.platform.ready",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.auto.business.channel.create.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.create",
+    "variant": "screen",
+    "sector": "auto",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.auto.business.channel.create.screen.png",
+    "sha256": "3a8f7d07e0a25aea6ec271e319e715ec322c4f79f02b5c9b8aa32d3617bddadb",
+    "bytes": 476711,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.create",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.auto.business.channel.continue.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.continue",
+    "variant": "screen",
+    "sector": "auto",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.auto.business.channel.continue.screen.png",
+    "sha256": "ffc8efe6e87ec6b03da1d22d4fd56aa1da0a45bb2ac4c0cfa12ea9d6342034fb",
+    "bytes": 479974,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.continue",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.auto.business.channel.open.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.open",
+    "variant": "screen",
+    "sector": "auto",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.auto.business.channel.open.screen.png",
+    "sha256": "a934c91e6a0435879a21d1b2aad165da9625e94406333046c662f21b9c1878bb",
+    "bytes": 792304,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.open",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.auto.business.channel.setup.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.setup",
+    "variant": "screen",
+    "sector": "auto",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.auto.business.channel.setup.screen.png",
+    "sha256": "72b40c4f4d1f55fef6bd8b265d69dff998fdd32f42239bea4df4ffbe7634c36a",
+    "bytes": 747069,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.setup",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.auto.business.channel.details.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.details",
+    "variant": "screen",
+    "sector": "auto",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.auto.business.channel.details.screen.png",
+    "sha256": "71b43cd0540f8262481b69d16a48a324fb1e91d9af56ea3028c6f901a2b9d727",
+    "bytes": 670202,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.details",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.auto.business.channel.description.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.description",
+    "variant": "screen",
+    "sector": "auto",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.auto.business.channel.description.screen.png",
+    "sha256": "742d0c22e45456486cf74324ed4a6a3479a806d22971d08b8cfac8531b25ce3d",
+    "bytes": 761444,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.description",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.auto.business.channel.type.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.type",
+    "variant": "screen",
+    "sector": "auto",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.auto.business.channel.type.screen.png",
+    "sha256": "cce1aa4222d7ea31199b3d2ba7a19230e2b571cb09f79323f154986f4a32d083",
+    "bytes": 736265,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.type",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.auto.business.channel.publish.screen",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.publish",
+    "variant": "screen",
+    "sector": "auto",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.auto.business.channel.publish.screen.png",
+    "sha256": "8a785514af40a4dcca5b234aa7dbc4bb0794d4fa139145d4c95bff2617585121",
+    "bytes": 707372,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.publish",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.auto.business.channel.result.activity",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.result",
+    "variant": "activity",
+    "sector": "auto",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.auto.business.channel.result.activity.png",
+    "sha256": "367edf1dce19e2fadcd3324a959b03e5126090e94240139bab0b975befc8ba35",
+    "bytes": 719055,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.result",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.auto.business.channel.result.success",
+    "missionId": "business",
+    "taskId": "business.channel",
+    "screenId": "business.channel.result",
+    "variant": "success",
+    "sector": "auto",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.auto.business.channel.result.success.png",
+    "sha256": "7902a39ae4d3a228d1735db00ff2427df3f1462a8f68dbb12ac711667c4e8cfe",
+    "bytes": 715458,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.channel.result",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.auto.business.bot.create.screen",
+    "missionId": "business",
+    "taskId": "business.bot",
+    "screenId": "business.bot.create",
+    "variant": "screen",
+    "sector": "auto",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.auto.business.bot.create.screen.png",
+    "sha256": "9c03a8ea38e03790f2d128320d9ecb153310a9fe49cb0afb628801c3cb4df4bb",
+    "bytes": 549893,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.bot.create",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.auto.business.bot.filled.screen",
+    "missionId": "business",
+    "taskId": "business.bot",
+    "screenId": "business.bot.filled",
+    "variant": "screen",
+    "sector": "auto",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.auto.business.bot.filled.screen.png",
+    "sha256": "0dd1e7f66d0141d33a305593732b2b0036980601b5c9065b2b6e138684a2979e",
+    "bytes": 520475,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.bot.filled",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.auto.business.bot.ready.screen",
+    "missionId": "business",
+    "taskId": "business.bot",
+    "screenId": "business.bot.ready",
+    "variant": "screen",
+    "sector": "auto",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.auto.business.bot.ready.screen.png",
+    "sha256": "999bac3f112a2631eccf3393a18ce23614d444df69d3f51c90892f862baad517",
+    "bytes": 531189,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.bot.ready",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.auto.business.bot.result.screen",
+    "missionId": "business",
+    "taskId": "business.bot",
+    "screenId": "business.bot.result",
+    "variant": "screen",
+    "sector": "auto",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.auto.business.bot.result.screen.png",
+    "sha256": "04fabba2644efcb9548f15a74f4e71f1dc4066b63d04961b1a142c485c0d4100",
+    "bytes": 737374,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.bot.result",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.auto.business.store.dashboard.screen",
+    "missionId": "business",
+    "taskId": "business.store",
+    "screenId": "business.store.dashboard",
+    "variant": "screen",
+    "sector": "auto",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.auto.business.store.dashboard.screen.png",
+    "sha256": "4a30bb4f32331a43d5cef4b43b626ba27b754b375919da9b23dc277315c4f90a",
+    "bytes": 508912,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.store.dashboard",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.auto.business.store.settings.screen",
+    "missionId": "business",
+    "taskId": "business.store",
+    "screenId": "business.store.settings",
+    "variant": "screen",
+    "sector": "auto",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.auto.business.store.settings.screen.png",
+    "sha256": "187dd8592f42caa4cdec97dcde4781f52d113f00952751c72f652ff7425d2ac1",
+    "bytes": 588734,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.store.settings",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.auto.business.store.start.activity",
+    "missionId": "business",
+    "taskId": "business.store",
+    "screenId": "business.store.start",
+    "variant": "activity",
+    "sector": "auto",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.auto.business.store.start.activity.png",
+    "sha256": "21fe51141ecbe85c260f9d545d5ae96ed365ebbfef471bbac971ae4845b97134",
+    "bytes": 772109,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.store.start",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.auto.business.store.start.success",
+    "missionId": "business",
+    "taskId": "business.store",
+    "screenId": "business.store.start",
+    "variant": "success",
+    "sector": "auto",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.auto.business.store.start.success.png",
+    "sha256": "744a2c67251834713c3b616ce2cba1aebae0418421d4912d27d4abff5c3c7ae0",
+    "bytes": 815997,
+    "diagnostics": {
+      "state": {
+        "phase": "task",
+        "screen": "business.store.start",
+        "phonePresence": 1,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  },
+  {
+    "id": "business.auto.completed.final",
+    "missionId": "business",
+    "taskId": null,
+    "screenId": "completed",
+    "variant": "final",
+    "sector": "auto",
+    "width": 1080,
+    "height": 1920,
+    "image": "business.auto.completed.final.png",
+    "sha256": "f6806200c8745015a760a909ac522eae7c06eb9f64ab3ec7610f5ef7f6f11219",
+    "bytes": 497538,
+    "diagnostics": {
+      "state": {
+        "phase": "complete",
+        "screen": null,
+        "phonePresence": 0,
+        "contentPresence": 1,
+        "busy": false,
+        "contentBusy": false,
+        "viewport": {
+          "width": 1080,
+          "height": 1920
+        },
+        "pixelMap": true,
+        "production": true,
+        "development": false
+      },
+      "forbidden": []
+    }
+  }
+]

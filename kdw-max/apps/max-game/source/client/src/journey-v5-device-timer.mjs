@@ -1,3 +1,4 @@
+import {pixelMapPortrait} from './kdw-pixel-map.mjs';
 export const V5_DEVICE_TIMER=Object.freeze({width:360,height:160,radius:64});
 
 // Use the route's two left-hand slots, never the icons' animated poses.
@@ -9,6 +10,9 @@ export function v5DeviceTimerRect({left,top},nodeWidth,gap){
 export const V5_SCAN_WAIT_MS=30000;
 export function v5PalmWaitRects({left,top,width,height}){
  const centerX=left+width/2,centerY=top+height/2;
+ // PORTRAIT-LAYOUT-C: no room beside the palm on the 1080-wide stand; queue and
+ // wait timer stand in one row centred above it.
+ if(pixelMapPortrait()){const queue={left:centerX-V5_DEVICE_TIMER.width-24,top:top-64-V5_DEVICE_TIMER.height,...V5_DEVICE_TIMER};return {timer:{...queue,left:centerX+24},queue};}
  const timer={left:centerX-Math.max(500,width)/2-64-V5_DEVICE_TIMER.width,top:centerY-V5_DEVICE_TIMER.height/2,...V5_DEVICE_TIMER};
  return {timer,queue:{...timer,left:timer.left-48-V5_DEVICE_TIMER.width}};
 }

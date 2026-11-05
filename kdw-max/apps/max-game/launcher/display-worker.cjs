@@ -8,7 +8,9 @@ const spoutMode=config.output==='spout-dual';
 if(spoutMode){app.commandLine.appendSwitch('force-device-scale-factor','1');app.commandLine.appendSwitch('force-color-profile','srgb');app.commandLine.appendSwitch('disable-background-timer-throttling');app.commandLine.appendSwitch('disable-features','CalculateNativeWinOcclusion');}
 const pixelMap=config.production===true||process.argv.includes('--pixel-map'),pixelMapDebug=process.argv.includes('--pixel-map-debug');
 if(pixelMapDebug)config.production=false;
-if(pixelMap){const url=new URL(config.entry,'http://127.0.0.1');url.searchParams.set('view','pixel-map');if(pixelMapDebug)url.searchParams.set('pixel-map-debug','1');config.entry=url.pathname+url.search;app.commandLine.appendSwitch('force-device-scale-factor','1');}
+// PORTRAIT-LAYOUT-C: app.json display="portrait" (or --portrait) opens the vertical 1080×1920 stand.
+const portrait=config.display==='portrait'||process.argv.includes('--portrait'),mapWidth=portrait?1080:3072,mapHeight=portrait?1920:1536;
+if(pixelMap){const url=new URL(config.entry,'http://127.0.0.1');url.searchParams.set('view','pixel-map');if(portrait)url.searchParams.set('display','portrait');if(pixelMapDebug)url.searchParams.set('pixel-map-debug','1');config.entry=url.pathname+url.search;app.commandLine.appendSwitch('force-device-scale-factor','1');}
 const data = path.join(root,'data');fs.mkdirSync(data,{recursive:true});
 const stateFile = path.join(data,'output-worker.json');
 const smoke = process.argv.includes('--verify');
@@ -50,8 +52,8 @@ else {
       }
       return;
     }
-    const targetDisplay=pixelMap?screen.getAllDisplays().find(d=>d.size.width===3072&&d.size.height===1536):null;
-    window=new BrowserWindow({title:config.title,width:pixelMap?3072:config.window.width,height:pixelMap?1536:config.window.height,...(targetDisplay?{x:targetDisplay.bounds.x,y:targetDisplay.bounds.y}:{}),fullscreen:pixelMap||config.production===true,show:false,backgroundColor:'#0D001A',autoHideMenuBar:true,webPreferences:{devTools:config.production!==true,nodeIntegration:false,contextIsolation:true,sandbox:true,backgroundThrottling:false}});
+    const targetDisplay=pixelMap?screen.getAllDisplays().find(d=>d.size.width===mapWidth&&d.size.height===mapHeight):null;
+    window=new BrowserWindow({title:config.title,width:pixelMap?mapWidth:config.window.width,height:pixelMap?mapHeight:config.window.height,...(targetDisplay?{x:targetDisplay.bounds.x,y:targetDisplay.bounds.y}:{}),fullscreen:pixelMap||config.production===true,show:false,backgroundColor:'#0D001A',autoHideMenuBar:true,webPreferences:{devTools:config.production!==true,nodeIntegration:false,contextIsolation:true,sandbox:true,backgroundThrottling:false}});
     const entry=new URL(config.entry,host.origin).href;
     require('./renderer-recovery.cjs').attachRendererRecovery({window,entry,log});
     window.webContents.setWindowOpenHandler(()=>({action:'deny'}));

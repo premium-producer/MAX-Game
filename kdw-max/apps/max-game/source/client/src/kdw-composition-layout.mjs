@@ -1,4 +1,4 @@
-import {setKeyboardLayout} from './kdw-pixel-map.mjs';
+import {setKeyboardLayout,PIXEL_MAP,pixelMapPortrait} from './kdw-pixel-map.mjs';
 import {createTransitionControls} from './kdw-transition-controls.mjs';
 import {placeTransitionAction} from './kdw-transition-action.mjs';
 import {V5MotionValue} from './journey-v5-inertia.mjs';
@@ -17,8 +17,9 @@ const centeredRect=(r,x,y,k=1)=>({...r,x:x-r.width*k/2,y:y-r.height*k/2,width:r.
 // One logical phone-width unit follows scene/common scale, not the current
 // device aspect ratio or its separate size. Switching to a wide PC or enlarged
 // activity phone therefore changes only the device, not every neighbour.
-export function relativeCompositionRects({device,reference=null,button=null,icons=[],timers=[]},rules={},center=null,unit=device?.height*390/800,buttonPlacement='reference'){
+export function relativeCompositionRects({device,reference=null,button=null,icons=[],timers=[]},rules={},center=null,unit=device?.height*390/800,buttonPlacement='reference',frame=null){
  if(!device||!Object.keys(rules).length)return{device,reference,button,icons,timers};
+ if(rules.arrangement==='column'&&frame)return columnCompositionRects({device,reference,button,icons,timers},rules,frame,unit);
  const ds=rules.deviceScale??1,d=centeredRect(device,(rules.centered&&center?center.x:cx(device))+(rules.centerX??0)*unit/100,(rules.centered&&center?center.y:cy(device))+(rules.centerY??0)*unit*800/390/100,ds),width=unit;
  const order=icons.map((r,i)=>({r,i})),placed=[];
  let right=d.x-(rules.iconsDeviceGap===undefined?(order.length?device.x-order.at(-1).r.x-order.at(-1).r.width:0):rules.iconsDeviceGap*width/100);
@@ -35,6 +36,43 @@ export function relativeCompositionRects({device,reference=null,button=null,icon
  if(button&&!referenceButton){const gap=Math.max(0,button.y-device.y-device.height)*ds;b=centeredRect(button,cx(d),d.y+d.height+gap+button.height*ds/2,ds);}
  const oldCenter=icons.length?icons.reduce((v,r)=>v+cx(r),0)/icons.length:cx(device),newCenter=placed.length?placed.reduce((v,r)=>v+cx(r),0)/placed.length:cx(d);
  return{device:d,reference:ref,button:b,icons:placed,timers:timers.map(r=>centeredRect(r,cx(r)+newCenter-oldCenter,cy(d)+(cy(r)-cy(device))))};
+}
+// PORTRAIT-LAYOUT-C («Крупный телефон»): read-only parts on top (queue, timer,
+// logo, reference), everything touched within arm's reach. By the stand render
+// the reach zone is 0.9–1.8 m from the floor: 23.6–72.1% of the frame height
+// (rules.reachTop/reachBottom). The device fits into that zone, task icons stack
+// on its left, the transition button stands on its right at the lower edge of
+// the zone (under the device when a wide PC screen leaves no room). Falling
+// cards keep the field right of the device. Self-contained: the portrait
+// preview injects this function into the shipped bundle as is.
+export function columnCompositionRects({device,reference=null,button=null,icons=[],timers=[]},rules,frame,unit){
+ const pct=(value,fallback)=>(value??fallback)*unit/100,right=frame.x+frame.width;
+ const reachTop=frame.y+frame.height*(rules.reachTop??23.6)/100,reachBottom=frame.y+frame.height*(rules.reachBottom??72.1)/100;
+ // Queue and task timer: one row in the top right corner at 0.35 size, in their original order,
+ // as in the brief mock-up. The top left corner belongs to the portrait MAX logo (kdw-stand-adapter).
+ const timerScale=rules.timerScale??.35,row=timers.map((r,i)=>({r,i})).sort((a,b)=>a.r.x-b.r.x),placedTimers=[];
+ const rowHeight=row.length?Math.max(...row.map(({r})=>r.height*timerScale)):0;
+ for(let n=row.length-1,x=right;n>=0;n--){const {r,i}=row[n],w=r.width*timerScale;placedTimers[i]={...r,x:x-w,y:frame.y,width:w,height:r.height*timerScale};x-=w+pct(rules.timerGap,4);}
+ const top=frame.y+(row.length?rowHeight+pct(rules.timerReferenceGap,6):0)+pct(rules.topInset,0);
+ let ref=reference;
+ if(reference){const k=Math.min(frame.width/reference.width,rules.referenceWidth===undefined?1:rules.referenceWidth*unit/100/reference.width);
+  ref={...reference,width:reference.width*k,height:reference.height*k};ref.x=frame.x+(frame.width-ref.width)/2;ref.y=top;}
+ const iconWidth=icons.length?pct(rules.iconWidth,17):0,sideGap=icons.length?pct(rules.iconsDeviceGap,6):0,gapX=pct(rules.buttonGap,32/390*100);
+ // A hidden reference (posts/store games) keeps its slot, so the phone does not jump up and back.
+ const deviceTop=Math.max(reachTop,(ref?ref.y+ref.height:top+pct(rules.referenceReserve,56))+pct(rules.deviceReferenceGap,8));
+ const left=frame.x+iconWidth+sideGap,requested=rules.deviceScale??1;
+ const place=below=>Math.max(.1,Math.min(requested,(right-left)/device.width,(reachBottom-deviceTop-(below&&button?gapX+button.height:0))/device.height));
+ let fit=place(false),buttonWidth=button?Math.min(button.width*fit,device.width*fit):0;
+ const beside=!button||right-(left+device.width*fit+gapX)>=buttonWidth;
+ if(!beside){fit=place(true);buttonWidth=Math.min(button.width*fit,device.width*fit);}
+ const d={...device,x:left,y:deviceTop,width:device.width*fit,height:device.height*fit};
+ const b=button?{...button,width:buttonWidth,height:button.height*buttonWidth/button.width}:null;
+ if(b&&beside){b.x=d.x+d.width+gapX+(right-d.x-d.width-gapX-b.width)/2;b.y=d.y+d.height-b.height;}
+ else if(b){b.x=d.x+(d.width-b.width)/2;b.y=d.y+d.height+gapX;}
+ const scaled=icons.map(r=>({k:iconWidth/r.width,r})),total=scaled.reduce((v,{k,r})=>v+r.height*k,0);
+ const gap=icons.length>1?Math.min(pct(rules.iconGap,8),Math.max(0,(d.height-total)/(icons.length-1))):0;
+ let y=d.y;const placed=scaled.map(({k,r})=>{const v={...r,x:frame.x,y,width:r.width*k,height:r.height*k};y+=v.height+gap;return v;});
+ return{device:d,reference:ref,button:b,icons:placed,timers:placedTimers};
 }
 export function affineRect(r,before,after){const scale=after.width/before.width;return{...r,x:after.x+(r.x-before.x)*scale,y:after.y+(r.y-before.y)*scale,w:r.w*scale,h:r.h*scale,...(Number.isFinite(r.scale)?{scale:r.scale*scale}:{})};}
 export function compositionRect(r,p,anchor,unit=1){const a=anchor??{x:r.x+r.width/2,y:r.y+r.height/2};return{x:a.x+(r.x-a.x)*p.scale+p.x*unit,y:a.y+(r.y-a.y)*p.scale+p.y*unit,width:r.width*p.scale,height:r.height*p.scale};}
@@ -53,7 +91,7 @@ export function createCompositionLayout({document,params,arena,getSize,getHost,g
  async function poll(){if(disposed||pending||!available||events?.readyState===1)return;pending=true;try{const r=await fetch('/__kdw/layout/state',{cache:'no-store',signal:AbortSignal.timeout(3000)});if(r.status===404)available=false;if(r.ok)accept(await r.json());}catch{/* A missing operator service keeps the saved geometry. */}finally{pending=false;}}
  const receive=e=>{if(!preview||e.source!==parent||e.origin!==location.origin||e.data?.type!=='kdw-layout:draft')return;const v=e.data.value;if(v?.schemaVersion===1&&v.standby&&v.game)override=v;const guides=document.querySelector('[data-composition-guides]');if(guides)guides.hidden=!e.data.guides;};
  window.addEventListener('message',receive);
- let guides;if(preview){guides=document.createElement('div');guides.dataset.compositionGuides='';guides.style.cssText='position:fixed;inset:0;z-index:100000;pointer-events:none';guides.innerHTML='<svg viewBox="0 0 3072 1536" width="100%" height="100%" preserveAspectRatio="xMidYMid meet"><rect x="1" y="1" width="3070" height="1534" fill="none" stroke="#74f9ff" stroke-width="3"/><rect x="560" y="0" width="1760" height="1536" fill="none" stroke="#ffcf4a" stroke-width="3"/><path d="M1536 0V1536M0 768H3072" stroke="#ffffff66" stroke-width="2" stroke-dasharray="12 12"/><rect x="683.2" y="107.52" width="1513.6" height="1320.96" fill="none" stroke="#68f996" stroke-width="2" stroke-dasharray="12 12"/></svg>';document.body.append(guides);}
+ let guides;if(preview){guides=document.createElement('div');guides.dataset.compositionGuides='';guides.style.cssText='position:fixed;inset:0;z-index:100000;pointer-events:none';const P=PIXEL_MAP,sx=P.left+P.gameWidth*P.safeFraction,sy=P.height*P.safeFraction;guides.innerHTML=`<svg viewBox="0 0 ${P.width} ${P.height}" width="100%" height="100%" preserveAspectRatio="xMidYMid meet"><rect x="1" y="1" width="${P.width-2}" height="${P.height-2}" fill="none" stroke="#74f9ff" stroke-width="3"/><rect x="${P.left}" y="0" width="${P.gameWidth}" height="${P.height}" fill="none" stroke="#ffcf4a" stroke-width="3"/><path d="M${P.width/2} 0V${P.height}M0 ${P.height/2}H${P.width}" stroke="#ffffff66" stroke-width="2" stroke-dasharray="12 12"/><rect x="${sx}" y="${sy}" width="${P.gameWidth*(1-2*P.safeFraction)}" height="${P.height*(1-2*P.safeFraction)}" fill="none" stroke="#68f996" stroke-width="2" stroke-dasharray="12 12"/></svg>`;document.body.append(guides);}
  const ready=poll().then(()=>{if(available&&!disposed){events=new EventSource('/__kdw/layout/events');events.onmessage=e=>{try{accept(JSON.parse(e.data));}catch{}};}}),timer=setInterval(()=>void poll(),1000);
  function layout({delta=0,reduced=false}={}){
   const host=getHost();if(!host||document.documentElement.dataset.pixelMap!=='true')return null;
@@ -62,7 +100,7 @@ export function createCompositionLayout({document,params,arena,getSize,getHost,g
   transitionControls.update(host);
   const presentation=getPresentation(),current=resolveComposition(v,presentation?.kind??kind,presentation?.screen??screen),targets=[];
   for(const [name,val]of Object.entries({fallingCardScale:current.relative.fallingCardScale??2.2,fallingSpawnRight:current.relative.fallingSpawnRight??0}))if(host.dataset[name]!==String(val))host.dataset[name]=String(val);
-  const a=arena.getBoundingClientRect(),unit=a.width/3072,sceneUnit=a.width/getSize().width,relativeUnit=390*sceneUnit*current.device.scale;
+  const a=arena.getBoundingClientRect(),unit=a.width/PIXEL_MAP.width,sceneUnit=a.width/getSize().width,relativeUnit=390*sceneUnit*current.device.scale;
   let basis=null;
   if(standby){targets.push([host.querySelector('[data-idle-part] img')?.closest('[data-idle-part]'),v.standby.logo]);targets.push([device,v.standby.video]);const icons=[...host.querySelectorAll('[data-idle-mission]')];const rects=icons.map(el=>el.getBoundingClientRect());if(rects.length){const anchor={x:(Math.min(...rects.map(r=>r.left))+Math.max(...rects.map(r=>r.right)))/2,y:(Math.min(...rects.map(r=>r.top))+Math.max(...rects.map(r=>r.bottom)))/2};for(const icon of icons)targets.push([icon,v.standby.missions,anchor]);}}
   else{const reference=host.querySelector('.task-dialog .instruction'),r=live(device)?device.getBoundingClientRect():live(reference)?reference.getBoundingClientRect():host.getBoundingClientRect(),anchor={x:r.x+r.width/2,y:r.y+r.height/2};
@@ -81,8 +119,8 @@ export function createCompositionLayout({document,params,arena,getSize,getHost,g
   const hostBounds=host.getBoundingClientRect(),virtual=presentation?.deviceRect,restDevice=virtual?{x:hostBounds.x+virtual.x*sceneUnit,y:hostBounds.y+virtual.y*sceneUnit,width:virtual.width*sceneUnit,height:virtual.height*sceneUnit}:basis?.get(device),anchor=restDevice?{x:cx(restDevice),y:cy(restDevice)}:null;
   const records=targets.filter(([el])=>live(el)).map(([el,p,oldAnchor])=>{const before=el.getBoundingClientRect(),rest=basis?.get(el)??before;return{el,p,before,rest,target:p?compositionRect(rest,p,standby?oldAnchor:anchor,unit):rest};});
   if(!standby){
-   const d=records.find(r=>r.el===device),ref=records.find(r=>r.el.matches('.instruction')),buttons=records.filter(r=>r.el.matches(buttonSelector)),icons=records.filter(r=>r.el.matches('.object[data-object]')),timers=records.filter(r=>r.el.matches('.v5-device-timer'));
-   if(restDevice){const hostRect=hostBounds,b=buttons.length===1?buttons[0]:null,result=relativeCompositionRects({device:compositionRect(restDevice,current.device,anchor,unit),reference:ref?.target,button:b?.target,icons:icons.map(r=>r.target),timers:timers.map(r=>r.target)},{...current.relative,deviceScale:(current.relative.deviceScale??1)*deviceClassScale(current.relative,presentation?.kind??kind,presentation?.screen??screen)},{x:hostRect.x+hostRect.width/2,y:hostRect.y+hostRect.height/2},relativeUnit,params.get('transitionLayout')==='device'?'device':'reference');if(d)d.target=result.device;if(ref)ref.target=result.reference;if(b)b.target=result.button;icons.forEach((r,i)=>r.target=result.icons[i]);timers.forEach((r,i)=>r.target=result.timers[i]);}
+   const d=records.find(r=>r.el===device),ref=records.find(r=>r.el.matches('.instruction')),buttons=records.filter(r=>r.el.matches(buttonSelector)),icons=records.filter(r=>r.el.matches('.object[data-object]')),timers=records.filter(r=>r.el.matches(pixelMapPortrait()?'.v5-device-timer:not([data-scan-wait-timer],[data-scan-queue-count])':'.v5-device-timer'));
+   if(restDevice){const hostRect=hostBounds,b=buttons.length===1?buttons[0]:null,result=relativeCompositionRects({device:compositionRect(restDevice,current.device,anchor,unit),reference:ref?.target,button:b?.target,icons:icons.map(r=>r.target),timers:timers.map(r=>r.target)},{...current.relative,...(pixelMapPortrait()?{arrangement:'column'}:{}),deviceScale:(current.relative.deviceScale??1)*deviceClassScale(pixelMapPortrait()?{cardsScale:1,...current.relative}:current.relative,presentation?.kind??kind,presentation?.screen??screen)},{x:hostRect.x+hostRect.width/2,y:hostRect.y+hostRect.height/2},relativeUnit,params.get('transitionLayout')==='device'?'device':'reference',{x:hostRect.x,y:hostRect.y,width:hostRect.width,height:hostRect.height});if(d)d.target=result.device;if(ref)ref.target=result.reference;if(b)b.target=result.button;icons.forEach((r,i)=>r.target=result.icons[i]);timers.forEach((r,i)=>r.target=result.timers[i]);}
   }
   let settling=false;
   for(const record of records){const {el,rest,before,target}=record,k=target.width/rest.width,goal={scale:k,x:target.x-rest.x*k,y:target.y-rest.y*k};let motion=corrections.get(el);

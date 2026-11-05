@@ -1,6 +1,6 @@
 import {createGradientController} from './bfm-gradient-controller.mjs';
 import {FLAT_SCREEN,WALL} from './circle-model.mjs';
-import {pixelMapViewport} from './kdw-pixel-map.mjs';
+import {PIXEL_MAP,pixelMapViewport} from './kdw-pixel-map.mjs';
 import {outputHidden} from './kdw-stand-output.mjs';
 
 export const BROWSER_ROUTE_GAP=128;
@@ -33,9 +33,12 @@ export function createStandBrowserHost({arena,params,onMenu,pixelPlan,production
    if(pixelPlan){const v=pixelMapViewport(width,height),k=v.scale*pixelPlan.scale;Object.assign(arena.style,{left:'0',top:'0',overflow:'visible',transform:`translate(${v.left}px,${v.top}px) scale(${k})`});Object.assign(back.style,{left:(v.safe.left+12*v.scale)+'px',top:(v.safe.top+12*v.scale)+'px'});}
    const brand=arena.querySelector('.v5-brand');if(brand){if(params.get('view')==='wall'){brand.style.removeProperty('left');brand.style.removeProperty('right');brand.style.removeProperty('top');}else Object.assign(brand.style,{left:'auto',right:'64px',top:'32px'});}
    const ambient=document.querySelector('#ambient');if(ambient)Object.assign(ambient.style,{position:'fixed',left:'0',top:'0',width:'100vw',height:'100vh',transform:'none'});
-   if(pixelPlan){const brand=arena.querySelector('.v5-brand'),v=pixelMapViewport(width,height);if(brand)Object.assign(brand.style,{left:(pixelPlan.zone.left+pixelPlan.zone.w-360)+'px',right:'auto',top:((1536*.07)/pixelPlan.scale)+'px'});if(ambient)Object.assign(ambient.style,{left:v.left+'px',top:v.top+'px',width:v.width+'px',height:v.height+'px'});}
+   // PORTRAIT-LAYOUT-C: MAX logo in the top left corner, in the row of the queue and task timer
+   // (as in the brief mock-up; 44 scene units high, the plates are 56). The production .v5-brand stays hidden; the menu has its own logo.
+   if(pixelPlan&&PIXEL_MAP.name==='portrait'){let logo=arena.querySelector('.kdw-portrait-brand');if(!logo){arena.insertAdjacentHTML('beforeend','<div class="kdw-portrait-brand" aria-hidden="true" hidden><img src="./brand/assets/logos/max-primary-white.svg" alt="" style="display:block;width:100%;height:100%"></div>');logo=arena.querySelector('.kdw-portrait-brand');}const h=44,w=h*440.4539794921875/140;Object.assign(logo.style,{position:'absolute',left:pixelPlan.zone.left+'px',top:(pixelPlan.zone.top+6)+'px',width:w+'px',height:h+'px',pointerEvents:'none',zIndex:'5'});}
+   if(pixelPlan){const brand=arena.querySelector('.v5-brand'),v=pixelMapViewport(width,height);if(brand)Object.assign(brand.style,{left:(pixelPlan.zone.left+pixelPlan.zone.w-360)+'px',right:'auto',top:((PIXEL_MAP.height*PIXEL_MAP.safeFraction)/pixelPlan.scale)+'px'});if(ambient)Object.assign(ambient.style,{left:v.left+'px',top:v.top+'px',width:v.width+'px',height:v.height+'px'});}
   },
-  update(snapshot){back.hidden=!snapshot||snapshot.state.status==='menu';if(pixelPlan){const brand=arena.querySelector('.v5-brand');if(brand)brand.hidden=snapshot?.state.status==='menu';}},
+  update(snapshot){back.hidden=!snapshot||snapshot.state.status==='menu';if(pixelPlan){const brand=arena.querySelector('.v5-brand');if(brand)brand.hidden=snapshot?.state.status==='menu';const logo=arena.querySelector('.kdw-portrait-brand');if(logo)logo.hidden=!snapshot||snapshot.state.status==='menu';}},
   dispose(){back.remove();gradients.dispose();document.removeEventListener('visibilitychange',configure);window.removeEventListener('kdw-output-state',configure);reduced.removeEventListener('change',configure);}
  };
 }
